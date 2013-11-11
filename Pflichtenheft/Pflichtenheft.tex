@@ -103,15 +103,156 @@ Mindestanforderungen:
 
 
 \section{Funktionale Anforderungen}
+Funktionale Anforderungen werden durch eine vierstellige Nummer gekennzeichnet. Die erste Nummer kennzeichnet den folgenden Bereich:
+\begin{itemize}
+	\item GUI (View)
+	\item Schnittstellen (Controller)
+	\item Datenhaltung (Model)
+\end{itemize}
+Die restlichen Nummern dienen zur Durchnummerierung.
 
+\subsection{GUI (View)}
+\begin{itemize}
+	\item /F10010/ Programmstart \hfill \\
+	Initialisierung des Hauptfensters. Es wird, falls vorhanden, der letzte Programmzustand aufgerufen (/F20010/). Andernfalls lädt das Programm die Daten der letzten Bundestagswahl.
+	\item /F10020/ Menü \hfill \\
+	Im Menü sind folgende Punkte gelistet:
+	\begin{itemize}
+		\item Datei
+		\begin{itemize}
+			\item Speichern des aktuellen Zustandes /F20010/
+			\item Laden eines Zustandes /F20011/
+			\item Importieren von Daten /F20020/
+			\item Exportieren von Daten /F20030/
+		\end{itemize}
+		\item Bearbeiten
+		\begin{itemize}
+			\item Rückgängig /F20040/
+		\end{itemize}
+		\item Extras
+		\item Hilfe /F10030/
+	\end{itemize}
+	\item /F10030/ Hilfe \hfill \\
+	Durch den Klick auf diesen Menüpunkt öffnet sich ein Fenster, in der Handbücher zum Programm zu finden sind. Des weiteren ein kleines About, mit den wichtigsten Informationen zum Programm.
+	\item /F10050/ Kartografische Darstellung der Länder \hfill \\
+	Die Länder werden nach einer überprüfung (/F30010/), Kartografisch im Fenster dargestellt.
+	\item /F10100/ Programmende \hfill \\
+	Das Programm speichert den aktuellen Zustand (/F20010/) und schließt das Programm.
+\end{itemize}
 
-\section{Globale Testfälle und Testszenarien}
+\subsection{Schnittstellen (Controller)}
+\begin{itemize}
+	\item /F20010/ Speichern des aktuellen Programmzustandes \hfill \\
+	Es wird das Zustands-Objekt (/PD01/) in einer Datei abgelegt. Dabei kann der Benutzer beim Speichern einen internen Namen und ein Kommentar abgeben, welche mit gespeichert werden.
+	\item /F20011/ Laden eines Programmzustandes \hfill \\
+	Der Benutzer wählt eine Datei aus. Es wird überprüft, ob es sich um ein gültiges Objekt handelt. Falls die Version unterschiedlich ist, wird die Datei konvertiert und geladen.
+	\item /F20020/ Importieren von Daten \hfill \\
+	Die .csv-Dateien des Bundeswahlleiters können importiert werden.
+	\item /F20030/ Exportieren von Daten \hfill \\
+	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
+	\item /F20040/ \"Rückgängig machen\" \hfill \\
+	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
+\end{itemize}
+
+\subsection{Datenhaltung und Verarbeitung (Model)}
+\begin{itemize}
+	\item /F30010/ Überprüfen der Ländernamen \hfill \\
+	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10050/) aktiviert.
+\end{itemize}
+\section{Produktdaten}
+\begin{itemize}
+	\item /PD01/ Zustands-Object \hfill \\
+	Repräsentiert den aktuellen Zustand des Programms. Es beinhaltet alle Informationen, um den genauen Zustand des Programms wiederherzustellen. Es handelt sich um eine serialisierbare Klasse.
+	\begin{itemize}
+		\item Version des Programms (um Abwärtskompatibilität zu gewährleisten)
+		\item Datum und Uhrzeit der Erstellung
+		\item Name/ID
+		\item Kommentar
+		\item Fenster-Objekt als Liste
+		\item History-Objekt
+	\end{itemize}
+	
+	\item /PD02/ Fenster-Objekt
+	\begin{itemize}
+		\item Wahlergebnisse (Daten-Objekt)
+		\item Wahlgesetz-Objekt
+		\item Name/ID
+	\end{itemize}
+	
+	\item /PD03/ Daten-Objekt \hfill \\
+	Beinhaltet die Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis und Partei.
+	\begin{itemize}
+		\item Name/ID
+		\item Kommentar (Quelle)
+		\item Wahlkreise mit Stimmen als Array.
+	\end{itemize}
+	
+	\item /PD04/ Wahlgesetz-Objekt \hfill \\
+	Beinhaltet das Algorithmus zur Berechnung der Sitze mit dem Daten-Objekt als Eingabedatum.\\
+	Des weiteren überprüft das Objekt, ob mit dem Datenobjekt eine Wahl überhaupt simuliert werden kann (wenn ein Datenobjekt beispielsweise keine Erststimmen enthält wie in sehr alten Wahlen).
+	
+	\item /PD05/ History-Objekt \hfill \\
+	Dieses Objekt zeichnet alle Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/).
+\end{itemize}
+\section{Produktleistungen}
+\begin{itemize}
+	\item Zeit
+	\begin{itemize}
+		\item Starten + Laden des letzten Zustandes: unter 5 Sekunden.
+		\item Beenden + Speichern des aktuellen Zustandes: unter 5 Sekunden.
+		\item Exportieren/Importieren von Daten: unter 10 Sekunden.
+	\end{itemize}
+	\item Genauigkeit \hfill \\
+	Die Genauigkeit des Algorithmus zur Sitzberechnung muss dem Wahlgesetz entsprechen und exakte Ergebnisse liefern.
+\end{itemize}
+\section{Nicht-funktionale Anforderungen}
+\begin{itemize}
+	\item Allgemeine Anforderungen:
+	\begin{itemize}
+		\item Die Sitzverteilung muss für den Benutzer transparent und nachvollziehbar dargestellt werden.
+	\end{itemize}
+	\item Sicherheitsanforderungen:
+	\begin{itemize}
+		\item Noch nichts...
+	\end{itemize}
+	\item Plattformunabhängigkeit: \hfill \\
+	Das Programm muss auf der offiziellen Oracle JRE laufen.
+\end{itemize}
+\section{Qualitätsanforderungen}
+\begin{itemize}
+	\item Hilfreiche Fehlermeldungen
+	\item Kein Datenverlust (auch nach Programmabstürzen)
+\end{itemize}
+\section{Globale Testfälle und Szenarien}
 
 \section{Systemmodelle}
 
 \section{Benutzungsoberfläche}
 
 \section{Spezielle Anforderungen an die Entwicklungsumgebung}
+\begin{itemize}
+	\item Allgemein
+	\begin{itemize}
+		\item Latex
+		\item Versionskontrolle mit SVN
+	\end{itemize}
+	\item Entwicklung
+	\begin{itemize}
+		\item IDE: Eclipse
+	\end{itemize}
+	\item Entwurf
+	\begin{itemize}
+		\item DIA für Diagramme
+	\end{itemize}
+	\item Validierung
+	\begin{itemize}
+		\item JUnit
+	\end{itemize}
+	\item Teamkommunikation
+	\begin{itemize}
+		\item Google-Groups Mailingliste
+	\end{itemize}
+\end{itemize}
 
 \section{Zeit- und Ressourcenplanung}
 
