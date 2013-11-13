@@ -4,9 +4,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{graphicx} %Um Bilder anzeigen zu können
 
 \title{Software zur Mandatsverteilung im Deutschen Bundestag}
-\author{Anton Mehlmann, Manuel Olk Enes Ördek, Simon Schürg, Nick Vlasoff, Philipp..}
+\author{Anton Mehlmann, Manuel Olk Enes Ördek, Simon Schürg, Nick Vlasoff, Philipp Löwer}
+
 
 \begin{document}
 \maketitle
@@ -141,9 +143,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Der Benutzer wählt eine Datei aus. Es wird überprüft, ob es sich um ein gültiges Objekt handelt. Falls die Version unterschiedlich ist, wird die Datei konvertiert und geladen.
 	\item /F20020/ Importieren von Daten \hfill \\
 	Die .csv-Dateien des Bundeswahlleiters können importiert werden.
+	\item /F20025/ Filtern der relevanten Daten \hfill \\
+	Die benötigten Dateien werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.
 	\item /F20030/ Exportieren von Daten \hfill \\
 	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
-	\item /F20040/ \"Rückgängig machen\" \hfill \\
+	\item /F20040/ Rückgängig machen \hfill \\
 	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
 \end{itemize}
 
@@ -151,6 +155,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \begin{itemize}
 	\item /F30010/ Überprüfen der Ländernamen \hfill \\
 	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10050/) aktiviert.
+	\item /F30020/ Überprüfen der Stimmen\hfill \\
+	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
 \end{itemize}
 \section{Produktdaten}
 \begin{itemize}
@@ -206,7 +212,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\end{itemize}
 	\item Sicherheitsanforderungen:
 	\begin{itemize}
-		\item Noch nichts...
+		\item Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
 	\end{itemize}
 	\item Plattformunabhängigkeit: \hfill \\
 	Das Programm muss auf der offiziellen Oracle JRE laufen.
@@ -216,8 +222,28 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item Hilfreiche Fehlermeldungen
 	\item Kein Datenverlust (auch nach Programmabstürzen)
 \end{itemize}
+\newpage
 \section{Globale Testfälle und Szenarien}
+Folgende Funktionssequenzen sind zu überprüfen:
 
+\includegraphics[scale=0.4]{Diagramm1}
+Folgende Datenkonsistenzen müssen eingehalten werden:
+\begin{itemize}
+	\item noch nichts...
+\end{itemize}
+Folgende unzulässige Aktionen müssen korrekt behandelt werden:
+\begin{itemize}
+	\item Negative Stimmenanzahl
+	\item Buchstaben als Stimmen
+\end{itemize}
+Testszenarien:
+\begin{itemize}
+	\item Falsche Daten importieren: \newline
+	Starten des Programms $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die falsche .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Eine Fehlermeldung taucht auf $\rightarrow$ Programm befindet sich wieder im Startzustand
+	\item Manuell Daten modifizieren: \\
+	Starten des Programms $\rightarrow$ Korrekte Daten laden $\rightarrow$ Die Sitzverteilung wird angezeigt $\rightarrow$ Den Wert zweier Parteien miteinander tauschen $\rightarrow$ Die Sitzverteilung erneut berechnen $\rightarrow$ Eine mögliche Veränderung der Sitzverteilung wird angezeigt
+	
+\end{itemize}
 \section{Systemmodelle}
 
 \section{Benutzungsoberfläche}
