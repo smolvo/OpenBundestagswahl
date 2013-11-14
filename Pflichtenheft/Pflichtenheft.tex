@@ -7,7 +7,7 @@
 \usepackage{graphicx} %Um Bilder anzeigen zu können
 \usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
 
-\title{\Huge Pflichtenheft\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\Gruppe 1\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen\\[1cm] }
+\title{\Huge Pflichtenheft\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\Gruppe 1\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm] }
 \author{Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
 \date{}
 
@@ -25,6 +25,7 @@
 		
 \newpage
 \tableofcontents
+\newpage
 
 \section{Produktübersicht}
 Bei dem Produkt handelt es sich um ein Programm, das die Sitzverteilung im Deutschen Bundestag gemäß der gesetzlichen Bestimmungen exakt berechnet und deren Zustandekommen verständlich darlegt. Erreicht wird dies durch eine minimalistische und intuitive Benutzeroberfläche.
@@ -161,6 +162,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
 	\item /F20040/ Rückgängig machen \hfill \\
 	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
+	\item /F20050/ Generierung von Wahldaten nach vorher definierten Mustern.
+	\item /F20060/ Manuelles ändern einzelner Stimmzahlen.
 \end{itemize}
 
 \subsection{Datenhaltung und Verarbeitung (Model)}
@@ -170,6 +173,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item /F30020/ Überprüfen der Stimmen\hfill \\
 	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
 \end{itemize}
+
 \section{Produktdaten}
 \begin{itemize}
 	\item /PD01/ Zustands-Object \hfill \\
@@ -205,6 +209,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item /PD05/ History-Objekt \hfill \\
 	Dieses Objekt zeichnet alle Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/).
 \end{itemize}
+
 \section{Produktleistungen}
 \begin{itemize}
 	\item Zeit
@@ -216,6 +221,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item Genauigkeit \hfill \\
 	Die Genauigkeit des Algorithmus zur Sitzberechnung muss dem Wahlgesetz entsprechen und exakte Ergebnisse liefern.
 \end{itemize}
+
+
 \section{Nicht-funktionale Anforderungen}
 \begin{itemize}
 	\item Allgemeine Anforderungen:
@@ -227,14 +234,19 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 		\item Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
 	\end{itemize}
 	\item Plattformunabhängigkeit: \hfill \\
-	Das Programm muss auf der offiziellen Oracle JRE laufen.
+	Das Programm muss mit der offiziellen Oracle JRE laufen.
 \end{itemize}
+
+
 \section{Qualitätsanforderungen}
 \begin{itemize}
 	\item Hilfreiche Fehlermeldungen
 	\item Kein Datenverlust (auch nach Programmabstürzen)
+	\item Gespeicherte Daten müssen immer konsistent gehalten werden
 \end{itemize}
 \newpage
+
+
 \section{Globale Testfälle und Szenarien}
 Folgende Funktionssequenzen sind zu überprüfen:
 
