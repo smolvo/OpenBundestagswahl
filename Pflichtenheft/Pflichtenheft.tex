@@ -162,8 +162,22 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\end{itemize}
 	\item /F10030/ Hilfe \hfill \\
 	Durch den Klick auf diesen Menüpunkt öffnet sich ein Fenster, in der Handbücher zum Programm zu finden sind. Des weiteren ein kleines About, mit den wichtigsten Informationen zum Programm, vorhanden.
-	\item /F10050/ Kartografische Darstellung der Länder \hfill \\
-	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt.
+	\item /F10060/ Programmfenster \hfill \\
+	Das Programmfenster wird in drei Bereiche aufgeteilt.
+	\begin{itemize}
+		\item Tabellenfenster /F10070/
+		\item Diagrammfenster /F10080/
+		\item Kartenfenster /F10090/
+	\end{itemize}
+	\item /F10070/ Tabellenfenster \hfill \\
+	Es werden Bundesländer in tabellarischer Form angezeigt. Klickt der Benutzer auf ein Bundesland, werden die Wahlkreise des betroffenen Bundeslandes angezeigt. Der klick auf die Wahlkreise öffnen die Ergebnisse pro Partei, die Anzahl der Wahlberechtigten und die Zweitstimmen. \\
+	Es gibt die Möglichkeit die Sortierung zu ändern. \\
+	Ein zurück Pfeil wechselt zurück zur vorherigen Ansicht.
+	\item /F10080/ Diagrammfenster \hfill \\
+	
+	\item /F10090/ Kartenfenster \hfill \\
+	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt. Der klick auf ein Bundesland öffnet die Bundesansicht. \\
+	Ein zurück Pfeil wechselt zur vorherigen Bundesansicht.
 	\item /F10100/ Programmende \hfill \\
 	Es erscheint ein Fenster. Der Benutzer hat die Wahl zwischen abbrechen, speichern des aktuellen Zustands (/F20010/) und dem Verwerfen des aktuellen Zustands.
 \end{itemize}
@@ -199,7 +213,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \subsection{Datenhaltung und Verarbeitung}
 \begin{itemize}
 	\item /F30010/ Überprüfen der Ländernamen \hfill \\
-	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10050/) aktiviert.
+	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10090/) aktiviert.
 	\item /F30020/ Überprüfen der Stimmen\hfill \\
 	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
 \end{itemize}
