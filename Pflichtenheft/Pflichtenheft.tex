@@ -92,21 +92,11 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 
 \subsection{Hardware}
-\subparagraph{Mindestanforderungen:}
+Mindestanforderungen:
 \begin{itemize}
-\item 128 MB Arbeitsspeicher
-\item 100 MB freien Festplattenspeicher
-\item 500-MHz-Prozessor
-\item Farbdisplay/ Bildschirmauflösung: 1024x768
+\item Bildschirmauflösung: 1024x768
 \end{itemize}
 
-\subparagraph{Empfohlen:}
-\begin{itemize}
-\item 512 MB Arbeitsspeicher
-\item 100 MB freien Festplattenspeicher
-\item 1-GHz-Prozessor
-\item Farbdisplay/ Bildschirmauflösung: 1024x768
-\end{itemize}
 
 \subsection{Orgware}
 \begin{itemize}
@@ -148,6 +138,9 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 			\item Rückgängig /F20040/
 		\end{itemize}
 		\item Extras
+		\begin{itemize}
+			\item Ändern der aktuellen Ansicht
+		\end{itemize}
 		\item Hilfe /F10030/
 	\end{itemize}
 	\item /F10030/ Hilfe \hfill \\
@@ -172,8 +165,10 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
 	\item /F20040/ Rückgängig machen \hfill \\
 	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
-	\item /F20050/ Generierung von Wahldaten nach vorher definierten Mustern.
-	\item /F20060/ Manuelles ändern einzelner Stimmzahlen.
+	\item /F20050/ Generierung von Wahldaten nach vorher definierten Mustern. \hfill \\
+	Welche Muster? ToDo!!!
+	\item /F20060/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
+	Der Benutzer kann in einer Tabelle die Zahlen der aktuellen Wahlsimulation manuell anpassen.
 \end{itemize}
 
 \subsection{Datenhaltung und Verarbeitung (Model)}
@@ -294,6 +289,7 @@ Das Programm basiert auf der MVC- Architektur, wobei auf eine saubere Trennung d
 	\item Entwicklung
 	\begin{itemize}
 		\item IDE: Eclipse
+		\item GUI: Swing
 	\end{itemize}
 	\item Entwurf
 	\begin{itemize}
