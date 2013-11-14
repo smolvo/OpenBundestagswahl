@@ -169,45 +169,47 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 		\item Diagrammfenster /F10080/
 		\item Kartenfenster /F10090/
 	\end{itemize}
+	Es gibt hierbei verschiedene Ansichten.
+	\begin{itemize}
+		\item Bundesansicht
+		\item Landesansicht
+	\end{itemize}
 	\item /F10070/ Tabellenfenster \hfill \\
 	Es werden Bundesländer in tabellarischer Form angezeigt. Klickt der Benutzer auf ein Bundesland, werden die Wahlkreise des betroffenen Bundeslandes angezeigt. Der klick auf die Wahlkreise öffnen die Ergebnisse pro Partei, die Anzahl der Wahlberechtigten und die Zweitstimmen. \\
 	Es gibt die Möglichkeit die Sortierung zu ändern. \\
-	Ein zurück Pfeil wechselt zurück zur vorherigen Ansicht.
+	Ein zurück Pfeil wechselt zur vorherigen Ansicht.
 	\item /F10080/ Diagrammfenster \hfill \\
-	
+	Im Diagrammfenster sieht man Diagramme den Daten entsprechend und zur aktuellen Ansicht.
 	\item /F10090/ Kartenfenster \hfill \\
 	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt. Der klick auf ein Bundesland öffnet die Bundesansicht. \\
 	Ein zurück Pfeil wechselt zur vorherigen Bundesansicht.
+	\item /F20091/ Neuer Tab \hfill \\
+	TODO
+	\item /F20092/ Tab schließen \hfill \\
+	TODO
+	\item /F20093/ Rückgängig machen \hfill \\
+	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
+	\item /F20094/ Wiederherstellen \hfill \\
+	TODO
 	\item /F10100/ Programmende \hfill \\
 	Es erscheint ein Fenster. Der Benutzer hat die Wahl zwischen abbrechen, speichern des aktuellen Zustands (/F20010/) und dem Verwerfen des aktuellen Zustands.
 \end{itemize}
 
 \subsection{Schnittstellen}
 \begin{itemize}
-	\item /F20001/ Neuer Tab \hfill \\
-	TODO
-	\item /F20002/ Tab schließen \hfill \\
-	TODO
 	\item /F20010/ Speichern des aktuellen Programmzustandes \hfill \\
 	Es wird das Zustands-Objekt (/PD01/) in einer Datei abgelegt. Dabei kann der Benutzer beim Speichern einen internen Namen und ein Kommentar abgeben, welche mit gespeichert werden.
 	\item /F20011/ Laden eines Programmzustandes \hfill \\
 	Der Benutzer wählt eine Datei aus. Es wird überprüft, ob es sich um ein gültiges Objekt handelt. Falls die Version unterschiedlich ist, wird die Datei konvertiert und geladen.
 	\item /F20020/ Importieren von Daten \hfill \\
 	Die .csv-Dateien des Bundeswahlleiters können importiert werden.
-	\item /F20025/ Filtern der relevanten Daten \hfill \\
-	Die benötigten Dateien werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.
 	\item /F20030/ Exportieren von Daten \hfill \\
 	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
-	\item /F20040/ Rückgängig machen \hfill \\
-	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
-	\item /F20041/ Wiederherstellen \hfill \\
-	TODO
+	
 	\item /F20050/ Generierung von Wahldaten nach vorher definierten Mustern. \hfill \\
 	Welche Muster? ToDo!!!
 	\item /F20060/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
 	Der Benutzer kann in einer Tabelle die Zahlen der aktuellen Wahlsimulation manuell anpassen.
-	\item /F20070/ Programm Beenden \hfill \\
-	TODO
 \end{itemize}
 
 \subsection{Datenhaltung und Verarbeitung}
@@ -216,6 +218,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10090/) aktiviert.
 	\item /F30020/ Überprüfen der Stimmen\hfill \\
 	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
+	\item /F30030/ Filtern der relevanten Daten \hfill \\
+	Die benötigten Dateien werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.
 \end{itemize}
 
 \section{Produktdaten}
