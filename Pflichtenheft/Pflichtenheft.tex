@@ -123,47 +123,57 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 \section{Funktionale Anforderungen}
 Funktionale Anforderungen werden durch eine vierstellige Nummer gekennzeichnet. Die erste Nummer kennzeichnet den folgenden Bereich:
-\begin{itemize}
-	\item GUI (View)
-	\item Schnittstellen (Controller)
-	\item Datenhaltung (Model)
-\end{itemize}
+\begin{enumerate}
+	\item GUI
+	\item Schnittstellen
+	\item Datenhaltung
+\end{enumerate}
 Die restlichen Nummern dienen zur Durchnummerierung.
 
-\subsection{GUI (View)}
+\subsection{GUI}
 \begin{itemize}
 	\item /F10010/ Programmstart \hfill \\
-	Initialisierung des Hauptfensters. Es wird, falls vorhanden, der letzte Programmzustand aufgerufen (/F20010/). Andernfalls lädt das Programm die Daten der letzten Bundestagswahl.
+	Es erscheint ein Startfenster. Der Benutzer hat die Wahl zwischen der Bundestagswahl 2013, falls vorhanden dem letzten Programmzustand (/F20010/), das Laden eines vorher gespeicherten Programmzustandes und das Importieren von Wahlergebnissen.
 	\item /F10020/ Menü \hfill \\
 	Im Menü sind folgende Punkte gelistet:
 	\begin{itemize}
 		\item Datei
 		\begin{itemize}
+			\item Neuer Tab /F20001/
+			\item Tab schließen /F20002/
 			\item Speichern des aktuellen Zustandes /F20010/
 			\item Laden eines Zustandes /F20011/
 			\item Importieren von Daten /F20020/
 			\item Exportieren von Daten /F20030/
+			\item Beenden /F20070/
 		\end{itemize}
 		\item Bearbeiten
 		\begin{itemize}
 			\item Rückgängig /F20040/
+			\item Wiederherstellen /F20041/
 		\end{itemize}
 		\item Extras
 		\begin{itemize}
 			\item Ändern der aktuellen Ansicht
+			\item Wahlgesetz auswählen
+			\item Vergleichen mit...
 		\end{itemize}
 		\item Hilfe /F10030/
 	\end{itemize}
 	\item /F10030/ Hilfe \hfill \\
-	Durch den Klick auf diesen Menüpunkt öffnet sich ein Fenster, in der Handbücher zum Programm zu finden sind. Des weiteren ein kleines About, mit den wichtigsten Informationen zum Programm.
+	Durch den Klick auf diesen Menüpunkt öffnet sich ein Fenster, in der Handbücher zum Programm zu finden sind. Des weiteren ein kleines About, mit den wichtigsten Informationen zum Programm, vorhanden.
 	\item /F10050/ Kartografische Darstellung der Länder \hfill \\
-	Die Länder werden nach einer überprüfung (/F30010/), Kartografisch im Fenster dargestellt.
+	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt.
 	\item /F10100/ Programmende \hfill \\
-	Das Programm speichert den aktuellen Zustand (/F20010/) und schließt das Programm.
+	Es erscheint ein Fenster. Der Benutzer hat die Wahl zwischen abbrechen, speichern des aktuellen Zustands (/F20010/) und dem Verwerfen des aktuellen Zustands.
 \end{itemize}
 
-\subsection{Schnittstellen (Controller)}
+\subsection{Schnittstellen}
 \begin{itemize}
+	\item /F20001/ Neuer Tab \hfill \\
+	TODO
+	\item /F20002/ Tab schließen \hfill \\
+	TODO
 	\item /F20010/ Speichern des aktuellen Programmzustandes \hfill \\
 	Es wird das Zustands-Objekt (/PD01/) in einer Datei abgelegt. Dabei kann der Benutzer beim Speichern einen internen Namen und ein Kommentar abgeben, welche mit gespeichert werden.
 	\item /F20011/ Laden eines Programmzustandes \hfill \\
@@ -176,13 +186,17 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
 	\item /F20040/ Rückgängig machen \hfill \\
 	Es können Operationen rückgängig gemacht werden. Hierfür wird das History-Objekt (/PD05/) verwendet.
+	\item /F20041/ Wiederherstellen \hfill \\
+	TODO
 	\item /F20050/ Generierung von Wahldaten nach vorher definierten Mustern. \hfill \\
 	Welche Muster? ToDo!!!
 	\item /F20060/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
 	Der Benutzer kann in einer Tabelle die Zahlen der aktuellen Wahlsimulation manuell anpassen.
+	\item /F20070/ Programm Beenden \hfill \\
+	TODO
 \end{itemize}
 
-\subsection{Datenhaltung und Verarbeitung (Model)}
+\subsection{Datenhaltung und Verarbeitung}
 \begin{itemize}
 	\item /F30010/ Überprüfen der Ländernamen \hfill \\
 	Überprüft ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10050/) aktiviert.
