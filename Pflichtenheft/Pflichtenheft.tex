@@ -175,13 +175,13 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 		\item Landesansicht
 	\end{itemize}
 	\item /F10070/ Tabellenfenster \hfill \\
-	Es werden Bundesländer in tabellarischer Form angezeigt. Klickt der Benutzer auf ein Bundesland, werden die Wahlkreise des betroffenen Bundeslandes angezeigt. Der klick auf die Wahlkreise öffnen die Ergebnisse pro Partei, die Anzahl der Wahlberechtigten und die Zweitstimmen. \\
+	Es werden Bundesländer in tabellarischer Form angezeigt. Klickt der Benutzer auf ein Bundesland, werden die Wahlkreise des betroffenen Bundeslandes angezeigt. Der Klick auf die Wahlkreise öffnen die Ergebnisse pro Partei, die Anzahl der Wahlberechtigten und die Zweitstimmen. \\
 	Es gibt die Möglichkeit die Sortierung zu ändern. \\
-	Ein zurück Pfeil wechselt zur vorherigen Ansicht.
+	Ein Zurück-Pfeil wechselt zur vorherigen Ansicht.
 	\item /F10080/ Diagrammfenster \hfill \\
 	Im Diagrammfenster sieht man Diagramme den Daten entsprechend und zur aktuellen Ansicht.
 	\item /F10090/ Kartenfenster \hfill \\
-	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt. Der klick auf ein Bundesland öffnet die Bundesansicht. \\
+	Die Länder werden nach einer Überprüfung (/F30010/), kartografisch im Fenster dargestellt. Der klick auf ein Bundesland öffnet die Bundeslandansicht. \\
 	Ein zurück Pfeil wechselt zur vorherigen Bundesansicht.
 	\item /F20091/ Neuer Tab \hfill \\
 	Beim Anklicken wird ein neuer Tab (/PD02/) generiert, in dem eine neue Bundestagswahl (/PD03/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem "+"-Button in der Tab leiste.
@@ -222,10 +222,13 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item /F30050/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
 	Der Benutzer kann in einer Tabelle die Zahlen der aktuellen Wahlsimulation manuell anpassen.
 	\item /F30060/ Paradoxe Wahlausgänge \hfill \\
-	TODO
+	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft.
 	\item /F30070/ Auswerten der Wahlergebnisse
+	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden, werden sie ausgewertet, d.h. es werden die Diagramme erstellt. Nachdem dies erfolgreich vollführt wurde, wird die Deutschlandkarte gefärbt (/F../). 
 	\item /F30080/ Verändern der Wahlergebnisse
+	In dem Tabellenfenster (/F10070/) können Stimmenanzahlen einzelner Wahlkreise verändert werden, woraufhin gleich die Diagramme aktualisiert werden.
 	\item /F30090/ Generierung zufälliger Wahlergebnisse
+	Es ist möglich einen Wahlausgang zufällig simulieren zu lassen, wobei berücksichtigt wird, dass dabei kein paradoxer Wahlgang (/F30060/) herauskommt.
 	
 \end{itemize}
 
