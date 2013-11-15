@@ -215,11 +215,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item /F20010/ Speichern des aktuellen Programmzustandes \hfill \\
 	Es wird das Zustands-Objekt (/PD01/) in einer Datei abgelegt. Dabei kann der Benutzer beim Speichern einen internen Namen und ein Kommentar abgeben, welche mit gespeichert werden.
 	\item /F20011/ Laden eines Programmzustandes \hfill \\
-	Der Benutzer wählt eine Datei aus. Es wird überprüft, ob es sich um ein gültiges Objekt handelt. Falls die Version unterschiedlich ist, wird die Datei konvertiert und geladen.
+	Der Benutzer wählt eine Datei (???) aus. Es wird überprüft, ob es sich um ein gültiges Objekt handelt. Falls die Version unterschiedlich ist, wird eine Fehlermeldung ausgegeben, die dem Benutzer empfiehlt eine Datei der aktuellen Version auszuwählen.
 	\item /F20020/ Importieren von Daten \hfill \\
 	Die .csv-Dateien des Bundeswahlleiters können importiert werden.
 	\item /F20030/ Exportieren von Daten \hfill \\
-	Daten können als .csv-Dateien oder als JSON/XML exportiert werden.
+	Daten können als .csv-Dateien exportiert werden.
 	
 
 \end{itemize}
@@ -227,23 +227,26 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \subsection{Datenhaltung und Verarbeitung}
 \begin{itemize}
 	\item /F30010/ Überprüfen der Ländernamen \hfill \\
-	Überprüft, ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die Kartografische Darstellung (/F10090/) aktiviert.
+	Überprüft, ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die kartografische Darstellung (/F10090/) aktiviert.
 	\item /F30020/ Überprüfen der Stimmen\hfill \\
 	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
 	\item /F30030/ Filtern der relevanten Daten \hfill \\
-	Die benötigten Dateien werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.			\item /F30040/ Generierung von Wahldaten nach vorher definierten Mustern. \hfill \\
-	Welche Muster? ToDo!!!
+	Die benötigten Dateien, wie z.B. Erststimmengewinner der einzelnen Wahlkreise, Zweitstimmen aller Wahlkreise, werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.			
+	\item /F30040/ Generierung von Wahldaten \hfill \\
+	???
 	\item /F30050/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
 	Der Benutzer kann in dem Tabellenfenster (/F10070/) die Zahlen der aktuellen Wahlsimulation manuell anpassen.
 	Die hat sofortigen Einfluss auf Karten- (/F10090/) und Diagrammfenster (/F10080/).
 	\item /F30060/ Paradoxe Wahlausgänge \hfill \\
 	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft.
 	\item /F30070/ Auswerten der Wahlergebnisse
-	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden, werden sie ausgewertet, d.h. es werden die Diagramme erstellt. Nachdem dies erfolgreich vollführt wurde, wird die Deutschlandkarte gefärbt (/F../). 
+	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden, werden sie ausgewertet, d.h. es werden die Diagramme erstellt. Nachdem dies erfolgreich vollführt wurde, wird die Deutschlandkarte gefärbt (/F30091/). 
 	\item /F30080/ Verändern der Wahlergebnisse
 	In dem Tabellenfenster (/F10070/) können Stimmenanzahlen einzelner Wahlkreise verändert werden, woraufhin gleich die Diagramme aktualisiert werden.
 	\item /F30090/ Generierung zufälliger Wahlergebnisse
 	Es ist möglich einen Wahlausgang zufällig simulieren zu lassen, wobei berücksichtigt wird, dass dabei kein paradoxer Wahlgang (/F30060/) herauskommt.
+	\item /F30091/ Färben der Bundesländer
+	Wurden Bundeslandsnamen (/F30010/) und Stimmen (/F30020/) überprüft werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
 \end{itemize}
 
