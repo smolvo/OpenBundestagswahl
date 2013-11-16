@@ -371,10 +371,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \section{Globale Testfälle und Szenarien}
 Folgende Funktionssequenzen sind zu überprüfen:
 
-\includegraphics[scale=0.4]{Diagramm1} \\
+\includegraphics[scale=0.4]{Diagramm2}
+\newpage
 Folgende Datenkonsistenzen müssen eingehalten werden:
 \begin{itemize}
-	\item noch nichts...
+	\item Zustände können nur gespeichert werden, wenn alle geladenen Felder ausgefüllt wurden
 \end{itemize}
 Folgende unzulässige Aktionen müssen korrekt behandelt werden:
 \begin{itemize}
@@ -382,12 +383,50 @@ Folgende unzulässige Aktionen müssen korrekt behandelt werden:
 	\item Buchstaben als Stimmen
 \end{itemize}
 Testszenarien:
+Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgestzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
 \begin{itemize}
-	\item Falsche Daten importieren: \newline
-	Starten des Programms $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die falsche .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Eine Fehlermeldung taucht auf $\rightarrow$ Programm befindet sich wieder im Startzustand
-	\item Manuell Daten modifizieren: \\
-	Starten des Programms $\rightarrow$ Korrekte Daten laden $\rightarrow$ Die Sitzverteilung wird angezeigt $\rightarrow$ Den Wert zweier Parteien miteinander tauschen $\rightarrow$ Die Sitzverteilung erneut berechnen $\rightarrow$ Eine mögliche Veränderung der Sitzverteilung wird angezeigt
-	
+	\item /T0010/ Struktur einer .csv-Datei verändern: \newline
+	Verändern der .csv-Datei $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die korrupte .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Fehlermeldung: "Datei konnte nicht geladen werden" $\rightarrow$ Fehlermeldung bestätigen und Programm schließen.
+	\item /T0020/ Zum gespeicherten Zustand zurückkehren: \\
+	Beliebige .csv-Daten laden $\rightarrow$ Die Sitzverteilung berechnen $\rightarrow$ Aktuellen Zustand speichern $\rightarrow$ Beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Programm ohne zu speichern schließen $\rightarrow$ Programm wieder öffnen und den Zustand ohne die Veränderungen laden
+	\item /T0030/ Gleichnamige Parteien in der .csv-Datei: \newline
+	.csv-Datei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: "Mehrere Parteien haben den gleichen Namen" $\rightarrow$ Programm schließen
+	\item /T0040/ Nur eine Partei in der .csv-Datei: \newline
+	Beliebige .csv-Datei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: "Sitzverteilung mit nur einer Partei nicht möglich" $\rightarrow$ Programm wieder schließen
+	\item /T0050/ Kartografische Ansicht nicht möglich: \newline
+	.csv-Datei mit mindestens einem falsch geschriebenen oder fehlenden Bundesland laden $\rightarrow$ Fehlermeldung: "Kartografische Ansicht nicht möglich" $\rightarrow$ Sitzverteilung der restlichen mit Hilfe der restlichen Bundesländer berechnen\newline
+\end{itemize}
+Die folgenden Testefälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine .csv-Datei geladen wurde.
+\begin{itemize}
+	\item /T0110/ Direkmandat fehlt: \newline
+	Berechnung wird gestartet $\rightarrow$ Erkennen des fehlenden Direktmandaten $\rightarrow$ Fehlermeldung: "Direktmandat fehlt im Wahlkreis" $\rightarrow$ Berechnung abbrechen
+	\item /T0120/ Mehrere Direktmandate haben gleich viele Stimme: \newline
+	Mehrere Mandate haben gleich viele Stimmen $\rightarrow$ pradoxer wahlausgang
+	\item /T0130/ Paradoxe Wahlausgeänge anzeigen:\newline
+	\item /T0140/ Partei mit drei Direktmandate und 0.4 Prozent der Zweitstimmen: \newline
+	Eine Partei hat genau drei Direktmandate $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Partei ist im Bundestag
+	\item /T0150/ Überhangmandat testen: \newline
+	Sitzverteilung berechnen $\rightarrow$ Sitzverteilung-Liste aufrufen $\rightarrow$ Eintrag mit dem Überhangmandaten überprüfen  
+	\item /T0160/ Ausgleichsmandat testen: \newline
+	Sitzverteilung berechenn $\rightarrow$ Sitzverteilung-Liste	aufrufen $\rightarrow$ Eintrag mit dem 
+	Ausgleichsmandat überprüfen
+\end{itemize}
+Im Anschluss werden noch grundlegende Funktionen des Programms getestet, um sicherzustellen, dass das Programm während der Bearbeitung nicht durch eine fehlerhafte Aktion abstürtzt.
+\begin{itemize}
+	\item /T0210/ Zwei Wahlen miteinander vergleichen:
+	Sitzverteilung von der geladen Datei berechen $\rightarrow$ Neuen Tab öffnen $\rightarrow$ Neue .csv-Datei laden $\rightarrow$ Sitzverteilung für die neue Wahl berechen $\rightarrow$ Beide Sitzverteilung mit einander vergleichen
+	\item /T0220/ Zustand exportieren und danach neu laden
+	Aktuellen Zustand des Programms speichern $\rightarrow$ Zustand exportieren $\rightarrow$ Auf einem anderen Gerät das Programm starten $\rightarrow$ erstellten Zustand laden
+	\item /T0230/ Manuell einen negativen Wert als Stimmenanzahl eintragen
+	Negativen Wert als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: "Negativer Wert" $\rightarrow$ Wert unverändert lassen
+	\item /T0240/ Manuell Buchstaben als negativen Wert eintragen
+	Buchstaben als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: "Buchstaben anstatt einer Zahl eingegeben"
+	\item /T0250/ Sitzverteilung mit zwei verschiedenen Wahlgesetzen berechnen
+	Sitzverteilung berechnen $\rightarrow$ Ein anderes Wahlgesetz auswählen $\rightarrow$ Erneut die Sitzverteilung berechnen
+	\item /T0260/ Diagramm wechseln
+	Sirtzverteilung berechnen $\rightarrow$ Diagramm ändern $\rightarrow$ Sitzverteilung wird beibehalten
+	\item /T0270/ Rückgängig machen
+	Stimmenanzahl verändern $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Durch Rückgängig machen den Wert wieder zurücksetzen $\rightarrow$ Sitzverteilung berechnen
 \end{itemize}
 \section{Systemmodelle}
 \subsection{Systemarchitektur}
