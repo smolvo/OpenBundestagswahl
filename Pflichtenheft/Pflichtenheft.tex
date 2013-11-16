@@ -280,28 +280,42 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 
 \section{Produktdaten}
 \begin{itemize}
-	\item /PD01/ Programmzustand \hfill \\
+	\item /PD01/ Programmzustand
 	\begin{itemize}
 		\item Version des Programms
 		\item Name
 	\end{itemize}
 	
-	\item /PD03/ Daten \hfill \\
-	Beinhaltet die Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis/Bundesland und Partei.
+	\item /PD02/ Wahlergebnis
 	\begin{itemize}
-		\item Name/ID
+		\item Name der Wahl
 		\item Kommentar (Quelle)
 		\item Wahlkreis/Bundesland mit Stimmen je Partei.
 		\item Anzahl der Wahlberechtigten.
-		\item Wahlergebnisse 2009 und 2013
+		\item Wahlergebnisse 2009 und 2013.
+		\item Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis/Bundesland und Partei.
 	\end{itemize}
 	
-	\item /PD05/ History \hfill \\
-	Dieses Objekt zeichnet einige Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/). \\
-	Zu den umkehrbaren Veränderungen zählen folgende Elemente.
+	\item /PD03/ Parteien
 	\begin{itemize}
-		\item Alle Veränderungen am Daten-Objekt /PD03/
-		\item Änderung des Wahlgesetzes am Fenster-Objekt /PD02/
+		\item Farbe.
+		\item Vollständiger Name.
+	\end{itemize}
+	
+	\item /PD04/ Bundesland
+	\begin{itemize}
+		\item Vollständiger Name.
+		\item Wappen.
+	\end{itemize}
+	
+	\item /PD05/ Handbuch
+	\begin{itemize}
+		\item Informationen zum Programm (About)
+		\begin{itemize}
+			\item Autoren
+			\item Webseite
+		\end{itemize}
+		\item Funktionen
 	\end{itemize}
 \end{itemize}
 
