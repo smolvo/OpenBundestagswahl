@@ -407,25 +407,26 @@ Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei
 	\item /T0050/ Kartografische Ansicht nicht möglich: \newline
 	.csv-Datei mit mindestens einem falsch geschriebenen $\rightarrow$ Fehlermeldung: "Kartografische Ansicht nicht möglich" $\rightarrow$ Sitzverteilung der restlichen mit Hilfe der restlichen Bundesländer berechnen\newline
 \end{itemize}
-Die folgenden Testefälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine .csv-Datei geladen wurde.
+Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine .csv-Datei geladen wurde.
 \begin{itemize}
-	\item /T0110/ Direkmandat fehlt: \newline
-	Berechnung wird gestartet $\rightarrow$ Erkennen des fehlenden Direktmandaten $\rightarrow$ Fehlermeldung: "Direktmandat fehlt im Wahlkreis" $\rightarrow$ Berechnung abbrechen
-	\item /T0120/ Mehrere Direktmandate haben gleich viele Stimme: \newline
-	Mehrere Mandate haben gleich viele Stimmen $\rightarrow$ pradoxer wahlausgang
-	\item /T0130/ Paradoxe Wahlausgeänge anzeigen:\newline
-	\item /T0140/ Partei mit drei Direktmandate und 0.4 Prozent der Zweitstimmen: \newline
+	\item /T0110/ Direktmandat fehlt: \newline
+	Manuell alle Erststimmen eines Wahlkreises löschen $\rightarrow$ Berechnung wird gestartet $\rightarrow$ Erkennen des fehlenden Direktmandats $\rightarrow$ Fehlermeldung: Direktmandat fehlt im Wahlkreis $\rightarrow$ Berechnung abbrechen
+	\item /T0120/ Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
+	Mehrere Kanditaten haben gleich viele Stimmen $\rightarrow$ Hinweis wird ausgegeben $\rightarrow$ Kanditat wird ausgelost
+	\item /T0130/ Negative Stimmgewicht provozieren:\newline
+	Daten so modifizieren, dass ein negatives Stimmgewicht provoziert wird $\rightarrow$ Hinweis: Negatives Stimmgewicht  
+	\item /T0140/ Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
 	Eine Partei hat genau drei Direktmandate $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Partei ist im Bundestag
 	\item /T0150/ Überhangmandat testen: \newline
-	Sitzverteilung berechnen $\rightarrow$ Sitzverteilung-Liste aufrufen $\rightarrow$ Eintrag mit dem Überhangmandaten überprüfen  
+	Eine Partei hat mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze $\rightarrow$ Sitzverteilung  berechnen $\rightarrow$ Sitzverteilung-Liste aufrufen $\rightarrow$ Eintrag mit dem 	Überhangmandaten finden
 	\item /T0160/ Ausgleichsmandat testen: \newline
-	Sitzverteilung berechenn $\rightarrow$ Sitzverteilung-Liste	aufrufen $\rightarrow$ Eintrag mit dem 
+	$\rightarrow$ Sitzverteilung-Liste	aufrufen $\rightarrow$ Eintrag mit dem 
 	Ausgleichsmandat überprüfen
 \end{itemize}
 Im Anschluss werden noch grundlegende Funktionen des Programms getestet, um sicherzustellen, dass das Programm während der Bearbeitung nicht durch eine fehlerhafte Aktion abstürtzt.
 \begin{itemize}
 	\item /T0210/ Zwei Wahlen miteinander vergleichen:
-	Sitzverteilung von der geladen Datei berechen $\rightarrow$ Neuen Tab öffnen $\rightarrow$ Neue .csv-Datei laden $\rightarrow$ Sitzverteilung für die neue Wahl berechen $\rightarrow$ Beide Sitzverteilung mit einander vergleichen
+	Sitzverteilung von der geladen Datei berechnen $\rightarrow$ Neuen Tab öffnen $\rightarrow$ Neue .csv-Datei laden $\rightarrow$ Sitzverteilung für die neue Wahl berechnen $\rightarrow$ Beide Sitzverteilung mit einander vergleichen
 	\item /T0220/ Zustand exportieren und danach neu laden
 	Aktuellen Zustand des Programms speichern $\rightarrow$ Zustand exportieren $\rightarrow$ Auf einem anderen Gerät das Programm starten $\rightarrow$ erstellten Zustand laden
 	\item /T0230/ Manuell einen negativen Wert als Stimmenanzahl eintragen
