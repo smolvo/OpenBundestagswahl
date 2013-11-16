@@ -180,8 +180,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item /F20091/ Neuer Tab \hfill \\
 	Beim Anklicken wird ein neuer Tab (/PD02/) generiert, in dem eine neue Bundestagswahl (/PD03/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem '+'-Button in der Tab-Leiste.
 	\item /F20092/ Tab schließen \hfill \\
-	Beim Anklicken wird der aktuelle Tab (/PD02/) geschlossen. Wurden Änderung an den Dateien (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben seine Einstellungen zu speichern, zu verwerfen 
-	oder das Schließen abzubrechen. Diese Dateiauswahl korrespondiert zu dem 'x'-Button in jedem Tab.
+	Beim Anklicken wird der aktuelle Tab (/PD02/) geschlossen. Wurden Änderung an den Dateien (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben seine Einstellungen zu speichern, zu verwerfen oder das Schließen abzubrechen. Diese Dateiauswahl korrespondiert zu dem 'x'-Button in jedem Tab.
 	\item /F10091/ Beenden \hfill \\
 	Beendet das gesamte Programm. Wurden Änderung an den Dateien (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben seine Einstellungen zu speichern, zu verwerfen 
 	oder das Schließen abzubrechen.
@@ -200,13 +199,13 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\end{itemize}
 	Es gibt hierbei zwei verschiedene Ansichten.
 	\begin{itemize}
-		\item Bundesansicht
-		\item Landesansicht
+		\item Bundesansicht /F10094/
+		\item Landesansicht /F10095/
 	\end{itemize}
 	\item /F10070/ Tabellenfenster \hfill \\
 	Es werden Bundesländer in tabellarischer Form angezeigt. Klickt der Benutzer auf ein Bundesland, werden die Wahlkreise des betroffenen Bundeslandes angezeigt. Der Klick auf die Wahlkreise öffnet die Ergebnisse für die Parteien, die Anzahl der Wahlberechtigten und die Zweitstimmen. Im Kartenfenster (/F10090/) wird die Deutschlandkarte durch ein Bild des angeklickten Bundeslandes ersetzt und im Diagrammfenster /(/F10080/) erscheint ein Diagramm zu den Zweitstimmenergebnissen aller Parteien. \\
-	Es gibt die Möglichkeit die Sortierung der Tabelle zu ändern. \\
-	Ein Zurück-Pfeil wechselt von Bundesland- zur Deutschlandansicht.
+	Es gibt die Möglichkeit die Sortierung der Tabelle zu ändern. (/F10110/) \\
+	Ein Zurück-Pfeil wechselt von Bundesland- zur Deutschlandansicht. (/F10120/)
 	\item /F10080/ Diagrammfenster \hfill \\
 	Im Diagrammfenster sieht man Diagramme den Daten (/PD03/) entsprechend. Befindet man sich in der Bundesansicht (/F10094/) wird die Sitzplatzverteilung (/F10100/) für alle Parteien, die es in den Bundestag geschafft haben, angezeigt. Wurde ein bestimmtes Bundesland vom Benutzer gewählt, zeigt das Diagramm die prozentuale Anzahl der Zweitstimmen, die die einzelnen Parteien bekommen haben.
 	\item /F10090/ Kartenfenster \hfill \\
@@ -224,7 +223,14 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	In dieser Ansicht wird ein ausgewähltes Bundesland betrachtet. Im Kartenfenster (/F10090) sieht man ein kartografisches Bild des Bundeslandes, im Tabellenfenster (/F10070/) werden z.B. Wahlbeteiligung, Anzahl der Zweitstimmen angezeigt, und alle Wahlkreise, die zu diesem Bundesland gehören. Im Diagrammfenster (/F10080/) sieht man ein Diagramm über die prozentuale Zweitstimmenanzahl der einzelnen Parteien.
 	\item F10100 Sitzverteilung \hfill \\
 	Die Sitzverteilung wird dargestellt mit einem Kuchendiagramm. Daneben kann man sich auch anzeigen lassen, wie jeder einzelne Sitz entstanden ist. Dies wird tabellarisch in einem neuen Fenster angezeigt.
-	
+	\item F10110 Sortierung des Tabellenfensters \hfill \\
+	Die Sortierung des Tabellenfensters kann mithilfe eines Dropdown-Menüs geändert werden. Folgende Sortierungen sind möglich:
+	\begin{itemize}
+		\item Bundesländer (Standard)
+		\item Parteien
+	\end{itemize}
+	\item F10120 "Zurück"-Button bei Ansichten.
+	Der Klick auf diesen Button wechselt von der Landesansicht (/F10095/) in die Bundesansicht (/F10094/).
 \end{itemize}
 
 \subsection{Schnittstellen}
