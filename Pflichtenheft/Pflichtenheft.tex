@@ -317,7 +317,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 			\item Autoren
 			\item Webseite
 		\end{itemize}
-		\item 
+		\item Informationen zum Wahlsystem
 	\end{itemize}
 \end{itemize}
 
@@ -329,16 +329,16 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\begin{itemize}
 		\item etwa 30 Parteien
 		\item etwa 300 Wahlkreise
-		\item maximal 100.000.000 Wahlberechtigte.
+		\item maximal 100.000.000 Wahlberechtigte
 	\end{itemize}
 	Folgende Zeiten werden benötigt:
 	\begin{itemize}
-		\item Starten des Programms: unter 10 Sekunden.
-		\item Laden eines Zustandes: unter 10 Sekunden.
-		\item Berechnung der Sitzverteilung: unter 10 Sekunden.
-		\item Speichern eines Zustandes: unter 10 Sekunden.
-		\item Exportieren/Importieren von Daten: unter 10 Sekunden.
-		\item Beenden des Programms: unter 3 Sekunden.
+		\item Starten des Programms: unter 10 Sekunden
+		\item Laden eines Zustandes: unter 10 Sekunden
+		\item Berechnung der Sitzverteilung: unter 10 Sekunden
+		\item Speichern eines Zustandes: unter 10 Sekunden
+		\item Exportieren/Importieren von Daten: unter 10 Sekunden
+		\item Beenden des Programms: unter 3 Sekunden
 	\end{itemize}
 	\item Genauigkeit \hfill \\
 	Die Genauigkeit des Algorithmus zur Sitzberechnung muss dem Wahlgesetz entsprechen und exakte Ergebnisse liefern.
@@ -349,11 +349,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \begin{itemize}
 	\item Allgemeine Anforderungen:
 	\begin{itemize}
-		\item Die Sitzverteilung muss für den Benutzer transparent und nachvollziehbar dargestellt werden. \hfill \\
+		\item Die Sitzverteilung muss für den Benutzer möglichst nachvollziehbar dargestellt werden. \hfill \\
 		Dies wird erreicht durch die folgenden Funktionen:
 		\begin{itemize}
-			\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form.
-			\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist.
+			\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form
+			\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
 		\end{itemize}
 	\end{itemize}
 	\item Sicherheitsanforderungen:
@@ -363,12 +363,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item Plattformunabhängigkeit: \hfill \\
 	Das Programm muss mit der offiziellen Oracle JRE laufen.
 	\item Erweiterbarkeit: \hfill \\
-	Da es sich um ein Open-Source Projekt handelt, ist es wichtig, dass das Programm gut erweiterbar ist. Des weiteren sollen zukünftige Veränderungen keine unerwarteten Fälle hervorrufen (Abwärtskompatibilität). \\
-	Dies wird durch folgende Funktionen und Daten gewährleistet:
-	\begin{itemize}
-		\item Überprüfen der Version beim Laden eines Zustandes (/F2011/).
-		\item Austauschbares Wahlgesetz.
-	\end{itemize}
+	Da es sich um ein Open-Source Projekt handelt, wird es so entwickelt, dass das Programm gut erweiterbar ist.
+	
 \end{itemize}
 
 
