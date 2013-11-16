@@ -397,15 +397,15 @@ Testszenarien:
 Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgestzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
 \begin{itemize}
 	\item /T0010/ Struktur einer .csv-Datei verändern: \newline
-	Verändern der .csv-Datei $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die korrupte .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Fehlermeldung: "Datei konnte nicht geladen werden" $\rightarrow$ Fehlermeldung bestätigen und Programm schließen.
+	Verändern der .csv-Datei $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die korrupte .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Fehlermeldung: "Datei konnte nicht geladen werden" $\rightarrow$ Fehlermeldung bestätigen
 	\item /T0020/ Zum gespeicherten Zustand zurückkehren: \\
-	Beliebige .csv-Daten laden $\rightarrow$ Die Sitzverteilung berechnen $\rightarrow$ Aktuellen Zustand speichern $\rightarrow$ Beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Programm ohne zu speichern schließen $\rightarrow$ Programm wieder öffnen und den Zustand ohne die Veränderungen laden
+	Beliebige .csv-Daten laden $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Aktuellen Zustand speichern als .csv-Datei $\rightarrow$ Beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Programm ohne zu speichern schließen $\rightarrow$ Programm wieder öffnen und den Zustand ohne die Veränderungen laden
 	\item /T0030/ Gleichnamige Parteien in der .csv-Datei: \newline
-	.csv-Datei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: "Mehrere Parteien haben den gleichen Namen" $\rightarrow$ Programm schließen
+	.csv-Datei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: Mehrere Parteien haben den gleichen Namen 
 	\item /T0040/ Nur eine Partei in der .csv-Datei: \newline
-	Beliebige .csv-Datei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: "Sitzverteilung mit nur einer Partei nicht möglich" $\rightarrow$ Programm wieder schließen
+	Beliebige .csv-Datei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: Sitzverteilung mit nur einer Partei nicht möglich 
 	\item /T0050/ Kartografische Ansicht nicht möglich: \newline
-	.csv-Datei mit mindestens einem falsch geschriebenen oder fehlenden Bundesland laden $\rightarrow$ Fehlermeldung: "Kartografische Ansicht nicht möglich" $\rightarrow$ Sitzverteilung der restlichen mit Hilfe der restlichen Bundesländer berechnen\newline
+	.csv-Datei mit mindestens einem falsch geschriebenen $\rightarrow$ Fehlermeldung: "Kartografische Ansicht nicht möglich" $\rightarrow$ Sitzverteilung der restlichen mit Hilfe der restlichen Bundesländer berechnen\newline
 \end{itemize}
 Die folgenden Testefälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine .csv-Datei geladen wurde.
 \begin{itemize}
