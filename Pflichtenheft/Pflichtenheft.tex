@@ -264,41 +264,43 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Wurden Bundeslandsnamen (/F30010/) und Stimmen (/F30020/) überprüft werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
 \end{itemize}
-
 \section{Produktdaten}
 \begin{itemize}
 	\item /PD01/ Zustands-Object \hfill \\
-	Repräsentiert den aktuellen Zustand des Programms. Es beinhaltet alle Informationen, um den genauen Zustand des Programms wiederherzustellen. Es handelt sich um eine serialisierbare Klasse.
+	Repräsentiert den aktuellen Zustand des Programms. Es beinhaltet alle Informationen, um den genauen Zustand des Programms wiederherzustellen.
 	\begin{itemize}
 		\item Version des Programms (um Abwärtskompatibilität zu gewährleisten)
 		\item Datum und Uhrzeit der Erstellung
 		\item Name/ID
 		\item Kommentar
-		\item Fenster-Objekt als Liste
+		\item Fenster-Objekt
 		\item History-Objekt
 	\end{itemize}
 	
 	\item /PD02/ Fenster-Objekt
 	\begin{itemize}
-		\item Wahlergebnisse (Daten-Objekt)
-		\item Wahlgesetz-Objekt
+		\item Wahlergebnisse (Daten-Objekt /PD03/)
+		\item Ausgewähltes Wahlgesetz.
+		\item Aktuelle Ansicht (Bundesansicht/Landesansicht).
 		\item Name/ID
 	\end{itemize}
 	
 	\item /PD03/ Daten-Objekt \hfill \\
-	Beinhaltet die Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis und Partei.
+	Beinhaltet die Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis/Bundesland und Partei.
 	\begin{itemize}
 		\item Name/ID
 		\item Kommentar (Quelle)
-		\item Wahlkreise mit Stimmen als Array.
+		\item Wahlkreis/Bundesland mit Stimmen je Partei.
+		\item Anzahl der Wahlberechtigten.
 	\end{itemize}
 	
-	\item /PD04/ Wahlgesetz-Objekt \hfill \\
-	Beinhaltet das Algorithmus zur Berechnung der Sitze mit dem Daten-Objekt als Eingabedatum.\\
-	Des weiteren überprüft das Objekt, ob mit dem Datenobjekt eine Wahl überhaupt simuliert werden kann (wenn ein Datenobjekt beispielsweise keine Erststimmen enthält wie in sehr alten Wahlen).
-	
 	\item /PD05/ History-Objekt \hfill \\
-	Dieses Objekt zeichnet alle Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/).
+	Dieses Objekt zeichnet einige Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/). \\
+	Zu den umkehrbaren Veränderungen zählen folgende Elemente.
+	\begin{itemize}
+		\item Alle Veränderungen am Daten-Objekt /PD03/
+		\item Änderung des Wahlgesetzes am Fenster-Objekt /PD02/
+	\end{itemize}
 \end{itemize}
 
 \section{Produktleistungen}
