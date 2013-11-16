@@ -280,35 +280,23 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 
 \section{Produktdaten}
 \begin{itemize}
-	\item /PD01/ Zustands-Object \hfill \\
-	Repräsentiert den aktuellen Zustand des Programms. Es beinhaltet alle Informationen, um den genauen Zustand des Programms wiederherzustellen.
+	\item /PD01/ Programmzustand \hfill \\
 	\begin{itemize}
-		\item Version des Programms (um Abwärtskompatibilität zu gewährleisten)
-		\item Datum und Uhrzeit der Erstellung
-		\item Name/ID
-		\item Kommentar
-		\item Fenster-Objekt
-		\item History-Objekt
+		\item Version des Programms
+		\item Name
 	\end{itemize}
 	
-	\item /PD02/ Fenster-Objekt
-	\begin{itemize}
-		\item Wahlergebnisse (Daten-Objekt /PD03/)
-		\item Ausgewähltes Wahlgesetz.
-		\item Aktuelle Ansicht (Bundesansicht/Landesansicht).
-		\item Name/ID
-	\end{itemize}
-	
-	\item /PD03/ Daten-Objekt \hfill \\
+	\item /PD03/ Daten \hfill \\
 	Beinhaltet die Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis/Bundesland und Partei.
 	\begin{itemize}
 		\item Name/ID
 		\item Kommentar (Quelle)
 		\item Wahlkreis/Bundesland mit Stimmen je Partei.
 		\item Anzahl der Wahlberechtigten.
+		\item Wahlergebnisse 2009 und 2013
 	\end{itemize}
 	
-	\item /PD05/ History-Objekt \hfill \\
+	\item /PD05/ History \hfill \\
 	Dieses Objekt zeichnet einige Veränderungen am Programm auf. Mithilfe dieses Objektes können Operationen über das Menü Bearbeiten oder STRG+Z rückgängig gemacht werden (/F10020/ und /F20040/). \\
 	Zu den umkehrbaren Veränderungen zählen folgende Elemente.
 	\begin{itemize}
