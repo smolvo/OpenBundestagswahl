@@ -25,28 +25,38 @@
 		
 \newpage
 \tableofcontents
-\newpage
+\newpage 
 
 \section{Produktübersicht}
-Bei dem Produkt handelt es sich um ein Programm, das die Sitzverteilung im Deutschen Bundestag gemäß der gesetzlichen Bestimmungen exakt berechnet und deren Zustandekommen verständlich darlegt. Erreicht wird dies durch eine minimalistische und intuitive Benutzeroberfläche.
+Das Produkt soll allen Personen, auch ohne spezifisches Vorwissen, die sich mit der Deutschen Bundestagswahl beschäftigen, als Unterstützung dienen.\newline
+Dafür ist die Aufbereitung von Wahlergebnissen gemäß der gesetzlichen Bestimmungen und deren exakten und übersichtlichen Darstellung, z.B. der endgültigen Sitzverteilung im Deutschen Bundestag, essentiell. Des Weiteren besteht die Aufgabe, da das aktuelle Wahlsystem, beispielsweise durch Direktmandate, Überhangmandate und den wiederum daraus resultierenden Ausgleichsmandaten, sehr komplex wirkt, die Funktionsweise des Wahlgeschehens und das Zustandekommen eben solcher komplexen Konstrukte zu beleuchten. Darunter fallen auch paradox erscheinende Vorkommnisse, wie das negative Stimmgewicht, die durch das Programm gefunden und erklärt werden sollen. \newline
+Außerdem ermöglicht das Programm mit beliebigen Wahldaten zu experimentieren und die dadurch sichtbar werdenden Veränderungen anzuzeigen. Dadurch lässt es sich auch gut für Demonstrationen (z.B. Aufzeigen von Rundungsfehlern bei der Sitzberechnung) nutzen.
+
 
 \subsection{Lizenz}
-Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestellt. Es wird die GPL V3 Lizenz verwendet, damit das Projekt nach einer Modifizierung weiterhin öffentlich bleibt.
+Es gibt bereits kommerzielle Programme, die dem Produkt ähneln. Diese sind aber nicht frei verfügbar und weisen meistens gerade in Bezug auf die Nutzerfreundlichkeit für Laien erhebliche Mängel auf. Genau dort wird nun Abhilfe geschafft.\newline
+Der Quellcode der Öffentlichkeit frei zur Verfügung gestellt, um Interessenten die Bundestagswahl und ihre Besonderheiten kostenlos und nachvollziehbar näher zu bringen. Es wird die GPL V3 Lizenz verwendet, damit das Projekt beliebig erweitert bzw. modifiziert werden kann und trotzdem immer noch als freie Software gilt.
+
+
 
 \section{Zielbestimmung}
 \subsection{Musskriterien}
 \begin{itemize}
 \item Auswertung von Wahlergebnissen nach gesetzlicher Bestimmung
-\item Grafische Benutzeroberfläche
-\item Vergleich mehrerer Wahlausgänge
+\begin{itemize}
+\item Berechnen der Direkt-, Überhang- und Ausgleichsmandate anhand der Erststimmen
+\item Berechnen der restlichen Sitzverteilung im Deutschen Bundestag anhand der Zweitstimmen
+\end{itemize}
+\item Anzeigen und Interagieren mit Wahlausgängen anhand einer grafischen Benutzeroberfläche
+\item Direkte Gegenüberstellung verschiedener Wahlausgänge (z.B. Wahlausgang 2013 - Wahlausgang 2009)
 \item Importmöglichkeit von Wahlergebnissen (.csv)
-\item Manipulation von Eingabedaten
+\item Manuelle Änderung von importierten Wahlergebnissen (z.B. Zweitstimmen für eine Partei erhöhen)
 \end{itemize}
 
 \subsection{Sollkriterien}
 \begin{itemize}
-\item Auffinden paradoxer Wahlausgänge
-\item Kartographische Darstellung der Bundesländer
+\item Auffinden von Wahlausgängen zu paradoxen Vorkommnissen (z.B. negatives Stimmgewicht)
+\item Kartografische Darstellung der Bundesländer
 \end{itemize}
 
 \subsection{Kannkriterien}
@@ -57,7 +67,8 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-\item Keine Mobile Anwendung oder Web-App
+\item Keine mobile Anwendung oder Web- Applikation
+\item Die Sprache der grafischen Oberfläche ist Deutsch
 \item Keine namentliche Nennung von Abgeordneten
 \end{itemize}
 
@@ -65,13 +76,17 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 \section{Produkteinsatz}
 \subsection{Anwendungsbereiche}
 \begin{itemize}
-\item Überprüfung der Wahlergebnisse
+\item Kann genutzt werden, ..
+\begin{itemize}
+\item Wahlausgänge zu simulieren
+\item um komplexes Wahlsystem nachzuvollziehen 
+\item um bestimmte Sachverhalte (z.B. negatives Stimmrecht, Benachteiligung kleiner Parteien) darzustellen 
+\end{itemize} 
 \end{itemize}
 
 
 \subsection{Zielgruppen}
 \begin{itemize}
-\item Menschen, die kritisch gegenüber Wahlergebnissen sind
 \item (Unabhängige) Medien
 \item Politisch Interessierte
 \end{itemize}
@@ -79,7 +94,7 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 \subsection{Betriebsbedingungen}
 \begin{itemize}
-\item Keine Verbindung zum Internet nötig
+\item Die Verbindung zum Internet ist optional
 \end{itemize}
 
 
@@ -92,6 +107,7 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 
 \subsection{Hardware}
+Das Programm ist für den Einsatz auf PCs oder Laptops geeignet.
 \subparagraph{Mindestanforderungen:}
 \begin{itemize}
 \item 128 MB Arbeitsspeicher
@@ -117,7 +133,7 @@ Der Quellcode des Programms wird der Öffentlichkeit frei zur Verfügung gestell
 
 \subsection{Schnittstellen}
 \begin{itemize}
-\item Importieren/ Exportieren von Zuständen und Daten
+\item Importieren/ Exportieren von Wahldaten (.csv)
 \end{itemize}
 
 
