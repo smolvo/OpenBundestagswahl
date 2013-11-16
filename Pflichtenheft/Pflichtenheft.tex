@@ -208,7 +208,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Es gibt die Möglichkeit die Sortierung der Tabelle zu ändern. \\
 	Ein Zurück-Pfeil wechselt von Bundesland- zur Deutschlandansicht.
 	\item /F10080/ Diagrammfenster \hfill \\
-	Im Diagrammfenster sieht man Diagramme den Daten (/PD03/) entsprechend. Befindet man sich in der Bundesansicht (/F10094/) wird die Sitzplatzverteilung für alle Parteien, die es in den Bundestag geschafft haben, angezeigt. Wurde ein bestimmtes Bundesland vom Benutzer gewählt, zeigt das Diagramm die prozentuale Anzahl der Zweitstimmen, die die einzelnen Parteien bekommen haben.
+	Im Diagrammfenster sieht man Diagramme den Daten (/PD03/) entsprechend. Befindet man sich in der Bundesansicht (/F10094/) wird die Sitzplatzverteilung (/F10100/) für alle Parteien, die es in den Bundestag geschafft haben, angezeigt. Wurde ein bestimmtes Bundesland vom Benutzer gewählt, zeigt das Diagramm die prozentuale Anzahl der Zweitstimmen, die die einzelnen Parteien bekommen haben.
 	\item /F10090/ Kartenfenster \hfill \\
 	Die Länder werden nach einer Überprüfung (/F30010/), ob die Namen übereinstimmen, kartografisch im Fenster dargestellt und nach den Parteien, die die meisten Stimmen in diesem Bundesland erhielten eingefärbt. Der Klick auf ein Bundesland öffnet die Landesansicht (/F10095/). \\
 	Ein Zurück-Pfeil wechselt zur vorherigen Bundesansicht (/F10094/).
@@ -222,6 +222,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	In dieser Ansicht wird das gesamte Bundesland betrachtet. Im Kartenfenster (/F10090) sieht man die gefärbte Deutschlandkarte, im Tabellenfenster (/F10070/) werden alle Bundesländer aufgelistet und im Diagrammfenster (/F10080/) sieht man ein Diagramm über die Sitzplatzverteilung im deutschen Bundestag.
 	\item /F10095/ Landesansicht \hfill \\
 	In dieser Ansicht wird ein ausgewähltes Bundesland betrachtet. Im Kartenfenster (/F10090) sieht man ein kartografisches Bild des Bundeslandes, im Tabellenfenster (/F10070/) werden z.B. Wahlbeteiligung, Anzahl der Zweitstimmen angezeigt, und alle Wahlkreise, die zu diesem Bundesland gehören. Im Diagrammfenster (/F10080/) sieht man ein Diagramm über die prozentuale Zweitstimmenanzahl der einzelnen Parteien.
+	\item F10100 Sitzverteilung \hfill \\
+	Die Sitzverteilung wird dargestellt mit einem Kuchendiagramm. Daneben kann man sich auch anzeigen lassen, wie jeder einzelne Sitz entstanden ist. Dies wird tabellarisch in einem neuen Fenster angezeigt.
 	
 \end{itemize}
 
@@ -264,6 +266,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Wurden Bundeslandsnamen (/F30010/) und Stimmen (/F30020/) überprüft werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
 \end{itemize}
+
 \section{Produktdaten}
 \begin{itemize}
 	\item /PD01/ Zustands-Object \hfill \\
@@ -305,7 +308,14 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 
 \section{Produktleistungen}
 \begin{itemize}
-	\item Zeit
+	\item Zeit \hfill \\
+	Das Programm muss fähig sein, Operationen der letzten zwei Bundestagswahlen, in angemessener Zeit durchzuführen. Entscheidend sind hierbei die Anzahl der Parteien und die Anzahl der Wahlkreise.
+	\\ Wir nehmen daher folgende Bedingungen an:
+	\begin{itemize}
+		\item etwa 30 Parteien
+		\item etwa 300 Wahlkreise
+	\end{itemize}
+	Folgende Zeiten werden benötigt:
 	\begin{itemize}
 		\item Starten + Laden des letzten Zustandes: unter 5 Sekunden.
 		\item Beenden + Speichern des aktuellen Zustandes: unter 5 Sekunden.
@@ -320,7 +330,12 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \begin{itemize}
 	\item Allgemeine Anforderungen:
 	\begin{itemize}
-		\item Die Sitzverteilung muss für den Benutzer transparent und nachvollziehbar dargestellt werden.
+		\item Die Sitzverteilung muss für den Benutzer transparent und nachvollziehbar dargestellt werden. \hfill \\
+		Dies wird erreicht durch die folgenden Funktionen:
+		\begin{itemize}
+			\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form.
+			\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist.
+		\end{itemize}
 	\end{itemize}
 	\item Sicherheitsanforderungen:
 	\begin{itemize}
