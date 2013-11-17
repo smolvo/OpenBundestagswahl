@@ -366,70 +366,73 @@ Die Bedienoberfläche ist für Maus- und Tastaturbedienung ausgelegt.
 	\item Kein Datenverlust (auch nach Programmabstürzen)
 	\item Gespeicherte Daten müssen immer konsistent gehalten werden
 	\item Kurze Einarbeitungszeit
-	\item Keine Verklemmungen
 \end{itemize}
 \newpage
 \section{Globale Testfälle und Szenarien}
-Folgende Funktionssequenzen sind zu überprüfen:
-
-\includegraphics[scale=0.4]{Diagramm2}
+\subsection{Funktionssequenz}
+Folgende Funktionssequenzen sind zu überprüfen: \\
+\includegraphics[scale=0.4]{Diagramm3}
 \newpage
-Folgende Datenkonsistenzen müssen eingehalten werden:
+\subsection{Datenkonsistenzen}
+Die folgenden Datenkonsistenzen müssen eingehalten werden:
 \begin{itemize}
-	\item Zustände können nur gespeichert werden, wenn alle geladenen Felder ausgefüllt wurden
+	\item Die Zustände können nur gespeichert werden, wenn alle geladenen Felder ausgefüllt wurden
 \end{itemize}
-Folgende unzulässige Aktionen müssen korrekt behandelt werden:
+\subsection{Unzulässige Aktionen}
+Die folgende unzulässige Aktionen müssen korrekt behandelt werden:
 \begin{itemize}
-	\item Negative Stimmenanzahl
-	\item Buchstaben als Stimmen
+	\item Keine negativen Werte als Stimmenanzahl
+	\item Keine Buchstaben als Stimmenanzahl
+	\item Keine Fließkommazahlen als Stimmenanzahl
 \end{itemize}
-Testszenarien:
-Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgestzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
+\subsection{Testszenairen}
+\subsubsection{Grundlegende Funktionen}
+Es werden grundlegende Funktionen des Programms getestet, um sicherzustellen, dass das Programm während der Bearbeitung nicht durch eine fehlerhafte Aktion abstürzt.
 \begin{itemize}
-	\item /T0010/ Struktur einer .csv-Datei verändern: \newline
-	Verändern der .csv-Datei $\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ Datei importieren auswählen $\rightarrow$ Im Dateibrowser die korrupte .csv-Datei auswählen $\rightarrow$ Mit dem Button Laden bestätigen $\rightarrow$ Fehlermeldung: "Datei konnte nicht geladen werden" $\rightarrow$ Fehlermeldung bestätigen
-	\item /T0020/ Zum gespeicherten Zustand zurückkehren: \\
-	Beliebige .csv-Daten laden $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Aktuellen Zustand speichern als .csv-Datei $\rightarrow$ Beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Programm ohne zu speichern schließen $\rightarrow$ Programm wieder öffnen und den Zustand ohne die Veränderungen laden
-	\item /T0030/ Gleichnamige Parteien in der .csv-Datei: \newline
-	.csv-Datei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: Mehrere Parteien haben den gleichen Namen 
-	\item /T0040/ Nur eine Partei in der .csv-Datei: \newline
-	Beliebige .csv-Datei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: Sitzverteilung mit nur einer Partei nicht möglich 
-	\item /T0050/ Kartografische Ansicht nicht möglich: \newline
-	.csv-Datei mit mindestens einem falsch geschriebenen $\rightarrow$ Fehlermeldung: "Kartografische Ansicht nicht möglich" $\rightarrow$ Sitzverteilung der restlichen mit Hilfe der restlichen Bundesländer berechnen\newline
+	\item /T0010/ Zwei Wahlen miteinander vergleichen: \\
+	Die Sitzverteilung einer geladenen Datei berechnen $\rightarrow$ Einen neuen Tab öffnen $\rightarrow$ Die neue Importdatei laden $\rightarrow$ Die Sitzverteilung für die neue Wahl berechnen $\rightarrow$ Beide Sitzverteilung miteinander vergleichen
+	\item /T0020/ Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
+	Einen negativen Wert als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Eine Fehlermeldung: ``Negativer Wert'' erhalten $\rightarrow$ Den Wert unverändert lassen
+	\item /T0030/ Manuell einen Buchstaben als Stimmenanzahl eintragen: \\
+	Einen Buchstaben als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: ``Buchstaben anstatt einer Zahl eingegeben'' erhalten $\rightarrow$ Wert unverändert lassen \\
+	\item /T0040/ Eine Fließkommazahl als Stimmenanzahl eintragen: \\
+	Eine Fließkommazahl als negativen eintragen $\rightarrow$ Fehlermeldung: ``Ganze positive Zahlen anstatt Fließkommazahlen eingeben'' erhalten $\rightarrow$ Wert unverändert lassen \\ 
+	\item /T0050/ Die Funktion ``Diagramm wechseln'' teten:\\
+	Die Sirtzverteilung berechnen $\rightarrow$ Das Diagramm ändern $\rightarrow$ Die Sitzverteilung wird beibehalten
+	\item /T0060/ Die Funktion ``Rückgängig machen'' testen:
+	Eine beliebige Stimmenanzahl verändern $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Durch ``Rückgängig machen'' den Wert wieder zurücksetzen $\rightarrow$ Die Sitzverteilung wird erneut berechnet
 \end{itemize}
-Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine .csv-Datei geladen wurde.
+\subsubsection{Import-/Exportverhalten}
+Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgesetzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
 \begin{itemize}
-	\item /T0110/ Direktmandat fehlt: \newline
-	Manuell alle Erststimmen eines Wahlkreises löschen $\rightarrow$ Berechnung wird gestartet $\rightarrow$ Erkennen des fehlenden Direktmandats $\rightarrow$ Fehlermeldung: Direktmandat fehlt im Wahlkreis $\rightarrow$ Berechnung abbrechen
-	\item /T0120/ Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
-	Mehrere Kanditaten haben gleich viele Stimmen $\rightarrow$ Hinweis wird ausgegeben $\rightarrow$ Kanditat wird ausgelost
-	\item /T0130/ Negative Stimmgewicht provozieren:\newline
-	Daten so modifizieren, dass ein negatives Stimmgewicht provoziert wird $\rightarrow$ Hinweis: Negatives Stimmgewicht  
-	\item /T0140/ Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
-	Eine Partei hat genau drei Direktmandate $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Partei ist im Bundestag
-	\item /T0150/ Überhangmandat testen: \newline
-	Eine Partei hat mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze $\rightarrow$ Sitzverteilung  berechnen $\rightarrow$ Sitzverteilung-Liste aufrufen $\rightarrow$ Eintrag mit dem 	Überhangmandaten finden
-	\item /T0160/ Ausgleichsmandat testen: \newline
-	$\rightarrow$ Sitzverteilung-Liste	aufrufen $\rightarrow$ Eintrag mit dem 
-	Ausgleichsmandat überprüfen
+	\item /T0110/ Struktur einer Importdatei verändern: \newline
+	Die Importdatei verändern$\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ ``Datei importieren'' auswählen $\rightarrow$ Im Dateibrowser die korrupte Importdatei auswählen $\rightarrow$ Mit dem Button ``Laden'' bestätigen $\rightarrow$ Die Fehlermeldung: ``Datei konnte nicht geladen werden'' erhalten
+	\item /T0120/ Zu dem gespeicherten Zustand zurückkehren: \\
+	Eine beliebige Importdatei laden $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Den aktuellen Zustand als neue Importdatei speichern$\rightarrow$ Eine beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Das Programm ohne zu speichern schließen $\rightarrow$ Das Programm wieder öffnen und die Importdatei ohne die Veränderungen laden
+	\item /T0130/ Gleichnamige Parteien in der Importdatei: \newline
+	Die Importdatei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: ``Mehrere Parteien haben den gleichen Namen'' erhalten
+	\item /T0140/ Nur eine Partei befindet sich in der Importdatei: \newline
+	Eine beliebige Importdatei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: ``Sitzverteilung mit nur einer Partei nicht möglich'' erhalten
+	\item /T0150/ Importdatei mit fehlerhaften Bundesländernamen: \newline
+	Eine Importdatei mit mindestens einem falsch geschriebenen Bundesland laden$\rightarrow$ Fehlermeldung: ``Kartografische Ansicht nicht möglich'' $\rightarrow$ Anstatt der kartografischen Ansicht wird nur die Liste angezeigt $\rightarrow$ Die Sitzverteilung wird weiterhin normal berechnet\newline
 \end{itemize}
-Im Anschluss werden noch grundlegende Funktionen des Programms getestet, um sicherzustellen, dass das Programm während der Bearbeitung nicht durch eine fehlerhafte Aktion abstürtzt.
+\subsubsection{Korrekte Berechnung der Sitzverteilung}
+Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine Importdatei geladen wurde.
 \begin{itemize}
-	\item /T0210/ Zwei Wahlen miteinander vergleichen:
-	Sitzverteilung von der geladen Datei berechnen $\rightarrow$ Neuen Tab öffnen $\rightarrow$ Neue .csv-Datei laden $\rightarrow$ Sitzverteilung für die neue Wahl berechnen $\rightarrow$ Beide Sitzverteilung mit einander vergleichen
-	\item /T0220/ Zustand exportieren und danach neu laden
-	Aktuellen Zustand des Programms speichern $\rightarrow$ Zustand exportieren $\rightarrow$ Auf einem anderen Gerät das Programm starten $\rightarrow$ erstellten Zustand laden
-	\item /T0230/ Manuell einen negativen Wert als Stimmenanzahl eintragen
-	Negativen Wert als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: "Negativer Wert" $\rightarrow$ Wert unverändert lassen
-	\item /T0240/ Manuell Buchstaben als negativen Wert eintragen
-	Buchstaben als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: "Buchstaben anstatt einer Zahl eingegeben"
-	\item /T0250/ Sitzverteilung mit zwei verschiedenen Wahlgesetzen berechnen
-	Sitzverteilung berechnen $\rightarrow$ Ein anderes Wahlgesetz auswählen $\rightarrow$ Erneut die Sitzverteilung berechnen
-	\item /T0260/ Diagramm wechseln
-	Sirtzverteilung berechnen $\rightarrow$ Diagramm ändern $\rightarrow$ Sitzverteilung wird beibehalten
-	\item /T0270/ Rückgängig machen
-	Stimmenanzahl verändern $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Durch Rückgängig machen den Wert wieder zurücksetzen $\rightarrow$ Sitzverteilung berechnen
+	\item /T0210/Ein Direktmandat fehlt: \newline
+	Testweise werden alle Erststimmen eines Wahlkreises gelöscht $\rightarrow$ Die Fehlermeldung: `` Direktmandat fehlt im Wahlkreis'' erhalten
+	\item /T0220/ Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
+	Mehrere Kandidaten haben gleich viele Stimmen $\rightarrow$ Ein Hinweis wird ausgegeben $\rightarrow$ Kandidat wird ausgelost
+	\item /T0230/ Ein negatives Stimmgewicht in einer Wahl provozieren:\newline
+	Die Daten so modifizieren, dass ein negatives Stimmgewicht provoziert wird $\rightarrow$ Hinweis: `` Ein negatives Stimmgewicht wurde berechnet'' erhalten
+	\item /T0240/ Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
+	Die Daten werden so modifiziert, dass eine Partei genau drei Direktmandate hat $\rightarrow$ Die Sitzverteilung wird berechnet $\rightarrow$ Die Partei steht danach in der Sitzverteilung
+	\item /T0250/ Überhangmandat testen: \newline
+	Die Daten werden so modifiziert, dass eine Partei mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze hat$\rightarrow$ Die Sitzverteilung wird berechnet $\rightarrow$ Ein Hinweis wird ausgegeben: ``Überhangmandat wurde berechnet''
+	\item /T0260/ Ausgleichsmandat testen: \newline
+	Die Daten werden so modifiziert, dass eine andere Partei mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze hat $\rightarrow$ Ein Hinweis wird ausgegeben: ``Ausgleichsmandat wurde berechnet''
 \end{itemize}
+
 
 \section{Systemmodelle}
 \subsection{Systemarchitektur}
