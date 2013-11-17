@@ -172,7 +172,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 			\item Rückgängig /F20040/
 			\item Wiederherstellen /F20041/
 		\end{itemize}
-		\item Vergleichen /F10093/
+		\item Extras
+		\begin{itemize}
+			\item Vergleichen /F10093/
+			\item Wahldaten generieren /F30040/
+		\end{itemize}
 		\item Hilfe
 		\begin{itemize}
 			\item Benutzerhandbuch /F10040/
@@ -232,36 +236,30 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \subsection{Schnittstellen}
 \begin{itemize}
 	\item /F20020/ Laden \hfill \\
-	Die .csv-Dateien des Bundeswahlleiters können importiert werden.
+	Es können .csv-Dateien importiert werden.
 	\item /F20030/ Speichern \hfill \\
-	Daten können als .csv-Dateien exportiert werden.
-	
-
+	Es können .csv-Dateien exportiert werden.
 \end{itemize}
 
 \subsection{Datenhaltung und Verarbeitung}
 \begin{itemize}
 	\item /F30010/ Überprüfen der Ländernamen \hfill \\
-	Überprüft, ob die eingegebenen Ländernamen in dem Daten-Objekt (/PD03/) korrekt sind. Falls alle Ländernamen gefunden werden, wir die kartografische Darstellung (/F10090/) aktiviert.
+	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F10090/) aktiviert.
 	\item /F30020/ Überprüfen der Stimmen\hfill \\
-	Überprüft ob die eingegebenen Stimmen in dem Daten-Objekt (/PD03/) korrekt sind. Falls die Anzahl der Stimmen $\geq$ 0 sind, kann die Sitzverteilung mit dem Wahlgesetz-Objekt (/PD04/) berechnet werden.
-	\item /F30030/ Filtern der relevanten Daten \hfill \\
-	Die benötigten Dateien, wie z.B. Erststimmengewinner der einzelnen Wahlkreise, Zweitstimmen aller Wahlkreise, werden aus der ausgewählten .csv-Datei geladen und zu der Model-Klasse geschickt.			
+	Überprüft, ob mit den eingegebenen/importierten Stimmdaten eine gültige Sitzverteilung berechnet werden kann.		
 	\item /F30040/ Generierung von Wahldaten \hfill \\
-	???
-	\item /F30050/ Manuelles ändern einzelner Stimmzahlen. \hfill \\
+	Es können Wahldaten mit gewünschten paradoxen Vorkommnissen generiert werden.
+	\item /F30050/ Manuelles Ändern einzelner Stimmzahlen \hfill \\
 	Der Benutzer kann in dem Tabellenfenster (/F10070/) die Zahlen der aktuellen Wahlsimulation manuell anpassen.
-	Die hat sofortigen Einfluss auf Karten- (/F10090/) und Diagrammfenster (/F10080/).
+	Diese haben sofortigen Einfluss auf Karten- (/F10090/) und Diagrammfenster (/F10080/).
 	\item /F30060/ Paradoxe Wahlausgänge \hfill \\
-	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft.
+	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft. Bei einem Auftreten wird ein Hinweis ausgegeben.
 	\item /F30070/ Auswerten der Wahlergebnisse \hfill \\
-	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden, werden sie ausgewertet, d.h. es werden die Diagramme erstellt. Nachdem dies erfolgreich vollführt wurde, wird die Deutschlandkarte gefärbt (/F30091/). 
+	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden (/F30080/), werden sie ausgewertet, d.h. alle Bereiche werden angepasst.
 	\item /F30080/ Verändern der Wahlergebnisse \hfill \\
-	In dem Tabellenfenster (/F10070/) können Stimmenanzahlen einzelner Wahlkreise verändert werden, woraufhin gleich die Diagramme aktualisiert werden.
-	\item /F30090/ Generierung zufälliger Wahlergebnisse \hfill \\
-	Es ist möglich einen Wahlausgang zufällig simulieren zu lassen, wobei berücksichtigt wird, dass dabei kein paradoxer Wahlgang (/F30060/) herauskommt.
+	In dem Tabellenfenster (/F10070/) können Stimmzahlen einzelner Wahlkreise verändert werden.
 	\item /F30091/ Färben der Bundesländer \hfill \\
-	Wurden Bundeslandsnamen (/F30010/) und Stimmen (/F30020/) überprüft werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
+	Wurden Bundeslandnamen (/F30010/) und Stimmen (/F30020/) überprüft, werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
 \end{itemize}
 
