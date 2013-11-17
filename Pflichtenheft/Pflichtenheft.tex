@@ -346,28 +346,23 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 
 
 \section{Nicht-funktionale Anforderungen}
+\subsection{Allgemeine Anforderungen}
+Die Sitzverteilung muss für den Benutzer möglichst nachvollziehbar dargestellt werden. \hfill \\
+Dies wird erreicht durch die folgenden Funktionen:
 \begin{itemize}
-	\item Allgemeine Anforderungen:
-	\begin{itemize}
-		\item Die Sitzverteilung muss für den Benutzer möglichst nachvollziehbar dargestellt werden. \hfill \\
-		Dies wird erreicht durch die folgenden Funktionen:
-		\begin{itemize}
-			\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form
-			\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
-		\end{itemize}
-	\end{itemize}
-	\item Sicherheitsanforderungen:
-	\begin{itemize}
-		\item Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
-	\end{itemize}
-	\item Plattformunabhängigkeit: \hfill \\
-	Das Programm muss mit der offiziellen Oracle JRE laufen.
-	\item Erweiterbarkeit: \hfill \\
-	Da es sich um ein Open-Source Projekt handelt, wird es so entwickelt, dass das Programm gut erweiterbar ist.
-	
+	\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form
+	\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
 \end{itemize}
 
+\subsection{Sicherheitsanforderungen}
+Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
 
+\subsection{Plattformunabhängigkeit}
+Das Programm muss mit der offiziellen Oracle JRE laufen.
+
+\subsection{Erweiterbarkeit}
+Da es sich um ein Open-Source Projekt handelt, wird es so entwickelt, dass das Programm gut erweiterbar ist.
+	
 \section{Qualitätsanforderungen}
 \begin{itemize}
 	\item Hilfreiche Fehlermeldungen
@@ -377,8 +372,6 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item Keine Verklemmungen
 \end{itemize}
 \newpage
-
-
 \section{Globale Testfälle und Szenarien}
 Folgende Funktionssequenzen sind zu überprüfen:
 
