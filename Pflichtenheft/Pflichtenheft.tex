@@ -433,43 +433,57 @@ Im Anschluss werden noch grundlegende Funktionen des Programms getestet, um sich
 	\item /T0270/ Rückgängig machen
 	Stimmenanzahl verändern $\rightarrow$ Sitzverteilung berechnen $\rightarrow$ Durch Rückgängig machen den Wert wieder zurücksetzen $\rightarrow$ Sitzverteilung berechnen
 \end{itemize}
+
 \section{Systemmodelle}
 \subsection{Systemarchitektur}
 Das Programm basiert auf der MVC- Architektur, wobei auf eine saubere Trennung der Einheiten Model, View und Controller geachtet wird. Dies sorgt nicht nur für einen flexiblen Programmentwurf, so dass spätere Änderungen bzw. Erweiterungen erleichtert werden, sondern garantiert auch die Trennung kritischer Komponenten, wie der Algorithmusimplementierung, von weniger sensiblen Komponenten, wie der GUI, und dient allgemein der Übersichtlichkeit.
 
+\subsubsection{Modell (model)}
+Das Modell enthält alle relevanten Daten die für die Mandatsverteilung wichtig sind. Sowie die Logik und Algorithmen um beispielsweise das Wahlergebnis zu berechnen.
+
+\subsubsection{Präsentation (view)}
+Die Präsentationsschicht bereitet die Daten des Modells auf und stellt sie dem Benutzer als grafische Benutzeroberfläche bereit. Für einige Daten wird es verschiedene Views geben, z.B. eine kartografische Ansicht, eine Diagrammansicht und eine tabellarische Ansicht.
+
+\subsubsection{Steuerung (controller)}
+Zu jeder Präsentation gibt es eine Steuerung, die diese verwaltet und Benutzereingaben und Interaktionen entgegennimmt und entscheidet welche Daten im Modell geändert werden müssen.
+
 \section{Benutzungsoberfläche}
 
+
 \section{Spezielle Anforderungen an die Entwicklungsumgebung}
-\begin{itemize}
-	\item Allgemein
-	\begin{itemize}
+
+\subsection{Allgemein}
+	\begin{list}{\quad}{}
 		\item \textbf{$\LaTeX$} - zur Erstellung von Dokumenten
 		\item \textbf{Subversion} (SVN) - zur Versionsverwaltung
 		\item \textbf{EtherPad} - zur kollaborativen Bearbeitung von Texten
-	\end{itemize}
-	\item Entwicklung
-	\begin{itemize}
+	\end{list}
+	
+\subsection{Entwicklung}
+	\begin{list}{\quad}{}
 		\item \textbf{Eclipse} - integrierte Entwicklungsumgebung (IDE)
 		\item \textbf{Swing} - zur Erstellung der grafischen Benutzeroberfläche
-	\end{itemize}
-	\item UML und Diagramme
-	\begin{itemize}
+	\end{list}
+	
+\subsection{UML und Diagramme}
+	\begin{list}{\quad}{}
 		\item \textbf{Pencil Project} - zur Erstellung von GUI-Entwürfen
 		\item \textbf{ArgoUML} - zur Erstellung von UML Diagrammen
 		\item \textbf{Dia} - zur Erstellung weiterer Diagramme
-	\end{itemize}
-	\item Qualitätssicherung
-	\begin{itemize}
+	\end{list}
+
+\subsection{Qualitätssicherung}
+	\begin{list}{\quad}{}
 		\item \textbf{JUnit} - zum Testen des Java Quellcodes
 		\item \textbf{JaCoCo} (Java Code Coverage Library) - zur Analyse der Testabdeckung
 		\item \textbf{Checkstyle} - Code-Analyse zur Prüfung des Programmierstils
-	\end{itemize}
-	\item Teamkommunikation
-	\begin{itemize}
+	\end{list}
+
+\subsection{Teamkommunikation}
+	\begin{list}{\quad}{}
 		\item \textbf{Google Groups} - als Mailingliste
 		\item \textbf{Google Hangout} - für Sprach- und Videochatkonferenzen
-	\end{itemize}
-\end{itemize}
+	\end{list}
 
 \section{Zeit- und Ressourcenplanung}
 
