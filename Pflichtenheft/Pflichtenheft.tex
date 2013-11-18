@@ -153,115 +153,115 @@ Funktionale Anforderungen werden durch eine vierstellige Nummer gekennzeichnet. 
 Die restlichen Nummern dienen zur Durchnummerierung.
 
 \subsection{GUI}
-\begin{itemize}
-	\item /F10010/ Programmstart \hfill \\
-	Es erscheint das Programmfenster, in dem die Wahlergebnisse 2013 voreingetragen wurden. Die dazugehörige Sitzverteilung wird automatisch berechnet.
-	\item /F10020/ Menü \hfill \\
+\begin{list}{\quad}{}
+	\item \textbf{/F10005/} Programmstart \hfill \\
+	Es erscheint das Programmfenster (/F10050/), in dem die Wahlergebnisse 2013 voreingetragen wurden. Die dazugehörige Sitzverteilung wird automatisch berechnet.
+	\item \textbf{/F10010/} Menü \hfill \\
 	Im Menü sind folgende Punkte gelistet:
 	\begin{itemize}
 		\item Datei
 		\begin{itemize}
-			\item Neuer Tab /F20001/
-			\item Tab schließen /F20002/
-			\item Laden /F20020/
-			\item Speichern /F20030/
-			\item Beenden /F20070/
+			\item Neuer Tab /F10015/
+			\item Tab schließen /F10020/
+			\item Laden /F20010/
+			\item Speichern /F20020/
+			\item Beenden /F10025/
 		\end{itemize}
 		\item Bearbeiten
 		\begin{itemize}
-			\item Rückgängig /F20040/
-			\item Wiederherstellen /F20041/
+			\item Rückgängig /F10030/
+			\item Wiederherstellen /F10035/
 		\end{itemize}
 		\item Extras
 		\begin{itemize}
-			\item Vergleichen /F10093/
-			\item Wahldaten generieren /F30040/
+			\item Vergleichen /F10075/
+			\item Wahldaten generieren /F30030/
 		\end{itemize}
 		\item Hilfe
 		\begin{itemize}
 			\item Benutzerhandbuch /F10040/
-			\item Über /F10050/
+			\item Über /F10045/
 		\end{itemize}	
 	\end{itemize}
-	\item /F20091/ Neuer Tab \hfill \\
-	Beim Anklicken wird ein neuer Tab (/PD02/) generiert, in dem eine neue Bundestagswahl (/PD03/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem '+'-Button in der Tab-Leiste.
-	\item /F20092/ Tab schließen \hfill \\
-	Beim Anklicken wird der aktuelle Tab (/PD02/) geschlossen. Wurden Änderung an den Daten (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
-	\item /F10091/ Beenden \hfill \\
+	\item \textbf{/F10015/} Neuer Tab \hfill \\
+	Beim Anklicken wird ein neuer Tab generiert, in dem eine neue Bundestagswahl (/PD02/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem '+'-Button in der Tab-Leiste.
+	\item \textbf{/F10020/} Tab schließen \hfill \\
+	Beim Anklicken wird der aktuelle Tab geschlossen. Wurden Änderung an den Daten (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
+	\item \textbf{/F10025/} Beenden \hfill \\
 	Beendet das gesamte Programm. Wurden Änderung an den Daten (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
-	\item /F20093/ Rückgängig machen \hfill \\
+	\item \textbf{/F10030/} Rückgängig machen \hfill \\
 	Wurde eine Stimmzahl, ob in einem Wahlkreis oder in einem ganzen Bundesland, verändert, kann die Änderung bis zu fünf Mal widerrufen werden.
-	\item /F20094/ Wiederherstellen \hfill \\
-	Falls Änderungen rückgängig gemacht wurden (/F20093/), können diese wieder hergestellt werden.
-	\item /F10040/ Benutzerhandbuch \hfill \\
+	\item \textbf{/F10035/} Wiederherstellen \hfill \\
+	Falls Änderungen rückgängig gemacht wurden (/F10030/), können diese wieder hergestellt werden.
+	\item \textbf{/F10040/} Benutzerhandbuch \hfill \\
 	Enthält Informationen, die zur Benutzung des Programms hilfreich sind.
-	\item /F10050/ Über \hfill \\
+	\item \textbf{/F10045/} Über \hfill \\
 	Enthält allgemeine Informationen über diese Software.
-	\item /F10060/ Programmfenster \hfill \\
+	\item \textbf{/F10050/} Programmfenster \hfill \\
 	Das Programmfenster wird in drei Bereiche aufgeteilt.
 	\begin{itemize}
-		\item Tabellenfenster /F10070/
-		\item Diagrammfenster /F10080/
-		\item Kartenfenster /F10090/
+		\item Tabellenfenster /F10060/
+		\item Diagrammfenster /F10065/
+		\item Kartenfenster /F10070/
 	\end{itemize}
 	Es gibt hierbei drei verschiedene Ansichten.
 	\begin{itemize}
-		\item Bundesansicht /F10094/
-		\item Landesansicht /F10095/
-		\item Wahlkreisansicht /F10096/
+		\item Bundesansicht /F10080/
+		\item Landesansicht /F10085/
+		\item Wahlkreisansicht /F10090/
 	\end{itemize}
-	\item /F10070/ Tabellenfenster \hfill \\
+	\item \textbf{/F10060/} Tabellenfenster \hfill \\
 	Im Tabellenfenster werden Details zu allen, an der Bundestagswahl teilnehmenden, Parteien angezeigt.
 	Es gibt die Spalten Partei, Erst- und Zweitstimmen, Direkt-, Überhang- und Ausgleichsmandate, die in jeder Ansicht variieren. \hfill \\
-	\item /F10080/ Diagrammfenster \hfill \\
-	Im Diagrammfenster werden Details, der aktuellen Auswahl entsprechend, angezeigt. Befindet man sich in der Bundesansicht (/F10094/) wird die Sitzplatzverteilung (/F10100/) für alle in den Bundestag einziehenden Parteien angezeigt. Wurde ein bestimmtes Bundesland vom Benutzer gewählt, zeigt das Diagramm die prozentuale Anzahl der Zweitstimmen, die die einzelnen Parteien bekommen haben. Nachdem ein Wahlkreis des Bundeslandes angeklickt wurde (/F10096/), sieht man die Erststimmen aller Wahlkreiskandidaten pro Partei. \hfill \\
-	\item /F10090/ Kartenfenster \hfill \\
-	Im Kartenfenster wird, sofern möglich (/F30010/ Überprüfung der Ländernamen), eine kartografische Darstellung von Deutschland angezeigt oder die einzelnen Bundesländer aufgelistet, zwischen beiden kann mit Klick auf Reiter gewechselt werden. In der Karte werden diese nach der Farbe der Partei, die in diesem Bundesland die meisten Zweitstimmen erhielt, eingefärbt. Der Klick auf ein Bundesland öffnet eine Liste aller zugehörigen Wahlkreise, man gelangt zur Landesansicht (/F10095/). Zurückkehren kann man, indem man in der Liste auf das geöffnete Bundesland klickt oder in der Kartenansicht den Zurück-Button (/F100..) betätigt. Wählt man in der Landesansicht (/F10095/) einen Wahlkreis gelangt man in die Wahlkreisansicht (/F10096/). \hfill \\
-	\item /F10093/ Vergleichsfenster \hfill \\
-	In diesem Fenster soll es möglich sein den Ausgang der Bundestagswahl des aktuellen Tabs mit einer anderen geladenen Bundestagswahl zu vergleichen. Ist keine andere Wahl gerade geöffnet, wird dem Benutzer erst empfohlen eine weitere Datei (/PD02/) in einen neuen Tab zu laden.
-	\item /F10098/ Zurück Button\hfill \\
+	\item \textbf{/F10065/} Diagrammfenster \hfill \\
+	Im Diagrammfenster werden Details, der aktuellen Auswahl entsprechend, angezeigt. Befindet man sich in der Bundesansicht (/F10080/) wird die Sitzplatzverteilung (/F10091/) für alle in den Bundestag einziehenden Parteien angezeigt. Wurde ein bestimmtes Bundesland vom Benutzer gewählt, zeigt das Diagramm die prozentuale Anzahl der Zweitstimmen, die die einzelnen Parteien bekommen haben. Nachdem ein Wahlkreis des Bundeslandes angeklickt wurde (/F10090/), sieht man die Erststimmen aller Wahlkreiskandidaten pro Partei. \hfill \\
+	\item \textbf{/F10070/} Kartenfenster \hfill \\
+	Im Kartenfenster wird, sofern möglich (/F30010/ Überprüfung der Ländernamen), eine kartografische Darstellung von Deutschland angezeigt oder die einzelnen Bundesländer aufgelistet, zwischen beiden kann mit Klick auf Reiter gewechselt werden. In der Karte werden diese nach der Farbe der Partei, die in diesem Bundesland die meisten Zweitstimmen erhielt, eingefärbt. Der Klick auf ein Bundesland öffnet eine Liste aller zugehörigen Wahlkreise, man gelangt zur Landesansicht (/F10085/). Zurückkehren kann man, indem man in der Liste auf das geöffnete Bundesland klickt oder in der Kartenansicht den Zurück-Button (/F10076) betätigt. Wählt man in der Landesansicht (/F10085/) einen Wahlkreis gelangt man in die Wahlkreisansicht (/F10090/). \hfill \\
+	\item \textbf{/F10075/} Vergleichsfenster \hfill \\
+	In diesem Fenster soll es möglich sein den Ausgang der Bundestagswahl des aktuellen Tabs mit einer anderen geladenen Bundestagswahl zu vergleichen. Ist keine andere Wahl gerade geöffnet, wird dem Benutzer erst empfohlen eine weitere Datei (/PD02/) in einen neuen Tab zu laden. \hfill \\
+	\item \textbf{/F10076/} Zurück Button\hfill \\
 	Man gelangt von der Wahlkreisansicht zurück in die Landesansicht und von der Landesansicht in die Bundesansicht. \hfill \\
-	\item /F10094/ Bundesansicht \hfill \\
-	In dieser Ansicht wird ganz Deutschland betrachtet. Im Kartenfenster (/F10090/) sieht man die gefärbte Deutschlandkarte oder eine Liste aller existierender Bundesländer. Im Tabellenfenster (/F10070/) sieht man die Spalten Partei, Zweitstimmen, Direkt-, Überhangs- und Ausgleichsmandate und im Diagrammfenster (/F10080/) sieht man ein Diagramm über die Sitzplatzverteilung im deutschen Bundestag.
-	\item /F10095/ Landesansicht \hfill \\
-	In dieser Ansicht wird ein ausgewähltes Bundesland betrachtet. Im Kartenfenster (/F10090) sieht man eine Liste aller Wahlkreise des Bundeslandes. Im Tabellenfenster (/F10070/) gibt es die Spalten Partei, Zweitstimmen und Direktmandate. Im Diagrammfenster (/F10080/) sieht man ein Diagramm über die prozentuale Zweitstimmenanzahl der einzelnen Parteien.
-	\item /F10096/ Wahlkreisansicht \hfill \\
-	In dieser Ansicht wird ein Wahlkreis des gewählten Bundeslandes betrachtet. Im Kartenfenster (/F10090/) wird der ausgewählte Wahlkreis markiert. Im Tabellenfenster /(/F10070/) gibt es die  Spalten Partei, Erst- und Zweitstimmen und eine Spalte, die anzeigt ob die jeweilige Partei ein Direktmandat erhält. Im Diagrammfenster (/F10080/) sieht man ein Diagramm über die prozentuale Erststimmenanzahl der einzelnen Wahlkreiskandidaten. 
-	\item F10100 Sitzverteilung \hfill \\
-	Die Sitzverteilung wird dargestellt mit einem Kuchendiagramm. Daneben kann man sich auch anzeigen lassen, wie jeder einzelne Sitz entstanden ist. Dies wird tabellarisch in einem neuen Fenster angezeigt.
-	\item F10110 Sortierung des Tabellenfensters \hfill \\
-	Die Sortierung des Tabellenfensters kann mithilfe eines Klicks auf die Spaltenüberschriften geändert werden.
-\end{itemize}
+	\item \textbf{/F10080/} Bundesansicht \hfill \\
+	In dieser Ansicht wird ganz Deutschland betrachtet. Im Tabellenfenster (/F10060/) sieht man die Spalten Partei, Zweitstimmen, Direkt-, Überhangs- und Ausgleichsmandate. Im Diagrammfenster (/F10065/) sieht man ein Diagramm über die Sitzplatzverteilung im deutschen Bundestag. Im Kartenfenster (/F10070/) sieht man die gefärbte Deutschlandkarte oder eine Liste aller existierender Bundesländer. \hfill \\
+	\item \textbf{/F10085/} Landesansicht \hfill \\
+	In dieser Ansicht wird ein ausgewähltes Bundesland betrachtet. Im Tabellenfenster (/F10060/) gibt es die Spalten Partei, Zweitstimmen und Direktmandate. Im Diagrammfenster (/F10065/) sieht man ein Diagramm über die prozentuale Zweitstimmenanzahl der einzelnen Parteien. Im Kartenfenster (/F10070) sieht man eine Liste aller Wahlkreise des Bundeslandes. \hfill \\
+	\item \textbf{/F10090/} Wahlkreisansicht \hfill \\
+	In dieser Ansicht wird ein Wahlkreis des gewählten Bundeslandes betrachtet. Im Tabellenfenster /(/F10060/) gibt es die  Spalten Partei, Erst- und Zweitstimmen und eine Spalte, die anzeigt ob die jeweilige Partei ein Direktmandat erhält. Im Diagrammfenster (/F10065/) sieht man ein Diagramm über die prozentuale Erststimmenanzahl der einzelnen Wahlkreiskandidaten. Im Kartenfenster (/F10070/) wird der ausgewählte Wahlkreis markiert. \hfill \\
+	\item \textbf{/F10091/} Sitzverteilung \hfill \\
+	Die Sitzverteilung wird dargestellt mit einem Kuchendiagramm. Daneben kann man sich auch anzeigen lassen, wie jeder einzelne Sitz entstanden ist. Dies wird tabellarisch in einem neuen Fenster angezeigt. \hfill \\
+	\item \textbf{/F10092/} Sortierung des Tabellenfensters \hfill \\
+	Die Sortierung des Tabellenfensters kann mithilfe eines Klicks auf die Spaltenüberschriften geändert werden. \hfill \\
+\end{list}
 
 \subsection{Schnittstellen}
-\begin{itemize}
-	\item /F20020/ Laden \hfill \\
+\begin{list}{\quad}{}
+	\item \textbf{/F20010/} Laden \hfill \\
 	Es können .csv-Dateien importiert werden.
-	\item /F20030/ Speichern \hfill \\
+	\item \textbf{/F20020/} Speichern \hfill \\
 	Es können .csv-Dateien exportiert werden.
-\end{itemize}
+\end{list}
 
 \subsection{Datenhaltung und Verarbeitung}
-\begin{itemize}
-	\item /F30010/ Überprüfen der Ländernamen \hfill \\
-	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F10090/) aktiviert.
-	\item /F30020/ Überprüfen der Stimmen\hfill \\
+\begin{list}{\quad}{}
+	\item \textbf{/F30010/} Überprüfen der Ländernamen \hfill \\
+	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F1007	0/) aktiviert.
+	\item \textbf{/F30020/} Überprüfen der Stimmen\hfill \\
 	Überprüft, ob mit den eingegebenen/importierten Stimmdaten eine gültige Sitzverteilung berechnet werden kann.		
-	\item /F30040/ Generierung von Wahldaten \hfill \\
+	\item \textbf{/F30030/} Generierung von Wahldaten \hfill \\
 	Es können Wahldaten mit gewünschten paradoxen Vorkommnissen generiert werden.
-	\item /F30050/ Manuelles Ändern einzelner Stimmzahlen \hfill \\
-	Der Benutzer kann in dem Tabellenfenster (/F10070/) die Zahlen der aktuellen Wahlsimulation manuell anpassen.
-	Diese haben sofortigen Einfluss auf Karten- (/F10090/) und Diagrammfenster (/F10080/).
-	\item /F30060/ Paradoxe Wahlausgänge \hfill \\
+	\item \textbf{/F30040/} Manuelles Ändern einzelner Stimmzahlen \hfill \\
+	Der Benutzer kann in dem Tabellenfenster (/F10060/) die Zahlen der aktuellen Wahlsimulation manuell anpassen.
+	Diese haben sofortigen Einfluss auf Karten- (/F10060/) und Diagrammfenster (/F10065/).
+	\item \textbf{/F30050/} Paradoxe Wahlausgänge \hfill \\
 	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft. Bei einem Auftreten wird ein Hinweis ausgegeben.
-	\item /F30070/ Auswerten der Wahlergebnisse \hfill \\
-	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden (/F30080/), werden sie ausgewertet, d.h. alle Bereiche werden angepasst.
-	\item /F30080/ Verändern der Wahlergebnisse \hfill \\
-	In dem Tabellenfenster (/F10070/) können Stimmzahlen einzelner Wahlkreise verändert werden.
-	\item /F30091/ Färben der Bundesländer \hfill \\
+	\item \textbf{/F30060/} Auswerten der Wahlergebnisse \hfill \\
+	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden (/F30070/), werden sie ausgewertet, d.h. alle Bereiche werden angepasst.
+	\item \textbf{/F30070/} Verändern der Wahlergebnisse \hfill \\
+	In dem Tabellenfenster (/F10060/) können Stimmzahlen einzelner Wahlkreise verändert werden.
+	\item \textbf{/F30080/} Färben der Bundesländer \hfill \\
 	Wurden Bundeslandnamen (/F30010/) und Stimmen (/F30020/) überprüft, werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
-\end{itemize}
+\end{list}
 
 \section{Produktdaten}
 \begin{itemize}
@@ -335,8 +335,8 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 Die Sitzverteilung muss für den Benutzer möglichst nachvollziehbar dargestellt werden. \hfill \\
 Dies wird erreicht durch die folgenden Funktionen:
 \begin{itemize}
-	\item /F10080/: Ansicht der Sitzplatzverteilung in Diagramm-Form
-	\item /F10100/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
+	\item /F10065/: Ansicht der Sitzplatzverteilung in Diagramm-Form
+	\item /F10091/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
 \end{itemize}
 
 \subsection{Sicherheitsanforderungen}
