@@ -426,17 +426,24 @@ Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabe
 
 
 \section{Systemmodelle}
+
 \subsection{Systemarchitektur}
 Das Programm basiert auf der MVC- Architektur, wobei auf eine saubere Trennung der Einheiten Model, View und Controller geachtet wird. Dies sorgt nicht nur für einen flexiblen Programmentwurf, so dass spätere Änderungen bzw. Erweiterungen erleichtert werden, sondern garantiert auch die Trennung kritischer Komponenten, wie der Algorithmusimplementierung, von weniger sensiblen Komponenten, wie der GUI, und dient allgemein der Übersichtlichkeit.
 
 \subsubsection{Modell (model)}
-Das Modell enthält alle relevanten Daten die für die Mandatsverteilung wichtig sind. Sowie die Logik und Algorithmen um beispielsweise das Wahlergebnis zu berechnen.
+Das Modell ist das Kernstück der Anwendung. Es enthält alle relevanten Daten, beispielsweise die Stimmzahlen, die für die Mandatsverteilung wichtig sind. Sowie die Logik und Algorithmen um das Wahlergebnis zu berechnen.
 
 \subsubsection{Präsentation (view)}
-Die Präsentationsschicht bereitet die Daten des Modells auf und stellt sie dem Benutzer als grafische Benutzeroberfläche bereit. Für einige Daten wird es verschiedene Views geben, z.B. eine kartografische Ansicht, eine Diagrammansicht und eine tabellarische Ansicht.
+Die Präsentationsschicht bereitet die Daten des Modells auf und stellt sie dem Benutzer als grafische Benutzeroberfläche bereit. Für einige Daten wird es verschiedene Ansichten geben, z.B. eine kartografische Ansicht, eine Diagrammansicht oder eine tabellarische Ansicht.
 
 \subsubsection{Steuerung (controller)}
 Zu jeder Präsentation gibt es eine Steuerung, die diese verwaltet und Benutzereingaben und Interaktionen entgegennimmt und entscheidet welche Daten im Modell geändert werden müssen.
+
+\subsection{Systemübersicht}
+Bei diesem System wird ein 3-Schichten-Modell verwendet. Die einzelnen Komponenten des Systems lassen sich wie in der folgenden Abbildung auf die einzelnen Schichten aufteilen.
+Die GUI Schicht enthält die Präsentationen und Steuerungen des MVC-Architekturmusters, die Interne-Daten und Logik Schicht enthält das MVC-Modell. Externe Daten lassen sich vom Modell aus importieren und exportieren.
+
+\includegraphics[scale=0.5]{Systemuebersicht.png}
 
 \section{Benutzungsoberfläche}
 
@@ -506,7 +513,7 @@ Für die Phasen Entwurf und Implementierung planen wir insgesamt 720 Personenstu
 	\hline
 	Import-Export-Modul & ? Stunden &  \\
 	GUI-Design & ? Stunden &  \\
-	evtl. GUI-Navigation und Oberflächenlogik & ? Stunden &  \\
+	GUI-Navigation und Oberflächenlogik & ? Stunden &  \\
 	Algorithmen zur Berechnung der Mandatsverteilung & ? Stunden &  \\
 	Algorithmen zum finden Paradoxer Situationen  & ? Stunden &  \\
 	Diagramme und Kartographische Ansicht  & ? Stunden &  \\
@@ -525,6 +532,7 @@ Jedes Teammitglied benötigt einen Personal Computer mit Leistungswerten über d
 \textit{ToDo: was gibt es sonst noch zu diesem Softwareprojekt zu sagen, was nicht in den anderen Punkten abgedeckt ist?}
 
 \section{Glossar}
+\textit{ToDo: glossaries Bibliothek verwenden und Begriffe beschreiben.}
 \begin{itemize}
 	\item Listenplatz
 	\item paradoxe Situationen
