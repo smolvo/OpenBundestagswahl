@@ -158,6 +158,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Es erscheint das Programmfenster (/F10050/), in dem die Wahlergebnisse 2013 voreingetragen wurden. Die dazugehörige Sitzverteilung wird automatisch berechnet.
 	\item \textbf{/F10010/} Menü \hfill \\
 	Im Menü sind folgende Punkte gelistet:
+		
 	\begin{itemize}
 		\item Datei
 		\begin{itemize}
@@ -379,50 +380,56 @@ Die folgende unzulässige Aktionen müssen korrekt behandelt werden:
 \subsection{Testszenairen}
 \subsubsection{Grundlegende Funktionen}
 Es werden grundlegende Funktionen des Programms getestet, um sicherzustellen, dass das Programm während der Bearbeitung nicht durch eine fehlerhafte Aktion abstürzt.
-\begin{itemize}
-	\item /T0010/ Zwei Wahlen miteinander vergleichen: \\
+\begin{description}
+	\item[\textbf{/T0010/}] Zwei Wahlen miteinander vergleichen: \\
 	Die Sitzverteilung einer geladenen Datei berechnen $\rightarrow$ Einen neuen Tab öffnen $\rightarrow$ Die neue Importdatei laden $\rightarrow$ Die Sitzverteilung für die neue Wahl berechnen $\rightarrow$ Beide Sitzverteilung miteinander vergleichen
-	\item /T0020/ Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
+	\item[\textbf{/T0020/}] Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
 	Einen negativen Wert als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Eine Fehlermeldung: ``Negativer Wert'' erhalten $\rightarrow$ Den Wert unverändert lassen
-	\item /T0030/ Manuell einen Buchstaben als Stimmenanzahl eintragen: \\
+	\item[\textbf{/T0030/}] Manuell einen Buchstaben als Stimmenanzahl eintragen: \\
 	Einen Buchstaben als Stimmenanzahl in die Tabelle eintragen $\rightarrow$ Fehlermeldung: ``Buchstaben anstatt einer Zahl eingegeben'' erhalten $\rightarrow$ Wert unverändert lassen \\
-	\item /T0040/ Eine Fließkommazahl als Stimmenanzahl eintragen: \\
+	\item[\textbf{/T0040/}] Eine Fließkommazahl als Stimmenanzahl eintragen: \\
 	Eine Fließkommazahl als negativen eintragen $\rightarrow$ Fehlermeldung: ``Ganze positive Zahlen anstatt Fließkommazahlen eingeben'' erhalten $\rightarrow$ Wert unverändert lassen \\ 
-	\item /T0050/ Die Funktion ``Diagramm wechseln'' teten:\\
+	\item[\textbf{/T0050/}] Erststimme in der Wahlkreisansicht verändern: \\
+	Von der Bundansicht in eine Landansicht wechseln $\rightarrow$ Von der Landesansicht in eine Wahlkreisansicht wechseln $\rightarrow$ Die Erststimmen/Zweitstimmen eine beliebigen Partei verändern $\rightarrow$ Wieder zurück zur Bundansicht wechseln $\rightarrow$ Mögliche Änderung der Sitzverteilung wahrnehmen
+	\item[\textbf{/T0060/}] Die Funktion ``Diagramm wechseln'' testen:\\
 	Die Sirtzverteilung berechnen $\rightarrow$ Das Diagramm ändern $\rightarrow$ Die Sitzverteilung wird beibehalten
-	\item /T0060/ Die Funktion ``Rückgängig machen'' testen:
+	\item[\textbf{/T0070/}] Die Funktion ``Rückgängig machen'' testen: \\
 	Eine beliebige Stimmenanzahl verändern $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Durch ``Rückgängig machen'' den Wert wieder zurücksetzen $\rightarrow$ Die Sitzverteilung wird erneut berechnet
-\end{itemize}
+	\item[\textbf{/T0080/}] Die Funktion ```Wiederherstellen'' testen: \\
+	Eine beliebige Stimmenanzahl verändern $\rightarrow$ Die Sitzverteilung berechnen lassen $\rightarrow$ Den Wert durch ``Rückgängig machen'' die Aktion zurücksetzen $\rightarrow$ Die Sitzverteilung wird wieder berechnet $\rightarrow$ Durch "Wiederherstellen" den rückgängig gemachten Wert wiederherstellen
+\end{description}
 \subsubsection{Import-/Exportverhalten}
 Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgesetzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
-\begin{itemize}
-	\item /T0110/ Struktur einer Importdatei verändern: \newline
+\begin{description}
+	\item[\textbf{/T0110/}] Struktur einer Importdatei verändern: \newline
 	Die Importdatei verändern$\rightarrow$ Im Hauptmenü auf Datei klicken $\rightarrow$ ``Datei importieren'' auswählen $\rightarrow$ Im Dateibrowser die korrupte Importdatei auswählen $\rightarrow$ Mit dem Button ``Laden'' bestätigen $\rightarrow$ Die Fehlermeldung: ``Datei konnte nicht geladen werden'' erhalten
-	\item /T0120/ Zu dem gespeicherten Zustand zurückkehren: \\
+	\item[\textbf{/T0120/}] Zu dem gespeicherten Zustand zurückkehren: \\
 	Eine beliebige Importdatei laden $\rightarrow$ Die Sitzverteilung berechnen lassen$\rightarrow$ Den aktuellen Zustand als neue Importdatei speichern$\rightarrow$ Eine beliebige Veränderungen an den Stimmen ausführen $\rightarrow$ Das Programm ohne zu speichern schließen $\rightarrow$ Das Programm wieder öffnen und die Importdatei ohne die Veränderungen laden
-	\item /T0130/ Gleichnamige Parteien in der Importdatei: \newline
+	\item[\textbf{/T0130/}] Gleichnamige Parteien in der Importdatei: \newline
 	Die Importdatei mit zwei gleichnamigen Parteien laden $\rightarrow$ Fehlermeldung: ``Mehrere Parteien haben den gleichen Namen'' erhalten
-	\item /T0140/ Nur eine Partei befindet sich in der Importdatei: \newline
+	\item[\textbf{/T0140/}] Nur eine Partei befindet sich in der Importdatei: \newline
 	Eine beliebige Importdatei mit nur einer Partei laden $\rightarrow$ Sitzverteilung berechnen lassen $\rightarrow$ Fehlermeldung: ``Sitzverteilung mit nur einer Partei nicht möglich'' erhalten
-	\item /T0150/ Importdatei mit fehlerhaften Bundesländernamen: \newline
+	\item[\textbf{/T0150/}] Importdatei mit fehlerhaften Bundesländernamen: \newline
 	Eine Importdatei mit mindestens einem falsch geschriebenen Bundesland laden$\rightarrow$ Fehlermeldung: ``Kartografische Ansicht nicht möglich'' $\rightarrow$ Anstatt der kartografischen Ansicht wird nur die Liste angezeigt $\rightarrow$ Die Sitzverteilung wird weiterhin normal berechnet\newline
-\end{itemize}
+	\item[\textbf{/T0160/}] Eigenen Wahlausgang erstellen: \\
+	Beliebige Importdatei mit der gewünschten Struktur laden $\rightarrow$ Die Aktion ``zufällige Wahlausgänge generieren'' auswählen $\rightarrow$ Zufällig generierter Wahlausgang unter beliebigen Namen exportieren
+\end{description}
 \subsubsection{Korrekte Berechnung der Sitzverteilung}
 Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine Importdatei geladen wurde.
-\begin{itemize}
-	\item /T0210/Ein Direktmandat fehlt: \newline
+\begin{description}
+	\item[\textbf{/T0210/}] Ein Direktmandat fehlt: \newline
 	Testweise werden alle Erststimmen eines Wahlkreises gelöscht $\rightarrow$ Die Fehlermeldung: `` Direktmandat fehlt im Wahlkreis'' erhalten
-	\item /T0220/ Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
+	\item[\textbf{/T0220/}] Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
 	Mehrere Kandidaten haben gleich viele Stimmen $\rightarrow$ Ein Hinweis wird ausgegeben $\rightarrow$ Kandidat wird ausgelost
-	\item /T0230/ Ein negatives Stimmgewicht in einer Wahl provozieren:\newline
+	\item[\textbf{/T0230/}] Ein negatives Stimmgewicht in einer Wahl provozieren:\newline
 	Die Daten so modifizieren, dass ein negatives Stimmgewicht provoziert wird $\rightarrow$ Hinweis: `` Ein negatives Stimmgewicht wurde berechnet'' erhalten
-	\item /T0240/ Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
+	\item[\textbf{/T0240/}] Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
 	Die Daten werden so modifiziert, dass eine Partei genau drei Direktmandate hat $\rightarrow$ Die Sitzverteilung wird berechnet $\rightarrow$ Die Partei steht danach in der Sitzverteilung
-	\item /T0250/ Überhangmandat testen: \newline
+	\item[\textbf{/T0250/}] Überhangmandat testen: \newline
 	Die Daten werden so modifiziert, dass eine Partei mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze hat$\rightarrow$ Die Sitzverteilung wird berechnet $\rightarrow$ Ein Hinweis wird ausgegeben: ``Überhangmandat wurde berechnet''
-	\item /T0260/ Ausgleichsmandat testen: \newline
+	\item[\textbf{/T0260/}] Ausgleichsmandat testen: \newline
 	Die Daten werden so modifiziert, dass eine andere Partei mehr Direktmandate als durch Zweitstimmen zugeteilte Sitze hat $\rightarrow$ Ein Hinweis wird ausgegeben: ``Ausgleichsmandat wurde berechnet''
-\end{itemize}
+\end{description}
 
 
 \section{Systemmodelle}
