@@ -331,10 +331,10 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \subsection{Allgemeine Anforderungen}
 Die Sitzverteilung muss für den Benutzer möglichst nachvollziehbar dargestellt werden. \hfill \\
 Dies wird erreicht durch die folgenden Funktionen:
-\begin{itemize}
-	\item /F10065/: Ansicht der Sitzplatzverteilung in Diagramm-Form
-	\item /F10091/: Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
-\end{itemize}
+\begin{description}
+	\item[\textbf{/F10065/}] Ansicht der Sitzplatzverteilung in Diagramm-Form
+	\item[\textbf{/F10091/}] Der Benutzer kann verfolgen, wie ein Sitz entstanden ist
+\end{description}
 
 \subsection{Sicherheitsanforderungen}
 Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
@@ -362,6 +362,7 @@ Folgende Funktionssequenzen sind zu überprüfen: \\
 Die folgenden Datenkonsistenzen müssen eingehalten werden:
 \begin{itemize}
 	\item Die Zustände können nur gespeichert werden, wenn alle geladenen Felder ausgefüllt wurden
+	\item Die Daten können nur geladen werden, wenn sie der Struktur der vorgegebenen .csv-Datei entsprechen.
 \end{itemize}
 \subsection{Unzulässige Aktionen}
 Die folgende unzulässige Aktionen müssen korrekt behandelt werden:
@@ -544,7 +545,7 @@ Jedes Teammitglied benötigt einen Personal Computer mit Leistungswerten über d
 \textit{ToDo: glossaries Bibliothek verwenden und Begriffe beschreiben.}
 \begin{itemize}
 	\item Listenplatz
-	\item paradoxe Situationen
+	\item Paradoxe Situationen
 	\item Mandat	
 	\item Direktmandat	
 	\item Überhangmandat
