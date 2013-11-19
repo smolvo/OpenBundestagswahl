@@ -153,7 +153,7 @@ Funktionale Anforderungen werden durch eine vierstellige Nummer gekennzeichnet. 
 Die restlichen Nummern dienen zur Durchnummerierung.
 
 \subsection{GUI}
-\begin{list}{\quad}{}
+\begin{description}
 	\item \textbf{/F10005/} Programmstart \hfill \\
 	Es erscheint das Programmfenster (/F10050/), in dem die Wahlergebnisse 2013 voreingetragen wurden. Die dazugehörige Sitzverteilung wird automatisch berechnet.
 	\item \textbf{/F10010/} Menü \hfill \\
@@ -185,11 +185,11 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 		\end{itemize}	
 	\end{itemize}
 	\item \textbf{/F10015/} Neuer Tab \hfill \\
-	Beim Anklicken wird ein neuer Tab generiert, in dem eine neue Bundestagswahl (/PD02/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem '+'-Button in der Tab-Leiste.
+	Beim Anklicken wird ein neuer Tab generiert, in dem eine neue Bundestagswahl (/PD01/) geladen werden kann. Diese Dateiauswahl korrespondiert zu dem '+'-Button in der Tab-Leiste.
 	\item \textbf{/F10020/} Tab schließen \hfill \\
-	Beim Anklicken wird der aktuelle Tab geschlossen. Wurden Änderung an den Daten (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
+	Beim Anklicken wird der aktuelle Tab geschlossen. Wurden Änderung an den Daten (/PD01/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
 	\item \textbf{/F10025/} Beenden \hfill \\
-	Beendet das gesamte Programm. Wurden Änderung an den Daten (/PD02/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
+	Beendet das gesamte Programm. Wurden Änderung an den Daten (/PD01/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
 	\item \textbf{/F10030/} Rückgängig machen \hfill \\
 	Wurde eine Stimmzahl, ob in einem Wahlkreis oder in einem ganzen Bundesland, verändert, kann die Änderung bis zu fünf Mal widerrufen werden.
 	\item \textbf{/F10035/} Wiederherstellen \hfill \\
@@ -219,7 +219,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item \textbf{/F10070/} Kartenfenster \hfill \\
 	Im Kartenfenster wird, sofern möglich (/F30010/ Überprüfung der Ländernamen), eine kartografische Darstellung von Deutschland angezeigt oder die einzelnen Bundesländer aufgelistet, zwischen beiden kann mit Klick auf Reiter gewechselt werden. In der Karte werden diese nach der Farbe der Partei, die in diesem Bundesland die meisten Zweitstimmen erhielt, eingefärbt. Der Klick auf ein Bundesland öffnet eine Liste aller zugehörigen Wahlkreise, man gelangt zur Landesansicht (/F10085/). Zurückkehren kann man, indem man in der Liste auf das geöffnete Bundesland klickt oder in der Kartenansicht den Zurück-Button (/F10076) betätigt. Wählt man in der Landesansicht (/F10085/) einen Wahlkreis gelangt man in die Wahlkreisansicht (/F10090/). \hfill \\
 	\item \textbf{/F10075/} Vergleichsfenster \hfill \\
-	In diesem Fenster soll es möglich sein den Ausgang der Bundestagswahl des aktuellen Tabs mit einer anderen geladenen Bundestagswahl zu vergleichen. Ist keine andere Wahl gerade geöffnet, wird dem Benutzer erst empfohlen eine weitere Datei (/PD02/) in einen neuen Tab zu laden. \hfill \\
+	In diesem Fenster soll es möglich sein den Ausgang der Bundestagswahl des aktuellen Tabs mit einer anderen geladenen Bundestagswahl zu vergleichen. Ist keine andere Wahl gerade geöffnet, wird dem Benutzer erst empfohlen eine weitere Datei (/PD01/) in einen neuen Tab zu laden. \hfill \\
 	\item \textbf{/F10076/} Zurück Button\hfill \\
 	Man gelangt von der Wahlkreisansicht zurück in die Landesansicht und von der Landesansicht in die Bundesansicht. \hfill \\
 	\item \textbf{/F10080/} Bundesansicht \hfill \\
@@ -232,18 +232,18 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Die Sitzverteilung wird dargestellt mit einem Kuchendiagramm. Daneben kann man sich auch anzeigen lassen, wie jeder einzelne Sitz entstanden ist. Dies wird tabellarisch in einem neuen Fenster angezeigt. \hfill \\
 	\item \textbf{/F10092/} Sortierung des Tabellenfensters \hfill \\
 	Die Sortierung des Tabellenfensters kann mithilfe eines Klicks auf die Spaltenüberschriften geändert werden. \hfill \\
-\end{list}
+\end{description}
 
 \subsection{Schnittstellen}
-\begin{list}{\quad}{}
+\begin{description}
 	\item \textbf{/F20010/} Laden \hfill \\
 	Es können Wahlergebnisse in Form von .csv-Dateien importiert werden. Das Format dieser Dateien muss dem der bereitgestellten .csv-Datei zur Wahl 2013 der Bundeswahlleiter-Webseite entsprechen.
 	\item \textbf{/F20020/} Speichern \hfill \\
 	Es besteht die Möglichkeit, Wahlergebnisse im vorher spezifizierten Format (/F20010/) als .csv-Datei zu exportieren.
-\end{list}
+\end{description}
 
 \subsection{Datenhaltung und Verarbeitung}
-\begin{list}{\quad}{}
+\begin{description}
 	\item \textbf{/F30010/} Überprüfen der Ländernamen \hfill \\
 	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F10070/) aktiviert. Andernfalls kann die kartografische Darstellung nicht angezeigt werden, es wird nur die tabellarische Ansicht angezeigt.
 	\item \textbf{/F30020/} Überprüfen der Stimmen\hfill \\
@@ -254,15 +254,17 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	Der Benutzer kann in dem Tabellenfenster (/F10060/) die Zahlen der aktuellen Wahlsimulation manuell anpassen.
 	Diese haben sofortigen Einfluss auf Karten- (/F10060/) und Diagrammfenster (/F10065/).
 	\item \textbf{/F30050/} Paradoxe Wahlausgänge \hfill \\
-	Die aktuell geladenen Wahlausgänge (/PD02/) werden auf paradoxe Eigenschaften überprüft. Bei einem Auftreten wird ein Hinweis ausgegeben.
+	Die aktuell geladenen Wahlausgänge (/PD01/) werden auf paradoxe Eigenschaften überprüft. Bei einem Auftreten wird ein Hinweis ausgegeben.
 	\item \textbf{/F30060/} Auswerten der Wahlergebnisse \hfill \\
-	Nachdem die Wahlergebnisse (/PD02/) entweder geladen oder verändert wurden (/F30070/), werden sie ausgewertet, d.h. alle Bereiche werden angepasst.
+	Nachdem die Wahlergebnisse (/PD01/) entweder geladen oder verändert wurden (/F30070/), werden sie ausgewertet, d.h. die Sitzverteilung wird berechnet (/F30065/) und alle Bereiche werden angepasst.
+	\item \textbf{/F30065/} Berechnung der Sitzverteilung \hfill \\
+	Die Sitzverteilung des Bundestages wird anhand der Stimmen und den daraus resultierenden Direktmandaten, Überhangmandaten, Ausgleichsmandaten und den Abgeordneten die über die Landeslisten in den Bundestag einziehen berechnet. Anhand der Erststimmen werden zunächst die Direktmandate der jeweiligen Wahlkreise bestimmt (299 Direktmandate). Die verbleibende Sitzerteilung des Bundestages wird anhand der Zweitstimmen, die die jeweiligen Parteien erhielten, errechnet. Dadurch entstehen Überhang- und Ausgleichsmandate.
 	\item \textbf{/F30070/} Verändern der Wahlergebnisse \hfill \\
 	In dem Tabellenfenster (/F10060/) können Stimmzahlen einzelner Wahlkreise verändert werden.
 	\item \textbf{/F30080/} Färben der Bundesländer \hfill \\
 	Wurden Bundeslandnamen (/F30010/) und Stimmen (/F30020/) überprüft, werden die einzelnen Bundesländer mit der Farbe der Partei eingefärbt, die die meisten Zweitstimmen in diesem Bundesland erhalten hat.
 	
-\end{list}
+\end{description}
 
 \section{Produktdaten}
 \begin{description}
