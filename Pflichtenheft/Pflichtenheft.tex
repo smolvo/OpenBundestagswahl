@@ -237,15 +237,15 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \subsection{Schnittstellen}
 \begin{list}{\quad}{}
 	\item \textbf{/F20010/} Laden \hfill \\
-	Es können .csv-Dateien importiert werden.
+	Es können Wahlergebnisse in Form von .csv-Dateien importiert werden. Das Format dieser Dateien muss dem der bereitgestellten .csv-Datei zur Wahl 2013 der Bundeswahlleiter-Webseite entsprechen.
 	\item \textbf{/F20020/} Speichern \hfill \\
-	Es können .csv-Dateien exportiert werden.
+	Es besteht die Möglichkeit, Wahlergebnisse im vorher spezifizierten Format (/F20010/) als .csv-Datei zu exportieren.
 \end{list}
 
 \subsection{Datenhaltung und Verarbeitung}
 \begin{list}{\quad}{}
 	\item \textbf{/F30010/} Überprüfen der Ländernamen \hfill \\
-	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F1007	0/) aktiviert.
+	Überprüft, ob die eingegebenen Ländernamen mit den vorgegebenen Bundesländern übereinstimmen (/PD04/). Falls alle Ländernamen gefunden werden, wird die kartografische Darstellung (/F10070/) aktiviert. Andernfalls kann die kartografische Darstellung nicht angezeigt werden, es wird nur die tabellarische Ansicht angezeigt.
 	\item \textbf{/F30020/} Überprüfen der Stimmen\hfill \\
 	Überprüft, ob mit den eingegebenen/importierten Stimmdaten eine gültige Sitzverteilung berechnet werden kann.		
 	\item \textbf{/F30030/} Generierung von Wahldaten \hfill \\
@@ -266,13 +266,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 
 \section{Produktdaten}
 \begin{description}
-	\item[\textbf{/PD01/}] Programmzustand
-	\begin{itemize}
-		\item Version des Programms
-		\item Name
-	\end{itemize}
-	
-	\item[\textbf{/PD02/}] Wahlergebnis
+	\item[\textbf{/PD01/}] Wahlergebnis
 	\begin{itemize}
 		\item Name der Wahl
 		\item Kommentar (Quelle)
@@ -282,21 +276,21 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 		\item Anzahl der (Erst- und Zweit-)Stimmen je Wahlkreis/Bundesland und Partei
 	\end{itemize}
 	
-	\item[\textbf{/PD03/}] Parteien
+	\item[\textbf{/PD02/}] Parteien
 	\begin{itemize}
 		\item Farbe
 		\item Vollständiger Name
 		\item Kürzel
 	\end{itemize}
 	
-	\item[\textbf{/PD04/}] Bundesland
+	\item[\textbf{/PD03/}] Bundesland
 	\begin{itemize}
 		\item Wappen		
 		\item Vollständiger Name
 		\item Kürzel
 	\end{itemize}
 	
-	\item[\textbf{/PD05/}] Handbuch
+	\item[\textbf{/PD04/}] Handbuch
 	\begin{itemize}
 		\item Informationen zum Programm (About)
 		\begin{itemize}
@@ -310,12 +304,12 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 \section{Produktleistungen}
 \begin{itemize}
 	\item Zeit \hfill \\
-	Das Programm muss fähig sein, Operationen der letzten zwei Bundestagswahlen, in angemessener Zeit durchzuführen. Entscheidend sind hierbei die Anzahl der Parteien und die Anzahl der Wahlkreise.
+	Das Programm muss fähig sein, Operationen auf Daten der letzten zwei Bundestagswahlen, in angemessener Zeit durchzuführen. Entscheidend sind hierbei die Anzahl der Parteien und die Anzahl der Wahlkreise.
 	\\ Wir nehmen daher folgende Bedingungen an:
 	\begin{itemize}
 		\item etwa 30 Parteien
 		\item etwa 300 Wahlkreise
-		\item maximal 100.000.000 Wahlberechtigte
+		\item maximal 200.000.000 abgegebene Stimmen
 	\end{itemize}
 	Folgende Zeiten werden benötigt:
 	\begin{itemize}
@@ -345,9 +339,6 @@ Die Eingabedaten dürfen während der Berechnung nicht verändert werden.
 
 \subsection{Plattformunabhängigkeit}
 Das Programm muss mit der offiziellen Oracle JRE laufen.
-
-\subsection{Erweiterbarkeit}
-Da es sich um ein Open-Source Projekt handelt, wird es so entwickelt, dass das Programm gut erweiterbar ist.
 
 \subsection{Benutzbarkeit}
 Die Bedienoberfläche ist für Maus- und Tastaturbedienung ausgelegt.
