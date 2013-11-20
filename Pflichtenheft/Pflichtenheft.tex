@@ -7,6 +7,9 @@
 \usepackage{setspace}
 \usepackage{graphicx} %Um Bilder anzeigen zu können
 \usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage{endnotes}
+
+\let\footnote=\endnote
 
 \title{\Huge Pflichtenheft\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1}
 \author{Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
@@ -33,8 +36,8 @@
 \section{Produktübersicht}
 Das Produkt soll allen Personen, auch ohne spezifisches Vorwissen, die sich mit der Deutschen Bundestagswahl beschäftigen, als Unterstützung dienen.\newline
 Dafür ist die Aufbereitung von Wahlergebnissen gemäß der gesetzlichen Bestimmungen und deren exakte und übersichtliche Darstellung, z.B. der endgültigen Sitzverteilung im Deutschen Bundestag, essentiell.
-Da das aktuelle Wahlsystem sehr komplex ist, besteht eine weitere Aufgabe des Programms darin, das Zustandekommen von Direktmandaten, Überhangmandaten, Ausgleichsmandaten usw. dem Anwender verständlich zu erklären.
-Darunter fallen auch paradox erscheinende Vorkommnisse, wie das negative Stimmgewicht, die durch das Programm gefunden und erklärt werden sollen. \newline
+Da das aktuelle Wahlsystem sehr komplex ist, besteht eine weitere Aufgabe des Programms darin, das Zustandekommen von Direktmandaten \footnote{\textbf{Direktmandat} - Mandat eines Abgeordneten, der in einem Wahlkreis die einfache Mehrheit der Erststimmen erhalten hat}, Überhangmandaten \footnote{\textbf{Überhangmandat} - Überhangmandate entstehen, wenn eine Partei durch Direktmandate mehr Mandate besitzt, als ihr nach Zweitstimmen zustehen sollte}, Ausgleichsmandaten \footnote{\textbf{Ausgleichsmandat} - Zusatzmandate, die Parteien erhalten, um Überhangmandate einer Partei auszugleichen, damit andere Parteien, ohne Überhangmandate, nicht benachteiligt werden} usw. dem Anwender verständlich zu erklären.
+Darunter fallen auch paradox erscheinende Vorkommnisse, wie das negative Stimmgewicht \footnote{\textbf{negatives Stimmgewicht} - Einer Partei werden, obwohl sie insgesamt an Stimmen gewinnt, Sitze abgezogen, bzw. für fehlende Stimmen Zusatzsitze gegeben}, die durch das Programm gefunden und erklärt werden sollen. \newline
 Des Weiteren ermöglicht die Anwendung mit beliebigen Wahldaten zu experimentieren und die daraus resultierenden Veränderungen anzuzeigen. Dadurch lässt es sich auch gut für Demonstrationen (z.B. für das Aufzeigen von Rundungsfehlern bei der Sitzberechnung) nutzen.
 
 
@@ -191,7 +194,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item \textbf{/F10025/} Beenden \hfill \\
 	Beendet das gesamte Programm. Wurden Änderung an den Daten (/PD01/) vorgenommen, wird vor dem Schließen des Tabs dem Benutzer die Möglichkeit gegeben die Daten zu speichern, zu verwerfen oder das Schließen abzubrechen.
 	\item \textbf{/F10030/} Rückgängig machen \hfill \\
-	Wurde eine Stimmzahl, ob in einem Wahlkreis oder in einem ganzen Bundesland, verändert, kann die Änderung bis zu fünf Mal widerrufen werden.
+	Wurde eine Stimmzahl, ob in einem Wahlkreis \footnote{\textbf{Wahlkreis} - Der Wahlkreis ist die kleinste Einheit des Wahlgebietes, die für die Sitzverteilung relevant ist} oder in einem ganzen Bundesland, verändert, kann die Änderung bis zu fünf Mal widerrufen werden.
 	\item \textbf{/F10035/} Wiederherstellen \hfill \\
 	Falls Änderungen rückgängig gemacht wurden (/F10030/), können diese wieder hergestellt werden.
 	\item \textbf{/F10040/} Benutzerhandbuch \hfill \\
@@ -542,9 +545,7 @@ Für die Phasen Entwurf und Implementierung planen wir insgesamt 720 Personenstu
 
 \subsection{Ressourcen}
 Jedes Teammitglied benötigt einen Personal Computer mit Leistungswerten über den Mindestanforderungen für die Entwicklung dieser Software.
-
-\section{Glossar}
-
++
 \begin{itemize}
 	\item \textbf{Landeslisten} \\
 		Die Landesliste ist die Liste der Kandidaten einer Partei für die Wahl zum Bundestag.
@@ -564,4 +565,14 @@ Jedes Teammitglied benötigt einen Personal Computer mit Leistungswerten über d
 	
 \end{itemize}
 
+\renewcommand{\notesname}{15 Glossar}
+\addcontentsline{toc}{section}{15 Glossar}
+
+
+\begingroup
+\parindent 0pt
+\parskip 2ex
+\def\enotesize{\normalsize}
+\theendnotes
+\endgroup
 \end{document}
