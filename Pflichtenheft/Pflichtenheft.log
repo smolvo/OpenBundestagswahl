@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.5)  20 NOV 2013 02:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.5)  20 NOV 2013 02:44
 entering extended mode
 **Pflichtenheft.tex
 (C:\Users\Manuel\Desktop\PSE\Pflichtenheft\Pflichtenheft.tex
@@ -635,32 +635,42 @@ Overfull \hbox (14.98398pt too wide) in paragraph at lines 469--471
  []
 
 [18 <C:/Users/Manuel/Desktop/PSE/Pflichtenheft/Wahlkreisansicht.png> <C:/Users/
-Manuel/Desktop/PSE/Pflichtenheft/Vergleichsansicht.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 510--512
+Manuel/Desktop/PSE/Pflichtenheft/Vergleichsansicht.png>] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 511--514
 
  []
 
 
-Overfull \hbox (16.31073pt too wide) in paragraph at lines 513--524
+Underfull \hbox (badness 10000) in paragraph at lines 511--514
+
+ []
+
+
+Overfull \hbox (16.31073pt too wide) in paragraph at lines 515--527
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--530
+Underfull \hbox (badness 10000) in paragraph at lines 515--527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--530
+Underfull \hbox (badness 10000) in paragraph at lines 529--533
 
  []
 
-[19] (C:\Users\Manuel\Desktop\PSE\Pflichtenheft\Pflichtenheft.ent) [20]
+
+Underfull \hbox (badness 10000) in paragraph at lines 529--533
+
+ []
+
+[20] (C:\Users\Manuel\Desktop\PSE\Pflichtenheft\Pflichtenheft.ent) [21]
 (C:\Users\Manuel\Desktop\PSE\Pflichtenheft\Pflichtenheft.aux) ) 
 Here is how much of TeX's memory you used:
  3239 strings out of 493921
  41703 string characters out of 3144873
- 108406 words of memory out of 3000000
+ 107406 words of memory out of 3000000
  6466 multiletter control sequences out of 15000+200000
  13074 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -676,9 +686,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Pflichtenheft.pdf (20 pages, 620760 bytes).
+Output written on Pflichtenheft.pdf (21 pages, 621896 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

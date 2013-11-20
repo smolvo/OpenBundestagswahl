@@ -117,6 +117,38 @@ Bundestag
 \@endanenote 
 \@doanenote {6}
 macro:->\textbf
+{Zweitstimme}
+-
+Mit
+der
+Zweitstimme
+wählt
+der
+Wähler
+eine
+Partei,
+deren
+Kandidaten
+auf
+der
+Landesliste
+zusammengestellt
+wurden.
+Sie
+legt
+also
+die
+Stärke
+und
+Zusammensetzung
+einer
+Partei
+im
+Parlament
+fest.
+\@endanenote 
+\@doanenote {7}
+macro:->\textbf
 {Wahlkreis}
 -
 Der
@@ -134,7 +166,32 @@ Sitzverteilung
 relevant
 ist
 \@endanenote 
-\@doanenote {7}
+\@doanenote {8}
+macro:->\textbf
+{Erststimme}
+-
+Mit
+der
+Erststimme
+wählt
+der
+Wähler
+einen
+Direktkandidaten
+in
+seinem
+Wahlkreis.
+Der
+Kandidat
+mit
+den
+meisten
+Stimmen
+erhält
+ein
+Direktmandat
+\@endanenote 
+\@doanenote {9}
 macro:->\textbf
 {Landesliste}
 -

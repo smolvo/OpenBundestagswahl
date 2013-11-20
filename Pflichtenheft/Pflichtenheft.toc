@@ -54,8 +54,8 @@
 \contentsline {subsection}{\numberline {13.3}UML und Diagramme}{19}
 \contentsline {subsection}{\numberline {13.4}Qualit\IeC {\"a}tssicherung}{19}
 \contentsline {subsection}{\numberline {13.5}Teamkommunikation}{19}
-\contentsline {section}{\numberline {14}Zeit- und Ressourcenplanung}{19}
-\contentsline {subsection}{\numberline {14.1}Die Phasen des Projekts}{19}
+\contentsline {section}{\numberline {14}Zeit- und Ressourcenplanung}{20}
+\contentsline {subsection}{\numberline {14.1}Die Phasen des Projekts}{20}
 \contentsline {subsection}{\numberline {14.2}Zeitliche Einteilung der einzelnen Module}{20}
 \contentsline {subsection}{\numberline {14.3}Ressourcen}{20}
-\contentsline {section}{15 Glossar}{20}
+\contentsline {section}{15 Glossar}{21}
