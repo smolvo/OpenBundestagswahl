@@ -37,7 +37,7 @@
 Das Produkt soll allen Personen, auch ohne spezifisches Vorwissen, die sich mit der Deutschen Bundestagswahl beschäftigen, als Unterstützung dienen.\newline
 Dafür ist die Aufbereitung von Wahlergebnissen gemäß der gesetzlichen Bestimmungen und deren exakte und übersichtliche Darstellung, z.B. der endgültigen Sitzverteilung im Deutschen Bundestag, essentiell.
 Da das aktuelle Wahlsystem sehr komplex ist, besteht eine weitere Aufgabe des Programms darin, das Zustandekommen von Direktmandaten \footnote{\textbf{Direktmandat} - Mandat eines Abgeordneten, der in einem Wahlkreis die einfache Mehrheit der Erststimmen erhalten hat}, Überhangmandaten \footnote{\textbf{Überhangmandat} - Überhangmandate entstehen, wenn eine Partei durch Direktmandate mehr Mandate besitzt, als ihr nach Zweitstimmen zustehen sollte}, Ausgleichsmandaten \footnote{\textbf{Ausgleichsmandat} - Zusatzmandate, die Parteien erhalten, um Überhangmandate einer Partei auszugleichen, damit andere Parteien, ohne Überhangmandate, nicht benachteiligt werden} usw. dem Anwender verständlich zu erklären.
-Darunter fallen auch paradox erscheinende Vorkommnisse, wie das negative Stimmgewicht \footnote{\textbf{negatives Stimmgewicht} - Einer Partei werden, obwohl sie insgesamt an Stimmen gewinnt, Sitze abgezogen, bzw. für fehlende Stimmen Zusatzsitze gegeben}, die durch das Programm gefunden und erklärt werden sollen. \newline
+Darunter fallen auch paradox erscheinende Vorkommnisse, wie das negative Stimmgewicht \footnote{\textbf{Negatives Stimmgewicht} - Das negative Stimmgewicht ist ein Effekt bei Wahlen, bei dem sich Wählerstimmen gegen den Wählerwillen auswirken. D.h. einer Partei werden, obwohl sie insgesamt an Stimmen gewinnt, Sitze abgezogen, bzw. für fehlende Stimmen Zusatzsitze gegeben}, die durch das Programm gefunden und erklärt werden sollen. \newline
 Des Weiteren ermöglicht die Anwendung mit beliebigen Wahldaten zu experimentieren und die daraus resultierenden Veränderungen anzuzeigen. Dadurch lässt es sich auch gut für Demonstrationen (z.B. für das Aufzeigen von Rundungsfehlern bei der Sitzberechnung) nutzen.
 
 
@@ -52,7 +52,7 @@ Der Quellcode wird der Öffentlichkeit frei zur Verfügung gestellt, um Interess
 \begin{itemize}
 \item Auswertung von Wahlergebnissen nach gesetzlicher Bestimmung
 \begin{itemize}
-\item Berechnen der Direkt-, Überhang- und Ausgleichsmandate
+\item Berechnen der Mandate \footnote{\textbf{Mandat} - Der einem Abgeordneten von seinen Wählern erteilte Vertretungsauftrag im Bundestag} (Direkt-, Überhang- und Ausgleichsmandate) 
 \item Berechnen der restlichen Sitzverteilung im Deutschen Bundestag anhand der Zweitstimmen
 \end{itemize}
 \item Anzeigen und Interaktion mit Wahlausgängen anhand einer grafischen Benutzeroberfläche
@@ -261,7 +261,7 @@ Die restlichen Nummern dienen zur Durchnummerierung.
 	\item \textbf{/F30060/} Auswerten der Wahlergebnisse \hfill \\
 	Nachdem die Wahlergebnisse (/PD01/) entweder geladen oder verändert wurden (/F30070/), werden sie ausgewertet, d.h. die Sitzverteilung wird berechnet (/F30065/) und alle Bereiche werden angepasst.
 	\item \textbf{/F30065/} Berechnung der Sitzverteilung \hfill \\
-	Die Sitzverteilung des Bundestages wird anhand der Stimmen und den daraus resultierenden Direktmandaten, Überhangmandaten, Ausgleichsmandaten und den Abgeordneten die über die Landeslisten in den Bundestag einziehen berechnet. Anhand der Erststimmen werden zunächst die Direktmandate der jeweiligen Wahlkreise bestimmt (299 Direktmandate). Die verbleibende Sitzerteilung des Bundestages wird anhand der Zweitstimmen, die die jeweiligen Parteien erhielten, errechnet. Dadurch entstehen Überhang- und Ausgleichsmandate.
+	Die Sitzverteilung des Bundestages wird anhand der Stimmen und den daraus resultierenden Direktmandaten, Überhangmandaten, Ausgleichsmandaten und den Abgeordneten die über die Landeslisten \footnote{\textbf{Landesliste} - Die Landesliste bezeichnet die Liste der Kandidaten einer Partei für die Wahl zum Bundestag} in den Bundestag einziehen berechnet. Anhand der Erststimmen werden zunächst die Direktmandate der jeweiligen Wahlkreise bestimmt (299 Direktmandate). Die verbleibende Sitzerteilung des Bundestages wird anhand der Zweitstimmen, die die jeweiligen Parteien erhielten, errechnet. Dadurch entstehen Überhang- und Ausgleichsmandate.
 	\item \textbf{/F30070/} Verändern der Wahlergebnisse \hfill \\
 	In dem Tabellenfenster (/F10060/) können Stimmzahlen einzelner Wahlkreise verändert werden.
 	\item \textbf{/F30080/} Färben der Bundesländer \hfill \\
@@ -545,25 +545,6 @@ Für die Phasen Entwurf und Implementierung planen wir insgesamt 720 Personenstu
 
 \subsection{Ressourcen}
 Jedes Teammitglied benötigt einen Personal Computer mit Leistungswerten über den Mindestanforderungen für die Entwicklung dieser Software.
-+
-\begin{itemize}
-	\item \textbf{Landeslisten} \\
-		Die Landesliste ist die Liste der Kandidaten einer Partei für die Wahl zum Bundestag.
-	\item \textbf{Mandat} \\
-	Der einem Abgeordneten von seinen Wählern erteilte Vertretungsauftrag im Bundestag.
-	\item \textbf{Direktmandat} \\
-	In jedem Wahlkreis stellen sich sogenannte Direktkandidaten zur Wahl. Ein Direktmandat ist der Wählerauftrag, den bei einer Bundestagswahl derjenige Direktkandidat erhält, der innerhalb seines Wahlkreises die relative Mehrheit der Stimmen erhält. Der oder die Abgeordnete erhält einen Platz im Bundestag und vertritt den Wahlkreis.
-	\item \textbf{Überhangmandat} \\
-	Wenn eine Partei durch Direktmandate mehr Mandate erringt, als ihr gemäß dem Ergebnis der Verhältniswahl zustehen würden. Dann nennt man diese weiteren Mandate Überhangmandate.
-	\item \textbf{Ausgleichsmandat} \\
-	Ausgleichsmandate dienen dazu, die bei bestimmten Wahlsystemen zustande kommenden Überhangmandate so auszugleichen, dass andere Parteien, die keine Überhangmandate bekommen haben, nicht benachteiligt werden.
-	\item \textbf{Paradoxe Situationen} \\
-	Gegenseitige, oder widersprüchliche Situationen. Bei der Bundestagswahl ist das negative Stimmgewicht ein Beispiel dafür.
-	\item \textbf{Negatives Stimmgewicht} \\
-	Das negative Stimmgewicht ist ein Effekt bei Wahlen, bei dem sich Wählerstimmen gegen den Wählerwillen auswirken.
-	
-	
-\end{itemize}
 
 \renewcommand{\notesname}{15 Glossar}
 \addcontentsline{toc}{section}{15 Glossar}
