@@ -33,8 +33,42 @@
 \end{onehalfspace}
 \newpage 
 
+\section{Einleitung}
 
 
+
+\section{Systemmodell}
+
+
+\section{Klassendiagramm Übersicht}
+
+
+\subsection{GUI}
+\includegraphics[scale=0.6]{GUI-Abschnitt.png} \\
+Dieser Teil des gesamten Klassendiagramms zeigt den Visualisierungsteil. \\
+Das Programmfenster besteht aus mehreren Wahlfenstern in Form von Tabs. Weiterhin enthält es
+ein Generatorfenster, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
+ein Vergleichsfenster, wenn der Vergleich zweier Wahlen aktiv ist. \\
+Ein Wahlfenster besteht aus genau drei Ansichtsfenstern, diese sind Bundes-, Landes- und
+Wahlkreisansicht.
+Zu jeder von diesen gehört jeweils ein Tabellen-, Diagramm- und Kartenfenster. \\
+Das Tabellenfenster, in welchem Erst- und Zweitstimmen geändert werden können, und die
+dazugehörige ChangeListener-Klasse werden im Beobachter-Prinzip umgesetzt. Der ChangeListener
+hört das Tabellenfenster ab und wird bei Veränderungen informiert. \\
+Gesteuert werden alle genannten Klassen durch die GUISteuerungs-Klasse, die alle Tabellen befüllt,
+Diagramme erstellt und die Kartenfenster füllt. Außerdem werden von ihr auch die Veränderungen,
+die der ChangeListener bekommt, verwaltet.
+
+\section{Klassendiagramm im Detail}
+
+
+
+
+\section{Anwendungsfälle}
+
+
+
+\section{Sequenzdiagramme}
 
 
 \begingroup
