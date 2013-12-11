@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  11 DEC 2013 03:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.5)  11 DEC 2013 18:37
 entering extended mode
 **Entwurf.tex
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
+(C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -403,7 +403,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \endnotesep=\dimen123
 \@enotes=\write3
 )
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux)
+(C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
@@ -481,15 +481,14 @@ Package pdftex.def Info: KIT-Logo.png used on input line 26.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Philipp/Desktop/
-Uni/PSE/svn/Entwurf/Entwurfsdokument/KIT-Logo.png>]
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.toc)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Manuel/Desktop/P
+SE/Entwurf/Entwurfsdokument/KIT-Logo.png>]
+(C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.toc)
 \tf@toc=\write4
-
-[2] <GUI-Abschnitt.png, id=16, 726.46407pt x 390.70969pt>
+ [2]
+<GUI-Abschnitt.png, id=16, 726.46407pt x 390.70969pt>
 File: GUI-Abschnitt.png Graphic file (type png)
-
-<use GUI-Abschnitt.png>
+ <use GUI-Abschnitt.png>
 Package pdftex.def Info: GUI-Abschnitt.png used on input line 47.
 (pdftex.def)             Requested size: 435.8818pt x 234.42761pt.
 
@@ -504,27 +503,34 @@ Overfull \hbox (42.38152pt too wide) in paragraph at lines 63--65
 [] 
  []
 
-[3 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI-Abschnitt
-.png>] [4 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenh
-altung-Ausschnitt.png>]
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
+[3 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/GUI-Abschnitt.png>]
+<Import-Export.png, id=22, 876.27374pt x 574.145pt>
+File: Import-Export.png Graphic file (type png)
+ <use Import-Export.png>
+Package pdftex.def Info: Import-Export.png used on input line 67.
+(pdftex.def)             Requested size: 438.13579pt x 287.0718pt.
+
+[4 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Datenhaltung-Ausschnit
+t.png>] [5 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Import-Export.
+png>] (C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3188 strings out of 493921
- 40866 string characters out of 3144869
+ 3195 strings out of 493921
+ 40910 string characters out of 3144873
  102400 words of memory out of 3000000
- 6428 multiletter control sequences out of 15000+200000
- 12109 words of font info for 47 fonts, out of 3000000 for 9000
+ 6433 multiletter control sequences out of 15000+200000
+ 12455 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,7n,24p,284b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Entwurf.pdf (4 pages, 185031 bytes).
+ 27i,7n,24p,910b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Entwurf.pdf (5 pages, 213875 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
