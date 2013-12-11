@@ -5,7 +5,12 @@
 \contentsline {subsection}{\numberline {3.1}GUI}{3}
 \contentsline {subsection}{\numberline {3.2}Datenhaltung}{4}
 \contentsline {subsection}{\numberline {3.3}Import/ Export}{5}
+\contentsline {subparagraph}{Methoden}{5}
 \contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{6}
 \contentsline {section}{\numberline {4}Klassendiagramm im Detail}{7}
 \contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{7}
 \contentsline {section}{\numberline {6}Sequenzdiagramme}{7}
+\contentsline {subsection}{\numberline {6.1}Import}{7}
+\contentsline {subsection}{\numberline {6.2}Export}{7}
+\contentsline {subsection}{\numberline {6.3}Paradoxe Wahlgenerierung und Vergleich}{8}
+\contentsline {subsection}{\numberline {6.4}Vergleich}{8}

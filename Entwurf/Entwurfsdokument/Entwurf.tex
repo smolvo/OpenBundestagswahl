@@ -64,9 +64,20 @@ die der ChangeListener bekommt, verwaltet.
 Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
 
 \subsection{Import/ Export}
-\includegraphics[scale=0.5]{Import-Export} \\
+\includegraphics[scale=0.5]{Import-Export Ausschnitt.png} \\
 In diesem Klassendiagramm sieht man den Aufbau des Import-/Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in \textit{Steuerung} und die genaue Struktur hinter \textit{Bundestagswahl} und der GUI ausgeblendet. \\
 Mit unserem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist \textit{Crawler2013}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse \textit{Crawler} zu verwenden, von der \textit{Crawler2013} erbt, und alle vorhandenen Crawler von der Klasse \textit{ImportManager} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf die \textit{GUISteuerung} die \textit{Steuerung} anwählt, welche wiederum über den \textit{ImportManager} den geeigneten Crawler bestimmt, der die Informationen ausliest die eigentliche Arbeit ausführt.
+
+\subparagraph{Methoden}
+\begin{description}
+\item \textbf {exportieren(pfad : String, bw : Bundestagswahl)} \\
+Schreibt die Bundestagswahl bw in die .csv-Datei, deren Pfad in \textbf{pfad} gegeben ist.
+\item \textbf {importieren(pfad : String)} \\
+Liest die .csv-Datei, deren Pfad in pfad gegeben ist, ein, erstellt ein Bundestagswahlobjekt und füllt es.
+\item \textbf{pruefeFormat(pfad : String) : Boolean} \\
+Prüft das Format der Datei, deren Pfad in pfad gegeben ist. Wenn es sich um eine .csv-Datei handelt, die durch einen vorhandenen Crawler erfasst werden kann, wird dieser Crawler als passenderCrawler gesetzt und true zurückgegeben. Falls kein geeigneter Crawler gefunden wird, da die Datei keine .csv-Datei ist oder ihre Struktur nicht korrekt ist, wird false zurückgegeben.
+
+\end{description}
 
 \subsection{Wahlgenerierung}
 \includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm.png} \\
@@ -88,7 +99,19 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 
 
 \section{Sequenzdiagramme}
+\subsection{Import}
+\includegraphics[scale=0.5]{Import Sequenzdiagramm.png} \\
 
+\subsection{Export}
+\includegraphics[scale=0.5]{Export Sequenzdiagramm.png} \\
+
+\subsection{Paradoxe Wahlgenerierung und Vergleich}
+\includegraphics[scale=0.5]{paradoxeWahlgenerierung+Vergleich.png} \\
+
+\subsection{Vergleich}
+\includegraphics[scale=0.5]{Vergleich Sequenzdiagramm.png} \\
+
+In diesem Sequenzdiagramm wird gezeigt, was passiert, wenn der Benutzer zwei Tabs geöffnet hat und einen Vergleich starten will.
 
 \begingroup
 \parindent 0pt
