@@ -68,6 +68,15 @@ Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
 In diesem Klassendiagramm sieht man den Aufbau des Import-/Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in \textit{Steuerung} und die genaue Struktur hinter \textit{Bundestagswahl} und der GUI ausgeblendet. \\
 Mit unserem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist \textit{Crawler2013}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse \textit{Crawler} zu verwenden, von der \textit{Crawler2013} erbt, und alle vorhandenen Crawler von der Klasse \textit{ImportManager} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf die \textit{GUISteuerung} die \textit{Steuerung} anwählt, welche wiederum über den \textit{ImportManager} den geeigneten Crawler bestimmt, der die Informationen ausliest die eigentliche Arbeit ausführt.
 
+\subsection{Wahlgenerierung}
+\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm.png} \\
+Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
+Mit diesem Modul können Bundestagswahlen anhand vorher definierten Stimmanteilen auf Bundesebene generiert werden. Bei diesen Stimmanteilen handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine Basis-Bundestagswahl um Daten wie beispielsweise Bundesländer, Wahlkreise und Wahlberechtigte zur Verfügung zu haben.\\\\
+Beim generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig, erst auf alle Bundesländer und dann auf die einzelnen Wahlkreise verteilt.\\\\
+Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.\\\\
+\includegraphics[scale=0.5]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
+Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
+
 
 \section{Klassendiagramm im Detail}
 

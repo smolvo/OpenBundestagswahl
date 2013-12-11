@@ -1,0 +1,26 @@
+# objects
+Akteur:Actor
+st:Steuerung[]
+/wg:Wahlgenerator[x]
+/btw:Bundestagswahl
+/bl:Bundesland
+/wk:Wahlkreis
+
+# messages
+# ![<zufaelligeWahlgenerierung()>]
+
+Akteur:st.zufaelligeWahlgenerierung(basisWahl, anteile)
+
+st:wg\:Wahlgenerator=wg.new(basisWahl, anteile)
+wg:wg.berechneGesamtanzahlStimmen()
+
+st[1]:btw\:Bundestagswahl=wg.erzeugeBTW()
+wg:wg.verteileStimmen()
+*1 wg
+Verteilt die vorhandenen Erst- und Zweitstimmen der einzelnen Parteien zufällig
+auf Bundesländer und Anschließend auf Wahlkreise.
+*1
+
+st[0]:st.bundestagswahlen.add(btw)
+
+
