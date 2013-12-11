@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.5)  12 DEC 2013 00:28
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.5)  12 DEC 2013 00:43
 entering extended mode
 **Entwurf.tex
 (C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -563,91 +563,55 @@ Overfull \hbox (207.99988pt too wide) in paragraph at lines 83--90
 tt.png>] [6 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Wahlgenerator
 _Klassendiagramm.png (PNG copy)> <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsd
 okument/zufaelligeWahlgenerierung_Sequenzdiagramm.png>]
+<Import-Sequenzdiagramm.png, id=38, 386.94562pt x 842.39719pt>
+File: Import-Sequenzdiagramm.png Graphic file (type png)
 
-LaTeX Warning: File `Import Sequenzdiagramm.png' not found on input line 103.
-
-<Import Sequenzdiagramm.png, id=38, 1123.19624pt x 515.9275pt>
-File: Import Sequenzdiagramm.png Graphic file (type png)
-
-<use Import Sequenzdiagramm.png>
-Package pdftex.def Info: Import Sequenzdiagramm.png used on input line 103.
-(pdftex.def)             Requested size: 561.59674pt x 257.96312pt.
-
-Overfull \hbox (210.04575pt too wide) in paragraph at lines 103--104
-[] 
- []
+<use Import-Sequenzdiagramm.png>
+Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 103.
+(pdftex.def)             Requested size: 270.86008pt x 589.67401pt.
+ [7]
+Overfull \vbox (24.80205pt too high) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+[8 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Import-Sequenzdiagramm
+.png>] <Export-Sequenzdiagramm.png, id=47, 182.93344pt x 882.29625pt>
+File: Export-Sequenzdiagramm.png Graphic file (type png)
 
- []
+<use Export-Sequenzdiagramm.png>
+Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 106.
+(pdftex.def)             Requested size: 137.19974pt x 661.72057pt.
 
-
-LaTeX Warning: File `Export Sequenzdiagramm.png' not found on input line 106.
-
-<Export Sequenzdiagramm.png, id=39, 1176.395pt x 243.91125pt>
-File: Export Sequenzdiagramm.png Graphic file (type png)
-
-<use Export Sequenzdiagramm.png>
-Package pdftex.def Info: Export Sequenzdiagramm.png used on input line 106.
-(pdftex.def)             Requested size: 588.19608pt x 121.95532pt.
-
-Overfull \hbox (236.64508pt too wide) in paragraph at lines 106--107
-[] 
- []
+Overfull \vbox (17.14034pt too high) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+[9 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Export-Sequenzdiagramm
+.png>]
+<paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png, id=52, 500.62032pt x 12
+59.4553pt>
+File: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png Graphic file (type 
+png)
+ <use paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png>
+Package pdftex.def Info: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png 
+used on input line 109.
+(pdftex.def)             Requested size: 375.46431pt x 944.58917pt.
 
- []
-
-<paradoxeWahlgenerierung+Vergleich.png, id=40, 1679.27374pt x 667.49374pt>
-File: paradoxeWahlgenerierung+Vergleich.png Graphic file (type png)
-
-<use paradoxeWahlgenerierung+Vergleich.png>
-Package pdftex.def Info: paradoxeWahlgenerierung+Vergleich.png used on input li
-ne 109.
-(pdftex.def)             Requested size: 839.63483pt x 333.74606pt.
-
-Overfull \hbox (386.66693pt too wide) in paragraph at lines 109--110
-[] 
- []
+Overfull \vbox (300.00894pt too high) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+[10 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/paradoxeWahlgenerieru
+ng+Vergleich-Sequenzdiagramm.png>]
+<Vergleich-Sequenzdiagramm.png, id=57, 243.15843pt x 810.77907pt>
+File: Vergleich-Sequenzdiagramm.png Graphic file (type png)
 
- []
-
-[7 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Import Sequenzdiagramm
-.png> <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Export Sequenzdiagr
-amm.png>]
-
-LaTeX Warning: File `Vergleich Sequenzdiagramm.png' not found on input line 112
-.
-
-<Vergleich Sequenzdiagramm.png, id=47, 1081.03876pt x 324.21124pt>
-File: Vergleich Sequenzdiagramm.png Graphic file (type png)
-
-<use Vergleich Sequenzdiagramm.png>
-Package pdftex.def Info: Vergleich Sequenzdiagramm.png used on input line 112.
-(pdftex.def)             Requested size: 540.51805pt x 162.10522pt.
-
-Overfull \hbox (188.96706pt too wide) in paragraph at lines 112--113
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
-
- []
-
-[8 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/paradoxeWahlgenerierun
-g+Vergleich.png> <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Vergleic
-h Sequenzdiagramm.png>]
+<use Vergleich-Sequenzdiagramm.png>
+Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 112.
+(pdftex.def)             Requested size: 182.36838pt x 608.08282pt.
+ [11 <C:/Users/Manuel/Desktop/PSE/Entwurf/Entwurfsdokument/Vergleich-Sequenzdia
+gramm.png>]
 (C:\Users\Manuel\Desktop\PSE\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
  3225 strings out of 493921
- 42000 string characters out of 3144873
+ 42128 string characters out of 3144873
  106400 words of memory out of 3000000
  6457 multiletter control sequences out of 15000+200000
  12455 words of font info for 48 fonts, out of 3000000 for 9000
@@ -660,9 +624,9 @@ es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Entwurf.pdf (8 pages, 350872 bytes).
+Output written on Entwurf.pdf (11 pages, 372373 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
+ 82 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
