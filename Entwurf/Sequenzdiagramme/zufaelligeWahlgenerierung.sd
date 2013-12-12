@@ -1,5 +1,5 @@
 # objects
-Akteur:Actor
+ext:External[pe]
 st:Steuerung[]
 /wg:Wahlgenerator[x]
 /btw:Bundestagswahl
@@ -9,7 +9,7 @@ st:Steuerung[]
 # messages
 # ![<zufaelligeWahlgenerierung()>]
 
-Akteur:st.zufaelligeWahlgenerierung(basisWahl, anteile)
+ext:st.zufaelligeWahlgenerierung(basisWahl, anteile)
 
 st:wg\:Wahlgenerator=wg.new(basisWahl, anteile)
 wg:wg.berechneGesamtanzahlStimmen()
