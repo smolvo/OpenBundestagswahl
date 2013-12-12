@@ -1,0 +1,18 @@
+#!>>
+#!In der GUI wurden Stimme verändert und der Berechne-Button wurde geklickt
+#!
+#!<<
+ext:External[pe]
+guist:GuiSteuerung
+haupts:Hauptsteuerung
+bundesw:Bundestagswahl
+bundeswahl2013:Mandatsrechner
+
+
+ext:guist.aktualisiereDaten()
+guist:guist.prüfe()
+
+guist:haupts.berechneSitzverteilung(Bundestagswahl):Bundestagswahl
+haupts:bundesw.prüfeDaten()
+haupts:haupts.aktualisereDaten()
+haupts:bundeswahl2013.berechne(Bundestagswahl):Bundestagswahl

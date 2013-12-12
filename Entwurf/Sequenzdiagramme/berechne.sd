@@ -1,0 +1,32 @@
+#!>>
+#!Die Daten sind auf den aktuellsten Stand und eine neue Sitzverteilung muss berechnet werden
+#!Dabei müssen auch die aktualisierten Daten neu berechnet werden.
+#!
+#!<<
+ext:External[pe]
+haupts:Hauptsteuerung[a]
+b2013:Mandatsrechner2013[a]
+
+ext:haupts[a].berechneDaten
+haupts:Bundestagswahl=b2013.berechne(Bundestagswahl bl)
+*4 b2013
+Berechne alle fehlenden 
+Bundesländer und danach 
+die Sitzverteilung im 
+Bundestag
+*4
+[c:loop für alle Bundesländer]
+b2013:Bundesland=b2013.berechne(Bundesland bl)
+*3 b2013
+Berechne parallel alle fehlenden 
+Wahlkreise und danach die 
+Sitzverteilung im Bundesland
+*3
+[c:parallel alle Wahlkreise]
+b2013:Wahlkreis=b2013.berechne(Wahlkreis wk)
+*4 b2013
+Berechne den 
+Wahlkreissieger
+*4
+[/c]
+[/c]
