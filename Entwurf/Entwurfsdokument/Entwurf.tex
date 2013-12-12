@@ -89,6 +89,12 @@ Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.\\\\
 Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
 
 \subsection{Chronik}
+\includegraphics[scale=0.8] {Chronik_Ausschnitt.png}
+\\
+Die Klasse "Chronik" gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede "Bundestagswahl" hat hierbei eine eigene Chronik. "Chronik" wird in dem Konstruktor von "Bundestagswahl" erzeugt, und ist daher in jedem "Bundestagswahl"-Objekt enthalten. Es besitzt eine Menge von "StimmenMemento"-Objekten. Bei jeder Veränderung wird ein neues "StimmenMemento"-Objekt angelegt, was die Veränderung wiederspiegelt.
+\
+Die Methode "sichereStimme" wird von dem "Bundestagswahl"-Objekt bei jedem Aufruf von "setzeStimme" aufgerufen.
+
 
 
 
@@ -110,6 +116,9 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 \includegraphics[scale=0.75]{Vergleich-Sequenzdiagramm.png} 
 
 In diesem Sequenzdiagramm wird gezeigt, was passiert, wenn der Benutzer zwei Tabs geöffnet hat und einen Vergleich starten will.
+
+\subsection{Chronik}
+\includegraphics[scale=0.75]{Chronik_Sequenzdiagramm.png}
 
 \begingroup
 \parindent 0pt
