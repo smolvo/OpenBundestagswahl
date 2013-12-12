@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.11)  12 DEC 2013 13:53
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.11)  12 DEC 2013 13:59
 entering extended mode
 **Entwurf.tex
 (E:\Dokumente\PSE\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -629,10 +629,10 @@ iagramm.png>] [12 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Chro
 nik_Sequenzdiagramm.png>]
 (E:\Dokumente\PSE\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3242 strings out of 493921
- 42037 string characters out of 3147263
+ 3239 strings out of 493921
+ 41989 string characters out of 3147263
  106400 words of memory out of 3000000
- 6472 multiletter control sequences out of 15000+200000
+ 6469 multiletter control sequences out of 15000+200000
  12455 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,7n,24p,910b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -643,7 +643,7 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
 s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti10.pfb>
-Output written on Entwurf.pdf (12 pages, 400214 bytes).
+Output written on Entwurf.pdf (12 pages, 400460 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
