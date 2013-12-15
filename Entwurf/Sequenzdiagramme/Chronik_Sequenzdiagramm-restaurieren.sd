@@ -1,0 +1,17 @@
+gui:GuiSteuerung
+s:Steuerung
+bundestagswahl:BundestagsWahl[a]
+c:Chronik
+m1:Stimme[a]
+m2:Stimme[a]
+
+
+gui:Bundestagswahl=s.zurueckSetzen(Bundestagswahl)
+s:bundestagswahl.zurueckSetzen()
+bundestagswahl:Stimme=c.restauriereStimme()
+c:m2.destroy
+
+gui:Bundestagswahl=s.zurueckSetzen(Bundestagswahl)
+s:bundestagswahl.zurueckSetzen()
+bundestagswahl:Stimme=c.restauriereStimme()
+c:m1.destroy

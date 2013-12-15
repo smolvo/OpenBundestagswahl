@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.11)  12 DEC 2013 13:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.11)  15 DEC 2013 17:30
 entering extended mode
 **Entwurf.tex
 (E:\Dokumente\PSE\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -564,12 +564,16 @@ Overfull \hbox (207.99988pt too wide) in paragraph at lines 83--90
 hnitt.png>] [6 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Wahlgen
 erator_Klassendiagramm.png (PNG copy)> <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/
 Entwurfsdokument/zufaelligeWahlgenerierung_Sequenzdiagramm.png>]
-<Chronik_Ausschnitt.png, id=38, 186.6975pt x 380.92313pt>
+<Chronik_Ausschnitt.png, id=38, 655.69969pt x 335.00156pt>
 File: Chronik_Ausschnitt.png Graphic file (type png)
 
 <use Chronik_Ausschnitt.png>
 Package pdftex.def Info: Chronik_Ausschnitt.png used on input line 92.
-(pdftex.def)             Requested size: 149.35818pt x 304.73889pt.
+(pdftex.def)             Requested size: 524.56047pt x 268.0016pt.
+
+Overfull \hbox (71.59258pt too wide) in paragraph at lines 92--97
+[] 
+ []
 
 <Import-Sequenzdiagramm.png, id=39, 386.94562pt x 842.39719pt>
 File: Import-Sequenzdiagramm.png Graphic file (type png)
@@ -579,14 +583,17 @@ Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 107.
 (pdftex.def)             Requested size: 270.86008pt x 589.67401pt.
  [7 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Chronik_Ausschnitt
 .png>]
-<Export-Sequenzdiagramm.png, id=45, 182.93344pt x 882.29625pt>
+Overfull \vbox (24.80205pt too high) has occurred while \output is active []
+
+
+[8 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Import-Sequenzdiagr
+amm.png>] <Export-Sequenzdiagramm.png, id=49, 182.93344pt x 882.29625pt>
 File: Export-Sequenzdiagramm.png Graphic file (type png)
 
 <use Export-Sequenzdiagramm.png>
 Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 110.
 (pdftex.def)             Requested size: 137.19974pt x 661.72057pt.
- [8 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Import-Sequenzdiag
-ramm.png>]
+
 Overfull \vbox (17.14034pt too high) has occurred while \output is active []
 
 
@@ -612,27 +619,63 @@ File: Vergleich-Sequenzdiagramm.png Graphic file (type png)
 <use Vergleich-Sequenzdiagramm.png>
 Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 116.
 (pdftex.def)             Requested size: 182.36838pt x 608.08282pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
-<Chronik_Sequenzdiagramm.png, id=60, 696.6025pt x 851.18pt>
-File: Chronik_Sequenzdiagramm.png Graphic file (type png)
 
-<use Chronik_Sequenzdiagramm.png>
-Package pdftex.def Info: Chronik_Sequenzdiagramm.png used on input line 121.
-(pdftex.def)             Requested size: 522.45059pt x 638.38342pt.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
 
-Overfull \hbox (69.4827pt too wide) in paragraph at lines 121--122
+<Chronik_Sequenzdiagramm-erzeugen.png, id=60, 716.6775pt x 208.78pt>
+File: Chronik_Sequenzdiagramm-erzeugen.png Graphic file (type png)
+
+<use Chronik_Sequenzdiagramm-erzeugen.png>
+Package pdftex.def Info: Chronik_Sequenzdiagramm-erzeugen.png used on input lin
+e 123.
+(pdftex.def)             Requested size: 537.50682pt x 156.5846pt.
+
+Overfull \hbox (109.53896pt too wide) in paragraph at lines 122--126
 [] 
  []
 
 [11 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Vergleich-Sequenzd
-iagramm.png>] [12 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Chro
-nik_Sequenzdiagramm.png>]
+iagramm.png>]
+<Chronik_Sequenzdiagramm-stimmenaendern.png, id=65, 1081.03876pt x 369.38pt>
+File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
+
+<use Chronik_Sequenzdiagramm-stimmenaendern.png>
+Package pdftex.def Info: Chronik_Sequenzdiagramm-stimmenaendern.png used on inp
+ut line 128.
+(pdftex.def)             Requested size: 540.51805pt x 184.68954pt.
+
+Overfull \hbox (112.55019pt too wide) in paragraph at lines 127--129
+[] 
+ []
+
+<Chronik_Sequenzdiagramm-restaurieren.png, id=66, 826.08624pt x 419.5675pt>
+File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
+
+<use Chronik_Sequenzdiagramm-restaurieren.png>
+Package pdftex.def Info: Chronik_Sequenzdiagramm-restaurieren.png used on input
+ line 130.
+(pdftex.def)             Requested size: 495.65556pt x 251.74243pt.
+
+Overfull \hbox (67.6877pt too wide) in paragraph at lines 129--133
+[] 
+ []
+
+[12 <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Chronik_Sequenzdia
+gramm-erzeugen.png> <E:/Dokumente/PSE/pse13-1/trunk/Entwurf/Entwurfsdokument/Ch
+ronik_Sequenzdiagramm-stimmenaendern.png>] [13 <E:/Dokumente/PSE/pse13-1/trunk/
+Entwurf/Entwurfsdokument/Chronik_Sequenzdiagramm-restaurieren.png>]
 (E:\Dokumente\PSE\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3239 strings out of 493921
- 41989 string characters out of 3147263
+ 3262 strings out of 493921
+ 42727 string characters out of 3147263
  106400 words of memory out of 3000000
- 6469 multiletter control sequences out of 15000+200000
+ 6487 multiletter control sequences out of 15000+200000
  12455 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,7n,24p,910b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -642,10 +685,11 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmti10.pfb>
-Output written on Entwurf.pdf (12 pages, 400460 bytes).
+fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmti10.pfb>
+Output written on Entwurf.pdf (13 pages, 426699 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

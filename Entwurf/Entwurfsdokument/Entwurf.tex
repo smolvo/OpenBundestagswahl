@@ -119,12 +119,17 @@ In diesem Sequenzdiagramm wird gezeigt, was passiert, wenn der Benutzer zwei Tab
 
 \subsection{Chronik}
 \begin{itemize}
-	\item Erzeugung
+	\item Erzeugung \\
+		\includegraphics[scale=0.75]{Chronik_Sequenzdiagramm-erzeugen.png}
+		\\
+		Die Chronik wird in dem Konstruktor von jeder Bundestagswahl erzeugt.
 	
-	\item Veränderung an den Stimmen
-	
-	\item Restaurieren einer Stimme
-	
+	\item Veränderung an den Stimmen \\
+		\includegraphics[scale=0.5]{Chronik_Sequenzdiagramm-stimmenaendern.png}
+	\item Restaurieren einer Stimme \\
+		\includegraphics[scale=0.6]{Chronik_Sequenzdiagramm-restaurieren.png}
+		\\
+		Stimmen werden in der Chronik werden Stack-artig zurückgegeben. Sobald eine Bundestagswahl rückgängig gemacht wurde, wird die neue Bundestagswahl als Rückgabewert zurückgegeben.
 	\item Beispielszenario	
 \end{itemize}
 %\includegraphics[scale=0.75]{Chronik_Sequenzdiagramm.png}
