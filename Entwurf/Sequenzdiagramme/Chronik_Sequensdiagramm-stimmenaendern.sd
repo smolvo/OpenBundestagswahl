@@ -1,0 +1,15 @@
+gui:GuiSteuerung
+s:Steuerung
+bundestagswahl:BundestagsWahl[a]
+c:Chronik
+/m1:StimmeMemento[a]
+/m2:StimmeMemento[a]
+/m3:StimmeMemento[a]
+
+gui:s.setzeStimme(Stimme,Bundestagswahl)
+s:bundestagswahl.setzeStimme(Stimme)
+bundestagswahl:c.sichereStimme(Stimme)
+c:m1.new(Stimme)
+bundestagswahl:c.sichereStimme(Stimme)
+c:m2.new(Stimme)
+
