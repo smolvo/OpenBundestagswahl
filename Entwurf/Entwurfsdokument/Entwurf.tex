@@ -137,13 +137,31 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]
-\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Wahlgenerierungs-Komponente} 
+\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Chronik-Komponente} 
 \end{figure}
 
 Die Klasse \textbf{Chronik} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede \textbf{Bundestagswahl} hat hierbei eine eigene Chronik. \textbf{Chronik} wird in dem Konstruktor von \textbf{Bundestagswahl} erzeugt, und ist daher in jedem \textbf{Bundestagswahl}-Objekt enthalten. Es besitzt eine Menge von \textbf{Stimmen}-Objekten. Bei jeder Veränderung wird ein neues \textbf{Stimmen}-Objekt angelegt, was die Veränderung wiederspiegelt.
 \
 Die Methode \textbf{sichereStimme} wird von dem \textbf{Bundestagswahl}-Objekt bei jedem Aufruf von \textbf{setzeStimme} aufgerufen.
+\newpage
+\subsection{Mandatsrechner}
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.6]{Mandatsrechneralles.png} \caption{Mandatsrechner-Komponente} 
+\end{figure}
+Die Berechnung der Wahl wird mit Hilfe des {\myma{Mandatsrechners}} realisiert. Es stehen die Klasse \\{\myma{Mandatsrechner2013}}, die das Berechnungsverfahren von der Bundestagswahl 2013 benutzt und die Klasse {\myma{Mandatsrechner2009}}, die das Berechnungsverfahren von der Bundestagswahl 2009 benutzt zur Verfügung. Beide Klassen erben von der abstrakten Klasse {\myma{Mandatsrechner}}. Dadurch besteht die Möglichkeit, weitere Berechnungsverfahren in späteren Versionen zu dem Programm hinzuzufügen. Da nur ein Objekt von dem {\myma{Mandatsrechner}} gebraucht wird, wird das Entwurfsmuster Einzelstück eingesetzt. Deswegen hält die Klasse einen privaten Konstruktor. Die abstrakten Methoden{\mymo{berechne()}} werden überladen, damit sie durch ihre Eingabeparameter spezifiziert werden. Diese werden dann in den Unterklassen je nach Wahlgesetz angepasst.
+\begin{large}
+Methoden 
+\end{large}
+\begin{description}
 
+\item {\mymo{berechne(wk: Wahlkreis):Wahlkreis}} \\
+Es werden die Stimmen aus den jeweiligen Wahlkreis ausgewertet. Dabei wird der Wahlkreissieger bestimmt und die Anzahl der Zweitstimme von jeder Partei. Die Auswertung wird danach wieder in das Wahlkreis-Objekt geschrieben.
+\item {\mymo{berechne(bl: Bundesland):Bundesland}} \\
+Um das Bundesland zu berechnen, müssen vorher alle Wahlkreise berechnet werden. Deswegen werden alle Wahlkreise, die ein Bundesland hält, neu berechnet. Die Berechnung der einzelnen Bundesländer erfolgt parallel. Nachdem die berechneten Wahlkreise im Bundesland gespeichert wurden, wird das Bundesland berechnet. Hier wird das Verhältnis der Parteien im Bundesland berechnet, damit später klar ist wie viele Sitze eine Partei in diesem Bundesland bekommt. Diese Ergebnisse werden, wie beim Wahlkreis, im Bundeslandobjekt gespeichert und danach zurückgegeben. 
+\item {\mymo{berechne(bw: Bundestagswahl):Bundestagswahl}} \\
+Diese öffentliche Methode berechnet zuerst alle Bundesländer die sich in der Klasse befinden. Nachdem alle Bundesländer erfolgreich berechnet wurden, wird die endgültige Sitzverteilung nach dem jeweiligen Wahlgesetz berechnet. Die Sitzverteilung wird dann in dem Bundestagswahlobjekt gespeichert. Das Bundestagswahlobjekt wird danach wieder an die Steuerung zurückgegeben.
+\end{description} 
 
 \section{Klassendiagramm im Detail}
 
