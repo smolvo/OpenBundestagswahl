@@ -41,10 +41,10 @@
 \section{Klassendiagramm Übersicht}
 \subsection{GUI}
 \begin{figure}[!ht]
-\includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} \\
+\includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} 
 \end{figure}
 
-Dieser Teil des gesamten Klassendiagramms zeigt den Visualisierungsteil. \\
+Dieser Teil des gesamten Klassendiagramm zeigt den Visualisierungsteil. \\
 Das Programmfenster besteht aus einem oder mehreren Wahlfenstern in Form von Tabs. Weiterhin enthält es
 ein Generatorfenster, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
 ein Vergleichsfenster, wenn der Vergleich zweier Wahlen aktiv ist. \\
@@ -98,14 +98,14 @@ informiert. \\
 \newpage
 \subsection{Datenhaltung}
 \begin{figure}[!ht]
-\includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} \\
+\includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} 
 \end{figure}
 
 Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
 \newpage
 \subsection{Import/ Export}
 \begin{figure}[!ht]
-\includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import\Export Komponente} \\
+\includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
 \end{figure}
 
 In diesem Klassendiagramm sieht man den Aufbau des Import-/Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in \textit{Steuerung} und die genaue Struktur hinter \textit{Bundestagswahl} und der GUI ausgeblendet. \\
@@ -124,7 +124,7 @@ Prüft das Format der Datei, deren Pfad in pfad gegeben ist. Wenn es sich um ein
 
 \subsection{Wahlgenerierung}
 \begin{figure}[!ht]
-\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} \\
+\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
 
 Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
@@ -136,7 +136,7 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]
-\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Wahlgenerierungs-Komponente} \\
+\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
 
 Die Klasse \textbf{Chronik} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede \textbf{Bundestagswahl} hat hierbei eine eigene Chronik. \textbf{Chronik} wird in dem Konstruktor von \textbf{Bundestagswahl} erzeugt, und ist daher in jedem \textbf{Bundestagswahl}-Objekt enthalten. Es besitzt eine Menge von \textbf{Stimmen}-Objekten. Bei jeder Veränderung wird ein neues \textbf{Stimmen}-Objekt angelegt, was die Veränderung wiederspiegelt.

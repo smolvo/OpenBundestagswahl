@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  16 DEC 2013 14:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  16 DEC 2013 16:15
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -495,22 +495,8 @@ File: GUI-Abschnitt.png Graphic file (type png)
 <use GUI-Abschnitt.png>
 Package pdftex.def Info: GUI-Abschnitt.png used on input line 44.
 (pdftex.def)             Requested size: 391.75668pt x 314.67004pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.45 \end
-         {figure}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[3 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI-Abschnitt
-.png>]
+ [3 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI-Abschnit
+t.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
@@ -572,63 +558,14 @@ File: Datenhaltung-Ausschnitt.png Graphic file (type png)
 <use Datenhaltung-Ausschnitt.png>
 Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 101.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.102 \end
-          {figure}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[5 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung-
-Ausschnitt.png>]
+ [5 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung
+-Ausschnitt.png>]
 <Import-Export_Ausschnitt.png, id=30, 890.32625pt x 574.145pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
 Package pdftex.def Info: Import-Export_Ausschnitt.png used on input line 108.
 (pdftex.def)             Requested size: 445.16203pt x 287.0718pt.
-
-! Undefined control sequence.
-<argument> ...sname }{\ignorespaces Import\Export 
-                                                  Komponente}}{\thepage }}
-l.108 ...hnitt} \caption{Import\Export Komponente}
-                                                   \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...sname : \ignorespaces Import\Export 
-                                                  Komponente
-l.108 ...hnitt} \caption{Import\Export Komponente}
-                                                   \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 \end
-          {figure}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
 
 <Wahlgenerator_Klassendiagramm.png, id=31, 833.1125pt x 528.97626pt>
 File: Wahlgenerator_Klassendiagramm.png Graphic file (type png)
@@ -637,22 +574,8 @@ File: Wahlgenerator_Klassendiagramm.png Graphic file (type png)
 Package pdftex.def Info: Wahlgenerator_Klassendiagramm.png used on input line 1
 27.
 (pdftex.def)             Requested size: 416.55524pt x 264.48747pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.128 \end
-          {figure}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[6 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Import-Export
-_Ausschnitt.png>]
+ [6 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Import-Expor
+t_Ausschnitt.png>]
 <zufaelligeWahlgenerierung_Sequenzdiagramm.png, id=37, 1321.93875pt x 412.54124
 pt>
 File: zufaelligeWahlgenerierung_Sequenzdiagramm.png Graphic file (type png)
@@ -698,19 +621,6 @@ Package pdftex.def Info: Chronik_Ausschnitt.png used on input line 139.
 Overfull \hbox (71.59258pt too wide) in paragraph at lines 139--139
 [][] 
  []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.140 \end
-          {figure}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
 
 <Import-Sequenzdiagramm.png, id=47, 386.94562pt x 842.39719pt>
 File: Import-Sequenzdiagramm.png Graphic file (type png)
@@ -803,10 +713,10 @@ sktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Sequenzdiagramm-restaurieren
 .png>]
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3280 strings out of 493921
- 43646 string characters out of 3144869
+ 3279 strings out of 493921
+ 43640 string characters out of 3144869
  104549 words of memory out of 3000000
- 6501 multiletter control sequences out of 15000+200000
+ 6500 multiletter control sequences out of 15000+200000
  12455 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,7n,24p,910b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -818,7 +728,7 @@ am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Entwurf.pdf (15 pages, 439570 bytes).
+Output written on Entwurf.pdf (15 pages, 439577 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
