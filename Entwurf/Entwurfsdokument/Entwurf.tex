@@ -44,21 +44,58 @@
 
 
 \subsection{GUI}
-\includegraphics[scale=0.6]{GUI-Abschnitt.png} \\
+\includegraphics[scale=0.4]{GUI-Abschnitt.png} \\
 Dieser Teil des gesamten Klassendiagramms zeigt den Visualisierungsteil. \\
-Das Programmfenster besteht aus mehreren Wahlfenstern in Form von Tabs. Weiterhin enthält es
+Das Programmfenster besteht aus einem oder mehreren Wahlfenstern in Form von Tabs. Weiterhin enthält es
 ein Generatorfenster, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
 ein Vergleichsfenster, wenn der Vergleich zweier Wahlen aktiv ist. \\
-Ein Wahlfenster besteht aus genau drei Ansichtsfenstern, diese sind Bundes-, Landes- und
-Wahlkreisansicht.
-Zu jeder von diesen gehört jeweils ein Tabellen-, Diagramm- und Kartenfenster. \\
+Ein Wahlfenster hat eine bestimmte Ansicht, diese ist entweder die Bundes-, Landes- und
+Wahlkreisansicht. Zu jeder von diesen gehört jeweils ein Tabellen-, Diagramm- und Kartenfenster. \\
+Das Tabellenfenster zeigt die Daten der Bundestagswahl-Klasse an (Erst-, Zweitstimmen, Direktmandat,...).\\
+Das Diagrammfenster visualisiert die Sitzverteilungs-Klasse. \\
+Das Kartenfenster visualisiert die Deutschland-Klasse. \\
 Das Tabellenfenster, in welchem Erst- und Zweitstimmen geändert werden können, und die
 dazugehörige ChangeListener-Klasse werden im Beobachter-Prinzip umgesetzt. Der ChangeListener
 hört das Tabellenfenster ab und wird bei Veränderungen informiert. \\
-Gesteuert werden alle genannten Klassen durch die GUISteuerungs-Klasse, die alle Tabellen befüllt,
-Diagramme erstellt und die Kartenfenster füllt. Außerdem werden von ihr auch die Veränderungen,
-die der ChangeListener bekommt, verwaltet.
+Gesteuert werden alle genannten Klassen durch die GUISteuerungs-Klasse, die die Ansicht und das
+Vergleichsfenster visualisiert und das gesamte Programmfenster beim Programmstart initialisiert.
 
+\newpage
+\begin{large}
+Methoden 
+\end{large}
+\begin{description}
+\item \textbf {Tabellenfenster} \\
+\begin{itemize}
+\item \textbf {senden(aenderungszeile : String, wert : Integer)} \\
+Das Tabellenfenster informiert den ChangeListener darüber, welche Zeile im Tabellenfenster
+geändert  wurde und was der neue Wert ist. \\
+\end{itemize}
+\item \textbf {ChangeListener} \\
+\begin{itemize}
+\item \textbf {aktualisiere()} \\
+Der ChangeListener passt seine Attribute, nachdem er von dem Tabellenfenster informiert wurde, an,
+diese repräsentieren den zuletzt geänderte Tabelleneintrag. \\
+\item \textbf {uebergeben()} \\
+Der ChangeListener übergibt, nachdem seine Attribute neu gesetzt wurden, diese an die Steuerung,
+sich dann um die Aktualisierung der internen Daten kümmert. \\
+\end{itemize} 
+\item \textbf {GUISteuerung} \\
+\begin{itemize}
+\item \textbf {initialisiere()} \\
+Der Programmfensterkonstruktor wird aufgerufen, alle Objekte erstellt und mit der Wahl 2013 befüllt. \\
+\item \textbf {visualisiere(bw : Bundestagswahl)} \\
+Wurde eine neue Bundestagswahl geladen und berechnet, werden alle dazugehörigen Werte und Grafiken
+im Karten-, Diagramm- und Tabellenfenster geladen. \\ 
+\item \textbf {visualisiere(vergleich : Vergleich)} \\
+Hat die Steuerung einen Vergleich zweier Wahlen errechnet und die Daten an die GUISteuerung übergeben,
+wird das Vergleichsfenster erstellt und mit den Daten des Vergleichsobjektes gefüllt. \\
+\item \textbf {zurueckSetzen(bw : Bundestagswahl)} \\
+Wünscht der Benutzer einen zuvor geänderten Wert im Tabellenfenster zurückzusetzen, wird die Steuerung 
+informiert. \\
+\end{itemize}
+
+\end{description}
 \subsection{Datenhaltung}
 \includegraphics[scale=0.5]{Datenhaltung-Ausschnitt} \\
 Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
