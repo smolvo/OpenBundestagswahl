@@ -8,12 +8,15 @@
 \usepackage{graphicx} %Um Bilder anzeigen zu können
 \usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{endnotes}
+\usepackage[section]{placeins}
+
 
 \let\footnote=\endnote
 
 \title{\Huge Entwurf\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1}
 \author{Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
 \date{}
+\setlength{\parindent}{0pt}
 
 \begin{document}
 \maketitle
@@ -34,17 +37,13 @@
 \newpage 
 
 \section{Einleitung}
-
-
-
 \section{Systemmodell}
-
-
 \section{Klassendiagramm Übersicht}
-
-
 \subsection{GUI}
-\includegraphics[scale=0.4]{GUI-Abschnitt.png} \\
+\begin{figure}[!ht]
+\includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} \\
+\end{figure}
+
 Dieser Teil des gesamten Klassendiagramms zeigt den Visualisierungsteil. \\
 Das Programmfenster besteht aus einem oder mehreren Wahlfenstern in Form von Tabs. Weiterhin enthält es
 ein Generatorfenster, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
@@ -96,12 +95,19 @@ informiert. \\
 \end{itemize}
 
 \end{description}
+\newpage
 \subsection{Datenhaltung}
-\includegraphics[scale=0.5]{Datenhaltung-Ausschnitt} \\
-Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
+\begin{figure}[!ht]
+\includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} \\
+\end{figure}
 
+Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
+\newpage
 \subsection{Import/ Export}
-\includegraphics[scale=0.5]{Import-Export Ausschnitt.png} \\
+\begin{figure}[!ht]
+\includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import\Export Komponente} \\
+\end{figure}
+
 In diesem Klassendiagramm sieht man den Aufbau des Import-/Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in \textit{Steuerung} und die genaue Struktur hinter \textit{Bundestagswahl} und der GUI ausgeblendet. \\
 Mit unserem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist \textit{Crawler2013}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse \textit{Crawler} zu verwenden, von der \textit{Crawler2013} erbt, und alle vorhandenen Crawler von der Klasse \textit{ImportManager} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf die \textit{GUISteuerung} die \textit{Steuerung} anwählt, welche wiederum über den \textit{ImportManager} den geeigneten Crawler bestimmt, der die Informationen ausliest die eigentliche Arbeit ausführt.
 
@@ -117,17 +123,22 @@ Prüft das Format der Datei, deren Pfad in pfad gegeben ist. Wenn es sich um ein
 \end{description}
 
 \subsection{Wahlgenerierung}
-\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm.png} \\
+\begin{figure}[!ht]
+\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} \\
+\end{figure}
+
 Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
 Mit diesem Modul können Bundestagswahlen anhand vorher definierten Stimmanteilen auf Bundesebene generiert werden. Bei diesen Stimmanteilen handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine Basis-Bundestagswahl um Daten wie beispielsweise Bundesländer, Wahlkreise und Wahlberechtigte zur Verfügung zu haben.\\\\
 Beim generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig, erst auf alle Bundesländer und dann auf die einzelnen Wahlkreise verteilt.\\\\
 Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.\\\\
 \includegraphics[scale=0.5]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
 Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
-
+\newpage
 \subsection{Chronik}
-\includegraphics[scale=0.8] {Chronik_Ausschnitt.png}
-\\
+\begin{figure}[!ht]
+\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Wahlgenerierungs-Komponente} \\
+\end{figure}
+
 Die Klasse \textbf{Chronik} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede \textbf{Bundestagswahl} hat hierbei eine eigene Chronik. \textbf{Chronik} wird in dem Konstruktor von \textbf{Bundestagswahl} erzeugt, und ist daher in jedem \textbf{Bundestagswahl}-Objekt enthalten. Es besitzt eine Menge von \textbf{Stimmen}-Objekten. Bei jeder Veränderung wird ein neues \textbf{Stimmen}-Objekt angelegt, was die Veränderung wiederspiegelt.
 \
 Die Methode \textbf{sichereStimme} wird von dem \textbf{Bundestagswahl}-Objekt bei jedem Aufruf von \textbf{setzeStimme} aufgerufen.
