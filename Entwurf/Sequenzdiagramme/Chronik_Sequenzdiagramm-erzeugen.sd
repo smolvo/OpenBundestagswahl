@@ -1,9 +1,6 @@
 s:Steuerung
 /bundestagswahl:BundestagsWahl[a]
 /c:Chronik
-/m1:StimmeMemento[a]
-/m2:StimmeMemento[a]
-/m3:StimmeMemento[a]
 
 s:bundestagswahl.new
 bundestagswahl:c.new
