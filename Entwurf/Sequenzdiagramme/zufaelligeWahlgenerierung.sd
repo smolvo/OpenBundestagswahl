@@ -12,9 +12,7 @@ basisWahl:Bundestagswahl
 
 ext:st.zufaelligeWahlgenerierung(basisWahl, anteile)
 st:wg\:Wahlgenerator=wg.new(basisWahl, anteile)
-wg:wg.setBasisWahl(basisWahl)
-wg[1]:wg.setAnteile(anteile)
-wg[1]:wg.berechneGesamtanzahlStimmen()
+wg:wg.berechneGesamtanzahlStimmen()
 st[1]:cloneWahl\:Bundestagswahl=wg.erzeugeBTW()
 wg:cloneWahl\:Bundestagswahl=basisWahl.clone()
 *1 basisWahl
