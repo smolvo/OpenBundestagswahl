@@ -6,12 +6,12 @@ m1:Stimme[a]
 m2:Stimme[a]
 
 
-gui:Meldung.success=s.zurueckSetzen()
+gui:true=s.zurueckSetzen()
 s:aktuelleBTW.zurueckSetzen()
 aktuelleBTW:Stimme=c.restauriereStimme()
 c:m2.destroy
 
-gui:Meldung.success=s.zurueckSetzen()
+gui:true=s.zurueckSetzen()
 s:aktuelleBTW.zurueckSetzen()
 aktuelleBTW:Stimme=c.restauriereStimme()
 c:m1.destroy

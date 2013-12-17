@@ -6,11 +6,11 @@ c:Chronik[a]
 /m2:Stimme[a]
 /m3:Stimme[a]
 
-gui:Meldung.success=s.aktualisiereDaten(Stimme,Integer)
+gui:true=s.aktualisiereDaten(Stimme,Integer)
 s:aktuelleBTW.setzeStimme(Stimme,Integer)
 aktuelleBTW:c.sichereStimme(Stimme)
 c:m1.new(Stimme)
-gui:Meldung.success=s.aktualisiereDaten(Stimme,Integer)
+gui:true=s.aktualisiereDaten(Stimme,Integer)
 s:aktuelleBTW.setzeStimme(Stimme,Integer)
 aktuelleBTW:c.sichereStimme(Stimme)
 c:m2.new(Stimme)
