@@ -225,12 +225,12 @@ Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachricht
 \includegraphics[scale=0.5]{Sequenzdiagramme/Import_Sequenzdiagramm.png} \caption{Import Sequenzdiagramm} 
 \end{figure}
 
-
+\newpage
 \subsection{Wahlgenerierung}
 \includegraphics[scale=0.65]{Sequenzdiagramme/Wahlgenerierung.png}
-Beim Generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig auf die einzelnen Wahlkreise verteilt.\\\\
-Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.
-Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
+In der Methode {\mymo{zufaelligeWahlgenerierung(basisWahl : Bundestagswahl, anteile : Stimmanteile) : Bundestagswahl}} wird zuerst ein neuer Wahlgenerator erzeugt. In dem Konstruktor des Wahlgenerators werden die absoluten Stimmzahlen berechnet und alle Attribute gesetzt.\\
+Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgeführt. In dieser Methode wird zuerst eine tiefe Kopie der basisWahl erstellt. In dieser Kopie werden dann die Stimmen auf alle Wahlkreise verteilt. Die Erststimmen auf die Kandidaten und die Zweitstimmen auf die Parteien. Diese Wahl wird am Ende als Ergebnis der Methode berechneBTW() zurückgegeben und in der Steuerung in die Liste alle Bundestagswahlen eingefügt.
+
 \subsection{Paradoxe Wahlgenerierung und Vergleich}
 
 \subsection{Vergleich}
