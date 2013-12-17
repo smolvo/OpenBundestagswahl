@@ -184,6 +184,7 @@ Zum Schluss wird die Methode {\myma{prüfeDaten()}} aufgerufen.
 \includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
 \end{figure}
 
+
 Hier sieht man den Aufbau des Import- bzw. Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in {\myma{Steuerung}} und die genaue Struktur hinter {\myma{Bundestagswahl}} und der GUI ausgeblendet. \\
 Mit dem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist {\myma{Crawler2013}}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse {\myma{Crawler}} zu verwenden, von der {\myma{Crawler2013}} erbt, und alle vorhandenen Crawler von der Klasse {\myma{ImportExportManager}} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf {\myma{Steuerung}} die entsprechenden Methoden von {\myma{ImportExportManager}} ausführt.
 
@@ -191,15 +192,20 @@ Mit dem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Da
 \begin{description}
 \item{\myma{ImportExportManager}}
 \item {\mymo{importieren(csvDatei : Datei) : Bundestagswahl}} \\
-Diese öffentliche Methode führt zuerst die private Methode {\mymo{pruefeDateityp(csvDatei : Datei) : Boolean}} aus. Wenn diese true zurückgibt, wird die ebenfalls private Methode {\mymo{leseCSVDatei(csvDatei : String) : Boolean}} ausgeführt. Wurde nun eine gültige Bundestagswahl zurückgegeben, wird diese an die Steuerung zurückgegeben, andernfalls ein Fehler ausgegeben.
-
-\item {\mymo{exportieren(pfad : String)}} \\
+Diese öffentliche Methode führt zuerst die private Methode {\mymo{pruefeDateityp()}} aus. Wenn diese true zurückgibt, wird die ebenfalls private Methode {\mymo{leseCSVDatei()}} ausgeführt. Wurde nun eine gültige Bundestagswahl zurückgegeben, wird diese an die Steuerung zurückgegeben, andernfalls ein Fehler ausgegeben.
 
 \item {\mymo{pruefeDateityp(csvDatei : Datei) : Boolean}} \\
 Prüft, ob es sich bei der gegebenen Datei um eine .csv-Datei handelt. Wenn dies der Fall ist, wird true zurückgegeben, andernfalls false.
 
 \item {\mymo{leseCSVDatei(csvDatei : String) : Boolean}} \\
-Durchläuft die Crawler-Liste und lässt die darin enthaltenen Crawler nacheinander versuchen, die .csv-Datei auszuwerten und mit den gewonnen Informationen eine Bundestagswahl zu erstellen und zu füllen. Gelingt es einem Crawler, wird der Durchlauf abgebrochen und die gerade erstellte Bundestagswahl wird an den ImportExportManager zurückgegeben.
+Durchläuft die Crawler-Liste und lässt die darin enthaltenen Crawler nacheinander versuchen, die .csv-Datei auszuwerten und mit den gewonnenen Informationen eine Bundestagswahl zu erstellen und zu füllen. Gelingt es einem Crawler, wird der Durchlauf abgebrochen und true zurückgegeben. 
+
+\item{\myma{Crawler}}\\
+\item {\mymo{exportieren(Pfad : String) : Boolean}} \\
+Nimmt die aktuelle Bundestagswahl der Steuerung und schreibt die zugehörigen Wahldaten, ohne die berechneten Daten, in eine dem Pfad entsprechende .csv-Datei, deren Format Crawler bestimmt wird. Bei einem auftretenden Fehler wird false zurückgegeben.
+
+\item {\mymo{erstelleBundestagswahl(csvDatei : Datei) : Bundestagswahl}} \\
+Erstellt anhand einer .csv-Datei eine neue Bundestagswahl und versucht sie zu füllen. Wenn nicht alle nötigen Daten vorhanden sind, oder die Struktur der .csv-Datei nicht der vom Crawler geforderten Struktur entspricht, wird ein Fehler ausgegeben und der Import abgebrochen.
 \end{description}
 
 \subsection{Wahlgenerierung}
@@ -279,6 +285,7 @@ Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachricht
 \begin{figure}[!ht]
 \includegraphics[scale=0.5]{Sequenzdiagramme/Import_Sequenzdiagramm.png} \caption{Import Sequenzdiagramm} 
 \end{figure}
+Hier wird eine gültige .csv-Datei, d.h. Format und Inhalt betreffend, importiert. Vorher wurde bereits ein Datei-Objekt csvDatei erstellt, das nun übergeben wird.
 
 \newpage
 \subsection{Wahlgenerierung}
