@@ -1,15 +1,14 @@
 t:Tabellenfenster[a]
 b:Bundesansicht[a]
 bOriginal:Bundestagswahl
-c:Copy[a]
 /bCopy:Bundestagswahl
 s:Steuerung[a]
 /btwCopy:Bundestagswahl
 btw:Bundestagswahl
 
 t:b.getBundestagswahl(): bOriginal
-t:c.kopieren(bOriginal):bCopy
-c:bCopy.new()
+t:bOriginal.clone():bCopy
+bOriginal:bCopy.new()
 t:t.verteileStimmenAufBundesländer(Integer)
 [c:foreach Bundesland]
 t:t.verteileStimmenAufWahlkreise(ProzentualEinwohnerzahl)

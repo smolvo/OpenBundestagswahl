@@ -1,19 +1,18 @@
 t:Tabellenfenster[a]
 l:Landesansicht[a]
 bOriginal:Bundesland
-c:Copy[a]
 /bCopy:Bundesland
 s:Steuerung[a]
 /btwCopy:Bundestagswahl
 btw:Bundestagswahl
 
 t:l.getBundesland():bOriginal
-t:c.kopieren(b:Original):bCopy
-c:bCopy.new()
+t:bOriginal.kopieren(b:Original):bCopy
+bOriginal:bCopy.new()
 t:t.verteileStimmenAufWahlkreise(Integer)
 t[1]:s.aenderungPassiert(bCopy)
-s:c.kopieren(btw):btwCopy
-c:btwCopy.new()
+s:btw.kopieren(btw):btwCopy
+btw:btwCopy.new()
 s:s.ersetze(btwCopy, bCopy)
 s[1]:btwCopy.pruefeDaten()
 s:btw.destroy()
