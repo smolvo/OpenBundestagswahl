@@ -122,8 +122,63 @@ informiert. \\
 \includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} 
 \end{figure}
 
-Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
+Unter dem Datenmodell zählen alle Klassen, die Wahldaten oder die berechnete Sitzverteilung enthalten. Begründungen für Entwurfsentscheidungen und alle Klassen werden im folgenden aufgelistet:
+\begin{description}
+
+     \item {\myma{Bundestagswahl}} \\
+     Eine Bundestagswahl stellt eine ganze Wahl dar. Es hat einen Namen wie "Bundestagswahl 2013". Dieser Name wird als Titel in der GUI auf dem betroffenen Tab angezeigt. Jede Bundestagswahl besitzt aufgrund der änderbaren Parteien pro Bundestagswahl eine eigene Liste an {\myma{Partei}}-Objekten. Des weiteren gibt es ein {\myma{Sitzverteilung}}-Objekt. \\
+Methoden: \\
+          \begin{description}
+               \item {\mymo{prüfeDaten()}}\\
+               Überprüft, ob die eingegebenen Stimmen gültig sind und unterzieht diese einem Konsistenz-Test. Die Methode wird nach jeder Stimmveränderung ausgeführt. Falls der Test nach einer Stimmveränderung fehlschlägt, wird die Stimme mithilfe der {\myma{Chronik}} zurückgesetzt und eine Fehlermeldung ausgegeben.
+              
+               \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer)}}\\
+               Wird von der GUI über die Steuerung aufgerufen. Es wird das zu verändernde {\myma{Stimme}}-Objekt und die neue Anzahl der Stimmen übergeben. Die zu verändernde {\myma{Stimme}} wird geklont und in der {\myma{Chronik}} gespeichert. Bei können drei Fälle auftreten:
+               Falls die assoziierte Klasse von  {\myma{Stimme}}:
+               ... ein {\myma{Wahlkreis}}-Objekt ist, wird der enthaltene Wert "anzahl" verändert in den Wert des übergebenen Parameters "anzahl".
+               ... ein {\myma{Bundesland}}-Objekt ist, wird die Differenz der anzahl an Stimmen auf alle Wahlkreise des betroffenen Bundeslandes iterativ hinzugefügt oder abgezogen.
+               ... ein {\myma{Deutschland}}-Objekt ist, wird die Differenz der Anzahl an Stimmen auf alle Wahlkreise der Bundesländer iterativ hinzugefügt oder abgezogen.
+Zum Schluss wird die Methode {\myma{prüfeDaten()}} aufgerufen.
+               
+               \item {\mymo{zurueckSetzen() : boolean}}\\
+               Ruft die Methode restauriereStimme() in der {\myma{Chronik}} auf und setzt eine {\myma{Stimme}} zurück. Es wird dabei die Methode {\mymo{setzeStimme(s:Stimme,anzahl:Integer)}} verwendet um die Stimmen zu ändern. Falls das Rücksetzen fehlschlägt ist der Rückgabewert "false". Andernfalls "true".
+               
+               \item {\mymo{clone(): Bundestagswahl}}\\
+               Macht eine "deep copy" von der aktuellen Bundestagswahl und gibt dies zurück.
+          \end{description}
+
+     \item {\myma{Partei}} \\
+     Ein Objekt dieser Klasse spiegelt eine vertretene Partei des Bundestages wieder. Jede Partei besitzt einen Namen, ein Kürzel und eine Farbe. Die Farbe wird verwendet, um in der kartografischen Ansicht die Bundesländer mit der Partei einzufärben, die in diesem Bundesland die meisten Zweitstimmen hat.
+
+     \item {\myma{Gebiet}} \\
+     Eine Abstrakte Klasse, die ein Gebiet darstellt. Es erbt den Klassen {\myma{Deutschland}}, {\myma{Bundesland}} und {\myma{Wahlkreis}}. Gebiet besitzt eine Assoziationsklasse ({\myma{Zweitstimme}}) mit {\myma{Partei}}. Jedes Gebiet besitzt einen Namen und ein Wert mit der Anzahl der Wahlberechtigten.
+
+     \item {\myma{Deutschland}} \\
+     {\myma{Deutschland}} besitzt eine Liste an {\myma{Bundesland}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Bundesansicht}} verändert wurde. 
+
+     \item {\myma{Bundesland}} \\
+     {\myma{Bundeland}} besitzt eine Liste an {\myma{Wahlkreis}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Landesansicht}} verändert wurde. Diese Klasse enthält zusätzlich einige weitere Attribute. Diese sind Einwohnerzahl (zur Berechnung der möglichen Anzahl der Sitze pro Bundesland), sitze (berechnete Anzahl der möglichen Sitze), Farbe (???) und Bild um das Wappen des Bundeslandes mit zu Speichern. Der Wappen wird in der Landesansicht angezeigt.
+
+     \item {\myma{Wahlkreis}} \\
+
+     \item {\myma{Stimme}} \\
+
+     \item {\myma{Erststimme}} \\
+    
+     \item {\myma{Zweitstimme}} \\
+
+     \item {\myma{Kandidat}} \\
+
+     \item {\myma{Landesliste}} \\
+
+     \item {\myma{Sitzverteilung}} \\
+
+     \item {\myma{Chronik}} \\
+\end{description} 
+
+
 \newpage
+
 \subsection{Import/ Export}
 \begin{figure}[!ht]
 \includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
