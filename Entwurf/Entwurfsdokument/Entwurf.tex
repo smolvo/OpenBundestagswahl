@@ -9,6 +9,7 @@
 \usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{endnotes}
 \usepackage[section]{placeins}
+\usepackage{fancyhdr}
 \newcommand{\myma}{\fontfamily{pcr}\selectfont \textbf}
 \newcommand{\mymo}{\fontfamily{pcr}\selectfont \textit}
 
@@ -21,7 +22,9 @@
 
 \begin{document}
 \maketitle
-\thispagestyle{empty}
+\pagestyle{fancy}
+\cfoot{\footnotesize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
+\renewcommand{\footrulewidth}{0.4pt}
 
 \begin{figure}[h]
 
