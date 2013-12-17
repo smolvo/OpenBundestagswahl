@@ -132,18 +132,23 @@ Dieser Ausschnitt des Klassendiagramms stellt den Datenhaltungsteil dar.
 \includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
 \end{figure}
 
-In diesem Klassendiagramm sieht man den Aufbau des Import-/Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in {\myma{Steuerung}} und die genaue Struktur hinter {\myma{Bundestagswahl}} und der GUI ausgeblendet. \\
-Mit unserem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist {\myma{Crawler2013}}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse {\myma{Crawler}} zu verwenden, von der {\myma{Crawler2013}} erbt, und alle vorhandenen Crawler von der Klasse {\myma{ImportManager}} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf die {\myma{GUISteuerung}} die {\myma{Steuerung}} anwählt, welche wiederum über den {\myma{ImportManager}} den geeigneten Crawler bestimmt, der die Informationen ausliest die eigentliche Arbeit ausführt.
+Hier sieht man den Aufbau des Import- bzw. Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in {\myma{Steuerung}} und die genaue Struktur hinter {\myma{Bundestagswahl}} und der GUI ausgeblendet. \\
+Mit dem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist {\myma{Crawler2013}}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse {\myma{Crawler}} zu verwenden, von der {\myma{Crawler2013}} erbt, und alle vorhandenen Crawler von der Klasse {\myma{ImportExportManager}} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf {\myma{Steuerung}} die entsprechenden Methoden von {\myma{ImportExportManager}} ausführt.
 
 \subparagraph{Methoden}
 \begin{description}
-\item {\mymo{exportieren(pfad : String, bw : Bundestagswahl)}} \\
-Schreibt die Bundestagswahl bw in die .csv-Datei, deren Pfad in \textbf{pfad} gegeben ist.
-\item {\mymo{importieren(pfad : String)}} \\
-Liest die .csv-Datei, deren Pfad in pfad gegeben ist, ein, erstellt ein Bundestagswahlobjekt und füllt es.
-\item {\mymo{pruefeFormat(pfad : String) : Boolean}} \\
-Prüft das Format der Datei, deren Pfad in pfad gegeben ist. Wenn es sich um eine .csv-Datei handelt, die durch einen vorhandenen Crawler erfasst werden kann, wird dieser Crawler als passenderCrawler gesetzt und true zurückgegeben. Falls kein geeigneter Crawler gefunden wird, da die Datei keine .csv-Datei ist oder ihre Struktur nicht korrekt ist, wird false zurückgegeben.
+\item{\myma{ImportExportManager}}
+\item {\mymo{importieren(csvDatei : Datei) : Bundestagswahl}} \\
+Diese öffentliche Methode führt zuerst die private Methode {\mymo{pruefeDateityp(csvDatei : Datei) : Boolean}} aus. Wenn diese true zurückgibt, wird die ebenfalls private Methode {\mymo{leseCSVDatei(csvDatei : String) : Boolean}} ausgeführt. Wurde nun eine gültige Bundestagswahl zurückgegeben, wird diese an die Steuerung zurückgegeben, andernfalls ein Fehler ausgegeben.
 
+\item {\mymo{exportieren(pfad : String)}} \\
+
+
+\item {\mymo{pruefeDateityp(csvDatei : Datei) : Boolean}} \\
+Prüft, ob es sich bei der gegebenen Datei um eine .csv-Datei handelt. Wenn dies der Fall ist, wird true zurückgegeben, andernfalls false.
+
+\item {\mymo{leseCSVDatei(csvDatei : String) : Boolean}} \\
+Durchläuft die Crawler-Liste und lässt die darin enthaltenen Crawler nacheinander versuchen, die .csv-Datei auszuwerten und mit den gewonnen Informationen eine Bundestagswahl zu erstellen und zu füllen. Gelingt es einem Crawler, wird der Durchlauf abgebrochen und die gerade erstellte Bundestagswahl wird an den ImportExportManager zurückgegeben.
 \end{description}
 
 \subsection{Wahlgenerierung}
@@ -222,10 +227,10 @@ Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachricht
 
 \section{Sequenzdiagramme}
 \subsection{Import}
-\includegraphics[scale=0.7]{Import-Sequenzdiagramm.png} 
+\begin{figure}[!ht]
+\includegraphics[scale=0.5]{Sequenzdiagramme/Import_Sequenzdiagramm.png} \caption{Import Sequenzdiagramm} 
+\end{figure}
 
-\subsection{Export}
-\includegraphics[scale=0.75]{Export-Sequenzdiagramm.png} 
 
 \subsection{Wahlgenerierung}
 \includegraphics[scale=0.45]{Sequenzdiagramme/Wahlgenerierung.png}
@@ -233,12 +238,8 @@ Beim Generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl
 Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.
 Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
 \subsection{Paradoxe Wahlgenerierung und Vergleich}
-\includegraphics[scale=0.75]{paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png} 
 
 \subsection{Vergleich}
-\includegraphics[scale=0.75]{Vergleich-Sequenzdiagramm.png} 
-
-In diesem Sequenzdiagramm wird gezeigt, was passiert, wenn der Benutzer zwei Tabs geöffnet hat und einen Vergleich starten will.
 
 \subsection{Chronik}
 \begin{itemize}
