@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper,titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -15,30 +15,35 @@
 
 \let\footnote=\endnote
 
-\title{\Huge Entwurf\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1}
-\author{Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
+\begin{document}
+\pagestyle{fancy}
+
+\begin{titlepage}
+\vspace*{50pt}
+\begin{center}
+{\Huge Entwurf\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1} \\
+\vspace*{5pt}
+{\large Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
+\end{center}
 \date{}
 \setlength{\parindent}{0pt}
-
-\begin{document}
-\maketitle
-\pagestyle{fancy}
-\cfoot{\footnotesize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
-\renewcommand{\footrulewidth}{0.4pt}
-
+\vspace*{30pt}
 \begin{figure}[h]
-
 \centering
-		
 		\includegraphics[scale=0.6]{KIT-Logo.png}\\
+		\vspace*{10pt}
 		\Huge WS 2013 / 14
 \end{figure}
+\end{titlepage}
+
+\def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
+\cfoot{{\Vhrulefill~  Seite \thepage   ~\Vhrulefill} \newline \footnotesize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
 
 \newpage
 \begin{onehalfspace}
 \tableofcontents
 \end{onehalfspace}
-\newpage 
+
 
 \section{Einleitung}
 
@@ -71,7 +76,7 @@ hört das Tabellenfenster ab und wird bei Veränderungen informiert. \\
 Gesteuert werden alle genannten Klassen durch die GUISteuerungs-Klasse, die die Ansicht und das
 Vergleichsfenster visualisiert und das gesamte Programmfenster beim Programmstart initialisiert.
 
-\newpage
+
 \begin{large}
 Methoden 
 \end{large}
@@ -139,10 +144,12 @@ Prüft das Format der Datei, deren Pfad in pfad gegeben ist. Wenn es sich um ein
 \includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
 
-
 Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
 Mit diesem Modul können Bundestagswahlen anhand vorher definierten Stimmanteilen auf Bundesebene generiert werden. Bei diesen Stimmanteilen handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine Basis-Bundestagswahl um Daten wie beispielsweise Bundesländer, Wahlkreise und Wahlberechtigte zur Verfügung zu haben.\\\\
 Beim generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig, erst auf alle Bundesländer und dann auf die einzelnen Wahlkreise verteilt.\\\\
+Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.\\\\
+\includegraphics[scale=0.5]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
+Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]
@@ -186,9 +193,6 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 
 \subsection{Export}
 \includegraphics[scale=0.75]{Export-Sequenzdiagramm.png} 
-
-\subsection{Wahlgenerierung}
-\includegraphics[scale=0.47]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
 
 \subsection{Paradoxe Wahlgenerierung und Vergleich}
 \includegraphics[scale=0.75]{paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png} 
