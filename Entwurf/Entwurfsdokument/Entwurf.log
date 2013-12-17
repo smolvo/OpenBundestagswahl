@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  17 DEC 2013 22:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  17 DEC 2013 22:51
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -722,8 +722,9 @@ Overfull \hbox (2.33372pt too wide) in paragraph at lines 217--217
  [][] 
  []
 
-
-<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=68, 1037.8775pt x 500.87125pt>
+[11 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
+chnitt.png>]
+<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=72, 1037.8775pt x 500.87125pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
 Package pdftex.def Info: Sequenzdiagramme/Import_Sequenzdiagramm.png used on in
@@ -734,58 +735,50 @@ Overfull \hbox (65.96959pt too wide) in paragraph at lines 225--225
 [][] 
  []
 
-<Sequenzdiagramme/Wahlgenerierung.png, id=69, 623.32875pt x 1061.46562pt>
+[12 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Import_Sequenzdiagramm.png>]
+<Sequenzdiagramme/Wahlgenerierung.png, id=77, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
 <use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 230.
-(pdftex.def)             Requested size: 405.15889pt x 689.94449pt.
+e 232.
+(pdftex.def)             Requested size: 342.83186pt x 583.80789pt.
 
-Overfull \hbox (2.36966pt too wide) in paragraph at lines 230--234
-[] \OT1/cmr/m/n/12 Beim Ge-
+Overfull \hbox (8.58806pt too wide) in paragraph at lines 234--236
+[]\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(b
+asisWahl : Bundestagswahl,
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--234
-
- []
-
-[11 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
-chnitt.png>]
-Overfull \vbox (398.02428pt too high) has occurred while \output is active []
-
-
-[12 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Import_Sequenzdiagramm.png> <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/
-Entwurfsdokument/Sequenzdiagramme/Wahlgenerierung.png>]
-<Chronik_Sequenzdiagramm-stimmenaendern.png, id=79, 337.26pt x 816.80156pt>
+[13 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Wahlgenerierung.png>]
+<Chronik_Sequenzdiagramm-stimmenaendern.png, id=82, 337.26pt x 816.80156pt>
 File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-stimmenaendern.png used on inp
-ut line 241.
+ut line 244.
 (pdftex.def)             Requested size: 236.08038pt x 571.75719pt.
- [13]
-<Chronik_Sequenzdiagramm-restaurieren.png, id=83, 314.67563pt x 578.91281pt>
+ [14]
+<Chronik_Sequenzdiagramm-restaurieren.png, id=86, 314.67563pt x 578.91281pt>
 File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-restaurieren.png used on input
- line 243.
+ line 246.
 (pdftex.def)             Requested size: 220.27142pt x 405.2362pt.
- [14 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
-uenzdiagramm-stimmenaendern.png>] <GUI_Aktualisierung.png, id=88, 350.81062pt x
+ [15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
+uenzdiagramm-stimmenaendern.png>] <GUI_Aktualisierung.png, id=91, 350.81062pt x
  1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 253.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 256.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
-uenzdiagramm-restaurieren.png>] [16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwu
+ [16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
+uenzdiagramm-restaurieren.png>] [17 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwu
 rf/Entwurfsdokument/GUI_Aktualisierung.png>]
-[17] (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux
+[18] (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux
 ) ) 
 Here is how much of TeX's memory you used:
  3444 strings out of 493921
@@ -805,9 +798,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
 iKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
 pe1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (20 pages, 438886 bytes).
+Output written on Entwurf.pdf (21 pages, 439918 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
+ 134 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

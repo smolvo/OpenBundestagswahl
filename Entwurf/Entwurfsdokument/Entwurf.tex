@@ -218,7 +218,7 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 \end{figure}
 Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachrichtigungen und Fenstertexte. Es ist eine statische Klasse. Die Funktion {\mymo{getString}} gibt zu einem gegebenen Schlüssel ein String zurück. Die Strings dieser Klasse werden in einem externen Textdokument gelagert.
 
-
+\newpage
 \section{Sequenzdiagramme}
 \subsection{Import}
 \begin{figure}[!ht]
@@ -227,7 +227,10 @@ Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachricht
 
 \newpage
 \subsection{Wahlgenerierung}
-\includegraphics[scale=0.65]{Sequenzdiagramme/Wahlgenerierung.png}
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.55]{Sequenzdiagramme/Wahlgenerierung.png} \caption{Sequenzdiagramm zur Wahlgenerierung}
+\end{figure}
 In der Methode {\mymo{zufaelligeWahlgenerierung(basisWahl : Bundestagswahl, anteile : Stimmanteile) : Bundestagswahl}} wird zuerst ein neuer Wahlgenerator erzeugt. In dem Konstruktor des Wahlgenerators werden die absoluten Stimmzahlen berechnet und alle Attribute gesetzt.\\
 Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgeführt. In dieser Methode wird zuerst eine tiefe Kopie der basisWahl erstellt. In dieser Kopie werden dann die Stimmen auf alle Wahlkreise verteilt. Die Erststimmen auf die Kandidaten und die Zweitstimmen auf die Parteien. Diese Wahl wird am Ende als Ergebnis der Methode berechneBTW() zurückgegeben und in der Steuerung in die Liste alle Bundestagswahlen eingefügt.
 
