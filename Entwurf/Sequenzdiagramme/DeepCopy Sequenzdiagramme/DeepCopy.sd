@@ -1,41 +1,41 @@
 btwOriginal:Bundestagswahl
 /btwKopie:Bundestagswahl
-bundeslandOriginal:Bundesland
-/bKopie:Bundesland
+blOriginal:Bundesland
+/blKopie:Bundesland
 wOriginal:Wahlkreis
 /wKopie:Wahlkreis
-kandidatOriginal:Kandidat
-/kandidatKopie:Kandidat
-erststimmeOriginal:Erststimme
-/erststimmeKopie:Erststimme
-parteiOriginal:Partei
-/parteiKopie:Partei
-zweitstimmeOriginal:Zweitstimme
-/zweitstimmeKopie:Zweitstimme
+kOriginal:Kandidat
+/kKopie:Kandidat
+erstOriginal:Erststimme
+/erstKopie:Erststimme
+pOriginal:Partei
+/pKopie:Partei
+zweitOriginal:Zweitstimme
+/zweitKopie:Zweitstimme
 svOriginal:Sitzverteilung
 /svKopie:Sitzverteilung
 
 btwOriginal:btwKopie.new(name)
 btwOriginal:svKopie.new(btwOriginal.getBericht())
 [c:foreach Bundesland]
-btwOriginal:bKopie.new(bOriginal.getEinwohnerzahl, bOriginal.getFarbe, bOriginal.getBild(), bOriginal.getName(), bOriginal.getWahlberechtigte)
+btwOriginal:blKopie.new(blOriginal.getEinwohnerzahl, blOriginal.getFarbe, blOriginal.getBild(), blOriginal.getName(), blOriginal.getWahlberechtigte)
 [c:foreach Wahlkreis]
 btwOriginal:wKopie.new()
 btwOriginal:wKopie.setName(wOriginal.getName())
 btwOriginal:wKopie.setWahlberechtigte(w.Original.getWahlberechtigte())
 [c:foreach wOriginal.getKandidaten()]
-btwOriginal:kandidatKopie.new(kandidatOriginal.getMandat())
+btwOriginal:kKopie.new(kOriginal.getMandat())
 [c:alt mandat != keinMandat]
-btwOriginal:svKopie.add(kandidatKopie)
+btwOriginal:svKopie.add(kKopie)
 [/c]
-btwOriginal:erststimmeKopie.new(erststimmeOriginal.getAnzahl(), wKopie, kandidatKopie)
-btwOriginal:parteiKopie.new()
-btwOriginal:parteiKopie.setName(parteiOriginal.getName())
-btwOriginal:parteiKopie.setkuerzel(parteiOriginal.getKuerzel())
-btwOriginal:parteiKopie.setFarbe(parteiOriginal.getFarbe())
-btwOriginal:wKopie.addPartei(parteiKopie)
-btwOriginal:btwKopie.addPartei(parteiKopie)
-btwOriginal:zweitstimmeKopie.new(zweitstimmeOriginal.getAnzahl(), parteiKopie, wahlkreisKopie)
+btwOriginal:erstKopie.new(erstOriginal.getAnzahl(), wKopie, kKopie)
+btwOriginal:pKopie.new()
+btwOriginal:pKopie.setName(pOriginal.getName())
+btwOriginal:pKopie.setkuerzel(pOriginal.getKuerzel())
+btwOriginal:pKopie.setFarbe(pOriginal.getFarbe())
+btwOriginal:wKopie.addPartei(pKopie)
+btwOriginal:btwKopie.addPartei(pKopie)
+btwOriginal:zweitKopie.new(zweitOriginal.getAnzahl(), pKopie, wKopie)
 [/c]
 [/c]
 [/c]
