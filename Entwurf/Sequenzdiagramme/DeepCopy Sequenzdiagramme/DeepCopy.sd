@@ -1,0 +1,41 @@
+btwOriginal:Bundestagswahl
+/btwKopie:Bundestagswahl
+bundeslandOriginal:Bundesland
+/bKopie:Bundesland
+wOriginal:Wahlkreis
+/wKopie:Wahlkreis
+kandidatOriginal:Kandidat
+/kandidatKopie:Kandidat
+erststimmeOriginal:Erststimme
+/erststimmeKopie:Erststimme
+parteiOriginal:Partei
+/parteiKopie:Partei
+zweitstimmeOriginal:Zweitstimme
+/zweitstimmeKopie:Zweitstimme
+svOriginal:Sitzverteilung
+/svKopie:Sitzverteilung
+
+btwOriginal:btwKopie.new(name)
+btwOriginal:svKopie.new(btwOriginal.getBericht())
+[c:foreach Bundesland]
+btwOriginal:bKopie.new(bOriginal.getEinwohnerzahl, bOriginal.getFarbe, bOriginal.getBild(), bOriginal.getName(), bOriginal.getWahlberechtigte)
+[c:foreach Wahlkreis]
+btwOriginal:wKopie.new()
+btwOriginal:wKopie.setName(wOriginal.getName())
+btwOriginal:wKopie.setWahlberechtigte(w.Original.getWahlberechtigte())
+[c:foreach wOriginal.getKandidaten()]
+btwOriginal:kandidatKopie.new(kandidatOriginal.getMandat())
+[c:alt mandat != keinMandat]
+btwOriginal:svKopie.add(kandidatKopie)
+[/c]
+btwOriginal:erststimmeKopie.new(erststimmeOriginal.getAnzahl(), wKopie, kandidatKopie)
+btwOriginal:parteiKopie.new()
+btwOriginal:parteiKopie.setName(parteiOriginal.getName())
+btwOriginal:parteiKopie.setkuerzel(parteiOriginal.getKuerzel())
+btwOriginal:parteiKopie.setFarbe(parteiOriginal.getFarbe())
+btwOriginal:wKopie.addPartei(parteiKopie)
+btwOriginal:btwKopie.addPartei(parteiKopie)
+btwOriginal:zweitstimmeKopie.new(zweitstimmeOriginal.getAnzahl(), parteiKopie, wahlkreisKopie)
+[/c]
+[/c]
+[/c]
