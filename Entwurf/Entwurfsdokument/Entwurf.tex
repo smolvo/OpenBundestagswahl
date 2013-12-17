@@ -166,6 +166,14 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 Die Klasse {\myma{Chronik}} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede {\myma{Bundestagswahl}} hat hierbei eine eigene Chronik. {\myma{Chronik}} wird in dem Konstruktor von {\myma{Bundestagswahl}} erzeugt, und ist daher in jedem {\myma{Bundestagswahl}}-Objekt enthalten. Es besitzt eine Menge von {\myma{Stimmen}}-Objekten. Bei jeder Veränderung wird ein neues {\myma{Stimmen}}-Objekt angelegt, was die Veränderung wiederspiegelt.
 \
 Die Methode {\myma{sichereStimme}} wird von dem {\myma{Bundestagswahl}}-Objekt bei jedem Aufruf von {\myma{setzeStimme}} aufgerufen.
+\subparagraph{Methoden}
+\begin{description}
+\item {\mymo{sichereStimme(s : Stimme)}} \\
+Diese Funktion wird von dem assoziierten {\myma{Bundestagswahl}}-Objekt innerhalb der {\mymo{setzeStimme}}-Funktion aufgerufen. Falls bereits fünf {\myma{Stimmen}}-Objekte vorhanden sind, wird das älteste entfernt.
+\item {\mymo{restauriereStimme() : Stimme}} \\
+Wird von der {\myma{Steuerung}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück.
+\end{description}
+
 \newpage
 \subsection{Mandatsrechner}
 \begin{figure}[!ht]
@@ -187,6 +195,9 @@ Diese öffentliche Methode berechnet zuerst alle Bundesländer die sich in der K
 \item {\mymo{erstelleBericht(Zeile : String)}} \\
 Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der beschreiben soll, wie die Sitzverteilung entstanden ist. Dabei wird die Methode immer aufgerufen, wenn eine Partei einen Sitz in der Sitzverteilung bekommen hat. Dies wird dann mit einer Zeile im Bericht protokolliert.
 \end{description} 
+
+\subsection{Meldung}
+Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachrichtigungen und Fenstertexte. Es 
 
 \section{Klassendiagramm im Detail}
 
