@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  17 DEC 2013 18:42
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  17 DEC 2013 18:45
 entering extended mode
 **Entwurf.tex
 (C:\Users\Simon\Documents\pse\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -603,16 +603,17 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 133.
  [6 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Mandatsrechner
 alles.png>] [7]
-<Sequenzdiagramme/Wahlgenerierung.png, id=48, 929.4725pt x 1415.2875pt>
-File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
+<Klassendiagramme/Wahlgenerator_Klassendiagramm.png, id=48, 472.01344pt x 387.6
+9844pt>
+File: Klassendiagramme/Wahlgenerator_Klassendiagramm.png Graphic file (type png
+)
+ <use Klassendiagramme/Wahlgenerator_Klassendiagramm.png>
+Package pdftex.def Info: Klassendiagramme/Wahlgenerator_Klassendiagramm.png use
+d on input line 152.
+(pdftex.def)             Requested size: 472.01228pt x 387.69748pt.
 
-<use Sequenzdiagramme/Wahlgenerierung.png>
-Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 152.
-(pdftex.def)             Requested size: 371.78242pt x 566.10498pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--159
-
+Overfull \hbox (19.04439pt too wide) in paragraph at lines 152--152
+[][] 
  []
 
 
@@ -635,9 +636,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--159
 
  []
 
-[8 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Sequenzdiagramm
-e/Wahlgenerierung.png (PNG copy)>] [9]
-<Chronik_Ausschnitt.png, id=55, 666.99188pt x 337.26pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--159
+
+ []
+
+[8 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Klassendiagramm
+e/Wahlgenerator_Klassendiagramm.png>] [9]
+<Chronik_Ausschnitt.png, id=56, 666.99188pt x 337.26pt>
 File: Chronik_Ausschnitt.png Graphic file (type png)
 
 <use Chronik_Ausschnitt.png>
@@ -663,7 +669,7 @@ en()
  []
 
 [10 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Chronik_Aussch
-nitt.png>] <Import-Export_Ausschnitt.png, id=61, 890.32625pt x 574.145pt>
+nitt.png>] <Import-Export_Ausschnitt.png, id=62, 890.32625pt x 574.145pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
@@ -689,7 +695,7 @@ Overfull \hbox (3.68298pt too wide) in paragraph at lines 185--187
 
 [11 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Import-Export_
 Ausschnitt.png>] [12]
-<Datenhaltung-Ausschnitt.png, id=69, 990.70125pt x 685.56125pt>
+<Datenhaltung-Ausschnitt.png, id=70, 990.70125pt x 685.56125pt>
 File: Datenhaltung-Ausschnitt.png Graphic file (type png)
 
 <use Datenhaltung-Ausschnitt.png>
@@ -697,14 +703,14 @@ Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 203.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
  [13 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Datenhaltung-
 Ausschnitt.png>]
-<Meldung_Ausschnitt.png, id=74, 525.46312pt x 127.97812pt>
+<Meldung_Ausschnitt.png, id=75, 525.46312pt x 127.97812pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
 <use Meldung_Ausschnitt.png>
 Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 213.
 (pdftex.def)             Requested size: 420.37106pt x 102.38261pt.
 
-<Import-Sequenzdiagramm.png, id=75, 386.94562pt x 842.39719pt>
+<Import-Sequenzdiagramm.png, id=76, 386.94562pt x 842.39719pt>
 File: Import-Sequenzdiagramm.png Graphic file (type png)
 
 <use Import-Sequenzdiagramm.png>
@@ -716,7 +722,7 @@ Overfull \vbox (46.50218pt too high) has occurred while \output is active []
 
 
 [15 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Import-Sequenz
-diagramm.png>] <Export-Sequenzdiagramm.png, id=84, 182.93344pt x 882.29625pt>
+diagramm.png>] <Export-Sequenzdiagramm.png, id=85, 182.93344pt x 882.29625pt>
 File: Export-Sequenzdiagramm.png Graphic file (type png)
 
 <use Export-Sequenzdiagramm.png>
@@ -728,8 +734,10 @@ Overfull \vbox (20.8987pt too high) has occurred while \output is active []
 
 [16 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Export-Sequenz
 diagramm.png>]
+<Sequenzdiagramme/Wahlgenerierung.png, id=91, 929.4725pt x 1415.2875pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
- <use Sequenzdiagramme/Wahlgenerierung.png>
+
+<use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
 e 232.
 (pdftex.def)             Requested size: 418.25877pt x 636.8735pt.
@@ -743,8 +751,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 232--236
 
  []
 
-[17]
-<paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png, id=93, 500.62032pt x 12
+[17 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Sequenzdiagram
+me/Wahlgenerierung.png (PNG copy)>]
+<paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png, id=95, 500.62032pt x 12
 59.4553pt>
 File: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png Graphic file (type 
 png)
@@ -758,14 +767,14 @@ Overfull \vbox (303.7673pt too high) has occurred while \output is active []
 
 [19 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/paradoxeWahlge
 nerierung+Vergleich-Sequenzdiagramm.png>]
-<Vergleich-Sequenzdiagramm.png, id=101, 243.15843pt x 810.77907pt>
+<Vergleich-Sequenzdiagramm.png, id=103, 243.15843pt x 810.77907pt>
 File: Vergleich-Sequenzdiagramm.png Graphic file (type png)
 
 <use Vergleich-Sequenzdiagramm.png>
 Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 240.
 (pdftex.def)             Requested size: 182.36838pt x 608.08282pt.
 
-<Chronik_Sequenzdiagramm-stimmenaendern.png, id=102, 1089.06876pt x 449.68pt>
+<Chronik_Sequenzdiagramm-stimmenaendern.png, id=104, 1089.06876pt x 449.68pt>
 File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-stimmenaendern.png>
@@ -779,7 +788,7 @@ Overfull \hbox (120.93985pt too wide) in paragraph at lines 246--248
 
 [20 <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwurfsdokument/Vergleich-Sequ
 enzdiagramm.png>]
-<Chronik_Sequenzdiagramm-restaurieren.png, id=107, 781.92125pt x 419.5675pt>
+<Chronik_Sequenzdiagramm-restaurieren.png, id=109, 781.92125pt x 419.5675pt>
 File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-restaurieren.png>
@@ -796,10 +805,10 @@ zdiagramm-stimmenaendern.png> <C:/Users/Simon/Documents/pse/trunk/Entwurf/Entwu
 rfsdokument/Chronik_Sequenzdiagramm-restaurieren.png>]
 (C:\Users\Simon\Documents\pse\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3448 strings out of 493921
- 44872 string characters out of 3147281
+ 3454 strings out of 493921
+ 45141 string characters out of 3147281
  107351 words of memory out of 3000000
- 6658 multiletter control sequences out of 15000+200000
+ 6662 multiletter control sequences out of 15000+200000
  12109 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,11n,43p,1025b,418s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -812,9 +821,9 @@ amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (24 pages, 506590 bytes).
+Output written on Entwurf.pdf (24 pages, 514549 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
