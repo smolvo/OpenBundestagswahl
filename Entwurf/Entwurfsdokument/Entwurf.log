@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  17 DEC 2013 17:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  17 DEC 2013 17:49
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -673,14 +673,14 @@ Overfull \vbox (43.27017pt too high) has occurred while \output is active []
 
 [8 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/zufaelligeWah
 lgenerierung_Sequenzdiagramm.png (PNG copy)>] [9]
-<Chronik_Ausschnitt.png, id=58, 655.69969pt x 335.00156pt>
+<Chronik_Ausschnitt.png, id=58, 666.99188pt x 337.26pt>
 File: Chronik_Ausschnitt.png Graphic file (type png)
 
 <use Chronik_Ausschnitt.png>
 Package pdftex.def Info: Chronik_Ausschnitt.png used on input line 161.
-(pdftex.def)             Requested size: 524.56047pt x 268.0016pt.
+(pdftex.def)             Requested size: 533.59422pt x 269.80836pt.
 
-Overfull \hbox (71.59258pt too wide) in paragraph at lines 161--161
+Overfull \hbox (80.62633pt too wide) in paragraph at lines 161--161
 [][] 
  []
 
@@ -689,6 +689,13 @@ Overfull \hbox (34.42567pt too wide) in paragraph at lines 164--167
 \OT1/cmr/m/n/12 Ver[]anderung wie-der-spie-gelt.  Die Me-tho-de \OT1/pcr/b/n/12
  sichereStimme \OT1/cmr/m/n/12 wird von dem \OT1/pcr/b/n/12 Bundestagswahl\OT1/
 cmr/m/n/12 -
+ []
+
+
+Overfull \hbox (77.34639pt too wide) in paragraph at lines 171--173
+\OT1/cmr/m/n/12 Wird von der \OT1/pcr/b/n/12 Steuerung []\OT1/cmr/m/n/12 uber d
+ie ak-tu-el-le Bun-des-tags-wahl mit der Funk-ti-on\OT1/pcr/m/sl/12 zurueckSetz
+en()
  []
 
 [10 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Auss
@@ -700,23 +707,31 @@ Package pdftex.def Info: Mandatsrechneralles.png used on input line 179.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
  [11 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Mandatsrech
 neralles.png>]
-<Import-Sequenzdiagramm.png, id=69, 386.94562pt x 842.39719pt>
+<Meldung_Ausschnitt.png, id=69, 525.46312pt x 127.97812pt>
+File: Meldung_Ausschnitt.png Graphic file (type png)
+
+<use Meldung_Ausschnitt.png>
+Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 200.
+(pdftex.def)             Requested size: 420.37106pt x 102.38261pt.
+
+<Import-Sequenzdiagramm.png, id=70, 386.94562pt x 842.39719pt>
 File: Import-Sequenzdiagramm.png Graphic file (type png)
 
 <use Import-Sequenzdiagramm.png>
-Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 208.
+Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 213.
 (pdftex.def)             Requested size: 270.86008pt x 589.67401pt.
- [12]
+ [12 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Aus
+schnitt.png>]
 Overfull \vbox (46.50218pt too high) has occurred while \output is active []
 
 
 [13 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Import-Seque
 nzdiagramm.png>]
-<Export-Sequenzdiagramm.png, id=77, 182.93344pt x 882.29625pt>
+<Export-Sequenzdiagramm.png, id=79, 182.93344pt x 882.29625pt>
 File: Export-Sequenzdiagramm.png Graphic file (type png)
 
 <use Export-Sequenzdiagramm.png>
-Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 211.
+Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 216.
 (pdftex.def)             Requested size: 137.19974pt x 661.72057pt.
 
 Overfull \vbox (20.8987pt too high) has occurred while \output is active []
@@ -724,13 +739,13 @@ Overfull \vbox (20.8987pt too high) has occurred while \output is active []
 
 [14 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Export-Seque
 nzdiagramm.png>]
-<paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png, id=82, 500.62032pt x 12
+<paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png, id=84, 500.62032pt x 12
 59.4553pt>
 File: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png Graphic file (type 
 png)
  <use paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png>
 Package pdftex.def Info: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png 
-used on input line 214.
+used on input line 219.
 (pdftex.def)             Requested size: 375.46431pt x 944.58917pt.
 
 Overfull \vbox (303.7673pt too high) has occurred while \output is active []
@@ -738,43 +753,48 @@ Overfull \vbox (303.7673pt too high) has occurred while \output is active []
 
 [15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/paradoxeWahl
 generierung+Vergleich-Sequenzdiagramm.png>]
-<Vergleich-Sequenzdiagramm.png, id=87, 243.15843pt x 810.77907pt>
+<Vergleich-Sequenzdiagramm.png, id=89, 243.15843pt x 810.77907pt>
 File: Vergleich-Sequenzdiagramm.png Graphic file (type png)
 
 <use Vergleich-Sequenzdiagramm.png>
-Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 217.
+Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 222.
 (pdftex.def)             Requested size: 182.36838pt x 608.08282pt.
 
-<Chronik_Sequenzdiagramm-stimmenaendern.png, id=88, 1009.7725pt x 369.38pt>
+<Chronik_Sequenzdiagramm-stimmenaendern.png, id=90, 1006.76125pt x 449.68pt>
 File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-stimmenaendern.png used on inp
-ut line 224.
-(pdftex.def)             Requested size: 504.88501pt x 184.68954pt.
+ut line 229.
+(pdftex.def)             Requested size: 503.3794pt x 224.83945pt.
 
-Overfull \hbox (81.29181pt too wide) in paragraph at lines 223--225
+Overfull \hbox (79.7862pt too wide) in paragraph at lines 228--230
 [] 
  []
 
 [16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Vergleich-Se
 quenzdiagramm.png>]
-<Chronik_Sequenzdiagramm-restaurieren.png, id=94, 314.67563pt x 585.68813pt>
+<Chronik_Sequenzdiagramm-restaurieren.png, id=96, 781.92125pt x 419.5675pt>
 File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-restaurieren.png used on input
- line 226.
-(pdftex.def)             Requested size: 188.80682pt x 351.41559pt.
- [17 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
-uenzdiagramm-stimmenaendern.png> <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/
-Entwurfsdokument/Chronik_Sequenzdiagramm-restaurieren.png>]
+ line 231.
+(pdftex.def)             Requested size: 469.15637pt x 251.74243pt.
+
+Overfull \hbox (45.56317pt too wide) in paragraph at lines 230--234
+[] 
+ []
+
+[17 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Sequ
+enzdiagramm-stimmenaendern.png> <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/E
+ntwurfsdokument/Chronik_Sequenzdiagramm-restaurieren.png>]
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
- 3446 strings out of 493921
- 45540 string characters out of 3144869
+ 3451 strings out of 493921
+ 45669 string characters out of 3144869
  107351 words of memory out of 3000000
- 6657 multiletter control sequences out of 15000+200000
+ 6661 multiletter control sequences out of 15000+200000
  12109 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  28i,11n,43p,1025b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -788,9 +808,9 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (20 pages, 502141 bytes).
+Output written on Entwurf.pdf (20 pages, 510594 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
+ 129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
