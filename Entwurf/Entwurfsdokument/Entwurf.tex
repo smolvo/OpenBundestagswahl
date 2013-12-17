@@ -140,7 +140,6 @@ Diese öffentliche Methode führt zuerst die private Methode {\mymo{pruefeDateit
 
 \item {\mymo{exportieren(pfad : String)}} \\
 
-
 \item {\mymo{pruefeDateityp(csvDatei : Datei) : Boolean}} \\
 Prüft, ob es sich bei der gegebenen Datei um eine .csv-Datei handelt. Wenn dies der Fall ist, wird true zurückgegeben, andernfalls false.
 
@@ -157,7 +156,9 @@ Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.
 Zur Übersichtlichkeit werden in den Klassen {\myma{Partei}}, {\myma{Steuerung}} und {\myma{Bundestagswahl}} nur die für dieses Modul relevanten Informationen angezeigt.\\\\
 Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierten {\myma{Stimmanteilen}} auf Bundesebene generiert werden. Bei {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
 
-Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt gibt es noch den {\mymo NegStimmgewichtWahlgenerator}. Dieser erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.
+Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt gibt es noch den {\mymo NegStimmgewichtWahlgenerator}. Dieser erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.\\
+
+Dabei muss bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
 
 \subparagraph{Methoden}
 \begin{description}
@@ -230,7 +231,7 @@ Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachricht
 
 
 \subsection{Wahlgenerierung}
-\includegraphics[scale=0.45]{Sequenzdiagramme/Wahlgenerierung.png}
+\includegraphics[scale=0.65]{Sequenzdiagramme/Wahlgenerierung.png}
 Beim Generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig auf die einzelnen Wahlkreise verteilt.\\\\
 Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.
 Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
