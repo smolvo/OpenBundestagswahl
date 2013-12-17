@@ -2,24 +2,39 @@
 ext:External[pe]
 st:Steuerung[]
 /wg:Wahlgenerator[x]
-/btw:Bundestagswahl
 /bl:Bundesland
 /wk:Wahlkreis
+basisWahl:Bundestagswahl
+/cloneWahl:Bundestagswahl
 
 # messages
 # ![<zufaelligeWahlgenerierung()>]
 
 ext:st.zufaelligeWahlgenerierung(basisWahl, anteile)
-
 st:wg\:Wahlgenerator=wg.new(basisWahl, anteile)
-wg:wg.berechneGesamtanzahlStimmen()
-
-st[1]:btw\:Bundestagswahl=wg.erzeugeBTW()
+wg:wg.setBasisWahl(basisWahl)
+wg[1]:wg.setAnteile(anteile)
+wg[1]:wg.berechneGesamtanzahlStimmen()
+st[1]:cloneWahl\:Bundestagswahl=wg.erzeugeBTW()
+wg:cloneWahl\:Bundestagswahl=basisWahl.clone()
+*1 basisWahl
+erstelle deep copy
+dieser Wahl
+*1
+basisWahl:cloneWahl\:Bundestagswahl=cloneWahl.new()
 wg:wg.verteileStimmen()
 *1 wg
-Verteilt die vorhandenen Erst- und Zweitstimmen der einzelnen Parteien zufällig
-auf Bundesländer und Anschließend auf Wahlkreise.
+Verteilt die vorhandenen Erst- und Zweitstimmen
+der einzelnen Parteien zufällig auf Wahlkreise.
 *1
+[c:foreach Wahlkreis]
+[c:foreach Partei]
+wg:cloneWahl.setZweitstimme()
+[/c]
+[c:foreach Kandidat]
+wg:cloneWahl.setErststimme()
+[/c]
+[/c]
 
 st[0]:st.bundestagswahlen.add(btw)
 
