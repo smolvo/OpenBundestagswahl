@@ -171,7 +171,7 @@ Die Methode {\myma{sichereStimme}} wird von dem {\myma{Bundestagswahl}}-Objekt b
 \item {\mymo{sichereStimme(s : Stimme)}} \\
 Diese Funktion wird von dem assoziierten {\myma{Bundestagswahl}}-Objekt innerhalb der {\mymo{setzeStimme}}-Funktion aufgerufen. Falls bereits fünf {\myma{Stimmen}}-Objekte vorhanden sind, wird das älteste entfernt.
 \item {\mymo{restauriereStimme() : Stimme}} \\
-Wird von der {\myma{Steuerung}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück.
+Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funktion{\mymo{zurueckSetzen()}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück. Die Bundestagswahl ersetzt dann die aktuelle Stimme mit der restaurierten Stimme.
 \end{description}
 
 \newpage
@@ -197,7 +197,12 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 \end{description} 
 
 \subsection{Meldung}
-Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachrichtigungen und Fenstertexte. Es 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.8]{Meldung_Ausschnitt.png} \caption{Meldungs-Klasse} 
+\end{figure}
+Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachrichtigungen und Fenstertexte. Es ist eine statische Klasse. Alle Objekte dieser Klasse beinhalten eine Nachricht und einen Fehlercode. Der Fehlercode ist null, falls es sich nicht um einen Fehler handelt.
+Objekte dieser Klasse können nicht außerhalb erzeugt werden.
 
 \section{Klassendiagramm im Detail}
 

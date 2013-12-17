@@ -1,15 +1,17 @@
-gui:GuiSteuerung
-s:Steuerung
+gui:GUISteuerung[a]
+s:Steuerung[a]
 aktuelleBTW:BundestagsWahl
-c:Chronik
+c:Chronik[a]
 /m1:Stimme[a]
 /m2:Stimme[a]
 /m3:Stimme[a]
 
-gui:s.aktualisiereDaten(Stimme)
+gui:Meldung.success=s.aktualisiereDaten(Stimme)
 s:aktuelleBTW.setzeStimme(Stimme)
 aktuelleBTW:c.sichereStimme(Stimme)
 c:m1.new(Stimme)
+gui:Meldung.success=s.aktualisiereDaten(Stimme)
+s:aktuelleBTW.setzeStimme(Stimme)
 aktuelleBTW:c.sichereStimme(Stimme)
 c:m2.new(Stimme)
 
