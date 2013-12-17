@@ -13,7 +13,7 @@
 
 \newcommand{\myma}{\fontfamily{pcr}\selectfont \textbf}
 \newcommand{\mymo}{\fontfamily{pcr}\selectfont \textit}
-
+\setlength{\parindent}{0pt}
 \let\footnote=\endnote
 
 \begin{document}
@@ -27,7 +27,7 @@
 {\normalsize Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
 \end{center}
 \date{}
-\setlength{\parindent}{0pt}
+
 \vspace*{30pt}
 \begin{figure}[h]
 \centering
@@ -62,7 +62,7 @@ Um besseres Verständnis der Darstellung zu gewährleisten werden Klassen-,
 Anwendungs-, Paket- und Sequenzdiagramme verwendet. \\
 
 \section{Systemmodell}
-\section{Klassendiagramm Übersicht}
+\section{Klassendiagramm}
 \subsection{GUI}
 \begin{figure}[!ht]
 \includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} 
@@ -202,7 +202,6 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 \end{figure}
 Die Klasse {\myma{Meldung}} ist verantwortlich für Fehlermeldungen, Benachrichtigungen und Fenstertexte. Es ist eine statische Klasse. Die Funktion {\mymo{getString}} gibt zu einem gegebenen Schlüssel ein String zurück. Die Strings dieser Klasse werden in einem externen Textdokument gelagert.
 
-\section{Klassendiagramm im Detail}
 
 \section{Anwendungsfälle}
 

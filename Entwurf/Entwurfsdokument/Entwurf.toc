@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1}Einleitung}{1}
 \contentsline {subsection}{\numberline {1.1}Einleitung}{1}
 \contentsline {section}{\numberline {2}Systemmodell}{1}
-\contentsline {section}{\numberline {3}Klassendiagramm \IeC {\"U}bersicht}{1}
+\contentsline {section}{\numberline {3}Klassendiagramm}{1}
 \contentsline {subsection}{\numberline {3.1}GUI}{1}
 \contentsline {subsection}{\numberline {3.2}Datenhaltung}{4}
 \contentsline {subsection}{\numberline {3.3}Import/ Export}{5}
@@ -12,12 +12,11 @@
 \contentsline {subparagraph}{Methoden}{8}
 \contentsline {subsection}{\numberline {3.6}Mandatsrechner}{9}
 \contentsline {subsection}{\numberline {3.7}Meldung}{10}
-\contentsline {section}{\numberline {4}Klassendiagramm im Detail}{11}
-\contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{11}
-\contentsline {section}{\numberline {6}Sequenzdiagramme}{11}
-\contentsline {subsection}{\numberline {6.1}Import}{11}
-\contentsline {subsection}{\numberline {6.2}Export}{12}
-\contentsline {subsection}{\numberline {6.3}Wahlgenerierung}{13}
-\contentsline {subsection}{\numberline {6.4}Paradoxe Wahlgenerierung und Vergleich}{14}
-\contentsline {subsection}{\numberline {6.5}Vergleich}{15}
-\contentsline {subsection}{\numberline {6.6}Chronik}{16}
+\contentsline {section}{\numberline {4}Anwendungsf\IeC {\"a}lle}{11}
+\contentsline {section}{\numberline {5}Sequenzdiagramme}{11}
+\contentsline {subsection}{\numberline {5.1}Import}{11}
+\contentsline {subsection}{\numberline {5.2}Export}{12}
+\contentsline {subsection}{\numberline {5.3}Wahlgenerierung}{13}
+\contentsline {subsection}{\numberline {5.4}Paradoxe Wahlgenerierung und Vergleich}{15}
+\contentsline {subsection}{\numberline {5.5}Vergleich}{16}
+\contentsline {subsection}{\numberline {5.6}Chronik}{17}
