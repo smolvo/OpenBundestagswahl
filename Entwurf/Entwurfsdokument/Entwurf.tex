@@ -15,6 +15,7 @@
 \newcommand{\mymo}{\fontfamily{pcr}\selectfont \textit}
 
 \let\footnote=\endnote
+\setlength{\parindent}{0pt}
 
 \begin{document}
 \pagestyle{fancy}
@@ -41,25 +42,22 @@
 \cfoot{{\Vhrulefill~  Seite \thepage   ~\Vhrulefill} \newline {\scriptsize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}}
 
 \pagenumbering{roman} 
-
- 
-\newpage
 \begin{onehalfspace}
 \tableofcontents
 \end{onehalfspace}
 \newpage
-
 \pagenumbering{arabic} 
 
 
 \section{Einleitung}
 
-\subsection{Einleitung}
-In diesem Dokument  wird der Entwurf der ersten PSE-Gruppe zum Thema "Entwicklung
-einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag"
-präsentiert. \\
-Um besseres Verständnis der Darstellung zu gewährleisten werden Klassen-, 
-Anwendungs-, Paket- und Sequenzdiagramme verwendet. \\
+
+Dieses Dokument erläutert den Entwurf der im Pflichtenheft spezifizierten Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag. \\
+Anhand verschiedener Diagramme, im speziellen einem Klassendiagramm, werden die Architektur, die Komponenten, die Module und die einzelnen Klassen detailliert beschrieben.\\
+Desweiteren werden Entwurfsentscheidungen begründet und anhand von Sequenz- und Anwendungsdiagrammen zentrale Abläufe im Programm visualisiert sowie besondere Entwurfsdetails erläutert.\\
+Abschließend werden die Zeitplanung der Implementierungsphase und die zugehörigen Hauptverantwortlichen anhand von einem Gantt-Diagramm festgelegt.
+
+\newpage
 
 \section{Systemmodell}
 \section{Klassendiagramm Übersicht}

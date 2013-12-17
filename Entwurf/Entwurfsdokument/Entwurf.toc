@@ -1,20 +1,21 @@
 \select@language {german}
 \contentsline {section}{\numberline {1}Einleitung}{1}
-\contentsline {subsection}{\numberline {1.1}Einleitung}{1}
-\contentsline {section}{\numberline {2}Systemmodell}{1}
-\contentsline {section}{\numberline {3}Klassendiagramm \IeC {\"U}bersicht}{1}
-\contentsline {subsection}{\numberline {3.1}GUI}{1}
-\contentsline {subsection}{\numberline {3.2}Datenhaltung}{4}
-\contentsline {subsection}{\numberline {3.3}Import/ Export}{5}
-\contentsline {subparagraph}{Methoden}{5}
-\contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{6}
-\contentsline {subsection}{\numberline {3.5}Chronik}{9}
-\contentsline {subsection}{\numberline {3.6}Mandatsrechner}{10}
-\contentsline {section}{\numberline {4}Klassendiagramm im Detail}{12}
-\contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{12}
-\contentsline {section}{\numberline {6}Sequenzdiagramme}{12}
-\contentsline {subsection}{\numberline {6.1}Import}{12}
-\contentsline {subsection}{\numberline {6.2}Export}{13}
-\contentsline {subsection}{\numberline {6.3}Paradoxe Wahlgenerierung und Vergleich}{14}
-\contentsline {subsection}{\numberline {6.4}Vergleich}{15}
-\contentsline {subsection}{\numberline {6.5}Chronik}{16}
+\contentsline {section}{\numberline {2}Systemmodell}{2}
+\contentsline {section}{\numberline {3}Klassendiagramm \IeC {\"U}bersicht}{2}
+\contentsline {subsection}{\numberline {3.1}GUI}{2}
+\contentsline {subsection}{\numberline {3.2}Datenhaltung}{5}
+\contentsline {subsection}{\numberline {3.3}Import/ Export}{6}
+\contentsline {subparagraph}{Methoden}{6}
+\contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{7}
+\contentsline {subsection}{\numberline {3.5}Chronik}{10}
+\contentsline {subparagraph}{Methoden}{10}
+\contentsline {subsection}{\numberline {3.6}Mandatsrechner}{11}
+\contentsline {subsection}{\numberline {3.7}Meldung}{12}
+\contentsline {section}{\numberline {4}Klassendiagramm im Detail}{13}
+\contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{13}
+\contentsline {section}{\numberline {6}Sequenzdiagramme}{13}
+\contentsline {subsection}{\numberline {6.1}Import}{13}
+\contentsline {subsection}{\numberline {6.2}Export}{14}
+\contentsline {subsection}{\numberline {6.3}Paradoxe Wahlgenerierung und Vergleich}{15}
+\contentsline {subsection}{\numberline {6.4}Vergleich}{16}
+\contentsline {subsection}{\numberline {6.5}Chronik}{17}
