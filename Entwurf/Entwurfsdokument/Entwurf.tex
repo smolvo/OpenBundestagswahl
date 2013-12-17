@@ -149,15 +149,14 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 
 \subsection{Wahlgenerierung}
 \begin{figure}[!ht]
-\includegraphics[scale=0.5]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} 
+\includegraphics[scale=0.4]{Wahlgenerator_Klassendiagramm} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
 
 Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
 Mit diesem Modul können Bundestagswahlen anhand vorher definierten Stimmanteilen auf Bundesebene generiert werden. Bei diesen Stimmanteilen handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine Basis-Bundestagswahl um Daten wie beispielsweise Bundesländer, Wahlkreise und Wahlberechtigte zur Verfügung zu haben.\\\\
 Beim generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig, erst auf alle Bundesländer und dann auf die einzelnen Wahlkreise verteilt.\\\\
 Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.\\\\
-\includegraphics[scale=0.5]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
-Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
+
 \newpage
 
 \subsection{Chronik}
@@ -229,6 +228,11 @@ Objekte dieser Klasse können nicht außerhalb erzeugt werden.
 \subsection{Export}
 \includegraphics[scale=0.75]{Export-Sequenzdiagramm.png} 
 
+\subsection{Wahlgenerierung}
+\includegraphics[scale=0.45]{zufaelligeWahlgenerierung_Sequenzdiagramm.png}
+Beim Generieren einer Bundestagswahl werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet. Diese Stimmen werden dann zufällig auf die einzelnen Wahlkreise verteilt.\\\\
+Dieser Vorgang ist im folgenden noch einmal als Sequenzdiagramm aufgezeigt.
+Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahlkreise gibt es noch einen Wahlgenerator der Stimmverteilungen erzeugt, die nach dem Wahlgesetz von 2009 zu negativem Stimmgewicht durch Überhangsmandate führen. Diese werden benötigt um in einer Vergleichsansicht das negative Stimmgewicht zu verdeutlichen.
 \subsection{Paradoxe Wahlgenerierung und Vergleich}
 \includegraphics[scale=0.75]{paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png} 
 

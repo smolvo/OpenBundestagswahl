@@ -6,17 +6,18 @@
 \contentsline {subsection}{\numberline {3.2}Steuerung}{5}
 \contentsline {subsection}{\numberline {3.3}Mandatsrechner}{6}
 \contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{8}
-\contentsline {subsection}{\numberline {3.5}Chronik}{11}
-\contentsline {subparagraph}{Methoden}{11}
-\contentsline {subsection}{\numberline {3.6}Import/ Export}{12}
-\contentsline {subparagraph}{Methoden}{12}
-\contentsline {subsection}{\numberline {3.7}Datenhaltung}{14}
-\contentsline {subsection}{\numberline {3.8}Meldung}{15}
-\contentsline {section}{\numberline {4}Klassendiagramm im Detail}{16}
-\contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{16}
-\contentsline {section}{\numberline {6}Sequenzdiagramme}{16}
-\contentsline {subsection}{\numberline {6.1}Import}{16}
-\contentsline {subsection}{\numberline {6.2}Export}{17}
-\contentsline {subsection}{\numberline {6.3}Paradoxe Wahlgenerierung und Vergleich}{18}
-\contentsline {subsection}{\numberline {6.4}Vergleich}{19}
-\contentsline {subsection}{\numberline {6.5}Chronik}{20}
+\contentsline {subsection}{\numberline {3.5}Chronik}{9}
+\contentsline {subparagraph}{Methoden}{9}
+\contentsline {subsection}{\numberline {3.6}Import/ Export}{10}
+\contentsline {subparagraph}{Methoden}{10}
+\contentsline {subsection}{\numberline {3.7}Datenhaltung}{12}
+\contentsline {subsection}{\numberline {3.8}Meldung}{13}
+\contentsline {section}{\numberline {4}Klassendiagramm im Detail}{14}
+\contentsline {section}{\numberline {5}Anwendungsf\IeC {\"a}lle}{14}
+\contentsline {section}{\numberline {6}Sequenzdiagramme}{14}
+\contentsline {subsection}{\numberline {6.1}Import}{14}
+\contentsline {subsection}{\numberline {6.2}Export}{15}
+\contentsline {subsection}{\numberline {6.3}Wahlgenerierung}{16}
+\contentsline {subsection}{\numberline {6.4}Paradoxe Wahlgenerierung und Vergleich}{18}
+\contentsline {subsection}{\numberline {6.5}Vergleich}{19}
+\contentsline {subsection}{\numberline {6.6}Chronik}{20}
