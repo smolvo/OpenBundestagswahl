@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper,titlepage]{article}
+\documentclass[12pt,a4paper,titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{amsmath}
@@ -10,6 +10,7 @@
 \usepackage{endnotes}
 \usepackage[section]{placeins}
 \usepackage{fancyhdr}
+
 \newcommand{\myma}{\fontfamily{pcr}\selectfont \textbf}
 \newcommand{\mymo}{\fontfamily{pcr}\selectfont \textit}
 
@@ -22,8 +23,8 @@
 \vspace*{50pt}
 \begin{center}
 {\Huge Entwurf\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1} \\
-\vspace*{5pt}
-{\large Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
+\vspace*{15pt}
+{\normalsize Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
 \end{center}
 \date{}
 \setlength{\parindent}{0pt}
@@ -35,14 +36,20 @@
 		\Huge WS 2013 / 14
 \end{figure}
 \end{titlepage}
-
+\mbox{} \thispagestyle{empty}
 \def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
-\cfoot{{\Vhrulefill~  Seite \thepage   ~\Vhrulefill} \newline \footnotesize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
+\cfoot{{\Vhrulefill~  Seite \thepage   ~\Vhrulefill} \newline {\scriptsize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}}
 
+\pagenumbering{roman} 
+
+ 
 \newpage
 \begin{onehalfspace}
 \tableofcontents
 \end{onehalfspace}
+\newpage
+
+\pagenumbering{arabic} 
 
 
 \section{Einleitung}
