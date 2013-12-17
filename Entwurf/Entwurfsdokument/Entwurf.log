@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.11)  16 DEC 2013 17:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.11)  17 DEC 2013 06:08
 entering extended mode
 **Entwurf.tex
 (C:\Users\N\Dropbox\PSE\SVN\pse13-1\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -643,7 +643,7 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
 File: Import-Sequenzdiagramm.png Graphic file (type png)
 
 <use Import-Sequenzdiagramm.png>
-Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 174.
+Package pdftex.def Info: Import-Sequenzdiagramm.png used on input line 176.
 (pdftex.def)             Requested size: 270.86008pt x 589.67401pt.
  [10 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Mandatsrechne
 ralles.png>]
@@ -655,7 +655,7 @@ diagramm.png>] <Export-Sequenzdiagramm.png, id=63, 182.93344pt x 882.29625pt>
 File: Export-Sequenzdiagramm.png Graphic file (type png)
 
 <use Export-Sequenzdiagramm.png>
-Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 177.
+Package pdftex.def Info: Export-Sequenzdiagramm.png used on input line 179.
 (pdftex.def)             Requested size: 137.19974pt x 661.72057pt.
 
 Overfull \vbox (17.14034pt too high) has occurred while \output is active []
@@ -669,7 +669,7 @@ File: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png Graphic file (type
 png)
  <use paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png>
 Package pdftex.def Info: paradoxeWahlgenerierung+Vergleich-Sequenzdiagramm.png 
-used on input line 180.
+used on input line 182.
 (pdftex.def)             Requested size: 375.46431pt x 944.58917pt.
 
 Overfull \vbox (300.00894pt too high) has occurred while \output is active []
@@ -681,7 +681,7 @@ nerierung+Vergleich-Sequenzdiagramm.png>]
 File: Vergleich-Sequenzdiagramm.png Graphic file (type png)
 
 <use Vergleich-Sequenzdiagramm.png>
-Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 183.
+Package pdftex.def Info: Vergleich-Sequenzdiagramm.png used on input line 185.
 (pdftex.def)             Requested size: 182.36838pt x 608.08282pt.
 
 <Chronik_Sequenzdiagramm-erzeugen.png, id=75, 361.35pt x 208.78pt>
@@ -689,7 +689,7 @@ File: Chronik_Sequenzdiagramm-erzeugen.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-erzeugen.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-erzeugen.png used on input lin
-e 190.
+e 192.
 (pdftex.def)             Requested size: 271.01184pt x 156.5846pt.
  [14 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Vergleich-Seq
 uenzdiagramm.png>]
@@ -698,10 +698,10 @@ File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-stimmenaendern.png used on inp
-ut line 195.
+ut line 197.
 (pdftex.def)             Requested size: 504.88501pt x 184.68954pt.
 
-Overfull \hbox (76.91714pt too wide) in paragraph at lines 194--196
+Overfull \hbox (76.91714pt too wide) in paragraph at lines 196--198
 [] 
  []
 
@@ -710,7 +710,7 @@ File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-restaurieren.png used on input
- line 197.
+ line 199.
 (pdftex.def)             Requested size: 188.80682pt x 351.41559pt.
  [15 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Chronik_Seque
 nzdiagramm-erzeugen.png> <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdo
@@ -721,7 +721,7 @@ kument/Chronik_Sequenzdiagramm-stimmenaendern.png>] [16 <C:/Users/N/Dropbox/PSE
 Here is how much of TeX's memory you used:
  3329 strings out of 493921
  44401 string characters out of 3144887
- 104569 words of memory out of 3000000
+ 105569 words of memory out of 3000000
  6540 multiletter control sequences out of 15000+200000
  13803 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -737,7 +737,7 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.
 9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (16 pages, 467046 bytes).
+Output written on Entwurf.pdf (16 pages, 467168 bytes).
 PDF statistics:
  121 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
