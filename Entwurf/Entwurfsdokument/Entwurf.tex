@@ -247,6 +247,13 @@ Neben der zufälligen Verteilung von den Stimmen auf alle Bundesländer und Wahl
 \end{itemize}
 %\includegraphics[scale=0.75]{Chronik_Sequenzdiagramm.png}
 
+\subsection{GUI}
+\subsubsection{Aktualisierung}
+Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt. \\
+\includegraphics[scale=0.5]{GUI_Aktualisierung}
+
+Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
+ 
 \begingroup
 \parindent 0pt
 \parskip 2ex
