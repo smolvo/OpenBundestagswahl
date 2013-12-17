@@ -315,10 +315,22 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \subsection{GUI}
 \subsubsection{Aktualisierung}
 Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt. \\
-\includegraphics[scale=0.5]{GUI_Aktualisierung}
+\includegraphics[scale=0.5]{GUI_Aktualisierung.png}
 
 Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
+
+\subsubsection{Stimmenänderung}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{GUI_Stimmenaenderung}\\ \caption{Sequenzdiagramm zur Stimmenänderung}
+\end{figure}
+Der Benutzer ändert eine beliebige Stimme im Tabellenfenster. Dadurch wird ein Ereignis ausgelöst, wodurch das
+TabellenFenster reagiert. Es fragt die zur Tabellenzelle korrespondierende Stimme und den neuen Wert ab und übergibt
+diese zwei Daten an die Steuerung. Die Steuerung ruft auf dem aktuellen Bundeswahl-Objekt die Methode setzeStimme()
+mit den Parametern Stimme und der neuen Anzahl an Stimmen. Was dabei passiert siehe Chronik. Alles läuft gut ab, die alte Stimme wird in die Chronik aufgenommen und die alte Stimme in dem Bundestagswahl-Objekt durch die alte ersetzt.
+
 \newpage
+
 \section{Implementierungsphasen-Zeitplan}
 Nachfolgendes Gantt-Diagramm stellt die Zeitplanung für den Verlauf der Implementierung des Produktes sowie zugehörige Meilensteine und Hauptverantwortliche dar.
 
