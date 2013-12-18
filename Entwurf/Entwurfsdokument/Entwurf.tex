@@ -263,7 +263,7 @@ Die {\myma{Steuerung}} verbindet die unterschiedlichen Kompententen (GUI, Datenm
 
 Hier sieht man den Aufbau des Import- bzw. Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in {\myma{Steuerung}} und die genaue Struktur hinter {\myma{Bundestagswahl}} und der GUI ausgeblendet. \\
 Mit dem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist {\myma{Crawler2013}}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse {\myma{Crawler}} zu verwenden, von der {\myma{Crawler2013}} erbt, und alle vorhandenen Crawler von der Klasse {\myma{ImportExportManager}} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf {\myma{Steuerung}} die entsprechenden Methoden von {\myma{ImportExportManager}} ausführt.
-
+\newpage
 
 \begin{description}
 \item{\myma{ImportExportManager}}
@@ -321,17 +321,18 @@ Zu einer von {\myma{NegStimmgewichtWahlgenerator}} erzeugten {\myma{Bundestagswa
 
 \begin{description}
 \item {\mymo{StimmgewichtSimulator(btw : Bundestagswahl)}} \\
-Der Konstruktor dieser Klasse. Wird verwendet um einen neuen {\myma{StimmgewichtSimulator}} zu erstellen. Hier werden von der als Parameter übergebenen {\myma{Bundestagswahl}} die Sitzverteilung berechnet, eine deep copy erstellt, die als Attribut abgespeichert wird, und die relevanten Zweitstimmen aller Parteien.
-\item {\mymo{berechneNegStimmgewicht() : Boolean}}
-Ruft die privaten Methoden {\mymo{waehleParteien() : Partei [*])}} und {\mymo{waehleBundeslaender() : Bundesland [*])}} auf.  Dann werden die Zweitstimmen der ersten Partei aus der erhaltenen Liste in einem geeigneten Bundesland schrittweise solange um einen konstanten Faktor erhöht, bis sie entweder nicht mehr erhöht werden können, weil sie größer als die Wahlberechtigtenzahl sind, oder im Vergleich zu der ursprünglichen, gegebenen Bundestagswahl der Effekt des negativen Stimmgewichts auftritt.
+Das ist der Konstruktor der Klasse. Dieser wird verwendet, um einen neuen \\{\myma{StimmgewichtSimulator}} zu erstellen. Hier wird von der als Parameter übergebenen {\myma{Bundestagswahl}} die Sitzverteilung berechnet. Zudem wird von der {\myma{Bundestagswahl}} eine "deep copy" erstellt und als Attribut abgespeichert. Danach werden die relevanten Zweitstimmen (siehe Wahlgenerierung) aller Parteien berechnet.
+
+\item {\mymo{berechneNegStimmgewicht() : Boolean}} \\
+Ruft die privaten Methoden {\mymo{waehleParteien() : Partei }} und \\ {\mymo{waehleBundeslaender() : Bundesland}} auf.  Dann werden die Zweitstimmen der ersten {\myma{Partei}} aus der erhaltenen Liste in einem geeigneten {\myma{Bundeesland}} schrittweise  um einen konstanten Faktor erhöht. Dies geschieht maximal solange bis sie nicht mehr erhöht werden können, weil sie größer als die Anzahl der Wahlberechtigten sind. Falls ein negatives Stimmgewicht im Vergleich zu der ursprünglichen Bundestagswahl ermittelt wurde, bricht die Suche ab und es wird true zurückgegeben.
 
 \item {\mymo{vergleicheSitzverteilungen(p : Partei)}} : Boolean
-Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen Bundestagswahlen. Wenn die Sitzanzahl für die gegebene Partei in der Ursprungsbundestagswahl größer ist als in der neu berechneten Bundestagswahl, tritt negativer Stimmeffekt auf und er wird false ausgegeben, andernfalls true. 
+Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen Bundestagswahlen. Wenn die Sitzanzahl für die gegebene Partei in der Ursprungsbundestagswahl größer ist als in der neu berechneten Bundestagswahl, tritt negativer Stimmeffekt auf und es wird false ausgegeben, andernfalls true. 
 
-\item {\mymo{waehleParteien() : Partei [*])}}
+\item {\mymo{waehleParteien() : Partei}}
 In dieser privaten Methode werden die Parteien gewählt, für die negatives Stimmgewicht auftreten kann (Bedingung: siehe Wahlgenerierung).
 
-\item {\mymo{waehleBundeslaender() : Bundesland [*])}}
+\item {\mymo{waehleBundeslaender() : Bundesland}}
 In dieser privaten Methode werden die Bundesländer, abhängig von den Parteien, gewählt, für die negatives Stimmgewicht auftreten kann (Bedingung: siehe Wahlgenerierung).
 
 
@@ -354,7 +355,7 @@ Die Methode {\myma{sichereStimme}} wird von dem \\ {\myma{Bundestagswahl}}-Objek
 \item {\mymo{sichereStimme(s : Stimme)}} \\
 Diese Funktion wird von dem assoziierten {\myma{Bundestagswahl}}-Objekt innerhalb der {\mymo{setzeStimme}}-Funktion aufgerufen. Falls bereits fünf {\myma{Stimmen}}-Objekte vorhanden sind, wird das älteste entfernt.
 \item {\mymo{restauriereStimme() : Stimme}} \\
-Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funktion{\mymo{zurueckSetzen()}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück. Die Bundestagswahl ersetzt dann die aktuelle Stimme mit der restaurierten Stimme.
+Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funktion \\ {\mymo{zurueckSetzen()}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück. Die Bundestagswahl ersetzt dann die aktuelle Stimme mit der restaurierten Stimme.
 \end{description}
 
 \newpage
@@ -435,7 +436,7 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \centering
 \includegraphics[scale=0.4]{Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png} \caption{Sequenzdiagramm zum negativen Stimmgewicht}
 \end{figure}
-In diesem Sequenzdiagramm wird der Fokus daraufgelegt, wie zu der vom {\myma{NegStimmgewichtWahlgenerator}} erzeugten {\myma{Bundestagswahl}} ein {\myma{Stimmgewichtsimulator}}-Objekt erzeugt und darauf dann mithilfe der Methode {\mymo{berechneNegStimmgewicht()}} eine, zur gegebenen Bundestagswahl verwandte, Wahl findet, so dass zwischen diesen der Effekt des negativen Stimmgewichts auftritt.
+In diesem Sequenzdiagramm wird der Fokus daraufgelegt, wie zu der vom \\ {\myma{NegStimmgewichtWahlgenerator}} erzeugten {\myma{Bundestagswahl}} ein \\ {\myma{Stimmgewichtsimulator}}-Objekt erzeugt und darauf dann mithilfe der Methode \\ {\mymo{berechneNegStimmgewicht()}} eine, zur gegebenen Bundestagswahl verwandte, Wahl findet, so dass zwischen diesen der Effekt des negativen Stimmgewichts auftritt.
 
 
 
@@ -446,7 +447,7 @@ In diesem Sequenzdiagramm wird der Fokus daraufgelegt, wie zu der vom {\myma{Neg
 	\centering
 	\includegraphics[scale=0.65]{Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png} \caption{Sequenzdiagramm zur Sicherung des Stimmenobjektes}
 	\end{figure}
-	Beim Verändern einer Stimme wird von der GUI die funktion {\mymo{aktualisiereDaten(s:Stimme, neueAnzahl:Integer)}} aufgerufen. Dies ruft in der aktuellen Bundestagswahl die Funktion {\mymo{setzeStimme(s:Stimme, neueAnzahl:Integer)}} auf. Hier wird nun zum Speichern der alten Stimme, das alte Stimmen-Objekt geklont und in der Chronik abgelegt. \\
+	Beim Verändern einer Stimme wird von der GUI die Funktion \\ {\mymo{aktualisiereDaten(s:Stimme, neueAnzahl:Integer)}} aufgerufen. Dies ruft in der aktuellen Bundestagswahl die Funktion \\ {\mymo{setzeStimme(s:Stimme, neueAnzahl:Integer)}} auf. Hier wird nun zum Speichern der alten Stimme, das alte Stimmen-Objekt geklont und in der Chronik abgelegt. \\
 	Anschließend wird die alte Stimme mit der neuen Stimme ersetzt (hier nicht dargestellt) und die Funktion {\mymo{prüfeDaten(): Boolean}} überprüft ob die Bundestagswahl mit der veränderten Stimme noch gültig ist. Im Falle einer ungültigen Bundestagswahl wird dies mithilfe der Chronik zurückgesetzt und ```false'' zurückgegeben.
 	\newpage
 	\subsubsection{Restaurieren einer Stimme}
