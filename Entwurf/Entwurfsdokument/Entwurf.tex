@@ -434,8 +434,8 @@ Nun wird zu der vorher erzeugten {\myma{Bundestagswahl}} ein {\myma{Stimmgewicht
 \centering
 \includegraphics[scale=0.5]{GUI_Aktualisierung.png} \caption{Sequenzdiagramm zur Aktualisierung in der GUI} 
 \end{figure}
-Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt.\\
-Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
+Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue {\myma{Sitzverteilung}} wurde berechnet und in Form einer {\myma{BTW-Klasse}} in der Steuerung abgelegt.\\
+Die {\myma{GUISteuerung}} aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode {\mymo{aktualisiereWahlfenster()}} gestartet. In dieser wird dem {\myma{WahlFenster}} {\myma{Bundestagswahl}} übergeben und dieses verteilt die Visualisierung an die drei Ansichten. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode {\mymo{faerbeBundeslaender()}} verwendet wird.
 
 \newpage
 \subsubsection{Stimmenänderung}
@@ -443,10 +443,9 @@ Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von de
 \centering
 \includegraphics[scale=0.5]{GUI_Stimmenaenderung}\\ \caption{Sequenzdiagramm zur Stimmenänderung}
 \end{figure}
-Der Benutzer ändert eine beliebige Stimme im Tabellenfenster. Dadurch wird ein Ereignis ausgelöst, wodurch das
-TabellenFenster reagiert. Es fragt die zur Tabellenzelle korrespondierende Stimme und den neuen Wert ab und übergibt
-diese zwei Daten an die Steuerung. Die Steuerung ruft auf dem aktuellen Bundeswahl-Objekt die Methode setzeStimme()
-mit den Parametern Stimme und der neuen Anzahl an Stimmen. Was dabei passiert siehe Chronik. Alles läuft gut ab, die alte Stimme wird in die Chronik aufgenommen und die alte Stimme in dem Bundestagswahl-Objekt durch die alte ersetzt.
+Der Benutzer ändert eine beliebige {\myma{Stimme}} im {\myma{TabellenFenster}}. Dadurch wird ein Ereignis ausgelöst, wodurch das {\myma{TabellenFenster}} reagiert. Es fragt die zur {\myma{TabellenZelle}} korrespondierende {\myma{Stimme}} und den neuen Wert ab und übergibt
+diese zwei Daten an die {\myma{Steuerung}}. Die {\myma{Steuerung}} ruft auf dem aktuellen {\myma{BTW}}-Objekt die Methode setzeStimme()
+mit den Parametern {\myma{Stimme}} und der neuen Anzahl an Stimmen. Was dabei passiert siehe {\myma{Chronik}}. Alles läuft gut ab, die alte {\myma{Stimme}} wird in die {\myma{Chronik}} aufgenommen und die alte {\myma{Stimme}} in dem {\myma{BTW}}-Objekt durch die alte ersetzt.
 \newpage
 \section{Implementierungsphasen-Zeitplan}
 \begin{figure}[!ht]
