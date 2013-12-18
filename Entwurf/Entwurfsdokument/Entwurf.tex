@@ -60,6 +60,7 @@ Abschließend wird die Zeitplanung der Implementierung und die zugehörigen Haup
 
 \section{Systemmodell}
 \section{Klassendiagramm}
+\newpage
 \subsection{GUI}
 \begin{figure}[!ht]
 \includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} 
@@ -127,22 +128,16 @@ Erstellt ein Diagramm auf Grund der Daten der Bundestagswahl btw.
 \begin{itemize}
 \item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
 Erstellt, wenn möglich, die kartografische Darstellung.
+\item {\mymo{{faerbeBundeslaender(btw : Bundestagswahl))}}}
+Färbt die einzelnen Bundesländer nach den Parteien, die die meisten Zweitstimmen haben. Diese Methode wird von zeigeInformationen benutzt.
 \end{itemize}
 
 \item  {\myma{{GUISteuerung}}} \\
 \begin{itemize}
-\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
-Erstellt, wenn möglich, die kartografische Darstellung.
+\item {\mymo{{aktualisiereWahlfenster()}}}
+Diese Methode startet eine komplette Aktualisierung eines Wahlfensters.
 \end{itemize}
-
-\item  {\myma{{Ansicht}}} \\
-\begin{itemize}
-\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
-Erstellt, wenn möglich, die kartografische Darstellung.
-\end{itemize}
-
 \end{description}
-\newpage
 \subsection{Datenhaltung}
 \begin{figure}[!ht]
 \includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} 
