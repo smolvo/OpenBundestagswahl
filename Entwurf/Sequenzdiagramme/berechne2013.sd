@@ -1,0 +1,42 @@
+#!>>
+#!Die korrekte Daten werden im Mandatsrechner mit dem Wahlgesetz 2013 ausgewertet
+#!
+#!<<
+ext:External[pe]
+hau:Steuerung[a]
+b13:Mandatsrechner2013[a]
+
+ext:hau.aktualisiereWahlfenster()
+hau:Bundestagswahl=b13.berechneSitzverteilung()
+
+[c:loop für alle Bundesländer]
+
+b13[0]:Bundesland=b13.berechne(Bundesland)
+*4 b13
+Zu jeder Bundesland wird
+eine vorläufige Sitzverteilung
+berechnet
+*4
+[c:parallel Wahlkreise]
+*4 b13
+Für jeden Wahlkreis 
+wird der Wahlkreissieger 
+bestimmt. Dieser wird in 
+den Bericht mit auf-
+genommen 
+
+*4
+b13:Wahlkreis=b13.berechne(Wahlkreis)
+b13:b13.erstelleBericht(String)
+[/c]
+[/c]
+b13[3]:b13.erstelleBericht()
+*4 b13
+Anhand der verschiedenen 
+Divisoren und der Stimmen
+wird die entgültige Verteilung
+bestimmt. Dabei werden die
+verteilten Sitze im Bericht
+aufgenommen
+*4
+
