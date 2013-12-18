@@ -220,6 +220,30 @@ Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
 
 
 \newpage
+\subsection{Steuerung}
+\begin{figure}[!ht]
+\includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Steuerung Komponente} 
+\end{figure}
+Die {\myma{Steuerung}} verbindet die unterschiedlichen Kompententen (GUI, Datenmodelle, etc.). Es wurde deshalb das Entwurfsmuster Fassade für den Entwurf der Klasse genommen. Da es nur ein eindeutiges Objekt von der Klasse geben soll, wird zusätzlich Einzelstück als ein weiteres Entwurfsmuster genutzt. Die Steuerung hält für jeden Tab im {\myma{Programmfenster}} ein {\myma{Buntestagswahl}}-Objekt.
+\begin{description}
+     \item {\mymo{Steuerung()}} \\
+     Der private Konstruktor wird für das Entwurfsmuster Einzelstück gebraucht. Dadurch ist es nicht möglich eine neue Instanz von der Klasse zu erstellen.
+     \item {\mymo{getInstance() : Steuerung}} \\
+     Diese Methode gehört ebenfalls zum Entwurfsmuster Einzelstück, da das private Attribut nur als Rückgabewert einer Methode übergeben werden kann.
+     \item {\mymo{importieren(csvDatei : Datei)}} \\
+     Die in der GUI ausgewählte Datei wird an den {\myma{ImportExportManager}} gesendet. Wenn die Formatierung und der Inhalt der Datei stimmen, wird das übergebene {\myma{Bundestagswahl}}-Objekt gespeichert.
+     \item {\mymo{exportieren(pfad : String)}} \\
+     Es wird ein {\myma{Bundestagswahl}}-Objekt und ein Dateipfad an den {\myma{ImportExportManager}} gesendet, damit die Klasse eine CSV-Datei erstellt und diese speichert.
+     \item {\mymo{berechneSitzverteilung() : Bundestagswahl}} \\
+     Das aktuelle {\myma{Bundestagswahl}}-Objekt wird im passenden Mandatsrechner ausgewertet. Das Ergebnis wird als Rückgabewert von der {\myma{Steuerung}} zurückgegeben.
+     \item {\mymo{zufälligeWahlgenerierung(anteile : Stimmanteile) : Bundestagswahl}} \\
+     Es wird mit Hilfe des {\myma{Wahlgenerators}} und der {\myma{Stimmenanteile}} eine {\myma{Bundestagswahl}} erstellt und zurückgegeben.
+     \item {\mymo{negStimmgewichtGenerierung(anteile : Stimmanteile)}}\\
+     \item {\mymo{aktualisiereDaten(stimme : Stimme, anzahl : Integer)}} \\
+     Die Methode speichert den alten Wert in der Chronik und kopiert den neuen Wert über Deep copy in die Daten.
+     \item {\mymo{Steuerung}} \\
+\end{description}   
+
 \subsection{Import/ Export}
 \begin{figure}[!ht]
 \includegraphics[scale=0.7]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
