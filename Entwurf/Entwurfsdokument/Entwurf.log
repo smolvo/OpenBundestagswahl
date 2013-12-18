@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:06
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -840,101 +840,101 @@ File: berechne2013.png Graphic file (type png)
 <use berechne2013.png>
 Package pdftex.def Info: berechne2013.png used on input line 371.
 (pdftex.def)             Requested size: 289.58116pt x 392.46529pt.
- <DeepCopy.png, id=102, 963.6pt x 1515.41156pt>
+ [20 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/berechne201
+3.png>] <DeepCopy.png, id=106, 963.6pt x 1515.41156pt>
 File: DeepCopy.png Graphic file (type png)
 
 <use DeepCopy.png>
-Package pdftex.def Info: DeepCopy.png used on input line 376.
+Package pdftex.def Info: DeepCopy.png used on input line 378.
 (pdftex.def)             Requested size: 289.08223pt x 454.62698pt.
-
-<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=103, 925.4575pt x 486.81876pt>
+ [21 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/DeepCopy.pn
+g>]
+<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=111, 925.4575pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
 Package pdftex.def Info: Sequenzdiagramme/Import_Sequenzdiagramm.png used on in
-put line 380.
+put line 384.
 (pdftex.def)             Requested size: 462.72762pt x 243.40878pt.
 
-Overfull \hbox (9.75972pt too wide) in paragraph at lines 380--380
-[][] 
+Overfull \hbox (9.75972pt too wide) in paragraph at lines 384--384
+ [][] 
  []
 
-[20 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/berechne2013
-.png>]
-<Sequenzdiagramme/Wahlgenerierung.png, id=108, 623.32875pt x 1061.46562pt>
+[22 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Import_Sequenzdiagramm.png>]
+<Sequenzdiagramme/Wahlgenerierung.png, id=117, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
 <use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 388.
+e 392.
 (pdftex.def)             Requested size: 342.83186pt x 583.80789pt.
 
-Overfull \hbox (8.58806pt too wide) in paragraph at lines 390--392
-\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(bas
-isWahl : Bundestagswahl,
+Overfull \hbox (8.58806pt too wide) in paragraph at lines 394--396
+[]\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(b
+asisWahl : Bundestagswahl,
  []
 
-[21 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/DeepCopy.png
->] [22 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdi
-agramme/Import_Sequenzdiagramm.png>] [23 <C:/Users/Philipp/Desktop/Uni/PSE/svn/
-Entwurf/Entwurfsdokument/Sequenzdiagramme/Wahlgenerierung.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 399.
+[23 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Wahlgenerierung.png>] [24] [25]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 403.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 399.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 403.
 
-<Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=122, 313.17pt 
+<Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=128, 313.17pt 
 x 654.94687pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file 
 (type png)
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaender
-n.png used on input line 400.
+n.png used on input line 406.
 (pdftex.def)             Requested size: 219.21748pt x 458.45969pt.
 
-<Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=123, 555.57562pt
+<Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=129, 555.57562pt
  x 736.25063pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png Graphic file (t
 ype png)
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.
-png used on input line 402.
+png used on input line 411.
 (pdftex.def)             Requested size: 388.90027pt x 515.37192pt.
- [24 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiag
-ramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [25 <C:/Users/Philipp/Deskto
+ [26 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiag
+ramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [27 <C:/Users/Philipp/Deskto
 p/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm
--restaurieren.png>] <GUI_Aktualisierung.png, id=133, 350.81062pt x 1011.78pt>
+-restaurieren.png>] <GUI_Aktualisierung.png, id=139, 350.81062pt x 1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 413.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 424.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [26 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
-sierung.png>] [27]
-<GUI_Stimmenaenderung.png, id=141, 956.57375pt x 365.365pt>
+ [28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
+sierung.png>] [29]
+<GUI_Stimmenaenderung.png, id=148, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
 <use GUI_Stimmenaenderung.png>
-Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 421.
+Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 432.
 (pdftex.def)             Requested size: 478.2857pt x 182.68205pt.
 
-Overfull \hbox (25.31781pt too wide) in paragraph at lines 421--421
+Overfull \hbox (25.31781pt too wide) in paragraph at lines 432--432
  [][] 
  []
 
-[28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Stimmena
-enderung.png>] <Gantt-Diagramm.png, id=147, 1242.14063pt x 576.65437pt>
+[30 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Stimmena
+enderung.png>] <Gantt-Diagramm.png, id=153, 1242.14063pt x 576.65437pt>
 File: Gantt-Diagramm.png Graphic file (type png)
 
 <use Gantt-Diagramm.png>
-Package pdftex.def Info: Gantt-Diagramm.png used on input line 431.
+Package pdftex.def Info: Gantt-Diagramm.png used on input line 442.
 (pdftex.def)             Requested size: 1242.1376pt x 576.65295pt.
- [29 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Gantt-Diagr
+ [31 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Gantt-Diagr
 amm.png>]
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
@@ -957,9 +957,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 .9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (32 pages, 706950 bytes).
+Output written on Entwurf.pdf (34 pages, 708661 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
+ 190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
