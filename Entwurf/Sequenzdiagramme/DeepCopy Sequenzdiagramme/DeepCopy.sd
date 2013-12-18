@@ -7,6 +7,7 @@ btwOriginal:Bundestagswahl
 /erstKopie:Erststimme
 /pKopie:Partei
 /zweitKopie:Zweitstimme
+/llKopie:LandesListe
 /svKopie:Sitzverteilung
 
 btwOriginal:btwKopie.new(name)
@@ -31,6 +32,7 @@ btwOriginal:pKopie.setFarbe(pOriginal.getFarbe())
 btwOriginal:wKopie.addPartei(pKopie)
 btwOriginal:btwKopie.addPartei(pKopie)
 btwOriginal:zweitKopie.new(zweitOriginal.getAnzahl(), pKopie, wKopie)
+btwOriginal:llKopie.new(pKopie, blKopie)
 [/c]
 [/c]
 [/c]
