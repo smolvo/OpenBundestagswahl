@@ -93,7 +93,7 @@ Zum GUI-Teil gehören alle Klassen, die dazu beitragen, das Datenmodell bestmög
 Das {\myma{ProgrammFenster}} repräsentiert das gesamte Programm auf der grafischen Benutzeroberfläche.
 	\begin{description}
 		\item {\mymo{{wechsleTab(w : WahlFenster)}}} \\
-		Diese Funktion wird beim Wechsel von Tabs aufgerufen. Dabei wird in der Steuerung das Attribut ```aktuelleBTW'' verändert auf die zu w zugeordnete {\mymo{BTW}}. Dies führt dazu, dass einige Funktionen in {\myma{Steuerung}} wie {\mymo{setzeZurueck()}} ohne zusätzliche Parameter mit der Bundestagswahl des aktuell offenen Tabs arbeiten.
+		Diese Funktion wird beim Wechsel von Tabs aufgerufen. Dabei wird in der Steuerung das Attribut ''aktuelleBTW'' verändert auf die zu w zugeordnete {\mymo{BTW}}. Dies führt dazu, dass einige Funktionen in {\myma{Steuerung}} wie \\ {\mymo{setzeZurueck()}} ohne zusätzliche Parameter mit der Bundestagswahl des aktuell offenen Tabs arbeiten.
 	\end{description}
 
 \item  {\myma{{VergleichsFenster}}} \\
@@ -147,10 +147,10 @@ Das {\myma{KartenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen 
 	\end{description}
 
 \item  {\myma{{GUISteuerung}}} \\
-Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{BTW}} in einem {\myma{WahlFenster}} visualisiert wird. Dafür bekommt sie das aktuellste {\myma{BTW}}-Objekt der {\myma{Steuerung}} und verteilt die Darstellungsarbeit an die Komponenten des {\myma{WahlFensters}}.
+Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{BTW}} in einem {\myma{WahlFenster}} visualisiert wird. Dafür bekommt sie das aktuellste {\myma{BTW}}-Objekt der {\myma{Steuerung}} und verteilt die Darstellungsarbeit an die Komponenten des \\ {\myma{WahlFensters}}.
 	\begin{description}
 	\item {\mymo{{aktualisiereWahlfenster()}}} \\
-	Diese Methode startet eine komplette Aktualisierung eines {\myma{WahlFenster}}s. Hierbei werden auch alle Abhängigen Ansichten ebenfalls aktualisiert.
+	Diese Methode startet eine komplette Aktualisierung eines \\ {\myma{WahlFensters}}. Hierbei werden auch alle Abhängigen Ansichten ebenfalls aktualisiert.
 	\end{description}
 
 \end{description}
@@ -181,7 +181,7 @@ Folgende Methoden sind enthalten:
 Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
                
                \item {\mymo{zurueckSetzen() : Boolean}}\\
-               Ruft die Methode {\mymo{restauriereStimme()}} in der {\myma{Chronik}} auf und setzt eine {\myma{Stimme}} zurück. Es wird dabei die Methode {\mymo{setzeStimme(s:Stimme, anzahl:Integer)}} verwendet um die Stimmen zu ändern. Falls das Rücksetzen fehlschlägt ist der Rückgabewert ``false''. Andernfalls wird erneut {\mymo{restauriereStimme()}} aufgerufen um den neu erstellten Chronik-Eintrag in{\mymo{setzeStimme(s:Stimme, anzahl:Integer)}} zu entfernen. Anschließend wird ``true'' zurückgegeben.
+               Ruft die Methode {\mymo{restauriereStimme()}} in der {\myma{Chronik}} auf und setzt eine {\myma{Stimme}} zurück. Es wird dabei die Methode {\mymo{setzeStimme(s:Stimme, anzahl:Integer)}} verwendet um die Stimmen zu ändern. Falls das Rücksetzen fehlschlägt ist der Rückgabewert ``false''. Andernfalls wird erneut \\ {\mymo{restauriereStimme()}} aufgerufen um den neu erstellten Chronik-Eintrag in{\mymo{setzeStimme(s:Stimme, anzahl:Integer)}} zu entfernen. Anschließend wird ``true'' zurückgegeben.
                
                \item {\mymo{clone() : Bundestagswahl}}\\
                Macht eine ``deep copy'' von der aktuellen Bundestagswahl und gibt dies zurück.
@@ -191,7 +191,7 @@ Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
      Ein Objekt dieser Klasse spiegelt eine vertretene Partei des Bundestages wieder. Jede Partei besitzt einen Namen, ein Kürzel und eine Farbe. Die Farbe wird verwendet, um in der kartografischen Ansicht die Bundesländer mit der Partei einzufärben, die in diesem Bundesland die meisten Zweitstimmen hat.
 
      \item {\myma{Gebiet}} \\
-     Eine Abstrakte Klasse, die ein Gebiet darstellt. Es erbt den Klassen {\myma{Deutschland}}, {\myma{Bundesland}} und {\myma{Wahlkreis}}. Gebiet besitzt eine Assoziationsklasse ({\myma{Zweitstimme}}) mit {\myma{Partei}}. Jedes Gebiet besitzt einen Namen und ein Wert mit der Anzahl der Wahlberechtigten.
+     Eine Abstrakte Klasse, die ein Gebiet darstellt. Es erbt den Klassen {\myma{Deutschland}}, {\myma{Bundesland}} und {\myma{Wahlkreis}}. Gebiet besitzt eine Assoziationsklasse \\ ({\myma{Zweitstimme}}) mit {\myma{Partei}}. Jedes Gebiet besitzt einen Namen und ein Wert mit der Anzahl der Wahlberechtigten.
 
      \item {\myma{Deutschland}} \\
      {\myma{Deutschland}} besitzt eine Liste an {\myma{Bundesland}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Bundesansicht}} verändert wurde. 
@@ -200,10 +200,10 @@ Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
      {\myma{Bundeland}} besitzt eine Liste an {\myma{Wahlkreis}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Landesansicht}} verändert wurde. Diese Klasse enthält zusätzlich einige weitere Attribute. Diese sind Einwohnerzahl (zur Berechnung der möglichen Anzahl der Sitze pro Bundesland), sitze (berechnete Anzahl der möglichen Sitze), Farbe (Farbe der Partei mit den meisten Zweitstimmen, wird im Mandatsrechner ausgemacht) und Bild um das Wappen des Bundeslandes zu Speichern. Der Wappen wird in der Landesansicht angezeigt.
 
      \item {\myma{Wahlkreis}} \\
-	Ein {\myma{Wahlkreis}} besitzt zusammen mit {\myma{Kandidat}} eine Assotiationsklasse {\myma{Erststimme}}, was die Erststimme pro Wahlkreis und Kandidat/Partei wiederspiegelt. In der {\myma{Wahlkreisansicht}} werden Objekte dieser Klasse von einem spezifischen Bundesland dargestellt.
+	Ein {\myma{Wahlkreis}} besitzt zusammen mit {\myma{Kandidat}} eine Assotiationsklasse \\ {\myma{Erststimme}}, was die Erststimme pro Wahlkreis und Kandidat/Partei wiederspiegelt. In der {\myma{Wahlkreisansicht}} werden Objekte dieser Klasse von einem spezifischen Bundesland dargestellt.
 	
      \item {\myma{Stimme}} \\
-	Dies ist eine Abstrakte Klasse, die eine Oberklasse von {\myma{Erststimme}} und {\myma{Zweitstimme}} ist. Diese Klasse wird bei Stimmveränderungen verwendet um ausmachen zu können, welche Stimme genau verändert wurde.
+	Dies ist eine Abstrakte Klasse, die eine Oberklasse von {\myma{Erststimme}} und \\ {\myma{Zweitstimme}} ist. Diese Klasse wird bei Stimmveränderungen verwendet um ausmachen zu können, welche Stimme genau verändert wurde.
 	
      \item {\myma{Erststimme}} \\
     Darf nur als Assoziationsklasse zwischen {\myma{Wahlkreis}} und ein {\myma{Kandidat}} existieren. Dies stellt sicher, dass die Erststimme einzig auf Wahlkreisebene verändert werden kann/darf. Der Grund für diese Entscheidung ist, die Komplexität bei Veränderung der Erststimmen auf Bundes- und Landesebene zu vermeiden.
@@ -238,11 +238,11 @@ Die {\myma{Steuerung}} verbindet die unterschiedlichen Kompententen (GUI, Datenm
      \item {\mymo{importieren(csvDatei : Datei)}} \\
      Die in der GUI ausgewählte Datei wird an den {\myma{ImportExportManager}} gesendet. Wenn die Formatierung und der Inhalt der Datei stimmen, wird das übergebene {\myma{Bundestagswahl}}-Objekt gespeichert.
      \item {\mymo{exportieren(pfad : String)}} \\
-     Es wird ein {\myma{Bundestagswahl}}-Objekt und ein Dateipfad an den {\myma{ImportExportManager}} gesendet, damit die Klasse eine CSV-Datei erstellt und diese speichert.
+     Es wird ein {\myma{Bundestagswahl}}-Objekt und ein Dateipfad an den \\ {\myma{ImportExportManager}} gesendet, damit die Klasse eine CSV-Datei erstellt und diese speichert.
      \item {\mymo{berechneSitzverteilung() : Bundestagswahl}} \\
      Das aktuelle {\myma{Bundestagswahl}}-Objekt wird im passenden Mandatsrechner ausgewertet. Das Ergebnis wird als Rückgabewert von der {\myma{Steuerung}} zurückgegeben.
      \item {\mymo{zufälligeWahlgenerierung(anteile : Stimmanteile) : Bundestagswahl}} \\
-     Es wird mit Hilfe des {\myma{Wahlgenerators}} und der {\myma{Stimmenanteile}} eine {\myma{Bundestagswahl}} erstellt und zurückgegeben.
+     Es wird mit Hilfe des {\myma{Wahlgenerators}} und der {\myma{Stimmenanteile}} eine \\ {\myma{Bundestagswahl}} erstellt und zurückgegeben.
      \item {\mymo{negStimmgewichtGenerierung(anteile : Stimmanteile)}}\\
      Diese Methode gibt einen {\myma{NegStimmgewichtSimulator}} zurück, der das negative Stimmgewicht zweier, miteinander verwandter Bundestagswahlen zum Ausdruck bringt.
      \item {\mymo{aktualisiereDaten(stimme : Stimme, anzahl : Integer)}} \\
@@ -290,9 +290,8 @@ Erstellt anhand einer .csv-Datei eine neue Bundestagswahl und versucht sie zu f�
 \centering
 \includegraphics[scale=1.0]{Klassendiagramme/Wahlgenerator_Klassendiagramm.png} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
-Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
 Zur Übersichtlichkeit werden in den Klassen {\myma{Partei}}, {\myma{Steuerung}} und {\myma{Bundestagswahl}} nur die für dieses Modul relevanten Informationen angezeigt.\\\\
-Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierten {\myma{Stimmanteilen}} auf Bundesebene generiert werden. Bei {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
+Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierter \\ {\myma{Stimmanteile}} auf Bundesebene generiert werden. Bei der Klasse {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
 
 Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt gibt es noch den {\mymo NegStimmgewichtWahlgenerator}. Dieser erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des negativen Stimmgewichts benötigt werden.\\
 
@@ -319,7 +318,7 @@ Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise der Bundes
 
 Die Klasse {\myma{Chronik}} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede {\myma{Bundestagswahl}} hat hierbei eine eigene Chronik. {\myma{Chronik}} wird in dem Konstruktor von {\myma{Bundestagswahl}} erzeugt, und ist daher in jedem {\myma{Bundestagswahl}}-Objekt enthalten. Es besitzt eine Menge von {\myma{Stimmen}}-Objekten. Bei jeder Veränderung wird ein neues {\myma{Stimmen}}-Objekt angelegt, was die Veränderung wiederspiegelt.
 \
-Die Methode {\myma{sichereStimme}} wird von dem {\myma{Bundestagswahl}}-Objekt bei jedem Aufruf von {\myma{setzeStimme}} aufgerufen.
+Die Methode {\myma{sichereStimme}} wird von dem \\ {\myma{Bundestagswahl}}-Objekt bei jedem Aufruf von {\myma{setzeStimme}} aufgerufen.
 \subparagraph{Methoden}
 \begin{description}
 \item {\mymo{sichereStimme(s : Stimme)}} \\
@@ -357,7 +356,7 @@ Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der 
 \end{figure}
 
 Dieses Modul ermöglicht den Vergleich von zwei Bundestagswahlen.
-Die Klasse {\myma{Wahlvergleich}} enthält zwei Bundestagswahlen sowie eine Liste aller relevanten Parteien mit den Differenzen von Erst-, Zweitstimmen sowie der Anzahl von Mandaten.
+Die Klasse \\ {\myma{Wahlvergleich}} enthält zwei Bundestagswahlen sowie eine Liste aller relevanten Parteien mit den Differenzen von Erst-, Zweitstimmen sowie der Anzahl von Mandaten.
 
 \newpage
 \subsection{Meldung}
