@@ -263,7 +263,7 @@ Die {\myma{Steuerung}} verbindet die unterschiedlichen Kompententen (GUI, Datenm
 Hier sieht man den Aufbau des Import- bzw. Exportmoduls. Zur Übersichtlichkeit werden die zum Importieren/Exportieren nicht notwendigen Methoden in {\myma{Steuerung}} und die genaue Struktur hinter {\myma{Bundestagswahl}} und der GUI ausgeblendet. \\
 Mit dem Programm wird nur ein vorimplementierter Crawler mitgegeben, der .csv-Dateien, die dem Format der .csv-Datei zur Bundestagswahl 2013 der Bundeswahlleiter-Webseite entsprechen, auswerten kann - dies ist {\myma{Crawler2013}}. Um jedoch die Möglichkeit zu garantieren, nachträglich weitere Crawler hinzuzufügen, haben wir uns dafür entschieden, eine abstrakte Oberklasse {\myma{Crawler}} zu verwenden, von der {\myma{Crawler2013}} erbt, und alle vorhandenen Crawler von der Klasse {\myma{ImportExportManager}} halten zu lassen. \\ Ausgelöst wird der ganze Import- bzw. Exportvorgang durch eine Benutzerinteraktion (z.B. Betätigen des Laden- Knopfs im Menü), worauf {\myma{Steuerung}} die entsprechenden Methoden von {\myma{ImportExportManager}} ausführt.
 
-\subparagraph{Methoden}
+
 \begin{description}
 \item{\myma{ImportExportManager}}
 \item {\mymo{importieren(csvDatei : Datei) : Bundestagswahl}} \\
@@ -297,7 +297,7 @@ Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufäl
 
 Dabei muss bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
 
-\subparagraph{Methoden}
+
 \begin{description}
 \item {\mymo{Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmanteile)}} \\
 Der Konstruktor dieser Klasse. Wird verwendet um einen neuen {\mymo{Wahlgenerator}} zu erstellen. Hier werden die Attribute basisWahl, anteile, erststimmenAnzahl und zweitstimmenAnzahl gesetzt.
@@ -335,7 +335,6 @@ Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funkti
 \end{figure}
 Die Berechnung der Wahl wird mit Hilfe des {\myma{Mandatsrechners}} realisiert. Es stehen die Klasse \\{\myma{Mandatsrechner2013}}, die das Berechnungsverfahren von der Bundestagswahl 2013 benutzt und die Klasse {\myma{Mandatsrechner2009}}, die das Berechnungsverfahren von der Bundestagswahl 2009 benutzt zur Verfügung. Beide Klassen erben von der abstrakten Klasse {\myma{Mandatsrechner}}. Dadurch besteht die Möglichkeit, weitere Berechnungsverfahren in späteren Versionen zu dem Programm hinzuzufügen. Da nur ein Objekt von dem {\myma{Mandatsrechner}} gebraucht wird, wird das Entwurfsmuster Einzelstück eingesetzt. Deswegen hält die Klasse einen privaten Konstruktor. Die abstrakten Methoden {\mymo{berechne()}} werden überladen, damit sie durch ihre Eingabeparameter spezifiziert werden. Diese werden dann in den Unterklassen je nach Wahlgesetz angepasst. Neben der Berechnung wird ein Bericht über die Sitzverteilung erstellt, der zum Nachvollziehen der Sitzverteilung helfen soll.
 \begin{large}
-Methoden 
 \end{large}
 \begin{description}
 
