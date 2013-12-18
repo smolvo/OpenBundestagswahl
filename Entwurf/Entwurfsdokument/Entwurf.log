@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  18 DEC 2013 05:29
 entering extended mode
 **Entwurf.tex
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,9 +13,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,19 +30,19 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -192,7 +192,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -223,7 +223,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -247,19 +247,19 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
 Language: germanb 2008/06/01 v2.6m German support from the babel system
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
@@ -267,24 +267,24 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@austrian = a dialect from \language\l@german 
 Package babel Info: Making " an active character on input line 102.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
@@ -325,44 +325,44 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
@@ -370,18 +370,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count101
@@ -397,16 +397,16 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen122
 \Gm@dimlist=\toks22
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
 \c@endnote=\count104
 \endnotesep=\dimen123
 \@enotes=\write3
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip46
 \f@ncyO@elh=\skip47
 \f@ncyO@erh=\skip48
@@ -417,7 +417,7 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux)
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -431,7 +431,7 @@ LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
 \scratchdimen=\dimen124
@@ -486,17 +486,17 @@ Package pdftex.def Info: KIT-Logo.png used on input line 34.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Philipp/Desktop/
-Uni/PSE/svn/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.toc
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Simon/Documents/
+pse13-1/trunk/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write4
@@ -509,7 +509,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [1]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <12> not available
@@ -532,8 +532,8 @@ File: Paketdiagramm.png Graphic file (type png)
 <use Paketdiagramm.png>
 Package pdftex.def Info: Paketdiagramm.png used on input line 73.
 (pdftex.def)             Requested size: 392.96716pt x 274.02307pt.
- [2 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Paketdiagram
-m.png>]
+ [2 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Paketdiagr
+amm.png>]
 <GUI-Abschnitt.png, id=29, 869.49844pt x 645.16031pt>
 File: GUI-Abschnitt.png Graphic file (type png)
  <use GUI-Abschnitt.png>
@@ -544,9 +544,29 @@ Overfull \hbox (25.25772pt too wide) in paragraph at lines 80--80
  [][] 
  []
 
-[3 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI-Abschnitt
-.png>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
+ []
+
+[3 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI-Abschni
+tt.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
@@ -558,7 +578,32 @@ T1/pcr/b/n/12 ProgrammFenster
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 104--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
 
  []
 
@@ -569,13 +614,23 @@ es Bundeswahl-Objekts.
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 127--129
+
+ []
+
+[4]
 Overfull \hbox (23.32402pt too wide) in paragraph at lines 136--138
 \OT1/cmr/m/n/12 m[]oglich, ei-ne kar-to-gra-fi-sche Dar-stel-lung \OT1/pcr/b/n/
 12 Deutschland\OT1/cmr/m/n/12 s aus ei-nem \OT1/pcr/b/n/12 Bundestagswahl\OT1/c
 mr/m/n/12 -
  []
 
-[4]
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+
+ []
+
+
 Overfull \hbox (0.72086pt too wide) in paragraph at lines 145--147
 \OT1/cmr/m/n/12 Die \OT1/pcr/b/n/12 GUISteuerung \OT1/cmr/m/n/12 sorgt daf[]ur,
  dass die ak-tu-ell-ste Ver-si-on der \OT1/pcr/b/n/12 Bundestagswahl
@@ -599,8 +654,8 @@ Overfull \hbox (42.38152pt too wide) in paragraph at lines 158--158
  [][] 
  []
 
-[6 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung-
-Ausschnitt.png>]
+[6 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Datenhaltun
+g-Ausschnitt.png>]
 Overfull \hbox (11.38335pt too wide) in paragraph at lines 179--181
 \OT1/pcr/m/sl/12 anzahl:Integer) \OT1/cmr/m/n/12 ver-wen-det um die Stim-men zu
  []andern. Falls das R[]ucksetzen
@@ -675,38 +730,33 @@ m/n/12 und der \OT1/pcr/b/n/12 Stimmenanteile \OT1/cmr/m/n/12 ei-ne \OT1/pcr/b/
 n/12 Bundestagswahl
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
-
- []
-
-[9 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Steuerung.png
->] [10] <Import-Export_Ausschnitt.png, id=61, 713.66624pt x 564.1075pt>
+[9 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Steuerung.p
+ng>] [10] <Import-Export_Ausschnitt.png, id=61, 713.66624pt x 564.1075pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
-Package pdftex.def Info: Import-Export_Ausschnitt.png used on input line 255.
+Package pdftex.def Info: Import-Export_Ausschnitt.png used on input line 256.
 (pdftex.def)             Requested size: 499.56296pt x 394.87254pt.
 
-Overfull \hbox (46.59506pt too wide) in paragraph at lines 255--255
+Overfull \hbox (46.59506pt too wide) in paragraph at lines 256--256
  [][] 
  []
 
 
-Overfull \hbox (4.68285pt too wide) in paragraph at lines 259--261
+Overfull \hbox (4.68285pt too wide) in paragraph at lines 260--262
 \OT1/cmr/m/n/12 Mit dem Pro-gramm wird nur ein vo-r-im-ple-men-tier-ter Craw-le
 r mit-ge-ge-ben, der .csv-Dateien,
  []
 
-[11 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Import-Expor
-t_Ausschnitt.png>]
-Overfull \hbox (19.12898pt too wide) in paragraph at lines 265--267
+[11 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Import-Exp
+ort_Ausschnitt.png>]
+Overfull \hbox (19.12898pt too wide) in paragraph at lines 266--268
 \OT1/cmr/m/n/12 aus. Wenn die-se true zur[]uckgibt, wird die eben-falls pri-va-
 te Me-tho-de \OT1/pcr/m/sl/12 leseCSVDatei()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
@@ -717,55 +767,55 @@ File: Klassendiagramme/Wahlgenerator_Klassendiagramm.png Graphic file (type png
 )
  <use Klassendiagramme/Wahlgenerator_Klassendiagramm.png>
 Package pdftex.def Info: Klassendiagramme/Wahlgenerator_Klassendiagramm.png use
-d on input line 286.
+d on input line 287.
 (pdftex.def)             Requested size: 472.01228pt x 387.69748pt.
 
-Overfull \hbox (19.04439pt too wide) in paragraph at lines 286--286
+Overfull \hbox (19.04439pt too wide) in paragraph at lines 287--287
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
 
  []
 
 
-Overfull \hbox (9.94875pt too wide) in paragraph at lines 288--291
+Overfull \hbox (9.94875pt too wide) in paragraph at lines 289--292
 \OT1/cmr/m/n/12 Zur []Ubersichtlichkeit wer-den in den Klas-sen \OT1/pcr/b/n/12
  Partei\OT1/cmr/m/n/12 , \OT1/pcr/b/n/12 Steuerung \OT1/cmr/m/n/12 und \OT1/pcr
 /b/n/12 Bundestagswahl
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
 
  []
 
 
-Overfull \hbox (54.16628pt too wide) in paragraph at lines 288--291
+Overfull \hbox (54.16628pt too wide) in paragraph at lines 289--292
 \OT1/cmr/m/n/12 Mit die-sem Mo-dul k[]onnen \OT1/pcr/b/n/12 Bundestagswahl \OT1
 /cmr/m/n/12 Ob-jek-te an-hand vor-her de-fi-nier-ten \OT1/pcr/b/n/12 Stimmantei
 len
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-[13 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Klassendiagr
-amme/Wahlgenerator_Klassendiagramm.png>]
-Overfull \hbox (20.90685pt too wide) in paragraph at lines 298--300
+[13 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Wahlgenerator_Klassendiagramm.png>]
+Overfull \hbox (20.90685pt too wide) in paragraph at lines 299--301
 []\OT1/pcr/m/sl/12 Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmant
 eile) 
  []
@@ -776,115 +826,115 @@ File: Klassendiagramme/Chronik_Ausschnitt.png Graphic file (type png)
 
 <use Klassendiagramme/Chronik_Ausschnitt.png>
 Package pdftex.def Info: Klassendiagramme/Chronik_Ausschnitt.png used on input 
-line 312.
+line 313.
 (pdftex.def)             Requested size: 467.41809pt x 237.66127pt.
 
-Overfull \hbox (14.4502pt too wide) in paragraph at lines 312--312
+Overfull \hbox (14.4502pt too wide) in paragraph at lines 313--313
  [][] 
  []
 
 
-Overfull \hbox (34.42567pt too wide) in paragraph at lines 315--318
+Overfull \hbox (34.42567pt too wide) in paragraph at lines 316--319
 \OT1/cmr/m/n/12 Ver[]anderung wie-der-spie-gelt.  Die Me-tho-de \OT1/pcr/b/n/12
  sichereStimme \OT1/cmr/m/n/12 wird von dem \OT1/pcr/b/n/12 Bundestagswahl\OT1/
 cmr/m/n/12 -
  []
 
 
-Overfull \hbox (77.34639pt too wide) in paragraph at lines 322--324
+Overfull \hbox (77.34639pt too wide) in paragraph at lines 323--325
 \OT1/cmr/m/n/12 Wird von der \OT1/pcr/b/n/12 Steuerung []\OT1/cmr/m/n/12 uber d
 ie ak-tu-el-le Bun-des-tags-wahl mit der Funk-ti-on\OT1/pcr/m/sl/12 zurueckSetz
 en()
  []
 
-[15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Klassendiagr
-amme/Chronik_Ausschnitt.png>]
+[15 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Chronik_Ausschnitt.png>]
 <Mandatsrechneralles.png, id=83, 454.69875pt x 349.305pt>
 File: Mandatsrechneralles.png Graphic file (type png)
 
 <use Mandatsrechneralles.png>
-Package pdftex.def Info: Mandatsrechneralles.png used on input line 330.
+Package pdftex.def Info: Mandatsrechneralles.png used on input line 331.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
- [16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Mandatsrech
-neralles.png>] [17]
+ [16 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Mandatsre
+chneralles.png>] [17]
 <Klassendiagramme/Wahlvergleich.png, id=92, 398.23781pt x 288.3272pt>
 File: Klassendiagramme/Wahlvergleich.png Graphic file (type png)
 
 <use Klassendiagramme/Wahlvergleich.png>
 Package pdftex.def Info: Klassendiagramme/Wahlvergleich.png used on input line 
-352.
+353.
 (pdftex.def)             Requested size: 318.59067pt x 230.66205pt.
 
-Overfull \hbox (38.38715pt too wide) in paragraph at lines 355--357
+Overfull \hbox (38.38715pt too wide) in paragraph at lines 356--358
 []\OT1/cmr/m/n/12 Dieses Mo-dul erm[]oglicht den Ver-gleich von zwei Bun-des-ta
 gs-wah-len. Die Klas-se \OT1/pcr/b/n/12 Wahlvergleich
  []
 
-[18 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Klassendiagr
-amme/Wahlvergleich.png (PNG copy)>]
+[18 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Wahlvergleich.png (PNG copy)>]
 <Meldung_Ausschnitt.png, id=96, 569.12625pt x 106.14656pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
 <use Meldung_Ausschnitt.png>
-Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 362.
+Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 363.
 (pdftex.def)             Requested size: 455.30162pt x 84.91736pt.
 
-Overfull \hbox (2.33372pt too wide) in paragraph at lines 362--362
+Overfull \hbox (2.33372pt too wide) in paragraph at lines 363--363
  [][] 
  []
 
-[19 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
-chnitt.png>] <berechne2013.png, id=101, 579.16376pt x 784.9325pt>
+[19 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Meldung_Au
+sschnitt.png>] <berechne2013.png, id=101, 579.16376pt x 784.9325pt>
 File: berechne2013.png Graphic file (type png)
 
 <use berechne2013.png>
-Package pdftex.def Info: berechne2013.png used on input line 371.
+Package pdftex.def Info: berechne2013.png used on input line 372.
 (pdftex.def)             Requested size: 289.58116pt x 392.46529pt.
- [20 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/berechne201
-3.png>] <DeepCopy.png, id=106, 963.6pt x 1515.41156pt>
+ [20 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/berechne2
+013.png>] <DeepCopy.png, id=106, 963.6pt x 1515.41156pt>
 File: DeepCopy.png Graphic file (type png)
 
 <use DeepCopy.png>
-Package pdftex.def Info: DeepCopy.png used on input line 378.
+Package pdftex.def Info: DeepCopy.png used on input line 379.
 (pdftex.def)             Requested size: 356.52641pt x 560.69351pt.
- [21 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/DeepCopy.pn
-g>]
+ [21 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/DeepCopy.
+png>]
 <Sequenzdiagramme/Import_Sequenzdiagramm.png, id=111, 925.4575pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
 Package pdftex.def Info: Sequenzdiagramme/Import_Sequenzdiagramm.png used on in
-put line 384.
+put line 385.
 (pdftex.def)             Requested size: 462.72762pt x 243.40878pt.
 
-Overfull \hbox (9.75972pt too wide) in paragraph at lines 384--384
+Overfull \hbox (9.75972pt too wide) in paragraph at lines 385--385
  [][] 
  []
 
-[22 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Import_Sequenzdiagramm.png>]
+[22 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Import_Sequenzdiagramm.png>]
 <Sequenzdiagramme/Wahlgenerierung.png, id=117, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
 <use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 392.
+e 393.
 (pdftex.def)             Requested size: 342.83186pt x 583.80789pt.
 
-Overfull \hbox (8.58806pt too wide) in paragraph at lines 394--396
+Overfull \hbox (8.58806pt too wide) in paragraph at lines 395--397
 []\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(b
 asisWahl : Bundestagswahl,
  []
 
-[23 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Wahlgenerierung.png>] [24] [25]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 403.
+[23 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Wahlgenerierung.png>] [24] [25]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 404.
 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 403.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 404.
 
 <Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=128, 313.17pt 
 x 654.94687pt>
@@ -893,7 +943,7 @@ File: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaender
-n.png used on input line 406.
+n.png used on input line 407.
 (pdftex.def)             Requested size: 219.21748pt x 458.45969pt.
 
 <Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=129, 555.57562pt
@@ -903,61 +953,61 @@ ype png)
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.
-png used on input line 411.
+png used on input line 412.
 (pdftex.def)             Requested size: 388.90027pt x 515.37192pt.
- [26 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiag
-ramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [27 <C:/Users/Philipp/Deskto
-p/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm
--restaurieren.png>] <GUI_Aktualisierung.png, id=139, 350.81062pt x 1011.78pt>
+ [26 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdi
+agramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [27 <C:/Users/Simon/Docume
+nts/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiag
+ramm-restaurieren.png>] <GUI_Aktualisierung.png, id=139, 350.81062pt x 1011.78p
+t>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 425.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 426.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
-sierung.png>] [29]
+ [28 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Aktua
+lisierung.png>] [29]
 <GUI_Stimmenaenderung.png, id=148, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
 <use GUI_Stimmenaenderung.png>
-Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 434.
+Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 435.
 (pdftex.def)             Requested size: 478.2857pt x 182.68205pt.
 
-Overfull \hbox (25.31781pt too wide) in paragraph at lines 434--434
+Overfull \hbox (25.31781pt too wide) in paragraph at lines 435--435
  [][] 
  []
 
-[30 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Stimmena
-enderung.png>] <Gantt-Diagramm.png, id=153, 1242.14063pt x 576.65437pt>
+[30 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Stimme
+naenderung.png>] <Gantt-Diagramm.png, id=153, 1242.14063pt x 576.65437pt>
 File: Gantt-Diagramm.png Graphic file (type png)
 
 <use Gantt-Diagramm.png>
-Package pdftex.def Info: Gantt-Diagramm.png used on input line 444.
+Package pdftex.def Info: Gantt-Diagramm.png used on input line 445.
 (pdftex.def)             Requested size: 1242.1376pt x 576.65295pt.
- [31 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Gantt-Diagr
-amm.png>]
-(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
+ [31 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Gantt-Dia
+gramm.png>]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) )
+ 
 Here is how much of TeX's memory you used:
  3486 strings out of 493921
- 46389 string characters out of 3144869
- 109351 words of memory out of 3000000
+ 45849 string characters out of 3147281
+ 108351 words of memory out of 3000000
  6687 multiletter control sequences out of 15000+200000
  12755 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,10n,43p,1026b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C
-:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
-/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (34 pages, 708727 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Entwurf.pdf (34 pages, 709501 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
