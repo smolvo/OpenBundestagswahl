@@ -3,15 +3,14 @@ s:Steuerung[a]
 aktuelleBTW:BundestagsWahl
 c:Chronik[a]
 m1:Stimme[a]
-m2:Stimme[a]
 
-
-gui:true=s.zurueckSetzen()
-s:aktuelleBTW.zurueckSetzen()
-aktuelleBTW:Stimme=c.restauriereStimme()
-c:m2.destroy
-
-gui:true=s.zurueckSetzen()
-s:aktuelleBTW.zurueckSetzen()
-aktuelleBTW:Stimme=c.restauriereStimme()
+gui:boolean=s.zurueckSetzen()
+s:boolean=aktuelleBTW.zurueckSetzen()
+aktuelleBTW:neueStimme=c.restauriereStimme()
 c:m1.destroy
+[c:alt neueStimme IS NOT NULL]
+	aktuelleBTW:aktuelleBTW.setzeStimme(neueStimme)
+[/c]
+
+
+
