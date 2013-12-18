@@ -85,46 +85,46 @@ Zum GUI-Teil gehören alle Klassen, die dazu beitragen, das Datenmodell bestmög
 \begin{description}
 
 \item  {\myma{{ProgrammFenster}}} \\
-Das {\myma{ProgrammFenster}} repräsentiert das gesamte Programm auf der grafischen Benutzeroberfläche.\\
+Das {\myma{ProgrammFenster}} repräsentiert das gesamte Programm auf der grafischen Benutzeroberfläche.
 	\begin{description}
-	\item {\mymo{{wechsleTab(w : WahlFenster)}}} \\
-	Es wird zu dem WahlFenster w gewechselt. \\
+		\item {\mymo{{wechsleTab(w : WahlFenster)}}} \\
+		Diese Funktion wird beim Wechsel von Tabs aufgerufen. Dabei wird in der Steuerung das Attribut ```aktuelleBTW'' verändert auf die zu w zugeordnete Bundestagswahl. Dies führt dazu, dass einige Funktionen in {\myma{Steuerung}} wie {\mymo{setzeZurueck()}} ohne zusätzliche Parameter mit der Bundestagswahl des aktuell offenen Tabs arbeiten.
 	\end{description}
 
 \item  {\myma{{VergleichsFenster}}} \\
-Das {\myma{VergleichsFenster}} ist ein Teil des ProgrammFensters, wenn zwei verschiedene {\myma{Bundestagswahl}}en verglichen werden.\\
+Das {\myma{VergleichsFenster}} stellt zwei {\myma{Bundestagswahl}}-Objekte in einem Fenster nebeneinander dar, sodass beide direkt vergleicht werden können.
 	\begin{description}
-	\item {\mymo{{zeigeVergleich()}}} \\
+	\item {\mymo{zeigeVergleich()}} \\
 	
-	\item {\mymo{{erstelleDiagramm()}}} \\
-	
+	\item {\mymo{erstelleDiagramm()}} \\
+	Erzeugt Diagramme unter den beiden Bundestagswahlen, welche die Sitzverteilungen anzeigen.
 	\end{description}
 
 \item  {\myma{{WahlFenster}}} \\
-Das {\myma{WahlFenster}} repräsentiert eine einzelne {\myma{Bundestagswahl}}. In einem {\myma{ProgrammFenster}} sind mehrere {\myma{WahlFenster}} möglich, die in Form von Tabs dargestellt werden.\\
+Das {\myma{WahlFenster}} repräsentiert eine einzelne {\myma{Bundestagswahl}}. In einem {\myma{ProgrammFenster}} sind mehrere {\myma{WahlFenster}} möglich, die in Form von Tabs dargestellt werden.
 	\begin{description}
 	\item {\mymo{{wechsleAnsicht(a : Ansicht)}}} \\
-	Wechselt zur Ansicht a. \\
+	Wechselt die Ansicht in eine andere gewünschte Ansicht.
 	\item {\mymo{{bundestagswahlDarstellen(btw : Bundestagswahl)}}} \\
-	Verteilt an die drei Ansichten die Arbeit, das Bundeswahl-Objekt btw darzustellen. \\
+	Verteilt den drei Ansichten die Arbeit, das {\myma{Bundeswahl}}-Objekt darzustellen.
 	\end{description} 
 
 \item  {\myma{{Ansicht}}} \\
-Die {\myma{Ansicht}} ist eine abstrakte Klasse. Diese kann drei Arten von Ansichten sein, {\myma{Bundes-}} {\myma{Landes-}} und {\myma{Wahlkreisansicht}}. Diese werden im Folgenden nicht näher erläutert.\\
+Die {\myma{Ansicht}} ist eine abstrakte Klasse. Diese kann drei Arten von Ansichten sein, {\myma{Bundes-}} {\myma{Landes-}} und {\myma{Wahlkreisansicht}}. Diese werden im Folgenden nicht näher erläutert.
 	\begin{description}
 	\item {\mymo{{zeigeKomponenten(btw : Bundestagswahl)}}} \\
 	In jeder der drei Ansichten wird die Darstellung, des Bundestagswahl-Objekts auf die drei Fenster aufgeteilt. \\
 	\end{description}
 
 \item  {\myma{{TabellenFenster}}} \\
-Das {\myma{TabellenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Tabellenfenster. Es stellt Teile der {\myma{Bundestagswahl}}-Klasse dar. \\
+Das {\myma{TabellenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Tabellenfenster. Es stellt Teile der {\myma{Bundestagswahl}}-Klasse dar.
 	\begin{description}
 	\item {\mymo{{tabellenFuellen(btw : Bundestagswahl)}}} \\
 	Füllt das TabellenFenster mit den notwendigen Daten des Bundeswahl-Objekts.
 	\end{description}
 
 \item  {\myma{{DiagrammFenster}}} \\
-Das {\myma{DiagrammFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Diagrammfenster. Je nach {\myma{Ansicht}} wird dort die {\myma{Sitzverteilung}}, prozentuale Anzahl der {\myma{Zweit-}} oder {\myma{Erststimmen}} angezeigt. \\
+Das {\myma{DiagrammFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Diagrammfenster. Je nach {\myma{Ansicht}} wird dort die {\myma{Sitzverteilung}}, prozentuale Anzahl der {\myma{Zweit-}} oder {\myma{Erststimmen}} angezeigt. 
 	\begin{description}
 	\item {\mymo{{erstelleDiagramm(btw : Bundestagswahl)}}} \\
 	Erstellt ein Diagramm auf Grund der Daten der Bundestagswahl btw.
@@ -133,7 +133,7 @@ Das {\myma{DiagrammFenster}} korrespondiert zu dem im Pflichtenheft beschriebene
 	\end{description}
 
 \item  {\myma{{KartenFenster}}} \\
-Das {\myma{KartenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Kartenfenster. Hier wird eine Liste der {\myma{Bundesländ}}er und {\myma{Wahlkreise}} und, wenn möglich, eine kartografische Darstellung {\myma{Deutschland}}s aus einem {\myma{Bundestagswahl}}-Objekt dargestellt. \\
+Das {\myma{KartenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Kartenfenster. Hier wird eine Liste der {\myma{Bundesländ}}er und {\myma{Wahlkreise}} und, wenn möglich, eine kartografische Darstellung {\myma{Deutschland}}s aus einem {\myma{Bundestagswahl}}-Objekt dargestellt.
 	\begin{description}
 	\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}} \\
 	Erstellt, wenn möglich, die kartografische Darstellung.
@@ -145,7 +145,7 @@ Das {\myma{KartenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen 
 Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{Bundestagswahl}} in einem {\myma{WahlFenster}} visualisiert wird. Dafür bekommt sie das aktuellste {\myma{Bundestagswahl}}-Objekt der {\myma{Steuerung}} und verteilt die Darstellungsarbeit an die Komponenten des {\myma{WahlFensters}}.
 	\begin{description}
 	\item {\mymo{{aktualisiereWahlfenster()}}} \\
-	Diese Methode startet eine komplette Aktualisierung eines Wahlfensters.
+	Diese Methode startet eine komplette Aktualisierung eines Wahlfensters. Hierbei werden auch alle Abhängigen Ansichten ebenfalls aktualisiert.
 	\end{description}
 
 \end{description}
