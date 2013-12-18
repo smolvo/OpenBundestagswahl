@@ -23,8 +23,10 @@
 \contentsline {subsection}{\numberline {4.3}Import}{22}
 \contentsline {subsection}{\numberline {4.4}Wahlgenerierung}{23}
 \contentsline {subsection}{\numberline {4.5}Negatives Stimmgewicht}{25}
-\contentsline {subsection}{\numberline {4.6}Chronik}{26}
-\contentsline {subsection}{\numberline {4.7}GUI}{27}
-\contentsline {subsubsection}{\numberline {4.7.1}Aktualisierung}{27}
-\contentsline {subsubsection}{\numberline {4.7.2}Stimmen\IeC {\"a}nderung}{28}
-\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{34}
+\contentsline {subsection}{\numberline {4.6}Chronik}{27}
+\contentsline {subsubsection}{\numberline {4.6.1}Ver\IeC {\"a}nderung an den Stimmen}{27}
+\contentsline {subsubsection}{\numberline {4.6.2}Restaurieren einer Stimme}{28}
+\contentsline {subsection}{\numberline {4.7}GUI}{29}
+\contentsline {subsubsection}{\numberline {4.7.1}Aktualisierung}{29}
+\contentsline {subsubsection}{\numberline {4.7.2}Stimmen\IeC {\"a}nderung}{31}
+\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{32}

@@ -399,34 +399,33 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \subsection{Negatives Stimmgewicht}
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.45]{Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png} \caption{Sequenzdiagramm zum Negativen Stimmgewicht}
+\includegraphics[scale=0.4]{Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png} \caption{Sequenzdiagramm zum Negativen Stimmgewicht}
 \end{figure}
 Vor diesem Sequenzdiagramm wurde ein {\myma{NegStimmgewichtWahlgenerator}}, entsprechend der mitgegebenen Stimmenanteile und Basiswahl, erzeugt. Dieser hat eine {\myma{Bundestagswahl}} erzeugt, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.
 Nun wird zu der vorher erzeugten {\myma{Bundestagswahl}} ein {\myma{Stimmgewichtsimulator}}-Objekt erzeugt und darauf dann die Methode {\mymo{berechneNegStimmgewicht()}} ausgeführt. In dieser werden zuerst die Parteien und dann die Bundesländer gewählt, für die negatives Stimmgewicht auftreten kann (Bedingung: siehe Wahlgenerierung). Dann werden die Zweitstimmen der ersten Partei aus der Liste in einem geeigneten Bundesland schrittweise solange um einen konstanten Faktor erhöht, bis sie entweder nicht mehr erhöht werden können, weil sie größer als die Wahlberechtigtenzahl sind, oder im Vergleich zu der ursprünglichen, gegebenen Bundestagswahl der Effekt des negativen Stimmgewichts auftritt. Bei ersterer Abbruchbedingung, wird mit der nächsten Partei der Liste fortgefahren, tritt negatives Stimmgewicht auf, wird die Wahl mit den aktuellen Änderungen im StimmgewichtSimulator-Objekt gespeichert und true zurückgegeben. Zuletzt wird der Steuerung das StimmgewichtsSimulator-Objekt zurückgegeben.
 
 \newpage
 \subsection{Chronik}
-\begin{itemize}
-	\item Veränderung an den Stimmen \\
-	
+\subsubsection{Veränderung an den Stimmen}
 	\begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png}
+	\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png} \caption{Sequenzdiagramm zur Sicherung des Stimmenobjektes}
 	\end{figure}
-	\item Restaurieren einer Stimme \\
-	\begin{figure}
+	\newpage
+	\subsubsection{Restaurieren einer Stimme}
+	\begin{figure}[!ht]
 		\centering
-		\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png}
+		\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png} \caption{Sequenzdiagramm zur Wiederherstellung eines Stimmenobjektes}
 	\end{figure}
 	Stimmen werden in der Chronik werden Stack-artig zurückgegeben. Sobald eine Bundestagswahl rückgängig gemacht wurde, wird die neue Bundestagswahl als Rückgabewert zurückgegeben.
-\end{itemize}
+
 
 \newpage
 \subsection{GUI}
 \subsubsection{Aktualisierung}
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.5]{GUI_Aktualisierung.png} \caption{Sequenzdiagramm zur Aktualisierung in der GUI}
+\includegraphics[scale=0.5]{GUI_Aktualisierung.png} \caption{Sequenzdiagramm zur Aktualisierung in der GUI} 
 \end{figure}
 Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt.\\
 Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
