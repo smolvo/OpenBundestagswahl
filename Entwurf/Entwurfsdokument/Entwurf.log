@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.11)  18 DEC 2013 04:05
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 04:27
 entering extended mode
 **Entwurf.tex
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Entwurf\Entwurfsdokument\Entwurf.tex
+(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -417,7 +417,7 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Entwurf\Entwurfsdokument\Entwurf.aux)
+(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -486,9 +486,9 @@ Package pdftex.def Info: KIT-Logo.png used on input line 34.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/N/Dropbox/PSE/SV
-N/pse13-1/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Entwurf\Entwurfsdokument\Entwurf.toc
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Philipp/Desktop/
+Uni/PSE/svn/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
+(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
@@ -526,59 +526,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
-[1] <Paketdiagramm.png, id=25, 785.93625pt x 548.0475pt>
-File: Paketdiagramm.png Graphic file (type png)
-
-<use Paketdiagramm.png>
-Package pdftex.def Info: Paketdiagramm.png used on input line 73.
-(pdftex.def)             Requested size: 471.56538pt x 328.83104pt.
-
-Overfull \hbox (18.59749pt too wide) in paragraph at lines 73--73
- [][] 
- []
-
-[2 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Paketdiagramm.p
-ng>] <GUI-Abschnitt.png, id=29, 979.40906pt x 786.68906pt>
+[1] [2] <GUI-Abschnitt.png, id=28, 979.40906pt x 786.68906pt>
 File: GUI-Abschnitt.png Graphic file (type png)
 
 <use GUI-Abschnitt.png>
-Package pdftex.def Info: GUI-Abschnitt.png used on input line 80.
+Package pdftex.def Info: GUI-Abschnitt.png used on input line 74.
 (pdftex.def)             Requested size: 391.75668pt x 314.67004pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
-[3 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/GUI-Abschnitt.p
-ng>]
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+[3 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI-Abschnitt
+.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 
-Overfull \hbox (74.56786pt too wide) in paragraph at lines 104--106
+Overfull \hbox (74.56786pt too wide) in paragraph at lines 98--100
 \OT1/cmr/m/n/12 Das \OT1/pcr/b/n/12 WahlFenster \OT1/cmr/m/n/12 re-pr[]asentier
 t ei-ne ein-zel-ne \OT1/pcr/b/n/12 Bundestagswahl\OT1/cmr/m/n/12 . In ei-nem \O
 T1/pcr/b/n/12 ProgrammFenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--106
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
@@ -588,102 +586,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--109
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--115
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
-
- []
-
-
-Overfull \hbox (3.37596pt too wide) in paragraph at lines 123--125
+Overfull \hbox (3.37596pt too wide) in paragraph at lines 117--119
 \OT1/cmr/m/n/12 F[]ullt das Ta-bel-len-Fen-ster mit den not-wen-di-gen Da-ten d
 es Bundeswahl-Objekts. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--129
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
 
  []
 
 
-Overfull \hbox (23.32402pt too wide) in paragraph at lines 136--138
+Overfull \hbox (23.32402pt too wide) in paragraph at lines 130--132
 \OT1/cmr/m/n/12 m[]oglich, ei-ne kar-to-gra-fi-sche Dar-stel-lung \OT1/pcr/b/n/
 12 Deutschland\OT1/cmr/m/n/12 s aus ei-nem \OT1/pcr/b/n/12 Bundestagswahl\OT1/c
 mr/m/n/12 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--138
+Underfull \hbox (badness 10000) in paragraph at lines 130--132
 
  []
 
 [4]
-Overfull \hbox (0.72086pt too wide) in paragraph at lines 145--147
+Overfull \hbox (0.72086pt too wide) in paragraph at lines 139--141
 \OT1/cmr/m/n/12 Die \OT1/pcr/b/n/12 GUISteuerung \OT1/cmr/m/n/12 sorgt daf[]ur,
  dass die ak-tu-ell-ste Ver-si-on der \OT1/pcr/b/n/12 Bundestagswahl
  []
 
 
-Overfull \hbox (64.35716pt too wide) in paragraph at lines 145--147
+Overfull \hbox (64.35716pt too wide) in paragraph at lines 139--141
 \OT1/cmr/m/n/12 in ei-nem \OT1/pcr/b/n/12 WahlFenster \OT1/cmr/m/n/12 vi-sua-li
 -siert wird. Daf[]ur be-kommt sie das ak-tu-ell-ste \OT1/pcr/b/n/12 Bundestagsw
 ahl\OT1/cmr/m/n/12 -
  []
 
-[5] <Datenhaltung-Ausschnitt.png, id=41, 990.70125pt x 685.56125pt>
+[5] <Datenhaltung-Ausschnitt.png, id=40, 990.70125pt x 685.56125pt>
 File: Datenhaltung-Ausschnitt.png Graphic file (type png)
 
 <use Datenhaltung-Ausschnitt.png>
-Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 157.
+Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 151.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
- [6 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Datenhaltung-A
-usschnitt.png>]
-Overfull \hbox (11.38335pt too wide) in paragraph at lines 178--180
+ [6 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung
+-Ausschnitt.png>]
+Overfull \hbox (11.38335pt too wide) in paragraph at lines 172--174
 \OT1/pcr/m/sl/12 anzahl:Integer) \OT1/cmr/m/n/12 ver-wen-det um die Stim-men zu
  []andern. Falls das R[]ucksetzen
  []
 
 
-Overfull \hbox (24.28989pt too wide) in paragraph at lines 188--190
+Overfull \hbox (67.49971pt too wide) in paragraph at lines 172--174
+\OT1/cmr/m/n/12 fehl-schl[]agt ist der R[]uckgabewert ``fal-se''. An-dern-falls
+ wird er-neut \OT1/pcr/m/sl/12 restauriereStimme()
+ []
+
+
+Overfull \hbox (16.09676pt too wide) in paragraph at lines 172--174
+\OT1/cmr/m/n/12 auf-ge-ru-fen um den neu er-stell-ten Chronik-Eintrag in\OT1/pc
+r/m/sl/12 setzeStimme(s:Stimme,
+ []
+
+
+Overfull \hbox (24.28989pt too wide) in paragraph at lines 182--184
 \OT1/pcr/b/n/12 Bundesland \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Wahlkreis\OT1/cm
 r/m/n/12 . Ge-biet be-sitzt ei-ne As-so-zia-ti-ons-klas-se (\OT1/pcr/b/n/12 Zwe
 itstimme\OT1/cmr/m/n/12 )
  []
 
 [7]
-Overfull \hbox (30.89708pt too wide) in paragraph at lines 197--199
+Overfull \hbox (30.89708pt too wide) in paragraph at lines 191--193
 \OT1/cmr/m/n/12 Ein \OT1/pcr/b/n/12 Wahlkreis \OT1/cmr/m/n/12 be-sitzt zu-sam-m
 en mit \OT1/pcr/b/n/12 Kandidat \OT1/cmr/m/n/12 ei-ne As-so-tia-ti-ons-klas-se 
 \OT1/pcr/b/n/12 Erststimme\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (26.8605pt too wide) in paragraph at lines 200--202
+Overfull \hbox (26.8605pt too wide) in paragraph at lines 194--196
 \OT1/cmr/m/n/12 Dies ist ei-ne Ab-strak-te Klas-se, die ei-ne Ober-klas-se von 
 \OT1/pcr/b/n/12 Erststimme \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Zweitstimme
  []
 
 
-Overfull \hbox (1.19908pt too wide) in paragraph at lines 200--202
+Overfull \hbox (1.19908pt too wide) in paragraph at lines 194--196
 \OT1/cmr/m/n/12 ist. Die-se Klas-se wird bei Stimm-ver[]anderungen ver-wen-det 
 um aus-ma-chen zu k[]onnen,
  []
 
 
-Overfull \hbox (3.9402pt too wide) in paragraph at lines 206--208
+Overfull \hbox (3.9402pt too wide) in paragraph at lines 200--202
 \OT1/cmr/m/n/12 Eine As-so-zia-ti-ons-klas-se zwi-schen \OT1/pcr/b/n/12 Partei 
 \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Gebiet\OT1/cmr/m/n/12 . Erm[]oglicht die Ve
 r[]anderung
@@ -692,282 +692,288 @@ r[]anderung
 [8]
 File: Datenhaltung-Ausschnitt.png Graphic file (type png)
  <use Datenhaltung-Ausschnitt.png>
-Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 225.
+Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 219.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
 
-Overfull \hbox (43.51683pt too wide) in paragraph at lines 235--237
+Overfull \hbox (43.51683pt too wide) in paragraph at lines 229--231
 \OT1/cmr/m/n/12 Es wird ein \OT1/pcr/b/n/12 Bundestagswahl\OT1/cmr/m/n/12 -Obje
 kt und ein Da-teipfad an den \OT1/pcr/b/n/12 ImportExportManager
  []
 
 [9]
-Overfull \hbox (20.90685pt too wide) in paragraph at lines 239--241
+Overfull \hbox (20.90685pt too wide) in paragraph at lines 233--235
 []\OT1/pcr/m/sl/12 zuf[]alligeWahlgenerierung(anteile : Stimmanteile) : Bundest
 agswahl 
  []
 
 
-Overfull \hbox (54.68958pt too wide) in paragraph at lines 239--241
+Overfull \hbox (54.68958pt too wide) in paragraph at lines 233--235
 \OT1/cmr/m/n/12 Es wird mit Hil-fe des \OT1/pcr/b/n/12 Wahlgenerators \OT1/cmr/
 m/n/12 und der \OT1/pcr/b/n/12 Stimmenanteile \OT1/cmr/m/n/12 ei-ne \OT1/pcr/b/
 n/12 Bundestagswahl
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--245
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
-<Import-Export_Ausschnitt.png, id=55, 713.66624pt x 564.1075pt>
+<Import-Export_Ausschnitt.png, id=54, 713.66624pt x 564.1075pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
-Package pdftex.def Info: Import-Export_Ausschnitt.png used on input line 249.
+Package pdftex.def Info: Import-Export_Ausschnitt.png used on input line 243.
 (pdftex.def)             Requested size: 499.56296pt x 394.87254pt.
 
-Overfull \hbox (46.59506pt too wide) in paragraph at lines 249--249
+Overfull \hbox (46.59506pt too wide) in paragraph at lines 243--243
 [][] 
  []
 
 
-Overfull \hbox (4.68285pt too wide) in paragraph at lines 253--255
+Overfull \hbox (4.68285pt too wide) in paragraph at lines 247--249
 \OT1/cmr/m/n/12 Mit dem Pro-gramm wird nur ein vo-r-im-ple-men-tier-ter Craw-le
 r mit-ge-ge-ben, der .csv-Dateien,
  []
 
 
-Overfull \hbox (19.12898pt too wide) in paragraph at lines 259--261
+Overfull \hbox (19.12898pt too wide) in paragraph at lines 253--255
 \OT1/cmr/m/n/12 aus. Wenn die-se true zur[]uckgibt, wird die eben-falls pri-va-
 te Me-tho-de \OT1/pcr/m/sl/12 leseCSVDatei()
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 262--263
 
  []
 
-[11 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Import-Export_
-Ausschnitt.png>] [12]
-<Klassendiagramme/Wahlgenerator_Klassendiagramm.png, id=67, 472.01344pt x 387.6
+[11 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Import-Expor
+t_Ausschnitt.png>] [12]
+<Klassendiagramme/Wahlgenerator_Klassendiagramm.png, id=66, 472.01344pt x 387.6
 9844pt>
 File: Klassendiagramme/Wahlgenerator_Klassendiagramm.png Graphic file (type png
 )
  <use Klassendiagramme/Wahlgenerator_Klassendiagramm.png>
 Package pdftex.def Info: Klassendiagramme/Wahlgenerator_Klassendiagramm.png use
-d on input line 279.
+d on input line 273.
 (pdftex.def)             Requested size: 472.01228pt x 387.69748pt.
 
-Overfull \hbox (19.04439pt too wide) in paragraph at lines 279--279
+Overfull \hbox (19.04439pt too wide) in paragraph at lines 273--273
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--284
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
 
  []
 
 
-Overfull \hbox (9.94875pt too wide) in paragraph at lines 281--284
+Overfull \hbox (9.94875pt too wide) in paragraph at lines 275--278
 \OT1/cmr/m/n/12 Zur []Ubersichtlichkeit wer-den in den Klas-sen \OT1/pcr/b/n/12
  Partei\OT1/cmr/m/n/12 , \OT1/pcr/b/n/12 Steuerung \OT1/cmr/m/n/12 und \OT1/pcr
 /b/n/12 Bundestagswahl
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--284
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
 
  []
 
 
-Overfull \hbox (54.16628pt too wide) in paragraph at lines 281--284
+Overfull \hbox (54.16628pt too wide) in paragraph at lines 275--278
 \OT1/cmr/m/n/12 Mit die-sem Mo-dul k[]onnen \OT1/pcr/b/n/12 Bundestagswahl \OT1
 /cmr/m/n/12 Ob-jek-te an-hand vor-her de-fi-nier-ten \OT1/pcr/b/n/12 Stimmantei
 len
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--284
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--284
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--286
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
  []
 
-[13 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Klassendiagram
-me/Wahlgenerator_Klassendiagramm.png>]
-Overfull \hbox (20.90685pt too wide) in paragraph at lines 291--293
+[13 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Klassendiagr
+amme/Wahlgenerator_Klassendiagramm.png>]
+Overfull \hbox (20.90685pt too wide) in paragraph at lines 285--287
 []\OT1/pcr/m/sl/12 Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmant
 eile) 
  []
 
 [14]
-<Klassendiagramme/Chronik_Ausschnitt.png, id=76, 667.74469pt x 339.51843pt>
+<Klassendiagramme/Chronik_Ausschnitt.png, id=75, 667.74469pt x 339.51843pt>
 File: Klassendiagramme/Chronik_Ausschnitt.png Graphic file (type png)
 
 <use Klassendiagramme/Chronik_Ausschnitt.png>
 Package pdftex.def Info: Klassendiagramme/Chronik_Ausschnitt.png used on input 
-line 304.
+line 298.
 (pdftex.def)             Requested size: 467.41809pt x 237.66127pt.
 
-Overfull \hbox (14.4502pt too wide) in paragraph at lines 304--304
+Overfull \hbox (14.4502pt too wide) in paragraph at lines 298--298
 [][] 
  []
 
 
-Overfull \hbox (34.42567pt too wide) in paragraph at lines 307--310
+Overfull \hbox (34.42567pt too wide) in paragraph at lines 301--304
 \OT1/cmr/m/n/12 Ver[]anderung wie-der-spie-gelt.  Die Me-tho-de \OT1/pcr/b/n/12
  sichereStimme \OT1/cmr/m/n/12 wird von dem \OT1/pcr/b/n/12 Bundestagswahl\OT1/
 cmr/m/n/12 -
  []
 
 
-Overfull \hbox (77.34639pt too wide) in paragraph at lines 314--316
+Overfull \hbox (77.34639pt too wide) in paragraph at lines 308--310
 \OT1/cmr/m/n/12 Wird von der \OT1/pcr/b/n/12 Steuerung []\OT1/cmr/m/n/12 uber d
 ie ak-tu-el-le Bun-des-tags-wahl mit der Funk-ti-on\OT1/pcr/m/sl/12 zurueckSetz
 en()
  []
 
-[15 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Klassendiagram
-me/Chronik_Ausschnitt.png>]
-<Mandatsrechneralles.png, id=81, 454.69875pt x 349.305pt>
+[15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Klassendiagr
+amme/Chronik_Ausschnitt.png>]
+<Mandatsrechneralles.png, id=80, 454.69875pt x 349.305pt>
 File: Mandatsrechneralles.png Graphic file (type png)
 
 <use Mandatsrechneralles.png>
-Package pdftex.def Info: Mandatsrechneralles.png used on input line 322.
+Package pdftex.def Info: Mandatsrechneralles.png used on input line 316.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
- [16 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Mandatsrechne
-ralles.png>] [17]
-<Meldung_Ausschnitt.png, id=90, 569.12625pt x 106.14656pt>
+ [16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Mandatsrech
+neralles.png>] [17]
+<Meldung_Ausschnitt.png, id=89, 569.12625pt x 106.14656pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
 <use Meldung_Ausschnitt.png>
-Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 344.
+Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 338.
 (pdftex.def)             Requested size: 455.30162pt x 84.91736pt.
 
-Overfull \hbox (2.33372pt too wide) in paragraph at lines 344--344
+Overfull \hbox (2.33372pt too wide) in paragraph at lines 338--338
  [][] 
  []
 
-[18 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Meldung_Aussch
-nitt.png>]
-<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=95, 925.4575pt x 486.81876pt>
+[18 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
+chnitt.png>]
+<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=94, 925.4575pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
 Package pdftex.def Info: Sequenzdiagramme/Import_Sequenzdiagramm.png used on in
-put line 352.
+put line 346.
 (pdftex.def)             Requested size: 462.72762pt x 243.40878pt.
 
-Overfull \hbox (9.75972pt too wide) in paragraph at lines 352--352
+Overfull \hbox (9.75972pt too wide) in paragraph at lines 346--346
 [][] 
  []
 
-[19 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagram
-me/Import_Sequenzdiagramm.png>]
-<Sequenzdiagramme/Wahlgenerierung.png, id=100, 623.32875pt x 1061.46562pt>
+[19 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Import_Sequenzdiagramm.png>]
+<Sequenzdiagramme/Wahlgenerierung.png, id=99, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
 <use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 360.
+e 354.
 (pdftex.def)             Requested size: 342.83186pt x 583.80789pt.
 
-Overfull \hbox (8.58806pt too wide) in paragraph at lines 362--364
+Overfull \hbox (8.58806pt too wide) in paragraph at lines 356--358
 []\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(b
 asisWahl : Bundestagswahl,
  []
 
-[20 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagram
-me/Wahlgenerierung.png>] [21] [22] [23]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 374.
+[20 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Wahlgenerierung.png>] [21] [22] [23]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 368.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 374.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 368.
 
-<Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=115, 313.17pt 
+<Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=114, 313.17pt 
 x 654.94687pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file 
 (type png)
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaender
-n.png used on input line 375.
+n.png used on input line 369.
 (pdftex.def)             Requested size: 219.21748pt x 458.45969pt.
 
-<Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=116, 555.57562pt
+<Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=115, 555.57562pt
  x 736.25063pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png Graphic file (t
 ype png)
 
 <use Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.
-png used on input line 377.
+png used on input line 371.
 (pdftex.def)             Requested size: 388.90027pt x 515.37192pt.
- [24 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagra
-mme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [25 <C:/Users/N/Dropbox/PSE/SV
-N/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm-res
-taurieren.png>]
-<GUI_Aktualisierung.png, id=126, 350.81062pt x 1011.78pt>
+ [24 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiag
+ramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [25 <C:/Users/Philipp/Deskto
+p/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm
+-restaurieren.png>] <GUI_Aktualisierung.png, id=125, 350.81062pt x 1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 388.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 382.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [26 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/GUI_Aktualisi
-erung.png>] [27]
-<GUI_Stimmenaenderung.png, id=134, 956.57375pt x 365.365pt>
+ [26 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
+sierung.png>] [27]
+<GUI_Stimmenaenderung.png, id=133, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
 <use GUI_Stimmenaenderung.png>
-Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 396.
+Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 390.
 (pdftex.def)             Requested size: 478.2857pt x 182.68205pt.
 
-Overfull \hbox (25.31781pt too wide) in paragraph at lines 396--396
+Overfull \hbox (25.31781pt too wide) in paragraph at lines 390--390
  [][] 
  []
 
-[28 <C:/Users/N/Dropbox/PSE/SVN/pse13-1/Entwurf/Entwurfsdokument/GUI_Stimmenaen
-derung.png>] [29]
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
+[28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Stimmena
+enderung.png>] <Gantt-Diagramm.png, id=139, 1242.14063pt x 576.65437pt>
+File: Gantt-Diagramm.png Graphic file (type png)
+
+<use Gantt-Diagramm.png>
+Package pdftex.def Info: Gantt-Diagramm.png used on input line 400.
+(pdftex.def)             Requested size: 1242.1376pt x 576.65295pt.
+ [29] [30 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Gantt-
+Diagramm.png>]
+(C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
  3461 strings out of 493921
- 45828 string characters out of 3144887
+ 45851 string characters out of 3144869
  108351 words of memory out of 3000000
  6667 multiletter control sequences out of 15000+200000
  12755 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,10n,43p,1026b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/
-Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/c
-ourier/ucrro8a.pfb>
-Output written on Entwurf.pdf (32 pages, 525893 bytes).
+ 29i,10n,43p,1026b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C
+:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
+/courier/ucrro8a.pfb>
+Output written on Entwurf.pdf (33 pages, 548822 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
+ 179 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

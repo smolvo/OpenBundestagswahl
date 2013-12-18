@@ -3,7 +3,6 @@
 \contentsline {subsection}{\numberline {1.1}Einleitung}{1}
 \contentsline {subsection}{\numberline {1.2}Notationshinweise}{1}
 \contentsline {section}{\numberline {2}Systemmodell}{2}
-\contentsline {subsection}{\numberline {2.1}Paketdiagramm}{2}
 \contentsline {section}{\numberline {3}Klassendiagramm}{3}
 \contentsline {subsection}{\numberline {3.1}GUI}{3}
 \contentsline {subsection}{\numberline {3.2}Datenhaltung}{6}
