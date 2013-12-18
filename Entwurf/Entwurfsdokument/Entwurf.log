@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 02:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 02:20
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -489,12 +489,12 @@ Package pdftex.def Info: KIT-Logo.png used on input line 34.
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Philipp/Desktop/
 Uni/PSE/svn/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -586,53 +586,53 @@ Overfull \hbox (10.20317pt too wide) in paragraph at lines 146--149
 s ak-tu-ell-ste Bundestagswahl-
  []
 
-<Datenhaltung-Ausschnitt.png, id=37, 990.70125pt x 685.56125pt>
+[5] <Datenhaltung-Ausschnitt.png, id=40, 990.70125pt x 685.56125pt>
 File: Datenhaltung-Ausschnitt.png Graphic file (type png)
 
 <use Datenhaltung-Ausschnitt.png>
-Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 158.
+Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 159.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
- [5 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung
+ [6 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Datenhaltung
 -Ausschnitt.png>]
-Overfull \hbox (11.38335pt too wide) in paragraph at lines 179--181
+Overfull \hbox (11.38335pt too wide) in paragraph at lines 180--182
 \OT1/pcr/m/sl/12 anzahl:Integer) \OT1/cmr/m/n/12 ver-wen-det um die Stim-men zu
  []andern. Falls das R[]ucksetzen
  []
 
-[6]
-Overfull \hbox (24.28989pt too wide) in paragraph at lines 189--191
+
+Overfull \hbox (24.28989pt too wide) in paragraph at lines 190--192
 \OT1/pcr/b/n/12 Bundesland \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Wahlkreis\OT1/cm
 r/m/n/12 . Ge-biet be-sitzt ei-ne As-so-zia-ti-ons-klas-se (\OT1/pcr/b/n/12 Zwe
 itstimme\OT1/cmr/m/n/12 )
  []
 
-
-Overfull \hbox (30.89708pt too wide) in paragraph at lines 198--200
+[7]
+Overfull \hbox (30.89708pt too wide) in paragraph at lines 199--201
 \OT1/cmr/m/n/12 Ein \OT1/pcr/b/n/12 Wahlkreis \OT1/cmr/m/n/12 be-sitzt zu-sam-m
 en mit \OT1/pcr/b/n/12 Kandidat \OT1/cmr/m/n/12 ei-ne As-so-tia-ti-ons-klas-se 
 \OT1/pcr/b/n/12 Erststimme\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (26.8605pt too wide) in paragraph at lines 201--203
+Overfull \hbox (26.8605pt too wide) in paragraph at lines 202--204
 \OT1/cmr/m/n/12 Dies ist ei-ne Ab-strak-te Klas-se, die ei-ne Ober-klas-se von 
 \OT1/pcr/b/n/12 Erststimme \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Zweitstimme
  []
 
 
-Overfull \hbox (1.19908pt too wide) in paragraph at lines 201--203
+Overfull \hbox (1.19908pt too wide) in paragraph at lines 202--204
 \OT1/cmr/m/n/12 ist. Die-se Klas-se wird bei Stimm-ver[]anderungen ver-wen-det 
 um aus-ma-chen zu k[]onnen,
  []
 
 
-Overfull \hbox (3.9402pt too wide) in paragraph at lines 207--209
+Overfull \hbox (3.9402pt too wide) in paragraph at lines 208--210
 \OT1/cmr/m/n/12 Eine As-so-zia-ti-ons-klas-se zwi-schen \OT1/pcr/b/n/12 Partei 
 \OT1/cmr/m/n/12 und \OT1/pcr/b/n/12 Gebiet\OT1/cmr/m/n/12 . Erm[]oglicht die Ve
 r[]anderung
  []
 
-[7] [8] <Import-Export_Ausschnitt.png, id=51, 713.66624pt x 564.1075pt>
+[8] <Import-Export_Ausschnitt.png, id=51, 713.66624pt x 564.1075pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
@@ -661,21 +661,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
 
-
-<Klassendiagramme/Wahlgenerator_Klassendiagramm.png, id=56, 472.01344pt x 387.6
+[10]
+<Klassendiagramme/Wahlgenerator_Klassendiagramm.png, id=60, 472.01344pt x 387.6
 9844pt>
 File: Klassendiagramme/Wahlgenerator_Klassendiagramm.png Graphic file (type png
 )
  <use Klassendiagramme/Wahlgenerator_Klassendiagramm.png>
 Package pdftex.def Info: Klassendiagramme/Wahlgenerator_Klassendiagramm.png use
-d on input line 256.
+d on input line 257.
 (pdftex.def)             Requested size: 472.01228pt x 387.69748pt.
 
-Overfull \hbox (19.04439pt too wide) in paragraph at lines 256--256
+Overfull \hbox (19.04439pt too wide) in paragraph at lines 257--257
 [][] 
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 259--262
 
  []
@@ -754,96 +754,96 @@ File: Mandatsrechneralles.png Graphic file (type png)
 Package pdftex.def Info: Mandatsrechneralles.png used on input line 300.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
  [14 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Mandatsrech
-neralles.png>]
-<Meldung_Ausschnitt.png, id=79, 569.12625pt x 106.14656pt>
+neralles.png>] [15]
+<Meldung_Ausschnitt.png, id=82, 569.12625pt x 106.14656pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
 <use Meldung_Ausschnitt.png>
-Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 321.
+Package pdftex.def Info: Meldung_Ausschnitt.png used on input line 322.
 (pdftex.def)             Requested size: 455.30162pt x 84.91736pt.
 
-Overfull \hbox (2.33372pt too wide) in paragraph at lines 321--321
+Overfull \hbox (2.33372pt too wide) in paragraph at lines 322--322
  [][] 
  []
 
-[15 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
+[16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Meldung_Auss
 chnitt.png>]
-<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=84, 1037.8775pt x 486.81876pt>
+<Sequenzdiagramme/Import_Sequenzdiagramm.png, id=88, 1037.8775pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
 Package pdftex.def Info: Sequenzdiagramme/Import_Sequenzdiagramm.png used on in
-put line 329.
+put line 330.
 (pdftex.def)             Requested size: 518.93748pt x 243.40878pt.
 
-Overfull \hbox (65.96959pt too wide) in paragraph at lines 329--329
+Overfull \hbox (65.96959pt too wide) in paragraph at lines 330--330
 [][] 
  []
 
-[16 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+[17 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
 amme/Import_Sequenzdiagramm.png>]
-<Sequenzdiagramme/Wahlgenerierung.png, id=90, 623.32875pt x 1061.46562pt>
+<Sequenzdiagramme/Wahlgenerierung.png, id=93, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
 <use Sequenzdiagramme/Wahlgenerierung.png>
 Package pdftex.def Info: Sequenzdiagramme/Wahlgenerierung.png used on input lin
-e 337.
+e 338.
 (pdftex.def)             Requested size: 342.83186pt x 583.80789pt.
 
-Overfull \hbox (8.58806pt too wide) in paragraph at lines 339--341
+Overfull \hbox (8.58806pt too wide) in paragraph at lines 340--342
 []\OT1/cmr/m/n/12 In der Me-tho-de \OT1/pcr/m/sl/12 zufaelligeWahlgenerierung(b
 asisWahl : Bundestagswahl,
  []
 
-[17 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Wahlgenerierung.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 348.
+[18 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagr
+amme/Wahlgenerierung.png>] [19] [20] [21]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 352.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 348.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 352.
 
-<Chronik_Sequenzdiagramm-stimmenaendern.png, id=95, 337.26pt x 816.80156pt>
+<Chronik_Sequenzdiagramm-stimmenaendern.png, id=107, 337.26pt x 816.80156pt>
 File: Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-stimmenaendern.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-stimmenaendern.png used on inp
-ut line 349.
+ut line 353.
 (pdftex.def)             Requested size: 236.08038pt x 571.75719pt.
- [18]
-<Chronik_Sequenzdiagramm-restaurieren.png, id=99, 314.67563pt x 578.91281pt>
+
+<Chronik_Sequenzdiagramm-restaurieren.png, id=108, 314.67563pt x 578.91281pt>
 File: Chronik_Sequenzdiagramm-restaurieren.png Graphic file (type png)
 
 <use Chronik_Sequenzdiagramm-restaurieren.png>
 Package pdftex.def Info: Chronik_Sequenzdiagramm-restaurieren.png used on input
- line 351.
+ line 355.
 (pdftex.def)             Requested size: 220.27142pt x 405.2362pt.
- [19 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
-uenzdiagramm-stimmenaendern.png>] <GUI_Aktualisierung.png, id=105, 350.81062pt 
-x 1011.78pt>
+ [22 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
+uenzdiagramm-stimmenaendern.png>] [23 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Ent
+wurf/Entwurfsdokument/Chronik_Sequenzdiagramm-restaurieren.png>]
+<GUI_Aktualisierung.png, id=119, 350.81062pt x 1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 361.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 366.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [20 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Chronik_Seq
-uenzdiagramm-restaurieren.png>]
-<GUI_Stimmenaenderung.png, id=110, 956.57375pt x 365.365pt>
+ [24 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
+sierung.png>] [25]
+<GUI_Stimmenaenderung.png, id=127, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
 <use GUI_Stimmenaenderung.png>
-Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 368.
+Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 374.
 (pdftex.def)             Requested size: 478.2857pt x 182.68205pt.
 
-Overfull \hbox (25.31781pt too wide) in paragraph at lines 368--368
+Overfull \hbox (25.31781pt too wide) in paragraph at lines 374--374
  [][] 
  []
 
-[21 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktualis
-ierung.png>] [22 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument
-/GUI_Stimmenaenderung.png>] [23]
+[26 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Stimmena
+enderung.png>] [27]
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
 Here is how much of TeX's memory you used:
  3456 strings out of 493921
@@ -852,7 +852,7 @@ Here is how much of TeX's memory you used:
  6663 multiletter control sequences out of 15000+200000
  12755 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,11n,43p,1026b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,10n,43p,1026b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
@@ -865,9 +865,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 .9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (26 pages, 479673 bytes).
+Output written on Entwurf.pdf (30 pages, 482943 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 168 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

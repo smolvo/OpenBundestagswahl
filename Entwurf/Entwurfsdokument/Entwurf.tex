@@ -145,6 +145,7 @@ Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{B
 
 \end{description}
 
+\newpage
 \subsection{Datenhaltung}
 \begin{figure}[!ht]
 \includegraphics[scale=0.4]{Datenhaltung-Ausschnitt} \caption{Datenhaltungs Komponente} 
@@ -213,7 +214,6 @@ Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
 
 
 \newpage
-
 \subsection{Import/ Export}
 \begin{figure}[!ht]
 \includegraphics[scale=0.7]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
@@ -243,11 +243,11 @@ Nimmt die aktuelle Bundestagswahl der Steuerung und schreibt die zugehörigen Wa
 Erstellt anhand einer .csv-Datei eine neue Bundestagswahl und versucht sie zu füllen. Wenn nicht alle nötigen Daten vorhanden sind, oder die Struktur der .csv-Datei nicht der vom Crawler geforderten Struktur entspricht, wird ein Fehler ausgegeben und der Import abgebrochen.
 \end{description}
 
+\newpage
 \subsection{Wahlgenerierung}
 \begin{figure}[!ht]
 \includegraphics[scale=1.0]{Klassendiagramme/Wahlgenerator_Klassendiagramm.png} \caption{Wahlgenerierungs-Komponente} 
 \end{figure}
-\newpage
 Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.\\\\
 Zur Übersichtlichkeit werden in den Klassen {\myma{Partei}}, {\myma{Steuerung}} und {\myma{Bundestagswahl}} nur die für dieses Modul relevanten Informationen angezeigt.\\\\
 Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierten {\myma{Stimmanteilen}} auf Bundesebene generiert werden. Bei {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
@@ -307,6 +307,7 @@ Diese öffentliche Methode berechnet zuerst alle Bundesländer die sich in der K
 Während der Berechnung wird nebenbei eine Sitzverteilungsbericht verfasst, der beschreiben soll, wie die Sitzverteilung entstanden ist. Dabei wird die Methode immer aufgerufen, wenn eine Partei einen Sitz in der Sitzverteilung bekommen hat. Dies wird dann mit einer Zeile im Bericht protokolliert.
 \end{description} 
 
+\newpage
 \subsection{Meldung}
 \begin{figure}[!ht]
 \centering
@@ -331,10 +332,13 @@ Hier wird eine gültige .csv-Datei, d.h. Format und Inhalt betreffend, importier
 In der Methode {\mymo{zufaelligeWahlgenerierung(basisWahl : Bundestagswahl, anteile : Stimmanteile) : Bundestagswahl}} wird zuerst ein neuer Wahlgenerator erzeugt. In dem Konstruktor des Wahlgenerators werden die absoluten Stimmzahlen berechnet und alle Attribute gesetzt.\\
 Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgeführt. In dieser Methode wird zuerst eine tiefe Kopie der basisWahl erstellt. In dieser Kopie werden dann die Stimmen auf alle Wahlkreise verteilt. Die Erststimmen auf die Kandidaten und die Zweitstimmen auf die Parteien. Diese Wahl wird am Ende als Ergebnis der Methode berechneBTW() zurückgegeben und in der Steuerung in die Liste alle Bundestagswahlen eingefügt.
 
+\newpage
 \subsection{Paradoxe Wahlgenerierung und Vergleich}
 
+\newpage
 \subsection{Vergleich}
 
+\newpage
 \subsection{Chronik}
 \begin{itemize}
 	\item Veränderung an den Stimmen \\
@@ -347,6 +351,7 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \end{itemize}
 %\includegraphics[scale=0.75]{Chronik_Sequenzdiagramm.png}
 
+\newpage
 \subsection{GUI}
 \subsubsection{Aktualisierung}
 Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt. \\
@@ -354,6 +359,7 @@ Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue 
 
 Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
 
+\newpage
 \subsubsection{Stimmenänderung}
 \begin{figure}
 \centering
