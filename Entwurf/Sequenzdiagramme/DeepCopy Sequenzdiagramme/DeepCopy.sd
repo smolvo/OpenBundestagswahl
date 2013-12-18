@@ -1,5 +1,7 @@
 btwOriginal:Bundestagswahl
 /btwKopie:Bundestagswahl
+dOri:Deutschland
+/dKop:Deutschland
 blOriginal:Bundesland
 /blKopie:Bundesland
 wOriginal:Wahlkreis
@@ -16,6 +18,7 @@ svOriginal:Sitzverteilung
 /svKopie:Sitzverteilung
 
 btwOriginal:btwKopie.new(name)
+btwOriginal:dKop.new()
 btwOriginal:svKopie.new(btwOriginal.getBericht())
 [c:foreach Bundesland]
 btwOriginal:blKopie.new(blOriginal.getEinwohnerzahl, blOriginal.getFarbe, blOriginal.getBild(), blOriginal.getName(), blOriginal.getWahlberechtigte)
