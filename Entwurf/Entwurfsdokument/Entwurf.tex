@@ -149,24 +149,24 @@ Unter dem Datenmodell zählen alle Klassen, die Wahldaten oder die berechnete Si
 
      \item {\myma{Bundestagswahl}} \\
      Eine Bundestagswahl stellt eine ganze Wahl dar. Es hat einen Namen wie "Bundestagswahl 2013". Dieser Name wird als Titel in der GUI auf dem betroffenen Tab angezeigt. Jede Bundestagswahl besitzt aufgrund der änderbaren Parteien pro Bundestagswahl eine eigene Liste an {\myma{Partei}}-Objekten. Des weiteren gibt es ein {\myma{Sitzverteilung}}-Objekt. \\
-Methoden: \\
+Folgende Methoden sind enthalten:
           \begin{description}
                \item {\mymo{prüfeDaten()}}\\
                Überprüft, ob die eingegebenen Stimmen gültig sind und unterzieht diese einem Konsistenz-Test. Die Methode wird nach jeder Stimmveränderung ausgeführt. Falls der Test nach einer Stimmveränderung fehlschlägt, wird die Stimme mithilfe der {\myma{Chronik}} zurückgesetzt und eine Fehlermeldung ausgegeben.
               
-               \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer)}}\\
-               Wird von der GUI über die Steuerung aufgerufen. Es wird das zu verändernde {\myma{Stimme}}-Objekt und die neue Anzahl der Stimmen übergeben. Die zu verändernde {\myma{Stimme}} wird geklont und in der {\myma{Chronik}} gespeichert. Bei können drei Fälle auftreten:
-               Falls die assoziierte Klasse von  {\myma{Stimme}}:
-               ... ein {\myma{Wahlkreis}}-Objekt ist, wird der enthaltene Wert "anzahl" verändert in den Wert des übergebenen Parameters "anzahl".
-               ... ein {\myma{Bundesland}}-Objekt ist, wird die Differenz der anzahl an Stimmen auf alle Wahlkreise des betroffenen Bundeslandes iterativ hinzugefügt oder abgezogen.
-               ... ein {\myma{Deutschland}}-Objekt ist, wird die Differenz der Anzahl an Stimmen auf alle Wahlkreise der Bundesländer iterativ hinzugefügt oder abgezogen.
-Zum Schluss wird die Methode {\myma{prüfeDaten()}} aufgerufen.
+               \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer) : Boolean}}\\
+               Wird von der GUI über die Steuerung aufgerufen. Es wird das zu verändernde {\myma{Stimme}}-Objekt und die neue Anzahl der Stimmen übergeben. Es findet eine Vorüberprüfung statt, in der ermittelt wird was genau verändert wird. Es dürfen Erststimmen nur auf Wahlkreisebene und Zweitstimmen auf Wahlkreis-, Landes- und Bundesebene verändert werden. Die zu verändernde {\myma{Stimme}} wird geklont und in der {\myma{Chronik}} gespeichert. Dabei können drei Fälle auftreten: \\
+               Falls die assoziierte Klasse von  {\myma{Stimme}}:\\
+               ... ein {\myma{Wahlkreis}}-Objekt ist, wird der enthaltene Wert ``anzahl'' verändert in den Wert des übergebenen Parameters ``anzahl''. \\
+               ... ein {\myma{Bundesland}}-Objekt ist, wird die Differenz der anzahl an Stimmen auf alle Wahlkreise des betroffenen Bundeslandes iterativ hinzugefügt oder abgezogen. \\
+               ... ein {\myma{Deutschland}}-Objekt ist, wird die Differenz der Anzahl an Stimmen auf alle Wahlkreise der Bundesländer iterativ hinzugefügt oder abgezogen.\\
+Zum Schluss wird die Methode {\mymo{prüfeDaten()}} aufgerufen.
                
-               \item {\mymo{zurueckSetzen() : boolean}}\\
-               Ruft die Methode restauriereStimme() in der {\myma{Chronik}} auf und setzt eine {\myma{Stimme}} zurück. Es wird dabei die Methode {\mymo{setzeStimme(s:Stimme,anzahl:Integer)}} verwendet um die Stimmen zu ändern. Falls das Rücksetzen fehlschlägt ist der Rückgabewert "false". Andernfalls "true".
+               \item {\mymo{zurueckSetzen() : Boolean}}\\
+               Ruft die Methode restauriereStimme() in der {\myma{Chronik}} auf und setzt eine {\myma{Stimme}} zurück. Es wird dabei die Methode {\mymo{setzeStimme(s:Stimme, anzahl:Integer)}} verwendet um die Stimmen zu ändern. Falls das Rücksetzen fehlschlägt ist der Rückgabewert ``false''. Andernfalls ``true''.
                
-               \item {\mymo{clone(): Bundestagswahl}}\\
-               Macht eine "deep copy" von der aktuellen Bundestagswahl und gibt dies zurück.
+               \item {\mymo{clone() : Bundestagswahl}}\\
+               Macht eine ``deep copy'' von der aktuellen Bundestagswahl und gibt dies zurück.
           \end{description}
 
      \item {\myma{Partei}} \\
@@ -179,23 +179,30 @@ Zum Schluss wird die Methode {\myma{prüfeDaten()}} aufgerufen.
      {\myma{Deutschland}} besitzt eine Liste an {\myma{Bundesland}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Bundesansicht}} verändert wurde. 
 
      \item {\myma{Bundesland}} \\
-     {\myma{Bundeland}} besitzt eine Liste an {\myma{Wahlkreis}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Landesansicht}} verändert wurde. Diese Klasse enthält zusätzlich einige weitere Attribute. Diese sind Einwohnerzahl (zur Berechnung der möglichen Anzahl der Sitze pro Bundesland), sitze (berechnete Anzahl der möglichen Sitze), Farbe (???) und Bild um das Wappen des Bundeslandes mit zu Speichern. Der Wappen wird in der Landesansicht angezeigt.
+     {\myma{Bundeland}} besitzt eine Liste an {\myma{Wahlkreis}}-Objekten, die in der Wahl benutzt wurden. Diese Klasse wird beispielsweise verwendet, wenn die Zweitstimmen einer Partei in der {\myma{Landesansicht}} verändert wurde. Diese Klasse enthält zusätzlich einige weitere Attribute. Diese sind Einwohnerzahl (zur Berechnung der möglichen Anzahl der Sitze pro Bundesland), sitze (berechnete Anzahl der möglichen Sitze), Farbe (Farbe der Partei mit den meisten Zweitstimmen, wird im Mandatsrechner ausgemacht) und Bild um das Wappen des Bundeslandes zu Speichern. Der Wappen wird in der Landesansicht angezeigt.
 
      \item {\myma{Wahlkreis}} \\
-
+	Ein {\myma{Wahlkreis}} besitzt zusammen mit {\myma{Kandidat}} eine Assotiationsklasse {\myma{Erststimme}}, was die Erststimme pro Wahlkreis und Kandidat/Partei wiederspiegelt. In der {\myma{Wahlkreisansicht}} werden Objekte dieser Klasse von einem spezifischen Bundesland dargestellt.
+	
      \item {\myma{Stimme}} \\
-
+	Dies ist eine Abstrakte Klasse, die eine Oberklasse von {\myma{Erststimme}} und {\myma{Zweitstimme}} ist. Diese Klasse wird bei Stimmveränderungen verwendet um ausmachen zu können, welche Stimme genau verändert wurde.
+	
      \item {\myma{Erststimme}} \\
+    Darf nur als Assoziationsklasse zwischen {\myma{Wahlkreis}} und ein {\myma{Kandidat}} existieren. Dies stellt sicher, dass die Erststimme einzig auf Wahlkreisebene verändert werden kann/darf. Der Grund für diese Entscheidung ist, die Komplexität bei Veränderung auf Bundes- und Landesebene zu vermeiden.
     
      \item {\myma{Zweitstimme}} \\
-
+	Eine Assoziationsklasse zwischen {\myma{Partei}} und {\myma{Gebiet}}. Ermöglicht die Veränderung der Zweitstimmen auf Bundes- Landes- als auch Wahlkreisebene.
+	
      \item {\myma{Kandidat}} \\
-
+	Ein Kandidat kann entweder Direktmandat, Überhandmandat, Ausgleichsmandat oder überhaupt kein Mandat sein. Des weiteren kann ein Kandidat Abgeordneter sein, falls dieser ein Attribut einer {\myma{Sitzverteilung}} besitzt.
+	
      \item {\myma{Landesliste}} \\
-
+	Die Assoziationsklasse zwischen {\myma{Partei}} und {\myma{Bundesland}}. Beinhaltet eine Menge an Kandidaten.
+	
      \item {\myma{Sitzverteilung}} \\
-
-     \item {\myma{Chronik}} \\
+	In dieser Klasse wird ein Bericht angelegt, dass zeigen soll, welcher Sitz wie entstanden, und welcher Partei zugeordnet ist. Es enthält eine Liste an Kandidaten. \\
+	Die Informationen werden mit de {\myma{Mandatsrechner}}
+	Es wird hierbei zwischen Direktmandaten, Überhangmandaten und Ausgleichsmandaten unterschieden. Die Informationen werden in {\myma{BerichtsFenster}} visualisiert.
 \end{description} 
 
 
@@ -203,7 +210,7 @@ Zum Schluss wird die Methode {\myma{prüfeDaten()}} aufgerufen.
 
 \subsection{Import/ Export}
 \begin{figure}[!ht]
-\includegraphics[scale=0.5]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
+\includegraphics[scale=0.7]{Import-Export_Ausschnitt} \caption{Import/Export Komponente} 
 \end{figure}
 
 
