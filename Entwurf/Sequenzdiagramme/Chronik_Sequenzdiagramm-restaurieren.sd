@@ -3,13 +3,23 @@ s:Steuerung[a]
 aktuelleBTW:BundestagsWahl
 c:Chronik[a]
 m1:Stimme[a]
+/m2:Stimme[a]
 
 gui:boolean=s.zurueckSetzen()
 s:boolean=aktuelleBTW.zurueckSetzen()
 aktuelleBTW:neueStimme=c.restauriereStimme()
 c:m1.destroy
 [c:alt neueStimme IS NOT NULL]
-	aktuelleBTW:aktuelleBTW.setzeStimme(neueStimme)
+	aktuelleBTW:boolean1=aktuelleBTW.setzeStimme(aktuelleStimme,neueStimme.anzahl)
+	aktuelleBTW[1]:boolean2=aktuelleBTW.prüfeDaten()
+	[c:alt boolean1 IS true]
+		aktuelleBTW:c.setzeStimme()
+		c:m2.new
+	[/c]
+	[c:alt boolean2 IS true]	
+		aktuelleBTW[1]:aktuelleStimme=c.restauriereStimme()
+		c:m2.destroy
+	[/c]
 [/c]
 
 

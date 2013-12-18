@@ -74,7 +74,7 @@ Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 \includegraphics[scale=0.4]{GUI-Abschnitt.png} \caption{GUI Komponente} 
 \end{figure}
 
-Zum GUI-Teil gehören alle Klassen, die dazu beitragen, das Datenmodell bestmöglich auf der grafischen Benutzeroberfläche darzustellen. Im folgenden werden wichtige Klasse der GUI erläutert. Bei dem Entwurf der GUI wurde Wert darauf gelegt, dass diese nahezu unabhängig von dem Rest des Programmes ist und dadurch mit wenig Aufwand ausgewechselt werden kann.
+Zum GUI-Teil gehören alle Klassen, die dazu beitragen, das Datenmodell bestmöglich auf der grafischen Benutzeroberfläche darzustellen. Im folgenden werden wichtige Klasse der GUI erläutert.
 
 
 \begin{description}
@@ -83,11 +83,11 @@ Zum GUI-Teil gehören alle Klassen, die dazu beitragen, das Datenmodell bestmög
 Das {\myma{ProgrammFenster}} repräsentiert das gesamte Programm auf der grafischen Benutzeroberfläche.\\
 	\begin{description}
 	\item {\mymo{{wechsleTab(w : WahlFenster)}}} \\
-	Es wird zu dem {\myma{WahlFenster}} w gewechselt. \\
+	Es wird zu dem WahlFenster w gewechselt. \\
 	\end{description}
 
 \item  {\myma{{VergleichsFenster}}} \\
-Das {\myma{VergleichsFenster}} ist ein Teil des {\myma{ProgrammFenster}}s, wenn zwei verschiedene {\myma{Bundestagswahl}}en verglichen werden.\\
+Das {\myma{VergleichsFenster}} ist ein Teil des ProgrammFensters, wenn zwei verschiedene {\myma{Bundestagswahl}}en verglichen werden.\\
 	\begin{description}
 	\item {\mymo{{zeigeVergleich()}}} \\
 	
@@ -96,35 +96,35 @@ Das {\myma{VergleichsFenster}} ist ein Teil des {\myma{ProgrammFenster}}s, wenn 
 	\end{description}
 
 \item  {\myma{{WahlFenster}}} \\
-Das {\myma{WahlFenster}} repräsentiert eine einzelne {\myma{Bundestagswahl}}. In einem \\{\myma{ProgrammFenster}} sind mehrere {\myma{WahlFenster}} möglich, die in Form von Tabs dargestellt werden.\\
+Das {\myma{WahlFenster}} repräsentiert eine einzelne {\myma{Bundestagswahl}}. In einem {\myma{ProgrammFenster}} sind mehrere {\myma{WahlFenster}} möglich, die in Form von Tabs dargestellt werden.\\
 	\begin{description}
 	\item {\mymo{{wechsleAnsicht(a : Ansicht)}}} \\
-	Wechselt entweder zur {\myma{Bundes-}}, {\myma{Landes-}} und {\myma{Wahlkreisansicht}}. \\
+	Wechselt zur Ansicht a. \\
 	\item {\mymo{{bundestagswahlDarstellen(btw : Bundestagswahl)}}} \\
-	Verteilt an die drei Ansichten die Arbeit, das {\myma{Bundeswahl}}-Objekt btw darzustellen. \\
+	Verteilt an die drei Ansichten die Arbeit, das Bundeswahl-Objekt btw darzustellen. \\
 	\end{description} 
 
 \item  {\myma{{Ansicht}}} \\
 Die {\myma{Ansicht}} ist eine abstrakte Klasse. Diese kann drei Arten von Ansichten sein, {\myma{Bundes-}} {\myma{Landes-}} und {\myma{Wahlkreisansicht}}. Diese werden im Folgenden nicht näher erläutert.\\
 	\begin{description}
 	\item {\mymo{{zeigeKomponenten(btw : Bundestagswahl)}}} \\
-	In jeder der drei Ansichten wird die Darstellung, des {\myma{Bundestagswahl}}-Objekts auf die drei Fenster aufgeteilt. \\
+	In jeder der drei Ansichten wird die Darstellung, des Bundestagswahl-Objekts auf die drei Fenster aufgeteilt. \\
 	\end{description}
 
 \item  {\myma{{TabellenFenster}}} \\
-Das {\myma{TabellenFenster}} repräsentiert das im Pflichtenheft beschriebenen Tabellenfenster. Es stellt Teile der {\myma{Bundestagswahl}}-Klasse dar. \\
+Das {\myma{TabellenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Tabellenfenster. Es stellt Teile der {\myma{Bundestagswahl}}-Klasse dar. \\
 	\begin{description}
 	\item {\mymo{{tabellenFuellen(btw : Bundestagswahl)}}} \\
-	Füllt das {\myma{TabellenFenster}} mit den notwendigen Daten des {\myma{Bundeswahl}}-Objekts.
+	Füllt das TabellenFenster mit den notwendigen Daten des Bundeswahl-Objekts.
 	\end{description}
 
 \item  {\myma{{DiagrammFenster}}} \\
-Das {\myma{DiagrammFenster}} stellt das im Pflichtenheft beschriebenen Diagrammfenster. Je nach {\myma{Ansicht}} wird dort die {\myma{Sitzverteilung}}, prozentuale Anzahl der {\myma{Zweit-}} oder {\myma{Erststimmen}} angezeigt. \\
+Das {\myma{DiagrammFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen Diagrammfenster. Je nach {\myma{Ansicht}} wird dort die {\myma{Sitzverteilung}}, prozentuale Anzahl der {\myma{Zweit-}} oder {\myma{Erststimmen}} angezeigt. \\
 	\begin{description}
 	\item {\mymo{{erstelleDiagramm(btw : Bundestagswahl)}}} \\
 	Erstellt ein Diagramm auf Grund der Daten der Bundestagswahl btw.
 	\item {\mymo{{zeigeSitzverteilung()}}} \\
-	Öffnet ein {\myma{BerichtsFenster}}, in dem die Sitze der Verteilung näher erläutert werden.
+	Öffnet ein BerichtsFenster, in dem die Sitze der Verteilung näher erläutert werden.
 	\end{description}
 
 \item  {\myma{{KartenFenster}}} \\
@@ -133,14 +133,14 @@ Das {\myma{KartenFenster}} korrespondiert zu dem im Pflichtenheft beschriebenen 
 	\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}} \\
 	Erstellt, wenn möglich, die kartografische Darstellung.
 	\item {\mymo{{faerbeBundeslaender(btw : Bundestagswahl))}}} \\
-	Färbt die einzelnen Bundesländer nach den {\myma{Partei}}en, die die meisten \\{\myma{Zweitstimme}}n haben. Diese Methode wird von zeigeInformationen benutzt.
+	Färbt die einzelnen Bundesländer nach den Parteien, die die meisten Zweitstimmen haben. Diese Methode wird von zeigeInformationen benutzt.
 	\end{description}
 
 \item  {\myma{{GUISteuerung}}} \\
-Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{Bundestagswahl}} in einem {\myma{WahlFenster}} visualisiert wird. Dafür bekommt sie das aktuellste \\{\myma{Bundestagswahl}}-Objekt der {\myma{Steuerung}} und verteilt die Darstellungsarbeit an die Komponenten des {\myma{WahlFensters}}.
+Die {\myma{GUISteuerung}} sorgt dafür, dass die aktuellste Version der {\myma{Bundestagswahl}} in einem {\myma{WahlFenster}} visualisiert wird. Dafür bekommt sie das aktuellste {\myma{Bundestagswahl}}-Objekt der {\myma{Steuerung}} und verteilt die Darstellungsarbeit an die Komponenten des {\myma{WahlFensters}}.
 	\begin{description}
 	\item {\mymo{{aktualisiereWahlfenster()}}} \\
-	Diese Methode startet eine komplette Aktualisierung eines {\myma{WahlFenster}}s.
+	Diese Methode startet eine komplette Aktualisierung eines Wahlfensters.
 	\end{description}
 
 \end{description}
@@ -160,8 +160,9 @@ Folgende Methoden sind enthalten:
           \begin{description}
                \item {\mymo{prüfeDaten()}}\\
                Überprüft, ob die eingegebenen Stimmen gültig sind und unterzieht diese einem Konsistenz-Test. Die Methode wird nach jeder Stimmveränderung ausgeführt. Falls der Test nach einer Stimmveränderung fehlschlägt, wird die Stimme mithilfe der {\myma{Chronik}} zurückgesetzt und eine Fehlermeldung ausgegeben.
-              
-               \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer) : Boolean}}\\
+              \item {\mymo{setzeStimme(s:Stimme) : Boolean}}\\
+              Eine BeDiese Funktion sucht alle Stimmen nach den selben Assoziationen und ruft 
+              \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer) : Boolean}}\\
                Wird von der GUI über die Steuerung aufgerufen. Es wird das zu verändernde {\myma{Stimme}}-Objekt und die neue Anzahl der Stimmen übergeben. Es findet eine Vorüberprüfung statt, in der ermittelt wird was genau verändert wird. Es dürfen Erststimmen nur auf Wahlkreisebene und Zweitstimmen auf Wahlkreis-, Landes- und Bundesebene verändert werden. Die zu verändernde {\myma{Stimme}} wird geklont und in der {\myma{Chronik}} gespeichert. Dabei können drei Fälle auftreten: \\
                Falls die assoziierte Klasse von  {\myma{Stimme}}:\\
                ... ein {\myma{Wahlkreis}}-Objekt ist, wird der enthaltene Wert ``anzahl'' verändert in den Wert des übergebenen Parameters ``anzahl''. \\
@@ -252,33 +253,22 @@ Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.
 Zur Übersichtlichkeit werden in den Klassen {\myma{Partei}}, {\myma{Steuerung}} und {\myma{Bundestagswahl}} nur die für dieses Modul relevanten Informationen angezeigt.\\\\
 Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierten {\myma{Stimmanteilen}} auf Bundesebene generiert werden. Bei {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
 
+Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt gibt es noch den {\mymo NegStimmgewichtWahlgenerator}. Dieser erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.\\
+
+Dabei muss bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
+
+\subparagraph{Methoden}
 \begin{description}
-     \item {\myma{AbstrakterWahlgenerator}} \\
-     Ist eine abstrakte Oberklasse, die als Grundlage für die spezialisierten Klassen verwendet wird.     
-     
-     \item {\mymo{Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmanteile)}} \\
+\item {\mymo{Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmanteile)}} \\
 Der Konstruktor dieser Klasse. Wird verwendet um einen neuen {\mymo{Wahlgenerator}} zu erstellen. Hier werden die Attribute basisWahl, anteile, erststimmenAnzahl und zweitstimmenAnzahl gesetzt.
 \item {\mymo{berechneGesamtanzahlStimmen()}} \\
 Diese Methode ist privat und wird von dem Konstruktor verwendet um die Attribute {\mymo{anzahlErststimmen}} und {\mymo{anzahlZweitstimmen}} zu berechen. Hierzu werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet.
 \item {\mymo{erzeugeBTW() : Bundestagswahl}} \\
 Erzeugt eine neue Bundestagswahl auf der Grundlage der basisWahl und füllt diese mit den Erst- und Zweitstimmen.
 \item {\mymo{verteileStimmen()}} \\
-Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise der Bundestagswahl. Diese Methode muss in jeder Unterklasse von Wahlgenerator implementiert werden.     
-     
-     \item {\myma{Wahlgenerator}} \\
-	Bei diesem Wahlgenerator werden alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt.
-     \item {\mymo{verteileStimmen()}} \\
-	Zufällige Verteilung aller Stimmen der Parteien auf Wahlkreise.     
-     
-     \item {\myma{NegStimmgewichtWahlgenerator}} \\
-     Dieser Wahlgenerator erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.
-     \item {\mymo{verteileStimmen()}} \\
-Die Stimmen müssen so verteilt werden, dass bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
-     \item {\myma{Stimmanteile}} \\
-     Diese Klasse enthält die Zuordnung zwischen Parteien und der prozentualen Erst- und Zweitstimmen.     
-     
+Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise der Bundestagswahl. Diese Methode muss in jeder Unterklasse von Wahlgenerator implementiert werden.
 \end{description}
-     
+
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]

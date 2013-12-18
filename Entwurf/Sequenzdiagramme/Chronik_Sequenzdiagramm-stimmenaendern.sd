@@ -7,7 +7,7 @@ chronik:Chronik[a]
 gui:boolean=s.aktualisiereDaten(Stimme,neueAnzahl)
 s:boolean=aktuelleBTW.setzeStimme(Stimme,neueAnzahl)
 aktuelleBTW:chronik.sichereStimme(Stimme)
-chronik:m1.new(Stimme)
+chronik:m1.new()
 aktuelleBTW:boolean=aktuelleBTW.prüfeDaten()
 [c:alt boolean IS false]
 	aktuelleBTW[1]:aktuelleBTW.zurueckSetzen()
