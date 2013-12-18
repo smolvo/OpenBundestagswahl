@@ -375,7 +375,7 @@ Das {\myma{Bundestagswahl}}-Objekt wir mit dem {\myma{Mandatsrechner2013}} ausge
 \subsection{DeepCopy}
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.3]{DeepCopy.png} \caption{Kopieren einer Bundestagswahl} 
+\includegraphics[scale=0.37]{DeepCopy.png} \caption{Kopieren einer Bundestagswahl} 
 \end{figure}
 \newpage
 \subsection{Import}
@@ -421,8 +421,10 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \subsection{GUI}
 \subsubsection{Aktualisierung}
 Hier sieht man die Aktualisierung der grafischen Benutzeroberfläche. Eine neue Sitzverteilung wurde berechnet und in Form einer Bundestagswahl-Klasse in der Steuerung abgelegt. \\
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.5]{GUI_Aktualisierung.png}
-
+\end{figure}
 Die GUISteuerung aktualisiert ihr Bundeswahlobjekt, indem sie sich dieses von der Steuerung holt. Dann wird die Aktualisierung mit der Methode aktualisiereWahlfenster() gestartet. In dieser wird dem Wahlfenster Bundestagswahl übergeben und dieses verteilt die Visualisierung an die drei Ansicht. In diesen wird dann die Datendarstellung and die drei Fenster verteilt. In diesem Fall wird eine kartografische Ansicht erstellt, wodurch auch die private Methode faerbeBundeslaender() verwendet wird.
 
 \newpage

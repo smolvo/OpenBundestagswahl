@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:09
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -846,7 +846,7 @@ File: DeepCopy.png Graphic file (type png)
 
 <use DeepCopy.png>
 Package pdftex.def Info: DeepCopy.png used on input line 378.
-(pdftex.def)             Requested size: 289.08223pt x 454.62698pt.
+(pdftex.def)             Requested size: 356.52641pt x 560.69351pt.
  [21 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/DeepCopy.pn
 g>]
 <Sequenzdiagramme/Import_Sequenzdiagramm.png, id=111, 925.4575pt x 486.81876pt>
@@ -912,7 +912,7 @@ p/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 424.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 426.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
  [28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
 sierung.png>] [29]
@@ -920,10 +920,10 @@ sierung.png>] [29]
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
 <use GUI_Stimmenaenderung.png>
-Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 432.
+Package pdftex.def Info: GUI_Stimmenaenderung.png used on input line 434.
 (pdftex.def)             Requested size: 478.2857pt x 182.68205pt.
 
-Overfull \hbox (25.31781pt too wide) in paragraph at lines 432--432
+Overfull \hbox (25.31781pt too wide) in paragraph at lines 434--434
  [][] 
  []
 
@@ -932,7 +932,7 @@ enderung.png>] <Gantt-Diagramm.png, id=153, 1242.14063pt x 576.65437pt>
 File: Gantt-Diagramm.png Graphic file (type png)
 
 <use Gantt-Diagramm.png>
-Package pdftex.def Info: Gantt-Diagramm.png used on input line 442.
+Package pdftex.def Info: Gantt-Diagramm.png used on input line 444.
 (pdftex.def)             Requested size: 1242.1376pt x 576.65295pt.
  [31 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/Gantt-Diagr
 amm.png>]
@@ -957,7 +957,7 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 .9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (34 pages, 708661 bytes).
+Output written on Entwurf.pdf (34 pages, 708669 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
