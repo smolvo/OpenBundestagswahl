@@ -325,7 +325,7 @@ Die Methode {\myma{sichereStimme}} wird von dem {\myma{Bundestagswahl}}-Objekt b
 \item {\mymo{sichereStimme(s : Stimme)}} \\
 Diese Funktion wird von dem assoziierten {\myma{Bundestagswahl}}-Objekt innerhalb der {\mymo{setzeStimme}}-Funktion aufgerufen. Falls bereits fünf {\myma{Stimmen}}-Objekte vorhanden sind, wird das älteste entfernt.
 \item {\mymo{restauriereStimme() : Stimme}} \\
-Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funktion{\mymo{zurueckSetzen()}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück. Die Bundestagswahl ersetzt dann die aktuelle Stimme mit der restaurierten Stimme.
+Wird von der {\myma{Steuerung}} über die aktuelle Bundestagswahl mit der Funktion {\mymo{zurueckSetzen()}} aufgerufen und gibt die zuletzt hinzugefügte {\myma{Stimme}} zurück. Die Bundestagswahl ersetzt dann die aktuelle Stimme mit der restaurierten Stimme.
 \end{description}
 
 \newpage
@@ -416,15 +416,16 @@ Nun wird zu der vorher erzeugten {\myma{Bundestagswahl}} ein {\myma{Stimmgewicht
 	\centering
 	\includegraphics[scale=0.65]{Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png} \caption{Sequenzdiagramm zur Sicherung des Stimmenobjektes}
 	\end{figure}
-	Beim Verändern einer Stimme wird von der GUI die funktion {\mymo{aktualisiereDaten(s:Stimme, neueAnzahl:Integer)}} aufgerufen. Dies ruft in der aktuellen Bundestagswahl die Funktion {\mymo{setzeStimme(s:Stimme, neueAnzahl:Integer)}} auf. Hier wird nun zum Speichern der alten Stimme, das alte Stimmen-Objekt geklont und in der Chronik abgelegt. \\
+	Beim Verändern einer Stimme wird von der GUI die Funktion {\mymo{aktualisiereDaten(s:Stimme, neueAnzahl:Integer)}} aufgerufen. Dies ruft in der aktuellen Bundestagswahl die Funktion {\mymo{setzeStimme(s:Stimme, neueAnzahl:Integer)}} auf. Hier wird nun zum Speichern der alten Stimme, das alte Stimmen-Objekt geklont und in der Chronik abgelegt. \\
 	Anschließend wird die alte Stimme mit der neuen Stimme ersetzt (hier nicht dargestellt) und die Funktion {\mymo{prüfeDaten(): Boolean}} überprüft ob die Bundestagswahl mit der veränderten Stimme noch gültig ist. Im Falle einer ungültigen Bundestagswahl wird dies mithilfe der Chronik zurückgesetzt und ```false'' zurückgegeben.
 	\newpage
 	\subsubsection{Restaurieren einer Stimme}
 	\begin{figure}[!ht]
 		\centering
-		\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png} \caption{Sequenzdiagramm zur Wiederherstellung eines Stimmenobjektes}
+		\includegraphics[scale=0.6]{Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png} \caption{Sequenzdiagramm zur Wiederherstellung eines Stimmenobjektes}
 	\end{figure}
-	Stimmen werden in der Chronik Stack-artig zurückgegeben. Sobald eine Bundestagswahl rückgängig gemacht wurde, wird entweder true im Falle einer erfolgreichen Operation, oder false bei einem Fehlschlag zurückgegeben.
+	Stimmen werden in der Chronik Stack-artig zurückgegeben. Falls eine Stimme gefunden wurde, wird diese Stimme in {\mymo{restauriereStimme()}} zurückgegeben. Falls die Stimme ``null'' ist, konnte keine Zurücksetzung durchgeführt werden. Es wird im Anschluss die aktuelle Stimme zusammen mit der anzahl der neuen Stimmen des ehemaligen Stimmobjekts an die Methode {\mymo{setzeStimme(s:Stimme, neueStimme.anzahl)}} übergeben. Falls das setzen der neuen Stimme erfolgreich war, wird der letzte Chronik-Eintrag entfernt.\\
+	Sobald eine Bundestagswahl rückgängig gemacht wurde, wird entweder true im Falle einer erfolgreichen Operation, oder false bei einem Fehlschlag zurückgegeben.
 
 
 \newpage
