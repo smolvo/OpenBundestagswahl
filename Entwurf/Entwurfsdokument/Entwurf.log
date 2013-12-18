@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:09
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.31)  18 DEC 2013 05:12
 entering extended mode
 **Entwurf.tex
 (C:\Users\Philipp\Desktop\Uni\PSE\svn\Entwurf\Entwurfsdokument\Entwurf.tex
@@ -912,7 +912,7 @@ p/Uni/PSE/svn/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagramm
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
-Package pdftex.def Info: GUI_Aktualisierung.png used on input line 426.
+Package pdftex.def Info: GUI_Aktualisierung.png used on input line 425.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
  [28 <C:/Users/Philipp/Desktop/Uni/PSE/svn/Entwurf/Entwurfsdokument/GUI_Aktuali
 sierung.png>] [29]
@@ -957,7 +957,7 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 .9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (34 pages, 708669 bytes).
+Output written on Entwurf.pdf (34 pages, 708727 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
