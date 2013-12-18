@@ -247,7 +247,7 @@ Die {\myma{Steuerung}} verbindet die unterschiedlichen Kompententen (GUI, Datenm
      Es werden zwei Wahlen an das {\myma{Wahlvergleich}}-Objekt gesendet.
      \item {\mymo{zurueckSetzen() : Boolean}} \\
      Der aktuellen Stand des Programmes wird mit dem alten Stand ersetzt. Bei einer erfolgreichen Zurücksetzten ist der Rückgabewert der Methode true;
-\end{description} 
+\end{description}
 
 \newpage
 \subsection{Import/ Export}
@@ -396,7 +396,13 @@ In der Methode {\mymo{zufaelligeWahlgenerierung(basisWahl : Bundestagswahl, ante
 Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgeführt. In dieser Methode wird zuerst eine tiefe Kopie der basisWahl erstellt. In dieser Kopie werden dann die Stimmen auf alle Wahlkreise verteilt. Die Erststimmen auf die Kandidaten und die Zweitstimmen auf die Parteien. Diese Wahl wird am Ende als Ergebnis der Methode berechneBTW() zurückgegeben und in der Steuerung in die Liste alle Bundestagswahlen eingefügt.
 
 \newpage
-\subsection{Paradoxe Wahlgenerierung und Vergleich}
+\subsection{Negatives Stimmgewicht}
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.45]{Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png} \caption{Sequenzdiagramm zum Negativen Stimmgewicht}
+\end{figure}
+Vor diesem Sequenzdiagramm wurde ein {\myma{NegStimmgewichtWahlgenerator}}, entsprechend der mitgegebenen Stimmenanteile und Basiswahl, erzeugt. Dieser hat eine {\myma{Bundestagswahl}} erzeugt, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.
+Nun wird zu der vorher erzeugten {\myma{Bundestagswahl}} ein {\myma{Stimmgewichtsimulator}}-Objekt erzeugt und darauf dann die Methode {\mymo{berechneNegStimmgewicht()}} ausgeführt. In dieser werden zuerst die Parteien und dann die Bundesländer gewählt, für die negatives Stimmgewicht auftreten kann (Bedingung: siehe Wahlgenerierung). Dann werden die Zweitstimmen der ersten Partei aus der Liste in einem geeigneten Bundesland schrittweise solange um einen konstanten Faktor erhöht, bis sie entweder nicht mehr erhöht werden können, weil sie größer als die Wahlberechtigtenzahl sind, oder im Vergleich zu der ursprünglichen, gegebenen Bundestagswahl der Effekt des negativen Stimmgewichts auftritt. Bei ersterer Abbruchbedingung, wird mit der nächsten Partei der Liste fortgefahren, tritt negatives Stimmgewicht auf, wird die Wahl mit den aktuellen Änderungen im StimmgewichtSimulator-Objekt gespeichert und true zurückgegeben. Zuletzt wird der Steuerung das StimmgewichtsSimulator-Objekt zurückgegeben.
 
 \newpage
 \subsection{Chronik}
