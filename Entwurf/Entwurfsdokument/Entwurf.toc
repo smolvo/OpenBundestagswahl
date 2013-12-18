@@ -1,24 +1,26 @@
 \select@language {german}
 \contentsline {section}{\numberline {1}Einleitung}{1}
-\contentsline {section}{\numberline {2}Systemmodell}{1}
-\contentsline {section}{\numberline {3}Klassendiagramm}{2}
-\contentsline {subsection}{\numberline {3.1}GUI}{2}
-\contentsline {subsection}{\numberline {3.2}Datenhaltung}{4}
-\contentsline {subsection}{\numberline {3.3}Import/ Export}{8}
-\contentsline {subparagraph}{Methoden}{9}
-\contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{9}
-\contentsline {subparagraph}{Methoden}{11}
-\contentsline {subsection}{\numberline {3.5}Chronik}{12}
+\contentsline {subsection}{\numberline {1.1}Einleitung}{1}
+\contentsline {subsection}{\numberline {1.2}Notationshinweise}{1}
+\contentsline {section}{\numberline {2}Systemmodell}{2}
+\contentsline {section}{\numberline {3}Klassendiagramm}{3}
+\contentsline {subsection}{\numberline {3.1}GUI}{3}
+\contentsline {subsection}{\numberline {3.2}Datenhaltung}{5}
+\contentsline {subsection}{\numberline {3.3}Import/ Export}{9}
+\contentsline {subparagraph}{Methoden}{10}
+\contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{10}
 \contentsline {subparagraph}{Methoden}{12}
-\contentsline {subsection}{\numberline {3.6}Mandatsrechner}{13}
-\contentsline {subsection}{\numberline {3.7}Meldung}{14}
-\contentsline {section}{\numberline {4}Sequenzdiagramme}{15}
-\contentsline {subsection}{\numberline {4.1}Import}{15}
-\contentsline {subsection}{\numberline {4.2}Wahlgenerierung}{16}
-\contentsline {subsection}{\numberline {4.3}Paradoxe Wahlgenerierung und Vergleich}{18}
-\contentsline {subsection}{\numberline {4.4}Vergleich}{18}
-\contentsline {subsection}{\numberline {4.5}Chronik}{18}
-\contentsline {subsection}{\numberline {4.6}GUI}{19}
-\contentsline {subsubsection}{\numberline {4.6.1}Aktualisierung}{19}
-\contentsline {subsubsection}{\numberline {4.6.2}Stimmen\IeC {\"a}nderung}{20}
-\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{22}
+\contentsline {subsection}{\numberline {3.5}Chronik}{13}
+\contentsline {subparagraph}{Methoden}{13}
+\contentsline {subsection}{\numberline {3.6}Mandatsrechner}{14}
+\contentsline {subsection}{\numberline {3.7}Meldung}{15}
+\contentsline {section}{\numberline {4}Sequenzdiagramme}{16}
+\contentsline {subsection}{\numberline {4.1}Import}{16}
+\contentsline {subsection}{\numberline {4.2}Wahlgenerierung}{17}
+\contentsline {subsection}{\numberline {4.3}Paradoxe Wahlgenerierung und Vergleich}{19}
+\contentsline {subsection}{\numberline {4.4}Vergleich}{19}
+\contentsline {subsection}{\numberline {4.5}Chronik}{19}
+\contentsline {subsection}{\numberline {4.6}GUI}{20}
+\contentsline {subsubsection}{\numberline {4.6.1}Aktualisierung}{20}
+\contentsline {subsubsection}{\numberline {4.6.2}Stimmen\IeC {\"a}nderung}{21}
+\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{23}
