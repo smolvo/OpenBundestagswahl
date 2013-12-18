@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  18 DEC 2013 05:49
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  18 DEC 2013 05:59
 entering extended mode
 **Entwurf.tex
-(C:\Users\Batman\Desktop\pse\pse13-1\Entwurf\Entwurfsdokument\Entwurf.tex
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -417,7 +417,7 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-(C:\Users\Batman\Desktop\pse\pse13-1\Entwurf\Entwurfsdokument\Entwurf.aux)
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -486,9 +486,9 @@ Package pdftex.def Info: KIT-Logo.png used on input line 34.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Batman/Desktop/p
-se/pse13-1/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
-(C:\Users\Batman\Desktop\pse\pse13-1\Entwurf\Entwurfsdokument\Entwurf.toc
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Simon/Documents/
+pse13-1/trunk/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
@@ -532,8 +532,8 @@ File: Paketdiagramm.png Graphic file (type png)
 <use Paketdiagramm.png>
 Package pdftex.def Info: Paketdiagramm.png used on input line 73.
 (pdftex.def)             Requested size: 392.96716pt x 274.02307pt.
- [2 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Paketdiagramm
-.png>]
+ [2 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Paketdiagr
+amm.png>]
 <GUI-Abschnitt.png, id=29, 869.49844pt x 645.16031pt>
 File: GUI-Abschnitt.png Graphic file (type png)
  <use GUI-Abschnitt.png>
@@ -544,8 +544,8 @@ Overfull \hbox (25.25772pt too wide) in paragraph at lines 80--80
  [][] 
  []
 
-[3 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/GUI-Abschnitt.
-png>]
+[3 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI-Abschni
+tt.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
@@ -599,8 +599,8 @@ Overfull \hbox (42.38152pt too wide) in paragraph at lines 158--158
  [][] 
  []
 
-[6 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Datenhaltung-A
-usschnitt.png>]
+[6 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Datenhaltun
+g-Ausschnitt.png>]
 Overfull \hbox (11.38335pt too wide) in paragraph at lines 179--181
 \OT1/pcr/m/sl/12 anzahl:Integer) \OT1/cmr/m/n/12 ver-wen-det um die Stim-men zu
  []andern. Falls das R[]ucksetzen
@@ -675,8 +675,8 @@ m/n/12 und der \OT1/pcr/b/n/12 Stimmenanteile \OT1/cmr/m/n/12 ei-ne \OT1/pcr/b/
 n/12 Bundestagswahl
  []
 
-[9 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Steuerung.png>
-] [10] <Import-Export_Ausschnitt.png, id=61, 713.66624pt x 564.1075pt>
+[9 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Steuerung.p
+ng>] [10] <Import-Export_Ausschnitt.png, id=61, 713.66624pt x 564.1075pt>
 File: Import-Export_Ausschnitt.png Graphic file (type png)
 
 <use Import-Export_Ausschnitt.png>
@@ -693,8 +693,8 @@ Overfull \hbox (4.68285pt too wide) in paragraph at lines 260--262
 r mit-ge-ge-ben, der .csv-Dateien,
  []
 
-[11 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Import-Export
-_Ausschnitt.png>]
+[11 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Import-Exp
+ort_Ausschnitt.png>]
 Overfull \hbox (19.12898pt too wide) in paragraph at lines 266--268
 \OT1/cmr/m/n/12 aus. Wenn die-se true zur[]uckgibt, wird die eben-falls pri-va-
 te Me-tho-de \OT1/pcr/m/sl/12 leseCSVDatei()
@@ -758,8 +758,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-[13 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Klassendiagra
-mme/Wahlgenerator_Klassendiagramm.png>]
+[13 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Wahlgenerator_Klassendiagramm.png>]
 Overfull \hbox (20.90685pt too wide) in paragraph at lines 299--301
 []\OT1/pcr/m/sl/12 Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmant
 eile) 
@@ -792,16 +792,16 @@ ie ak-tu-el-le Bun-des-tags-wahl mit der Funk-ti-on\OT1/pcr/m/sl/12 zurueckSetz
 en()
  []
 
-[15 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Klassendiagra
-mme/Chronik_Ausschnitt.png>]
+[15 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Chronik_Ausschnitt.png>]
 <Mandatsrechneralles.png, id=83, 454.69875pt x 349.305pt>
 File: Mandatsrechneralles.png Graphic file (type png)
 
 <use Mandatsrechneralles.png>
 Package pdftex.def Info: Mandatsrechneralles.png used on input line 331.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
- [16 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Mandatsrechn
-eralles.png>] [17]
+ [16 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Mandatsre
+chneralles.png>] [17]
 <Klassendiagramme/Wahlvergleich.png, id=92, 398.23781pt x 288.3272pt>
 File: Klassendiagramme/Wahlvergleich.png Graphic file (type png)
 
@@ -815,8 +815,8 @@ Overfull \hbox (38.38715pt too wide) in paragraph at lines 356--358
 gs-wah-len. Die Klas-se \OT1/pcr/b/n/12 Wahlvergleich
  []
 
-[18 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Klassendiagra
-mme/Wahlvergleich.png (PNG copy)>]
+[18 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Wahlvergleich.png (PNG copy)>]
 <Meldung_Ausschnitt.png, id=96, 569.12625pt x 106.14656pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
@@ -828,15 +828,15 @@ Overfull \hbox (2.33372pt too wide) in paragraph at lines 363--363
  [][] 
  []
 
-[19 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Meldung_Aussc
-hnitt.png>] <berechne2013.png, id=101, 579.16376pt x 784.9325pt>
+[19 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Meldung_Au
+sschnitt.png>] <berechne2013.png, id=101, 579.16376pt x 784.9325pt>
 File: berechne2013.png Graphic file (type png)
 
 <use berechne2013.png>
 Package pdftex.def Info: berechne2013.png used on input line 372.
 (pdftex.def)             Requested size: 289.58116pt x 392.46529pt.
- [20 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/berechne2013
-.png>]
+ [20 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/berechne2
+013.png>]
 <DeepCopy.png, id=106, 2153.04375pt x 1358.07375pt>
 File: DeepCopy.png Graphic file (type png)
  <use DeepCopy.png>
@@ -866,11 +866,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--383
 
  []
 
-[21 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/DeepCopy.png
+[21 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/DeepCopy.p
+ng
 
-pdfTeX warning: pdflatex.exe (file C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/
-Entwurfsdokument/DeepCopy.png): large interlaced PNG might cause out of memory 
-(use non-interlaced PNG to fix this)
+pdfTeX warning: pdflatex (file C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/E
+ntwurfsdokument/DeepCopy.png): large interlaced PNG might cause out of memory (
+use non-interlaced PNG to fix this)
 >] [22]
 <Sequenzdiagramme/Import_Sequenzdiagramm.png, id=115, 925.4575pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
@@ -883,8 +884,8 @@ Overfull \hbox (9.75972pt too wide) in paragraph at lines 387--387
  [][] 
  []
 
-[23 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagra
-mme/Import_Sequenzdiagramm.png>]
+[23 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Import_Sequenzdiagramm.png>]
 <Sequenzdiagramme/Wahlgenerierung.png, id=120, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
@@ -898,8 +899,8 @@ Overfull \hbox (8.58806pt too wide) in paragraph at lines 397--399
 asisWahl : Bundestagswahl,
  []
 
-[24 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagra
-mme/Wahlgenerierung.png>] [25]
+[24 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Wahlgenerierung.png>] [25]
 <Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png, id=128, 609.77812p
 t x 1398.72563pt>
 File: Sequenzdiagramme/NegativesSGSimulieren_Sequenzdiagramm.png Graphic file (
@@ -915,8 +916,8 @@ Overfull \hbox (10.05037pt too wide) in paragraph at lines 406--408
 ng das StimmgewichtsSimulator-
  []
 
-[26 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagra
-mme/NegativesSGSimulieren_Sequenzdiagramm.png>] [27]
+[26 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/NegativesSGSimulieren_Sequenzdiagramm.png>] [27]
 <Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png, id=136, 313.17pt 
 x 654.94687pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file 
@@ -926,8 +927,8 @@ File: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png Graphic file
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaender
 n.png used on input line 414.
 (pdftex.def)             Requested size: 219.21748pt x 458.45969pt.
- [28 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Chronik_Sequenzdiagramm-stimmenaendern.png>]
+ [28 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdi
+agramme/Chronik_Sequenzdiagramm-stimmenaendern.png>]
 <Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png, id=142, 555.57562pt
  x 736.25063pt>
 File: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png Graphic file (t
@@ -937,16 +938,16 @@ ype png)
 Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.
 png used on input line 420.
 (pdftex.def)             Requested size: 388.90027pt x 515.37192pt.
- [29 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Sequenzdiagr
-amme/Chronik_Sequenzdiagramm-restaurieren.png>]
+ [29 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdi
+agramme/Chronik_Sequenzdiagramm-restaurieren.png>]
 <GUI_Aktualisierung.png, id=147, 350.81062pt x 1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
 Package pdftex.def Info: GUI_Aktualisierung.png used on input line 430.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [30 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/GUI_Aktualis
-ierung.png>] [31]
+ [30 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Aktua
+lisierung.png>] [31]
 <GUI_Stimmenaenderung.png, id=155, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
@@ -958,35 +959,35 @@ Overfull \hbox (25.31781pt too wide) in paragraph at lines 439--439
  [][] 
  []
 
-[32 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/GUI_Stimmenae
-nderung.png>] <Gantt-Diagramm.png, id=160, 1242.14063pt x 576.65437pt>
+[32 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Stimme
+naenderung.png>] <Gantt-Diagramm.png, id=160, 1242.14063pt x 576.65437pt>
 File: Gantt-Diagramm.png Graphic file (type png)
 
 <use Gantt-Diagramm.png>
 Package pdftex.def Info: Gantt-Diagramm.png used on input line 449.
 (pdftex.def)             Requested size: 1242.1376pt x 576.65295pt.
- [33 <C:/Users/Batman/Desktop/pse/pse13-1/Entwurf/Entwurfsdokument/Gantt-Diagra
-mm.png>]
-(C:\Users\Batman\Desktop\pse\pse13-1\Entwurf\Entwurfsdokument\Entwurf.aux) ) 
+ [33 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Gantt-Dia
+gramm.png>]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) )
+ 
 Here is how much of TeX's memory you used:
  3474 strings out of 493921
- 45826 string characters out of 3147278
+ 45853 string characters out of 3147281
  109351 words of memory out of 3000000
  6677 multiletter control sequences out of 15000+200000
  12755 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,10n,43p,1048b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:
-/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti1
-2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (36 pages, 749884 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+ti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Entwurf.pdf (36 pages, 750912 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
