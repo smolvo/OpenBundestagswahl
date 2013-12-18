@@ -252,22 +252,33 @@ Der obige Ausschnitt des Klassendiagramms zeigt das Wahldatengenerierungs-Modul.
 Zur Übersichtlichkeit werden in den Klassen {\myma{Partei}}, {\myma{Steuerung}} und {\myma{Bundestagswahl}} nur die für dieses Modul relevanten Informationen angezeigt.\\\\
 Mit diesem Modul können {\myma{Bundestagswahl}} Objekte anhand vorher definierten {\myma{Stimmanteilen}} auf Bundesebene generiert werden. Bei {\myma{Stimmanteile}} handelt es sich um eine Liste aller Parteien mit prozentualen Anteilen der Erst- und Zweitstimmen auf Bundesebene. Des weiteren benötigt der Wahlgenerator eine {\myma{basisWahl Bundestagswahl}} um Daten wie beispielsweise {\myma{Bundesländer}}, {\myma{Wahlkreise}} und {\myma{Wahlberechtigte}} zur Verfügung zu haben. Aus dieser basisWahl wird eine tiefe Kopie erstellt, deren Stimmzahlen anschließend verändert werden.\\\\
 
-Neben dem {\mymo Wahlgenerator}, der alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt gibt es noch den {\mymo NegStimmgewichtWahlgenerator}. Dieser erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.\\
-
-Dabei muss bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
-
-\subparagraph{Methoden}
 \begin{description}
-\item {\mymo{Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmanteile)}} \\
+     \item {\myma{AbstrakterWahlgenerator}} \\
+     Ist eine abstrakte Oberklasse, die als Grundlage für die spezialisierten Klassen verwendet wird.     
+     
+     \item {\mymo{Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmanteile)}} \\
 Der Konstruktor dieser Klasse. Wird verwendet um einen neuen {\mymo{Wahlgenerator}} zu erstellen. Hier werden die Attribute basisWahl, anteile, erststimmenAnzahl und zweitstimmenAnzahl gesetzt.
 \item {\mymo{berechneGesamtanzahlStimmen()}} \\
 Diese Methode ist privat und wird von dem Konstruktor verwendet um die Attribute {\mymo{anzahlErststimmen}} und {\mymo{anzahlZweitstimmen}} zu berechen. Hierzu werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtigten in absolute Zahlen für Erst- und Zweitstimmen umgerechnet.
 \item {\mymo{erzeugeBTW() : Bundestagswahl}} \\
 Erzeugt eine neue Bundestagswahl auf der Grundlage der basisWahl und füllt diese mit den Erst- und Zweitstimmen.
 \item {\mymo{verteileStimmen()}} \\
-Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise der Bundestagswahl. Diese Methode muss in jeder Unterklasse von Wahlgenerator implementiert werden.
+Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise der Bundestagswahl. Diese Methode muss in jeder Unterklasse von Wahlgenerator implementiert werden.     
+     
+     \item {\myma{Wahlgenerator}} \\
+	Bei diesem Wahlgenerator werden alle Stimmen der jeweiligen Parteien zufällig auf Wahlkreise verteilt.
+     \item {\mymo{verteileStimmen()}} \\
+	Zufällige Verteilung aller Stimmen der Parteien auf Wahlkreise.     
+     
+     \item {\myma{NegStimmgewichtWahlgenerator}} \\
+     Dieser Wahlgenerator erzeugt Bundestagswahlen, die die Voraussetzungen erfüllen, welche für die Simulation des Negativen Stimmgewichts benötigt werden.
+     \item {\mymo{verteileStimmen()}} \\
+Die Stimmen müssen so verteilt werden, dass bei mindestens einer Partei der prozentuale Anteil ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein. Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine Überhangmandate erzielen.
+     \item {\myma{Stimmanteile}} \\
+     Diese Klasse enthält die Zuordnung zwischen Parteien und der prozentualen Erst- und Zweitstimmen.     
+     
 \end{description}
-
+     
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]
