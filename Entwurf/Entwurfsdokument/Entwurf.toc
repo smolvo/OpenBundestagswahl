@@ -9,7 +9,6 @@
 \contentsline {subsection}{\numberline {3.3}Import/ Export}{9}
 \contentsline {subparagraph}{Methoden}{10}
 \contentsline {subsection}{\numberline {3.4}Wahlgenerierung}{11}
-\contentsline {subparagraph}{Methoden}{12}
 \contentsline {subsection}{\numberline {3.5}Chronik}{13}
 \contentsline {subparagraph}{Methoden}{13}
 \contentsline {subsection}{\numberline {3.6}Mandatsrechner}{14}
