@@ -10,21 +10,22 @@
 \contentsline {subsection}{\numberline {3.3}Steuerung}{9}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Import/ Export}{11}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Wahlgenerierung}{13}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Chronik}{15}{subsection.3.6}
-\contentsline {subparagraph}{Methoden}{15}{section*.2}
-\contentsline {subsection}{\numberline {3.7}Mandatsrechner}{16}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Wahlvergleich}{18}{subsection.3.8}
-\contentsline {subsection}{\numberline {3.9}Meldung}{19}{subsection.3.9}
-\contentsline {section}{\numberline {4}Sequenzdiagramme}{20}{section.4}
-\contentsline {subsection}{\numberline {4.1}Berechnung der Sitzverteilung}{20}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}DeepCopy}{21}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Import}{23}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Wahlgenerierung}{24}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Negatives Stimmgewicht}{26}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Chronik}{28}{subsection.4.6}
-\contentsline {subsubsection}{\numberline {4.6.1}Ver\IeC {\"a}nderung an den Stimmen}{28}{subsubsection.4.6.1}
-\contentsline {subsubsection}{\numberline {4.6.2}Restaurieren einer Stimme}{29}{subsubsection.4.6.2}
-\contentsline {subsection}{\numberline {4.7}GUI}{30}{subsection.4.7}
-\contentsline {subsubsection}{\numberline {4.7.1}Aktualisierung}{30}{subsubsection.4.7.1}
-\contentsline {subsubsection}{\numberline {4.7.2}Stimmen\IeC {\"a}nderung}{32}{subsubsection.4.7.2}
-\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{33}{section.5}
+\contentsline {subsection}{\numberline {3.6}Negatives Stimmgewicht simulieren}{15}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Chronik}{17}{subsection.3.7}
+\contentsline {subparagraph}{Methoden}{17}{section*.2}
+\contentsline {subsection}{\numberline {3.8}Mandatsrechner}{18}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Wahlvergleich}{20}{subsection.3.9}
+\contentsline {subsection}{\numberline {3.10}Meldung}{21}{subsection.3.10}
+\contentsline {section}{\numberline {4}Sequenzdiagramme}{22}{section.4}
+\contentsline {subsection}{\numberline {4.1}Berechnung der Sitzverteilung}{22}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}DeepCopy}{23}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Import}{25}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Wahlgenerierung}{26}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Negatives Stimmgewicht}{28}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Chronik}{29}{subsection.4.6}
+\contentsline {subsubsection}{\numberline {4.6.1}Ver\IeC {\"a}nderung an den Stimmen}{29}{subsubsection.4.6.1}
+\contentsline {subsubsection}{\numberline {4.6.2}Restaurieren einer Stimme}{30}{subsubsection.4.6.2}
+\contentsline {subsection}{\numberline {4.7}GUI}{31}{subsection.4.7}
+\contentsline {subsubsection}{\numberline {4.7.1}Aktualisierung}{31}{subsubsection.4.7.1}
+\contentsline {subsubsection}{\numberline {4.7.2}Stimmen\IeC {\"a}nderung}{33}{subsubsection.4.7.2}
+\contentsline {section}{\numberline {5}Implementierungsphasen-Zeitplan}{34}{section.5}
