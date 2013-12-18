@@ -160,6 +160,7 @@ Folgende Methoden sind enthalten:
           \begin{description}
                \item {\mymo{prüfeDaten()}}\\
                Überprüft, ob die eingegebenen Stimmen gültig sind und unterzieht diese einem Konsistenz-Test. Die Methode wird nach jeder Stimmveränderung ausgeführt. Falls der Test nach einer Stimmveränderung fehlschlägt, wird die Stimme mithilfe der {\myma{Chronik}} zurückgesetzt und eine Fehlermeldung ausgegeben.
+              \item {\mymo{setzeStimme(s:Stimme) : Boolean}}\\
               
                \item {\mymo{setzeStimme(s:Stimme,anzahl:Integer) : Boolean}}\\
                Wird von der GUI über die Steuerung aufgerufen. Es wird das zu verändernde {\myma{Stimme}}-Objekt und die neue Anzahl der Stimmen übergeben. Es findet eine Vorüberprüfung statt, in der ermittelt wird was genau verändert wird. Es dürfen Erststimmen nur auf Wahlkreisebene und Zweitstimmen auf Wahlkreis-, Landes- und Bundesebene verändert werden. Die zu verändernde {\myma{Stimme}} wird geklont und in der {\myma{Chronik}} gespeichert. Dabei können drei Fälle auftreten: \\
@@ -282,7 +283,7 @@ Die Stimmen müssen so verteilt werden, dass bei mindestens einer Partei der pro
 \newpage
 \subsection{Chronik}
 \begin{figure}[!ht]
-\includegraphics[scale=0.8]{Chronik_Ausschnitt} \caption{Chronik-Komponente} 
+\includegraphics[scale=0.8]{Klassendiagramme/Chronik_Ausschnitt} \caption{Chronik-Komponente} 
 \end{figure}
 
 Die Klasse {\myma{Chronik}} gibt dem Programm die Funktionalität, Veränderungen an den Stimmen rückgängig zu machen. Jede {\myma{Bundestagswahl}} hat hierbei eine eigene Chronik. {\myma{Chronik}} wird in dem Konstruktor von {\myma{Bundestagswahl}} erzeugt, und ist daher in jedem {\myma{Bundestagswahl}}-Objekt enthalten. Es besitzt eine Menge von {\myma{Stimmen}}-Objekten. Bei jeder Veränderung wird ein neues {\myma{Stimmen}}-Objekt angelegt, was die Veränderung wiederspiegelt.
@@ -353,9 +354,9 @@ Anschließend wird von der Steuerung die Methode {\mymo{erzeugeBTW()}} ausgefüh
 \subsection{Chronik}
 \begin{itemize}
 	\item Veränderung an den Stimmen \\
-		\includegraphics[scale=0.7]{Chronik_Sequenzdiagramm-stimmenaendern.png}
+		\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png}
 	\item Restaurieren einer Stimme \\
-		\includegraphics[scale=0.7]{Chronik_Sequenzdiagramm-restaurieren.png}
+		\includegraphics[scale=0.7]{Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.png}
 		\\
 		Stimmen werden in der Chronik werden Stack-artig zurückgegeben. Sobald eine Bundestagswahl rückgängig gemacht wurde, wird die neue Bundestagswahl als Rückgabewert zurückgegeben.
 	\item Beispielszenario	
