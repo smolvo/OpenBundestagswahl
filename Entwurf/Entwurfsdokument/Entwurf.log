@@ -1,9 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  18 DEC 2013 03:05
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  18 DEC 2013 03:10
 entering extended mode
 **Entwurf.tex
-
-("C:\Users\Simon\Documents\pse - Kopie\trunk\Entwurf\Entwurfsdokument\Entwurf.t
-ex"
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -419,8 +417,7 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-("C:\Users\Simon\Documents\pse - Kopie\trunk\Entwurf\Entwurfsdokument\Entwurf.a
-ux")
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -433,7 +430,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
 \scratchdimen=\dimen124
@@ -489,11 +487,11 @@ Package pdftex.def Info: KIT-Logo.png used on input line 34.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Simon/Documents/
-pse - Kopie/trunk/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
-("C:\Users\Simon\Documents\pse - Kopie\trunk\Entwurf\Entwurfsdokument\Entwurf.t
-oc"
+pse13-1/trunk/Entwurf/Entwurfsdokument/KIT-Logo.png>] [1]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
@@ -554,8 +552,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
-[3 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/GUI-Abs
-chnitt.png>]
+[3 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI-Abschni
+tt.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
@@ -625,8 +623,8 @@ File: Datenhaltung-Ausschnitt.png Graphic file (type png)
 <use Datenhaltung-Ausschnitt.png>
 Package pdftex.def Info: Datenhaltung-Ausschnitt.png used on input line 151.
 (pdftex.def)             Requested size: 396.27348pt x 274.21964pt.
- [6 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Datenh
-altung-Ausschnitt.png>]
+ [6 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Datenhaltu
+ng-Ausschnitt.png>]
 Overfull \hbox (11.38335pt too wide) in paragraph at lines 172--174
 \OT1/pcr/m/sl/12 anzahl:Integer) \OT1/cmr/m/n/12 ver-wen-det um die Stim-men zu
  []andern. Falls das R[]ucksetzen
@@ -682,8 +680,8 @@ Overfull \hbox (4.68285pt too wide) in paragraph at lines 223--225
 r mit-ge-ge-ben, der .csv-Dateien,
  []
 
-[9 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Import-
-Export_Ausschnitt.png>]
+[9 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Import-Expo
+rt_Ausschnitt.png>]
 Overfull \hbox (19.12898pt too wide) in paragraph at lines 229--231
 \OT1/cmr/m/n/12 aus. Wenn die-se true zur[]uckgibt, wird die eben-falls pri-va-
 te Me-tho-de \OT1/pcr/m/sl/12 leseCSVDatei()
@@ -742,8 +740,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 251--254
 
  []
 
-[11 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Klasse
-ndiagramme/Wahlgenerator_Klassendiagramm.png>]
+[11 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Wahlgenerator_Klassendiagramm.png>]
 Overfull \hbox (20.90685pt too wide) in paragraph at lines 259--261
 []\OT1/pcr/m/sl/12 Wahlgenerator(basisWahl : Bundestagswahl, anteile : Stimmant
 eile) 
@@ -776,16 +774,16 @@ ie ak-tu-el-le Bun-des-tags-wahl mit der Funk-ti-on\OT1/pcr/m/sl/12 zurueckSetz
 en()
  []
 
-[13 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Klasse
-ndiagramme/Chronik_Ausschnitt.png>]
+[13 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Klassendia
+gramme/Chronik_Ausschnitt.png>]
 <Mandatsrechneralles.png, id=73, 454.69875pt x 349.305pt>
 File: Mandatsrechneralles.png Graphic file (type png)
 
 <use Mandatsrechneralles.png>
 Package pdftex.def Info: Mandatsrechneralles.png used on input line 303.
 (pdftex.def)             Requested size: 272.82135pt x 209.58461pt.
- [14 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Manda
-tsrechneralles.png>] [15]
+ [14 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Mandatsre
+chneralles.png>] [15]
 <Meldung_Ausschnitt.png, id=81, 569.12625pt x 106.14656pt>
 File: Meldung_Ausschnitt.png Graphic file (type png)
 
@@ -797,8 +795,8 @@ Overfull \hbox (2.33372pt too wide) in paragraph at lines 325--325
  [][] 
  []
 
-[16 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Meldun
-g_Ausschnitt.png>]
+[16 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Meldung_Au
+sschnitt.png>]
 <Sequenzdiagramme/Import_Sequenzdiagramm.png, id=87, 1037.8775pt x 486.81876pt>
 File: Sequenzdiagramme/Import_Sequenzdiagramm.png Graphic file (type png)
 <use Sequenzdiagramme/Import_Sequenzdiagramm.png>
@@ -810,8 +808,8 @@ Overfull \hbox (65.96959pt too wide) in paragraph at lines 333--333
 [][] 
  []
 
-[17 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Sequen
-zdiagramme/Import_Sequenzdiagramm.png>]
+[17 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Import_Sequenzdiagramm.png>]
 <Sequenzdiagramme/Wahlgenerierung.png, id=92, 623.32875pt x 1061.46562pt>
 File: Sequenzdiagramme/Wahlgenerierung.png Graphic file (type png)
 
@@ -825,8 +823,8 @@ Overfull \hbox (8.58806pt too wide) in paragraph at lines 343--345
 asisWahl : Bundestagswahl,
  []
 
-[18 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Sequen
-zdiagramme/Wahlgenerierung.png>] [19] [20] [21]
+[18 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Wahlgenerierung.png>] [19] [20] [21]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 355.
 
 
@@ -855,18 +853,18 @@ Package pdftex.def Info: Sequenzdiagramme/Chronik_Sequenzdiagramm-restaurieren.
 png used on input line 358.
 (pdftex.def)             Requested size: 185.49173pt x 373.61829pt.
 
-[22 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Sequen
-zdiagramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [23 <C:/Users/Simon/Doc
-uments/pse - Kopie/trunk/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequ
-enzdiagramm-restaurieren.png>]
+[22 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdia
+gramme/Chronik_Sequenzdiagramm-stimmenaendern.png>] [23 <C:/Users/Simon/Documen
+ts/pse13-1/trunk/Entwurf/Entwurfsdokument/Sequenzdiagramme/Chronik_Sequenzdiagr
+amm-restaurieren.png>]
 <GUI_Aktualisierung.png, id=118, 350.81062pt x 1011.78pt>
 File: GUI_Aktualisierung.png Graphic file (type png)
 
 <use GUI_Aktualisierung.png>
 Package pdftex.def Info: GUI_Aktualisierung.png used on input line 369.
 (pdftex.def)             Requested size: 175.40488pt x 505.88876pt.
- [24 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/GUI_A
-ktualisierung.png>] [25]
+ [24 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Aktua
+lisierung.png>] [25]
 <GUI_Stimmenaenderung.png, id=126, 956.57375pt x 365.365pt>
 File: GUI_Stimmenaenderung.png Graphic file (type png)
 
@@ -878,28 +876,28 @@ Overfull \hbox (25.31781pt too wide) in paragraph at lines 377--377
  [][] 
  []
 
-[26 <C:/Users/Simon/Documents/pse - Kopie/trunk/Entwurf/Entwurfsdokument/GUI_St
-immenaenderung.png>] [27]
-("C:\Users\Simon\Documents\pse - Kopie\trunk\Entwurf\Entwurfsdokument\Entwurf.a
-ux") ) 
+[26 <C:/Users/Simon/Documents/pse13-1/trunk/Entwurf/Entwurfsdokument/GUI_Stimme
+naenderung.png>] [27]
+(C:\Users\Simon\Documents\pse13-1\trunk\Entwurf\Entwurfsdokument\Entwurf.aux) )
+ 
 Here is how much of TeX's memory you used:
  3455 strings out of 493921
- 45232 string characters out of 3147281
+ 45196 string characters out of 3147281
  108351 words of memory out of 3000000
  6663 multiletter control sequences out of 15000+200000
  12456 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,10n,43p,1026b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Entwurf.pdf (30 pages, 476321 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Entwurf.pdf (30 pages, 476323 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
