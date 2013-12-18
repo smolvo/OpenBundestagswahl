@@ -378,6 +378,8 @@ Das {\myma{Bundestagswahl}}-Objekt wir mit dem {\myma{Mandatsrechner2013}} ausge
 \centering
 \includegraphics[scale=0.37]{DeepCopy.png} \caption{Kopieren einer Bundestagswahl} 
 \end{figure}
+Dieses Sequenzdiagramm zeigt, wie man ein gesamtes {\myma{Bundestagswahl}}-Objekt mit Hilfe der clone()-Methode kopiert. \\
+Es beginnt mit der Erstellung eines neuen {\myma{Bundestagwahl}}-Objekts. In dieses wird ein {\myma{Sitzverteilung}}s- und {\myma{Deutschland}}-Objekt generiert, welches alle {\myma{Bundesländer}} des Originals neu in sich anlegt. Für jedes {\myma{Bundeslan}}d müssen die originalen {\myma{Wahlkreise}} kopiert werden. Die {\myma{Wahlkreis}}e haben jeweils eine Liste von {\myma{Kandidat}}en, wodurch durch die Assoziation zwischen {\myma{Wahlkreis}} und {\myma{Kandidat}} noch die {\myma{Zweitstimme}}n neu generiert werden. {\myma{Kandidat}}en werden, wenn sie ein Mandat haben, zur neuen {\myma{Sitzverteilung}} hinzugefügt. Jeder {\myma{Kandidat}} ist Mitglied in einer {\myma{Partei}}, die wiederum kopiert werden muss. Aus dieser und dem dazugehörigen {\myma{Gebiet}} entsteht die neue {\myma{Zweitstimme}} und durch aus der {\myma{Partei}} und dem {\myma{Bundesland}} entsteht die {\myma{Landesliste}}, was die Kopierung beendet.\\
 \newpage
 \subsection{Import}
 \begin{figure}[!ht]
