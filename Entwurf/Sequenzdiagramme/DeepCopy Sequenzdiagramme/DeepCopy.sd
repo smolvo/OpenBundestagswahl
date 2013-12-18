@@ -1,20 +1,12 @@
 btwOriginal:Bundestagswahl
 /btwKopie:Bundestagswahl
-dOri:Deutschland
 /dKop:Deutschland
-blOriginal:Bundesland
 /blKopie:Bundesland
-wOriginal:Wahlkreis
 /wKopie:Wahlkreis
-kOriginal:Kandidat
 /kKopie:Kandidat
-erstOriginal:Erststimme
 /erstKopie:Erststimme
-pOriginal:Partei
 /pKopie:Partei
-zweitOriginal:Zweitstimme
 /zweitKopie:Zweitstimme
-svOriginal:Sitzverteilung
 /svKopie:Sitzverteilung
 
 btwOriginal:btwKopie.new(name)
