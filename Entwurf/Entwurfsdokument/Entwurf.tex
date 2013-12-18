@@ -66,53 +66,79 @@ Abschließend wird die Zeitplanung der Implementierung und die zugehörigen Haup
 \end{figure}
 
 Dieser Teil des gesamten Klassendiagramm zeigt den Visualisierungsteil. \\
-Das {\myma{Programmfenster}} besteht aus einem oder mehreren {\myma{Wahlfenstern}} in Form von Tabs. Weiterhin enthält es
-ein {\myma{Generatorfenster}}, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
+Das {\myma{Programmfenster}} besteht aus einem oder mehreren {\myma{Wahlfenstern}} in Form von Tabs. Weiterhin enthält es ein {\myma{Generatorfenster}}, um nicht identifizierten Parteien Stimmen zu geben, die Hilfe, und
 ein Vergleichsfenster, wenn der Vergleich zweier Wahlen aktiv ist. \\
 Ein Wahlfenster hat eine bestimmte Ansicht, diese ist entweder die Bundes-, Landes- und
-Wahlkreisansicht. Zu jeder von diesen gehört jeweils ein Tabellen-, Diagramm- und Kartenfenster. \\
-Das Tabellenfenster zeigt die Daten der Bundestagswahl-Klasse an (Erst-, Zweitstimmen, Direktmandat,...).\\
-Das Diagrammfenster visualisiert die Sitzverteilungs-Klasse. \\
-Das Kartenfenster visualisiert die Deutschland-Klasse. \\
-Das Tabellenfenster, in welchem Erst- und Zweitstimmen geändert werden können, und die
-dazugehörige ChangeListener-Klasse werden im Beobachter-Prinzip umgesetzt. Der ChangeListener
-hört das Tabellenfenster ab und wird bei Veränderungen informiert. \\
-Gesteuert werden alle genannten Klassen durch die GUISteuerungs-Klasse, die die Ansicht und das
-Vergleichsfenster visualisiert und das gesamte Programmfenster beim Programmstart initialisiert.
-
+Wahlkreisansicht. Zu jeder von diesen gehört jeweils ein {\myma{Tabellen-}}, {\myma{Diagramm-}} und {\myma{Kartenfenster}}. \\
+Das {\myma{Tabellenfenster}} zeigt die Daten der {\myma{Bundestagswahl}}-Klasse an (Erst-, Zweitstimmen, Direktmandat,...). Es besteht aus mehreren  {\myma{TabllenZellen}}. \\
+Das {\myma{Diagrammfenster}} visualisiert die {\myma{Sitzverteilung}}s-Klasse. \\
+Das{\myma{Kartenfenster}} visualisiert die {\myma{Bundestagswahl}}-Klasse. \\
+Das {\myma{Tabellenfenster}}, in welchem {\myma{Erst-}} und {\myma{Zweitstimmen}} geändert werden können stellt auch
+Daten der {\myma{Bundestagswahl}}-Klasse dar.
+Die {\myma{GUISteuerung}} hält das aktuelle  {\myma{Bundestagswahl}}-Objekt, was dargestellt wird. Dieses holt sie sich von der  {\myma{Steuerung}}. Außerdem hält es ein {\myma{WahlFenster}} und, falls vorhanden, 
 
 \begin{large}
 Methoden 
 \end{large}
 \begin{description}
-\item \textbf {Tabellenfenster} \\
+
+\item  {\myma{{ProgrammFenster}}} \\
 \begin{itemize}
-\item \textbf {senden(aenderungszeile : String, wert : Integer)} \\
-Das Tabellenfenster informiert den ChangeListener darüber, welche Zeile im Tabellenfenster
-geändert  wurde und was der neue Wert ist. \\
+\item {\mymo{{wechsleTab(w : WahlFenster)}}} \\
+Es wird zu dem WahlFenster w gewechselt. \\
 \end{itemize}
-\item \textbf {ChangeListener} \\
+
+\item  {\myma{{VergleichsFenster}}} \\
 \begin{itemize}
-\item \textbf {aktualisiere()} \\
-Der ChangeListener passt seine Attribute, nachdem er von dem Tabellenfenster informiert wurde, an,
-diese repräsentieren den zuletzt geänderte Tabelleneintrag. \\
-\item \textbf {uebergeben()} \\
-Der ChangeListener übergibt, nachdem seine Attribute neu gesetzt wurden, diese an die Steuerung,
-sich dann um die Aktualisierung der internen Daten kümmert. \\
+\item {\mymo{{zeigeVergleich()}}}
+
+\item {\mymo{{erstelleDiagramm()}}}
+\end{itemize}
+
+\item  {\myma{{WahlFenster}}} \\
+\begin{itemize}
+\item {\mymo{{wechsleAnsicht(a : Ansicht)}}} \\
+Wechselt zur Ansicht a. \\
+\item {\mymo{{bundestagswahlDarstellen(btw : Bundestagswahl)}}} \\
+Verteilt an die drei Ansichten die Arbeit, das Bundeswahl-Objekt btw darzustellen. \\
 \end{itemize} 
-\item \textbf {GUISteuerung} \\
+
+\item  {\myma{{Ansicht}}} \\
 \begin{itemize}
-\item \textbf {initialisiere()} \\
-Der Programmfensterkonstruktor wird aufgerufen, alle Objekte erstellt und mit der Wahl 2013 befüllt. \\
-\item \textbf {visualisiere(bw : Bundestagswahl)} \\
-Wurde eine neue Bundestagswahl geladen und berechnet, werden alle dazugehörigen Werte und Grafiken
-im Karten-, Diagramm- und Tabellenfenster geladen. \\ 
-\item \textbf {visualisiere(vergleich : Vergleich)} \\
-Hat die Steuerung einen Vergleich zweier Wahlen errechnet und die Daten an die GUISteuerung übergeben,
-wird das Vergleichsfenster erstellt und mit den Daten des Vergleichsobjektes gefüllt. \\
-\item \textbf {zurueckSetzen(bw : Bundestagswahl)} \\
-Wünscht der Benutzer einen zuvor geänderten Wert im Tabellenfenster zurückzusetzen, wird die Steuerung 
-informiert. \\
+\item {\mymo{{zeigeKomponenten(btw : Bundestagswahl)}}} \\
+In jeder der drei Ansichten wird die Darstellung, des Bundestagswahl-Objekts auf die drei Fenster aufgeteilt. \\
+\end{itemize}
+
+\item  {\myma{{TabellenFenster}}} \\
+\begin{itemize}
+\item {\mymo{{tabellenFuellen(btw : Bundestagswahl)}}}
+Füllt das TabellenFenster mit den notwendigen Daten des Bundeswahl-Objekts.
+\end{itemize}
+
+\item  {\myma{{DiagrammFenster}}} \\
+\begin{itemize}
+\item {\mymo{{erstelleDiagramm(btw : Bundestagswahl)}}}
+Erstellt ein Diagramm auf Grund der Daten der Bundestagswahl btw.
+\item {\mymo{{zeigeSitzverteilung()}}}
+Öffnet ein BerichtsFenster, in dem die Sitze der Verteilung näher erläutert werden.
+\end{itemize}
+
+\item  {\myma{{KartenFenster}}} \\
+\begin{itemize}
+\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
+Erstellt, wenn möglich, die kartografische Darstellung.
+\end{itemize}
+
+\item  {\myma{{GUISteuerung}}} \\
+\begin{itemize}
+\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
+Erstellt, wenn möglich, die kartografische Darstellung.
+\end{itemize}
+
+\item  {\myma{{Ansicht}}} \\
+\begin{itemize}
+\item {\mymo{{zeigeInformationen(btw : Bundestagswahl)}}}
+Erstellt, wenn möglich, die kartografische Darstellung.
 \end{itemize}
 
 \end{description}
