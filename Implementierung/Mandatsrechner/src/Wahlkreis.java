@@ -1,9 +1,9 @@
 
 /**
- * @author Nick
  * Diese Klasse arbeitet mit der Deutschland-Klasse, der Kandidat-Klasse und
- * der Erststimmen-Klasse zusammen.
+ * der Erststimmen-Klasse zusammen. Sie erbt von der Oberklasse Gebiet
+ * @author Nick
  */
-public class Wahlkreis {
+public class Wahlkreis extends Gebiet{
 
 }

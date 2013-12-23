@@ -1,9 +1,7 @@
 
-/**
- * @author Nick
- * 
+/** 
  * Diese Klasse ist die Oberklasse von der Erst- oder Zweitstimme-Klasse
- *
+ * @author Nick
  */
 
 public abstract class Stimme {
@@ -22,7 +20,7 @@ public abstract class Stimme {
 	/**
 	 * Setzt die Anzahl der Stimmmen in der Klasse
 	 * @param anzahl ist die Anzahl der Stimmen die die Klasse hält
-	 * @exception IllegalArgumentException if a param does not comply.
+	 * @exception IllegalArgumentException wenn die Anzahl negativ ist
 	 */
 	public void setAnzahl(int anzahl) {
 		if (anzahl > 0) {
