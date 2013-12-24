@@ -1,6 +1,6 @@
 package Model;
 /**
- * Diese abstrakte Oberklasse haltet den Namen und die Anzahl der Wahlberechtigten eines Gebiets.
+ * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines Gebiets haltet.
  * @author Nick
  */
 public abstract class Gebiet {

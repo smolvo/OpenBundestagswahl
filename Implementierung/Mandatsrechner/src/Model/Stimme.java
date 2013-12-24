@@ -1,7 +1,7 @@
 package Model;
 
 /** 
- * Diese Klasse ist die Oberklasse von der Erst- oder Zweitstimme-Klasse
+ * Oberklasse von der Erst- oder Zweitstimme-Klasse
  * @author Nick
  */
 

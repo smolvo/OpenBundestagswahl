@@ -1,7 +1,7 @@
 package Model;
 /**
- * Diese Assoziationsklasse beinhaltet die Anzahl aller Erststimmen und arbeitet mit den Klassen 
- * Wahlkreis und Kandidat zusammen. Außerdem erbt diese von der Klasse Stimme.
+ * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
+ * Wahlkreis und Kandidat zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
  * @author Nick
  */
 public class Erststimme extends Stimme{
@@ -21,6 +21,17 @@ public class Erststimme extends Stimme{
 	 */
 	public Wahlkreis getWahlkreis() {
 		return wahlkreis;
+	}
+	/**
+	 * Mit dem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
+	 * @param anzahl
+	 * @param wahlkreis
+	 * @param kandidat
+	 */
+	public Erststimme(int anzahl, Wahlkreis wahlkreis, Kandidat kandidat){
+		this.setAnzahl(anzahl);
+		this.setKandidat(kandidat);
+		this.setWahlkreis(wahlkreis);
 	}
 	
 	/**

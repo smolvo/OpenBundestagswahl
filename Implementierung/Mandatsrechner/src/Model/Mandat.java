@@ -1,6 +1,6 @@
 package Model;
 /**
- * Enum-Klasse für Art des Mandats, dass ein 
+ * Enum-Klasse für die verschiedenen Arten von Mandaten
  * @author Nick
  *
  */
