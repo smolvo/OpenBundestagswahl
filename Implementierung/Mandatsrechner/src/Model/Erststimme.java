@@ -1,3 +1,4 @@
+package Model;
 /**
  * Diese Assoziationsklasse beinhaltet die Anzahl aller Erststimmen und arbeitet mit den Klassen 
  * Wahlkreis und Kandidat zusammen. Auﬂerdem erbt diese von der Klasse Stimme.

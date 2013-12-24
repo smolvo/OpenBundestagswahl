@@ -1,3 +1,4 @@
+package Model;
 
 /**
  * Diese Klasse arbeitet mit der Deutschland-Klasse, der Kandidat-Klasse und
