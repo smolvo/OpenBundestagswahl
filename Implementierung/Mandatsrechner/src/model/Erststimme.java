@@ -1,4 +1,7 @@
-package Model;
+package model;
+
+
+
 /**
  * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
  * Wahlkreis und Kandidat zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
@@ -16,13 +19,6 @@ public class Erststimme extends Stimme{
 	private Kandidat kandidat;
 	
 	/**
-	 * Gibt den verbundenen Wahlkreis zurück
-	 * @return der verbundene Wahlkreis 
-	 */
-	public Wahlkreis getWahlkreis() {
-		return wahlkreis;
-	}
-	/**
 	 * Mit dem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
 	 * @param anzahl
 	 * @param wahlkreis
@@ -33,7 +29,13 @@ public class Erststimme extends Stimme{
 		this.setKandidat(kandidat);
 		this.setWahlkreis(wahlkreis);
 	}
-	
+	/**
+	 * Gibt den verbundenen Wahlkreis zurück
+	 * @return der verbundene Wahlkreis 
+	 */
+	public Wahlkreis getWahlkreis() {
+		return wahlkreis;
+	}
 	/**
 	 * Setze den Wahlkreis
 	 * @param wahlkreis der neue Wahlkreis

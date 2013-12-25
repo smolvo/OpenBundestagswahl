@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines Gebiets haltet.
  * @author Nick

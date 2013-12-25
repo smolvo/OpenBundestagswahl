@@ -1,4 +1,6 @@
-package Model;
+package model;
+
+
 
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und

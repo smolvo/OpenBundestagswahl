@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** 
  * Oberklasse von der Erst- oder Zweitstimme-Klasse

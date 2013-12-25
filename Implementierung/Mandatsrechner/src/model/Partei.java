@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 
 import java.util.LinkedList;
@@ -16,7 +16,6 @@ public class Partei {
 	 * Mitglieder der Partei
 	 */
 	private LinkedList<Kandidat> mitglieder = new LinkedList<Kandidat>();
-
 	/**
 	 * Name der Partei
 	 */
@@ -29,7 +28,10 @@ public class Partei {
 	 * Farbe der Partei
 	 */
 	private Farbe farbe;
-	
+	/**
+	 * Zweitstimme 
+	 */
+	private Zweitstimme zweitstimme;
 	/**
 	 * Angepasster Konstruktor. Listen werden danach befüllt
 	 * @param landesliste
@@ -166,6 +168,24 @@ public class Partei {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
 		this.farbe = farbe;
+	}
+	/**
+	 * Gibt das Zweitstimmen-Objekt zurück
+	 * @return das Zweitstimmen-Objekt
+	 */
+	public Zweitstimme getZweitstimme() {
+		return zweitstimme;
+	}
+	/**
+	 * Setzt das Zweitstimmen-Objekt
+	 * @param zweitstimme 
+	 * @exception wenn das Objekt leer ist
+	 */
+	public void setZweitstimme(Zweitstimme zweitstimme) {
+		if(zweitstimme == null){
+			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
+		}
+		this.zweitstimme = zweitstimme;
 	}
 	
 }

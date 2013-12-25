@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * Enum-Klasse für die verschiedenen Arten von Mandaten
  * @author Nick

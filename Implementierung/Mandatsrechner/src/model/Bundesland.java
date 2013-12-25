@@ -1,4 +1,5 @@
-package Model;
+package model;
+
 
 import java.util.LinkedList;
 
@@ -10,7 +11,7 @@ import java.util.LinkedList;
 public class Bundesland extends Gebiet{
 
 	/**
-	 * Einwohnerzahl des Bundeslandes
+	 * Einwohnerzahl des Bundeslandes.
 	 */
 	private int einwohnerzahl;
 	/**
@@ -25,7 +26,6 @@ public class Bundesland extends Gebiet{
 	 * Liste mit den vertrettenden Parteien im Bundesland
 	 */
 	private LinkedList<Partei> parteien = new LinkedList<Partei>();
-	
 	/**
 	 * Angepasster Konstruktor. Listen werden seperat hinzugefügt
 	 * @param name
