@@ -16,50 +16,91 @@ public class Bundestagswahl implements Cloneable {
 	/** Eine Liste aller Parteien die an dieser Bundestagswahl teilnehmen. */
 	private LinkedList<Partei> parteien;
 	
+	/** Die berechnete Sitzverteilung dieser Bundestagswahl. */
+	private Sitzverteilung sitzverteilung;
+	
 	
 	/**
 	 * Parametrisierter Konstruktor für Bundestagswahlen.
+	 * @param name
+	 * @param deutschland
+	 * @param parteien
 	 */
 	public Bundestagswahl(String name, Deutschland deutschland, LinkedList<Partei> parteien) {
-		if (name == null)
-			throw new IllegalArgumentException("Parameter 'name' ist NULL!");
-		if (deutschland == null)
-			throw new IllegalArgumentException("Parameter 'deutschland' ist NULL!");
-		if (parteien == null)
-			throw new IllegalArgumentException("Parameter 'parteien' ist NULL!");
-		this.name = name;
-		this.deutschland = deutschland;
-		this.parteien = parteien;
+		this.setName(name);
+		this.setDeutschland(deutschland);
+		this.setParteien(parteien);
+		// Sitzverteilung wird hier nicht gesetzt sondern muss vom Mandatsrechner berechnet werden.
 	}
 	
-	/** Gibt den Namen dieser Bundestagswahl. */
+	/**
+	 * Gibt den Namen dieser Bundestagswahl.
+	 * @return den Namen dieser Bundestagswahl.
+	 */
 	public String getName() {
 		return name;
 	}
 
-	/** Setzt den Namen dieser Bundestagswahl. */
+	/**
+	 * Setzt den Namen dieser Bundestagswahl.
+	 * @param name der Name dieser Bundestagswahl
+	 */
 	public void setName(String name) {
+		if (name == null)
+			throw new IllegalArgumentException("Parameter 'name' ist null!");
 		this.name = name;
 	}
 	
-	/** Setzt das Deutschland-Objekt dieser Bundestagswahl. */
+	/**
+	 * Gibt das Deutschland-Objekt dieser Bundestagswahl.
+	 * @return das Deutschland-Objekt dieser Bundestagswahl.
+	 */
 	public Deutschland getDeutschland() {
 		return deutschland;
 	}
 
-	/** Gibt das Deutschland-Objekt dieser Bundestagswahl. */
+	/**
+	 * Setzt das Deutschland-Objekt dieser Bundestagswahl.
+	 * @param deutschland das Deutschland-Objekt dieser Bundestagswahl
+	 */
 	public void setDeutschland(Deutschland deutschland) {
+		if (deutschland == null)
+			throw new IllegalArgumentException("Parameter 'deutschland' ist null!");
 		this.deutschland = deutschland;
 	}
 	
-	/** Gibt die Liste der Parteien dieser Bundestagswahl. */
+	/**
+	 * Gibt die Liste der Parteien dieser Bundestagswahl.
+	 * @return die Liste der Parteien dieser Bundestagswahl.
+	 */
 	public LinkedList<Partei> getParteien() {
 		return parteien;
 	}
 
-	/** Setzt die Liste der Parteien dieser Bundestagswahl. */
+	/**
+	 * Setzt die Liste der Parteien dieser Bundestagswahl.
+	 * @param parteien die Liste der Parteien dieser Bundestagswahl.
+	 */
 	public void setParteien(LinkedList<Partei> parteien) {
+		if (parteien == null)
+			throw new IllegalArgumentException("Parameter 'parteien' ist null!");
 		this.parteien = parteien;
+	}
+
+	/**
+	 * Gibt die berechnete Sitzverteilung dieser Bundestagswahl.
+	 * @return die berechnete Sitzverteilung dieser Bundestagswahl
+	 */
+	public Sitzverteilung getSitzverteilung() {
+		return sitzverteilung;
+	}
+
+	/**
+	 * Setzt die berechnete Sitzverteilung dieser Bundestagswahl.
+	 * @param sitzverteilung die berechnete Sitzverteilung dieser Bundestagswahl
+	 */
+	public void setSitzverteilung(Sitzverteilung sitzverteilung) {
+		this.sitzverteilung = sitzverteilung;
 	}
 
 	/**

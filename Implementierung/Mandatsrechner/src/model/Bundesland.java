@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Klasse die die Bundesländer repräsentiert.
  * Unterklasse von Gebiet.
  */
-public class Bundesland extends Gebiet implements Cloneable{
+public class Bundesland extends Gebiet implements Cloneable {
 
 	/**
 	 * Einwohnerzahl des Bundeslandes.
@@ -31,7 +31,7 @@ public class Bundesland extends Gebiet implements Cloneable{
 	 * @param wahlberechtigte
 	 * @param einwohnerzahl
 	 */
-	public Bundesland(String name, int wahlberechtigte, int einwohnerzahl){
+	public Bundesland(String name, int wahlberechtigte, int einwohnerzahl) {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 		this.setEinwohnerzahl(einwohnerzahl);
