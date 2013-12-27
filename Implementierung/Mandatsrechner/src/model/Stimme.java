@@ -2,9 +2,7 @@ package model;
 
 /** 
  * Oberklasse von der Erst- oder Zweitstimme-Klasse
- * @author Nick
  */
-
 public abstract class Stimme {
 	/**
 	 * Die Anzahl der Stimme wird in einer Integer-Variable gespeichert

@@ -1,8 +1,7 @@
 package model;
+
 /**
- * Enum-Klasse für die verschiedenen Arten von Mandaten
- * @author Nick
- *
+ * Enum-Klasse für die verschiedenen Arten von Mandaten.
  */
 public enum Mandat {
 	/**
@@ -25,18 +24,25 @@ public enum Mandat {
 	 * Kein Mandat
 	 */
 	KEINMANDAT("Kein Mandat");
+	
 	/**
 	 * Beinhaltet die Bezeichnung des Mandats
 	 */
 	private String mandat;
+	
 	/**
 	 * Kontsruktor der die Bezeichnung setzt
 	 * @param mandat die Bezeichnung des Mandats
 	 */
-	Mandat (String mandat){ this.mandat = mandat;}
+	Mandat (String mandat){
+		this.mandat = mandat;
+	}
+	
 	/**
 	 * Gibt die Bezeichnung des Mandats zurück
 	 * @return die Bezeichnung des Mandats
 	 */
-	public String toString(){return this.mandat;}
+	public String toString(){
+		return this.mandat;
+	}
 }

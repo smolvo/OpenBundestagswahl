@@ -1,11 +1,8 @@
 package model;
 
-
-
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und
  * der Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet
- * @author Nick
  */
 public class Wahlkreis extends Gebiet{
 	
@@ -20,7 +17,7 @@ public class Wahlkreis extends Gebiet{
 	private Erststimme erststimme;
 	
 	/**
-	 * Angepasster Konstruktor
+	 * Parametrisierter Konstruktor
 	 * @param name
 	 * @param wahlberechtigte
 	 * @param erststimme

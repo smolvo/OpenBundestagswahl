@@ -3,10 +3,9 @@ package model;
 import java.util.LinkedList;
 /**
  * Klasse die alle Bundesländer beinhaltet. 
- * @author Nick
  *
  */
-public class Deutschland extends Gebiet {
+public class Deutschland extends Gebiet implements Cloneable {
 	
 	/**
 	 * Liste mit den enthaltenden Bundesländer.

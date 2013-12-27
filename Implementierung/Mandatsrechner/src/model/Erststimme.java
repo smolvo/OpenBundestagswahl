@@ -1,11 +1,8 @@
 package model;
 
-
-
 /**
  * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
  * Wahlkreis und Kandidat zusammen arbeitet. Auﬂerdem erbt diese von der Klasse Stimme.
- * @author Nick
  */
 public class Erststimme extends Stimme{
 

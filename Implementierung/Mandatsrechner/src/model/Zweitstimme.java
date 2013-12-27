@@ -1,9 +1,8 @@
 package model;
+
 /**
  * Assoziationsklasse die Anzahl aller Zweitstimmen beinhaltet und mit den Klassen 
  * Deutschland und Partei zusammen arbeitet. Auﬂerdem erbt diese von der Klasse Stimme.
- * @author Nick
- *
  */
 public class Zweitstimme extends Stimme{
 		/**

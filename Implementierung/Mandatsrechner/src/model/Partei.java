@@ -1,10 +1,10 @@
 package model;
 
-
+import java.awt.Color;
 import java.util.LinkedList;
+
 /**
  * Klass die die Parteien repräsentiert . 
- * @author Nick
  *
  */
 public class Partei {
@@ -27,19 +27,19 @@ public class Partei {
 	/**
 	 * Farbe der Partei
 	 */
-	private Farbe farbe;
+	private Color farbe;
 	/**
 	 * Zweitstimme 
 	 */
 	private Zweitstimme zweitstimme;
 	/**
-	 * Angepasster Konstruktor. Listen werden danach befüllt
+	 * Parametrisierter Konstruktor. Listen werden danach befüllt
 	 * @param landesliste
 	 * @param name
 	 * @param kuerzel
 	 * @param farbe
 	 */
-	public Partei(Landesliste landesliste, String name, String kuerzel, Farbe farbe){
+	public Partei(Landesliste landesliste, String name, String kuerzel, Color farbe){
 		this.setLandesliste(landesliste);
 		this.setName(name);
 		this.setKuerzel(kuerzel);
@@ -154,7 +154,7 @@ public class Partei {
 	 * Gibt die Farbe der Partei zurück
 	 * @return die Farbe der Partei
 	 */
-	public Farbe getFarbe() {
+	public Color getFarbe() {
 		return farbe;
 	}
 
@@ -163,7 +163,7 @@ public class Partei {
 	 * @param farbe der Partei
 	 * @exception wenn die Farbe leer ist
 	 */
-	public void setFarbe(Farbe farbe) {
+	public void setFarbe(Color farbe) {
 		if(farbe == null){
 			throw new IllegalArgumentException("Farbe ist leer");
 		}

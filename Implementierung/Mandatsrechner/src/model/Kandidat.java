@@ -1,10 +1,8 @@
 package model;
 
-
-
 /**
- * Klasse repräsentiert einen Kandidaten. Dieser kann zur einer Partei gehöhren und ein Mandat besitzen. 
- * @author Nick
+ * Klasse repräsentiert einen Kandidaten.
+ * Dieser kann zur einer Partei gehöhren und ein Mandat besitzen. 
  */
 public class Kandidat {
 	/**

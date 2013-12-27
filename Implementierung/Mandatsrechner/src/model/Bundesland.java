@@ -1,14 +1,13 @@
 package model;
 
-
+import java.awt.Color;
 import java.util.LinkedList;
 
 /**
- * Klasse die die Bundesländer repräsentiert. Unterklasse von Gebiet.
- * @author Nick
- *
+ * Klasse die die Bundesländer repräsentiert.
+ * Unterklasse von Gebiet.
  */
-public class Bundesland extends Gebiet{
+public class Bundesland extends Gebiet implements Cloneable{
 
 	/**
 	 * Einwohnerzahl des Bundeslandes.
@@ -17,7 +16,7 @@ public class Bundesland extends Gebiet{
 	/**
 	 * Farbe des Bundeslandes
 	 */
-	private Farbe farbe;
+	private Color farbe;
 	/**
 	 * Liste mit den Wahlkreisen im Bundesland
 	 */
@@ -62,7 +61,7 @@ public class Bundesland extends Gebiet{
 	 * Gibt die Farbe des Bundeslandes zurück
 	 * @return die Farbe
 	 */
-	public Farbe getFarbe() {
+	public Color getFarbe() {
 		return farbe;
 	}
 	
@@ -71,7 +70,7 @@ public class Bundesland extends Gebiet{
 	 * @param farbe des Bundeslandes
 	 * @exception wenn die Farbe leer ist
 	 */
-	public void setFarbe(Farbe farbe) {
+	public void setFarbe(Color farbe) {
 		if(farbe == null){
 			throw new IllegalArgumentException("Farbe ist leer");
 		}

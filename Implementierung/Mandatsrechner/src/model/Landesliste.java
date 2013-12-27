@@ -5,8 +5,6 @@ import java.util.LinkedList;
 /**
  * Assoziationsklasse zwischen Partei und Bundesland. 
  * Dies Klasse beinhaltet eine Menge an Kandidaten.
- * @author Nick
- *
  */
 public class Landesliste {
 
