@@ -8,22 +8,18 @@ import java.util.LinkedList;
  */
 public class Landesliste {
 
-	/**
-	 * Die verbundene Partei.
-	 */
+	/** Die zugehörige Partei. */
 	private Partei partei;
-	/**
-	 * Das verbundene Bundesland.
-	 */
+	
+	/** Das zugehörige Bundesland. */
 	private Bundesland bundesland;
 	
-	/**
-	 * Die Liste mit den Kandidaten der Partei im Bundesland
-	 */
+	/** Die Liste mit den Kandidaten der Partei im Bundesland */
 	private LinkedList<Kandidat> listenkandidaten = new LinkedList<Kandidat>();
 
 	/**
-	 * Angepasster Konstruktur. Listen können danach befüllt werden
+	 * Parametrisierter Konstruktur.
+	 * Kandidaten werden hier noch keine hinzugefügt.
 	 * @param partei
 	 * @param bundesland
 	 */

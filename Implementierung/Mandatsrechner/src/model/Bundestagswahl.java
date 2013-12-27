@@ -104,11 +104,12 @@ public class Bundestagswahl implements Cloneable {
 	}
 
 	/**
-	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt es zurück.
+	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
 	 * @return eine tiefe Kopie dieses Objekts
 	 */
 	@Override
 	public Bundestagswahl clone() {
+		// TODO ... ;-)
 		throw new UnsupportedOperationException("Noch nicht implementiert...");
 	}
 	

@@ -4,25 +4,20 @@ package model;
  * Enum-Klasse für die verschiedenen Arten von Mandaten.
  */
 public enum Mandat {
-	/**
-	 * Durch Zweitstimmen zugeteiltes Mandat
-	 */
+	
+	/** Durch Zweitstimmen zugeteiltes Mandat */
 	MANDAT("Mandat"),
-	/**
-	 * Durch die meisten Erststimmen zugeteiltes Mandat
-	 */
+	
+	/** Durch die meisten Erststimmen zugeteiltes Mandat */
 	DIREKMANDAT("Direktmadat"), 
-	/**
-	 * Mandat mit mehr Direkmandate als durch Zweitstimmen zugeteilte Mandate
-	 */
+	
+	/** Mandat mit mehr Direkmandaten als durch Zweitstimmen zugeteilte Mandate */
 	UEBERHANGMADAT("Überhangmandat"),
-	/**
-	 * Durch Überhangmandate zugeteilte Mandate zum Ausgleich
-	 */
+	
+	/** Durch Überhangmandate zugeteilte Mandate zum Ausgleich */
 	AUSGLEICHSMANDAT("Ausgleichsmandat"),
-	/**
-	 * Kein Mandat
-	 */
+	
+	/** Kein Mandat */
 	KEINMANDAT("Kein Mandat");
 	
 	/**

@@ -4,36 +4,32 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 /**
- * Klass die die Parteien repräsentiert . 
- *
+ * Diese Klasse repräsentiert eine Partei.
  */
-public class Partei {
-	/**
-	 * Landesliste-Objekt
-	 */
+public class Partei implements Cloneable {
+	
+	/** Landesliste-Objekt */
 	private Landesliste landesliste;
-	/**
-	 * Mitglieder der Partei
-	 */
-	private LinkedList<Kandidat> mitglieder = new LinkedList<Kandidat>();
-	/**
-	 * Name der Partei
-	 */
+	
+	/** Mitglieder der Partei */
+	private LinkedList<Kandidat> mitglieder;
+	
+	/** Name der Partei */
 	private String name;
-	/**
-	 * Kürzel der Partei
-	 */
+	
+	/** Kürzel der Partei */
 	private String kuerzel;
-	/**
-	 * Farbe der Partei
-	 */
+	
+	/** Farbe der Partei */
 	private Color farbe;
-	/**
-	 * Zweitstimme 
-	 */
+	
+	/** Zweitstimme */
 	private Zweitstimme zweitstimme;
+	
+	
 	/**
-	 * Parametrisierter Konstruktor. Listen werden danach befüllt
+	 * Parametrisierter Konstruktor.
+	 * Die Mitgliederliste wird hier nur erzeugt aber nicht befüllt.
 	 * @param landesliste
 	 * @param name
 	 * @param kuerzel
@@ -44,7 +40,9 @@ public class Partei {
 		this.setName(name);
 		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
+		this.mitglieder = new LinkedList<Kandidat>();
 	}
+	
 	/**
 	 * Gibt das Landesliste-Objekt zurück
 	 * @return das Landesliste-Objekt
@@ -83,6 +81,7 @@ public class Partei {
 		}
 		this.mitglieder = mitglieder;
 	}
+	
 	/**
 	 * Fügt ein neues Mitglied zur Liste hinzu
 	 * @param mitglied das neue Mitglied
@@ -169,6 +168,7 @@ public class Partei {
 		}
 		this.farbe = farbe;
 	}
+	
 	/**
 	 * Gibt das Zweitstimmen-Objekt zurück
 	 * @return das Zweitstimmen-Objekt
@@ -176,6 +176,7 @@ public class Partei {
 	public Zweitstimme getZweitstimme() {
 		return zweitstimme;
 	}
+	
 	/**
 	 * Setzt das Zweitstimmen-Objekt
 	 * @param zweitstimme 
@@ -187,5 +188,16 @@ public class Partei {
 		}
 		this.zweitstimme = zweitstimme;
 	}
+	
+	/**
+	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
+	 * @return eine tiefe Kopie dieses Objekts
+	 */
+	@Override
+	public Partei clone() {
+		// TODO ... ;-)
+		throw new UnsupportedOperationException("Noch nicht implementiert...");
+	}
+	
 	
 }

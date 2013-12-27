@@ -6,18 +6,15 @@ package model;
  */
 public class Wahlkreis extends Gebiet{
 	
-	/**
-	 * Kandidat mit den meisten Erststimmen
-	 */
+	/** Kandidat mit den meisten Erststimmen */
 	private Kandidat wahlkreisSieger;
 	
-	/**
-	 * Erststimmen-Objekt
-	 */
+	/** Erststimmen-Objekt */
 	private Erststimme erststimme;
 	
+	
 	/**
-	 * Parametrisierter Konstruktor
+	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
 	 * @param name
 	 * @param wahlberechtigte
 	 * @param erststimme
@@ -35,6 +32,7 @@ public class Wahlkreis extends Gebiet{
 	public Kandidat getWahlkreisSieger() {
 		return wahlkreisSieger;
 	}
+	
 	/**
 	 * Setzt den Wahlkreissieger
 	 * @param wahlkreisSieger

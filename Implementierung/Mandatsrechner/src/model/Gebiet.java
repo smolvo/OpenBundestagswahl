@@ -4,14 +4,13 @@ package model;
  * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines Gebiets haltet.
  */
 public abstract class Gebiet {
-	/**
-	 * Name des Gebiets
-	 */
+	
+	/** Der Name des Gebiets. */
 	private String name;
-	/**
-	 * Anzahl der Wahlberechtigte
-	 */
+	
+	/** Die Anzahl der Wahlberechtigten */
 	private int wahlberechtigte;
+	
 	
 	/**
 	 * Gibt den Namen des Gebietes zurück

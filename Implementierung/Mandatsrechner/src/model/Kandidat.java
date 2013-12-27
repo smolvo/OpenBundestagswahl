@@ -5,19 +5,14 @@ package model;
  * Dieser kann zur einer Partei gehöhren und ein Mandat besitzen. 
  */
 public class Kandidat {
-	/**
-	 * Das Mandat des Kandidaten 
-	 */
+	
+	/** Das Mandat des Kandidaten */
 	private Mandat mandat;
 
-	/**
-	 * Die Partei des Kandidaten. Diese muss nicht unbedingt vorhanden sein.
-	 */
+	/** Die Partei des Kandidaten. Diese muss nicht unbedingt vorhanden sein. */
 	private Partei partei;
 	
-	/**
-	 * Das Erststimme-Objekt des Kandidaten
-	 */
+	/** Das Erststimme-Objekt des Kandidaten */
 	private Erststimme erststimme;
 	
 	/**

@@ -7,15 +7,13 @@ import java.util.LinkedList;
  */
 public class Deutschland extends Gebiet implements Cloneable {
 	
-	/**
-	 * Liste mit den enthaltenden Bundesländer.
-	 */
+	/** Liste mit den enthaltenden Bundesländer. */
 	LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 	
-	/**
-	 * Das verbundene Zweitstimmen-Objekt.
-	 */
+	/** Das verbundene Zweitstimmen-Objekt. */
 	Zweitstimme zweitstimme;
+	
+	
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name
@@ -27,6 +25,7 @@ public class Deutschland extends Gebiet implements Cloneable {
 		this.setWahlberechtigte(wahlberechtigte);
 		this.setZweitstimme(zweitstimme);
 	}
+	
 	/**
 	 * Gibt eine Liste mit den Bundesländer zurück.
 	 * @return die Liste mit Bundesländer
@@ -77,4 +76,15 @@ public class Deutschland extends Gebiet implements Cloneable {
 		}
 		this.zweitstimme = zweitstimme;
 	}
+	
+	/**
+	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
+	 * @return eine tiefe Kopie dieses Objekts
+	 */
+	@Override
+	public Deutschland clone() {
+		// TODO ... ;-)
+		throw new UnsupportedOperationException("Noch nicht implementiert...");
+	}
+	
 }

@@ -4,11 +4,11 @@ package model;
  * Oberklasse von der Erst- oder Zweitstimme-Klasse
  */
 public abstract class Stimme {
-	/**
-	 * Die Anzahl der Stimme wird in einer Integer-Variable gespeichert
-	 */
+	
+	/** Die Anzahl der Stimmen. */
 	private int anzahl;
 
+	
 	/**
 	 * Gibt die Anzahl der Stimmen zurück
 	 * @return Die Anzahl der Stimmen
@@ -16,6 +16,7 @@ public abstract class Stimme {
 	public int getAnzahl() {
 		return anzahl;
 	}
+	
 	/**
 	 * Setzt die Anzahl der Stimmmen in der Klasse
 	 * @param anzahl ist die Anzahl der Stimmen die die Klasse hält

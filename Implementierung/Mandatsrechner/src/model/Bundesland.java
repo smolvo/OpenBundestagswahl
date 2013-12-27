@@ -9,24 +9,22 @@ import java.util.LinkedList;
  */
 public class Bundesland extends Gebiet implements Cloneable {
 
-	/**
-	 * Einwohnerzahl des Bundeslandes.
-	 */
+	/** Einwohnerzahl des Bundeslandes. */
 	private int einwohnerzahl;
-	/**
-	 * Farbe des Bundeslandes
-	 */
+	
+	/** Farbe des Bundeslandes */
 	private Color farbe;
-	/**
-	 * Liste mit den Wahlkreisen im Bundesland
-	 */
+	
+	/** Liste mit den Wahlkreisen im Bundesland */
 	private LinkedList<Wahlkreis> wahlkreise = new LinkedList<Wahlkreis>();
-	/**
-	 * Liste mit den vertrettenden Parteien im Bundesland
-	 */
+	
+	/** Liste mit den vertrettenden Parteien im Bundesland */
 	private LinkedList<Partei> parteien = new LinkedList<Partei>();
+	
+	
 	/**
-	 * Angepasster Konstruktor. Listen werden seperat hinzugefügt
+	 * Parametrisierter Konstruktor für Bundesländer.
+	 * Listen werden seperat hinzugefügt
 	 * @param name
 	 * @param wahlberechtigte
 	 * @param einwohnerzahl

@@ -5,14 +5,14 @@ package model;
  * Deutschland und Partei zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
  */
 public class Zweitstimme extends Stimme{
-		/**
-		 * Die verbundene Partei.
-		 */
+	
+		/** Die verbundene Partei. */
 		private Partei partei;
-		/**
-		 * Das verbundene Deutschland.
-		 */
+		
+		/** Das verbundene Deutschland. */
 		private Deutschland deutschland;
+		
+		
 		/**
 		 * Angepasster Konstruktor.
 		 * @param anzahl
@@ -24,6 +24,7 @@ public class Zweitstimme extends Stimme{
 			this.setDeutschland(deutschland);
 			this.setPartei(partei);
 		}
+		
 		/**
 		 * Gibt die verbundene Partei zurück.
 		 * @return die verbunde Partei
@@ -31,6 +32,7 @@ public class Zweitstimme extends Stimme{
 		public Partei getPartei() {
 			return partei;
 		}
+		
 		/**
 		 * Setzt eine neue Verbindung mit einer Partei.
 		 * @param partei die neu Partei
@@ -42,6 +44,7 @@ public class Zweitstimme extends Stimme{
 			}
 			this.partei = partei;
 		}
+		
 		/**
 		 * Gibt das verbundene Deutschland-Objekt zurück
 		 * @return das verbundene Deutschland-Objekt
@@ -49,6 +52,7 @@ public class Zweitstimme extends Stimme{
 		public Deutschland getDeutschland() {
 			return deutschland;
 		}
+		
 		/**
 		 * Setzt eine neue Verbindung mit dem Deutschland-Objekt
 		 * @param deutschland das neue Objekt

@@ -6,13 +6,10 @@ package model;
  */
 public class Erststimme extends Stimme{
 
-	/**
-	 * Der verbundene Wahlkreis
-	 */
+	/** Der verbundene Wahlkreis */
 	private Wahlkreis wahlkreis;
-	/**
-	 * Der verbundende Kanditat
-	 */
+	
+	/** Der verbundende Kanditat */
 	private Kandidat kandidat;
 	
 	/**
@@ -26,6 +23,7 @@ public class Erststimme extends Stimme{
 		this.setKandidat(kandidat);
 		this.setWahlkreis(wahlkreis);
 	}
+	
 	/**
 	 * Gibt den verbundenen Wahlkreis zurück
 	 * @return der verbundene Wahlkreis 
@@ -33,6 +31,7 @@ public class Erststimme extends Stimme{
 	public Wahlkreis getWahlkreis() {
 		return wahlkreis;
 	}
+	
 	/**
 	 * Setze den Wahlkreis
 	 * @param wahlkreis der neue Wahlkreis

@@ -13,6 +13,7 @@ public class Sitzverteilung {
 	/** Der Bericht wie diese Sitzverteilung zustande gekommen ist. */
 	private String bericht;
 	
+	
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Sitzverteilungen.
 	 */
