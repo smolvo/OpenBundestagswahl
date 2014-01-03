@@ -40,4 +40,17 @@ public enum Mandat {
 	public String toString(){
 		return this.mandat;
 	}
+	
+	/**
+	 * Vergleicht das Mandat mit einem gegebenem Mandat.
+	 * @param mand gegebenes Mandat
+	 * @return wahr oder falsch
+	 */
+	public boolean equals(String mand) {
+		if (this.mandat.equals(mand)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

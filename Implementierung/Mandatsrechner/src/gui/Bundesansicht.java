@@ -1,5 +1,8 @@
 package gui;
 
+import model.Bundestagswahl;
+import model.Gebiet;
+
 
 /**
  * Diese Klasse repräsentiert die Ansicht auf das gesamte Land.
@@ -7,15 +10,18 @@ package gui;
  */
 public class Bundesansicht extends Ansicht {
 
+
+	
 	/**
-	 * Dieser Konstruktor erstellt eine neue Bundesansicht des Wahlfensters.
-	 * @param tabellenFenster das Tabellenfenster der Ansicht
-	 * @param diagrammFenster das Diagrammfenster der Ansicht
-	 * @param kartenFenster das Kartenfenster der Ansicht
+	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
+	 * drei verschiedenen Fenstern angezeigt.
+	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public Bundesansicht(TabellenFenster tabellenFenster,
-			DiagrammFenster diagrammFenster, KartenFenster kartenFenster) {
-		super(tabellenFenster, diagrammFenster, kartenFenster);
+	public void zeigeKomponenten(Bundestagswahl btw, Gebiet gebiet) {
+		tabellenFenster.BATabellenFuellen(btw);
+		diagrammFenster.erstelleDiagramm(btw);
+		kartenFenster.zeigeInformationen(btw);
 	}
 
 }

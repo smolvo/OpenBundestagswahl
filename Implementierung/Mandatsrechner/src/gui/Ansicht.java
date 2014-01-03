@@ -1,6 +1,7 @@
 package gui;
 
 import model.Bundestagswahl;
+import model.Gebiet;
 
 /**
  * Die abstrakte Klasse Ansicht, der grafischen Benutzeroberfläche.
@@ -10,37 +11,21 @@ import model.Bundestagswahl;
 public abstract class Ansicht {
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
-	private TabellenFenster tabellenFenster;
+	protected TabellenFenster tabellenFenster;
 	
 	/** Eine Ansicht hat ein Diagrammfenster. */
-	private DiagrammFenster diagrammFenster;
+	protected DiagrammFenster diagrammFenster;
 	
 	/** Eine Ansicht hat ein Kartenfenster. */
-	private KartenFenster kartenFenster;
+	protected KartenFenster kartenFenster;
 	
-	/**
-	 * Der Konstruktor der Klasse generiert eine neue Ansicht.
-	 * @param tabellenFenster das Tabellenfenster der Ansicht
-	 * @param diagrammFenster das Diagrammfenster der Ansicht
-	 * @param kartenFenster das Kartenfenster der Ansicht
-	 */
-	public Ansicht(TabellenFenster tabellenFenster,
-			DiagrammFenster diagrammFenster, KartenFenster kartenFenster) {
-		this.tabellenFenster = tabellenFenster;
-		this.diagrammFenster = diagrammFenster;
-		this.kartenFenster = kartenFenster;
-	}
 	
 	/**
 	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
 	 * drei verschiedenen Fenstern angezeigt.
 	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
 	 */
-	public void zeigeKomponenten(Bundestagswahl btw) {
-		tabellenFenster.tabellenFuellen(btw);
-		diagrammFenster.erstelleDiagramm(btw);
-		kartenFenster.zeigeInformationen(btw);
-	}
+	public abstract void zeigeKomponenten(Bundestagswahl btw, Gebiet gebiet);
 
 	/**
 	 * Holt das Tabellenfenster der Ansicht.

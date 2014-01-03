@@ -1,5 +1,8 @@
 package gui;
 
+import model.Gebiet;
+import model.Bundestagswahl;
+
 /**
  * Diese Klasse repräsentiert die Ansicht auf einen bestimmten Wahlkreis.
  *
@@ -7,14 +10,15 @@ package gui;
 public class Wahlkreisansicht extends Ansicht {
 
 	/**
-	 * Dieser Konstruktor erstellt eine neue Wahlkreisansicht des Wahlfensters.
-	 * @param tabellenFenster das Tabellenfenster der Ansicht
-	 * @param diagrammFenster das Diagrammfenster der Ansicht
-	 * @param kartenFenster das Kartenfenster der Ansicht
+	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
+	 * drei verschiedenen Fenstern angezeigt.
+	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @param gebiet Gebiets-Objekt welches visualisiert werden sollen
 	 */
-	public Wahlkreisansicht(TabellenFenster tabellenFenster,
-			DiagrammFenster diagrammFenster, KartenFenster kartenFenster) {
-		super(tabellenFenster, diagrammFenster, kartenFenster);
+	public void zeigeKomponenten(Bundestagswahl btw, Gebiet gebiet) {
+		tabellenFenster.WATabellenFuellen(gebiet);
+		diagrammFenster.erstelleDiagramm(btw);
+		kartenFenster.zeigeInformationen(btw);
 	}
 
 }
