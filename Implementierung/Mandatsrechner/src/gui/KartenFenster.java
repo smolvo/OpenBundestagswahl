@@ -27,6 +27,11 @@ public class KartenFenster extends JTabbedPane {
 	 */
 	public void zeigeInformationen(Bundestagswahl btw) {
 		
+		
+		
+		/* kreiiert die Listenansicht */
+		Listenansicht liste = new Listenansicht(btw.getDeutschland());
+		this.add("Listenansicht", liste);
 	}
 
 	/**
