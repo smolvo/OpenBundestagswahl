@@ -31,7 +31,12 @@ public class ImportExportManager {
 	 * @return das Ergebnis-Objekt.
 	 */
 	public Bundestagswahl importieren(File csvDatei){
-		return null;
+		
+		Bundestagswahl imported = null;
+		if(this.pruefeDateityp(csvDatei)){
+				imported = this.leseCSVDatei(csvDatei);
+		}
+		return imported;
 	}
 
 	public boolean exportieren(String pfad){
@@ -39,10 +44,31 @@ public class ImportExportManager {
 	}
 	
 	private boolean pruefeDateityp(File csvDatei){
-		return false;
+		boolean isCSV = false;
+		String fileName = csvDatei.getName();
+		String fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+		
+		//System.out.println(fileExtension);
+		if(fileExtension.equals(".csv")){
+			isCSV = true;
+		}
+		// else: Es handelt sich um keine CSV-Datei.
+		return isCSV;
 	}
 	
-	private boolean leseCSVDatei(File csvDatei){
-		return false;
+	private Bundestagswahl leseCSVDatei(File csvDatei){
+		Bundestagswahl imported = null;
+		for(int i=0; i<this.crawler.length;i++){
+			System.out.println(crawler[i].getCrawlerInformation());
+			imported = crawler[i].erstelleBundestagswahl(csvDatei);
+			if(imported!=null){
+				break; 
+			}
+		}
+		
+		// if imported==null > Keine gültige Datei.
+		
+		return imported;
+		
 	}
 }
