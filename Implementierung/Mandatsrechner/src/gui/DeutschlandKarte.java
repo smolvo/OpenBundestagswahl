@@ -7,10 +7,30 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
+import model.Deutschland;
 
+
+/**
+ * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
+ *
+ */
 public class DeutschlandKarte extends JPanel {
 
+	/** alle Bundesländer, nötig für Färbung */
+	private Deutschland land;
 	
+	/**
+	 * Konstruktor der Klasse.
+	 * @param land das gesamte Land
+	 */
+	public DeutschlandKarte(Deutschland land) {
+		this.land = land;
+	}
+
+	/**
+	 * Diese Methode setzt die Deutschland Karte nach den Farben der
+	 * Parteien, die die meisten Zweitstimmen bekommen haben.
+	 */
 	public void paintComponent(Graphics g) {
 		ImageIcon bayern = new ImageIcon("src\\gui\\resources\\Bayern.png");
 		ImageIcon badenWuerttemberg = new ImageIcon("src\\gui\\resources\\Baden-Württemberg.png");
@@ -47,6 +67,4 @@ public class DeutschlandKarte extends JPanel {
 		schleswigHolstein.paintIcon(this, g, 94, 0);
 		thueringen.paintIcon(this, g, 108, 150);
 	}
-	
-	
 }

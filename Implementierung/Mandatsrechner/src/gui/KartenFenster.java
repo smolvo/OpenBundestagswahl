@@ -56,7 +56,7 @@ public class KartenFenster extends JTabbedPane {
 			if (alleLaender == false) {
 			return;
 		} else {
-			DeutschlandKarte d = new DeutschlandKarte();
+			DeutschlandKarte d = new DeutschlandKarte(btw.getDeutschland());
 			this.addTab("Deutschland", d);
 			this.addTab("Hallo", new JTextArea());
 		}
