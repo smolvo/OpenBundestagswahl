@@ -17,17 +17,19 @@ import model.Bundestagswahl;
  */
 public class KartenFenster extends JTabbedPane {
 
-	
-
-
 	/**
 	 * Diese Methode listet die Bundesländer auf und erstellt,
 	 * wenn möglich, eine kartographische Ansicht.
 	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
 	 */
 	public void zeigeInformationen(Bundestagswahl btw) {
-		
-		
+		DeutschlandKarte d = new DeutschlandKarte(btw.getDeutschland());
+		if (ueberpruefeBundeslaender(btw.getDeutschland().getBundeslaender())) {
+			this.addTab("Kartenansicht", d);
+		} else {
+			this.addTab("Kartenansicht", null);
+			this.setEnabledAt(0, false);
+		}
 		
 		/* kreiiert die Listenansicht */
 		Listenansicht liste = new Listenansicht(btw.getDeutschland());
@@ -35,16 +37,16 @@ public class KartenFenster extends JTabbedPane {
 	}
 
 	/**
-	 * Diese Methode färbt die Bundesländer nach den Parteien, die die meisten
-	 * Zweitstimmen haben.
-	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * Diese private Methode überprüft ob die Liste von BUndesländern den
+	 * reellen entspricht.
+	 * @param bundeslaender Liste der Bundesländer
+	 * @return wahr oder falsch
 	 */
-	private void faerbeBundeslaender(Bundestagswahl btw) {
-		LinkedList<Bundesland> bundeslaender = btw.getDeutschland().getBundeslaender();
+	private boolean ueberpruefeBundeslaender(LinkedList<Bundesland> bundeslaender) {
 		boolean alleLaender = true;
 		for (Bundesland bund : bundeslaender) {
 			if (bundeslaender.size() != 16)
-					return;
+					return false;
 			
 			if (!((bund.getName().equals("Baden-Württemberg")) || (bund.getName().equals("Bayern")) ||
 					(bund.getName().equals("Berlin")) || (bund.getName().equals("Brandenburg")) || 
@@ -54,16 +56,9 @@ public class KartenFenster extends JTabbedPane {
 					(bund.getName().equals("Rheinland-Pfalz")) || (bund.getName().equals("Saarland")) || 
 					(bund.getName().equals("Sachsen")) || (bund.getName().equals("Sachsen-Anhalt")) || 
 					(bund.getName().equals("Schleswig-Holstein")) || (bund.getName().equals("Thüringen")))) {
-				alleLaender = false;
-				return;
+				return false;
 			}
 		}
-			if (alleLaender == false) {
-			return;
-		} else {
-			DeutschlandKarte d = new DeutschlandKarte(btw.getDeutschland());
-			this.addTab("Deutschland", d);
-			this.addTab("Hallo", new JTextArea());
-		}
+		return true;
 	}
 }
