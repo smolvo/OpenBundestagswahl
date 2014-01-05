@@ -26,6 +26,20 @@ public class Partei implements Cloneable {
 	/** Zweitstimme */
 	private Zweitstimme zweitstimme;
 	
+	/**
+	 * Parametrisierter Konstruktor.
+	 * Die Mitgliederliste wird hier nur erzeugt aber nicht befüllt.
+	 * @param name
+	 * @param kuerzel
+	 * @param farbe
+	 */
+	public Partei(String name, String kuerzel, Color farbe){
+		this.setLandesliste(landesliste);
+		this.setName(name);
+		this.setKuerzel(kuerzel);
+		this.setFarbe(farbe);
+		this.mitglieder = new LinkedList<Kandidat>();
+	}
 	
 	/**
 	 * Parametrisierter Konstruktor.
