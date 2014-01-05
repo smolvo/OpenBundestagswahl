@@ -46,10 +46,13 @@ public class ImportExportManager {
 	private boolean pruefeDateityp(File csvDatei){
 		boolean isCSV = false;
 		String fileName = csvDatei.getName();
-		String fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+		String fileExtension="";
+		if(fileName.length()>4){
+			fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+		}
 		
 		//System.out.println(fileExtension);
-		if(fileExtension.equals(".csv")){
+		if(fileExtension.equals(".csv") && csvDatei.isFile()){
 			isCSV = true;
 		}
 		// else: Es handelt sich um keine CSV-Datei.
