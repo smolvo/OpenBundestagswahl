@@ -17,6 +17,16 @@ public class Wahlkreis extends Gebiet{
 	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
 	 * @param name
 	 * @param wahlberechtigte
+	 */
+	public Wahlkreis(String name, int wahlberechtigte){
+		this.setName(name);
+		this.setWahlberechtigte(wahlberechtigte);
+	}
+	
+	/**
+	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
+	 * @param name
+	 * @param wahlberechtigte
 	 * @param erststimme
 	 */
 	public Wahlkreis(String name, int wahlberechtigte, Erststimme erststimme){

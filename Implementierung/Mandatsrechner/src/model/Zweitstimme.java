@@ -9,8 +9,8 @@ public class Zweitstimme extends Stimme{
 		/** Die verbundene Partei. */
 		private Partei partei;
 		
-		/** Das verbundene Deutschland. */
-		private Deutschland deutschland;
+		/** Das verbundene gebiet. */
+		private Gebiet gebiet;
 		
 		
 		/**
@@ -19,9 +19,9 @@ public class Zweitstimme extends Stimme{
 		 * @param partei
 		 * @param deutschland
 		 */
-		public Zweitstimme(int anzahl, Partei partei, Deutschland deutschland){
+		public Zweitstimme(int anzahl, Partei partei, Gebiet gebiet){
 			this.setAnzahl(anzahl);
-			this.setDeutschland(deutschland);
+			this.setGebiet(gebiet);
 			this.setPartei(partei);
 		}
 		
@@ -46,23 +46,23 @@ public class Zweitstimme extends Stimme{
 		}
 		
 		/**
-		 * Gibt das verbundene Deutschland-Objekt zurück
-		 * @return das verbundene Deutschland-Objekt
+		 * Gibt das verbundene Gebiet-Objekt zurück
+		 * @return das verbundene Gebiet-Objekt
 		 */
-		public Deutschland getDeutschland() {
-			return deutschland;
+		public Gebiet getGebiet() {
+			return gebiet;
 		}
 		
 		/**
-		 * Setzt eine neue Verbindung mit dem Deutschland-Objekt
-		 * @param deutschland das neue Objekt
+		 * Setzt eine neue Verbindung mit dem Gebiet-Objekt
+		 * @param gebiet das neue Objekt
 		 * @exception wenn das Objekt leer ist
 		 */
-		public void setDeutschland(Deutschland deutschland) {
-			if(deutschland == null){
-				throw new IllegalArgumentException("Deutschland ist leer!");
+		public void setGebiet(Gebiet gebiet) {
+			if(gebiet == null){
+				throw new IllegalArgumentException("Gebiet ist leer!");
 			}
-			this.deutschland = deutschland;
+			this.gebiet = gebiet;
 		}
 
 }

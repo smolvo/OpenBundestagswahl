@@ -1,4 +1,4 @@
-package model;
+	package model;
 
 import java.util.LinkedList;
 /**
@@ -13,6 +13,16 @@ public class Deutschland extends Gebiet implements Cloneable {
 	/** Das verbundene Zweitstimmen-Objekt. */
 	Zweitstimme zweitstimme;
 	
+	
+	/**
+	 * Angepasster Konstruktor.
+	 * @param name
+	 * @param wahlberechtigte
+	 */
+	public Deutschland(String name, int wahlberechtigte){
+		this.setName(name);
+		this.setWahlberechtigte(wahlberechtigte);
+	}
 	
 	/**
 	 * Angepasster Konstruktor.
