@@ -34,7 +34,6 @@ public class Partei implements Cloneable {
 	 * @param farbe
 	 */
 	public Partei(String name, String kuerzel, Color farbe){
-		this.setLandesliste(landesliste);
 		this.setName(name);
 		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
