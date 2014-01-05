@@ -13,8 +13,9 @@ public class ImportExportTest {
 		// TODO Auto-generated method stub
 		ImportExportManager i = new ImportExportManager();
 		File csvDatei = new File("files/Ergebnis2013.csv");
-		Bundestagswahl w = i.importieren(csvDatei);
+		//Bundestagswahl w = i.importieren(csvDatei);
 		//System.out.println(csvDatei.getName());
+		int integer = Integer.parseInt("");
 	}
 
 }
