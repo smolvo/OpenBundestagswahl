@@ -43,7 +43,7 @@ public class Crawler2013 extends Crawler {
 		 * z = Feld (ErstStimme/Zweitstimme). 
 		 */
 		//int[][][] value;
-		List<int[][]> value = new ArrayList<int[][]>();
+		List<int[][]> values = new ArrayList<int[][]>();
 		
 		
 		String bwName = "";
@@ -104,42 +104,39 @@ public class Crawler2013 extends Crawler {
 							}
 							//System.err.println(parts.length+" "+columns.size()+" "+parts[1]);
 							//int[][] tempInt = new int[columns.size()][2];
-							int[][] tempInt = new int[columns.size()][2];
+							//int[][] tempInt = new int[columns.size()][2];
+							int[][] tempInt =new int[columns.size()][2];
+							
 							for(int i=3; i<maxColumn && !error; i+=4){
 								
+								
 								int currentColumn = (i-3)/4;
-								//System.err.println(currentColumn);
 								try{
 									if(i>=parts.length || parts[i].equals("")){
 										
 										tempInt[currentColumn][0] = 0;
 									}else{
 										tempInt[currentColumn][0] = Integer.parseInt(parts[i]);
-										//System.err.println(Integer.parseInt(parts[i]));
 									}
 									
 									if((i+2)>=parts.length || parts[i+2].equals("")){
 										tempInt[currentColumn][1] = 0;
 									}else{
 										tempInt[currentColumn][1] = Integer.parseInt(parts[i+2]);
-										//System.err.println(Integer.parseInt(parts[i+2]));
 									}
-									//System.err.println(Arrays.toString(tempInt[currentColumn]));
-									//System.err.println(tempInt[currentColumn][1]);
+									//System.out.println(Arrays.toString(tempInt[currentColumn]));
 								}catch(NumberFormatException e){
 									error = true;
 									e.printStackTrace();
 								}catch(Exception e){
-									//System.err.println((i+2)+" "+parts.length+" ");
 									e.printStackTrace();
 								}
 								
-								//value.add(Arrays.copyOf(tempInt,tempInt.length));
-								//Arrays.copy
+								values.add(lineNumber-5,this.deepCopy(tempInt));
 							}
 						}
-						/*System.err.println("------>"+Arrays.toString(value.get(0)[0]));
-						if(lineNumber>6){
+						//System.err.println("------>"+Arrays.toString(values.get(lineNumber-5)[0]));
+						/*if(lineNumber>5){
 							System.exit(0);
 						}*/
 						
@@ -162,8 +159,10 @@ public class Crawler2013 extends Crawler {
 				String[] test1 = rows.get(i);
 				System.out.println(test1[1]+":");
 				for(int j=0;j<columns.size();j++){
-					int[][] tempInt = value.get(i);
+					
 					System.out.println("-> "+columns.get(j));
+					
+					int[][] tempInt = values.get(i);
 					System.out.println(Arrays.toString(tempInt[j]));
 					//System.out.println("--> Erststimmen: "+tempInt[j][0]);
 					//System.out.println("--> Zweitstimmen: "+tempInt[j][1]);
@@ -186,6 +185,19 @@ public class Crawler2013 extends Crawler {
 	public String getCrawlerInformation() {
 		// TODO Auto-generated method stub
 		return "Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv";
+	}
+	
+	private int[][] deepCopy(int[][] array){
+		int xLength = array.length;
+		int yLength = array[0].length;
+		int[][] copy = new int[xLength][yLength];
+		for(int i=0; i<xLength;i++){
+			for(int j=0;j<yLength;j++){
+				copy[i][j] = array[i][j];
+			}
+		}
+		
+		return copy;
 	}
 
 }
