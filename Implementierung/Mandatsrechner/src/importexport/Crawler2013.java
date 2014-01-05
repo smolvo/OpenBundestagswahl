@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -12,7 +14,10 @@ import model.Bundestagswahl;
 
 public class Crawler2013 extends Crawler {
 	
-	
+	/**
+	 * TODO:
+	 * tempInt.clone does not work. Deep copy?
+	 */
 	@Override
 	public Bundestagswahl erstelleBundestagswahl(File csvDatei) {
 		// TODO Auto-generated method stub
@@ -42,14 +47,15 @@ public class Crawler2013 extends Crawler {
 		
 		
 		String bwName = "";
-		
+		BufferedReader read;
 		try{
-			BufferedReader read = new BufferedReader(new FileReader(csvDatei));
+			read = new BufferedReader(new FileReader(csvDatei));
 			int lineNumber = -1;
 			String line = null;
 			
 			
 			String[] parts;
+			int maxColumn=0;
 			while((line = read.readLine()) != null){
 				++lineNumber;
 				parts = line.split(Pattern.quote(";"));
@@ -76,8 +82,8 @@ public class Crawler2013 extends Crawler {
 								}else{
 									error=true;
 								}
-								
 							}
+							maxColumn = parts.length;
 						}else{
 							error=true;
 						}
@@ -89,38 +95,58 @@ public class Crawler2013 extends Crawler {
 						if(parts.length==1){
 							break;
 						}else{
-							int colNumber = 0;
 							if(parts[0].equals("")|| parts[1].equals("")){
 								error = true;
 							}else{
-								rows.add(lineNumber-5, new String[]{parts[0],parts[1],parts[2]});
+								//System.out.println(lineNumber-5);
+								rows.add(new String[]{parts[0],parts[1],parts[2]});
+								//System.out.println(rows.get(0)[1]);
 							}
-							
-							for(int i=3; i<parts.length && !error; i+=4){
-								int[][] tempInt = new int[columns.size()][2];
+							//System.err.println(parts.length+" "+columns.size()+" "+parts[1]);
+							//int[][] tempInt = new int[columns.size()][2];
+							int[][] tempInt = new int[columns.size()][2];
+							for(int i=3; i<maxColumn && !error; i+=4){
+								
 								int currentColumn = (i-3)/4;
+								//System.err.println(currentColumn);
 								try{
-									if(parts[i].equals("")){
+									if(i>=parts.length || parts[i].equals("")){
+										
 										tempInt[currentColumn][0] = 0;
 									}else{
 										tempInt[currentColumn][0] = Integer.parseInt(parts[i]);
+										//System.err.println(Integer.parseInt(parts[i]));
 									}
-									if(parts[i+2].equals("")){
+									
+									if((i+2)>=parts.length || parts[i+2].equals("")){
 										tempInt[currentColumn][1] = 0;
 									}else{
 										tempInt[currentColumn][1] = Integer.parseInt(parts[i+2]);
+										//System.err.println(Integer.parseInt(parts[i+2]));
 									}
+									//System.err.println(Arrays.toString(tempInt[currentColumn]));
+									//System.err.println(tempInt[currentColumn][1]);
 								}catch(NumberFormatException e){
 									error = true;
 									e.printStackTrace();
+								}catch(Exception e){
+									//System.err.println((i+2)+" "+parts.length+" ");
+									e.printStackTrace();
 								}
-								value.add(lineNumber-5,tempInt);
 								
+								//value.add(Arrays.copyOf(tempInt,tempInt.length));
+								//Arrays.copy
 							}
 						}
+						/*System.err.println("------>"+Arrays.toString(value.get(0)[0]));
+						if(lineNumber>6){
+							System.exit(0);
+						}*/
 						
 				}
 			}
+			
+			read.close();
 			
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
@@ -132,6 +158,19 @@ public class Crawler2013 extends Crawler {
 		
 		if(!error){
 			//Erzeuge BW-Element.
+			for(int i=0;i<6;i++){
+				String[] test1 = rows.get(i);
+				System.out.println(test1[1]+":");
+				for(int j=0;j<columns.size();j++){
+					int[][] tempInt = value.get(i);
+					System.out.println("-> "+columns.get(j));
+					System.out.println(Arrays.toString(tempInt[j]));
+					//System.out.println("--> Erststimmen: "+tempInt[j][0]);
+					//System.out.println("--> Zweitstimmen: "+tempInt[j][1]);
+				}
+			}
+		}else{
+			System.err.println("Error.");
 		}
 		
 		return imported;
