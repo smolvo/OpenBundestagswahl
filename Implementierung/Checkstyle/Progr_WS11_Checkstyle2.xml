@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_1.dtd">
+
+
+<module name="Checker">
+    <module name="Translation"/>
+
+
+    <module name="TreeWalker">
+        <property name="tabWidth" value="4"/>
+		<module name="JavadocMethod">
+		   <property name="scope" value="package"/>
+		   <property name="allowUndeclaredRTE" value="true"/>
+		   <property name="logLoadErrors" value="true"/>
+		   <property name="suppressLoadErrors" value="true"/>
+		</module>
+		<module name="JavadocType">
+		   <property name="scope" value="package"/>
+		</module>
+		<module name="JavadocVariable">
+		   <property name="scope" value="package"/>
+		</module>
+
+
+        <!-- Checks for Naming Conventions.                  -->
+        <!-- See http://checkstyle.sf.net/config_naming.html -->
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+
+        <!-- Checks for imports                              -->
+        <!-- See http://checkstyle.sf.net/config_import.html -->
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport">
+	        <property name="illegalPkgs" value="sun, javax, org"/>
+        </module>
+
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+
+        <!-- Checks for Size Violations.                    -->
+        <!-- See http://checkstyle.sf.net/config_sizes.html -->
+  
+        <module name="MethodLength"/>
+        <module name="AnonInnerLength">
+            <property name="max" value="60"/>
+        </module>
+	<module name="ParameterNumber">
+	   <property name="max" value="12"/>
+	   <property name="tokens" value="METHOD_DEF,CTOR_DEF"/>
+	</module>
+
+
+        <!-- Modifier Checks                                    -->
+        <!-- See http://checkstyle.sf.net/config_modifiers.html -->
+        <!--module name="ModifierOrder"/-->
+        <module name="RedundantModifier"/>
+
+
+        <!-- Checks for blocks. You know, those {}'s         -->
+        <!-- See http://checkstyle.sf.net/config_blocks.html -->
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+
+    </module>
+
+</module>
