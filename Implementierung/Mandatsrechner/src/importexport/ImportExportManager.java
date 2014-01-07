@@ -39,8 +39,8 @@ public class ImportExportManager {
 		return imported;
 	}
 
-	public boolean exportieren(String pfad){
-		return false;
+	public boolean exportieren(String pfad,Bundestagswahl bw){
+		return crawler[0].exportieren(pfad, bw);
 	}
 	
 	private boolean pruefeDateityp(File csvDatei){

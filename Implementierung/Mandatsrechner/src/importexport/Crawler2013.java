@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -181,8 +183,15 @@ public class Crawler2013 extends Crawler {
 	}
 
 	@Override
-	public boolean exportieren(String pfad) {
+	public boolean exportieren(String pfad, Bundestagswahl bw) {
 		// TODO Auto-generated method stub
+		try {
+			FileWriter f = new FileWriter(new File(pfad));
+			f.write("Test");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
@@ -216,10 +225,10 @@ public class Crawler2013 extends Crawler {
 		LinkedList<Partei> parteien = new LinkedList<Partei>(); //new Partei[columns.size()-parteiOffset];
 		for(int i=parteiOffset; i<columns.size();i++){
 			// TODO: Kuerzel und Farbe?
-			parteien.add(new Partei(columns.get(i),"Test",Color.BLACK));
+			Partei p = new Partei(columns.get(i),"Test",Color.BLACK);
+			parteien.add(p);
 		}
 		
-		// Erzeugen des Deutschlandobjekts. TODO: Zweitstimme
 		Deutschland deutschland = null;
 		String nrDeutschland = "0";
 		for(int i=rows.size()-1; i>=0; i--){
@@ -243,13 +252,22 @@ public class Crawler2013 extends Crawler {
 				for(int j=0;j<rows.size() && !error;j++){
 					if(rows.get(j)[2].equals(tempNummer)){
 						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
+						/*List<Erststimme> erststimme = new ArrayList<Erststimme>();
+						List<Zweitstimme> zweitstimme = new ArrayList<Zweitstimme>();
+						for(int k=0;k<parteien.size();k++){
+							erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,parteien.get(k)));
+							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1],w,parteien.get(k)));
+						}
+						w.setErststimme(erststimme);
+						w.setZweitstimme(zweitstimme);
+						*/
 						b.addWahlkreis(w);
 					}
 				}
 				deutschland.addBundesland(b);
 			}
 		}
-		
+		/*
 		System.out.println(deutschland.getName()+":");
 		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
 		for(int i=0; i<bundeslaender.size();i++){
@@ -258,7 +276,7 @@ public class Crawler2013 extends Crawler {
 			for(int j=0;j<wahlkreise.size();j++){
 				System.out.println("--> "+wahlkreise.get(j).getName());
 			}
-		}
+		}*/
 		
 		if(!error){
 			created = new Bundestagswahl(name,deutschland,parteien);

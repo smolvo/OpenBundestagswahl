@@ -10,5 +10,5 @@ public abstract class Crawler {
 	
 	public abstract Bundestagswahl erstelleBundestagswahl(File csvDatei);
 	
-	public abstract boolean exportieren(String pfad);
+	public abstract boolean exportieren(String pfad, Bundestagswahl bw);
 }
