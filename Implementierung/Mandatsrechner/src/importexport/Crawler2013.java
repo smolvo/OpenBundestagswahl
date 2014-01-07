@@ -2,6 +2,7 @@ package importexport;
 
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,6 +19,7 @@ import model.*;
 
 public class Crawler2013 extends Crawler {
 	
+	private int parteiOffset = 4;
 	/**
 	 * TODO:
 	 * tempInt.clone does not work. Deep copy?
@@ -104,15 +106,14 @@ public class Crawler2013 extends Crawler {
 							}else{
 								//System.out.println(lineNumber-5);
 								rows.add(new String[]{parts[0],parts[1],parts[2]});
-								//System.out.println(rows.get(0)[1]);
+								//System.out.println(parts[0]);
 							}
 							//System.err.println(parts.length+" "+columns.size()+" "+parts[1]);
-							//int[][] tempInt = new int[columns.size()][2];
-							//int[][] tempInt = new int[columns.size()][2];
-							int[][] tempInt =new int[columns.size()][2];
+							
+							int[][] tempInt=new int[columns.size()][2];
 							
 							for(int i=3; i<maxColumn && !error; i+=4){
-								
+								//int[][] tempInt =new int[columns.size()][2];
 								
 								int currentColumn = (i-3)/4;
 								try{
@@ -159,20 +160,22 @@ public class Crawler2013 extends Crawler {
 		
 		if(!error){
 			//Erzeuge BW-Element.
-			/* Testen: 
-			for(int i=0;i<6;i++){
+			for(int i=12;i<15;i++){
 				String[] test1 = rows.get(i);
 				System.out.println(test1[1]+":");
+				//System.out.println("--> Wahlberechtigte: "+values.get(i)[0][0]);
 				for(int j=0;j<columns.size();j++){
 					
 					System.out.println("-> "+columns.get(j));
 					
 					int[][] tempInt = values.get(i);
 					System.out.println(Arrays.toString(tempInt[j]));
-					//System.out.println("--> Erststimmen: "+tempInt[j][0]);
+					
+					System.out.println("--> Erststimmen: "+tempInt[j][0]);
 					//System.out.println("--> Zweitstimmen: "+tempInt[j][1]);
 				}
-			}*/
+				System.out.println("\n");
+			}
 			
 			imported = this.erstelleBundestagwahl(bwName, columns, rows, values);
 		}else{
@@ -185,13 +188,54 @@ public class Crawler2013 extends Crawler {
 	@Override
 	public boolean exportieren(String pfad, Bundestagswahl bw) {
 		// TODO Auto-generated method stub
+		boolean error = false;
 		try {
 			FileWriter f = new FileWriter(new File(pfad));
-			f.write("Test");
+			BufferedWriter bf = new BufferedWriter(f);
+			bf.write(bw.getName()+"\n\nNr;Gebiet;gehört;Wahlberechtigte;;;;Wähler;;;;Ungültige;;;;Gültige;;;;");
+			
+			List<Partei> parteien = bw.getParteien();
+			for(int i=0; i< parteien.size();i++){
+				bf.write(parteien.get(i).getName()+";;;;");
+			}
+			bf.write("\n;;zu;");
+			
+			for(int i=0;i<parteien.size()+parteiOffset;i++){
+				bf.write("Erststimmen;;Zweitstimmen;;");
+			}
+			bf.write("\n\n");
+			
+			List<Bundesland> bundeslaender = bw.getDeutschland().getBundeslaender();
+			
+			int relevanteNr = 1;
+			int unrelevanteNr = 1;
+			
+			for(int i = 0; i<bundeslaender.size();i++){
+				List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
+				for(int j=0; j<wahlkreise.size();j++){
+					bf.write(unrelevanteNr+";"+wahlkreise.get(j).getName()+";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
+					//List<Erststimme> erststimmen = wahlkreise.get(j).getErststimme();
+					//List<Erststimme> zweitstimmen = wahlkreise.get(j).getZweitstimme();
+					bf.write("\n");
+					unrelevanteNr++;
+				}
+				
+				bf.write(relevanteNr+";"+bundeslaender.get(i).getName()+";99;"+bundeslaender.get(i).getWahlberechtigte()+";\n\n");
+				relevanteNr++;
+				
+			}
+			
+			bf.write("99;\"Bundesgebiet\";;");
+			
+			bf.flush();
+			f.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			error = true;
 		}
+		
+		
 		return false;
 	}
 
@@ -221,7 +265,7 @@ public class Crawler2013 extends Crawler {
 		boolean error = false;
 		
 		// Erzeugen der Parteien:
-		int parteiOffset = 4;
+		//int parteiOffset = 4;
 		LinkedList<Partei> parteien = new LinkedList<Partei>(); //new Partei[columns.size()-parteiOffset];
 		for(int i=parteiOffset; i<columns.size();i++){
 			// TODO: Kuerzel und Farbe?
