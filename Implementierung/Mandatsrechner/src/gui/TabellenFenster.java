@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import model.Bundesland;
 import model.Bundestagswahl;
 import model.Deutschland;
+import model.Erststimme;
 import model.Partei;
 import model.Kandidat;
 import model.Gebiet;
@@ -35,14 +36,17 @@ public class TabellenFenster extends JScrollPane {
 				"Partei", "Zweitstimme", "%", "Sitze", "Direktmandate", "Überhangmandate", "Ausgleichsmandate"
 				};
 		String[][] daten = new String[land.getZweitstimmen().size()][7];
+		
 		int zaehler = 0;
 		// pro Zeile (Partei)
 		for(Zweitstimme zw : land.getZweitstimmen()) {
+			// Zweitstimmen-Objekt der Liste hinzufügen, für changeListener
 			this.zweitstimme.add(zw);
 			Partei partei = zw.getPartei();
 			daten[zaehler][0] = partei.getName();
-			daten[zaehler][1] = String.valueOf(partei.getZweitstimme().getAnzahl());
+			daten[zaehler][1] = String.valueOf(zw.getAnzahl());
 			
+			// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
 			int sitze = 0;
 			int direktMan = 0;
 			int ueberMan = 0;
@@ -68,8 +72,8 @@ public class TabellenFenster extends JScrollPane {
 			zaehler++;
 		}
 		
+		// Tabelle anzeigen
 		JTable tabelle = new JTable(daten, spaltenNamen);
-		
 		this.setViewportView(tabelle);
 		
 	}
@@ -84,16 +88,33 @@ public class TabellenFenster extends JScrollPane {
 				"Partei", "Zweitstimme", "%", "Direktmandate", "Überhangmandate"
 				};
 		String[][] daten = new String[bl.getZweitstimmen().size()][7];
+		
 		int zaehler = 0;
 		// pro Zeile (Partei)
 		for(Zweitstimme zw : bl.getZweitstimmen()) {
 			this.zweitstimme.add(zw);
 			Partei partei = zw.getPartei();
 			daten[zaehler][0] = partei.getName();
-			daten[zaehler][1] = String.valueOf(partei.getZweitstimme().getAnzahl());
+			daten[zaehler][1] = String.valueOf(zw.getAnzahl());
 			
-			
-		}
+			// Anzahl Direkt- und Überhangsmandate
+			int direktMan = 0;
+			int ueberMan = 0;
+			for (Kandidat kan : partei.getMitglieder()) {
+				if (kan.getMandat().equals("Direktmandat")) {
+					direktMan++;
+				} else if (kan.getMandat().equals("Überhangmandat")) {
+					ueberMan++;
+				}
+			}
+			daten[zaehler][3] = String.valueOf(direktMan);
+			daten[zaehler][4] = String.valueOf(ueberMan);
+			zaehler++;
+			}
+
+		// Tabelle anzeigen
+		JTable tabelle = new JTable(daten, spaltenNamen);
+		this.setViewportView(tabelle);
 	}
 	
 	/**
@@ -106,14 +127,34 @@ public class TabellenFenster extends JScrollPane {
 				"Partei", "Erststimme", "%", "Zweitstimme", "%", "Direktmandate"
 				};
 		String[][] daten = new String[wk.getZweitstimmen().size()][7];
+		
 		int zaehler = 0;
 		// pro Zeile (Partei)
-		for(Zweitstimme zw : wk.getErstStimmen()) {
-			this.zweitstimme.add(zw);
-			Partei partei = zw.getPartei();
+		for(Erststimme er : wk.getErststimmen()) {
+			Partei partei = er.getKandidat().getPartei();
 			daten[zaehler][0] = partei.getName();
-			daten[zaehler][1] = String.valueOf(partei.getZweitstimme().getAnzahl());
+			daten[zaehler][1] = String.valueOf(er.getAnzahl());
 			
+			// Anzahl Zweitstimmen
+			for (Zweitstimme zw : wk.getZweitstimmen()) {
+				if (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName())) {
+					daten[zaehler][3] = String.valueOf(zw.getAnzahl());
+				}
+			}
+			
+			// Anzahl Direktmandate
+			int direktMan = 0;
+			if (er.getKandidat().getMandat().equals("Direktmandat")) {
+				direktMan++;
+			}
+			daten[zaehler][5] = String.valueOf(direktMan);
+			zaehler++;
 		}
+		
+		
+		
+		// Tabelle anzeigen
+		JTable tabelle = new JTable(daten, spaltenNamen);
+		this.setViewportView(tabelle);
 	}
 }
