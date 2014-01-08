@@ -4,10 +4,14 @@ import java.util.LinkedList;
 
 import javax.swing.JTable;
 
+import model.Bundesland;
 import model.Bundestagswahl;
+import model.Deutschland;
 import model.Partei;
 import model.Kandidat;
 import model.Gebiet;
+import model.Wahlkreis;
+import model.Zweitstimme;
 
 /**
  * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht.
@@ -23,14 +27,15 @@ public class TabellenFenster {
 	 * mit den relevanten Daten.
 	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
 	 */
-	public void BATabellenFuellen(Bundestagswahl btw) {
+	public void BATabellenFuellen(Deutschland land) {
 		String[] spaltenNamen = new String[] {
 				"Partei", "Zweitstimme", "%", "Sitze", "Direktmandate", "Überhangmandate", "Ausgleichsmandate"
 				};
-		String[][] daten = new String[btw.getParteien().size()][7];
+		String[][] daten = new String[land.getZweitstimmen().size()][7];
 		int zaehler = 0;
 		// pro Zeile (Partei)
-		for(Partei partei : btw.getParteien()) {
+		for(Zweitstimme zw : land.getZweitstimmen()) {
+			Partei partei = zw.getPartei();
 			daten[zaehler][0] = partei.getName();
 			daten[zaehler][1] = String.valueOf(partei.getZweitstimme().getAnzahl());
 			
@@ -65,7 +70,7 @@ public class TabellenFenster {
 	 * mit den relevanten Daten.
 	 * @param gebiet Gebiets-Objekt welches visualisiert werden soll
 	 */
-	public void LATabellenFuellen(Gebiet gebiet) {
+	public void tabellenFuellen(Bundesland bl) {
 		String[] spaltenNamen = new String[] {
 				"Partei", "Zweitstimme", "%", "Direktmandate", "Überhangmandate"
 				};
@@ -77,7 +82,7 @@ public class TabellenFenster {
 	 * mit den relevanten Daten.
 	 * @param gebiet Gebiets-Objekt welches visualisiert werden soll
 	 */
-	public void WATabellenFuellen(Gebiet gebiet) {
+	public void tabellenFuellen(Wahlkreis wk) {
 		String[] spaltenNamen = new String[] {
 				"Partei", "Erststimme", "%", "Zweitstimme", "%", "Direktmandate"
 				};

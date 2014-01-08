@@ -1,5 +1,6 @@
 package gui;
 
+import model.Bundesland;
 import model.Bundestagswahl;
 import model.Gebiet;
 
@@ -12,13 +13,12 @@ public class Landesansicht extends Ansicht {
 	/**
 	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
 	 * drei verschiedenen Fenstern angezeigt.
-	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public void zeigeKomponenten(Bundestagswahl btw, Gebiet gebiet) {
-		tabellenFenster.LATabellenFuellen(gebiet);
-		diagrammFenster.erstelleDiagramm(btw);
-		kartenFenster.zeigeInformationen(btw);
+	public void zeigeKomponenten(Gebiet gebiet) {
+		Bundesland bl = (Bundesland) gebiet;
+		tabellenFenster.tabellenFuellen(bl);
+		diagrammFenster.erstelleDiagramm(gebiet);
 	}
 
 }

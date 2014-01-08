@@ -3,16 +3,14 @@ package gui;
 import java.util.LinkedList;
 
 import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
 
 import model.Bundesland;
-import model.Bundestagswahl;
+import model.Deutschland;
 
 /**
  * Diese Klasse repräsentiert das Kartenfenster einer Ansicht.
  * Es werden die Bundesländer aufgelistet, und wenn möglich
  * eine kartographische Ansicht des Landes.
- * @author Batman
  *
  */
 public class KartenFenster extends JTabbedPane {
@@ -20,11 +18,11 @@ public class KartenFenster extends JTabbedPane {
 	/**
 	 * Diese Methode listet die Bundesländer auf und erstellt,
 	 * wenn möglich, eine kartographische Ansicht.
-	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @param land Deutschland-Objekt welches visualisiert werden soll
 	 */
-	public void zeigeInformationen(Bundestagswahl btw) {
-		DeutschlandKarte d = new DeutschlandKarte(btw.getDeutschland());
-		if (ueberpruefeBundeslaender(btw.getDeutschland().getBundeslaender())) {
+	public void zeigeInformationen(Deutschland land) {
+		DeutschlandKarte d = new DeutschlandKarte(land);
+		if (ueberpruefeBundeslaender(land.getBundeslaender())) {
 			this.addTab("Kartenansicht", d);
 		} else {
 			this.addTab("Kartenansicht", null);
@@ -32,7 +30,7 @@ public class KartenFenster extends JTabbedPane {
 		}
 		
 		/* kreiiert die Listenansicht */
-		Listenansicht liste = new Listenansicht(btw.getDeutschland());
+		Listenansicht liste = new Listenansicht(land);
 		this.add("Listenansicht", liste);
 	}
 

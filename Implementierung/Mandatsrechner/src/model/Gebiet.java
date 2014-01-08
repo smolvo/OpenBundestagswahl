@@ -1,5 +1,7 @@
 package model;
 
+import java.util.LinkedList;
+
 /**
  * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines Gebiets haltet.
  */
@@ -11,6 +13,7 @@ public abstract class Gebiet {
 	/** Die Anzahl der Wahlberechtigten */
 	private int wahlberechtigte;
 	
+	private LinkedList<Zweitstimme> zweitstimmen;
 	
 	/**
 	 * Gibt den Namen des Gebietes zurück
@@ -48,5 +51,11 @@ public abstract class Gebiet {
 		      throw new IllegalArgumentException("Anzahl der Wahlberechtige ist negativ!");
 		}
 		this.wahlberechtigte = wahlberechtigte;
+	}
+	public LinkedList<Zweitstimme> getZweitstimmen() {
+		return zweitstimmen;
+	}
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
+		this.zweitstimmen = zweitstimmen;
 	}
 }

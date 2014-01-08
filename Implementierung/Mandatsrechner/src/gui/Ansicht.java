@@ -23,9 +23,9 @@ public abstract class Ansicht {
 	/**
 	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
 	 * drei verschiedenen Fenstern angezeigt.
-	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public abstract void zeigeKomponenten(Bundestagswahl btw, Gebiet gebiet);
+	public abstract void zeigeKomponenten(Gebiet gebiet);
 
 	/**
 	 * Holt das Tabellenfenster der Ansicht.

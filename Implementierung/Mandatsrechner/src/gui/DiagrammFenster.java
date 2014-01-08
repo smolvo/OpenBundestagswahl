@@ -1,6 +1,7 @@
 package gui;
 
 import model.Bundestagswahl;
+import model.Gebiet;
 
 /**
  * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht.
@@ -11,9 +12,9 @@ public class DiagrammFenster {
 
 	/**
 	 * Erstellt ein passendes Diagramm aus den übergebenen Daten.
-	 * @param btw Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public void erstelleDiagramm(Bundestagswahl btw) {
+	public void erstelleDiagramm(Gebiet gebiet) {
 		
 	}
 	
