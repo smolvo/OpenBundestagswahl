@@ -3,6 +3,9 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.Bundestagswahl;
+import model.Gebiet;
+
 public class WahlFenster extends JPanel{
 
 	private String name;

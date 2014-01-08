@@ -23,7 +23,7 @@ public abstract class Stimme {
 	 * @exception IllegalArgumentException wenn die Anzahl negativ ist
 	 */
 	public void setAnzahl(int anzahl) {
-		if (anzahl > 0) {
+		if (anzahl < 0) {
 		      throw new IllegalArgumentException("Stimme hat eine negative Anzahl");
 		}
 		this.anzahl = anzahl;

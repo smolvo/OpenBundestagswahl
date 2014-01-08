@@ -129,7 +129,7 @@ public class Crawler2013 extends Crawler {
 									}else{
 										tempInt[currentColumn][1] = Integer.parseInt(parts[i+2]);
 									}
-									//System.out.println(Arrays.toString(tempInt[currentColumn]));
+									
 								}catch(NumberFormatException e){
 									error = true;
 									e.printStackTrace();
@@ -137,8 +137,10 @@ public class Crawler2013 extends Crawler {
 									e.printStackTrace();
 								}
 								
-								values.add(lineNumber-5,this.deepCopy(tempInt));
+								
 							}
+							values.add(this.deepCopy(tempInt));
+							
 						}
 						//System.err.println("------>"+Arrays.toString(values.get(lineNumber-5)[0]));
 						/*if(lineNumber>5){
@@ -147,9 +149,7 @@ public class Crawler2013 extends Crawler {
 						
 				}
 			}
-			
 			read.close();
-			
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 			error = true;
@@ -160,7 +160,7 @@ public class Crawler2013 extends Crawler {
 		
 		if(!error){
 			//Erzeuge BW-Element.
-			for(int i=12;i<15;i++){
+			/*for(int i=12;i<15;i++){
 				String[] test1 = rows.get(i);
 				System.out.println(test1[1]+":");
 				//System.out.println("--> Wahlberechtigte: "+values.get(i)[0][0]);
@@ -175,7 +175,7 @@ public class Crawler2013 extends Crawler {
 					//System.out.println("--> Zweitstimmen: "+tempInt[j][1]);
 				}
 				System.out.println("\n");
-			}
+			}*/
 			
 			imported = this.erstelleBundestagwahl(bwName, columns, rows, values);
 		}else{
@@ -215,7 +215,17 @@ public class Crawler2013 extends Crawler {
 				for(int j=0; j<wahlkreise.size();j++){
 					bf.write(unrelevanteNr+";"+wahlkreise.get(j).getName()+";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
 					//List<Erststimme> erststimmen = wahlkreise.get(j).getErststimme();
-					//List<Erststimme> zweitstimmen = wahlkreise.get(j).getZweitstimme();
+					List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
+					for(int k=0;k<3;k++){
+						bf.write(";;;;");
+					}
+					for(int k=0;k<zweitstimmen.size();k++){
+						String field = zweitstimmen.get(k).getAnzahl()+"";
+						if(field.equals("0")){
+							field="";
+						}
+						bf.write(";;"+field+";;");
+					}
 					bf.write("\n");
 					unrelevanteNr++;
 				}
@@ -296,29 +306,33 @@ public class Crawler2013 extends Crawler {
 				for(int j=0;j<rows.size() && !error;j++){
 					if(rows.get(j)[2].equals(tempNummer)){
 						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
-						/*List<Erststimme> erststimme = new ArrayList<Erststimme>();
-						List<Zweitstimme> zweitstimme = new ArrayList<Zweitstimme>();
+						//List<Erststimme> erststimme = new ArrayList<Erststimme>();
+						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
 						for(int k=0;k<parteien.size();k++){
-							erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,parteien.get(k)));
-							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1],w,parteien.get(k)));
+							//erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,parteien.get(k)));
+							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1],parteien.get(k),w));
 						}
-						w.setErststimme(erststimme);
-						w.setZweitstimme(zweitstimme);
-						*/
+						//w.setErststimmen(erststimme);
+						w.setZweitstimmen(zweitstimme);
+						
 						b.addWahlkreis(w);
 					}
 				}
 				deutschland.addBundesland(b);
 			}
 		}
-		/*
-		System.out.println(deutschland.getName()+":");
+		
+		/*System.out.println(deutschland.getName()+":");
 		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
-		for(int i=0; i<bundeslaender.size();i++){
+		for(int i=0; i<2;i++){
 			System.out.println("-> "+bundeslaender.get(i).getName());
 			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 			for(int j=0;j<wahlkreise.size();j++){
 				System.out.println("--> "+wahlkreise.get(j).getName());
+				List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
+				for(int k = 0; k<zweitstimmen.size();k++){
+					System.out.println("--->"+zweitstimmen.get(k).getPartei().getName()+" - Zweitstimmen: "+zweitstimmen.get(k).getAnzahl());
+				}
 			}
 		}*/
 		

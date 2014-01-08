@@ -24,7 +24,7 @@ public class Partei implements Cloneable {
 	private Color farbe;
 	
 	/** Zweitstimme */
-	private Zweitstimme zweitstimme;
+	private LinkedList<Zweitstimme> zweitstimme;
 	
 	/**
 	 * Parametrisierter Konstruktor.
@@ -186,7 +186,7 @@ public class Partei implements Cloneable {
 	 * Gibt das Zweitstimmen-Objekt zurück
 	 * @return das Zweitstimmen-Objekt
 	 */
-	public Zweitstimme getZweitstimme() {
+	public LinkedList<Zweitstimme> getZweitstimme() {
 		return zweitstimme;
 	}
 	
@@ -195,7 +195,7 @@ public class Partei implements Cloneable {
 	 * @param zweitstimme 
 	 * @exception wenn das Objekt leer ist
 	 */
-	public void setZweitstimme(Zweitstimme zweitstimme) {
+	public void setZweitstimme(LinkedList<Zweitstimme> zweitstimme) {
 		if(zweitstimme == null){
 			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
 		}
