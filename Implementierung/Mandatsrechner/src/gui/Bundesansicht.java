@@ -19,9 +19,9 @@ public class Bundesansicht extends Ansicht {
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
 	public void zeigeKomponenten(Gebiet gebiet) {
-		tabellenFenster.tabellenFuellen(gebiet);
-		diagrammFenster.erstelleDiagramm(gebiet);
 		Deutschland land = (Deutschland) gebiet;
+		tabellenFenster.tabellenFuellen(land);
+		diagrammFenster.erstelleDiagramm(land);
 		kartenFenster.zeigeInformationen(land);
 	}
 

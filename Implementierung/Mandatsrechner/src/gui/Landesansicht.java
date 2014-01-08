@@ -18,7 +18,7 @@ public class Landesansicht extends Ansicht {
 	public void zeigeKomponenten(Gebiet gebiet) {
 		Bundesland bl = (Bundesland) gebiet;
 		tabellenFenster.tabellenFuellen(bl);
-		diagrammFenster.erstelleDiagramm(gebiet);
+		diagrammFenster.erstelleDiagramm(bl);
 	}
 
 }

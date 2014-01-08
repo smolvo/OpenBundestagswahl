@@ -1,5 +1,7 @@
 package model;
 
+import java.util.LinkedList;
+
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und
  * der Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet
@@ -10,7 +12,7 @@ public class Wahlkreis extends Gebiet{
 	private Kandidat wahlkreisSieger;
 	
 	/** Erststimmen-Objekt */
-	private Erststimme erststimme;
+	private LinkedList<Erststimme> erststimmen;
 	
 	
 	/**
@@ -27,12 +29,12 @@ public class Wahlkreis extends Gebiet{
 	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
 	 * @param name
 	 * @param wahlberechtigte
-	 * @param erststimme
+	 * @param erststimmen
 	 */
-	public Wahlkreis(String name, int wahlberechtigte, Erststimme erststimme){
+	public Wahlkreis(String name, int wahlberechtigte, LinkedList<Erststimme> erststimmen){
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
-		this.setErststimme(erststimme);
+		this.setErststimmen(erststimmen);
 	}
 	
 	/**
@@ -57,10 +59,10 @@ public class Wahlkreis extends Gebiet{
 	
 	/**
 	 * Gibt das Erststimme-Objekt zurück
-	 * @return das Erststimme-Objekt
+	 * @return alle Erststimmen des Wahlkreises
 	 */
-	public Erststimme getErststimme() {
-		return erststimme;
+	public LinkedList<Erststimme> getErststimmen() {
+		return erststimmen;
 	}
 
 	/**
@@ -68,10 +70,10 @@ public class Wahlkreis extends Gebiet{
 	 * @param erststimme das Objekt
 	 * @exception wenn das Erstimme-Objekt leer ist
 	 */
-	public void setErststimme(Erststimme erststimme) {
-		if (erststimme == null) {
+	public void setErststimmen(LinkedList<Erststimme> erststimmen) {
+		if (erststimmen == null) {
 		      throw new IllegalArgumentException("Erststimme ist leer!");
 		}
-		this.erststimme = erststimme;
+		this.erststimmen = erststimmen;
 	}
 }
