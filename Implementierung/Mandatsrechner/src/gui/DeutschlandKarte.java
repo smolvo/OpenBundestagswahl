@@ -127,21 +127,19 @@ public class DeutschlandKarte extends JPanel {
 			}
 			}
 		
-		private BufferedImage faerbeLand(Color bwfarbe, BufferedImage landimg) {
-			int width = landimg.getWidth();
-	        int height = landimg.getHeight();
-	        WritableRaster raster = landimg.getRaster();
-	        
+		private BufferedImage faerbeLand(Color bwfarbe, BufferedImage bild) {
+			int width = bild.getWidth();
+	        int height = bild.getHeight();
+
 	        for (int xx = 0; xx < width; xx++) {
 	            for (int yy = 0; yy < height; yy++) {
-	                int[] pixels = raster.getPixel(xx, yy, (int[]) null);
-	                pixels[0] = bwfarbe.getRed();
-	                pixels[1] = bwfarbe.getGreen();
-	                pixels[2] = bwfarbe.getBlue();
-	                raster.setPixel(xx, yy, pixels);
+	                Color originalColor = new Color(bild.getRGB(xx, yy), true);
+	                if (originalColor.equals(Color.WHITE) && originalColor.getAlpha() == 255) {
+	                    bild.setRGB(xx, yy, bwfarbe.getRGB());
+	                }
 	            }
 	        }
-	        return landimg;
+	        return bild;
 		}
 	
 	
