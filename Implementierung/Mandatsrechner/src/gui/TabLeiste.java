@@ -66,6 +66,7 @@ public class TabLeiste extends JTabbedPane {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				remove(c);
+				new ImportDialog();
 				neuerTab(new JPanel(), "neu");
 				neuerTabButton(c);
 			}

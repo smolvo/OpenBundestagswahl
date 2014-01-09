@@ -124,12 +124,9 @@ public class Menu extends JMenuBar {
 		public void actionPerformed(ActionEvent e)
 		  {
 			 if (e.getSource() == menu.importieren) {
-				JDialog importDialog = new JDialog();
-				importDialog.setSize(200,200);
-				importDialog.add(new JLabel("Importieren.."));
-				importDialog.setVisible(true);
+				new ImportDialog();
 			 } else if (e.getSource() == menu.speichern) {
-				//TODO export
+				 new ExportDialog();
 			 } else if (e.getSource() == menu.beenden) {
 				 System.exit(0);
 			 } else if (e.getSource() == menu.rueckgaengig) {
