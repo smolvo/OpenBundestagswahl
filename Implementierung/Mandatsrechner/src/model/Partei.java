@@ -33,7 +33,7 @@ public class Partei implements Cloneable {
 	 * @param kuerzel
 	 * @param farbe
 	 */
-	public Partei(String name, String kuerzel, Color farbe){
+	public Partei(String name, String kuerzel, Color farbe) {
 		this.setName(name);
 		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
@@ -48,7 +48,7 @@ public class Partei implements Cloneable {
 	 * @param kuerzel
 	 * @param farbe
 	 */
-	public Partei(Landesliste landesliste, String name, String kuerzel, Color farbe){
+	public Partei(Landesliste landesliste, String name, String kuerzel, Color farbe) {
 		this.setLandesliste(landesliste);
 		this.setName(name);
 		this.setKuerzel(kuerzel);
@@ -70,7 +70,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn das Objekt leer ist
 	 */
 	public void setLandesliste(Landesliste landesliste) {
-		if(landesliste == null){
+		if(landesliste == null) {
 			throw new IllegalArgumentException("Landesliste-Objekt ist leer!");
 		}
 		this.landesliste = landesliste;
@@ -89,7 +89,7 @@ public class Partei implements Cloneable {
 	 * @param mitglieder der Partei
 	 */
 	public void setMitglieder(LinkedList<Kandidat> mitglieder) {
-		if(mitglieder.equals(null)){
+		if(mitglieder.equals(null)) {
 			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
 		}
 		this.mitglieder = mitglieder;
@@ -101,7 +101,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn das Mitglied leer ist
 	 */
 	public void AddMitglied(Kandidat mitglied) {
-		if(mitglied == null){
+		if(mitglied == null) {
 			throw new IllegalArgumentException("Mitglied ist leer!");
 		}
 		this.mitglieder.add(mitglied);
@@ -112,10 +112,10 @@ public class Partei implements Cloneable {
 	 * @param mandat das gewünschte Mandat
 	 * @return die Liste mit den Mitgliedern
 	 */
-	public LinkedList<Kandidat> GetMitglieder(Mandat mandat){
+	public LinkedList<Kandidat> GetMitglieder(Mandat mandat) {
 		LinkedList<Kandidat> res = new LinkedList<Kandidat>();
-		for(Kandidat kandidat: this.mitglieder){
-			if(kandidat.getMandat() == mandat){
+		for (Kandidat kandidat: this.mitglieder) {
+			if (kandidat.getMandat() == mandat) {
 				res.add(kandidat);
 			}
 		}
@@ -136,7 +136,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn der name leer ist
 	 */
 	public void setName(String name) {
-		if(name == null || name.isEmpty()){
+		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
 		this.name = name;
@@ -156,7 +156,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn das Kürzel leer ist
 	 */
 	public void setKuerzel(String kuerzel) {
-		if(kuerzel == null || kuerzel.isEmpty()){
+		if (kuerzel == null || kuerzel.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
 		this.kuerzel = kuerzel;
@@ -176,7 +176,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn die Farbe leer ist
 	 */
 	public void setFarbe(Color farbe) {
-		if(farbe == null){
+		if (farbe == null) {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
 		this.farbe = farbe;
@@ -196,7 +196,7 @@ public class Partei implements Cloneable {
 	 * @exception wenn das Objekt leer ist
 	 */
 	public void setZweitstimme(LinkedList<Zweitstimme> zweitstimme) {
-		if(zweitstimme == null){
+		if (zweitstimme == null) {
 			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
 		}
 		this.zweitstimme = zweitstimme;

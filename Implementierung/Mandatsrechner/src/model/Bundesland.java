@@ -26,11 +26,10 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/**
 	 * Parametrisierter Konstruktor für Bundesländer.
 	 * Listen werden seperat hinzugefügt
-	 * @param name
-	 * @param wahlberechtigte
-	 * @param einwohnerzahl
+	 * @param name Der name des Bundeslandes
+	 * @param einwohnerzahl Die Anzahl der Einwohner
 	 */
-	public Bundesland(String name,int einwohnerzahl) {
+	public Bundesland(String name, int einwohnerzahl) {
 		this.setName(name);
 		this.setEinwohnerzahl(einwohnerzahl);
 	}
@@ -49,7 +48,7 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * @exception wenn die zahl negativ ist
 	 */
 	public void setEinwohnerzahl(int einwohnerzahl) {
-		if(einwohnerzahl < 0){
+		if (einwohnerzahl < 0) {
 			throw new IllegalArgumentException("Einwohnerzahl ist kleiner 0");
 		}
 		this.einwohnerzahl = einwohnerzahl;
@@ -69,7 +68,7 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * @exception wenn die Farbe leer ist
 	 */
 	public void setFarbe(Color farbe) {
-		if(farbe == null){
+		if (farbe == null) {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
 		this.farbe = farbe;
@@ -89,7 +88,7 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * @exception wenn die Liste leer ist
 	 */
 	public void setWahlkreise(LinkedList<Wahlkreis> wahlkreise) {
-		if(wahlkreise == null || wahlkreise.isEmpty()){
+		if (wahlkreise == null || wahlkreise.isEmpty()) {
 			throw new IllegalArgumentException("Wahlkreisliste ist leer");
 		}
 		this.wahlkreise = wahlkreise;
@@ -109,7 +108,7 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * @exception wenn die Liste leer ist
 	 */
 	public void setParteien(LinkedList<Partei> parteien) {
-		if(parteien == null || parteien.isEmpty()){
+		if (parteien == null || parteien.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
 		this.parteien = parteien;
@@ -119,18 +118,19 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * Fügt eine Partei zur Liste hinzu
 	 * @param partei ist der neue Partei
 	 */
-	public void addPartei(Partei partei){
+	public void addPartei(Partei partei) {
 		if (partei == null) {
 		      throw new IllegalArgumentException("Partei ist leer!");
 		}
 		this.parteien.add(partei);
 	}
 	
+
 	/**
-	 * Fügt eine Partei zur Liste hinzu
-	 * @param partei ist der neue Partei
+	 * Fügt einen Wahlkreis zur Liste hinzu
+	 * @param wahlkreis Der Wahlkreis der hinzugefügt wird
 	 */
-	public void addWahlkreis(Wahlkreis wahlkreis){
+	public void addWahlkreis(Wahlkreis wahlkreis) {
 		if (wahlkreis == null) {
 		      throw new IllegalArgumentException("Wahlkreis ist leer!");
 		}
@@ -157,17 +157,16 @@ public class Bundesland extends Gebiet implements Cloneable {
 
 	@Override
 	public List<Zweitstimme> getZweitstimmen() {
-		// TODO Auto-generated method stub
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
 		int[] tempZweitstimmen = new int[this.wahlkreise.get(0).getZweitstimmen().size()];
-		for(int i=0;i<this.wahlkreise.size();i++){
+		for (int i = 0; i < this.wahlkreise.size(); i++) {
 			List<Zweitstimme> wahlkreisZweitstimme = wahlkreise.get(i).getZweitstimmen();
-			for(int j=0;j<wahlkreisZweitstimme.size();j++){
-				tempZweitstimmen[j]+=wahlkreisZweitstimme.get(j).getAnzahl();
+			for (int j = 0; j < wahlkreisZweitstimme.size(); j++) {
+				tempZweitstimmen[j] += wahlkreisZweitstimme.get(j).getAnzahl();
 			}
 		}
-		for(int i=0;i<tempZweitstimmen.length;i++){
-			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i],this.wahlkreise.get(0).getZweitstimmen().get(i).getPartei(),this));
+		for (int i = 0; i < tempZweitstimmen.length; i++) {
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this, this.wahlkreise.get(0).getZweitstimmen().get(i).getPartei()));
 		}
 		
 		return zweitstimmen;
@@ -175,10 +174,9 @@ public class Bundesland extends Gebiet implements Cloneable {
 
 	@Override
 	public int getWahlberechtigte() {
-		// TODO Auto-generated method stub
 		int wahlberechtigte = 0;
-		for(int i=0;i<this.wahlkreise.size();i++){
-			wahlberechtigte+=wahlkreise.get(i).getWahlberechtigte();
+		for (int i = 0; i < this.wahlkreise.size(); i++) {
+			wahlberechtigte += wahlkreise.get(i).getWahlberechtigte();
 		}
 		return wahlberechtigte;
 	}

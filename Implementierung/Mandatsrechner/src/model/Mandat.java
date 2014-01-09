@@ -29,7 +29,7 @@ public enum Mandat {
 	 * Kontsruktor der die Bezeichnung setzt
 	 * @param mandat die Bezeichnung des Mandats
 	 */
-	Mandat (String mandat){
+	Mandat (String mandat) {
 		this.mandat = mandat;
 	}
 	
@@ -37,7 +37,7 @@ public enum Mandat {
 	 * Gibt die Bezeichnung des Mandats zurück
 	 * @return die Bezeichnung des Mandats
 	 */
-	public String toString(){
+	public String toString() {
 		return this.mandat;
 	}
 	

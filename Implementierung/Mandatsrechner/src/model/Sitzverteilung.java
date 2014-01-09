@@ -35,8 +35,9 @@ public class Sitzverteilung {
 	 * @param abgeordnete die Liste aller Abgeordneten
 	 */
 	public void setAbgeordnete(LinkedList<Kandidat> abgeordnete) {
-		if (abgeordnete == null)
+		if (abgeordnete == null) {
 			throw new IllegalArgumentException("Parameter 'abgeordnete' ist null!");
+		}
 		this.abgeordnete = abgeordnete;
 	}
 
@@ -53,8 +54,9 @@ public class Sitzverteilung {
 	 * @param bericht den Bericht dieser Sitzverteilung
 	 */
 	public void setBericht(String bericht) {
-		if (bericht == null)
+		if (bericht == null) {
 			throw new IllegalArgumentException("Parameter 'bericht' ist null!");
+		}
 		this.bericht = bericht;
 	}
 	

@@ -115,12 +115,12 @@ public class Crawler2013 extends Crawler {
 							for(int i=3; i<maxColumn && !error; i+=4){
 								//int[][] tempInt =new int[columns.size()][2];
 								
-								int currentColumn = (i-3)/4;
-								try{
-									if(i>=parts.length || parts[i].equals("")){
+								int currentColumn = (i - 3)/4;
+								try {
+									if (i>=parts.length || parts[i].equals("")) {
 										
 										tempInt[currentColumn][0] = 0;
-									}else{
+									} else{
 										tempInt[currentColumn][0] = Integer.parseInt(parts[i]);
 									}
 									
@@ -130,10 +130,10 @@ public class Crawler2013 extends Crawler {
 										tempInt[currentColumn][1] = Integer.parseInt(parts[i+2]);
 									}
 									
-								}catch(NumberFormatException e){
+								} catch(NumberFormatException e) {
 									error = true;
 									e.printStackTrace();
-								}catch(Exception e){
+								} catch(Exception e) {
 									e.printStackTrace();
 								}
 								
@@ -335,7 +335,7 @@ public class Crawler2013 extends Crawler {
 						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
 						for(int k=0;k<parteien.size();k++){
 							//erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,parteien.get(k)));
-							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1],parteien.get(k),w));
+							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1], w, parteien.get(k)));
 						}
 						//w.setErststimmen(erststimme);
 						w.setZweitstimmen(zweitstimme);

@@ -46,6 +46,7 @@ public abstract class Gebiet {
 
 	
 	abstract public void setErststimmen(LinkedList<Erststimme> erststimmen);
+	
 	abstract public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen);
 	
 	/**
@@ -56,5 +57,6 @@ public abstract class Gebiet {
 	 * @return
 	 */
 	abstract public List<Erststimme> getErststimmen();
+	
 	abstract public List<Zweitstimme> getZweitstimmen();
 }

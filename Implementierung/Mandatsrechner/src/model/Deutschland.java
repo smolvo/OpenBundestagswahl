@@ -104,7 +104,7 @@ public class Deutschland extends Gebiet implements Cloneable {
 			}
 		}
 		for(int i=0;i<tempZweitstimmen.length;i++){
-			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i],this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei(),this));
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this, this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei()));
 		}
 		
 		return zweitstimmen;

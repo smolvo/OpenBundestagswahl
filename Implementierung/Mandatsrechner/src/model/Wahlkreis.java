@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und
  * der Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet
  */
-public class Wahlkreis extends Gebiet{
+public class Wahlkreis extends Gebiet {
 	/** Die Anzahl der Wahlberechtigten */
 	private int wahlberechtigte;
 	
@@ -24,7 +24,7 @@ public class Wahlkreis extends Gebiet{
 	 * @param name
 	 * @param wahlberechtigte
 	 */
-	public Wahlkreis(String name, int wahlberechtigte){
+	public Wahlkreis(String name, int wahlberechtigte) {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 	}
@@ -35,7 +35,7 @@ public class Wahlkreis extends Gebiet{
 	 * @param wahlberechtigte
 	 * @param erststimmen
 	 */
-	public Wahlkreis(String name, int wahlberechtigte, LinkedList<Erststimme> erststimmen){
+	public Wahlkreis(String name, int wahlberechtigte, LinkedList<Erststimme> erststimmen) {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 		this.setErststimmen(erststimmen);
@@ -51,11 +51,11 @@ public class Wahlkreis extends Gebiet{
 	
 	/**
 	 * Setzt den Wahlkreissieger
-	 * @param wahlkreisSieger
+	 * @param wahlkreisSieger der Kandidat mit den meisten Stimmen
 	 * @exception wenn der Wahlkreissieger leer ist
 	 */
 	public void setWahlkreisSieger(Kandidat wahlkreisSieger) {
-		if(wahlkreisSieger == null){
+		if (wahlkreisSieger == null) {
 			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
 		}
 		this.wahlkreisSieger = wahlkreisSieger;
@@ -68,7 +68,6 @@ public class Wahlkreis extends Gebiet{
 	public LinkedList<Erststimme> getErststimmen() {
 		return erststimmen;
 	}
-	
 	
 	/**
 	 * Gibt das Zweitstimme-Objekt zurück

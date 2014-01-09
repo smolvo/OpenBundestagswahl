@@ -41,7 +41,7 @@ public class Kandidat {
 	 * @exception wenn das Mandat leer ist
 	 */
 	public void setMandat(Mandat mandat) {
-		if (mandat.equals(null)){
+		if (mandat.equals(null)) {
 		      throw new IllegalArgumentException("Mandat ist leer!");
 		}
 		this.mandat = mandat;
@@ -61,7 +61,7 @@ public class Kandidat {
 	 * @exception wenn die Partei leer ist
 	 */
 	public void setPartei(Partei partei) {
-		if (partei.equals(null)){
+		if (partei.equals(null)) {
 		      throw new IllegalArgumentException("Partei ist leer!");
 		}
 		this.partei = partei;

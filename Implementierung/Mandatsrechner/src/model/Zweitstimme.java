@@ -19,7 +19,7 @@ public class Zweitstimme extends Stimme{
 		 * @param partei
 		 * @param deutschland
 		 */
-		public Zweitstimme(int anzahl, Partei partei, Gebiet gebiet){
+		public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei){
 			this.setAnzahl(anzahl);
 			this.setGebiet(gebiet);
 			this.setPartei(partei);

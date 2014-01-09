@@ -23,7 +23,7 @@ public class Landesliste {
 	 * @param partei
 	 * @param bundesland
 	 */
-	public Landesliste(Partei partei, Bundesland bundesland){
+	public Landesliste(Partei partei, Bundesland bundesland) {
 		this.setBundesland(bundesland);
 		this.setPartei(partei);
 	}
@@ -92,7 +92,7 @@ public class Landesliste {
 	 * Fügt einen Kandidaten zur Liste hinzu
 	 * @param kandidat ist der neue Kandidat
 	 */
-	public void addKandidat(Kandidat kandidat){
+	public void addKandidat(Kandidat kandidat) {
 		if (kandidat == null) {
 		      throw new IllegalArgumentException("Kandidat ist leer!");
 		}
@@ -104,10 +104,10 @@ public class Landesliste {
 	 * @param mandat das gewünschte Mandat
 	 * @return die Liste mit den Listenkandidaten
 	 */
-	public LinkedList<Kandidat> getKandidaten(Mandat mandat){
+	public LinkedList<Kandidat> getKandidaten(Mandat mandat) {
 		LinkedList<Kandidat> res = new LinkedList<Kandidat>();
-		for(Kandidat kandidat: this.listenkandidaten){
-			if(kandidat.getMandat() == mandat){
+		for (Kandidat kandidat: this.listenkandidaten) {
+			if (kandidat.getMandat() == mandat) {
 				res.add(kandidat);
 			}
 		}
