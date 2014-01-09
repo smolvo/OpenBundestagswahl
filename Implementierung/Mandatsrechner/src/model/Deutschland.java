@@ -1,6 +1,7 @@
 	package model;
 
 import java.util.LinkedList;
+import java.util.List;
 /**
  * Klasse die alle Bundesländer beinhaltet. 
  *
@@ -9,10 +10,6 @@ public class Deutschland extends Gebiet implements Cloneable {
 	
 	/** Liste mit den enthaltenden Bundesländer. */
 	LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
-	
-	/** Das verbundene Zweitstimmen-Objekt. */
-	Zweitstimme zweitstimme;
-	
 	
 	/**
 	 * Angepasster Konstruktor.
@@ -30,10 +27,10 @@ public class Deutschland extends Gebiet implements Cloneable {
 	 * @param wahlberechtigte
 	 * @param zweitstimme
 	 */
-	public Deutschland(String name, int wahlberechtigte, Zweitstimme zweitstimme){
+	public Deutschland(String name, int wahlberechtigte, LinkedList<Zweitstimme> zweitstimme){
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
-		this.setZweitstimme(zweitstimme);
+		this.setZweitstimmen(zweitstimme);
 	}
 	
 	/**
@@ -68,26 +65,6 @@ public class Deutschland extends Gebiet implements Cloneable {
 	}
 
 	/**
-	 * Gibt das Zweitstimme-Objekt zurück
-	 * @return das Zweitstimme-Objekt
-	 */
-	public Zweitstimme getZweitstimme() {
-		return zweitstimme;
-	}
-
-	/**
-	 * Setzt das Zweitstimme-Objekt
-	 * @param zweitstimme das Objekt
-	 * @exception wenn das Zweitstimme-Objekt leer ist
-	 */
-	public void setZweitstimme(Zweitstimme zweitstimme) {
-		if (zweitstimme == null) {
-		      throw new IllegalArgumentException("Zweitstimme ist leer!");
-		}
-		this.zweitstimme = zweitstimme;
-	}
-	
-	/**
 	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
 	 * @return eine tiefe Kopie dieses Objekts
 	 */
@@ -95,6 +72,58 @@ public class Deutschland extends Gebiet implements Cloneable {
 	public Deutschland clone() {
 		// TODO ... ;-)
 		throw new UnsupportedOperationException("Noch nicht implementiert...");
+	}
+
+	@Override
+	public void setErststimmen(LinkedList<Erststimme> erststimmen) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Erststimme> getErststimmen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Zweitstimme> getZweitstimmen() {
+		// TODO Auto-generated method stub
+		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
+		int[] tempZweitstimmen = new int[this.bundeslaender.get(0).getZweitstimmen().size()];
+		for(int i=0;i<this.bundeslaender.size();i++){
+			List<Zweitstimme> bundeslaenderZweitstimme = bundeslaender.get(i).getZweitstimmen();
+			for(int j=0;j<bundeslaenderZweitstimme.size();j++){
+				tempZweitstimmen[j]+=bundeslaenderZweitstimme.get(j).getAnzahl();
+			}
+		}
+		for(int i=0;i<tempZweitstimmen.length;i++){
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i],this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei(),this));
+		}
+		
+		return zweitstimmen;
+	}
+
+	@Override
+	public int getWahlberechtigte() {
+		// TODO Auto-generated method stub
+		int wahlberechtigte = 0;
+		for(int i=0;i<this.bundeslaender.size();i++){
+			wahlberechtigte+=bundeslaender.get(i).getWahlberechtigte();
+		}
+		return wahlberechtigte;
+	}
+
+	@Override
+	public void setWahlberechtigte(int wahlberechtigte) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Klasse die die Bundesländer repräsentiert.
@@ -29,9 +30,8 @@ public class Bundesland extends Gebiet implements Cloneable {
 	 * @param wahlberechtigte
 	 * @param einwohnerzahl
 	 */
-	public Bundesland(String name, int wahlberechtigte, int einwohnerzahl) {
+	public Bundesland(String name,int einwohnerzahl) {
 		this.setName(name);
-		this.setWahlberechtigte(wahlberechtigte);
 		this.setEinwohnerzahl(einwohnerzahl);
 	}
 	
@@ -135,6 +135,58 @@ public class Bundesland extends Gebiet implements Cloneable {
 		      throw new IllegalArgumentException("Wahlkreis ist leer!");
 		}
 		this.wahlkreise.add(wahlkreis);
+	}
+
+	@Override
+	public void setErststimmen(LinkedList<Erststimme> erststimmen) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Erststimme> getErststimmen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Zweitstimme> getZweitstimmen() {
+		// TODO Auto-generated method stub
+		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
+		int[] tempZweitstimmen = new int[this.wahlkreise.get(0).getZweitstimmen().size()];
+		for(int i=0;i<this.wahlkreise.size();i++){
+			List<Zweitstimme> wahlkreisZweitstimme = wahlkreise.get(i).getZweitstimmen();
+			for(int j=0;j<wahlkreisZweitstimme.size();j++){
+				tempZweitstimmen[j]+=wahlkreisZweitstimme.get(j).getAnzahl();
+			}
+		}
+		for(int i=0;i<tempZweitstimmen.length;i++){
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i],this.wahlkreise.get(0).getZweitstimmen().get(i).getPartei(),this));
+		}
+		
+		return zweitstimmen;
+	}
+
+	@Override
+	public int getWahlberechtigte() {
+		// TODO Auto-generated method stub
+		int wahlberechtigte = 0;
+		for(int i=0;i<this.wahlkreise.size();i++){
+			wahlberechtigte+=wahlkreise.get(i).getWahlberechtigte();
+		}
+		return wahlberechtigte;
+	}
+
+	@Override
+	public void setWahlberechtigte(int wahlberechtigte) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

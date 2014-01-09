@@ -7,6 +7,8 @@ import java.util.LinkedList;
  * der Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet
  */
 public class Wahlkreis extends Gebiet{
+	/** Die Anzahl der Wahlberechtigten */
+	private int wahlberechtigte;
 	
 	/** Kandidat mit den meisten Erststimmen */
 	private Kandidat wahlkreisSieger;
@@ -14,6 +16,8 @@ public class Wahlkreis extends Gebiet{
 	/** Erststimmen-Objekt */
 	private LinkedList<Erststimme> erststimmen;
 	
+	/** Zweitstimmen-Objekt */
+	private LinkedList<Zweitstimme> zweitstimmen;
 	
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
@@ -64,6 +68,15 @@ public class Wahlkreis extends Gebiet{
 	public LinkedList<Erststimme> getErststimmen() {
 		return erststimmen;
 	}
+	
+	
+	/**
+	 * Gibt das Zweitstimme-Objekt zurück
+	 * @return alle Zweitstimmen des Wahlkreises
+	 */
+	public LinkedList<Zweitstimme> getZweitstimmen() {
+		return zweitstimmen;
+	}
 
 	/**
 	 * Setzt das Erstimme-Objekt
@@ -75,5 +88,22 @@ public class Wahlkreis extends Gebiet{
 		      throw new IllegalArgumentException("Erststimme ist leer!");
 		}
 		this.erststimmen = erststimmen;
+	}
+	
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
+		this.zweitstimmen = zweitstimmen;
+	}
+
+	@Override
+	public int getWahlberechtigte() {
+		// TODO Auto-generated method stub
+		return this.wahlberechtigte;
+	}
+	
+	public void setWahlberechtigte(int wahlberechtigte) {
+		if (wahlberechtigte < 0) {
+		      throw new IllegalArgumentException("Anzahl der Wahlberechtige ist negativ!");
+		}
+		this.wahlberechtigte = wahlberechtigte;
 	}
 }

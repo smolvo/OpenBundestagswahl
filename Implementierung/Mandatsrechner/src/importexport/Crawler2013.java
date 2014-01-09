@@ -230,12 +230,37 @@ public class Crawler2013 extends Crawler {
 					unrelevanteNr++;
 				}
 				
-				bf.write(relevanteNr+";"+bundeslaender.get(i).getName()+";99;"+bundeslaender.get(i).getWahlberechtigte()+";\n\n");
+				bf.write(relevanteNr+";"+bundeslaender.get(i).getName()+";99;"+bundeslaender.get(i).getWahlberechtigte()+";;;;");
+				List<Zweitstimme> zweitstimmen = bundeslaender.get(i).getZweitstimmen();
+				for(int k=0;k<3;k++){
+					bf.write(";;;;");
+				}
+				for(int k=0;k<zweitstimmen.size();k++){
+					String field = zweitstimmen.get(k).getAnzahl()+"";
+					if(field.equals("0")){
+						field="";
+					}
+					bf.write(";;"+field+";;");
+				}
+				
+				
+				bf.write("\n\n");
 				relevanteNr++;
 				
 			}
 			
-			bf.write("99;\"Bundesgebiet\";;");
+			bf.write("99;\"Bundesgebiet\";;"+bw.getDeutschland().getWahlberechtigte()+";;;;");
+			List<Zweitstimme> zweitstimmen = bw.getDeutschland().getZweitstimmen();
+			for(int k=0;k<3;k++){
+				bf.write(";;;;");
+			}
+			for(int k=0;k<zweitstimmen.size();k++){
+				String field = zweitstimmen.get(k).getAnzahl()+"";
+				if(field.equals("0")){
+					field="";
+				}
+				bf.write(";;"+field+";;");
+			}
 			
 			bf.flush();
 			f.close();
@@ -298,7 +323,7 @@ public class Crawler2013 extends Crawler {
 			//System.out.println(rows.get(i)[2]);
 			if(rows.get(i)[2].equals(nrDeutschland+"")){
 				// TODO: Einwohnerzahl (letzter Parameter)
-				Bundesland b = new Bundesland(rows.get(i)[1],values.get(i)[0][0],0);
+				Bundesland b = new Bundesland(rows.get(i)[1],0);
 				//System.out.println(rows.get(i)[1]);
 				tempNummer = rows.get(i)[0];
 				
