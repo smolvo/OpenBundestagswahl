@@ -75,12 +75,6 @@ public class Deutschland extends Gebiet implements Cloneable {
 	}
 
 	@Override
-	public void setErststimmen(LinkedList<Erststimme> erststimmen) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
 		// TODO Auto-generated method stub
 		

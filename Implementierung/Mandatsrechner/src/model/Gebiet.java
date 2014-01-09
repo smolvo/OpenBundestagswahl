@@ -44,9 +44,7 @@ public abstract class Gebiet {
 	 */
 	abstract public void setWahlberechtigte(int wahlberechtigte);
 
-	
-	abstract public void setErststimmen(LinkedList<Erststimme> erststimmen);
-	
+		
 	abstract public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen);
 	
 	/**
