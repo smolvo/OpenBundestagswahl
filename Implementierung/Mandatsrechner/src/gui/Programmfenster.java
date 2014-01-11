@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -43,7 +44,9 @@ public class Programmfenster extends JFrame{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-				
+		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png").getImage();
+		setIconImage(icon);
+	
 		//Menü- Leiste erstellen
 		menu = new Menu(this);
 		setJMenuBar(menu);

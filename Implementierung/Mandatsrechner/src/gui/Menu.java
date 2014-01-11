@@ -168,6 +168,8 @@ public class Menu extends JMenuBar {
 				//TODO Handbuch
 			 } else if (e.getSource() == menu.about) {
 				new AboutDialog();
+			 } else if (e.getSource() == menu.einstellungen) {
+				new EinstellungenDialog();
 			 }
 			 
 		  }
