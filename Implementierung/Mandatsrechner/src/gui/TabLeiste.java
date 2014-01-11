@@ -99,18 +99,18 @@ public class TabLeiste extends JTabbedPane {
 		
 		JLabel lblTitle = new JLabel(wahlName);
 
-		JButton schlieﬂen = new JButton();
-		schlieﬂen.setOpaque(false);
+		JButton schliessen = new JButton();
+		schliessen.setOpaque(false);
 
-		schlieﬂen.setIcon(new ImageIcon(
+		schliessen.setIcon(new ImageIcon(
 				"src/gui/resources/images/tabSchlieﬂen.png"));
 
-		schlieﬂen.setBorder(null);
+		schliessen.setBorder(null);
 
-		schlieﬂen.setFocusable(false);
+		schliessen.setFocusable(false);
 
 		tab.add(lblTitle);
-		tab.add(schlieﬂen);
+		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
 
 
@@ -122,7 +122,7 @@ public class TabLeiste extends JTabbedPane {
 			}
 		};
 
-		schlieﬂen.addActionListener(listener);
+		schliessen.addActionListener(listener);
 		setSelectedComponent(c);
 	
 	}

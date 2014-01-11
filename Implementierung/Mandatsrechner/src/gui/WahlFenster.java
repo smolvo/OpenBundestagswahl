@@ -16,6 +16,9 @@ public class WahlFenster extends JPanel{
 	
 	private Bundestagswahl btw;
 
+	
+	//btw übergeben 
+	//anpassen
 	public WahlFenster(String name) {
 		super();
 		this.name = name;
