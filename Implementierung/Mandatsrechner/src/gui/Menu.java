@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -97,6 +98,8 @@ public class Menu extends JMenuBar {
 		hilfe.add(handbuch);
 		hilfe.add(about);
 		
+		rueckgaengig.setEnabled(false);
+		wiederherstellen.setEnabled(false);
 		
 		
 		this.add(datei);
@@ -139,13 +142,24 @@ public class Menu extends JMenuBar {
 			 } else if (e.getSource() == menu.speichern) {
 				 new ExportDialog(pf.getTabs());
 			 } else if (e.getSource() == menu.beenden) {
-				 System.exit(0);
-			 } else if (e.getSource() == menu.rueckgaengig) {
+					
+					int eingabe = JOptionPane.showConfirmDialog(null,
+	                        "Soll Programm wirklich beendet werden?",
+	                        "Einverständnis",
+	                        JOptionPane.YES_NO_OPTION);
+					
+					if(eingabe == 0) {
+						 System.exit(0);
+					}
+					
+				}
+				
+			  else if (e.getSource() == menu.rueckgaengig) {
 				//TODO rückgängig
 			 } else if (e.getSource() == menu.wiederherstellen) {
 				//TODO wiederherstellen
 			 } else if (e.getSource() == menu.vergleichen) {
-				//TODO vergleichen
+				new VergleichsDialog();
 			 } else if (e.getSource() == menu.negativesStimmgewicht) {
 				//TODO negatives Stimmgewicht simulieren
 			 } else if (e.getSource() == menu.zufaelligeWahl) {
@@ -153,7 +167,7 @@ public class Menu extends JMenuBar {
 			 } else if (e.getSource() == menu.handbuch) {
 				//TODO Handbuch
 			 } else if (e.getSource() == menu.about) {
-				//TODO About
+				new AboutDialog();
 			 }
 			 
 		  }

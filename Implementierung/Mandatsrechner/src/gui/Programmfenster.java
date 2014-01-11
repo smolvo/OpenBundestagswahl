@@ -31,7 +31,7 @@ public class Programmfenster extends JFrame{
 	private Menu menu = null;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 	private TabLeiste tabs;
-
+	
 	public static void main(String[] args) {
 		new Programmfenster();
 	}

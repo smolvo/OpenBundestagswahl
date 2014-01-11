@@ -5,15 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+/**
+ * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters
+ * Jeder Tab steht für eine im Programm geöffnete Bundestagswahl
+ *
+ * @author Manuel
+ *
+ */
 public class TabLeiste extends JTabbedPane {
 
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
@@ -115,11 +121,25 @@ public class TabLeiste extends JTabbedPane {
 
 
 		//Erstelle anonymen ActionListener für den "x" Knopf
+		
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				remove(c);
-				new ExportDialog(TabLeiste.this);
+				
+				/*Wird versucht, einen Tab zu schließen, wird zuerst gefragt, ob dieser Tab gespeichert
+				werden soll */
+				int eingabe = JOptionPane.showConfirmDialog(null,
+                        "Soll Datei gespeichert werden?",
+                        "Einverständnis",
+                        JOptionPane.YES_NO_CANCEL_OPTION);
+				
+				if(eingabe == 0) {
+					new ExportDialog(TabLeiste.this);
+				} else
+					if ( eingabe == 1) {
+						remove(c);
+					}
+				
 			}
 		};
 
