@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
  */
 public class Menu extends JMenuBar {
 
+	private Programmfenster pf;
 	private JMenu datei;
 	private JMenu bearbeiten;
 	private JMenu extras;
@@ -37,7 +38,8 @@ public class Menu extends JMenuBar {
 	/*
 	 * Der Konstruktor der Menü- Leiste
 	 */
-	public Menu() {
+	public Menu(Programmfenster pf) {
+		this.pf = pf;
 		datei = new JMenu("Datei");
 		bearbeiten = new JMenu("Bearbeiten");
 		extras = new JMenu("Extras");
@@ -133,9 +135,9 @@ public class Menu extends JMenuBar {
 		public void actionPerformed(ActionEvent e)
 		  {
 			 if (e.getSource() == menu.importieren) {
-				new ImportDialog();
+				new ImportDialog(pf.getTabs());
 			 } else if (e.getSource() == menu.speichern) {
-				 new ExportDialog();
+				 new ExportDialog(pf.getTabs());
 			 } else if (e.getSource() == menu.beenden) {
 				 System.exit(0);
 			 } else if (e.getSource() == menu.rueckgaengig) {

@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -9,9 +10,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ImportDialog extends JDialog{
 
 	JFileChooser dateiAuswahl = new JFileChooser();
+	TabLeiste tabs;
 	
-	public ImportDialog() {
+	public ImportDialog(TabLeiste tabs) {
 		
+		this.tabs = tabs;
 		//allgemeine Anpassungen des Fensters
 		setTitle("Importieren");
 		setSize(400,400);
@@ -28,9 +31,10 @@ public class ImportDialog extends JDialog{
 		
         if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
         {
-             //TODO Weiterleitung an Steuerung
-            System.out.println("Die zu öffnende Datei ist: " +
-                  dateiAuswahl.getSelectedFile().getName());
+             //TODO Weiterleitung an Steuerung+
+        	String tabName =  dateiAuswahl.getSelectedFile().getName();
+            System.out.println("Die zu öffnende Datei ist: " + tabName);
+            tabs.neuerTab(new JPanel(), tabName);
         } else {
         	System.out.println("keine datei ausgewählt");
         }

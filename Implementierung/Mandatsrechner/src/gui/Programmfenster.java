@@ -45,7 +45,7 @@ public class Programmfenster extends JFrame{
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				
 		//Menü- Leiste erstellen
-		menu = new Menu();
+		menu = new Menu(this);
 		setJMenuBar(menu);
 		
 		//testwahl	

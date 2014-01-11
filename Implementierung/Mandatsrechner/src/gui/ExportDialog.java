@@ -10,7 +10,7 @@ public class ExportDialog extends JDialog{
 
 	JFileChooser dateiAuswahl = new JFileChooser();
 	
-	public ExportDialog() {
+	public ExportDialog(TabLeiste tabs) {
 		
 		//allgemeine Anpassungen des Fensters
 		setTitle("Exportieren");
