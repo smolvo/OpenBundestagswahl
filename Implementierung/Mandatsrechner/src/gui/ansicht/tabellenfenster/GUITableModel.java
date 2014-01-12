@@ -1,17 +1,27 @@
-package gui.ansicht;
+package gui.ansicht.tabellenfenster;
 
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Diese Klasse erweitert die AbstractTableModel Klasse und
+ * soll die Tabelle im Tabellenfenster darstellen.
+ *
+ */
 public class GUITableModel extends AbstractTableModel {
 
+	/** repräsentiert die Spaltennamen */
 	private String[] spalten;
 	
+	/** hält alle relevanten Daten */
 	private BundDaten daten;
 	
-	public GUITableModel() {
+	/**
+	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
+	 */
+	public GUITableModel(BundDaten daten) {
 		this.spalten = new String[] {"Partei", "Zweitstimmen", "%", "Sitze", 
 				"Direktmandate", "Überhangsmandate", "Ausgleichsmandate"};
-		this.daten = new BundDaten();
+		this.daten = daten;
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import gui.ansicht.tabellenfenster.TabellenFenster;
 import model.Bundestagswahl;
 import model.Gebiet;
 

@@ -1,4 +1,4 @@
-package gui.ansicht;
+package gui.ansicht.tabellenfenster;
 
 import java.util.LinkedList;
 
@@ -6,23 +6,28 @@ import model.Zweitstimme;
 
 /**
  * Diese Klasse repräsentiert die Daten der Bundesansichtstabelle.
- * @author Batman
  *
  */
 public class BundDaten {
 	
 	/** Liste der Parteien */
 	private LinkedList<String> parteien;
+	
 	/** Liste der Zweitstimmen */
 	private LinkedList<Zweitstimme> stimmen;
+	
 	/** Liste der prozentualen Zweitstimmen */
 	private LinkedList<String> prozent;
+	
 	/** Liste der Sitze */
 	private LinkedList<String> sitze;
+	
 	/** Liste der Direktmandate */
 	private LinkedList<String> direktmandate;
+	
 	/** Liste der Überhangsmandate */
 	private LinkedList<String> ueberhangsmandate;
+	
 	/** Liste der Ausgleichsmandate */
 	private LinkedList<String> ausgleichsmandate;
 	
