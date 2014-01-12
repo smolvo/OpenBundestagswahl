@@ -1,17 +1,16 @@
-package gui;
+package gui.ansicht;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import model.Bundesland;
-import model.Bundestagswahl;
 import model.Deutschland;
 import model.Erststimme;
 import model.Partei;
 import model.Kandidat;
-import model.Gebiet;
 import model.Wahlkreis;
 import model.Zweitstimme;
 
@@ -37,6 +36,11 @@ public class TabellenFenster extends JScrollPane {
 				};
 		String[][] daten = new String[land.getZweitstimmen().size()][7];
 		
+		int gesamt = 0;
+		// Prozentuale Berechnung
+		for (Zweitstimme zw : land.getZweitstimmen()) {
+			gesamt += zw.getAnzahl();
+		}
 		int zaehler = 0;
 		// pro Zeile (Partei)
 		for(Zweitstimme zw : land.getZweitstimmen()) {
@@ -45,6 +49,8 @@ public class TabellenFenster extends JScrollPane {
 			Partei partei = zw.getPartei();
 			daten[zaehler][0] = partei.getName();
 			daten[zaehler][1] = String.valueOf(zw.getAnzahl());
+			daten[zaehler][2] = String.valueOf(zw.getAnzahl() / gesamt);
+			
 			
 			// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
 			int sitze = 0;

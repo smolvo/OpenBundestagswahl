@@ -1,4 +1,4 @@
-package gui;
+package gui.ansicht;
 
 import model.Bundesland;
 import model.Bundestagswahl;

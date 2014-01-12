@@ -1,5 +1,9 @@
 package gui;
 
+import gui.ansicht.Bundesansicht;
+import gui.ansicht.Landesansicht;
+import gui.ansicht.Wahlkreisansicht;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
