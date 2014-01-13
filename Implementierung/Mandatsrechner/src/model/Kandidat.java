@@ -6,6 +6,12 @@ package model;
  */
 public class Kandidat {
 	
+	private String name;
+	
+	private String vorname;
+	
+	private int geburtsjahr;
+	
 	/** Das Mandat des Kandidaten */
 	private Mandat mandat;
 
@@ -21,7 +27,8 @@ public class Kandidat {
 	 * @param partei
 	 * @param erststimme
 	 */
-	public Kandidat(Mandat mandat, Partei partei, Erststimme erststimme){
+	public Kandidat(String name, String vorname, int geburtsjahr, Mandat mandat, Partei partei, Erststimme erststimme){
+		this.setInfo(name,vorname,geburtsjahr);
 		this.setMandat(mandat);
 		this.setErststimme(erststimme);
 		this.setPartei(partei);
@@ -33,6 +40,15 @@ public class Kandidat {
 	 */
 	public Mandat getMandat() {
 		return mandat;
+	}
+	
+	public void setInfo(String name, String vorname, int geburtsjahr){
+		if(vorname.equals(null)|| name.equals(null) || geburtsjahr==0){
+			throw new IllegalArgumentException("Mandat ist leer!");
+		}
+		this.name = name;
+		this.vorname = vorname;
+		this.geburtsjahr = geburtsjahr;
 	}
 	
 	/**
