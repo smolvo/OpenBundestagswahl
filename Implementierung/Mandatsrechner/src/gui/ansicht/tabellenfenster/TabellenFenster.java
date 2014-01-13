@@ -38,7 +38,7 @@ public class TabellenFenster extends JScrollPane {
 		}
 		for (Zweitstimme zw : land.getZweitstimmen()) {
 			GUIPartei gp = parteiErstellen(zw);
-			double prozentualeZweit = Math.rint(((zw.getAnzahl()/gesamt) * 100) / 100);
+			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamt) * 1000) / 10);
 			gp.setProzentualeZweit(prozentualeZweit);
 			daten.addParteien(gp.getName(), zw, Double.toString(prozentualeZweit), 
 					Integer.toString(gp.getSitze()), Integer.toString(gp.getDirektmandate()), 

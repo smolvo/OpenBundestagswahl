@@ -10,7 +10,8 @@ import javax.swing.table.AbstractTableModel;
 public class GUITableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
-	private String[] spalten;
+	private String[] columns = new String[] {"Partei", "Zweitstimmen", "%", "Sitze", 
+			"Direktmandate", "Überhangsmandate", "Ausgleichsmandate"};
 	
 	/** hält alle relevanten Daten */
 	private BundDaten daten;
@@ -19,8 +20,6 @@ public class GUITableModel extends AbstractTableModel {
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
 	 */
 	public GUITableModel(BundDaten daten) {
-		this.spalten = new String[] {"Partei", "Zweitstimmen", "%", "Sitze", 
-				"Direktmandate", "Überhangsmandate", "Ausgleichsmandate"};
 		this.daten = daten;
 	}
 	
@@ -31,7 +30,7 @@ public class GUITableModel extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return this.spalten.length;
+		return 7;
 	}
 
 	@Override
@@ -62,6 +61,11 @@ public class GUITableModel extends AbstractTableModel {
 		} else {
 			return true;
 		}
+	}
+
+	@Override
+	public String getColumnName(int columnIndex) {
+		return columns[columnIndex];
 	}
 	
 	@Override
