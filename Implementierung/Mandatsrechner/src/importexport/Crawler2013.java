@@ -26,7 +26,7 @@ public class Crawler2013 extends Crawler {
 	 */
 	@Override
 	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) {
-		throw new UnsupportedOperationException("Noch nicht implementiert...");
+		//throw new UnsupportedOperationException("Noch nicht implementiert...");
 		// TODO Auto-generated method stub
 		Bundestagswahl imported = null;
 		boolean error = false;
@@ -52,7 +52,7 @@ public class Crawler2013 extends Crawler {
 		//int[][][] value;
 		List<int[][]> values = new ArrayList<int[][]>();
 		
-		List<String[]> kandidaten = new ArrayList<String[]>();
+		List<String[]> bewerber = new ArrayList<String[]>();
 		
 		
 		String bwName = "";
@@ -165,7 +165,7 @@ public class Crawler2013 extends Crawler {
 					}else{
 						// Wenn ein Kandidat in der Landesliste ist.
 						//if(!parts[6].equals("")){
-							kandidaten.add(parts.clone());
+							bewerber.add(parts.clone());
 						//}
 					}
 				}
@@ -199,7 +199,7 @@ public class Crawler2013 extends Crawler {
 				System.out.println("\n");
 			}*/
 			
-			imported = this.erstelleBundestagwahl(bwName, columns, rows, values,kandidaten);
+			imported = this.erstelleBundestagwahl(bwName, columns, rows, values, bewerber);
 		}else{
 			System.err.println("Error.");
 		}
@@ -208,7 +208,7 @@ public class Crawler2013 extends Crawler {
 	}
 
 
-	private Bundestagswahl erstelleBundestagwahl(String name, List<String> columns, List<String[]> rows, List<int[][]> values, List<String[]> kandidaten){
+	private Bundestagswahl erstelleBundestagwahl(String name, List<String> columns, List<String[]> rows, List<int[][]> values, List<String[]> bewerber){
 		Bundestagswahl created = null;
 		
 		String tempNummer = "0";
@@ -234,12 +234,20 @@ public class Crawler2013 extends Crawler {
 		}
 		
 		// Erzeuge Kandidaten
-		/*List<Kandidat> kandidaten = new ArrayList<Kandidat>();
-		for(int i=0;i<kandidaten.size();i++){
-			if(!kandidaten.get(i)[4].equals("")){
-				erststimmenKandidaten
+		List<Kandidat> kandidaten = new ArrayList<Kandidat>();
+		List<String[]> kandidatenInfo = new ArrayList<String[]>();
+		
+		for(int i=0;i<bewerber.size();i++){
+			String[] iterative = bewerber.get(i);
+			for(int j=0;j<parteien.size();j++){
+				if(iterative[3].equals(parteien.get(j).getName())){
+					kandidaten.add(new Kandidat(iterative[0],iterative[1],Integer.parseInt(iterative[2]),Mandat.KEINMANDAT,parteien.get(j)));
+					kandidatenInfo.add(new String[]{iterative[4],iterative[6]});
+					break;
+				}
+				
 			}
-		}*/
+		}
 		
 		
 		// Erzeuge Bundeslaender. TODO: Landesliste.
@@ -255,22 +263,24 @@ public class Crawler2013 extends Crawler {
 				for(int j=0;j<rows.size() && !error;j++){
 					if(rows.get(j)[2].equals(tempNummer)){
 						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
-						List<Erststimme> erststimme = new ArrayList<Erststimme>();
+						LinkedList<Erststimme> erststimme = new ArrayList<Erststimme>();
 						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
 						for(int k=0;k<parteien.size();k++){
 							Kandidat kandidat = null;
 							for(int l=0; l<kandidaten.size();l++){
-								String[] iterative = kandidaten.get(l);
-								if(!iterative[4].equals("") && false){
-									//TODO
-									kandidat = new Kandidat(iterative[0],iterative[1],Integer.parseInt(iterative[2]),Mandat.KEINMANDAT,null);
+								
+								if(!kandidatenInfo.get(l)[0].equals("") && kandidatenInfo.get(l)[0].equals(rows.get(j)[0]) && kandidaten.get(l).getPartei()==parteien.get(k)){
+									kandidat = kandidaten.get(l);
 									break;
 								}
+							}
+							if(kandidat==null){
+								kandidat = new Kandidat("Unbekannt","Unbekannt",0,Mandat.KEINMANDAT,null);
 							}
 							erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,kandidat));
 							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1], w, parteien.get(k)));
 						}
-						//w.setErststimmen(erststimme);
+						w.setErststimmen(erststimme);
 						w.setZweitstimmen(zweitstimme);
 						
 						b.addWahlkreis(w);
