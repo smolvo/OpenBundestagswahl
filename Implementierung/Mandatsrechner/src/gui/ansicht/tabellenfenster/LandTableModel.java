@@ -4,22 +4,22 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und
- * soll die Tabelle im Tabellenfenster darstellen.
+ * soll die Tabelle im Tabellenfenster der Landesansicht darstellen.
  *
  */
-public class GUITableModel extends AbstractTableModel {
+public class LandTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Zweitstimmen", "%", "Sitze", 
-			"Direktmandate", "Überhangsmandate", "Ausgleichsmandate"};
+	private String[] columns = new String[] {"Partei", "Zweitstimmen", "%", 
+			"Direktmandate", "Überhangsmandate"};
 	
 	/** hält alle relevanten Daten */
-	private BundDaten daten;
+	private LandDaten daten;
 	
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
 	 */
-	public GUITableModel(BundDaten daten) {
+	public LandTableModel(LandDaten daten) {
 		this.daten = daten;
 	}
 	
@@ -30,7 +30,7 @@ public class GUITableModel extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 7;
+		return 5;
 	}
 
 	@Override
@@ -42,13 +42,9 @@ public class GUITableModel extends AbstractTableModel {
 		} else if (columnIndex == 2) {
 			return daten.getProzent(rowIndex);
 		} else if (columnIndex == 3) {
-			return daten.getSitze(rowIndex);
-		} else if (columnIndex == 4) {
 			return daten.getDirektmandate(rowIndex);
-		} else if (columnIndex == 5) {
+		} else if (columnIndex == 4) {
 			return daten.getUeberhangsmandate(rowIndex);
-		} else if (columnIndex == 6) {
-			return daten.getAusgleichsmandate(rowIndex);
 		} else {
 			return null;
 		}

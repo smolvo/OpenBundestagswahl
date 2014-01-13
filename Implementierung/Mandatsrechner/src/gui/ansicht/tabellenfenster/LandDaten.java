@@ -44,7 +44,7 @@ public class LandDaten {
 	 * @param direktmandat Anzahl Direktkandidaten
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 */
-	public void addParteien(String partei, Zweitstimme stimme, String prozent, String sitze, String direktmandat,
+	public void addPartei(String partei, Zweitstimme stimme, String prozent, String direktmandat,
 			String ueberhangsmandat) {
 		if (partei != null) {
 			this.parteien.add(partei);

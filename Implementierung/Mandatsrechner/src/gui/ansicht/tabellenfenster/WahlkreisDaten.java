@@ -49,7 +49,7 @@ public class WahlkreisDaten {
 	 * @param direktmandat Anzahl Direktkandidaten
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 */
-	public void addParteien(String partei, Zweitstimme zweitStimme, Erststimme erstStimme, 
+	public void addPartei(String partei, Zweitstimme zweitStimme, Erststimme erstStimme, 
 			String zweitProzent, String erstProzent, Boolean direktmandat) {
 		if (partei != null) {
 			this.parteien.add(partei);

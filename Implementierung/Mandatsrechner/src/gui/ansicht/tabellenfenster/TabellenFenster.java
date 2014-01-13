@@ -1,10 +1,7 @@
 package gui.ansicht.tabellenfenster;
 
+import gui.GUIKandidat;
 import gui.GUIPartei;
-
-import java.text.DecimalFormat;
-import java.util.LinkedList;
-import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,6 +13,7 @@ import model.Partei;
 import model.Kandidat;
 import model.Wahlkreis;
 import model.Zweitstimme;
+
 
 /**
  * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht.
@@ -40,12 +38,12 @@ public class TabellenFenster extends JScrollPane {
 			GUIPartei gp = parteiErstellen(zw);
 			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamt) * 1000) / 10);
 			gp.setProzentualeZweit(prozentualeZweit);
-			daten.addParteien(gp.getName(), zw, Double.toString(prozentualeZweit), 
+			daten.addPartei(gp.getName(), zw, Double.toString(prozentualeZweit), 
 					Integer.toString(gp.getSitze()), Integer.toString(gp.getDirektmandate()), 
 					Integer.toString(gp.getUeberhangsmandate()), Integer.toString(gp.getAusgleichsmandate()));
 		}
 		
-		GUITableModel tabelle = new GUITableModel(daten);
+		BundTableModel tabelle = new BundTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
@@ -56,7 +54,23 @@ public class TabellenFenster extends JScrollPane {
 	 * @param bl Bundesland-Objekt welches visualisiert werden soll
 	 */
 	public void tabellenFuellen(Bundesland bl) {
+		LandDaten daten = new LandDaten();
+		// Zweitstimmen Gesamtanzahl
+		int gesamt = 0;
+		for (Zweitstimme zw : bl.getZweitstimmen()) {
+			gesamt += zw.getAnzahl();
+		}
+		for (Zweitstimme zw : bl.getZweitstimmen()) {
+			GUIPartei gp = parteiErstellen(zw);
+			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamt) * 1000) / 10);
+			gp.setProzentualeZweit(prozentualeZweit);
+			daten.addPartei(gp.getName(), zw, Double.toString(prozentualeZweit), 
+					Integer.toString(gp.getDirektmandate()), Integer.toString(gp.getUeberhangsmandate()));
+		}
 		
+		LandTableModel tabelle = new LandTableModel(daten);
+		JTable jTabelle = new JTable(tabelle);
+		this.setViewportView(jTabelle);
 	}
 	
 	/**
@@ -65,7 +79,31 @@ public class TabellenFenster extends JScrollPane {
 	 * @param wk Wahlkreis-Objekt welcher visualisiert werden soll
 	 */
 	public void tabellenFuellen(Wahlkreis wk) {
+		WahlkreisDaten daten = new WahlkreisDaten();
+		int gesamtErst = 0;
+		for (Erststimme er : wk.getErststimmen()) {
+			gesamtErst += er.getAnzahl();
+		}
+		int gesamtZweit = 0;
+		for (Zweitstimme zw : wk.getZweitstimmen()) {
+			gesamtZweit += zw.getAnzahl();
+		}
 		
+		for (int i = 0; i < wk.getErststimmen().size(); i++) {
+			Erststimme er = wk.getErststimmen().get(i);
+			Zweitstimme zw = wk.getZweitstimmen().get(i);
+			GUIKandidat gk = kandidatErstellen(er);
+			double prozentualeErst = (Math.rint(((double) er.getAnzahl() / (double) gesamtErst) * 1000) / 10);
+			gk.setProzErst(prozentualeErst);
+			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamtZweit) * 1000) / 10);
+			gk.setProzZweit(prozentualeZweit);
+			daten.addPartei(gk.getName(), zw, er, Double.toString(prozentualeZweit), 
+					Double.toString(prozentualeErst), gk.isDirektman());
+		}
+
+		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten);
+		JTable jTabelle = new JTable(tabelle);
+		this.setViewportView(jTabelle);
 	}
 	
 	/**
@@ -102,5 +140,21 @@ public class TabellenFenster extends JScrollPane {
 		gp.setUeberhangsmandate(ueberMan);
 		gp.setAusgleichsmandate(ausglMan);
 		return gp;
+	}
+	
+	/**
+	 * Diese Methode erstellt aus einer Erststimme ein 
+	 * GUIKandidat-Objekt, welches alle Daten, die angezeigt
+	 * werden müssen beinhaltet.
+	 * @param erst Erststimme
+	 * @return den GUIKandidaten
+	 */
+	private GUIKandidat kandidatErstellen(Erststimme erst) {
+		Kandidat kandidat = erst.getKandidat();
+		GUIKandidat kan = new GUIKandidat(kandidat.getPartei().getName(), erst, -1.0, null, -1.0, false);
+		if (kandidat.getMandat().equals("Direktmadat")) {
+			kan.setDirektman(true);
+		}		
+		return kan;
 	}
 }

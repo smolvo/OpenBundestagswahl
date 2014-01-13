@@ -54,7 +54,7 @@ public class BundDaten {
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 * @param ausgleichsmandat Anzahl Ausgleichsmandate
 	 */
-	public void addParteien(String partei, Zweitstimme stimme, String prozent, String sitze, String direktmandat,
+	public void addPartei(String partei, Zweitstimme stimme, String prozent, String sitze, String direktmandat,
 			String ueberhangsmandat, String ausgleichsmandat) {
 		if (partei != null) {
 			this.parteien.add(partei);

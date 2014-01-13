@@ -4,10 +4,12 @@ package gui.ansicht.tabellenfenster;
 import importexport.ImportExportManager;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
+import model.Bundesland;
 import model.Bundestagswahl;
 import model.Partei;
 import model.Zweitstimme;
@@ -26,12 +28,18 @@ public class Test {
 		i.exportieren("files/Exported.csv",w);
 
 		JTabbedPane reiter = new JTabbedPane();
-		TabellenFenster tabelle = new TabellenFenster();
+		TabellenFenster tabelle1 = new TabellenFenster();
+		TabellenFenster tabelle2 = new TabellenFenster();
+		TabellenFenster tabelle3 = new TabellenFenster();
 		
-		tabelle.tabellenFuellen(w.getDeutschland());
+		tabelle1.tabellenFuellen(w.getDeutschland());
+		tabelle2.tabellenFuellen(w.getDeutschland().getBundeslaender().get(7));
+		//tabelle3.tabellenFuellen(w.getDeutschland().getBundeslaender().get(7).getWahlkreise().get(12));
+		
 		
 		frame.add(reiter);
-		reiter.add("Deutschland", tabelle);
+		reiter.add("Deutschland", tabelle1);
+		reiter.add("Baden-Württemberg", tabelle2);
 		
 		frame.setVisible(true);
 		
