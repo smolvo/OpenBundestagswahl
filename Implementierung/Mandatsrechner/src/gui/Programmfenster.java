@@ -1,9 +1,13 @@
 package gui;
 
+import importexport.Crawler2013;
+import importexport.ImportExportManager;
+
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import model.Bundestagswahl;
 
 /**
  * Die Klasse Programmfenster repräsentiert die allgemeine Ansicht des Programms
@@ -42,7 +48,7 @@ public class Programmfenster extends JFrame{
 	    setTitle("Mandatsverteilung im Deutschen Bundestag");
 		setSize(1024,768);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png").getImage();
 		setIconImage(icon);
@@ -52,7 +58,14 @@ public class Programmfenster extends JFrame{
 		setJMenuBar(menu);
 		
 		//testwahl	
-		wahlen.add(new WahlFenster("Wahl 2013"));
+		ImportExportManager i = new ImportExportManager();
+		File csvDatei = new File("files/Ergebnis2013.csv");
+		Bundestagswahl w = i.importieren(csvDatei);
+
+		
+		wahlen.add(new WahlFenster(w));
+		
+		
 		//Tab- Leiste erstellen	
 		tabs = new TabLeiste(this);
 		this.add(tabs);
