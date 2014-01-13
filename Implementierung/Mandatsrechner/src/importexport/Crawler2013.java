@@ -25,7 +25,8 @@ public class Crawler2013 extends Crawler {
 	 * tempInt.clone does not work. Deep copy?
 	 */
 	@Override
-	public Bundestagswahl erstelleBundestagswahl(File csvDatei) {
+	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) {
+		throw new UnsupportedOperationException("Noch nicht implementiert...");
 		// TODO Auto-generated method stub
 		Bundestagswahl imported = null;
 		boolean error = false;
@@ -51,11 +52,13 @@ public class Crawler2013 extends Crawler {
 		//int[][][] value;
 		List<int[][]> values = new ArrayList<int[][]>();
 		
+		List<String[]> kandidaten = new ArrayList<String[]>();
+		
 		
 		String bwName = "";
 		BufferedReader read;
 		try{
-			read = new BufferedReader(new FileReader(csvDatei));
+			read = new BufferedReader(new FileReader(csvDateien[0]));
 			int lineNumber = -1;
 			String line = null;
 			
@@ -142,14 +145,33 @@ public class Crawler2013 extends Crawler {
 							values.add(this.deepCopy(tempInt));
 							
 						}
-						//System.err.println("------>"+Arrays.toString(values.get(lineNumber-5)[0]));
-						/*if(lineNumber>5){
-							System.exit(0);
-						}*/
 						
 				}
 			}
 			read.close();
+			
+			
+			
+			if(csvDateien.length>1){
+				
+				read = new BufferedReader(new FileReader(csvDateien[1]));
+				lineNumber = -1;
+				line = null;
+				while((line = read.readLine()) != null){
+					++lineNumber;
+					parts = line.split(Pattern.quote(";"));
+					if(lineNumber==0){
+						continue;
+					}else{
+						// Wenn ein Kandidat in der Landesliste ist.
+						//if(!parts[6].equals("")){
+							kandidaten.add(parts.clone());
+						//}
+					}
+				}
+				
+				
+			}
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 			error = true;
@@ -177,7 +199,7 @@ public class Crawler2013 extends Crawler {
 				System.out.println("\n");
 			}*/
 			
-			imported = this.erstelleBundestagwahl(bwName, columns, rows, values);
+			imported = this.erstelleBundestagwahl(bwName, columns, rows, values,kandidaten);
 		}else{
 			System.err.println("Error.");
 		}
@@ -185,6 +207,133 @@ public class Crawler2013 extends Crawler {
 		return imported;
 	}
 
+
+	private Bundestagswahl erstelleBundestagwahl(String name, List<String> columns, List<String[]> rows, List<int[][]> values, List<String[]> kandidaten){
+		Bundestagswahl created = null;
+		
+		String tempNummer = "0";
+		boolean error = false;
+		
+		// Erzeugen der Parteien:
+		//int parteiOffset = 4;
+		LinkedList<Partei> parteien = new LinkedList<Partei>(); //new Partei[columns.size()-parteiOffset];
+		for(int i=parteiOffset; i<columns.size();i++){
+			// TODO: Kuerzel und Farbe?
+			Partei p = new Partei(columns.get(i),columns.get(i),Color.BLACK);
+			parteien.add(p);
+		}
+		
+		Deutschland deutschland = null;
+		String nrDeutschland = "0";
+		for(int i=rows.size()-1; i>=0; i--){
+			if(rows.get(i)[2].equals("")){
+				deutschland = new Deutschland(rows.get(i)[1],values.get(i)[0][0]);
+				nrDeutschland = (rows.get(i)[0]);
+				
+			}
+		}
+		
+		// Erzeuge Kandidaten
+		/*List<Kandidat> kandidaten = new ArrayList<Kandidat>();
+		for(int i=0;i<kandidaten.size();i++){
+			if(!kandidaten.get(i)[4].equals("")){
+				erststimmenKandidaten
+			}
+		}*/
+		
+		
+		// Erzeuge Bundeslaender. TODO: Landesliste.
+		for(int i=0;i<rows.size() && !error ;i++){
+			//System.out.println(rows.get(i)[2]);
+			if(rows.get(i)[2].equals(nrDeutschland+"")){
+				// TODO: Einwohnerzahl (letzter Parameter)
+				Bundesland b = new Bundesland(rows.get(i)[1],0);
+				//System.out.println(rows.get(i)[1]);
+				tempNummer = rows.get(i)[0];
+				
+				// Erzeuge Wahlkreise. TODO: Erststimme & Zweitstimme.
+				for(int j=0;j<rows.size() && !error;j++){
+					if(rows.get(j)[2].equals(tempNummer)){
+						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
+						List<Erststimme> erststimme = new ArrayList<Erststimme>();
+						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
+						for(int k=0;k<parteien.size();k++){
+							Kandidat kandidat = null;
+							for(int l=0; l<kandidaten.size();l++){
+								String[] iterative = kandidaten.get(l);
+								if(!iterative[4].equals("") && false){
+									//TODO
+									kandidat = new Kandidat(iterative[0],iterative[1],Integer.parseInt(iterative[2]),Mandat.KEINMANDAT,null);
+									break;
+								}
+							}
+							erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,kandidat));
+							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1], w, parteien.get(k)));
+						}
+						//w.setErststimmen(erststimme);
+						w.setZweitstimmen(zweitstimme);
+						
+						b.addWahlkreis(w);
+					}
+				}
+				deutschland.addBundesland(b);
+			}
+		}
+		
+		if(kandidaten.size()>0){
+			
+			// Schritt 1: Erzeuge Kandidaten und teile ihnen eine Partei zu.
+			/*List<Kandidat> kandidaten = new ArrayList<Kandidat>();
+			for(int i=0;i<landesliste.size();i++){
+				String[] felder = landesliste.get(i);
+				for(int j=0; j<parteien.size();j++){
+					if(parteien.get(j).getKuerzel()==felder[3]){
+						kandidaten.add(new Kandidat(felder[0],felder[1],Integer.parseInt(felder[2]),Mandat.KEINMANDAT,parteien.get(j)));
+						break;
+					}
+				}
+			}*/
+			
+			// Schritt 2: Erzeuge eigentliche Landesliste für jede Partei.
+			LinkedList<Bundesland> bundeslaender = deutschland.getBundeslaender();
+			
+			for(int i=0;i<bundeslaender.size();i++){
+				for(int j=0;j<parteien.size();j++){
+					Landesliste l = new Landesliste(parteien.get(j),bundeslaender.get(i));
+					
+					for(int k=0;k<kandidaten.size();k++){
+						String[] felder = kandidaten.get(i);
+						if(parteien.get(j).getKuerzel() == felder[3]){
+							Kandidat kandidat = (new Kandidat(felder[0],felder[1],Integer.parseInt(felder[2]),Mandat.KEINMANDAT,parteien.get(j)));
+							l.addKandidat(Integer.parseInt(felder[6])-1, kandidat);
+						}
+					}
+					bundeslaender.get(i).addLandesliste(l);
+					parteien.get(j).addLandesliste(l);
+				}
+			}
+		}
+		
+		/*System.out.println(deutschland.getName()+":");
+		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
+		for(int i=0; i<2;i++){
+			System.out.println("-> "+bundeslaender.get(i).getName());
+			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
+			for(int j=0;j<wahlkreise.size();j++){
+				System.out.println("--> "+wahlkreise.get(j).getName());
+				List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
+				for(int k = 0; k<zweitstimmen.size();k++){
+					System.out.println("--->"+zweitstimmen.get(k).getPartei().getName()+" - Zweitstimmen: "+zweitstimmen.get(k).getAnzahl());
+				}
+			}
+		}*/
+		
+		if(!error){
+			created = new Bundestagswahl(name,deutschland,parteien);
+		}
+		return created;
+	}
+	
 	@Override
 	public boolean exportieren(String pfad, Bundestagswahl bw) {
 		// TODO Auto-generated method stub
@@ -293,78 +442,62 @@ public class Crawler2013 extends Crawler {
 		return copy;
 	}
 	
-	private Bundestagswahl erstelleBundestagwahl(String name, List<String> columns, List<String[]> rows, List<int[][]> values){
-		Bundestagswahl created = null;
-		
-		String tempNummer = "0";
-		boolean error = false;
-		
-		// Erzeugen der Parteien:
-		//int parteiOffset = 4;
-		LinkedList<Partei> parteien = new LinkedList<Partei>(); //new Partei[columns.size()-parteiOffset];
-		for(int i=parteiOffset; i<columns.size();i++){
-			// TODO: Kuerzel und Farbe?
-			Partei p = new Partei(columns.get(i),"Test",Color.BLACK);
-			parteien.add(p);
+	private String getBundeslandName(String kuerzel){
+		String name = "";
+		switch(kuerzel){
+			case "BW":
+				name = "Baden-Württemberg";
+			break;
+			case "BY":
+				name = "Bayern";
+			break;
+			case "BE":
+				name = "Berlin";
+			break;
+			case "BB":
+				name = "Brandenburg";
+			break;
+			case "HB":
+				name = "Bremen";
+			break;
+			case "HH":
+				name = "Hamburg";
+			break;
+			case "HE":
+				name = "Hessen";
+			break;
+			case "MV":
+				name = "Mecklenburg-Vorpommern";
+			break;
+			case "NI":
+				name = "Niedersachsen";
+			break;
+			case "NW":
+				name = "Nordrhein-Westfalen";
+			break;
+			case "RP":
+				name = "Rheinland-Pfalz";
+			break;
+			case "SL":
+				name = "Saarland";
+			break;
+			case "SN":
+				name = "Sachsen";
+			break;
+			case "ST":
+				name = "Sachsen-Anhalt";
+			break;
+			case "SH":
+				name = "Schleswig-Holstein";
+			break;
+			case "TH":
+				name = "Thüringen";
+			break;
+			default:
+				name = "-";
 		}
-		
-		Deutschland deutschland = null;
-		String nrDeutschland = "0";
-		for(int i=rows.size()-1; i>=0; i--){
-			if(rows.get(i)[2].equals("")){
-				deutschland = new Deutschland(rows.get(i)[1],values.get(i)[0][0]);
-				nrDeutschland = (rows.get(i)[0]);
-				
-			}
-		}
-
-		// Erzeuge Bundeslaender. TODO: Landesliste.
-		for(int i=0;i<rows.size() && !error ;i++){
-			//System.out.println(rows.get(i)[2]);
-			if(rows.get(i)[2].equals(nrDeutschland+"")){
-				// TODO: Einwohnerzahl (letzter Parameter)
-				Bundesland b = new Bundesland(rows.get(i)[1],0);
-				//System.out.println(rows.get(i)[1]);
-				tempNummer = rows.get(i)[0];
-				
-				// Erzeuge Wahlkreise. TODO: Erststimme & Zweitstimme.
-				for(int j=0;j<rows.size() && !error;j++){
-					if(rows.get(j)[2].equals(tempNummer)){
-						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
-						//List<Erststimme> erststimme = new ArrayList<Erststimme>();
-						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
-						for(int k=0;k<parteien.size();k++){
-							//erststimme.add(new Erststimme(values.get(j)[parteiOffset+k][0],w,parteien.get(k)));
-							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset+k][1], w, parteien.get(k)));
-						}
-						//w.setErststimmen(erststimme);
-						w.setZweitstimmen(zweitstimme);
-						
-						b.addWahlkreis(w);
-					}
-				}
-				deutschland.addBundesland(b);
-			}
-		}
-		
-		/*System.out.println(deutschland.getName()+":");
-		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
-		for(int i=0; i<2;i++){
-			System.out.println("-> "+bundeslaender.get(i).getName());
-			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
-			for(int j=0;j<wahlkreise.size();j++){
-				System.out.println("--> "+wahlkreise.get(j).getName());
-				List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
-				for(int k = 0; k<zweitstimmen.size();k++){
-					System.out.println("--->"+zweitstimmen.get(k).getPartei().getName()+" - Zweitstimmen: "+zweitstimmen.get(k).getAnzahl());
-				}
-			}
-		}*/
-		
-		if(!error){
-			created = new Bundestagswahl(name,deutschland,parteien);
-		}
-		return created;
+		return name;
 	}
+	
 
 }

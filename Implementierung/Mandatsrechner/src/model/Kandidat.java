@@ -34,6 +34,18 @@ public class Kandidat {
 		this.setPartei(partei);
 	}
 	
+	public Kandidat(String name, String vorname, int geburtsjahr, Mandat mandat, Partei partei){
+		this.setInfo(name,vorname,geburtsjahr);
+		this.setMandat(mandat);
+		this.setPartei(partei);
+	}
+	
+	public Kandidat(Mandat mandat, Partei partei, Erststimme erststimme){
+		this.setMandat(mandat);
+		this.setErststimme(erststimme);
+		this.setPartei(partei);
+	}
+	
 	/**
 	 * Gibt das Mandat des Kandidaten zurück
 	 * @return das Mandat des Kandidaten

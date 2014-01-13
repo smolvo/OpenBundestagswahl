@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Assoziationsklasse zwischen Partei und Bundesland. 
@@ -15,7 +17,7 @@ public class Landesliste {
 	private Bundesland bundesland;
 	
 	/** Die Liste mit den Kandidaten der Partei im Bundesland */
-	private LinkedList<Kandidat> listenkandidaten = new LinkedList<Kandidat>();
+	private List<Kandidat> listenkandidaten = new ArrayList<Kandidat>();
 
 	/**
 	 * Parametrisierter Konstruktur.
@@ -72,7 +74,7 @@ public class Landesliste {
 	 * Gibt die Liste mit den Listenkandidaten zurück
 	 * @return die Liste mit den Listenkandidaten
 	 */
-	public LinkedList<Kandidat> getListenkandidaten() {
+	public List<Kandidat> getListenkandidaten() {
 		return listenkandidaten;
 	}
 
@@ -92,11 +94,12 @@ public class Landesliste {
 	 * Fügt einen Kandidaten zur Liste hinzu
 	 * @param kandidat ist der neue Kandidat
 	 */
-	public void addKandidat(Kandidat kandidat) {
+	public void addKandidat(int pos,Kandidat kandidat) {
 		if (kandidat == null) {
 		      throw new IllegalArgumentException("Kandidat ist leer!");
 		}
-		this.listenkandidaten.add(kandidat);
+		this.listenkandidaten.add(pos, kandidat);
+		//this.listenkandidaten.add(kandidat);
 	}
 	
 	/**

@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Diese Klasse repräsentiert eine Partei.
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 public class Partei implements Cloneable {
 	
 	/** Landesliste-Objekt */
-	private Landesliste landesliste;
+	private List<Landesliste> landesliste;
 	
 	/** Mitglieder der Partei */
 	private LinkedList<Kandidat> mitglieder;
@@ -48,7 +49,7 @@ public class Partei implements Cloneable {
 	 * @param kuerzel
 	 * @param farbe
 	 */
-	public Partei(Landesliste landesliste, String name, String kuerzel, Color farbe) {
+	public Partei(List<Landesliste> landesliste, String name, String kuerzel, Color farbe) {
 		this.setLandesliste(landesliste);
 		this.setName(name);
 		this.setKuerzel(kuerzel);
@@ -60,8 +61,8 @@ public class Partei implements Cloneable {
 	 * Gibt das Landesliste-Objekt zurück
 	 * @return das Landesliste-Objekt
 	 */
-	public Landesliste getLandesliste() {
-		return landesliste;
+	public List<Landesliste> getLandesliste() {
+		return this.landesliste;
 	}
 
 	/**
@@ -69,11 +70,15 @@ public class Partei implements Cloneable {
 	 * @param landesliste das neue Objekt
 	 * @exception wenn das Objekt leer ist
 	 */
-	public void setLandesliste(Landesliste landesliste) {
+	public void setLandesliste(List<Landesliste> landesliste) {
 		if(landesliste == null) {
 			throw new IllegalArgumentException("Landesliste-Objekt ist leer!");
 		}
 		this.landesliste = landesliste;
+	}
+	
+	public void addLandesliste(Landesliste l){
+		this.landesliste.add(l);
 	}
 
 	/**

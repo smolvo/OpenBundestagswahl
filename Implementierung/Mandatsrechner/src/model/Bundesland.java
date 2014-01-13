@@ -22,6 +22,7 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/** Liste mit den vertrettenden Parteien im Bundesland */
 	private LinkedList<Partei> parteien = new LinkedList<Partei>();
 	
+	private List<Landesliste> landesliste = new LinkedList<Landesliste>();
 	
 	/**
 	 * Parametrisierter Konstruktor für Bundesländer.
@@ -179,6 +180,14 @@ public class Bundesland extends Gebiet implements Cloneable {
 	public void setWahlberechtigte(int wahlberechtigte) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setLandeliste(List<Landesliste> landesliste){
+		this.landesliste = landesliste;
+	}
+	
+	public void addLandesliste(Landesliste l){
+		this.landesliste.add(l);
 	}
 	
 }

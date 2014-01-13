@@ -30,11 +30,11 @@ public class ImportExportManager {
 	 * @param csvDatei Datei die importiert werden soll.
 	 * @return das Ergebnis-Objekt.
 	 */
-	public Bundestagswahl importieren(File csvDatei){
+	public Bundestagswahl importieren(File[] csvDateien){
 		
 		Bundestagswahl imported = null;
-		if(this.pruefeDateityp(csvDatei)){
-				imported = this.leseCSVDatei(csvDatei);
+		if(this.pruefeDateityp(csvDateien)){
+				imported = this.leseCSVDatei(csvDateien);
 		}
 		return imported;
 	}
@@ -43,27 +43,29 @@ public class ImportExportManager {
 		return crawler[0].exportieren(pfad, bw);
 	}
 	
-	private boolean pruefeDateityp(File csvDatei){
+	private boolean pruefeDateityp(File[] csvDateien){
 		boolean isCSV = false;
-		String fileName = csvDatei.getName();
-		String fileExtension="";
-		if(fileName.length()>4){
-			fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+		for(int i=0;i<csvDateien.length;i++){
+			String fileName = csvDateien[i].getName();
+			String fileExtension="";
+			if(fileName.length()>4){
+				fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+			}
+			
+			//System.out.println(fileExtension);
+			if(fileExtension.equals(".csv") && csvDateien[i].isFile()){
+				isCSV = true;
+			}
+			// else: Es handelt sich um keine CSV-Datei.
 		}
-		
-		//System.out.println(fileExtension);
-		if(fileExtension.equals(".csv") && csvDatei.isFile()){
-			isCSV = true;
-		}
-		// else: Es handelt sich um keine CSV-Datei.
 		return isCSV;
 	}
 	
-	private Bundestagswahl leseCSVDatei(File csvDatei){
+	private Bundestagswahl leseCSVDatei(File[] csvDateien){
 		Bundestagswahl imported = null;
 		for(int i=0; i<this.crawler.length;i++){
 			System.out.println(crawler[i].getCrawlerInformation());
-			imported = crawler[i].erstelleBundestagswahl(csvDatei);
+			imported = crawler[i].erstelleBundestagswahl(csvDateien);
 			if(imported!=null){
 				break; 
 			}
