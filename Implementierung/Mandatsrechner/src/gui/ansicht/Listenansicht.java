@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import model.Bundesland;
@@ -22,7 +24,7 @@ public class Listenansicht extends JScrollPane {
 	 * und die dritte die Wahlkreise der Bundesländer.
 	 * @param land alle Bundesländer
 	 */
-	public Listenansicht (Deutschland land) {
+	public Listenansicht(Deutschland land) {
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Deutschland");
 
@@ -43,6 +45,17 @@ public class Listenansicht extends JScrollPane {
 		
 		this.setViewportView(tree);
 		
+		tree.getSelectionModel().addTreeSelectionListener(
+				new TreeSelectionListener()
+				{
+					@Override
+					public void valueChanged(TreeSelectionEvent e) {
+						System.out.println(e.getSource().toString());
+					}
+				});
+		
 	}
+	
+	
 	
 }
