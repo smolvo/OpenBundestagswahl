@@ -31,47 +31,23 @@ import model.Gebiet;
  */
 public class WahlFenster extends JPanel{
 
+	/** repräsentiert den Namen des Tabs */
 	private String name;
 	
-	private Bundesansicht bundesansicht;
-	private Landesansicht landesansicht;
-	private Wahlkreisansicht wahlkreisansicht;
-	
+	/** repräsentiert die geladene Bundestagswahl */
 	private Bundestagswahl btw;
-	private Ansicht aktuelleAnsicht;
 	
-	JPanel linkeSpalte;
-	JPanel rechteSpalte;
+	/** repräsentiert die aktuelle Ansicht */
+	private Ansicht aktuelleAnsicht;
 
 	/**
 	 * der Konstruktor der Klase
 	 * @param btw
 	 */
 	public WahlFenster(Bundestagswahl btw) {
-		super();
-		//Allgemeine Anpassungen des Wahlfensters
-		GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
-		GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
-		GridLayout gridLay = new GridLayout(1, 2, 5, 5);
-		
-		linkeSpalte = new JPanel();
-		linkeSpalte.setLayout(linkeSpalteLay);
-		rechteSpalte = new JPanel();
-		rechteSpalte.setLayout(rechteSpalteLay);
-		
-		this.setLayout(gridLay);
-		this.add(linkeSpalte);
-		this.add(rechteSpalte);
-
 		this.btw = btw;
-		this.bundesansicht = new Bundesansicht();
-		this.landesansicht = new Landesansicht();
-		this.wahlkreisansicht = new Wahlkreisansicht();
 		this.name = btw.getName();
-		this.aktuelleAnsicht = bundesansicht;
-		
-		bundestagswahlDarstellen();
-		setVisible(true);
+		this.aktuelleAnsicht = new Bundesansicht();
 		
 	}
 
@@ -87,7 +63,8 @@ public class WahlFenster extends JPanel{
 		aktuelleAnsicht = a;
 	}
 	
-	
+	/* wird theoretisch nicht mehr benötigt -Anton
+	 * 
 	public void bundestagswahlDarstellen() {
 		Deutschland deutschland = btw.getDeutschland();
 		
@@ -131,5 +108,6 @@ public class WahlFenster extends JPanel{
 	
 		
 	}
+	*/
 	
 }

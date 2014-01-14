@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import model.Deutschland;
 import model.Gebiet;
 import model.Bundestagswahl;
 import model.Wahlkreis;
@@ -16,6 +17,8 @@ public class Wahlkreisansicht extends Ansicht {
 	 * @param gebiet Gebiets-Objekt welches visualisiert werden sollen
 	 */
 	public void zeigeKomponenten(Gebiet gebiet) {
+		Wahlkreis land = (Wahlkreis) gebiet;
+		layoutSetzen();
 		Wahlkreis wk = (Wahlkreis) gebiet;
 		tabellenFenster.tabellenFuellen(wk);
 		diagrammFenster.erstelleDiagramm(wk);

@@ -1,5 +1,7 @@
 package gui.ansicht;
 
+import javax.swing.JPanel;
+
 import model.Bundestagswahl;
 import model.Gebiet;
 
@@ -8,7 +10,7 @@ import model.Gebiet;
  * In diesem werden bestimmmte Daten eines BTW-Objektes angezeigt.
  *
  */
-public class DiagrammFenster {
+public class DiagrammFenster extends JPanel {
 
 	/**
 	 * Erstellt ein passendes Diagramm aus den übergebenen Daten.

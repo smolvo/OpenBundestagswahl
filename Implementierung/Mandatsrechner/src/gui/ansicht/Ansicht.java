@@ -1,5 +1,9 @@
 package gui.ansicht;
 
+import java.awt.GridLayout;
+
+import javax.swing.JPanel;
+
 import gui.ansicht.tabellenfenster.TabellenFenster;
 import model.Bundestagswahl;
 import model.Gebiet;
@@ -9,7 +13,7 @@ import model.Gebiet;
  * @author Batman
  *
  */
-public abstract class Ansicht {
+public abstract class Ansicht extends JPanel {
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
 	protected TabellenFenster tabellenFenster;
@@ -28,6 +32,29 @@ public abstract class Ansicht {
 	 */
 	public abstract void zeigeKomponenten(Gebiet gebiet);
 
+	public void layoutSetzen() {
+		//Allgemeine Anpassungen des Wahlfensters
+				GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
+				GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
+				GridLayout gridLay = new GridLayout(1, 2, 5, 5);
+				
+				JPanel linkeSpalte = new JPanel();
+				linkeSpalte.setLayout(linkeSpalteLay);
+				JPanel rechteSpalte = new JPanel();
+				rechteSpalte.setLayout(rechteSpalteLay);
+				
+				this.setLayout(gridLay);
+				this.add(linkeSpalte);
+				this.add(rechteSpalte);
+
+				this.setVisible(true);
+				
+				rechteSpalte.add(tabellenFenster);
+				linkeSpalte.add(kartenFenster);
+				linkeSpalte.add(diagrammFenster);
+	}
+	
+	
 	/**
 	 * Holt das Tabellenfenster der Ansicht.
 	 * @return aktuelles Tabellenfenster

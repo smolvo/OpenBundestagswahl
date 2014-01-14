@@ -20,6 +20,7 @@ public class Bundesansicht extends Ansicht {
 	 */
 	public void zeigeKomponenten(Gebiet gebiet) {
 		Deutschland land = (Deutschland) gebiet;
+		layoutSetzen();
 		tabellenFenster.tabellenFuellen(land);
 		diagrammFenster.erstelleDiagramm(land);
 		kartenFenster.zeigeInformationen(land);
