@@ -10,62 +10,62 @@ public class Zweitstimme extends Stimme implements Serializable {
 	
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -2753165575954824955L;
-
-	/** Die verbundene Partei. */
-	private Partei partei;
 	
-	/** Das verbundene gebiet. */
+	/** Das zugehörige Gebiet. */
 	private Gebiet gebiet;
+	
+	/** Die zugehörige Partei. */
+	private Partei partei;
 	
 	
 	/**
-	 * Angepasster Konstruktor.
-	 * @param anzahl
-	 * @param partei
-	 * @param deutschland
+	 * Parametrisierter Konstruktor zum erzeugen von Zweitstimmen.
+	 * @param anzahl Die Anzahl der Stimmen.
+	 * @param gebiet Das zugehörige Gebiet.
+	 * @param partei Die zugehörige Partei.
 	 */
-	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei){
+	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei) {
 		this.setAnzahl(anzahl);
 		this.setGebiet(gebiet);
 		this.setPartei(partei);
 	}
 	
 	/**
-	 * Gibt die verbundene Partei zurück.
-	 * @return die verbunde Partei
+	 * Gibt die zugehörige Partei zurück.
+	 * @return die zugehörige Partei
 	 */
 	public Partei getPartei() {
 		return partei;
 	}
 	
 	/**
-	 * Setzt eine neue Verbindung mit einer Partei.
-	 * @param partei die neu Partei
-	 * @exception wenn die Partei leer ist
+	 * Setzt die zugehörige Partei dieser Zweitstimme.
+	 * @param partei die zugehörige Partei
+	 * @throws IllegalArgumentException wenn der Parameter partei null ist.
 	 */
-	public void setPartei(Partei partei) {
-		if(partei == null){
-			throw new IllegalArgumentException("Partei ist leer!");
+	public void setPartei(Partei partei) throws IllegalArgumentException {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
 		}
 		this.partei = partei;
 	}
 	
 	/**
-	 * Gibt das verbundene Gebiet-Objekt zurück
-	 * @return das verbundene Gebiet-Objekt
+	 * Gibt das zugehörige Gebiet zurück
+	 * @return das zugehörige Gebiet
 	 */
 	public Gebiet getGebiet() {
 		return gebiet;
 	}
 	
 	/**
-	 * Setzt eine neue Verbindung mit dem Gebiet-Objekt
-	 * @param gebiet das neue Objekt
-	 * @exception wenn das Objekt leer ist
+	 * Setzt das zugehörige Gebiet dieser Zweitstimme.
+	 * @param gebiet das zugehörige Gebiet
+	 * @throws IllegalArgumentException wenn der Parameter gebiet null ist.
 	 */
-	public void setGebiet(Gebiet gebiet) {
-		if(gebiet == null){
-			throw new IllegalArgumentException("Gebiet ist leer!");
+	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
+		if (gebiet == null) {
+			throw new IllegalArgumentException("Der Parameter \"gebiet\" ist null!");
 		}
 		this.gebiet = gebiet;
 	}

@@ -20,6 +20,8 @@ public class Sitzverteilung implements Serializable {
 	
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Sitzverteilungen.
+	 * @param abgeordnete Die Liste aller Abgeordneten in dieser Sitzverteilung.
+	 * @param bericht Der Bericht wie diese Sitzverteilung zustande gekommen ist.
 	 */
 	public Sitzverteilung(LinkedList<Kandidat> abgeordnete, String bericht) {
 		this.setAbgeordnete(abgeordnete);
@@ -37,8 +39,9 @@ public class Sitzverteilung implements Serializable {
 	/**
 	 * Setzt die Liste aller Abgeordneten.
 	 * @param abgeordnete die Liste aller Abgeordneten
+	 * @throws IllegalArgumentException wenn der Parameter abgeordnete null ist.
 	 */
-	public void setAbgeordnete(LinkedList<Kandidat> abgeordnete) {
+	public void setAbgeordnete(LinkedList<Kandidat> abgeordnete) throws IllegalArgumentException {
 		if (abgeordnete == null) {
 			throw new IllegalArgumentException("Parameter 'abgeordnete' ist null!");
 		}
@@ -56,8 +59,9 @@ public class Sitzverteilung implements Serializable {
 	/**
 	 * Setzt den Bericht dieser Sitzverteilung.
 	 * @param bericht den Bericht dieser Sitzverteilung
+	 * @throws IllegalArgumentException wenn der Parameter bericht null ist.
 	 */
-	public void setBericht(String bericht) {
+	public void setBericht(String bericht) throws IllegalArgumentException {
 		if (bericht == null) {
 			throw new IllegalArgumentException("Parameter 'bericht' ist null!");
 		}

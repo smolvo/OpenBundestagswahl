@@ -12,25 +12,26 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = 8492979454628956125L;
 
-	/** Die Anzahl der Wahlberechtigten */
+	/** Die Anzahl der Wahlberechtigten. */
 	private int wahlberechtigte;
 	
-	/** Offiziell zugeordnete Nummer */
+	/** Offiziell zugeordnete Nummer. */
 	private int wahlkreisnummer;
 	
-	/** Kandidat mit den meisten Erststimmen */
+	/** Kandidat mit den meisten Erststimmen. */
 	private Kandidat wahlkreisSieger;
 	
-	/** Erststimmen-Objekt */
+	/** Die Liste aller Erstimmen-Objekte (pro Partei). */
 	private LinkedList<Erststimme> erststimmen;
 	
-	/** Zweitstimmen-Objekt */
+	/** Die Liste aller Zweitstimmen-Objekte (pro Partei). */
 	private LinkedList<Zweitstimme> zweitstimmen;
+	
 	
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
-	 * @param name
-	 * @param wahlberechtigte
+	 * @param name Der Name dieses Wahlkreises.
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 */
 	public Wahlkreis(String name, int wahlberechtigte) {
 		this.setName(name);
@@ -39,9 +40,9 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Wahlkreisen.
-	 * @param name
-	 * @param wahlberechtigte
-	 * @param erststimmen
+	 * @param name Der Name dieses Wahlkreises.
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
+	 * @param erststimmen Die Liste aller Erstimmen-Objekte (pro Partei).
 	 */
 	public Wahlkreis(String name, int wahlberechtigte, LinkedList<Erststimme> erststimmen) {
 		this.setName(name);
@@ -60,9 +61,9 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	/**
 	 * Setzt den Wahlkreissieger
 	 * @param wahlkreisSieger der Kandidat mit den meisten Stimmen
-	 * @exception wenn der Wahlkreissieger leer ist
+	 * @throws IllegalArgumentException wenn der Wahlkreissieger leer ist
 	 */
-	public void setWahlkreisSieger(Kandidat wahlkreisSieger) {
+	public void setWahlkreisSieger(Kandidat wahlkreisSieger) throws IllegalArgumentException {
 		if (wahlkreisSieger == null) {
 			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
 		}
@@ -86,39 +87,59 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Setzt das Erstimme-Objekt
-	 * @param erststimme das Objekt
-	 * @exception wenn das Erstimme-Objekt leer ist
+	 * Setzt die Liste aller Erstimmen-Objekte (pro Partei).
+	 * @param erststimmen Die Liste aller Erstimmen-Objekte (pro Partei).
+	 * @throws IllegalArgumentException wenn die Liste aller Erstimmen-Objekte null ist.
 	 */
-	public void setErststimmen(LinkedList<Erststimme> erststimmen) {
+	public void setErststimmen(LinkedList<Erststimme> erststimmen) throws IllegalArgumentException {
 		if (erststimmen == null) {
-		      throw new IllegalArgumentException("Erststimme ist leer!");
+		      throw new IllegalArgumentException("Parameter \"erststimmen\" ist null!");
 		}
 		this.erststimmen = erststimmen;
 	}
 	
-	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
+	/**
+	 * Setzt die Liste aller Zweitstimmen-Objekte (pro Partei).
+	 * @param zweitstimmen Die Liste aller Zweitstimmen-Objekte (pro Partei).
+	 * @throws IllegalArgumentException wenn die Liste aller Zweitstimmen-Objekte null ist.
+	 */
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) throws IllegalArgumentException {
+		if (zweitstimmen == null) {
+		      throw new IllegalArgumentException("Parameter \"zweitstimmen\" ist null!");
+		}
 		this.zweitstimmen = zweitstimmen;
 	}
-
+	
 	@Override
 	public int getWahlberechtigte() {
-		// TODO Auto-generated method stub
 		return this.wahlberechtigte;
 	}
 	
-	public void setWahlberechtigte(int wahlberechtigte) {
+	@Override
+	public void setWahlberechtigte(int wahlberechtigte) throws IllegalArgumentException {
 		if (wahlberechtigte < 0) {
-		      throw new IllegalArgumentException("Anzahl der Wahlberechtige ist negativ!");
+		      throw new IllegalArgumentException("Der Parameter \"wahlberechtigte\" ist negativ!");
 		}
 		this.wahlberechtigte = wahlberechtigte;
 	}
 	
+	/**
+	 * Gibt die Wahlkreisnummer zurück.
+	 * @return die Wahlkreisnummer
+	 */
 	public int getWahlkreisnummer() {
 		return wahlkreisnummer;
 	}
 
-	public void setWahlkreisnummer(int wahlkreisnummer) {
+	/**
+	 * Setzt die Wahlkreisnummer.
+	 * @param wahlkreisnummer Offiziell zugeordnete Nummer dieses Wahlkreises.
+	 * @throws IllegalArgumentException wenn der Parameter \"wahlkreisnummer\" ist negativ ist.
+	 */
+	public void setWahlkreisnummer(int wahlkreisnummer) throws IllegalArgumentException {
+		if (wahlkreisnummer < 0) {
+		      throw new IllegalArgumentException("Der Parameter \"wahlkreisnummer\" ist negativ!");
+		}
 		this.wahlkreisnummer = wahlkreisnummer;
 	}
 }

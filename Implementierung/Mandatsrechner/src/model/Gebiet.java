@@ -16,6 +16,7 @@ public abstract class Gebiet implements Serializable {
 	private String name;
 	
 	
+	
 	/**
 	 * Gibt den Namen des Gebietes zurück
 	 * @return der Name des Gebiets
@@ -23,20 +24,17 @@ public abstract class Gebiet implements Serializable {
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * Setzt einen Namen für das Gebiet
 	 * @param name der Name des Gebiets
-	 * @exception wenn der Name leer ist
+	 * @throws IllegalArgumentException wenn der Name leer ist
 	 */
-	public void setName(String name) {
+	public void setName(String name) throws IllegalArgumentException {
 		if (name.equals(null) || name.equals("")) {
 		      throw new IllegalArgumentException("Wahlkreis ist leer!");
 		}
 		this.name = name;
-	}
-	
-	public String toString() {
-		return this.name;
 	}
 	
 	/**
@@ -48,21 +46,37 @@ public abstract class Gebiet implements Serializable {
 	/**
 	 * Setzt die Anzahl der Wahlberechtigten
 	 * @param wahlberechtigte die Anzahl der Wahlberechtigten
-	 * @exception wenn die Anzahl negativ ist
+	 * @throws IllegalArgumentException wenn die Anzahl negativ ist
 	 */
-	abstract public void setWahlberechtigte(int wahlberechtigte);
-
-		
-	abstract public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen);
+	abstract public void setWahlberechtigte(int wahlberechtigte) throws IllegalArgumentException;
+	
+	/**
+	 * Setzt die Liste aller Zweitstimmenobjekte für dieses Gebiet (pro Partei eins).
+	 * @param zweitstimmen eine Liste aller Zweitstimmenobjekte für dieses Gebiet (pro Partei eins).
+	 * @throws IllegalArgumentException wenn die zweitstimmenliste null oder leer ist.
+	 */
+	abstract public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) throws IllegalArgumentException;
 	
 	/**
 	 * Gibt die Erststimmen in einem Gebiet zurueck.
 	 * Falls das aktuelle Gebiet ein "Bundesland"-Objekt ist,
 	 * wird die Summe aller Erststimmen der Wahlkreise zurueck-
 	 * gegeben.
-	 * @return
+	 * @return die Erststimmen in einem Gebiet
 	 */
 	abstract public List<Erststimme> getErststimmen();
 	
+	/**
+	 * Gibt die Zweitstimmen in einem Gebiet zurueck.
+	 * @return die Zweitstimmen in einem Gebiet
+	 */
 	abstract public List<Zweitstimme> getZweitstimmen();
+	
+	/**
+	 * Beschreibt dieses Gebiet.
+	 * @return einen String der dieses Gebiet beschreibt.
+	 */
+	public String toString() {
+		return this.name;
+	}
 }

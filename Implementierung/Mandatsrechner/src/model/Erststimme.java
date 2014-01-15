@@ -4,47 +4,49 @@ import java.io.Serializable;
 
 /**
  * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
- * Wahlkreis und Kandidat zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
+ * Gebiet und Kandidat zusammen arbeitet.
+ * Außerdem erbt diese von der Klasse Stimme.
  */
 public class Erststimme extends Stimme implements Serializable {
 
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -950583325552486249L;
 
-	/** Der verbundene Wahlkreis */
+	/** Das zugehörige Gebiet. */
 	private Gebiet gebiet;
 	
-	/** Der verbundende Kanditat */
+	/** Der zugehörige Kanditat. */
 	private Kandidat kandidat;
 	
+	
 	/**
-	 * Mit dem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
-	 * @param anzahl
-	 * @param wahlkreis
-	 * @param kandidat
+	 * Mit diesem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
+	 * @param anzahl Die Anzahl der Stimmen
+	 * @param gebiet Das zugehörige Gebiet.
+	 * @param kandidat Der zugehörige Kanditat.
 	 */
-	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat){
+	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
 		this.setAnzahl(anzahl);
 		this.setKandidat(kandidat);
 		this.setGebiet(gebiet);
 	}
 	
 	/**
-	 * Gibt den verbundenen Wahlkreis zurück
-	 * @return der verbundene Wahlkreis 
+	 * Gibt das zugehörige Gebiet zurück
+	 * @return das zugehörige Gebiet
 	 */
 	public Gebiet getGebiet() {
 		return this.gebiet;
 	}
 	
 	/**
-	 * Setze den Wahlkreis
-	 * @param wahlkreis der neue Wahlkreis
-	 * @exception wenn der übergebende Wahlkreis leer ist
+	 * Setze das Gebiet
+	 * @param gebiet Das zugehörige Gebiet.
+	 * @throws IllegalArgumentException wenn das übergebende Gebiet leer ist
 	 */
-	public void setGebiet(Gebiet gebiet) {
+	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
 		if (gebiet.equals(null)) {
-		      throw new IllegalArgumentException("Wahlkreis ist leer!");
+		      throw new IllegalArgumentException("Gebiet ist null!");
 		}
 		this.gebiet = gebiet;
 	}
@@ -60,11 +62,11 @@ public class Erststimme extends Stimme implements Serializable {
 	/**
 	 * Setze den Kandidaten
 	 * @param kandidat der neue Kanditat
-	 * @exception wenn der Kandidat leer ist
+	 * @throws IllegalArgumentException wenn der Kandidat leer ist
 	 */
-	public void setKandidat(Kandidat kandidat) {
+	public void setKandidat(Kandidat kandidat) throws IllegalArgumentException {
 		if (kandidat.equals(null)) {
-		      throw new IllegalArgumentException("Kandidat ist leer!");
+		      throw new IllegalArgumentException("Kandidat ist null!");
 		}
 		this.kandidat = kandidat;
 	}

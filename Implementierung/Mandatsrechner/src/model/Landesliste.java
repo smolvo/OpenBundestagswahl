@@ -26,8 +26,8 @@ public class Landesliste implements Serializable {
 	/**
 	 * Parametrisierter Konstruktur.
 	 * Kandidaten werden hier noch keine hinzugefügt.
-	 * @param partei
-	 * @param bundesland
+	 * @param partei Die zugehörige Partei.
+	 * @param bundesland Das zugehörige Bundesland.
 	 */
 	public Landesliste(Partei partei, Bundesland bundesland) {
 		this.setBundesland(bundesland);
@@ -45,9 +45,9 @@ public class Landesliste implements Serializable {
 	/**
 	 * Setzt das Partei-Objekt
 	 * @param partei das Partei-Objekt
-	 * @exception wenn das Partei-Objekt leer ist
+	 * @throws IllegalArgumentException wenn das Partei-Objekt null ist
 	 */
-	public void setPartei(Partei partei) {
+	public void setPartei(Partei partei) throws IllegalArgumentException {
 		if (partei == null) {
 		      throw new IllegalArgumentException("Partei ist leer!");
 		}
@@ -65,11 +65,11 @@ public class Landesliste implements Serializable {
 	/**
 	 * Setzt das Bundesland-Objekt
 	 * @param bundesland das Bundesland-Objekt
-	 * @exception wenn das Bundesland-Objekt leer ist
+	 * @throws IllegalArgumentException wenn das Bundesland-Objekt null ist
 	 */
-	public void setBundesland(Bundesland bundesland) {
+	public void setBundesland(Bundesland bundesland) throws IllegalArgumentException {
 		if (bundesland == null) {
-		      throw new IllegalArgumentException("Bundesland ist leer!");
+		      throw new IllegalArgumentException("Bundesland ist null!");
 		}
 		this.bundesland = bundesland;
 	}
@@ -85,26 +85,28 @@ public class Landesliste implements Serializable {
 	/**
 	 * Setzt die Liste der Listenkandidaten
 	 * @param listenkandidaten die Liste mit den Kandidaten
-	 * @exception wenn die leer ist
+	 * @throws IllegalArgumentException wenn die null ist
 	 */
-	public void setListenkandidaten(LinkedList<Kandidat> listenkandidaten) {
+	public void setListenkandidaten(LinkedList<Kandidat> listenkandidaten) throws IllegalArgumentException {
 		if (listenkandidaten == null || listenkandidaten.isEmpty()) {
-		      throw new IllegalArgumentException("Liste ist leer!");
+		      throw new IllegalArgumentException("Liste ist null oder leer!");
 		}
 		this.listenkandidaten = listenkandidaten;
 	}
 	
 	/**
 	 * Fügt einen Kandidaten zur Liste hinzu
+	 * @param pos Listenposition des Kandidaten
 	 * @param kandidat ist der neue Kandidat
+	 * @throws IllegalArgumentException wenn der kandidat null ist
 	 */
-	public void addKandidat(int pos,Kandidat kandidat) {
+	public void addKandidat(int pos, Kandidat kandidat) throws IllegalArgumentException {
 		if (kandidat == null) {
-		      throw new IllegalArgumentException("Kandidat ist leer!");
+		      throw new IllegalArgumentException("Kandidat ist null!");
 		}
-		if(pos>=this.listenkandidaten.size()){
-			for(int i=this.listenkandidaten.size();i<=pos;i++){
-				this.listenkandidaten.add(i,null);
+		if (pos >= this.listenkandidaten.size()) {
+			for (int i = this.listenkandidaten.size(); i <= pos; i++) {
+				this.listenkandidaten.add(i, null);
 			}
 		}
 		//System.out.println(pos+" "+kandidat.getName());

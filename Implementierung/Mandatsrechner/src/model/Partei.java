@@ -14,30 +14,32 @@ public class Partei implements Serializable {
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -6711521521647518265L;
 
-	/** Landesliste-Objekt */
+	/** Die Liste aller Landeslisten dieser Partei. */
 	private List<Landesliste> landesliste;
 	
-	/** Mitglieder der Partei */
+	/** Die Mitgliederliste dieser Partei. */
 	private LinkedList<Kandidat> mitglieder;
 	
-	/** Name der Partei */
+	/** Der Name dieser Partei. */
 	private String name;
 	
-	/** Kürzel der Partei */
+	/** Das Kürzel dieser Partei. */
 	private String kuerzel;
 	
-	/** Farbe der Partei */
+	/** Die Farbe dieser Partei. */
 	private Color farbe;
 	
-	/** Zweitstimme */
+	/** Die Zweitstimmenliste (pro Gebiet) */
 	private LinkedList<Zweitstimme> zweitstimme;
+	
 	
 	/**
 	 * Parametrisierter Konstruktor.
-	 * Die Mitgliederliste wird hier nur erzeugt aber nicht befüllt.
-	 * @param name
-	 * @param kuerzel
-	 * @param farbe
+	 * Die Mitgliederliste und Landesliste wird hier erzeugt aber nicht befüllt.
+	 * 
+	 * @param name Der Name dieser Partei.
+	 * @param kuerzel Das Kürzel dieser Partei.
+	 * @param farbe Farbe dieser Partei
 	 */
 	public Partei(String name, String kuerzel, Color farbe) {
 		this.setName(name);
@@ -50,10 +52,10 @@ public class Partei implements Serializable {
 	/**
 	 * Parametrisierter Konstruktor.
 	 * Die Mitgliederliste wird hier nur erzeugt aber nicht befüllt.
-	 * @param landesliste
-	 * @param name
-	 * @param kuerzel
-	 * @param farbe
+	 * @param landesliste Die Liste aller Landeslisten dieser Partei.
+	 * @param name Der Name dieser Partei.
+	 * @param kuerzel Das Kürzel dieser Partei.
+	 * @param farbe Die Farbe dieser Partei.
 	 */
 	public Partei(List<Landesliste> landesliste, String name, String kuerzel, Color farbe) {
 		this.setLandesliste(landesliste);
@@ -74,17 +76,21 @@ public class Partei implements Serializable {
 	/**
 	 * Setzt das neue Landesliste-Objekt
 	 * @param landesliste das neue Objekt
-	 * @exception wenn das Objekt leer ist
+	 * @throws IllegalArgumentException wenn der Parameter landesliste null ist 
 	 */
-	public void setLandesliste(List<Landesliste> landesliste) {
-		if(landesliste == null) {
-			throw new IllegalArgumentException("Landesliste-Objekt ist leer!");
+	public void setLandesliste(List<Landesliste> landesliste) throws IllegalArgumentException {
+		if (landesliste == null) {
+			throw new IllegalArgumentException("Landesliste-Objekt ist null!");
 		}
 		this.landesliste = landesliste;
 	}
 	
-	public void addLandesliste(Landesliste l){
-		this.landesliste.add(l);
+	/**
+	 * Fügt eine Landesliste zur Liste aller Landeslisten dieser Partei hinzu.
+	 * @param landesliste Die Liste aller Landeslisten dieser Partei.
+	 */
+	public void addLandesliste(Landesliste landesliste) {
+		this.landesliste.add(landesliste);
 	}
 
 	/**
@@ -98,9 +104,10 @@ public class Partei implements Serializable {
 	/**
 	 * Setzt eine neue Liste als Mitgliederliste
 	 * @param mitglieder der Partei
+	 * @throws IllegalArgumentException wenn der Parameter mitglieder null ist 
 	 */
-	public void setMitglieder(LinkedList<Kandidat> mitglieder) {
-		if(mitglieder.equals(null)) {
+	public void setMitglieder(LinkedList<Kandidat> mitglieder) throws IllegalArgumentException {
+		if (mitglieder.equals(null)) {
 			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
 		}
 		this.mitglieder = mitglieder;
@@ -109,11 +116,11 @@ public class Partei implements Serializable {
 	/**
 	 * Fügt ein neues Mitglied zur Liste hinzu
 	 * @param mitglied das neue Mitglied
-	 * @exception wenn das Mitglied leer ist
+	 * @throws IllegalArgumentException wenn das Mitglied null ist
 	 */
-	public void AddMitglied(Kandidat mitglied) {
-		if(mitglied == null) {
-			throw new IllegalArgumentException("Mitglied ist leer!");
+	public void addMitglied(Kandidat mitglied) throws IllegalArgumentException {
+		if (mitglied == null) {
+			throw new IllegalArgumentException("Mitglied ist null!");
 		}
 		this.mitglieder.add(mitglied);
 	}
@@ -123,7 +130,7 @@ public class Partei implements Serializable {
 	 * @param mandat das gewünschte Mandat
 	 * @return die Liste mit den Mitgliedern
 	 */
-	public LinkedList<Kandidat> GetMitglieder(Mandat mandat) {
+	public LinkedList<Kandidat> getMitglieder(Mandat mandat) {
 		LinkedList<Kandidat> res = new LinkedList<Kandidat>();
 		for (Kandidat kandidat: this.mitglieder) {
 			if (kandidat.getMandat() == mandat) {
@@ -144,9 +151,9 @@ public class Partei implements Serializable {
 	/**
 	 * Setzt den neuen Namen der Partei
 	 * @param name der neue Name
-	 * @exception wenn der name leer ist
+	 * @throws IllegalArgumentException wenn der Parameter name null ist.
 	 */
-	public void setName(String name) {
+	public void setName(String name) throws IllegalArgumentException {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
@@ -164,9 +171,9 @@ public class Partei implements Serializable {
 	/**
 	 * Setzt das Kürzel der Partei
 	 * @param kuerzel der Partei
-	 * @exception wenn das Kürzel leer ist
+	 * @throws IllegalArgumentException wenn der Parameter kuerzel null ist.
 	 */
-	public void setKuerzel(String kuerzel) {
+	public void setKuerzel(String kuerzel) throws IllegalArgumentException {
 		if (kuerzel == null || kuerzel.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
@@ -184,9 +191,9 @@ public class Partei implements Serializable {
 	/**
 	 * Setzt die Farbe der Partei
 	 * @param farbe der Partei
-	 * @exception wenn die Farbe leer ist
+	 * @throws IllegalArgumentException wenn der Parameter farbe null ist.
 	 */
-	public void setFarbe(Color farbe) {
+	public void setFarbe(Color farbe) throws IllegalArgumentException {
 		if (farbe == null) {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
@@ -202,11 +209,11 @@ public class Partei implements Serializable {
 	}
 	
 	/**
-	 * Setzt das Zweitstimmen-Objekt
-	 * @param zweitstimme 
-	 * @exception wenn das Objekt leer ist
+	 * Setzt die Liste aller Zweitstimmen pro Gebiet.
+	 * @param zweitstimme Die Liste aller Zweitstimmen pro Gebiet.
+	 * @throws IllegalArgumentException wenn die Liste aller Zweitstimmen (pro Gebiet) null ist.
 	 */
-	public void setZweitstimme(LinkedList<Zweitstimme> zweitstimme) {
+	public void setZweitstimme(LinkedList<Zweitstimme> zweitstimme) throws IllegalArgumentException {
 		if (zweitstimme == null) {
 			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
 		}

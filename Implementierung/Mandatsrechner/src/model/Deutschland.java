@@ -1,8 +1,9 @@
-	package model;
+package model;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * Klasse die alle Bundesländer beinhaltet. 
  *
@@ -15,23 +16,24 @@ public class Deutschland extends Gebiet implements Serializable {
 	/** Liste mit den enthaltenden Bundesländer. */
 	LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 	
+	
 	/**
 	 * Angepasster Konstruktor.
-	 * @param name
-	 * @param wahlberechtigte
+	 * @param name Der Name
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten
 	 */
-	public Deutschland(String name, int wahlberechtigte){
+	public Deutschland(String name, int wahlberechtigte) {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 	}
 	
 	/**
 	 * Angepasster Konstruktor.
-	 * @param name
-	 * @param wahlberechtigte
-	 * @param zweitstimme
+	 * @param name Der Name
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten
+	 * @param zweitstimme Die Liste aller Zweitstimmenobjekte (pro Partei und Gebiet)
 	 */
-	public Deutschland(String name, int wahlberechtigte, LinkedList<Zweitstimme> zweitstimme){
+	public Deutschland(String name, int wahlberechtigte, LinkedList<Zweitstimme> zweitstimme) {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 		this.setZweitstimmen(zweitstimme);
@@ -48,10 +50,10 @@ public class Deutschland extends Gebiet implements Serializable {
 	/**
 	 * Setzt eine neue Liste mit Bundeslämder.
 	 * @param bundeslaender die neue Liste
-	 * @exception wenn die Liste leer ist
+	 * @throws IllegalArgumentException wenn die Liste leer ist
 	 */
-	public void setBundeslaender(LinkedList<Bundesland> bundeslaender) {
-		if(bundeslaender == null || bundeslaender.isEmpty()){
+	public void setBundeslaender(LinkedList<Bundesland> bundeslaender) throws IllegalArgumentException {
+		if (bundeslaender == null || bundeslaender.isEmpty()) {
 			throw new IllegalArgumentException("Wahlkreisliste ist leer");
 		}
 		this.bundeslaender = bundeslaender;
@@ -61,7 +63,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	 * Fügt ein Bundesland zur Liste hinzu.
 	 * @param bundesland ist das neue Bundesland
 	 */
-	public void addBundesland(Bundesland bundesland){
+	public void addBundesland(Bundesland bundesland) {
 		if (bundesland == null) {
 		      throw new IllegalArgumentException("Bundesland ist leer!");
 		}
@@ -85,7 +87,10 @@ public class Deutschland extends Gebiet implements Serializable {
 			}
 		}
 		for (int i = 0; i < tempStimmen.length; i++) {
-			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat("Unbekannt","Unbekannt",0,Mandat.KEINMANDAT,null)));
+			erststimmen.add(new Erststimme(
+					tempStimmen[i],
+					this,
+					new Kandidat("Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
 		
 		return erststimmen;
@@ -96,14 +101,17 @@ public class Deutschland extends Gebiet implements Serializable {
 		// TODO Auto-generated method stub
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
 		int[] tempZweitstimmen = new int[this.bundeslaender.get(0).getZweitstimmen().size()];
-		for(int i=0;i<this.bundeslaender.size();i++){
+		for (int i = 0; i < this.bundeslaender.size(); i++) {
 			List<Zweitstimme> bundeslaenderZweitstimme = bundeslaender.get(i).getZweitstimmen();
-			for(int j=0;j<bundeslaenderZweitstimme.size();j++){
-				tempZweitstimmen[j]+=bundeslaenderZweitstimme.get(j).getAnzahl();
+			for (int j = 0; j < bundeslaenderZweitstimme.size(); j++) {
+				tempZweitstimmen[j] += bundeslaenderZweitstimme.get(j).getAnzahl();
 			}
 		}
-		for(int i=0;i<tempZweitstimmen.length;i++){
-			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this, this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei()));
+		for (int i = 0; i < tempZweitstimmen.length; i++) {
+			zweitstimmen.add(new Zweitstimme(
+					tempZweitstimmen[i],
+					this,
+					this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei()));
 		}
 		
 		return zweitstimmen;
@@ -111,10 +119,9 @@ public class Deutschland extends Gebiet implements Serializable {
 
 	@Override
 	public int getWahlberechtigte() {
-		// TODO Auto-generated method stub
 		int wahlberechtigte = 0;
-		for(int i=0;i<this.bundeslaender.size();i++){
-			wahlberechtigte+=bundeslaender.get(i).getWahlberechtigte();
+		for (int i = 0; i < this.bundeslaender.size(); i++) {
+			wahlberechtigte += bundeslaender.get(i).getWahlberechtigte();
 		}
 		return wahlberechtigte;
 	}
@@ -122,7 +129,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public void setWahlberechtigte(int wahlberechtigte) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 }

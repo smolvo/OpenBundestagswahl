@@ -204,27 +204,31 @@ public class Bundesland extends Gebiet implements Serializable {
 	}
 	
 	/**
-	 * TODO
-	 * @param landesliste
+	 * Setzt eine neue Liste von Landeslisten.
+	 * @param landesliste Die Landesliste die gesetzt wird.
+	 * @throws IllegalArgumentException wenn die Liste leer ist
 	 */
-	public void setLandeliste(List<Landesliste> landesliste){
+	public void setLandeliste(List<Landesliste> landesliste) throws IllegalArgumentException {
+		if (landesliste == null || landesliste.isEmpty()) {
+			throw new IllegalArgumentException("landesliste ist leer");
+		}
 		this.landesliste = landesliste;
 	}
 	
 	/**
-	 * TODO
-	 * @return
+	 * Gibt die Liste aller Landeslisten dieses Bundeslandes zurück.
+	 * @return die Landesliste dieses Bundeslandes
 	 */
-	public List<Landesliste> getLandesliste(){
+	public List<Landesliste> getLandesliste() {
 		return this.landesliste;
 	}
 	
 	/**
-	 * TODO
-	 * @param l
+	 * Fügt eine Landesliste zu dieser der Liste aller Landeslisten dieses Bundeslandes hinzu.
+	 * @param landesliste Die Landesliste die hinzugefügt wird.
 	 */
-	public void addLandesliste(Landesliste l){
-		this.landesliste.add(l);
+	public void addLandesliste(Landesliste landesliste) {
+		this.landesliste.add(landesliste);
 	}
 	
 }
