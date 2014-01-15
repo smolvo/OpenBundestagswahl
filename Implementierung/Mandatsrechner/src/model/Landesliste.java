@@ -98,7 +98,13 @@ public class Landesliste {
 		if (kandidat == null) {
 		      throw new IllegalArgumentException("Kandidat ist leer!");
 		}
-		this.listenkandidaten.add(pos, kandidat);
+		if(pos>=this.listenkandidaten.size()){
+			for(int i=this.listenkandidaten.size();i<=pos;i++){
+				this.listenkandidaten.add(i,null);
+			}
+		}
+		//System.out.println(pos+" "+kandidat.getName());
+		this.listenkandidaten.set(pos, kandidat);
 		//this.listenkandidaten.add(kandidat);
 	}
 	

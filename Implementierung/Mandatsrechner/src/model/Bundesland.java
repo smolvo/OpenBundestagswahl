@@ -186,6 +186,10 @@ public class Bundesland extends Gebiet implements Cloneable {
 		this.landesliste = landesliste;
 	}
 	
+	public List<Landesliste> getLandesliste(){
+		return this.landesliste;
+	}
+	
 	public void addLandesliste(Landesliste l){
 		this.landesliste.add(l);
 	}

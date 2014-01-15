@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class Partei implements Cloneable {
 		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
 		this.mitglieder = new LinkedList<Kandidat>();
+		this.landesliste = new ArrayList<Landesliste>();
 	}
 	
 	/**

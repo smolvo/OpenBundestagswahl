@@ -54,9 +54,21 @@ public class Kandidat {
 		return mandat;
 	}
 	
+	public String getName(){
+		return this.name;
+	}
+	
+	public String getVorname(){
+		return this.vorname;
+	}
+	
+	public int getGeburtsjahr(){
+		return this.geburtsjahr;
+	}
+	
 	public void setInfo(String name, String vorname, int geburtsjahr){
-		if(vorname.equals(null)|| name.equals(null) || geburtsjahr==0){
-			throw new IllegalArgumentException("Mandat ist leer!");
+		if(vorname.equals(null)|| name.equals(null)){
+			throw new IllegalArgumentException("Kandidat hat keine Namen.");
 		}
 		this.name = name;
 		this.vorname = vorname;
@@ -89,9 +101,10 @@ public class Kandidat {
 	 * @exception wenn die Partei leer ist
 	 */
 	public void setPartei(Partei partei) {
-		if (partei.equals(null)) {
+		/*Kandidat kann auch keiner Partei zugeordnet sein!
+		 * if (partei.equals(null)) {
 		      throw new IllegalArgumentException("Partei ist leer!");
-		}
+		}*/
 		this.partei = partei;
 	}
 
