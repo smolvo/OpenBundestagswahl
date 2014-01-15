@@ -47,7 +47,8 @@ public class WahlFenster extends JPanel{
 	public WahlFenster(Bundestagswahl btw) {
 		this.btw = btw;
 		this.name = btw.getName();
-		this.aktuelleAnsicht = new Bundesansicht();
+		this.aktuelleAnsicht = new Bundesansicht(btw.getDeutschland());
+		this.add(aktuelleAnsicht);
 		
 	}
 

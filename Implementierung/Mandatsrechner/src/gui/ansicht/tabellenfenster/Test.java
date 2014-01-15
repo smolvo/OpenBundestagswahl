@@ -22,8 +22,10 @@ public class Test {
 		frame.setSize(1024, 768);
 		
 		ImportExportManager i = new ImportExportManager();
-		File csvDatei = new File("files/Ergebnis2013.csv");
-		Bundestagswahl w = i.importieren(csvDatei);
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File("files/Ergebnis2013.csv");
+		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
+		Bundestagswahl w = i.importieren(csvDateien);
 		
 		i.exportieren("files/Exported.csv",w);
 
@@ -34,12 +36,13 @@ public class Test {
 		
 		tabelle1.tabellenFuellen(w.getDeutschland());
 		tabelle2.tabellenFuellen(w.getDeutschland().getBundeslaender().get(7));
-		//tabelle3.tabellenFuellen(w.getDeutschland().getBundeslaender().get(7).getWahlkreise().get(12));
+		tabelle3.tabellenFuellen(w.getDeutschland().getBundeslaender().get(7).getWahlkreise().get(12));
 		
 		
 		frame.add(reiter);
 		reiter.add("Deutschland", tabelle1);
 		reiter.add("Baden-Württemberg", tabelle2);
+		reiter.add("Aalen-Heidenheim", tabelle3);
 		
 		frame.setVisible(true);
 		

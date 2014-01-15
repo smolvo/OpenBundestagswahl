@@ -159,7 +159,7 @@ public class Menu extends JMenuBar {
 			 } else if (e.getSource() == menu.wiederherstellen) {
 				//TODO wiederherstellen
 			 } else if (e.getSource() == menu.vergleichen) {
-				new VergleichsDialog();
+				//new VergleichsDialog();
 			 } else if (e.getSource() == menu.negativesStimmgewicht) {
 				//TODO negatives Stimmgewicht simulieren
 			 } else if (e.getSource() == menu.zufaelligeWahl) {
@@ -169,7 +169,7 @@ public class Menu extends JMenuBar {
 			 } else if (e.getSource() == menu.about) {
 				new AboutDialog();
 			 } else if (e.getSource() == menu.einstellungen) {
-				new EinstellungenDialog();
+				//new EinstellungenDialog();
 			 }
 			 
 		  }

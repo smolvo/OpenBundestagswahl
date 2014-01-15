@@ -14,6 +14,14 @@ public class Bundesansicht extends Ansicht {
 
 	
 	/**
+	 * Konstruktor initialiesiert Fenster.
+	 * @param gebiet gebiet
+	 */
+	public Bundesansicht(Gebiet gebiet) {
+		zeigeKomponenten(gebiet);
+	}
+	
+	/**
 	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
 	 * drei verschiedenen Fenstern angezeigt.
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll

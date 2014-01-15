@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class WahlkreisTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Erststimmen", "%", "Zweitstimmen", 
+	private String[] columns = new String[] {"Partei", "Kandidat", "Erststimmen", "%", "Zweitstimmen", 
 			"%", "Direktmandate"};
 	
 	/** hält alle relevanten Daten */
@@ -30,22 +30,24 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 6;
+		return 7;
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return daten.getParteien(rowIndex);
+			return daten.getParteiName(rowIndex);
 		} else if (columnIndex == 1) {
-			return daten.getErststimmen(rowIndex).getAnzahl();
+			return daten.getKandidatName(rowIndex);
 		} else if (columnIndex == 2) {
-			return daten.getErstprozent(rowIndex);
+			return daten.getErststimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 3) {
-			return daten.getZweitstimmen(rowIndex);
+			return daten.getErstprozent(rowIndex);
 		} else if (columnIndex == 4) {
-			return daten.getZweitprozent(rowIndex);
+			return daten.getZweitstimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 5) {
+			return daten.getZweitprozent(rowIndex);
+		} else if (columnIndex == 6) {
 			return daten.getDirektmandate(rowIndex);
 		} else {
 			return null;

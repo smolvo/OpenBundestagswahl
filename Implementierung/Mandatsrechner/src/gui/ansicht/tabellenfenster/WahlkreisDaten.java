@@ -14,6 +14,9 @@ public class WahlkreisDaten {
 	/** Liste der Parteien */
 	private LinkedList<String> parteien;
 	
+	/** Liste der Namen der Kandidaten */
+	private LinkedList<String> kandidaten;
+	
 	/** Liste der Zweitstimmen */
 	private LinkedList<Zweitstimme> zweitstimmen;
 	
@@ -34,6 +37,7 @@ public class WahlkreisDaten {
 	 */
 	public WahlkreisDaten() {
 		this.parteien = new LinkedList<String>();
+		this.kandidaten = new LinkedList<String>();
 		this.zweitstimmen = new LinkedList<Zweitstimme>();
 		this.erststimmen = new LinkedList<Erststimme>();
 		this.zweitProzent = new LinkedList<String>();
@@ -49,12 +53,17 @@ public class WahlkreisDaten {
 	 * @param direktmandat Anzahl Direktkandidaten
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 */
-	public void addPartei(String partei, Zweitstimme zweitStimme, Erststimme erstStimme, 
+	public void addPartei(String partei, String name, Zweitstimme zweitStimme, Erststimme erstStimme, 
 			String zweitProzent, String erstProzent, Boolean direktmandat) {
 		if (partei != null) {
 			this.parteien.add(partei);
 		} else {
 			this.parteien.add("-");
+		}
+		if (name != null) {
+			this.kandidaten.add(name);
+		} else {
+			this.kandidaten.add("-");
 		}
 		if (zweitStimme != null) {
 			this.zweitstimmen.add(zweitStimme);
@@ -84,8 +93,17 @@ public class WahlkreisDaten {
 	 * @param index Listenindex
 	 * @return Partei
 	 */
-	public String getParteien(int index) {
+	public String getParteiName(int index) {
 		return parteien.get(index);
+	}
+	
+	/**
+	 * Gibt eine Kandidatennamen zurück.
+	 * @param index Listenindex
+	 * @return Kandidat
+	 */
+	public String getKandidatName(int index) {
+		return kandidaten.get(index);
 	}
 	
 	/**

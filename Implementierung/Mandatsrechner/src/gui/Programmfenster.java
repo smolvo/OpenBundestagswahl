@@ -59,8 +59,10 @@ public class Programmfenster extends JFrame{
 		
 		//testwahl	
 		ImportExportManager i = new ImportExportManager();
-		File csvDatei = new File("files/Ergebnis2013.csv");
-		Bundestagswahl w = i.importieren(csvDatei);
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File("files/Ergebnis2013.csv");
+		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
+		Bundestagswahl w = i.importieren(csvDateien);
 
 		
 		wahlen.add(new WahlFenster(w));

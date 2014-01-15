@@ -34,6 +34,10 @@ public abstract class Ansicht extends JPanel {
 
 	public void layoutSetzen() {
 		//Allgemeine Anpassungen des Wahlfensters
+				this.tabellenFenster = new TabellenFenster();
+				//this.kartenFenster = new KartenFenster();
+				//this.diagrammFenster = new DiagrammFenster();
+				
 				GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
 				GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
 				GridLayout gridLay = new GridLayout(1, 2, 5, 5);
@@ -43,15 +47,15 @@ public abstract class Ansicht extends JPanel {
 				JPanel rechteSpalte = new JPanel();
 				rechteSpalte.setLayout(rechteSpalteLay);
 				
+				rechteSpalte.add(tabellenFenster);
+				linkeSpalte.add(kartenFenster);
+				linkeSpalte.add(diagrammFenster);
+
 				this.setLayout(gridLay);
 				this.add(linkeSpalte);
 				this.add(rechteSpalte);
 
 				this.setVisible(true);
-				
-				rechteSpalte.add(tabellenFenster);
-				linkeSpalte.add(kartenFenster);
-				linkeSpalte.add(diagrammFenster);
 	}
 	
 	

@@ -11,6 +11,15 @@ import model.Gebiet;
  */
 public class Landesansicht extends Ansicht {
 
+	
+	/**
+	 * Konstruktor initialiesiert Fenster.
+	 * @param gebiet gebiet
+	 */
+	public Landesansicht(Gebiet gebiet) {
+		zeigeKomponenten(gebiet);
+	}
+	
 	/**
 	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
 	 * drei verschiedenen Fenstern angezeigt.

@@ -92,13 +92,15 @@ public class TabellenFenster extends JScrollPane {
 		for (int i = 0; i < wk.getErststimmen().size(); i++) {
 			Erststimme er = wk.getErststimmen().get(i);
 			Zweitstimme zw = wk.getZweitstimmen().get(i);
-			GUIKandidat gk = kandidatErstellen(er);
-			double prozentualeErst = (Math.rint(((double) er.getAnzahl() / (double) gesamtErst) * 1000) / 10);
-			gk.setProzErst(prozentualeErst);
-			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamtZweit) * 1000) / 10);
-			gk.setProzZweit(prozentualeZweit);
-			daten.addPartei(gk.getName(), zw, er, Double.toString(prozentualeZweit), 
-					Double.toString(prozentualeErst), gk.isDirektman());
+			if ((zw.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
+				GUIKandidat gk = kandidatErstellen(er);
+				double prozentualeErst = (Math.rint(((double) er.getAnzahl() / (double) gesamtErst) * 1000) / 10);
+				gk.setProzErst(prozentualeErst);
+				double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamtZweit) * 1000) / 10);
+				gk.setProzZweit(prozentualeZweit);
+				daten.addPartei(gk.getPartei(), gk.getName(), zw, er, Double.toString(prozentualeZweit), 
+						Double.toString(prozentualeErst), gk.isDirektman());
+			}
 		}
 
 		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten);
@@ -151,7 +153,11 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private GUIKandidat kandidatErstellen(Erststimme erst) {
 		Kandidat kandidat = erst.getKandidat();
-		GUIKandidat kan = new GUIKandidat(kandidat.getPartei().getName(), erst, -1.0, null, -1.0, false);
+		String partei = "-";
+		if (kandidat.getPartei() != null) {
+			partei = kandidat.getPartei().getName();
+		}
+		GUIKandidat kan = new GUIKandidat(partei, kandidat.getName(), erst, -1.0, null, -1.0, false);
 		if (kandidat.getMandat().equals("Direktmadat")) {
 			kan.setDirektman(true);
 		}		

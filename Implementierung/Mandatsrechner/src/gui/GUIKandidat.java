@@ -1,6 +1,7 @@
 package gui;
 
 import model.Erststimme;
+import model.Partei;
 import model.Zweitstimme;
 
 /**
@@ -10,6 +11,9 @@ import model.Zweitstimme;
  */
 public class GUIKandidat {
 
+	/** repräsentiert die Partei */
+	private String partei;
+	
 	/** repräsentiert den Namen der Partei des Kandidaten */
 	private String name;
 	
@@ -37,14 +41,31 @@ public class GUIKandidat {
 	 * @param prozZweit prozentual
 	 * @param direktman ob Direktmandat
 	 */
-	public GUIKandidat(String name, Erststimme erststimmen, double prozErst,
+	public GUIKandidat(String partei, String name, Erststimme erststimmen, double prozErst,
 			Zweitstimme zweitstimme, double prozZweit, boolean direktman) {
+		this.partei = partei;
 		this.name = name;
 		this.erststimmen = erststimmen;
 		this.prozErst = prozErst;
 		this.zweitstimme = zweitstimme;
 		this.prozZweit = prozZweit;
 		this.direktman = direktman;
+	}
+	
+	/**
+	 * Gibt die Partei aus.
+	 * @return partei
+	 */
+	public String getPartei() {
+		return partei;
+	}
+	
+	/**
+	 * Setzt die Partei des Kandidaten.
+	 * @param partei Partei
+	 */
+	public void setPartei(Partei partei) {
+		this.partei = partei.getName();
 	}
 	
 	/**
