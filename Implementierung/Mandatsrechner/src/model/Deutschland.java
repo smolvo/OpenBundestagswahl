@@ -82,8 +82,19 @@ public class Deutschland extends Gebiet implements Cloneable {
 
 	@Override
 	public List<Erststimme> getErststimmen() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
+		int[] tempStimmen = new int[this.bundeslaender.get(0).getErststimmen().size()];
+		for (int i = 0; i < this.bundeslaender.size(); i++) {
+			List<Erststimme> bundeslaenderErststimme = bundeslaender.get(i).getErststimmen();
+			for (int j = 0; j < bundeslaenderErststimme.size(); j++) {
+				tempStimmen[j] += bundeslaenderErststimme.get(j).getAnzahl();
+			}
+		}
+		for (int i = 0; i < tempStimmen.length; i++) {
+			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat("Unbekannt","Unbekannt",0,Mandat.KEINMANDAT,null)));
+		}
+		
+		return erststimmen;
 	}
 
 	@Override

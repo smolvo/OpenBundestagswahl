@@ -7,7 +7,7 @@ package model;
 public class Erststimme extends Stimme{
 
 	/** Der verbundene Wahlkreis */
-	private Wahlkreis wahlkreis;
+	private Gebiet gebiet;
 	
 	/** Der verbundende Kanditat */
 	private Kandidat kandidat;
@@ -18,18 +18,18 @@ public class Erststimme extends Stimme{
 	 * @param wahlkreis
 	 * @param kandidat
 	 */
-	public Erststimme(int anzahl, Wahlkreis wahlkreis, Kandidat kandidat){
+	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat){
 		this.setAnzahl(anzahl);
 		this.setKandidat(kandidat);
-		this.setWahlkreis(wahlkreis);
+		this.setGebiet(gebiet);
 	}
 	
 	/**
 	 * Gibt den verbundenen Wahlkreis zurück
 	 * @return der verbundene Wahlkreis 
 	 */
-	public Wahlkreis getWahlkreis() {
-		return wahlkreis;
+	public Gebiet getGebiet() {
+		return this.gebiet;
 	}
 	
 	/**
@@ -37,11 +37,11 @@ public class Erststimme extends Stimme{
 	 * @param wahlkreis der neue Wahlkreis
 	 * @exception wenn der übergebende Wahlkreis leer ist
 	 */
-	public void setWahlkreis(Wahlkreis wahlkreis) {
-		if (wahlkreis.equals(null)) {
+	public void setGebiet(Gebiet gebiet) {
+		if (gebiet.equals(null)) {
 		      throw new IllegalArgumentException("Wahlkreis ist leer!");
 		}
-		this.wahlkreis = wahlkreis;
+		this.gebiet = gebiet;
 	}
 	
 	/**

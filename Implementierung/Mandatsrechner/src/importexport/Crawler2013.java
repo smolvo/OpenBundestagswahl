@@ -434,39 +434,50 @@ public class Crawler2013 extends Crawler {
 			List<Bundesland> bundeslaender = bw.getDeutschland().getBundeslaender();
 			
 			int relevanteNr = 1;
-			int unrelevanteNr = 1;
 			
 			for(int i = 0; i<bundeslaender.size();i++){
 				List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 				for(int j=0; j<wahlkreise.size();j++){
-					bf.write(unrelevanteNr+";"+wahlkreise.get(j).getName()+";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
-					//List<Erststimme> erststimmen = wahlkreise.get(j).getErststimme();
+					bf.write(wahlkreise.get(j).getWahlkreisnummer()+";"+wahlkreise.get(j).getName()+";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
+					List<Erststimme> erststimmen = wahlkreise.get(j).getErststimmen();
 					List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
 					for(int k=0;k<3;k++){
 						bf.write(";;;;");
 					}
 					for(int k=0;k<zweitstimmen.size();k++){
-						String field = zweitstimmen.get(k).getAnzahl()+"";
-						if(field.equals("0")){
-							field="";
+						String[] field = new String[2];
+						field[0] = erststimmen.get(k).getAnzahl()+"";
+						field[1] = zweitstimmen.get(k).getAnzahl()+"";
+						
+						if(field[0].equals("0")){
+							field[0]="";
 						}
-						bf.write(";;"+field+";;");
+						if(field[1].equals("0")){
+							field[1]="";
+						}
+						bf.write(field[0]+";;"+field[1]+";;");
 					}
 					bf.write("\n");
-					unrelevanteNr++;
 				}
 				
 				bf.write(relevanteNr+";"+bundeslaender.get(i).getName()+";99;"+bundeslaender.get(i).getWahlberechtigte()+";;;;");
 				List<Zweitstimme> zweitstimmen = bundeslaender.get(i).getZweitstimmen();
+				List<Erststimme> erststimmen = bundeslaender.get(i).getErststimmen();
 				for(int k=0;k<3;k++){
 					bf.write(";;;;");
 				}
 				for(int k=0;k<zweitstimmen.size();k++){
-					String field = zweitstimmen.get(k).getAnzahl()+"";
-					if(field.equals("0")){
-						field="";
+					String[] field = new String[2];
+					field[0] = erststimmen.get(k).getAnzahl()+"";
+					field[1] = zweitstimmen.get(k).getAnzahl()+"";
+					
+					if(field[0].equals("0")){
+						field[0]="";
 					}
-					bf.write(";;"+field+";;");
+					if(field[1].equals("0")){
+						field[1]="";
+					}
+					bf.write(field[0]+";;"+field[1]+";;");
 				}
 				
 				
@@ -476,16 +487,23 @@ public class Crawler2013 extends Crawler {
 			}
 			
 			bf.write("99;\"Bundesgebiet\";;"+bw.getDeutschland().getWahlberechtigte()+";;;;");
+			List<Erststimme> erststimmen = bw.getDeutschland().getErststimmen();
 			List<Zweitstimme> zweitstimmen = bw.getDeutschland().getZweitstimmen();
 			for(int k=0;k<3;k++){
 				bf.write(";;;;");
 			}
 			for(int k=0;k<zweitstimmen.size();k++){
-				String field = zweitstimmen.get(k).getAnzahl()+"";
-				if(field.equals("0")){
-					field="";
+				String[] field = new String[2];
+				field[0] = erststimmen.get(k).getAnzahl()+"";
+				field[1] = zweitstimmen.get(k).getAnzahl()+"";
+				
+				if(field[0].equals("0")){
+					field[0]="";
 				}
-				bf.write(";;"+field+";;");
+				if(field[1].equals("0")){
+					field[1]="";
+				}
+				bf.write(field[0]+";;"+field[1]+";;");
 			}
 			
 			bf.flush();

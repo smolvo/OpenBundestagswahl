@@ -17,7 +17,7 @@ public class ImportExportTest {
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
 		Bundestagswahl w = i.importieren(csvDateien);
 		
-		//i.exportieren("files/Exported.csv",w);
+		i.exportieren("files/Exported.csv",w);
 		//System.out.println(csvDatei.getName());
 		//int integer = Integer.parseInt("");
 	}

@@ -146,8 +146,19 @@ public class Bundesland extends Gebiet implements Cloneable {
 
 	@Override
 	public List<Erststimme> getErststimmen() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
+		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmen().size()];
+		for (int i = 0; i < this.wahlkreise.size(); i++) {
+			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i).getErststimmen();
+			for (int j = 0; j < wahlkreisErststimme.size(); j++) {
+				tempStimmen[j] += wahlkreisErststimme.get(j).getAnzahl();
+			}
+		}
+		for (int i = 0; i < tempStimmen.length; i++) {
+			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat("Unbekannt","Unbekannt",0,Mandat.KEINMANDAT,null)));
+		}
+		
+		return erststimmen;
 	}
 
 	@Override
