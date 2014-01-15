@@ -281,7 +281,7 @@ public class Crawler2013 extends Crawler {
 					Kandidat mitglied = new Kandidat(iterative[0],iterative[1],Integer.parseInt(iterative[2]),Mandat.KEINMANDAT,parteien.get(j));
 					kandidaten.add(mitglied);
 					kandidatenInfo.add(new String[]{iterative[4],iterative[5],iterative[6]});
-					parteien.get(j).AddMitglied(mitglied);
+					parteien.get(j).addMitglied(mitglied);
 					break;
 				}
 				
