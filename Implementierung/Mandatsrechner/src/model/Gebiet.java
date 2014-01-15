@@ -1,16 +1,19 @@
 package model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines Gebiets haltet.
  */
-public abstract class Gebiet {
+public abstract class Gebiet implements Serializable {
+	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -5067472345236494574L;
 	
 	/** Der Name des Gebiets. */
 	private String name;
-	
 	
 	
 	/**

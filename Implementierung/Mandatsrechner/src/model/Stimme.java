@@ -1,9 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /** 
  * Oberklasse von der Erst- oder Zweitstimme-Klasse
  */
-public abstract class Stimme {
+public abstract class Stimme implements Serializable {
+	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -4835288729845295736L;
 	
 	/** Die Anzahl der Stimmen. */
 	private int anzahl;

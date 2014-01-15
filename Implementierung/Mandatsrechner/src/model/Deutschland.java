@@ -1,12 +1,16 @@
 	package model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 /**
  * Klasse die alle Bundesländer beinhaltet. 
  *
  */
-public class Deutschland extends Gebiet implements Cloneable {
+public class Deutschland extends Gebiet implements Serializable {
+	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -2346463735187246165L;
 	
 	/** Liste mit den enthaltenden Bundesländer. */
 	LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
@@ -62,16 +66,6 @@ public class Deutschland extends Gebiet implements Cloneable {
 		      throw new IllegalArgumentException("Bundesland ist leer!");
 		}
 		this.bundeslaender.add(bundesland);
-	}
-
-	/**
-	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
-	 * @return eine tiefe Kopie dieses Objekts
-	 */
-	@Override
-	public Deutschland clone() {
-		// TODO ... ;-)
-		throw new UnsupportedOperationException("Noch nicht implementiert...");
 	}
 
 	@Override

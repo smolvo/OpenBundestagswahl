@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,8 +9,11 @@ import java.util.List;
 /**
  * Diese Klasse repräsentiert eine Partei.
  */
-public class Partei implements Cloneable {
+public class Partei implements Serializable {
 	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -6711521521647518265L;
+
 	/** Landesliste-Objekt */
 	private List<Landesliste> landesliste;
 	
@@ -208,16 +212,5 @@ public class Partei implements Cloneable {
 		}
 		this.zweitstimme = zweitstimme;
 	}
-	
-	/**
-	 * Erzeugt eine tiefe Kopie dieses Objekts und gibt diese zurück.
-	 * @return eine tiefe Kopie dieses Objekts
-	 */
-	@Override
-	public Partei clone() {
-		// TODO ... ;-)
-		throw new UnsupportedOperationException("Noch nicht implementiert...");
-	}
-	
 	
 }

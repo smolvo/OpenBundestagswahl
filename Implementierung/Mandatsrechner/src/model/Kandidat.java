@@ -1,11 +1,16 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Klasse repräsentiert einen Kandidaten.
  * Dieser kann zur einer Partei gehöhren und ein Mandat besitzen. 
  */
-public class Kandidat {
+public class Kandidat implements Serializable {
 	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -1812822920360318561L;
+
 	private String name;
 	
 	private String vorname;

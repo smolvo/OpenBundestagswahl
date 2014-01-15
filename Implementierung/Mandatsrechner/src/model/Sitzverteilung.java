@@ -1,12 +1,16 @@
 package model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Diese Klasse repräsentiert die Sitzverteilung einer Bundestagswahl.
  */
-public class Sitzverteilung {
+public class Sitzverteilung implements Serializable {
 	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -6027948741318694048L;
+
 	/** Die Liste aller Abgeordneten in dieser Sitzverteilung. */
 	private LinkedList<Kandidat> abgeordnete;
 	

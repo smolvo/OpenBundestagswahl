@@ -1,12 +1,17 @@
 package model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und
  * der Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet
  */
-public class Wahlkreis extends Gebiet {
+public class Wahlkreis extends Gebiet implements Serializable {
+	
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = 8492979454628956125L;
+
 	/** Die Anzahl der Wahlberechtigten */
 	private int wahlberechtigte;
 	

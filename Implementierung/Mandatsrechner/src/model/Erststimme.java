@@ -1,10 +1,15 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
  * Wahlkreis und Kandidat zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
  */
-public class Erststimme extends Stimme{
+public class Erststimme extends Stimme implements Serializable {
+
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -950583325552486249L;
 
 	/** Der verbundene Wahlkreis */
 	private Gebiet gebiet;

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +9,10 @@ import java.util.List;
  * Assoziationsklasse zwischen Partei und Bundesland. 
  * Dies Klasse beinhaltet eine Menge an Kandidaten.
  */
-public class Landesliste {
+public class Landesliste implements Serializable {
+
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -6647931864369484778L;
 
 	/** Die zugehörige Partei. */
 	private Partei partei;

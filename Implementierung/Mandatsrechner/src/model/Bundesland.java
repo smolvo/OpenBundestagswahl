@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,10 @@ import java.util.List;
  * Klasse die die Bundesländer repräsentiert.
  * Unterklasse von Gebiet.
  */
-public class Bundesland extends Gebiet implements Cloneable {
+public class Bundesland extends Gebiet implements Serializable {
+
+	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = 1614716230171638779L;
 
 	/** Einwohnerzahl des Bundeslandes. */
 	private int einwohnerzahl;
@@ -46,9 +50,9 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/**
 	 * Setzt die Einwohnerzahl
 	 * @param einwohnerzahl wird neu gesetzt
-	 * @exception wenn die zahl negativ ist
+	 * @throws IllegalArgumentException wenn die zahl negativ ist
 	 */
-	public void setEinwohnerzahl(int einwohnerzahl) {
+	public void setEinwohnerzahl(int einwohnerzahl) throws IllegalArgumentException {
 		if (einwohnerzahl < 0) {
 			throw new IllegalArgumentException("Einwohnerzahl ist kleiner 0");
 		}
@@ -66,9 +70,9 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/**
 	 * Setzt die Farbe des Bundeslandes
 	 * @param farbe des Bundeslandes
-	 * @exception wenn die Farbe leer ist
+	 * @throws IllegalArgumentException wenn die Farbe leer ist
 	 */
-	public void setFarbe(Color farbe) {
+	public void setFarbe(Color farbe) throws IllegalArgumentException {
 		if (farbe == null) {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
@@ -86,9 +90,9 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/**
 	 * Setzt eine neue Liste mit Wahlkreisen
 	 * @param wahlkreise die neue Liste
-	 * @exception wenn die Liste leer ist
+	 * @throws IllegalArgumentException wenn die Liste leer ist
 	 */
-	public void setWahlkreise(LinkedList<Wahlkreis> wahlkreise) {
+	public void setWahlkreise(LinkedList<Wahlkreis> wahlkreise) throws IllegalArgumentException {
 		if (wahlkreise == null || wahlkreise.isEmpty()) {
 			throw new IllegalArgumentException("Wahlkreisliste ist leer");
 		}
@@ -106,9 +110,9 @@ public class Bundesland extends Gebiet implements Cloneable {
 	/**
 	 * Setzt eine neue Liste mit Parteien
 	 * @param parteien die neue Liste
-	 * @exception wenn die Liste leer ist
+	 * @throws IllegalArgumentException wenn die Liste leer ist
 	 */
-	public void setParteien(LinkedList<Partei> parteien) {
+	public void setParteien(LinkedList<Partei> parteien) throws IllegalArgumentException {
 		if (parteien == null || parteien.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
@@ -155,7 +159,10 @@ public class Bundesland extends Gebiet implements Cloneable {
 			}
 		}
 		for (int i = 0; i < tempStimmen.length; i++) {
-			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat("Unbekannt","Unbekannt",0,Mandat.KEINMANDAT,null)));
+			erststimmen.add(new Erststimme(
+					tempStimmen[i],
+					this,
+					new Kandidat("Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
 		
 		return erststimmen;
@@ -172,7 +179,10 @@ public class Bundesland extends Gebiet implements Cloneable {
 			}
 		}
 		for (int i = 0; i < tempZweitstimmen.length; i++) {
-			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this, this.wahlkreise.get(0).getZweitstimmen().get(i).getPartei()));
+			zweitstimmen.add(new Zweitstimme(
+					tempZweitstimmen[i],
+					this,
+					this.wahlkreise.get(0).getZweitstimmen().get(i).getPartei()));
 		}
 		
 		return zweitstimmen;
@@ -193,14 +203,26 @@ public class Bundesland extends Gebiet implements Cloneable {
 		
 	}
 	
+	/**
+	 * TODO
+	 * @param landesliste
+	 */
 	public void setLandeliste(List<Landesliste> landesliste){
 		this.landesliste = landesliste;
 	}
 	
+	/**
+	 * TODO
+	 * @return
+	 */
 	public List<Landesliste> getLandesliste(){
 		return this.landesliste;
 	}
 	
+	/**
+	 * TODO
+	 * @param l
+	 */
 	public void addLandesliste(Landesliste l){
 		this.landesliste.add(l);
 	}
