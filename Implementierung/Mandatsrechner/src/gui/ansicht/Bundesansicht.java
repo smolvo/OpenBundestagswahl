@@ -23,7 +23,6 @@ public class Bundesansicht extends Ansicht {
 		layoutSetzen();
 		tabellenFenster.tabellenFuellen(land);
 		diagrammFenster.erstelleDiagramm(land);
-		kartenFenster.zeigeInformationen(land);
 	}
 
 

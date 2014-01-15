@@ -31,21 +31,9 @@ public class Listenansicht extends JScrollPane implements TreeExpansionListener 
 	 * @param land alle Bundesländer
 	 */
 	public Listenansicht(Deutschland land) {
-		
 		DeutschlandTree tree = new DeutschlandTree(land);
         tree.addTreeExpansionListener(this);
-		
-		this.setViewportView(tree);
-		
-		tree.getSelectionModel().addTreeSelectionListener(
-				new TreeSelectionListener()
-				{
-					@Override
-					public void valueChanged(TreeSelectionEvent e) {
-						System.out.println(e.getSource().toString());
-					}
-				});
-		
+		this.setViewportView(tree);		
 	}
 
 	@Override
@@ -58,10 +46,6 @@ public class Listenansicht extends JScrollPane implements TreeExpansionListener 
 
 	@Override
 	public void treeCollapsed(TreeExpansionEvent event) {
-		System.out.println(this.getParent());
 		
 	}
-	
-	
-	
 }

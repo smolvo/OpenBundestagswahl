@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import gui.WahlFenster;
 import model.Bundesland;
 import model.Bundestagswahl;
 import model.Deutschland;
@@ -18,7 +19,6 @@ public class Landesansicht extends Ansicht {
 	 */
 	public Landesansicht(Gebiet gebiet) {
 		aktuellesGebiet = gebiet;
-		Bundesland land = (Bundesland) gebiet;
 		layoutSetzen();
 		Bundesland bl = (Bundesland) gebiet;
 		tabellenFenster.tabellenFuellen(bl);

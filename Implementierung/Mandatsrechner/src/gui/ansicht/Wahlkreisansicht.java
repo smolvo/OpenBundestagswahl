@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import gui.WahlFenster;
 import model.Deutschland;
 import model.Gebiet;
 import model.Bundestagswahl;
@@ -18,11 +19,9 @@ public class Wahlkreisansicht extends Ansicht {
 	 */
 	public Wahlkreisansicht(Gebiet gebiet) {
 		aktuellesGebiet = gebiet;
-		Wahlkreis land = (Wahlkreis) gebiet;
 		layoutSetzen();
 		Wahlkreis wk = (Wahlkreis) gebiet;
 		tabellenFenster.tabellenFuellen(wk);
 		diagrammFenster.erstelleDiagramm(wk);
 	}
-
 }

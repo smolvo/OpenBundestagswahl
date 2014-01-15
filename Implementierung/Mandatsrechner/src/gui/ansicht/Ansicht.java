@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import gui.ansicht.tabellenfenster.TabellenFenster;
 import model.Bundestagswahl;
+import model.Deutschland;
 import model.Gebiet;
 
 /**
@@ -33,7 +34,6 @@ public abstract class Ansicht extends JPanel {
 	 */
 	public void layoutSetzen() {
 		
-		this.removeAll();
 		//Allgemeine Anpassungen des Wahlfensters
 		this.tabellenFenster = new TabellenFenster();
 		this.kartenFenster = new KartenFenster();
@@ -56,6 +56,10 @@ public abstract class Ansicht extends JPanel {
 		this.add(rechteSpalte);
 
 		this.setVisible(true);
+	}
+	
+	public void erstelleKartenfenster(Deutschland land) {
+		kartenFenster.zeigeInformationen(land);
 	}
 	
 	

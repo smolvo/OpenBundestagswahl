@@ -59,6 +59,7 @@ public class WahlFenster extends JPanel{
 		this.btw = btw;
 		this.name = btw.getName();
 		this.aktuelleAnsicht = new Bundesansicht(btw.getDeutschland());
+		aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
 		this.add(aktuelleAnsicht);
 		this.steuerung = new GUISteuerung(btw, this);
 	}
@@ -76,14 +77,17 @@ public class WahlFenster extends JPanel{
 		if (gebiet instanceof Deutschland) {
 			this.aktuelleAnsicht.removeAll();
 			this.aktuelleAnsicht = new Bundesansicht(gebiet);
+			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
 			this.add(aktuelleAnsicht);
 		} else if (gebiet instanceof Bundesland) {
 			this.aktuelleAnsicht.removeAll();
 			this.aktuelleAnsicht = new Landesansicht(gebiet);
+			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
 			this.add(aktuelleAnsicht);
 		} else {
 			this.aktuelleAnsicht.removeAll();
 			this.aktuelleAnsicht = new Wahlkreisansicht(gebiet);
+			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
 			this.add(aktuelleAnsicht);
 		}
 	}
@@ -127,5 +131,13 @@ public class WahlFenster extends JPanel{
 				};
 			zurueck.addActionListener(listener);
 		
+	}
+
+	public Bundestagswahl getBtw() {
+		return btw;
+	}
+
+	public void setBtw(Bundestagswahl btw) {
+		this.btw = btw;
 	}
 }
