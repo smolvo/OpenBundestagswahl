@@ -1,44 +1,77 @@
 package gui;
 
+import importexport.ImportExportManager;
+
+import java.io.File;
+
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ImportDialog extends JDialog{
+import model.Bundestagswahl;
 
-	JFileChooser dateiAuswahl = new JFileChooser();
+/**
+ * Diese Klasse repräsentiert den Dialog, der sich öffnet, wenn man im Menü "Importieren" oder 
+ * in der Tab- Leiste den "+"- Button klickt
+ * 
+ * Der Benutzer wird aufgefordert die zwei für die Berechnung der Sitzverteilung notwendigen Dateien
+ * zu übergeben.
+ * @author Manuel
+ *
+ */
+public class ImportDialog extends JDialog {
+
+	JFileChooser ergebnisseAuswahl = new JFileChooser();
+	JFileChooser bewerberAuswahl = new JFileChooser();
 	TabLeiste tabs;
-	
+	File[] eingeleseneDateien = new File[2];
+	Programmfenster pf;
+
 	public ImportDialog(TabLeiste tabs) {
-		
+
 		this.tabs = tabs;
-		//allgemeine Anpassungen des Fensters
-		setTitle("Importieren");
-		setSize(400,400);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		this.pf = tabs.getPf();
+
+
+		/* Lässt bei beiden Dialogen nur csv- Dateien zu und beschreibt, welche
+		 * Datei in welchem Dialog eingebeben werden soll
+		 */
+		FileFilter ergebnisFilter = new FileNameExtensionFilter("Datei mit Wahlergebnissen", "csv");
+		FileFilter bewerberFilter = new FileNameExtensionFilter("Datei mit Wahlbewerbern", "csv");
+		ergebnisseAuswahl.setFileFilter(ergebnisFilter);
+		bewerberAuswahl.setFileFilter(bewerberFilter);
+		ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
+		bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
 		
-		//fileChooser
-		//lässt nur csv Dateien zu
-		FileFilter filter = new FileNameExtensionFilter("WahlDaten", "csv");
-		dateiAuswahl.setFileFilter(filter);
-		int rueckgabeWert = dateiAuswahl.showOpenDialog(null);
-		
-		
-        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
-        {
-             //TODO Weiterleitung an Steuerung+
-        	String tabName =  dateiAuswahl.getSelectedFile().getName();
-            System.out.println("Die zu öffnende Datei ist: " + tabName);
-            tabs.neuerTab(new JPanel(), tabName);
-        } else {
-        	System.out.println("keine datei ausgewählt");
-        }
+		int rueckgabeWert = ergebnisseAuswahl.showOpenDialog(pf);
+		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
+
+			rueckgabeWert = bewerberAuswahl.showOpenDialog(pf);
+			if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
+				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
+				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
+
+				ImportExportManager i = new ImportExportManager();
+				Bundestagswahl w = i.importieren(eingeleseneDateien);
+				
+				tabs.neuerTab(new WahlFenster(w), w.getName());
+				
+			} else {
+				JOptionPane.showMessageDialog(pf,
+						"Keine Datei mit Wahlbewerber ausgewählt.", "Meldung",
+						JOptionPane.INFORMATION_MESSAGE, null);
+			}
+
+		} else {
+			JOptionPane.showMessageDialog(pf,
+					"Keine Datei mit Wahlergebnisse ausgewählt.", "Meldung",
+					JOptionPane.INFORMATION_MESSAGE, null);
+		}
+
 	
-	
-}
+	}
 }

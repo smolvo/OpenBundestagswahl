@@ -41,7 +41,7 @@ public final class Programmfenster extends JFrame{
 		menu = new Menu(this);
 		setJMenuBar(menu);
 		
-		//testwahl	
+		//Wahl 2013
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
@@ -50,6 +50,7 @@ public final class Programmfenster extends JFrame{
 
 		
 		wahlen.add(new WahlFenster(w));
+		
 		
 		
 		//Tab- Leiste erstellen	

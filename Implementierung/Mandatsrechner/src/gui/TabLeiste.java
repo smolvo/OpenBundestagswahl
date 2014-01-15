@@ -24,19 +24,23 @@ import javax.swing.JTabbedPane;
 public class TabLeiste extends JTabbedPane {
 
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
+	private Programmfenster pf;
 	
 
 	public TabLeiste(Programmfenster pf) {
 		
+		this.pf = pf;
 		//allgemeine Einstellungen der Tab- Leiste
 		this.setTabLayoutPolicy(TOP);
 		this.setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
 
 		//neuen Tab für jede aktuelle Wahl
-		for (WahlFenster w : pf.getWahlen()) {
-			wahlen.add(w);
-			neuerTab(w, w.getName());
-		}		
+				for (int i = 0; i < pf.getWahlen().size(); i++) {
+					WahlFenster w = pf.getWahlen().get(i);
+					wahlen.add(w);
+					neuerTab(w, w.getName());
+					
+				}	
 		neuerTabButton(new JPanel());
 		setVisible(true);
 	}
@@ -54,27 +58,26 @@ public class TabLeiste extends JTabbedPane {
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel pnlTab = new JPanel(f);
 		pnlTab.setOpaque(false);
-		pnlTab.setFocusable(false);
 		
 		JButton neuerTab = new JButton();
 		neuerTab.setOpaque(false);
 		neuerTab.setIcon(new ImageIcon("src/gui/resources/images/neuerTab.png"));
 		
 		neuerTab.setBorder(null);
-		
 		neuerTab.setContentAreaFilled(false);
 		neuerTab.setFocusPainted(false);
 		neuerTab.setFocusable(false);
 
 		pnlTab.add(neuerTab);
 		setTabComponentAt(pos, pnlTab);
+		
+		this.setEnabledAt(pos, false);
 		//Erstelle anonymen ActionListener für den "+" Knopf
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				remove(c);
 				new ImportDialog(TabLeiste.this);
-				
 				neuerTabButton(c);
 			}
 		};
@@ -97,7 +100,7 @@ public class TabLeiste extends JTabbedPane {
 	public void neuerTab(final JComponent c, final String wahlName) {
 		add(c);
 		int pos = indexOfComponent(c);
-
+		
 	
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel tab = new JPanel(f);
@@ -120,7 +123,7 @@ public class TabLeiste extends JTabbedPane {
 		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
 
-
+		pf.setWahlen(wahlen);
 		//Erstelle anonymen ActionListener für den "x" Knopf
 		
 		ActionListener listener = new ActionListener() {
@@ -139,6 +142,7 @@ public class TabLeiste extends JTabbedPane {
 				} else
 					if ( eingabe == 1) {
 						remove(c);
+						pf.getWahlen().remove(c);		
 					}
 				
 			}
@@ -148,4 +152,20 @@ public class TabLeiste extends JTabbedPane {
 		setSelectedComponent(c);
 	
 	}
+
+	/**
+	 * @return the pf
+	 */
+	public Programmfenster getPf() {
+		return pf;
+	}
+
+	/**
+	 * @param pf the pf to set
+	 */
+	public void setPf(Programmfenster pf) {
+		this.pf = pf;
+	}
+	
+	
 }
