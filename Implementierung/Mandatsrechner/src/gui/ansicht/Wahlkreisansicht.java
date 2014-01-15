@@ -13,19 +13,11 @@ public class Wahlkreisansicht extends Ansicht {
 
 	
 	/**
-	 * Konstruktor initialiesiert Fenster.
-	 * @param gebiet gebiet
+	 * Konstruktor initialisiert Fenster.
+	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
 	public Wahlkreisansicht(Gebiet gebiet) {
-		zeigeKomponenten(gebiet);
-	}
-	
-	/**
-	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
-	 * drei verschiedenen Fenstern angezeigt.
-	 * @param gebiet Gebiets-Objekt welches visualisiert werden sollen
-	 */
-	public void zeigeKomponenten(Gebiet gebiet) {
+		aktuellesGebiet = gebiet;
 		Wahlkreis land = (Wahlkreis) gebiet;
 		layoutSetzen();
 		Wahlkreis wk = (Wahlkreis) gebiet;

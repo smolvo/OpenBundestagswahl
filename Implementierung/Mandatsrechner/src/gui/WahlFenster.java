@@ -6,6 +6,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import gui.ansicht.Ansicht;
 import gui.ansicht.Bundesansicht;
@@ -14,6 +16,8 @@ import gui.ansicht.Landesansicht;
 import gui.ansicht.Wahlkreisansicht;
 import gui.ansicht.tabellenfenster.TabellenFenster;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -44,6 +48,9 @@ public class WahlFenster extends JPanel{
 	/** repräsentiert die aktuelle Steuerung des Wahlfensters */
 	private GUISteuerung steuerung;
 
+	/** repräsentiert das zuletzt gezeigte Gebiet, so dass zurück gesprungen werden kann*/
+	private Ansicht letzteAnsicht;
+	
 	/**
 	 * der Konstruktor der Klase
 	 * @param btw
@@ -54,7 +61,6 @@ public class WahlFenster extends JPanel{
 		this.aktuelleAnsicht = new Bundesansicht(btw.getDeutschland());
 		this.add(aktuelleAnsicht);
 		this.steuerung = new GUISteuerung(btw, this);
-		
 	}
 
 	public String getName() {
@@ -65,6 +71,7 @@ public class WahlFenster extends JPanel{
 		this.name = name;
 	}
 	 
+	
 	public void wechsleAnsicht(Gebiet gebiet) {
 		if (gebiet instanceof Deutschland) {
 			this.aktuelleAnsicht.removeAll();
@@ -80,6 +87,22 @@ public class WahlFenster extends JPanel{
 			this.add(aktuelleAnsicht);
 		}
 	}
+	
+	
+	/*
+	public void wechsleAnsicht(Gebiet gebiet) {
+	
+		aktuelleAnsicht.removeAll();
+		if (gebiet instanceof Deutschland) {
+			aktuelleAnsicht = new Bundesansicht(gebiet);
+		} else if (gebiet instanceof Bundesland) {
+			this.aktuelleAnsicht = new Landesansicht(gebiet);
+		} else {
+			this.aktuelleAnsicht = new Wahlkreisansicht(gebiet);
+		}
+		add(aktuelleAnsicht);
+	}
+*/
 
 	public GUISteuerung getSteuerung() {
 		return steuerung;
@@ -89,51 +112,20 @@ public class WahlFenster extends JPanel{
 		this.steuerung = steuerung;
 	}
 	
-	/* wird theoretisch nicht mehr benötigt -Anton
-	 * 
-	public void bundestagswahlDarstellen() {
-		Deutschland deutschland = btw.getDeutschland();
-		
-		if(aktuelleAnsicht.equals(bundesansicht)) {
-			
 	
-		//Kartenfenster
-		KartenFenster karte = new KartenFenster();
-		karte.zeigeInformationen(deutschland);			
-
-		linkeSpalte.add(karte);
-				
-			
-		//Tabellenfenster
-		TabellenFenster tabelle = new TabellenFenster();
-		tabelle.tabellenFuellen(deutschland);
-		bundesansicht.setTabellenFenster(tabelle);
+	//TODO
+	public void zurueckButton() {
+		JButton zurueck = new JButton(new ImageIcon("src/gui/resources/images/ansichtZurueck.png"));
+		zurueck.setSize(70, 50);
 		
-		
-		rechteSpalte.add(tabelle);
-		
-		
-		//Diagrammfenster
-		JPanel diagramme = new JPanel();
-		diagramme.setSize(400, 400);
-		diagramme.setBackground(new Color(255, 0, 0));
-		diagramme.add(new JLabel("Diagramme"));
-		
-		
-		linkeSpalte.add(diagramme);
-		 
-	
-		
-		} else if (aktuelleAnsicht.equals(landesansicht)) {
-			//TODO
-		} else {
-			//TODO
-		}
-		
-		
-	
+		//Erstelle anonymen ActionListener für den Zurück- Knopf
+				ActionListener listener = new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						WahlFenster.this.wechsleAnsicht(letzteAnsicht.getAktuellesGebiet());
+					}
+				};
+			zurueck.addActionListener(listener);
 		
 	}
-	*/
-	
 }

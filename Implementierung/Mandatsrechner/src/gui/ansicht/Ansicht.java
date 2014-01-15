@@ -24,16 +24,16 @@ public abstract class Ansicht extends JPanel {
 	/** Eine Ansicht hat ein Kartenfenster. */
 	protected KartenFenster kartenFenster;
 	
+	/** Das im Moment angezeigte Gebiet */
+	protected Gebiet aktuellesGebiet;
+	
 	
 	/**
-	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
-	 * drei verschiedenen Fenstern angezeigt.
-	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
+	 * Durch diese Methode wird das allgemeine Layout der Ansichten gesetzt
 	 */
-	public abstract void zeigeKomponenten(Gebiet gebiet);
-
 	public void layoutSetzen() {
-				this.removeAll();
+		
+		this.removeAll();
 		//Allgemeine Anpassungen des Wahlfensters
 		this.tabellenFenster = new TabellenFenster();
 		this.kartenFenster = new KartenFenster();
@@ -106,4 +106,22 @@ public abstract class Ansicht extends JPanel {
 	public void setKartenFenster(KartenFenster kartenFenster) {
 		this.kartenFenster = kartenFenster;
 	}
+
+
+	/**
+	 * @return the aktuellesGebiet
+	 */
+	public Gebiet getAktuellesGebiet() {
+		return aktuellesGebiet;
+	}
+
+
+	/**
+	 * @param aktuellesGebiet the aktuellesGebiet to set
+	 */
+	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
+		this.aktuellesGebiet = aktuellesGebiet;
+	}
+	
+	
 }

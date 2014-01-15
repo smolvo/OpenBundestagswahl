@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import model.Bundesland;
 import model.Bundestagswahl;
 import model.Deutschland;
 import model.Gebiet;
@@ -12,26 +13,20 @@ import model.Gebiet;
 public class Bundesansicht extends Ansicht {
 
 
-	
 	/**
-	 * Konstruktor initialiesiert Fenster.
-	 * @param gebiet gebiet
-	 */
-	public Bundesansicht(Gebiet gebiet) {
-		zeigeKomponenten(gebiet);
-	}
-	
-	/**
-	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
-	 * drei verschiedenen Fenstern angezeigt.
+	 * Konstruktor initialisiert Fenster.
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public void zeigeKomponenten(Gebiet gebiet) {
+	public Bundesansicht(Gebiet gebiet) {
+		aktuellesGebiet = gebiet;
 		Deutschland land = (Deutschland) gebiet;
 		layoutSetzen();
 		tabellenFenster.tabellenFuellen(land);
 		diagrammFenster.erstelleDiagramm(land);
 		kartenFenster.zeigeInformationen(land);
 	}
+
+
+	
 
 }

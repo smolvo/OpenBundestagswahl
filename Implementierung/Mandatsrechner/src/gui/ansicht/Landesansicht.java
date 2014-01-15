@@ -13,24 +13,18 @@ public class Landesansicht extends Ansicht {
 
 	
 	/**
-	 * Konstruktor initialiesiert Fenster.
-	 * @param gebiet gebiet
-	 */
-	public Landesansicht(Gebiet gebiet) {
-		zeigeKomponenten(gebiet);
-	}
-	
-	/**
-	 * Durch diese Methode werden, je nach Ansichtsart, Daten in den 
-	 * drei verschiedenen Fenstern angezeigt.
+	 * Konstruktor initialisiert Fenster.
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
-	public void zeigeKomponenten(Gebiet gebiet) {
+	public Landesansicht(Gebiet gebiet) {
+		aktuellesGebiet = gebiet;
 		Bundesland land = (Bundesland) gebiet;
 		layoutSetzen();
 		Bundesland bl = (Bundesland) gebiet;
 		tabellenFenster.tabellenFuellen(bl);
 		diagrammFenster.erstelleDiagramm(bl);
 	}
+
+
 
 }

@@ -1,29 +1,13 @@
 package gui;
 
-import importexport.Crawler2013;
 import importexport.ImportExportManager;
-
-import java.awt.FlowLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-
 import model.Bundestagswahl;
 
 /**
@@ -117,7 +101,7 @@ public final class Programmfenster extends JFrame{
 		return tabs;
 	}
 
-	public void setTabs2(TabLeiste tabs) {
+	public void setTabs(TabLeiste tabs) {
 		this.tabs = tabs;
 	}
 
