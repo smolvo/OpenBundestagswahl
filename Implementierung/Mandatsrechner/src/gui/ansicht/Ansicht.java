@@ -33,29 +33,29 @@ public abstract class Ansicht extends JPanel {
 	public abstract void zeigeKomponenten(Gebiet gebiet);
 
 	public void layoutSetzen() {
+				this.removeAll();
 		//Allgemeine Anpassungen des Wahlfensters
-				this.tabellenFenster = new TabellenFenster();
-				//this.kartenFenster = new KartenFenster();
-				//this.diagrammFenster = new DiagrammFenster();
-				
-				GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
-				GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
-				GridLayout gridLay = new GridLayout(1, 2, 5, 5);
-				
-				JPanel linkeSpalte = new JPanel();
-				linkeSpalte.setLayout(linkeSpalteLay);
-				JPanel rechteSpalte = new JPanel();
-				rechteSpalte.setLayout(rechteSpalteLay);
-				
-				rechteSpalte.add(tabellenFenster);
-				linkeSpalte.add(kartenFenster);
-				linkeSpalte.add(diagrammFenster);
+		this.tabellenFenster = new TabellenFenster();
+		this.kartenFenster = new KartenFenster();
+		this.diagrammFenster = new DiagrammFenster();
+			
+		GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
+		GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
+		GridLayout gridLay = new GridLayout(1, 2, 5, 5);
+			
+		JPanel linkeSpalte = new JPanel();
+		linkeSpalte.setLayout(linkeSpalteLay);
+		JPanel rechteSpalte = new JPanel();
+		rechteSpalte.setLayout(rechteSpalteLay);
 
-				this.setLayout(gridLay);
-				this.add(linkeSpalte);
-				this.add(rechteSpalte);
+		rechteSpalte.add(tabellenFenster);
+		linkeSpalte.add(kartenFenster);
+		linkeSpalte.add(diagrammFenster);
+		this.setLayout(gridLay);
+		this.add(linkeSpalte);
+		this.add(rechteSpalte);
 
-				this.setVisible(true);
+		this.setVisible(true);
 	}
 	
 	

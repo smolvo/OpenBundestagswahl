@@ -33,7 +33,7 @@ import model.Bundestagswahl;
  *
  */
 
-public class Programmfenster extends JFrame{
+public final class Programmfenster extends JFrame{
 
 	private Menu menu = null;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();

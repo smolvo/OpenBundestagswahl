@@ -128,7 +128,7 @@ public class DeutschlandKarte extends JPanel {
 			}
 		
 		private BufferedImage faerbeLand(Color bwfarbe, BufferedImage bild) {
-			int width = bild.getWidth();
+			/*int width = bild.getWidth();
 	        int height = bild.getHeight();
 
 	        for (int xx = 0; xx < width; xx++) {
@@ -138,7 +138,7 @@ public class DeutschlandKarte extends JPanel {
 	                    bild.setRGB(xx, yy, bwfarbe.getRGB());
 	                }
 	            }
-	        }
+	        }*/
 	        return bild;
 		}
 	

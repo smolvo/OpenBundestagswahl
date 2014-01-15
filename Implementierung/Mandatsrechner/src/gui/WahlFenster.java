@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import model.Bundesland;
 import model.Bundestagswahl;
 import model.Deutschland;
 import model.Gebiet;
@@ -39,6 +40,9 @@ public class WahlFenster extends JPanel{
 	
 	/** repräsentiert die aktuelle Ansicht */
 	private Ansicht aktuelleAnsicht;
+	
+	/** repräsentiert die aktuelle Steuerung des Wahlfensters */
+	private GUISteuerung steuerung;
 
 	/**
 	 * der Konstruktor der Klase
@@ -49,6 +53,7 @@ public class WahlFenster extends JPanel{
 		this.name = btw.getName();
 		this.aktuelleAnsicht = new Bundesansicht(btw.getDeutschland());
 		this.add(aktuelleAnsicht);
+		this.steuerung = new GUISteuerung(btw, this);
 		
 	}
 
@@ -60,8 +65,28 @@ public class WahlFenster extends JPanel{
 		this.name = name;
 	}
 	 
-	public void wechsleAnsicht(Ansicht a) {
-		aktuelleAnsicht = a;
+	public void wechsleAnsicht(Gebiet gebiet) {
+		if (gebiet instanceof Deutschland) {
+			this.aktuelleAnsicht.removeAll();
+			this.aktuelleAnsicht = new Bundesansicht(gebiet);
+			this.add(aktuelleAnsicht);
+		} else if (gebiet instanceof Bundesland) {
+			this.aktuelleAnsicht.removeAll();
+			this.aktuelleAnsicht = new Landesansicht(gebiet);
+			this.add(aktuelleAnsicht);
+		} else {
+			this.aktuelleAnsicht.removeAll();
+			this.aktuelleAnsicht = new Wahlkreisansicht(gebiet);
+			this.add(aktuelleAnsicht);
+		}
+	}
+
+	public GUISteuerung getSteuerung() {
+		return steuerung;
+	}
+
+	public void setSteuerung(GUISteuerung steuerung) {
+		this.steuerung = steuerung;
 	}
 	
 	/* wird theoretisch nicht mehr benötigt -Anton

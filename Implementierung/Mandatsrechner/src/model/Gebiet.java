@@ -31,6 +31,11 @@ public abstract class Gebiet {
 		}
 		this.name = name;
 	}
+	
+	public String toString() {
+		return this.name;
+	}
+	
 	/**
 	 * Gibt die Anzahl der Wahlberechtigten zurück
 	 * @return die Anzahl der Wahlberechtigten
