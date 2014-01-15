@@ -10,6 +10,9 @@ public class Wahlkreis extends Gebiet {
 	/** Die Anzahl der Wahlberechtigten */
 	private int wahlberechtigte;
 	
+	/** Offiziell zugeordnete Nummer */
+	private int wahlkreisnummer;
+	
 	/** Kandidat mit den meisten Erststimmen */
 	private Kandidat wahlkreisSieger;
 	
@@ -104,5 +107,13 @@ public class Wahlkreis extends Gebiet {
 		      throw new IllegalArgumentException("Anzahl der Wahlberechtige ist negativ!");
 		}
 		this.wahlberechtigte = wahlberechtigte;
+	}
+	
+	public int getWahlkreisnummer() {
+		return wahlkreisnummer;
+	}
+
+	public void setWahlkreisnummer(int wahlkreisnummer) {
+		this.wahlkreisnummer = wahlkreisnummer;
 	}
 }

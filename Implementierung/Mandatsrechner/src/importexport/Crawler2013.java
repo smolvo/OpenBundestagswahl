@@ -300,6 +300,8 @@ public class Crawler2013 extends Crawler {
 				for(int j=0;j<rows.size() && !error;j++){
 					if(rows.get(j)[2].equals(tempNummer)){
 						Wahlkreis w = new Wahlkreis(rows.get(j)[1],values.get(j)[0][0]);
+						w.setWahlkreisnummer(Integer.parseInt(rows.get(j)[0]));
+						
 						LinkedList<Erststimme> erststimme = new LinkedList<Erststimme>();
 						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
 						for(int k=0;k<parteien.size();k++){
@@ -394,7 +396,7 @@ public class Crawler2013 extends Crawler {
 			}*/
 			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 			for(int j=0;j<wahlkreise.size();j++){
-				System.out.println("--> "+wahlkreise.get(j).getName());
+				System.out.println("--> "+wahlkreise.get(j).getName()+" ("+wahlkreise.get(j).getWahlkreisnummer()+")");
 				List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
 				List<Erststimme> erststimmen = wahlkreise.get(j).getErststimmen();
 				for(int k = 0; k<zweitstimmen.size();k++){
