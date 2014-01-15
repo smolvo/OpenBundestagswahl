@@ -124,7 +124,7 @@ public class Crawler2013 extends Crawler {
 							if(parts[0].equals("")|| parts[1].equals("")){
 								error = true;
 							}else{
-								rows.add(new String[]{parts[0],parts[1],parts[2]});
+								rows.add(new String[]{parts[0],parts[1].substring(1,parts[1].length()-1),parts[2]});
 							}
 							
 							int[][] tempInt=new int[columns.size()][2];
@@ -256,7 +256,8 @@ public class Crawler2013 extends Crawler {
 		String nrDeutschland = "0";
 		for(int i=rows.size()-1; i>=0; i--){
 			if(rows.get(i)[2].equals("")){
-				deutschland = new Deutschland(rows.get(i)[1],values.get(i)[0][0]);
+				//deutschland = new Deutschland(rows.get(i)[1],values.get(i)[0][0]);
+				deutschland = new Deutschland("Deutschland",values.get(i)[0][0]);
 				nrDeutschland = (rows.get(i)[0]);
 				
 			}
@@ -292,7 +293,7 @@ public class Crawler2013 extends Crawler {
 			//System.out.println(rows.get(i)[2]);
 			if(rows.get(i)[2].equals(nrDeutschland+"")){
 				// TODO: Einwohnerzahl (letzter Parameter)
-				Bundesland b = new Bundesland(rows.get(i)[1].substring(1, rows.get(i)[1].length()-1),0);
+				Bundesland b = new Bundesland(rows.get(i)[1],0);
 				//System.out.println(rows.get(i)[1]);
 				tempNummer = rows.get(i)[0];
 				
@@ -438,7 +439,7 @@ public class Crawler2013 extends Crawler {
 			for(int i = 0; i<bundeslaender.size();i++){
 				List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 				for(int j=0; j<wahlkreise.size();j++){
-					bf.write(wahlkreise.get(j).getWahlkreisnummer()+";"+wahlkreise.get(j).getName()+";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
+					bf.write(wahlkreise.get(j).getWahlkreisnummer()+";\""+wahlkreise.get(j).getName()+"\";"+relevanteNr+";"+wahlkreise.get(j).getWahlberechtigte()+";;;;");
 					List<Erststimme> erststimmen = wahlkreise.get(j).getErststimmen();
 					List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
 					for(int k=0;k<3;k++){
@@ -460,7 +461,7 @@ public class Crawler2013 extends Crawler {
 					bf.write("\n");
 				}
 				
-				bf.write(relevanteNr+";"+bundeslaender.get(i).getName()+";99;"+bundeslaender.get(i).getWahlberechtigte()+";;;;");
+				bf.write(relevanteNr+";\""+bundeslaender.get(i).getName()+"\";99;"+bundeslaender.get(i).getWahlberechtigte()+";;;;");
 				List<Zweitstimme> zweitstimmen = bundeslaender.get(i).getZweitstimmen();
 				List<Erststimme> erststimmen = bundeslaender.get(i).getErststimmen();
 				for(int k=0;k<3;k++){
