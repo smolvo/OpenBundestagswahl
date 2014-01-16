@@ -38,7 +38,7 @@ public class TabellenFenster extends JScrollPane {
 			GUIPartei gp = parteiErstellen(zw);
 			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamt) * 1000) / 10);
 			gp.setProzentualeZweit(prozentualeZweit);
-			daten.addPartei(gp.getName(), zw, Double.toString(prozentualeZweit), 
+			daten.addZeile(gp.getName(), zw, Double.toString(prozentualeZweit), 
 					Integer.toString(gp.getSitze()), Integer.toString(gp.getDirektmandate()), 
 					Integer.toString(gp.getUeberhangsmandate()), Integer.toString(gp.getAusgleichsmandate()));
 		}
@@ -64,7 +64,7 @@ public class TabellenFenster extends JScrollPane {
 			GUIPartei gp = parteiErstellen(zw);
 			double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamt) * 1000) / 10);
 			gp.setProzentualeZweit(prozentualeZweit);
-			daten.addPartei(gp.getName(), zw, Double.toString(prozentualeZweit), 
+			daten.addZeile(gp.getName(), zw, Double.toString(prozentualeZweit), 
 					Integer.toString(gp.getDirektmandate()), Integer.toString(gp.getUeberhangsmandate()));
 		}
 		
@@ -98,7 +98,7 @@ public class TabellenFenster extends JScrollPane {
 				gk.setProzErst(prozentualeErst);
 				double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamtZweit) * 1000) / 10);
 				gk.setProzZweit(prozentualeZweit);
-				daten.addPartei(gk.getPartei(), gk.getName(), zw, er, Double.toString(prozentualeZweit), 
+				daten.addZeile(gk.getPartei(), gk.getName(), zw, er, Double.toString(prozentualeZweit), 
 						Double.toString(prozentualeErst), gk.isDirektman());
 			}
 		}

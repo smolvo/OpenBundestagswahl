@@ -53,38 +53,32 @@ public class WahlkreisDaten {
 	 * @param direktmandat Anzahl Direktkandidaten
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 */
-	public void addPartei(String partei, String name, Zweitstimme zweitStimme, Erststimme erstStimme, 
+	public void addZeile(String partei, String name, Zweitstimme zweitStimme, Erststimme erstStimme, 
 			String zweitProzent, String erstProzent, Boolean direktmandat) {
-		if (partei != null) {
-			this.parteien.add(partei);
-		} else {
-			this.parteien.add("-");
-		}
-		if (name != null) {
-			this.kandidaten.add(name);
-		} else {
-			this.kandidaten.add("-");
-		}
 		if (zweitStimme != null) {
 			this.zweitstimmen.add(zweitStimme);
 		}
 		if (erstStimme != null) {
 			this.erststimmen.add(erstStimme);
 		}
-		if (zweitProzent != null) {
-			this.zweitProzent.add(zweitProzent);
+		stringCheck(partei, this.parteien);
+		stringCheck(name, this.kandidaten);
+		stringCheck(zweitProzent, this.zweitProzent);
+		stringCheck(erstProzent, this.erstProzent);
+		this.direktmandate.add(direktmandat);
+	}
+	
+	/**
+	 * Diese Methode überprüft, ob ein String null ist, wenn 
+	 * nicht wird es der Liste angehangen, 
+	 * @param string String
+	 * @param list Liste
+	 */
+	private void stringCheck(String string, LinkedList<String> list) {
+		if (string != null) {
+			list.add(string);
 		} else {
-			this.zweitProzent.add("-");
-		}
-		if (erstProzent != null) {
-			this.erstProzent.add(erstProzent);
-		} else {
-			this.erstProzent.add("-");
-		}
-		if (direktmandat != null) {
-			this.direktmandate.add(direktmandat);
-		} else {
-			this.direktmandate.add(false);
+			list.add("-");
 		}
 	}
 	

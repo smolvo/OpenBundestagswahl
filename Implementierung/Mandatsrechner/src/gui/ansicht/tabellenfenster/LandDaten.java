@@ -44,30 +44,28 @@ public class LandDaten {
 	 * @param direktmandat Anzahl Direktkandidaten
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 */
-	public void addPartei(String partei, Zweitstimme stimme, String prozent, String direktmandat,
+	public void addZeile(String partei, Zweitstimme stimme, String prozent, String direktmandat,
 			String ueberhangsmandat) {
-		if (partei != null) {
-			this.parteien.add(partei);
-		} else {
-			this.parteien.add("-");
-		}
 		if (stimme != null) {
 			this.stimmen.add(stimme);
 		}
-		if (prozent != null) {
-			this.prozent.add(prozent);
+		stringCheck(partei, this.parteien);
+		stringCheck(prozent, this.prozent);
+		stringCheck(direktmandat, this.direktmandate);
+		stringCheck(ueberhangsmandat, this.ueberhangsmandate);
+	}
+	
+	/**
+	 * Diese Methode überprüft, ob ein String null ist, wenn 
+	 * nicht wird es der Liste angehangen, 
+	 * @param string String
+	 * @param list Liste
+	 */
+	private void stringCheck(String string, LinkedList<String> list) {
+		if (string != null) {
+			list.add(string);
 		} else {
-			this.prozent.add("-");
-		}
-		if (direktmandat != null) {
-			this.direktmandate.add(direktmandat);
-		} else {
-			this.direktmandate.add("-");
-		}
-		if (ueberhangsmandat != null) {
-			this.ueberhangsmandate.add(ueberhangsmandat);
-		} else {
-			this.ueberhangsmandate.add("-");
+			list.add("-");
 		}
 	}
 	

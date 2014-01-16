@@ -54,40 +54,30 @@ public class BundDaten {
 	 * @param ueberhangsmandat Anzahl Überhangsmandate
 	 * @param ausgleichsmandat Anzahl Ausgleichsmandate
 	 */
-	public void addPartei(String partei, Zweitstimme stimme, String prozent, String sitze, String direktmandat,
+	public void addZeile(String partei, Zweitstimme stimme, String prozent, String sitze, String direktmandat,
 			String ueberhangsmandat, String ausgleichsmandat) {
-		if (partei != null) {
-			this.parteien.add(partei);
-		} else {
-			this.parteien.add("-");
-		}
 		if (stimme != null) {
 			this.stimmen.add(stimme);
 		}
-		if (prozent != null) {
-			this.prozent.add(prozent);
+		stringCheck(partei, this.parteien);
+		stringCheck(prozent, this.prozent);
+		stringCheck(sitze, this.sitze);
+		stringCheck(direktmandat, this.direktmandate);
+		stringCheck(ueberhangsmandat, this.ueberhangsmandate);
+		stringCheck(ausgleichsmandat, this.ausgleichsmandate);
+	}
+	
+	/**
+	 * Diese Methode überprüft, ob ein String null ist, wenn 
+	 * nicht wird es der Liste angehangen, 
+	 * @param string String
+	 * @param list Liste
+	 */
+	private void stringCheck(String string, LinkedList<String> list) {
+		if (string != null) {
+			list.add(string);
 		} else {
-			this.prozent.add("-");
-		}
-		if (sitze != null) {
-			this.sitze.add(sitze);
-		} else {
-			this.sitze.add("-");
-		}
-		if (direktmandat != null) {
-			this.direktmandate.add(direktmandat);
-		} else {
-			this.direktmandate.add("-");
-		}
-		if (ueberhangsmandat != null) {
-			this.ueberhangsmandate.add(ueberhangsmandat);
-		} else {
-			this.ueberhangsmandate.add("-");
-		}
-		if (ausgleichsmandat != null) {
-			this.ausgleichsmandate.add(ausgleichsmandat);
-		} else {
-			this.ausgleichsmandate.add("-");
+			list.add("-");
 		}
 	}
 	
