@@ -1,0 +1,18 @@
+\select@language {german}
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}
+\contentsline {section}{\numberline {2}Pakete}{1}{section.2}
+\contentsline {subsection}{\numberline {2.1}Datenmodell}{1}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Import/Export}{1}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}ImportExportManager}{1}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Export}{1}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Import}{1}{subsubsection.2.2.3}
+\contentsline {subsection}{\numberline {2.3}GUI und GUI-Logik}{1}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Chronik}{1}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Mandatsrechner}{1}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Wahlgenerator}{1}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Wahlvergleich}{1}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Steuerung}{1}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Sonstiges}{1}{subsection.2.9}
+\contentsline {section}{\numberline {3}Vorschau auf die n\IeC {\"a}chste Phase}{1}{section.3}
+\contentsline {subsection}{\numberline {3.1}Ideen und Ziele}{1}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Zeitplan}{1}{subsection.3.2}

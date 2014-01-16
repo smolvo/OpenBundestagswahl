@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{graphicx} %Um Bilder anzeigen zu können
+\usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage{endnotes}
+\usepackage[section]{placeins}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\newcommand{\myma}{\fontfamily{pcr}\selectfont \textbf}
+\newcommand{\mymo}{\fontfamily{pcr}\selectfont \textit}
+\setlength{\parindent}{0pt}
+\let\footnote=\endnote
+
+\begin{document}
+\pagestyle{fancy}
+
+\begin{titlepage}
+\vspace*{50pt}
+\begin{center}
+{\Huge Implementierung\\[1cm] {\bfseries Praxis der Softwareentwicklung}\\[2cm] Entwicklung einer Software zur Berechnung der Mandatsverteilung im Deutschen Bundestag\\[1cm]Gruppe 1} \\
+\vspace*{15pt}
+{\normalsize Philipp Löwer, Anton Mehlmann, Manuel Olk, Enes Ördek, \\Simon Schürg, Nick Vlasoff}
+\end{center}
+\date{}
+
+\vspace*{30pt}
+\begin{figure}[h]
+\centering
+		\includegraphics[scale=0.6]{KIT-Logo.png}\\
+		\vspace*{10pt}
+		\Huge WS 2013 / 14
+\end{figure}
+\end{titlepage}
+\newpage\thispagestyle{empty}\hspace{1em}\newpage
+\def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
+\cfoot{{\Vhrulefill~  Seite \thepage   ~\Vhrulefill} \newline {\scriptsize KIT – Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}}
+
+\pagenumbering{roman} 
+
+ 
+\newpage
+\begin{onehalfspace}
+\tableofcontents
+\end{onehalfspace}
+\newpage
+
+\pagenumbering{arabic} 
+
+\section{Einleitung}
+
+
+\section{Pakete}
+
+	\subsection{Datenmodell}
+
+	\subsection{Import/Export}
+		\subsubsection{ImportExportManager}		
+		\subsubsection{Export}
+		\subsubsection{Import}
+	\subsection{GUI und GUI-Logik}	
+	
+	\subsection{Chronik}
+	
+	\subsection{Mandatsrechner}
+	
+	\subsection{Wahlgenerator}
+	
+	\subsection{Wahlvergleich}
+	
+	\subsection{Steuerung}
+	
+	\subsection{Sonstiges}
+
+\section{Vorschau auf die nächste Phase}
+
+	\subsection{Ideen und Ziele}
+
+	\subsection{Zeitplan}
+	
+\begingroup
+\parindent 0pt
+\parskip 2ex
+\def\enotesize{\normalsize}
+
+\endgroup
+\end{document}
