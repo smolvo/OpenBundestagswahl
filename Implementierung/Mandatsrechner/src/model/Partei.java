@@ -220,4 +220,17 @@ public class Partei implements Serializable {
 		this.zweitstimme = zweitstimme;
 	}
 	
+	/**
+	 * Gibt die Anzahl an Direkmandate zurück
+	 * @return die Anzahl an Direktmandate in der Partei
+	 */
+	public int getAnzahlDirektmandate(){
+		int res=0;
+		for(Kandidat kandidat : getMitglieder()){
+			if(kandidat.getMandat().equals(Mandat.DIREKMANDAT)){
+				res++;
+			}
+		}
+		return res;
+	}
 }
