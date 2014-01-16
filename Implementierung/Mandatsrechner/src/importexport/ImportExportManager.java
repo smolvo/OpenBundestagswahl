@@ -16,44 +16,62 @@ public class ImportExportManager {
 	 * beinhaltet.
 	 */
 	private Crawler crawler[];
+	private Export exporter[];
 	
 	/**
 	 * Hier koennen weitere Algorithmen ergaenzt werden.
 	 */
-	public ImportExportManager(){
+	public ImportExportManager() {
 		crawler = new Crawler[1];
 		crawler[0] = new Crawler2013();
+		exporter = new Export[1];
+		exporter[0] = new Export2013();
 	}
 
 	/**
 	 * Importiert eine Datei.
-	 * @param csvDatei Datei die importiert werden soll.
+	 * @param csvDateien Datei die importiert werden soll.
 	 * @return das Ergebnis-Objekt.
+	 * @throws Exception 
 	 */
-	public Bundestagswahl importieren(File[] csvDateien){
+	public Bundestagswahl importieren(File[] csvDateien) throws Exception {
 		
 		Bundestagswahl imported = null;
-		if(this.pruefeDateityp(csvDateien)){
+		if (this.pruefeDateityp(csvDateien)) {
 				imported = this.leseCSVDatei(csvDateien);
 		}
 		return imported;
 	}
 
-	public boolean exportieren(String pfad,Bundestagswahl bw){
-		return crawler[0].exportieren(pfad, bw);
+	/**
+	 * Exportiert eine Bundestagswahl und Speichert die
+	 * exportierte Bundestagswahl als eine CSV-Datei
+	 * in ein bestimmtes Verzeichnis.
+	 * @param pfad Das Verzeichnis,
+	 * in das die exportierte Datei gespeichert werden soll.
+	 * @param bw die zu exportierende Bundestagswahl.
+	 * @return true wenn Erfolgreich. Ansosnten false.
+	 */
+	public boolean exportieren(String pfad, Bundestagswahl bw) {
+		return exporter[0].exportieren(pfad, bw);
 	}
-	
-	private boolean pruefeDateityp(File[] csvDateien){
+	/**
+	 * Prüft, ob eine Datei die gewünschte Dateiendung (.csv)
+	 * hat.
+	 * @param csvDateien Dateien, die zu überprüfen sind.
+	 * @return true, wenn alle Dateien die Endung .csv haben.
+	 */
+	private boolean pruefeDateityp(File[] csvDateien) {
 		boolean isCSV = false;
-		for(int i=0;i<csvDateien.length;i++){
+		for (int i = 0; i < csvDateien.length; i++) {
 			String fileName = csvDateien[i].getName();
-			String fileExtension="";
-			if(fileName.length()>4){
-				fileExtension = fileName.substring(fileName.length()-4, fileName.length());
+			String fileExtension = "";
+			if (fileName.length() > 4) {
+				fileExtension = fileName.substring(fileName.length() - 4, fileName.length());
 			}
 			
 			//System.out.println(fileExtension);
-			if(fileExtension.equals(".csv") && csvDateien[i].isFile()){
+			if (fileExtension.equals(".csv") && csvDateien[i].isFile()) {
 				isCSV = true;
 			}
 			// else: Es handelt sich um keine CSV-Datei.
@@ -61,18 +79,27 @@ public class ImportExportManager {
 		return isCSV;
 	}
 	
-	private Bundestagswahl leseCSVDatei(File[] csvDateien){
+	/**
+	 * Ruft den Crawler auf und importiert die gewünschten Dateien.
+	 * Falls das importierte null ist, ist der C
+	 * @param csvDateien Dateien die zu importieren sind.
+	 * @return gibt die importierte Bundestgswahl zurück.
+	 * @throws Exception 
+	 */
+	private Bundestagswahl leseCSVDatei(File[] csvDateien) throws Exception {
 		Bundestagswahl imported = null;
-		for(int i=0; i<this.crawler.length;i++){
+		for (int i = 0; i < this.crawler.length; i++) {
 			System.out.println(crawler[i].getCrawlerInformation());
 			imported = crawler[i].erstelleBundestagswahl(csvDateien);
-			if(imported!=null){
+			if (imported != null) {
 				break; 
 			}
 		}
 		
 		// if imported==null > Keine gültige Datei.
-		
+		if (imported == null) {
+			throw new Exception("Keinen geeigneten Crawler gefunden : (");
+		}
 		return imported;
 		
 	}
