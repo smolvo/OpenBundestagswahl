@@ -293,7 +293,7 @@ public class Crawler2013 extends Crawler {
 			//System.out.println(rows.get(i)[2]);
 			if(rows.get(i)[2].equals(nrDeutschland+"")){
 				// TODO: Einwohnerzahl (letzter Parameter)
-				Bundesland b = new Bundesland(rows.get(i)[1],0);
+				Bundesland b = new Bundesland(rows.get(i)[1],this.getEinwohnerzahl(rows.get(i)[1]));
 				//System.out.println(rows.get(i)[1]);
 				tempNummer = rows.get(i)[0];
 				
@@ -593,6 +593,63 @@ public class Crawler2013 extends Crawler {
 				name = "-";
 		}
 		return name;
+	}
+	
+	private int getEinwohnerzahl(String name){
+		int anzahl=0;
+		switch(name){
+			case "Baden-Württemberg":
+				anzahl = 9483500;
+			break;
+			case "Bayern":
+				anzahl=11352000;
+			break;
+			case "Berlin":
+				anzahl=3019900;
+			break;
+			case "Brandenburg":
+				anzahl=2420700;
+			break;
+			case "Bremen":
+				anzahl=575300;
+			break;
+			case "Hamburg":
+				anzahl=1558300;
+			break;
+			case "Hessen":
+				anzahl=5390000;
+			break;
+			case "Mecklenburg-Vorpommern":
+				anzahl=1587000;
+			break;
+			case "Niedersachsen":
+				anzahl=7354900;
+			break;
+			case "Nordrhein-Westfalen":
+				anzahl=15906800;
+			break;
+			case "Rheinland-Pfalz":
+				anzahl=3675300;
+			break;
+			case "Saarland":
+				anzahl=919600;
+			break;
+			case "Sachsen":
+				anzahl=4007100;
+			break;
+			case "Sachsen-Anhalt":
+				anzahl=2252200;
+			break;
+			case "Schleswig-Holstein":
+				anzahl=2687200;
+			break;
+			case "Thüringen":
+				anzahl=2157700;
+			break;
+			default:
+				anzahl=0;
+		}
+		return anzahl;
 	}
 	
 
