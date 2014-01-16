@@ -111,7 +111,7 @@ public class Crawler2013 extends Crawler {
 						 */
 						if (parts.length > 10) {
 							
-							for (int i = 3; i < parts.length && !error; i += 4) {
+							for (int i = (parteiOffset - 1); i < parts.length && !error; i += 4) {
 								//System.out.println(i+": "+parts[i]);
 								if (!parts[i].equals("")) {
 									columns.add(parts[i]);
@@ -139,7 +139,7 @@ public class Crawler2013 extends Crawler {
 							
 							int[][] tempInt = new int[columns.size()][2];
 							
-							for (int i = 3; i < maxColumn && !error; i += 4) {
+							for (int i = (parteiOffset - 1); i < maxColumn && !error; i += parteiOffset) {
 								int currentColumn = (i - 3) / 4;
 								try {
 									if (i >= parts.length || parts[i].equals("")) {
