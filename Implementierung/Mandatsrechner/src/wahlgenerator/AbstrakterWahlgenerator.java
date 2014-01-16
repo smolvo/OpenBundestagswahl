@@ -61,7 +61,10 @@ public abstract class AbstrakterWahlgenerator {
 	 *
 	 * @return erstlle Bundestagswahl
 	 */
-	public abstract Bundestagswahl erzeugeBTW();
+	public Bundestagswahl erzeugeBTW() {
+		//TODO
+		return null;
+	}
 	
 	/**
 	 * Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise

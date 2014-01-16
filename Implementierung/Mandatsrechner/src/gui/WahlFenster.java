@@ -62,6 +62,8 @@ public class WahlFenster extends JPanel{
 		aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
 		this.add(aktuelleAnsicht);
 		this.steuerung = new GUISteuerung(btw, this);
+		
+		
 	}
 
 	public String getName() {
