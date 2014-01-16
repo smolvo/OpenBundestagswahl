@@ -42,7 +42,7 @@ public abstract class AbstrakterWahlgenerator {
 	 * @return generierte Bundestagswahl
 	 */
 	public Bundestagswahl erzeugeBTW() {
-		//TODO
+		// TODO
 		return null;
 	}
 	
