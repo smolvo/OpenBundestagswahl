@@ -1,4 +1,9 @@
 package gui;
+import gui.dialoge.AboutDialog;
+import gui.dialoge.EinstellungenDialog;
+import gui.dialoge.ExportDialog;
+import gui.dialoge.ImportDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

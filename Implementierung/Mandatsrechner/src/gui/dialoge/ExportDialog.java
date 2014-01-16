@@ -1,5 +1,8 @@
-package gui;
+package gui.dialoge;
 
+import gui.Programmfenster;
+import gui.TabLeiste;
+import gui.WahlFenster;
 import importexport.ImportExportManager;
 
 import javax.swing.JDialog;
