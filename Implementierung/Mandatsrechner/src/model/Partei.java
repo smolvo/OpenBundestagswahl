@@ -32,6 +32,8 @@ public class Partei implements Serializable {
 	/** Die Zweitstimmenliste (pro Gebiet) */
 	private LinkedList<Zweitstimme> zweitstimme;
 	
+	/** Ist die Partei im Bundestag*/
+	private boolean imBundestag;
 	
 	/**
 	 * Parametrisierter Konstruktor.
@@ -233,4 +235,22 @@ public class Partei implements Serializable {
 		}
 		return res;
 	}
+	
+	/**
+	 * Gibt zurück ob die Partei im Bundestag
+	 * @return ob Partei im Bundestag ist
+	 */
+	public boolean isImBundestag() {
+		return imBundestag;
+	}
+
+	/**
+	 * Bestimmt ob die Partei im Bundestag ist oder nicht 
+	 * @param imBundestag ob PArtei im Bundestag ist oder nicht
+	 */
+	public void setImBundestag(boolean imBundestag) {
+		this.imBundestag = imBundestag;
+	}
+	
+	
 }
