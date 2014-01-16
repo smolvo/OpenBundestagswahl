@@ -22,6 +22,8 @@ public class Landesliste implements Serializable {
 	
 	/** Die Liste mit den Kandidaten der Partei im Bundesland */
 	private List<Kandidat> listenkandidaten = new ArrayList<Kandidat>();
+	
+	private int mindestSitzanzahl;
 
 	/**
 	 * Parametrisierter Konstruktur.
@@ -127,5 +129,24 @@ public class Landesliste implements Serializable {
 			}
 		}
 		return res;
+	}
+	
+	/**
+	 * Gibt die Mindestsitzanzahl der Partei zurück
+	 * @return die Mindestsitzanzahl der Partei zurück
+	 */
+	public int getMindestSitzanzahl() {
+		return mindestSitzanzahl;
+	}
+
+	/**
+	 * Setzt die mindestsitzanzahl der partei
+	 * @param mindestSitzanzahl der partei
+	 */
+	public void setMindestSitzanzahl(int mindestSitzanzahl) {
+		if(mindestSitzanzahl < 0){
+			throw new IllegalArgumentException("Sitzanzahl negativ");
+		}
+		this.mindestSitzanzahl = mindestSitzanzahl;
 	}
 }

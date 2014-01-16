@@ -21,7 +21,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	}
 
 	@Override
-	protected Bundesland berechne(Bundesland bl) {
+	protected Bundesland berechne(Bundesland bl, int sitzeBundesland) {
 		// TODO Auto-generated method stub
 		return null;
 	}

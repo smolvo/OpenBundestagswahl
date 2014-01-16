@@ -10,7 +10,7 @@ abstract class Mandatsrechner {
 	
 	abstract public Bundestagswahl berechne(Bundestagswahl bw);
 	
-	abstract protected Bundesland berechne(Bundesland bl);
+	abstract protected Bundesland berechne(Bundesland bl, int sitzeBundesland);
 	
 	abstract protected Wahlkreis berechne(Wahlkreis wk);
 	

@@ -14,9 +14,9 @@ public class Deutschland extends Gebiet implements Serializable {
 	private static final long serialVersionUID = -2346463735187246165L;
 	
 	/** Liste mit den enthaltenden Bundesländer. */
-	LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
+	private LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 	
-	
+	private int einwohneranzahl;
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name Der Name
@@ -131,4 +131,21 @@ public class Deutschland extends Gebiet implements Serializable {
 		// TODO Auto-generated method stub
 	}
 	
+	/**
+	 * Berechnet und gibt die Einwohnerzahl
+	 * @return die Einwohnerzahl
+	 */
+	public int getEinwohneranzahl() {
+		//Einwohneranzahl zurücksetzen
+		einwohneranzahl = 0;
+		for(Bundesland bl : this.bundeslaender){
+			einwohneranzahl += bl.getEinwohnerzahl();
+		}
+		return einwohneranzahl;
+	}
+	/* Notwendig?
+	public void setEinwohneranzahl(int einwohneranzahl) {
+		this.einwohneranzahl = einwohneranzahl;
+	}
+	*/
 }
