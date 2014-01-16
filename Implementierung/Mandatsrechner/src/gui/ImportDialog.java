@@ -40,10 +40,10 @@ public class ImportDialog extends JDialog {
 		/* Lässt bei beiden Dialogen nur csv- Dateien zu und beschreibt, welche
 		 * Datei in welchem Dialog eingebeben werden soll
 		 */
-		FileFilter ergebnisFilter = new FileNameExtensionFilter("Datei mit Wahlergebnissen", "csv");
-		FileFilter bewerberFilter = new FileNameExtensionFilter("Datei mit Wahlbewerbern", "csv");
-		ergebnisseAuswahl.setFileFilter(ergebnisFilter);
-		bewerberAuswahl.setFileFilter(bewerberFilter);
+		//FileFilter ergebnisFilter = new FileNameExtensionFilter("Datei mit Wahlergebnissen", "csv");
+		//FileFilter bewerberFilter = new FileNameExtensionFilter("Datei mit Wahlbewerbern", "csv");
+		//ergebnisseAuswahl.setFileFilter(ergebnisFilter);
+		//bewerberAuswahl.setFileFilter(bewerberFilter);
 		ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
 		bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
 		

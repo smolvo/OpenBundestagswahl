@@ -24,6 +24,7 @@ public final class Programmfenster extends JFrame{
 	private TabLeiste tabs;
 	
 	public static void main(String[] args) {
+		
 		new Programmfenster();
 	}
 	

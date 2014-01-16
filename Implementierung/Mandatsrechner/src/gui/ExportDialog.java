@@ -1,16 +1,26 @@
 package gui;
 
+import importexport.ImportExportManager;
+
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import model.Bundestagswahl;
+
 public class ExportDialog extends JDialog{
 
 	JFileChooser dateiAuswahl = new JFileChooser();
+	Programmfenster pf;
+	TabLeiste tabLeiste;
 	
 	public ExportDialog(TabLeiste tabs) {
+		
+		 this.tabLeiste = tabs;
+		 this.pf = tabs.getPf();
 		
 		//allgemeine Anpassungen des Fensters
 		setTitle("Exportieren");
@@ -21,21 +31,29 @@ public class ExportDialog extends JDialog{
 		
 		//fileChooser
 		//lässt nur csv Dateien zu
-		FileFilter filter = new FileNameExtensionFilter("WahlDaten", "csv");
-		dateiAuswahl.setFileFilter(filter);
+		//FileFilter filter = new FileNameExtensionFilter("Datei, um Wahlergebnis zu speichern", "csv");
+		//dateiAuswahl.setFileFilter(filter);
 	
 		int rueckgabeWert = dateiAuswahl.showSaveDialog(null);
 		
 		
         if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
         {
-             //TODO Weiterleitung an Steuerung
-            System.out.println("Die zu öffnende Datei ist: " +
-                  dateiAuswahl.getSelectedFile().getName());
+
+        	ImportExportManager i = new ImportExportManager();
+        	Bundestagswahl w = ((WahlFenster) tabLeiste.getSelectedComponent()).getBtw();
+			i.exportieren(dateiAuswahl.getSelectedFile().toString(), w);
+        	
         } else {
-        	System.out.println("keine datei ausgewählt");
+        	JOptionPane.showMessageDialog(pf,
+					"Speichern abgebrochen.", "Meldung",
+					JOptionPane.INFORMATION_MESSAGE, null);
         }
 	
+        
+        
+        
+
 	
 }
 }
