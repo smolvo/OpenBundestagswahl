@@ -18,7 +18,8 @@ import model.Zweitstimme;
 /**
  * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht.
  * In diesem werden bestimmmte Daten eines BTW-Objektes angezeigt.
- *
+ * @author Anton
+ * 
  */
 public class TabellenFenster extends JScrollPane {
 	
