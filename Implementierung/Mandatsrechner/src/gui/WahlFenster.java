@@ -1,31 +1,15 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gui.ansicht.Ansicht;
-import gui.ansicht.Bundesansicht;
-import gui.ansicht.KartenFenster;
-import gui.ansicht.Landesansicht;
-import gui.ansicht.Wahlkreisansicht;
-import gui.ansicht.tabellenfenster.TabellenFenster;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 
-import model.Bundesland;
 import model.Bundestagswahl;
-import model.Deutschland;
 import model.Gebiet;
 
 /**
@@ -34,7 +18,7 @@ import model.Gebiet;
  * @author Manuel
  *
  */
-public class WahlFenster extends JPanel{
+public class WahlFenster extends JPanel {
 
 	/** repräsentiert den Namen des Tabs */
 	private String name;
@@ -49,7 +33,7 @@ public class WahlFenster extends JPanel{
 	private GUISteuerung steuerung;
 
 	/** repräsentiert das zuletzt gezeigte Gebiet, so dass zurück gesprungen werden kann*/
-	private Ansicht letzteAnsicht;
+//	private Ansicht letzteAnsicht;
 	
 	/**
 	 * der Konstruktor der Klase
@@ -58,12 +42,9 @@ public class WahlFenster extends JPanel{
 	public WahlFenster(Bundestagswahl btw) {
 		this.btw = btw;
 		this.name = btw.getName();
-		this.aktuelleAnsicht = new Bundesansicht(btw.getDeutschland());
-		aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
+		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland());
 		this.add(aktuelleAnsicht);
 		this.steuerung = new GUISteuerung(btw, this);
-		
-		
 	}
 
 	public String getName() {
@@ -76,39 +57,11 @@ public class WahlFenster extends JPanel{
 	 
 	
 	public void wechsleAnsicht(Gebiet gebiet) {
-		if (gebiet instanceof Deutschland) {
-			this.aktuelleAnsicht.removeAll();
-			this.aktuelleAnsicht = new Bundesansicht(gebiet);
-			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
-			this.add(aktuelleAnsicht);
-		} else if (gebiet instanceof Bundesland) {
-			this.aktuelleAnsicht.removeAll();
-			this.aktuelleAnsicht = new Landesansicht(gebiet);
-			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
-			this.add(aktuelleAnsicht);
-		} else {
-			this.aktuelleAnsicht.removeAll();
-			this.aktuelleAnsicht = new Wahlkreisansicht(gebiet);
-			aktuelleAnsicht.erstelleKartenfenster(btw.getDeutschland());
-			this.add(aktuelleAnsicht);
-		}
+		this.aktuelleAnsicht.setDiagrammFenster(null);
+		this.aktuelleAnsicht.setTabellenFenster(null);
+		this.aktuelleAnsicht.ansichtAendern(gebiet);
+		this.add(aktuelleAnsicht);
 	}
-	
-	
-	/*
-	public void wechsleAnsicht(Gebiet gebiet) {
-	
-		aktuelleAnsicht.removeAll();
-		if (gebiet instanceof Deutschland) {
-			aktuelleAnsicht = new Bundesansicht(gebiet);
-		} else if (gebiet instanceof Bundesland) {
-			this.aktuelleAnsicht = new Landesansicht(gebiet);
-		} else {
-			this.aktuelleAnsicht = new Wahlkreisansicht(gebiet);
-		}
-		add(aktuelleAnsicht);
-	}
-*/
 
 	public GUISteuerung getSteuerung() {
 		return steuerung;
@@ -128,7 +81,7 @@ public class WahlFenster extends JPanel{
 				ActionListener listener = new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						WahlFenster.this.wechsleAnsicht(letzteAnsicht.getAktuellesGebiet());
+//						WahlFenster.this.wechsleAnsicht(letzteAnsicht.getAktuellesGebiet());
 					}
 				};
 			zurueck.addActionListener(listener);

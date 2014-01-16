@@ -41,7 +41,7 @@ public class Listenansicht extends JScrollPane implements TreeExpansionListener 
 		WahlFenster wahlfenster = (WahlFenster) this.getParent().getParent().getParent().getParent();
 		GUISteuerung steuerung = wahlfenster.getSteuerung();
 		Gebiet geb = (Gebiet) event.getPath().getLastPathComponent();
-		steuerung.aktualisiereWahlfenster(geb);
+//		steuerung.aktualisiereWahlfenster(geb);
 	}
 
 	@Override

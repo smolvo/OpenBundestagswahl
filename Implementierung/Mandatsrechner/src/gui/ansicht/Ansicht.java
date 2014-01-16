@@ -5,16 +5,18 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 import gui.ansicht.tabellenfenster.TabellenFenster;
+import model.Bundesland;
 import model.Bundestagswahl;
 import model.Deutschland;
 import model.Gebiet;
+import model.Wahlkreis;
 
 /**
  * Die abstrakte Klasse Ansicht, der grafischen Benutzeroberfläche.
  * @author Batman
  *
  */
-public abstract class Ansicht extends JPanel {
+public class Ansicht extends JPanel {
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
 	protected TabellenFenster tabellenFenster;
@@ -28,6 +30,40 @@ public abstract class Ansicht extends JPanel {
 	/** Das im Moment angezeigte Gebiet */
 	protected Gebiet aktuellesGebiet;
 	
+	/**
+	 * Der Konstruktor setzt eine neue Ansicht.
+	 * @param gebiet Gebiet
+	 */
+	public Ansicht(Deutschland land) {
+		layoutSetzen();
+		kartenFenster.zeigeInformationen(land);
+		tabellenFenster.tabellenFuellen(land);
+		diagrammFenster.erstelleDiagramm(land);
+	}
+	
+	public void ansichtAendern(Gebiet gebiet) {
+		this.remove(diagrammFenster);
+		this.remove(tabellenFenster);
+		if (gebiet instanceof Deutschland) {
+			aktuellesGebiet = gebiet;
+			layoutSetzen();
+			Deutschland land = (Deutschland) gebiet;
+			tabellenFenster.tabellenFuellen(land);
+			diagrammFenster.erstelleDiagramm(land);
+		} else if (gebiet instanceof Bundesland) {
+			aktuellesGebiet = gebiet;
+			layoutSetzen();
+			Bundesland bundLand = (Bundesland) gebiet;
+			tabellenFenster.tabellenFuellen(bundLand);
+			diagrammFenster.erstelleDiagramm(bundLand);
+		} else {
+			aktuellesGebiet = gebiet;
+			layoutSetzen();
+			Wahlkreis wk = (Wahlkreis) gebiet;
+			tabellenFenster.tabellenFuellen(wk);
+			diagrammFenster.erstelleDiagramm(wk);
+		}
+	}
 	
 	/**
 	 * Durch diese Methode wird das allgemeine Layout der Ansichten gesetzt
@@ -56,10 +92,6 @@ public abstract class Ansicht extends JPanel {
 		this.add(rechteSpalte);
 
 		this.setVisible(true);
-	}
-	
-	public void erstelleKartenfenster(Deutschland land) {
-		kartenFenster.zeigeInformationen(land);
 	}
 	
 	
