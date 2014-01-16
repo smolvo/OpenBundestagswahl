@@ -9,7 +9,7 @@ import java.util.List;
  * Klasse die die Bundesländer repräsentiert.
  * Unterklasse von Gebiet.
  */
-public class Bundesland extends Gebiet implements Serializable {
+public class Bundesland extends Gebiet implements Serializable, Comparable<Bundesland> {
 
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = 1614716230171638779L;
@@ -229,6 +229,11 @@ public class Bundesland extends Gebiet implements Serializable {
 	 */
 	public void addLandesliste(Landesliste landesliste) {
 		this.landesliste.add(landesliste);
+	}
+
+	@Override
+	public int compareTo(Bundesland andere) {
+		return this.getName().compareTo(andere.getName());
 	}
 	
 }

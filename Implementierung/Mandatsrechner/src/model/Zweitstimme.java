@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Assoziationsklasse die Anzahl aller Zweitstimmen beinhaltet und mit den Klassen 
  * Deutschland und Partei zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
  */
-public class Zweitstimme extends Stimme implements Serializable {
+public class Zweitstimme extends Stimme implements Serializable, Comparable<Zweitstimme> {
 	
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -2753165575954824955L;
@@ -68,6 +68,11 @@ public class Zweitstimme extends Stimme implements Serializable {
 			throw new IllegalArgumentException("Der Parameter \"gebiet\" ist null!");
 		}
 		this.gebiet = gebiet;
+	}
+
+	@Override
+	public int compareTo(Zweitstimme andere) {
+		return Integer.compare(this.getAnzahl(), andere.getAnzahl());
 	}
 
 }
