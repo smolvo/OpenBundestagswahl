@@ -16,7 +16,14 @@ public class Deutschland extends Gebiet implements Serializable {
 	/** Liste mit den enthaltenden Bundesländer. */
 	private LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 	
+	/**Einwohnerzahl in Deutschland*/
 	private int einwohneranzahl;
+	
+	/**Zweitstimmenanzahl in ganz Deutschland*/
+	private int zweitstimmeGesamt;
+	
+	/** Ist die Anzahl an Zweitstimmen mit der eine Partei sicher in Bundestag ist */
+	private int sperrklauselAnzahl;
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name Der Name
@@ -148,4 +155,25 @@ public class Deutschland extends Gebiet implements Serializable {
 		this.einwohneranzahl = einwohneranzahl;
 	}
 	*/
+
+	/**
+	 * Gibt die Zweitstimmenanzahl aller Parteien in Deutschland
+	 * @return die Zweistimmenanzahl aller PArtein
+	 */
+	public int getZweitstimmeGesamt() {
+		zweitstimmeGesamt = 0;
+		for(Zweitstimme zweit : getZweitstimmen()){
+			zweitstimmeGesamt += zweit.getAnzahl();
+		}
+		return zweitstimmeGesamt;
+	}
+
+	/**
+	 * Berechnet 5% aller Zweitstimmen in Deutschland und gibt diese Zahl zurueck
+	 * @return 5% der Zweitstimmen in Deutschland
+	 */
+	public int getSperrklauselAnzahl(){
+		sperrklauselAnzahl = zweitstimmeGesamt / 20;
+		return sperrklauselAnzahl;
+	}
 }

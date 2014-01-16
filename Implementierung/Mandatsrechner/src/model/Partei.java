@@ -35,6 +35,9 @@ public class Partei implements Serializable {
 	/** Ist die Partei im Bundestag*/
 	private boolean imBundestag;
 	
+	/**Gesamte Anzahl an Zweitstimmen im Land*/
+	private int zweitstimmeGesamt;
+	
 	/**
 	 * Parametrisierter Konstruktor.
 	 * Die Mitgliederliste und Landesliste wird hier erzeugt aber nicht befüllt.
@@ -251,6 +254,20 @@ public class Partei implements Serializable {
 	public void setImBundestag(boolean imBundestag) {
 		this.imBundestag = imBundestag;
 	}
+	
+	/**
+	 * Gibt die Anzahl an Zweistimmen in Deutschland zurück
+	 * @return die Anzahl an Zweitstimmen in Deutschland
+	 */
+	public int getZweitstimmeGesamt() {
+		zweitstimmeGesamt = 0;
+		for(Zweitstimme zweit : zweitstimme){
+			zweitstimmeGesamt += zweit.getAnzahl();
+		}
+		return zweitstimmeGesamt;
+	}
+
+	
 	
 	
 }

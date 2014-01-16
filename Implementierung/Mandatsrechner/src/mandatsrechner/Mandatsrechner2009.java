@@ -16,6 +16,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 
 	public Bundestagswahl berechneAlles(Bundestagswahl bw){
  
+		//**Sitze für jedes Bundesland mithilge des zuteilungsdivisor berechnen
 		zuteilungsdivisor = 0;
 		boolean isCorrect = false;
 		int sitzanzahl;
@@ -34,9 +35,30 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 				//sitzanzahl > minSitze
 				zuteilungsdivisor += 0.1;
 			}
-			
-			
 		}
+		//**Ende
+		
+		//**Direkmandate bestimmen
+		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
+			for(Wahlkreis wk : bl.getWahlkreise()){
+				int max = 0;
+				Kandidat gewinner = null;
+				for(Erststimme erst : wk.getErststimmen()){
+					//TODO parallelität!
+					//TODO Kandidaten mit gleicher Erststimmenanzahl
+					
+					if(max < erst.getAnzahl()){
+						//Kandidaten Mandat zuweisen und als Wahlkreissieger in den Wahlkreis eintragen
+						gewinner = erst.getKandidat();
+						max = erst.getAnzahl();
+					}
+				}
+				gewinner.setMandat(Mandat.DIREKMANDAT);
+				wk.setWahlkreisSieger(gewinner);
+			}
+		}
+		//**Ende
+		//**Relevante Parteien Bestimmen
 		return bw;
 	}
 	
