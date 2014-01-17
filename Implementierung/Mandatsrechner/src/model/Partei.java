@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Diese Klasse repräsentiert eine Partei.
  */
-public class Partei implements Serializable {
+public class Partei implements Serializable, Comparable<Partei> {
 	
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -6711521521647518265L;
@@ -229,10 +229,10 @@ public class Partei implements Serializable {
 	 * Gibt die Anzahl an Direkmandate zurück
 	 * @return die Anzahl an Direktmandate in der Partei
 	 */
-	public int getAnzahlDirektmandate(){
-		int res=0;
-		for(Kandidat kandidat : getMitglieder()){
-			if(kandidat.getMandat().equals(Mandat.DIREKMANDAT)){
+	public int getAnzahlDirektmandate() {
+		int res = 0;
+		for (Kandidat kandidat : getMitglieder()) {
+			if (kandidat.getMandat().equals(Mandat.DIREKMANDAT)) {
 				res++;
 			}
 		}
@@ -261,10 +261,15 @@ public class Partei implements Serializable {
 	 */
 	public int getZweitstimmeGesamt() {
 		zweitstimmeGesamt = 0;
-		for(Zweitstimme zweit : zweitstimme){
+		for (Zweitstimme zweit : zweitstimme) {
 			zweitstimmeGesamt += zweit.getAnzahl();
 		}
 		return zweitstimmeGesamt;
+	}
+
+	@Override
+	public int compareTo(Partei andere) {
+		return this.getName().compareTo(andere.getName());
 	}
 
 	
