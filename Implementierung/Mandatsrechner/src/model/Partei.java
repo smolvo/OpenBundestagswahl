@@ -30,7 +30,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private Color farbe;
 	
 	/** Die Zweitstimmenliste (pro Gebiet) */
-	private LinkedList<Zweitstimme> zweitstimme;
+	private LinkedList<Zweitstimme> zweitstimme = null;
 	
 	/** Ist die Partei im Bundestag*/
 	private boolean imBundestag;
@@ -52,6 +52,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.setFarbe(farbe);
 		this.mitglieder = new LinkedList<Kandidat>();
 		this.landesliste = new ArrayList<Landesliste>();
+		this.zweitstimme = new LinkedList<Zweitstimme>();
 	}
 	
 	/**
@@ -223,6 +224,13 @@ public class Partei implements Serializable, Comparable<Partei> {
 			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
 		}
 		this.zweitstimme = zweitstimme;
+	}
+	
+	public void addZweitstimme(Zweitstimme zweitstimme){
+		if (zweitstimme == null) {
+			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
+		}
+		this.zweitstimme.add(zweitstimme);
 	}
 	
 	/**

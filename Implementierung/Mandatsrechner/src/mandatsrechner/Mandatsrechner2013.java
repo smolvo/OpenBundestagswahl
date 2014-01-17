@@ -6,12 +6,13 @@ import model.Wahlkreis;
 
 public class Mandatsrechner2013 extends Mandatsrechner {
 
-	@Override
-	public Mandatsrechner getInstance() {
-		if(super.instance==null){
-			super.instance = new Mandatsrechner2013();
+	private static Mandatsrechner2013 instance;
+	
+	public static Mandatsrechner getInstance() {
+		if(Mandatsrechner2013.instance==null){
+			Mandatsrechner2013.instance = new Mandatsrechner2013();
 		}
-		return super.instance;
+		return Mandatsrechner2013.instance;
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class Crawler2013 extends Crawler {
 	 */
 	private int parteiOffset = 4;
 
-	final private boolean debug = true; 
+	final private boolean debug = false; 
 	/**
 	 * Importiert csv-Dateien, in dem Format des Bundeswahlleiters
 	 * im Jahre 2013.
@@ -311,7 +311,9 @@ public class Crawler2013 extends Crawler {
 								kandidat = new Kandidat("Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null);
 							}
 							erststimme.add(new Erststimme(values.get(j)[parteiOffset + k][0], w, kandidat));
-							zweitstimme.add(new Zweitstimme(values.get(j)[parteiOffset + k][1], w, parteien.get(k)));
+							Zweitstimme parteiZweitstimme = new Zweitstimme(values.get(j)[parteiOffset + k][1], w, parteien.get(k)); 
+							zweitstimme.add(parteiZweitstimme);
+							parteien.get(k).addZweitstimme(parteiZweitstimme);
 						}
 						w.setErststimmen(erststimme);
 						w.setZweitstimmen(zweitstimme);

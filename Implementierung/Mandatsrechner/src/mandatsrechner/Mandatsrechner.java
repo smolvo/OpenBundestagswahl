@@ -3,10 +3,10 @@ package mandatsrechner;
 import model.*;
 
 abstract class Mandatsrechner {
-	protected Mandatsrechner instance = null;
+	
+	public boolean debug = true;
+	
 	protected String Sitzbericht;
-
-	abstract public Mandatsrechner getInstance();
 	
 	abstract public Bundestagswahl berechne(Bundestagswahl bw);
 	

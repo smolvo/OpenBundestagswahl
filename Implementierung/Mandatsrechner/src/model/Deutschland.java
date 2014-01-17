@@ -150,11 +150,6 @@ public class Deutschland extends Gebiet implements Serializable {
 		}
 		return einwohneranzahl;
 	}
-	/* Notwendig?
-	public void setEinwohneranzahl(int einwohneranzahl) {
-		this.einwohneranzahl = einwohneranzahl;
-	}
-	*/
 
 	/**
 	 * Gibt die Zweitstimmenanzahl aller Parteien in Deutschland
