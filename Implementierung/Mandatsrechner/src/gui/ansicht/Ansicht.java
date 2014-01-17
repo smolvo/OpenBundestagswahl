@@ -1,5 +1,9 @@
 package gui.ansicht;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -19,79 +23,63 @@ import model.Wahlkreis;
 public class Ansicht extends JPanel {
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
-	protected TabellenFenster tabellenFenster;
+	private TabellenFenster tabellenFenster;
 	
 	/** Eine Ansicht hat ein Diagrammfenster. */
-	protected DiagrammFenster diagrammFenster;
+	private DiagrammFenster diagrammFenster;
 	
 	/** Eine Ansicht hat ein Kartenfenster. */
-	protected KartenFenster kartenFenster;
+	private KartenFenster kartenFenster;
+	
+	/** repräsentiert das Layout */
+	private GridBagConstraints gbc;
 	
 	/** Das im Moment angezeigte Gebiet */
-	protected Gebiet aktuellesGebiet;
+	private Gebiet aktuellesGebiet;
 	
 	/**
 	 * Der Konstruktor setzt eine neue Ansicht.
 	 * @param gebiet Gebiet
 	 */
 	public Ansicht(Deutschland land) {
+		this.tabellenFenster = new TabellenFenster();
+		this.tabellenFenster.tabellenFuellen(land);
+		this.diagrammFenster = new DiagrammFenster();
+		this.diagrammFenster.erstelleDiagramm(land);
+		this.kartenFenster = new KartenFenster();
+		this.kartenFenster.zeigeInformationen(land);
+		this.gbc = new GridBagConstraints();
+		this.setLayout(new GridBagLayout());
 		layoutSetzen();
-		kartenFenster.zeigeInformationen(land);
-		tabellenFenster.tabellenFuellen(land);
-		diagrammFenster.erstelleDiagramm(land);
 	}
 	
 	public void ansichtAendern(Gebiet gebiet) {
-		this.remove(diagrammFenster);
-		this.remove(tabellenFenster);
-		if (gebiet instanceof Deutschland) {
-			aktuellesGebiet = gebiet;
-			layoutSetzen();
-			Deutschland land = (Deutschland) gebiet;
-			tabellenFenster.tabellenFuellen(land);
-			diagrammFenster.erstelleDiagramm(land);
-		} else if (gebiet instanceof Bundesland) {
-			aktuellesGebiet = gebiet;
-			layoutSetzen();
-			Bundesland bundLand = (Bundesland) gebiet;
-			tabellenFenster.tabellenFuellen(bundLand);
-			diagrammFenster.erstelleDiagramm(bundLand);
-		} else {
-			aktuellesGebiet = gebiet;
-			layoutSetzen();
-			Wahlkreis wk = (Wahlkreis) gebiet;
-			tabellenFenster.tabellenFuellen(wk);
-			diagrammFenster.erstelleDiagramm(wk);
-		}
+		
 	}
 	
 	/**
 	 * Durch diese Methode wird das allgemeine Layout der Ansichten gesetzt
 	 */
 	public void layoutSetzen() {
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(kartenFenster, gbc);
 		
-		//Allgemeine Anpassungen des Wahlfensters
-		this.tabellenFenster = new TabellenFenster();
-		this.kartenFenster = new KartenFenster();
-		this.diagrammFenster = new DiagrammFenster();
-			
-		GridLayout linkeSpalteLay= new GridLayout(2,1,5, 5);
-		GridLayout rechteSpalteLay= new GridLayout(1,1,5, 5);
-		GridLayout gridLay = new GridLayout(1, 2, 5, 5);
-			
-		JPanel linkeSpalte = new JPanel();
-		linkeSpalte.setLayout(linkeSpalteLay);
-		JPanel rechteSpalte = new JPanel();
-		rechteSpalte.setLayout(rechteSpalteLay);
-
-		rechteSpalte.add(tabellenFenster);
-		linkeSpalte.add(kartenFenster);
-		linkeSpalte.add(diagrammFenster);
-		this.setLayout(gridLay);
-		this.add(linkeSpalte);
-		this.add(rechteSpalte);
-
-		this.setVisible(true);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(diagrammFenster, gbc);
+		
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		gbc.gridheight = 2;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(tabellenFenster, gbc);
 	}
 	
 	
@@ -158,6 +146,4 @@ public class Ansicht extends JPanel {
 	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
 		this.aktuellesGebiet = aktuellesGebiet;
 	}
-	
-	
 }

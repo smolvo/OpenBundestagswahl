@@ -38,10 +38,10 @@ public class Listenansicht extends JScrollPane implements TreeExpansionListener 
 
 	@Override
 	public void treeExpanded(TreeExpansionEvent event) {
-		WahlFenster wahlfenster = (WahlFenster) this.getParent().getParent().getParent().getParent();
+		WahlFenster wahlfenster = (WahlFenster) this.getParent().getParent().getParent();
 		GUISteuerung steuerung = wahlfenster.getSteuerung();
 		Gebiet geb = (Gebiet) event.getPath().getLastPathComponent();
-//		steuerung.aktualisiereWahlfenster(geb);
+		steuerung.aktualisiereWahlfenster(geb);
 	}
 
 	@Override

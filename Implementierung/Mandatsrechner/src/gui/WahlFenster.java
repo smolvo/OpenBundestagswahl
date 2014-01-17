@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,9 +43,10 @@ public class WahlFenster extends JPanel {
 	public WahlFenster(Bundestagswahl btw) {
 		this.btw = btw;
 		this.name = btw.getName();
-		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland());
-		this.add(aktuelleAnsicht);
 		this.steuerung = new GUISteuerung(btw, this);
+		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland());
+		setLayout(new BorderLayout());
+		this.add(aktuelleAnsicht, BorderLayout.CENTER);
 	}
 
 	public String getName() {
@@ -57,8 +59,6 @@ public class WahlFenster extends JPanel {
 	 
 	
 	public void wechsleAnsicht(Gebiet gebiet) {
-		this.aktuelleAnsicht.setDiagrammFenster(null);
-		this.aktuelleAnsicht.setTabellenFenster(null);
 		this.aktuelleAnsicht.ansichtAendern(gebiet);
 		this.add(aktuelleAnsicht);
 	}

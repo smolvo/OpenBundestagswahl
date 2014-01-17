@@ -25,7 +25,13 @@ public class Test {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
-		Bundestagswahl w = i.importieren(csvDateien);
+		Bundestagswahl w = null;
+		try {
+			w = i.importieren(csvDateien);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		i.exportieren("files/Exported.csv",w);
 
