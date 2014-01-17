@@ -1,6 +1,7 @@
 package mandatsrechner;
 
 import model.*;
+import java.util.LinkedList; //Später rausmachen
 
 public class Mandatsrechner2009 extends Mandatsrechner{
 
@@ -56,9 +57,34 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 				gewinner.setMandat(Mandat.DIREKMANDAT);
 				wk.setWahlkreisSieger(gewinner);
 			}
-		}
+		}	
 		//**Ende
-		//**Relevante Parteien Bestimmen
+		//**relevanten Parteien bestimmen
+			/*
+			 * Hier findet die Überprüfung der Sperrklausel, doch wo sind alle Parteien?
+			 * Ich bräuchte eine Liste von allen Parteien die überprüft werden müssen
+			 * die die Bedingungen erfüllen (Sperrklausel) kommen in den Bundestag (Flag setzen)
+			 * Als platzhalter erstelle ich vorerst eine Liste alleParteien
+			 */	
+		//Platzhalter
+			LinkedList<Partei> alleParteien = new LinkedList<Partei>();
+		//relevante Parteien
+			LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
+			
+			for(Partei part : alleParteien){
+				if(part.getZweitstimmeGesamt() <= bw.getDeutschland().getSperrklauselAnzahl() || part.getAnzahlDirektmandate() <= 3){ //TODO 3 als Konstante setzen
+					//Sperrklausel erfüllt
+					part.setImBundestag(true);
+					
+				}else if(part.getAnzahlDirektmandate() >= 1 ){ // TODO 1 als Konstante setzen?
+					//Partei verliert Zweitstimmen aber die Direktmandate kommen noch in den Bundestag
+					part.setImBundestag(false);
+				}
+			}
+			//Nun wurden die Parteien bestimmt, die Berechnung wichtig sind
+		//**Ende
+		//**
+		
 		return bw;
 	}
 	
@@ -96,9 +122,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 		
 		// TODO Sitze in landesliste setzen
 		
-		for(Zweitstimme zweit: bl.getZweitstimmen()){
-			
-		}
+	
 		
 		// TODO Restliche Sitze mit Mandate füllen
 		
