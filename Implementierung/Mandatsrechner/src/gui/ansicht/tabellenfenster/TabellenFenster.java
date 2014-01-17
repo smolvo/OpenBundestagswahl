@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import model.Bundesland;
 import model.Deutschland;
 import model.Erststimme;
+import model.Gebiet;
 import model.Partei;
 import model.Kandidat;
 import model.Wahlkreis;
@@ -23,12 +24,30 @@ import model.Zweitstimme;
  */
 public class TabellenFenster extends JScrollPane {
 	
+	
+	/**
+	 * Diese Methode identifiziert das Gebiets-Objekt.
+	 * @param gebiet Gebiet
+	 */
+	public void tabellenFuellen(Gebiet gebiet) {
+		if (gebiet instanceof Deutschland) {
+			Deutschland land = (Deutschland) gebiet;
+			tabellenFuellen(land);
+		} else if (gebiet instanceof Bundesland) {
+			Bundesland bundLand = (Bundesland) gebiet;
+			tabellenFuellen(bundLand);
+		} else {
+			Wahlkreis wk = (Wahlkreis) gebiet;
+			tabellenFuellen(wk);
+		}
+	}
+	
 	/**
 	 * Befüllt die Zeilen und Spalten der Tabelle in der Bundesansicht 
 	 * mit den relevanten Daten.
 	 * @param land Deutschland-Objekt welches visualisiert werden soll
 	 */
-	public void tabellenFuellen(Deutschland land) {
+	private void tabellenFuellen(Deutschland land) {
 		BundDaten daten = new BundDaten();
 		// Zweitstimmen Gesamtanzahl
 		int gesamt = 0;
@@ -54,7 +73,7 @@ public class TabellenFenster extends JScrollPane {
 	 * mit den relevanten Daten.
 	 * @param bl Bundesland-Objekt welches visualisiert werden soll
 	 */
-	public void tabellenFuellen(Bundesland bl) {
+	private void tabellenFuellen(Bundesland bl) {
 		LandDaten daten = new LandDaten();
 		// Zweitstimmen Gesamtanzahl
 		int gesamt = 0;
@@ -79,7 +98,7 @@ public class TabellenFenster extends JScrollPane {
 	 * mit den relevanten Daten.
 	 * @param wk Wahlkreis-Objekt welcher visualisiert werden soll
 	 */
-	public void tabellenFuellen(Wahlkreis wk) {
+	private void tabellenFuellen(Wahlkreis wk) {
 		WahlkreisDaten daten = new WahlkreisDaten();
 		int gesamtErst = 0;
 		for (Erststimme er : wk.getErststimmen()) {

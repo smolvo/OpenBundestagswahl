@@ -44,7 +44,7 @@ public class WahlFenster extends JPanel {
 		this.btw = btw;
 		this.name = btw.getName();
 		this.steuerung = new GUISteuerung(btw, this);
-		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland());
+		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland(), this);
 		setLayout(new BorderLayout());
 		this.add(aktuelleAnsicht, BorderLayout.CENTER);
 	}
