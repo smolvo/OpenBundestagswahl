@@ -1,20 +1,14 @@
 package gui.ansicht;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
 import gui.WahlFenster;
 import gui.ansicht.tabellenfenster.TabellenFenster;
-import model.Bundesland;
-import model.Bundestagswahl;
 import model.Deutschland;
 import model.Gebiet;
-import model.Wahlkreis;
 
 /**
  * Die abstrakte Klasse Ansicht, der grafischen Benutzeroberfläche.
@@ -33,7 +27,7 @@ public class Ansicht extends JPanel {
 	private KartenFenster kartenFenster;
 	
 	/** repräsentiert das Wahlfenster in welchem sich die Ansicht befindet */
-	private WahlFenster fenster;
+	private final WahlFenster fenster;
 	
 	/** repräsentiert das Layout */
 	private GridBagConstraints gbc;
@@ -161,6 +155,13 @@ public class Ansicht extends JPanel {
 		this.kartenFenster = kartenFenster;
 	}
 
+	/**
+	 * Gibt das Wahlfenster aus.
+	 * @return Wahlfenster
+	 */
+	public WahlFenster getFenster() {
+		return fenster;
+	}
 
 	/**
 	 * @return the aktuellesGebiet
