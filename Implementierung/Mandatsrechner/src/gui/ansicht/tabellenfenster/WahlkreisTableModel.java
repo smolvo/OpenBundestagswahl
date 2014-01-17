@@ -18,6 +18,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
+	 * @param daten Daten
 	 */
 	public WahlkreisTableModel(WahlkreisDaten daten) {
 		this.daten = daten;

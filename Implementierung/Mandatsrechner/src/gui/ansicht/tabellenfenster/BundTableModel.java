@@ -18,6 +18,7 @@ public class BundTableModel extends AbstractTableModel {
 	
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
+	 * @param daten die Daten
 	 */
 	public BundTableModel(BundDaten daten) {
 		this.daten = daten;

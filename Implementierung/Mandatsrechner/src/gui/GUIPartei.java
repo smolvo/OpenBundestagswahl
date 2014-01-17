@@ -76,7 +76,7 @@ public class GUIPartei {
 
 	/**
 	 * Setzt den Namen.
-	 * @return name
+	 * @param name Name
 	 */
 	public void setName(String name) {
 		this.name = name;

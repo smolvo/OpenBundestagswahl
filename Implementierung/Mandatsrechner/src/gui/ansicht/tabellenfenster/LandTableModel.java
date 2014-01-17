@@ -18,6 +18,7 @@ public class LandTableModel extends AbstractTableModel {
 	
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
+	 * @param daten Daten
 	 */
 	public LandTableModel(LandDaten daten) {
 		this.daten = daten;

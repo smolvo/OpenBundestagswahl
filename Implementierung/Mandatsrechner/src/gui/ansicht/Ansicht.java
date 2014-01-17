@@ -37,7 +37,8 @@ public class Ansicht extends JPanel {
 	
 	/**
 	 * Der Konstruktor setzt eine neue Ansicht.
-	 * @param gebiet Gebiet
+	 * @param land Deutschland
+	 * @param fenster das Wahlfenster der Ansicht
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
 		this.tabellenFenster = new TabellenFenster();

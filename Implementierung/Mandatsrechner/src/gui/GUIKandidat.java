@@ -34,7 +34,8 @@ public class GUIKandidat {
 
 	/**
 	 * Konstruktor definiert ein neues Objekt.
-	 * @param name Parteiname
+	 * @param partei Parteiname
+	 * @param name Kandidatenname
 	 * @param erststimmen Erststimmenanzahl
 	 * @param prozErst prozentual
 	 * @param zweitstimme Zweitstimmenanzahl

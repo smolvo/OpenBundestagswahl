@@ -47,11 +47,13 @@ public class WahlkreisDaten {
 	
 	/**
 	 * Diese Methode fügt eine gesamte Zeile der Tabelle hinzu.
-	 * @param partei die Parte
-	 * @param stimme ihre Zweitstimmenanzahl
-	 * @param prozent ihre prozentuale Zweitstimmenanzahl
-	 * @param direktmandat Anzahl Direktkandidaten
-	 * @param ueberhangsmandat Anzahl Überhangsmandate
+	 * @param partei Partei
+	 * @param name Kandidatenname
+	 * @param zweitStimme Zweitstimmenanzahl
+	 * @param erstStimme Erststimmenanzahl
+	 * @param zweitProzent prozentuale Zweitstimmenanzahl
+	 * @param erstProzent prozentuale Erststimmenanzahl
+	 * @param direktmandat ob Direktmandat
 	 */
 	public void addZeile(String partei, String name, Zweitstimme zweitStimme, Erststimme erstStimme, 
 			String zweitProzent, String erstProzent, Boolean direktmandat) {

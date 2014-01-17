@@ -38,7 +38,7 @@ public class WahlFenster extends JPanel {
 	
 	/**
 	 * der Konstruktor der Klase
-	 * @param btw
+	 * @param btw Bundestagswahl
 	 */
 	public WahlFenster(Bundestagswahl btw) {
 		this.btw = btw;
@@ -48,27 +48,14 @@ public class WahlFenster extends JPanel {
 		setLayout(new BorderLayout());
 		this.add(aktuelleAnsicht, BorderLayout.CENTER);
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	 
-	
+	/**
+	 * Wechselt die Ansicht.
+	 * @param gebiet neues Gebiet
+	 */
 	public void wechsleAnsicht(Gebiet gebiet) {
 		this.aktuelleAnsicht.ansichtAendern(gebiet);
 		this.add(aktuelleAnsicht);
-	}
-
-	public GUISteuerung getSteuerung() {
-		return steuerung;
-	}
-
-	public void setSteuerung(GUISteuerung steuerung) {
-		this.steuerung = steuerung;
 	}
 	
 	
@@ -88,10 +75,50 @@ public class WahlFenster extends JPanel {
 		
 	}
 
+	/**
+	 * Gibt den Namen aus.
+	 * @return Name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Setzt den Namen.
+	 * @param name Name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	/**
+	 * Gibt die GUISteuerung aus.
+	 * @return GUI Steuerung
+	 */
+	public GUISteuerung getSteuerung() {
+		return steuerung;
+	}
+	
+	/**
+	 * Setzt die GUI Steuerung.
+	 * @param steuerung GUI Steuerung
+	 */
+	public void setSteuerung(GUISteuerung steuerung) {
+		this.steuerung = steuerung;
+	}
+
+	/**
+	 * Gibt die Bundestagswahl aus.
+	 * @return Bundestagswahl
+	 */
 	public Bundestagswahl getBtw() {
 		return btw;
 	}
 
+	/**
+	 * Setzt die Bundestagswahl.
+	 * @param btw Bundestagswahl
+	 */
 	public void setBtw(Bundestagswahl btw) {
 		this.btw = btw;
 	}

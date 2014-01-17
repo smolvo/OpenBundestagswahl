@@ -6,13 +6,9 @@ import java.util.LinkedList;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.image.WritableRaster;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
 
 import model.Bundesland;
 import model.Deutschland;
