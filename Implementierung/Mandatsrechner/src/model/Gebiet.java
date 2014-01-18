@@ -14,8 +14,22 @@ public abstract class Gebiet implements Serializable {
 	
 	/** Der Name des Gebiets. */
 	private String name;
+
+	/**Zweitstimmenanzahl in ganz Deutschland*/
+	protected int zweitstimmeGesamt;
 	
-	
+
+	/**
+	 * Gibt die Zweitstimmenanzahl aller Parteien in Deutschland
+	 * @return die Zweistimmenanzahl aller PArtein
+	 */
+	public int getZweitstimmeGesamt() {
+		zweitstimmeGesamt = 0;
+		for(Zweitstimme zweit : getZweitstimmen()){
+			zweitstimmeGesamt += zweit.getAnzahl();
+		}
+		return zweitstimmeGesamt;
+	}
 	
 	/**
 	 * Gibt den Namen des Gebietes zurück

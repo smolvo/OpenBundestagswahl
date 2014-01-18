@@ -19,9 +19,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	/**Einwohnerzahl in Deutschland*/
 	private int einwohneranzahl;
 	
-	/**Zweitstimmenanzahl in ganz Deutschland*/
-	private int zweitstimmeGesamt;
-	
 	/** Ist die Anzahl an Zweitstimmen mit der eine Partei sicher in Bundestag ist */
 	private int sperrklauselAnzahl;
 	/**
@@ -149,18 +146,6 @@ public class Deutschland extends Gebiet implements Serializable {
 			einwohneranzahl += bl.getEinwohnerzahl();
 		}
 		return einwohneranzahl;
-	}
-
-	/**
-	 * Gibt die Zweitstimmenanzahl aller Parteien in Deutschland
-	 * @return die Zweistimmenanzahl aller PArtein
-	 */
-	public int getZweitstimmeGesamt() {
-		zweitstimmeGesamt = 0;
-		for(Zweitstimme zweit : getZweitstimmen()){
-			zweitstimmeGesamt += zweit.getAnzahl();
-		}
-		return zweitstimmeGesamt;
 	}
 
 	/**
