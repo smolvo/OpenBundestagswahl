@@ -3,7 +3,6 @@ package gui.ansicht;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -20,20 +19,34 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.util.Rotation;
 
+/**
+ * Diese Klasse zeichnet das Sitzverteilungsdiagramm der Bundesansicht.
+ * @author Anton
+ *
+ */
 public class BundDiagramm extends JPanel {
 
+	/**
+	 * Konstruktor erstellt ein Diagramm und fügt es hinzu.
+	 * @param land Deutschland
+	 */
 	public BundDiagramm(Deutschland land) {
 		this.setLayout(new BorderLayout());
-        JFreeChart chart = createChart("Sitzverteilung", land);
+        JFreeChart chart = createChart(land);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
         add(chartPanel, BorderLayout.CENTER);
     }
     
     
-/** * Creates a chart */
+	/**
+	 * Diese Methode erstellt ein Kuchendiagramm zur Sitzverteilung
+	 * im Bundestag.
+	 * @param land Deutschland
+	 * @return Kuchendiagramm
+	 */
 
-    private JFreeChart createChart(String title, Deutschland land) {
+    private JFreeChart createChart(Deutschland land) {
     	ArrayList<Integer> daten = new ArrayList<Integer>();
     	ArrayList<Partei> parteien = new ArrayList<Partei>();
     	DefaultPieDataset result = new DefaultPieDataset();
@@ -56,8 +69,8 @@ public class BundDiagramm extends JPanel {
     	float angle = (float) ((sum / 270.0) * 90.0);
     	result.setValue("", angle);
     	
-    	JFreeChart chart = ChartFactory.createPieChart3D(title,
-    		result, true, true, false);
+    	JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung",
+    		result, false, true, false);
     	PiePlot3D plot = (PiePlot3D) chart.getPlot();
 
     	// färben
