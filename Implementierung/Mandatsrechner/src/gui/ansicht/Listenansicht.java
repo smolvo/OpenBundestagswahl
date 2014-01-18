@@ -30,7 +30,6 @@ public class Listenansicht extends JScrollPane implements TreeSelectionListener 
 
 	@Override
 	public void valueChanged(TreeSelectionEvent e) {
-		System.out.println("yoyoyo");
 		WahlFenster wahlfenster = (WahlFenster) this.getParent().getParent().getParent();
 		GUISteuerung steuerung = wahlfenster.getSteuerung();
 		Gebiet geb = (Gebiet) e.getPath().getLastPathComponent();
