@@ -17,17 +17,6 @@ import model.Wahlkreis;
  *
  */
 public class DiagrammFenster extends JPanel {
-
-	/** repräsentiert die Ansicht in der sich das Diagrammfenster befindet */
-	private final Ansicht ansicht;
-	
-	/**
-	 * Erstellt ein neues Diagrammfenster.
-	 * @param ansicht die aktuelle Ansicht
-	 */
-	public DiagrammFenster(Ansicht ansicht) {
-		this.ansicht = ansicht;
-	}
 	
 	/**
 	 *  Diese Methode identifiziert das Gebiets-Objekt.
@@ -52,7 +41,7 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public void erstelleDiagramm(Deutschland land) {
 		BundDiagramm dia = new BundDiagramm(land);
-		this.add(dia);
+		this.add(dia, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -69,7 +58,8 @@ public class DiagrammFenster extends JPanel {
 	 * @param land Deutschland
 	 */
 	public void erstelleDiagramm(Wahlkreis wk) {
-		
+		WahlkreisDiagramm dia = new WahlkreisDiagramm(wk);
+		this.add(dia, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -79,13 +69,5 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
 		
-	}
-	
-	/**
-	 * Gibt die Ansicht aus.
-	 * @return Ansicht
-	 */
-	public Ansicht getAnsicht() {
-		return ansicht;
 	}
 }

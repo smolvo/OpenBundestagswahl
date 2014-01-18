@@ -43,13 +43,14 @@ public class Ansicht extends JPanel {
 	public Ansicht(Deutschland land, WahlFenster fenster) {
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(land);
-		this.diagrammFenster = new DiagrammFenster(this);
+		this.diagrammFenster = new DiagrammFenster();
 		this.diagrammFenster.erstelleDiagramm(land);
 		this.kartenFenster = new KartenFenster(this);
 		this.kartenFenster.zeigeInformationen(land);
 		this.fenster = fenster;
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
+		kartenFensterSetzen();
 		layoutSetzen();
 	}
 	
@@ -62,9 +63,9 @@ public class Ansicht extends JPanel {
 		remove(diagrammFenster);
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(gebiet);
-		this.diagrammFenster = new DiagrammFenster(this);
+		this.diagrammFenster = new DiagrammFenster();
 		this.diagrammFenster.erstelleDiagramm(gebiet);
-		aktualisieren();
+		layoutSetzen();
 	}
 	
 	/**
@@ -74,11 +75,6 @@ public class Ansicht extends JPanel {
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(kartenFenster, gbc);
-		
-		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(diagrammFenster, gbc);
@@ -92,19 +88,17 @@ public class Ansicht extends JPanel {
 		add(tabellenFenster, gbc);
 	}
 	
-	private void aktualisieren() {
+	/**
+	 * Diese Methode wird vom Konstruktor verwendet, um das
+	 * Kartenfenster zu setzen.
+	 */
+	private void kartenFensterSetzen() {
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
 		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(diagrammFenster, gbc);
-		
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.gridheight = 2;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(tabellenFenster, gbc);
+		add(kartenFenster, gbc);
 	}
 	
 	

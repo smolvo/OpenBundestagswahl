@@ -1,7 +1,6 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,55 +10,51 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.util.Rotation;
 
-import model.Bundesland;
-import model.Deutschland;
+import model.Erststimme;
 import model.Partei;
-import model.Zweitstimme;
+import model.Wahlkreis;
 
 /**
- * Diese Klasse stellt das Diagramm der Landesansicht dar.
+ * Diese Klasse repräsentiert das Diagramm der Wahlkreisansicht.
  * @author Anton
  *
  */
-public class LandDiagramm extends JPanel {
+public class WahlkreisDiagramm extends JPanel {
 
-	
 	/**
 	 * Der Konstruktor erstellt das Diagramm.
-	 * @param bundLand Bundesland
+	 * @param wk Wahlkreis
 	 */
-	public LandDiagramm(Bundesland bundLand) {
-        JFreeChart chart = createChart(bundLand);
+	public WahlkreisDiagramm(Wahlkreis wk) {
+		JFreeChart chart = createChart(wk);
         ChartPanel chartPanel = new ChartPanel(chart);
         add(chartPanel, BorderLayout.CENTER);
 	}
 	
 	/**
-	 * Diese Methode erstellt das Diagramm.
-	 * @param bundLand Bundesland
-	 * @return Diagramm
+	 * Diese Mehthode wird vom Konstruktor verwendet, um das
+	 * Diagramm zu erstellen.
+	 * @param wk der Wahlkreis
+	 * @return JFreeChart
 	 */
-	private JFreeChart createChart(Bundesland bundLand) {
+	private JFreeChart createChart(Wahlkreis wk) {
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> zw = bundLand.getZweitstimmen();
+		List<Erststimme> er = wk.getErststimmen();
 		for (int i = 0; i < 4; i++) {
-			double proZweit = (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
-			parteien.add(zw.get(i).getPartei());
-			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
+			double proZweit = (Math.rint(((double) er.get(i).getAnzahl() / 
+					(double) wk.getErststimmeGesamt()) * 1000) / 10);
+			parteien.add(er.get(i).getKandidat().getPartei());
+			result.setValue(proZweit, " ", er.get(i).getKandidat().getPartei().getName());
 		}
 		double sonstige = 0;
-		for (int i = 4; i < zw.size(); i++) {
-			sonstige += (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
+		for (int i = 4; i < er.size(); i++) {
+			sonstige += (Math.rint(((double) er.get(i).getAnzahl() / 
+					(double) wk.getErststimmeGesamt()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 		
