@@ -11,9 +11,6 @@ import model.Stimme;
  */
 public class GUIPartei {
 
-	/** repräsentiert prozentualen Zweitstimmen der Partei */
-	private double prozentualeZweit;
-
 	/** repräsentiert die Sitze der Partei */
 	private int sitze;
 
@@ -28,49 +25,17 @@ public class GUIPartei {
 
 	/**
 	 * Konstruktor
-	 * @param prozentualeZweit prozentuale Anzahl Zweitstimmen
 	 * @param sitze Anzahl Sitze
 	 * @param direktmandate Anzahl Direktmandate
 	 * @param ueberhangsmandate Anzahl Überhangsmandate
 	 * @param ausgleichsmandate Anzahl Ausgleichsmandate
 	 */
-	public GUIPartei(double prozentualeZweit, int sitze, int direktmandate, 
+	public GUIPartei(int sitze, int direktmandate, 
 			int ueberhangsmandate, int ausgleichsmandate) {
-		this.prozentualeZweit = prozentualeZweit;
 		this.sitze = sitze;
 		this.direktmandate = direktmandate;
 		this.ueberhangsmandate = ueberhangsmandate;
 		this.ausgleichsmandate = ausgleichsmandate;
-	}
-	
-	/**
-	 * Diese Methode gibt eine prozentuale Stimmenanzahl aus.
-	 * @param stimme stimme im Verhältnis zu
-	 * @param stimmen allen Stimmen
-	 * @return prozentualer Anteil
-	 */
-	public double prozBerechnen(Stimme stimme, List<Stimme> stimmen) {
-		int gesamt = 0;
-		for (Stimme st : stimmen) {
-			gesamt += st.getAnzahl();
-		}
-		return (Math.rint(((double) stimme.getAnzahl() / (double) gesamt) * 1000) / 10);
-	}
-
-	/**
-	 * Gibt die prozentuale Zweitstimmenanzahl aus.
-	 * @return prozentuale Zweitstimmenanzahl
-	 */
-	public double getProzentualeZweit() {
-		return prozentualeZweit;
-	}
-
-	/**
-	 * Setzt die prozentuale Zweitstimmenanzahl.
-	 * @param prozentualeZweit Anzahl
-	 */
-	public void setProzentualeZweit(double prozentualeZweit) {
-		this.prozentualeZweit = prozentualeZweit;
 	}
 
 	/**

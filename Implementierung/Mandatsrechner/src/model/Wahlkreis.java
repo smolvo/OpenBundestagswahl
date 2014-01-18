@@ -51,6 +51,18 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 	
 	/**
+	 * Gibt die Erststimmenanzahl aller Parteien im Wahlkreis
+	 * @return die Erststimmenanzahl aller PArtein
+	 */
+	public int getErststimmeGesamt() {
+		int erststimmeGesamt = 0;
+		for(Erststimme erst : getErststimmen()){
+			erststimmeGesamt += erst.getAnzahl();
+		}
+		return erststimmeGesamt;
+	}
+	
+	/**
 	 * Gibt den Kandidaten mit den meisten Erststimmen zurück
 	 * @return Kandidat mit den meisten Erststimmen
 	 */

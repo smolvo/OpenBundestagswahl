@@ -20,7 +20,7 @@ public abstract class Gebiet implements Serializable {
 	
 
 	/**
-	 * Gibt die Zweitstimmenanzahl aller Parteien in Deutschland
+	 * Gibt die Zweitstimmenanzahl aller Parteien im Gebiet
 	 * @return die Zweistimmenanzahl aller PArtein
 	 */
 	public int getZweitstimmeGesamt() {

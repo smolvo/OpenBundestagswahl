@@ -1,6 +1,5 @@
 package gui.ansicht.tabellenfenster;
 
-import gui.GUIKandidat;
 import gui.GUIPartei;
 
 import javax.swing.JScrollPane;
@@ -10,6 +9,7 @@ import model.Bundesland;
 import model.Deutschland;
 import model.Erststimme;
 import model.Gebiet;
+import model.Mandat;
 import model.Partei;
 import model.Kandidat;
 import model.Wahlkreis;
@@ -88,27 +88,18 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Wahlkreis wk) {
 		WahlkreisDaten daten = new WahlkreisDaten();
-		int gesamtErst = 0;
-		for (Erststimme er : wk.getErststimmen()) {
-			gesamtErst += er.getAnzahl();
-		}
-		int gesamtZweit = 0;
-		for (Zweitstimme zw : wk.getZweitstimmen()) {
-			gesamtZweit += zw.getAnzahl();
-		}
-		
-		
 		for (int i = 0; i < wk.getErststimmen().size(); i++) {
 			Erststimme er = wk.getErststimmen().get(i);
 			Zweitstimme zw = wk.getZweitstimmen().get(i);
+			boolean direktMan = false;
+			if (er.getKandidat().getMandat().equals(Mandat.DIREKMANDAT)) {
+				direktMan = true;
+			}
 			if ((zw.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
-				GUIKandidat gk = kandidatErstellen(er);
-				double prozentualeErst = (Math.rint(((double) er.getAnzahl() / (double) gesamtErst) * 1000) / 10);
-				gk.setProzErst(prozentualeErst);
-				double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) gesamtZweit) * 1000) / 10);
-				gk.setProzZweit(prozentualeZweit);
-				daten.addZeile(gk.getPartei(), gk.getName(), zw, er, Double.toString(prozentualeZweit), 
-						Double.toString(prozentualeErst), gk.isDirektman());
+				double prozentualeErst = (Math.rint(((double) er.getAnzahl() / (double) wk.getErststimmeGesamt()) * 1000) / 10);
+				double prozentualeZweit = (Math.rint(((double) zw.getAnzahl() / (double) wk.getZweitstimmeGesamt()) * 1000) / 10);
+				daten.addZeile(zw.getPartei().getName(), er.getKandidat().getName(), zw, er, Double.toString(prozentualeZweit), 
+						Double.toString(prozentualeErst), direktMan);
 			}
 		}
 
@@ -145,20 +136,7 @@ public class TabellenFenster extends JScrollPane {
 				sitze++;
 			}	
 		}
-		GUIPartei gp = new GUIPartei(ausglMan, 0.0, 0.0, sitze, direktMan, ueberMan, ausglMan, false);
+		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
 		return gp;
-	}
-	
-	/**
-	 * Diese Methode erstellt aus einer Erststimme ein 
-	 * GUIKandidat-Objekt, welches alle Daten, die angezeigt
-	 * werden müssen beinhaltet.
-	 * @param erst Erststimme
-	 * @return den GUIKandidaten
-	 */
-	private GUIKandidat kandidatErstellen(Erststimme erst) {
-		Kandidat kandidat = erst.getKandidat();
-		
-		return kan;
 	}
 }
