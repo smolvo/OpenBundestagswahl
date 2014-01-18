@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 import javax.swing.JTabbedPane;
@@ -26,6 +27,11 @@ public class KartenFenster extends JTabbedPane {
 		this.ansicht = ansicht;
 	}
 	
+	String[] alleLaender = new String[] {"Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", 
+			 "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+			 "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
+			 "Saarland", "Sachsen-Anhalt", "Sachsen",
+			 "Schleswig-Holstein", "Thüringen"};
 	
 	/**
 	 * Diese Methode listet die Bundesländer auf und erstellt,
@@ -34,7 +40,7 @@ public class KartenFenster extends JTabbedPane {
 	 */
 	public void zeigeInformationen(Deutschland land) {
 		DeutschlandKarte d = new DeutschlandKarte(land);
-		if (ueberpruefeBundeslaender(land.getBundeslaender())) {
+		if (pruefeLaender(land)) {
 			this.addTab("Kartenansicht", d);
 		} else {
 			this.addTab("Kartenansicht", null);
@@ -47,28 +53,21 @@ public class KartenFenster extends JTabbedPane {
 	}
 
 	/**
-	 * Diese private Methode überprüft ob die Liste von BUndesländern den
+	 * Diese private Methode überprüft ob die Liste von Bundesländern den
 	 * reellen entspricht.
-	 * @param bundeslaender Liste der Bundesländer
+	 * @param land enthält alle Bundesländer
 	 * @return wahr oder falsch
 	 */
-	private boolean ueberpruefeBundeslaender(LinkedList<Bundesland> bundeslaender) {
-		for (Bundesland bund : bundeslaender) {
-			if (bundeslaender.size() != 16)
-					return false;
-			
-			if (!((bund.getName().equals("Baden-Württemberg")) || (bund.getName().equals("Bayern")) ||
-					(bund.getName().equals("Berlin")) || (bund.getName().equals("Brandenburg")) || 
-					(bund.getName().equals("Bremen")) || (bund.getName().equals("Hamburg")) || 
-					(bund.getName().equals("Hessen")) || (bund.getName().equals("Mecklenburg-Vorpommern")) || 
-					(bund.getName().equals("Niedersachsen")) || (bund.getName().equals("Nordrhein-Westfalen")) || 
-					(bund.getName().equals("Rheinland-Pfalz")) || (bund.getName().equals("Saarland")) || 
-					(bund.getName().equals("Sachsen")) || (bund.getName().equals("Sachsen-Anhalt")) || 
-					(bund.getName().equals("Schleswig-Holstein")) || (bund.getName().equals("Thüringen")))) {
-				return false;
+	private boolean pruefeLaender(Deutschland land) {
+		LinkedList<Bundesland> bundeslaender = land.getBundeslaender();
+		Collections.sort(bundeslaender);
+		boolean gleich = true;
+		for (int i = 0; i == 15; i++) {
+			if (alleLaender[i] != bundeslaender.get(i).getName()) {
+				gleich = false;
 			}
 		}
-		return true;
+		return gleich;	
 	}
 
 	/**
