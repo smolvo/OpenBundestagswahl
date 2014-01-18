@@ -81,11 +81,11 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 			 * Als platzhalter erstelle ich vorerst eine Liste alleParteien
 			 */	
 		//Platzhalter 
-			LinkedList<Partei> alleParteien = bw.getParteien(); // Alle Parteien der Bundestagswahl
+		LinkedList<Partei> alleParteien = bw.getParteien(); // Alle Parteien der Bundestagswahl
 		//relevante Parteien
-			LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
+		LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
 			
-			for(Partei part : alleParteien){
+		for(Partei part : alleParteien){
 				/*
 				 * Enes:
 				 * Brauchen wir getSperrklauselAnzahl wirklich? Du hast da die 5% Klausel hardgecoded, es ist
@@ -104,17 +104,43 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 					part.setImBundestag(false);
 				}*/
 				
-				if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
-					// Partei im Bundestag falls Anforderungen erfüllt sind.
-					part.setImBundestag(true);
-				} else {
-					// Ansonsten ist die Partei nicht im Bundestag.
-					part.setImBundestag(false);
-				}
+		if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
+			// Partei im Bundestag falls Anforderungen erfüllt sind.
+			part.setImBundestag(true);
+			//Partei in die Liste hinzufügen
+			if(!relevanteParteien.contains(part)){
+				relevanteParteien.add(part);
 			}
-			//Nun wurden die Parteien bestimmt, die Berechnung wichtig sind
-		//**Ende
-		//**
+		} else {
+			// Ansonsten ist die Partei nicht im Bundestag.
+			part.setImBundestag(false);
+		}
+				
+		}
+			
+			
+		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
+			
+			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
+			float landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
+			isCorrect = false;
+			while(!isCorrect){
+				int sitzePartei = 0;
+				
+				for(Partei part : relevanteParteien){
+					//TODO Nach erster Nachkommastelle
+					sitzePartei += Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
+				}
+				if(sitzePartei == sitzeBundesland){
+					isCorrect = true;
+				}else if(sitzePartei < sitzeBundesland){
+					landesdivisor -= 0.1;
+				}else{
+					//sitzanzahl > sitzeBundesland
+					landesdivisor += 0.1;
+				}
+			}	
+		}
 		
 		if(this.debug){
 			System.out.println("\nParteien im Bundestag:");
