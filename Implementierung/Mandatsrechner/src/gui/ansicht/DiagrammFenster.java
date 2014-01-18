@@ -1,5 +1,7 @@
 package gui.ansicht;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 import model.Bundesland;
@@ -11,10 +13,22 @@ import model.Wahlkreis;
 /**
  * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht.
  * In diesem werden bestimmmte Daten eines BTW-Objektes angezeigt.
+ * @author Anton
  *
  */
 public class DiagrammFenster extends JPanel {
 
+	/** repräsentiert die Ansicht in der sich das Diagrammfenster befindet */
+	private final Ansicht ansicht;
+	
+	/**
+	 * Erstellt ein neues Diagrammfenster.
+	 * @param ansicht die aktuelle Ansicht
+	 */
+	public DiagrammFenster(Ansicht ansicht) {
+		this.ansicht = ansicht;
+	}
+	
 	/**
 	 *  Diese Methode identifiziert das Gebiets-Objekt.
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
@@ -46,6 +60,8 @@ public class DiagrammFenster extends JPanel {
 	 * @param land Deutschland
 	 */
 	public void erstelleDiagramm(Bundesland bundLand) {
+		LandDiagramm dia = new LandDiagramm(bundLand);
+		this.add(dia, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -63,5 +79,13 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
 		
+	}
+	
+	/**
+	 * Gibt die Ansicht aus.
+	 * @return Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return ansicht;
 	}
 }

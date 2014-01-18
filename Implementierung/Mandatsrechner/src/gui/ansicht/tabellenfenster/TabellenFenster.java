@@ -2,6 +2,9 @@ package gui.ansicht.tabellenfenster;
 
 import gui.GUIPartei;
 
+
+import gui.ansicht.Ansicht;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -24,6 +27,17 @@ import model.Zweitstimme;
  */
 public class TabellenFenster extends JScrollPane {
 	
+	/** repräsentiert die Ansicht in der sich die Tabelle befindet */
+	private final Ansicht ansicht;
+	
+	
+	/**
+	 * Der Kostruktor erstellt ein neues Tabellenfenster.
+	 * @param ansicht die Ansicht
+	 */
+	public TabellenFenster(Ansicht ansicht) {
+		this.ansicht = ansicht;
+	}
 	
 	/**
 	 * Diese Methode identifiziert das Gebiets-Objekt.
@@ -138,5 +152,13 @@ public class TabellenFenster extends JScrollPane {
 		}
 		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
 		return gp;
+	}
+	
+	/**
+	 * Gibt die Ansicht aus.
+	 * @return Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return ansicht;
 	}
 }

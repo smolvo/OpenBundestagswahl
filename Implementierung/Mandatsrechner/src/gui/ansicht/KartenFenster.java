@@ -15,6 +15,18 @@ import model.Deutschland;
  */
 public class KartenFenster extends JTabbedPane {
 
+	/** repräsentiert die Ansicht in der sich das Kartenfenster befindet */
+	private Ansicht ansicht;
+	
+	/**
+	 * Der Konstruktor erstellt ein neues Kartenfenster.
+	 * @param ansicht Ansicht
+	 */
+	public KartenFenster(Ansicht ansicht) {
+		this.ansicht = ansicht;
+	}
+	
+	
 	/**
 	 * Diese Methode listet die Bundesländer auf und erstellt,
 	 * wenn möglich, eine kartographische Ansicht.
@@ -30,7 +42,7 @@ public class KartenFenster extends JTabbedPane {
 		}
 		
 		/* kreiiert die Listenansicht */
-		Listenansicht liste = new Listenansicht(land);
+		Listenansicht liste = new Listenansicht(land, this);
 		this.add("Listenansicht", liste);
 	}
 
@@ -41,7 +53,6 @@ public class KartenFenster extends JTabbedPane {
 	 * @return wahr oder falsch
 	 */
 	private boolean ueberpruefeBundeslaender(LinkedList<Bundesland> bundeslaender) {
-		boolean alleLaender = true;
 		for (Bundesland bund : bundeslaender) {
 			if (bundeslaender.size() != 16)
 					return false;
@@ -58,5 +69,13 @@ public class KartenFenster extends JTabbedPane {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Gibt die Ansicht aus.
+	 * @return Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return ansicht;
 	}
 }

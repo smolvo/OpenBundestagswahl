@@ -25,7 +25,7 @@ import org.jfree.util.Rotation;
  *
  */
 public class BundDiagramm extends JPanel {
-
+	
 	/**
 	 * Konstruktor erstellt ein Diagramm und fügt es hinzu.
 	 * @param land Deutschland
@@ -34,7 +34,6 @@ public class BundDiagramm extends JPanel {
 		this.setLayout(new BorderLayout());
         JFreeChart chart = createChart(land);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
         add(chartPanel, BorderLayout.CENTER);
     }
     
@@ -45,7 +44,6 @@ public class BundDiagramm extends JPanel {
 	 * @param land Deutschland
 	 * @return Kuchendiagramm
 	 */
-
     private JFreeChart createChart(Deutschland land) {
     	ArrayList<Integer> daten = new ArrayList<Integer>();
     	ArrayList<Partei> parteien = new ArrayList<Partei>();
@@ -86,6 +84,5 @@ public class BundDiagramm extends JPanel {
         plot.setDirection(Rotation.CLOCKWISE);
         plot.setForegroundAlpha(1.0f);
         return chart;
-        
     }
 }

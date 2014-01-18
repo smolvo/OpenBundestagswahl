@@ -16,13 +16,17 @@ import model.Gebiet;
  */
 public class Listenansicht extends JScrollPane implements TreeSelectionListener {
 	
+	/** repräsentiert das dazugehörige Kartenfenster */
+	private KartenFenster kartenfenster;
+	
 	/**
 	 * Im Konstruktor der Klasse wird eine Baumstruktur angelegt.
 	 * Die erste Stufe bildet Deutschland, die zweite alle Bundesländer
 	 * und die dritte die Wahlkreise der Bundesländer.
 	 * @param land alle Bundesländer
 	 */
-	public Listenansicht(Deutschland land) {
+	public Listenansicht(Deutschland land, KartenFenster kartenfenster) {
+		this.kartenfenster = kartenfenster;
 		DeutschlandTree tree = new DeutschlandTree(land);
         tree.addTreeSelectionListener(this);
 		this.setViewportView(tree);		
@@ -30,7 +34,7 @@ public class Listenansicht extends JScrollPane implements TreeSelectionListener 
 
 	@Override
 	public void valueChanged(TreeSelectionEvent e) {
-		WahlFenster wahlfenster = (WahlFenster) this.getParent().getParent().getParent();
+		WahlFenster wahlfenster = kartenfenster.getAnsicht().getFenster();
 		GUISteuerung steuerung = wahlfenster.getSteuerung();
 		Gebiet geb = (Gebiet) e.getPath().getLastPathComponent();
 		steuerung.aktualisiereWahlfenster(geb);

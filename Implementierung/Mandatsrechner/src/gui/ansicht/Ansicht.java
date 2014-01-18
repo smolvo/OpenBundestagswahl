@@ -41,11 +41,11 @@ public class Ansicht extends JPanel {
 	 * @param fenster das Wahlfenster der Ansicht
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
-		this.tabellenFenster = new TabellenFenster();
+		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(land);
-		this.diagrammFenster = new DiagrammFenster();
+		this.diagrammFenster = new DiagrammFenster(this);
 		this.diagrammFenster.erstelleDiagramm(land);
-		this.kartenFenster = new KartenFenster();
+		this.kartenFenster = new KartenFenster(this);
 		this.kartenFenster.zeigeInformationen(land);
 		this.fenster = fenster;
 		this.gbc = new GridBagConstraints();
@@ -60,9 +60,9 @@ public class Ansicht extends JPanel {
 	public void ansichtAendern(Gebiet gebiet) {
 		remove(tabellenFenster);
 		remove(diagrammFenster);
-		this.tabellenFenster = new TabellenFenster();
+		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(gebiet);
-		this.diagrammFenster = new DiagrammFenster();
+		this.diagrammFenster = new DiagrammFenster(this);
 		this.diagrammFenster.erstelleDiagramm(gebiet);
 		aktualisieren();
 	}
