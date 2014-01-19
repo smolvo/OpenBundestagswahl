@@ -1,7 +1,6 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +10,11 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.util.Rotation;
 
 import model.Bundesland;
-import model.Deutschland;
 import model.Partei;
 import model.Zweitstimme;
 
@@ -30,7 +25,9 @@ import model.Zweitstimme;
  */
 public class LandDiagramm extends JPanel {
 
-	
+
+	private static final long serialVersionUID = 5982851750497212488L;
+
 	/**
 	 * Der Konstruktor erstellt das Diagramm.
 	 * @param bundLand Bundesland
@@ -51,15 +48,15 @@ public class LandDiagramm extends JPanel {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Zweitstimme> zw = bundLand.getZweitstimmen();
 		for (int i = 0; i < 4; i++) {
-			double proZweit = (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmenAnzahlGesamt()) * 1000) / 10);
+			double proZweit = (Math.rint(((double) zw.get(i).getAnzahl()
+					/ (double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
 			parteien.add(zw.get(i).getPartei());
 			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
 		}
 		double sonstige = 0;
 		for (int i = 4; i < zw.size(); i++) {
-			sonstige += (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmenAnzahlGesamt()) * 1000) / 10);
+			sonstige += (Math.rint(((double) zw.get(i).getAnzahl()
+					/ (double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 		
