@@ -2,8 +2,6 @@ package wahlgenerator;
 
 import java.io.Serializable;
 
-import model.Gebiet;
-import model.Partei;
 import model.Stimme;
 
 /*
@@ -30,19 +28,10 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 	 * 
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen.
-	 * @param gebiet
-	 *            Das zugehörige Gebiet.
-	 * @param partei
-	 *            Die zugehörige Partei.
 	 */
 	public RelevanteZweitstimmen(int anzahl) {
 		this.setAnzahl(anzahl);
 
 	}
-
-
-
-
-
 
 }

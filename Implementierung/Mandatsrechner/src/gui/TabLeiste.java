@@ -18,54 +18,65 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
- * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters
- * Jeder Tab steht für eine im Programm geöffnete Bundestagswahl
- *
+ * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters Jeder Tab
+ * steht für eine im Programm geöffnete Bundestagswahl
+ * 
  * @author Manuel
- *
+ * 
  */
 public class TabLeiste extends JTabbedPane {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1890561914275560319L;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 	private Programmfenster pf;
-	
 
+	/**
+	 * Der Konstruktor der Tableiste
+	 * 
+	 * @param pf
+	 *            Programmfenster
+	 */
 	public TabLeiste(Programmfenster pf) {
-		
+
 		this.pf = pf;
-		//allgemeine Einstellungen der Tab- Leiste
+		// allgemeine Einstellungen der Tab- Leiste
 		this.setTabLayoutPolicy(TOP);
 		this.setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
 
-		//neuen Tab für jede aktuelle Wahl
-				for (int i = 0; i < pf.getWahlen().size(); i++) {
-					WahlFenster w = pf.getWahlen().get(i);
-					wahlen.add(w);
-					neuerTab(w, w.getName());
-					
-				}	
+		// neuen Tab für jede aktuelle Wahl
+		for (int i = 0; i < pf.getWahlen().size(); i++) {
+			WahlFenster w = pf.getWahlen().get(i);
+			wahlen.add(w);
+			neuerTab(w, w.getName());
+
+		}
 		neuerTabButton(new JPanel());
 		setVisible(true);
 	}
-	
+
 	/**
 	 * 
-	 * Diese Methode fügt den "+"- Button, mit dem ein neuer Tab geöffnet werden kann, hinzu
-	 *
+	 * Diese Methode fügt der Tableiste einen "+"- Button hinzu Wenn man darauf
+	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl
+	 * 
 	 * @param c
+	 *            JComponent
 	 */
 	public void neuerTabButton(final JComponent c) {
 		add(c);
 		int pos = indexOfComponent(c);
-		
+
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel pnlTab = new JPanel(f);
 		pnlTab.setOpaque(false);
-		
+
 		JButton neuerTab = new JButton();
 		neuerTab.setOpaque(false);
 		neuerTab.setIcon(new ImageIcon("src/gui/resources/images/neuerTab.png"));
-		
+
 		neuerTab.setBorder(null);
 		neuerTab.setContentAreaFilled(false);
 		neuerTab.setFocusPainted(false);
@@ -73,9 +84,9 @@ public class TabLeiste extends JTabbedPane {
 
 		pnlTab.add(neuerTab);
 		setTabComponentAt(pos, pnlTab);
-		
+
 		this.setEnabledAt(pos, false);
-		//Erstelle anonymen ActionListener für den "+" Knopf
+		// Erstelle anonymen ActionListener für den "+" Knopf
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -89,11 +100,9 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * Diese Methode fügt zur Tab- Leiste einen weiteren Tab hinzu. Dabei
-	 * besitzt der Tab einen Schließen- Button
+	 * Diese Methode fügt zur Tableiste einen weiteren Tab hinzu. Dabei besitzt
+	 * der Tab einen Schließen- Button
 	 * 
-	 * @param tabs
-	 *            die Tab- Leiste
 	 * @param c
 	 *            Inhalt des Tabs
 	 * @param wahlName
@@ -103,13 +112,11 @@ public class TabLeiste extends JTabbedPane {
 	public void neuerTab(final JComponent c, final String wahlName) {
 		add(c);
 		int pos = indexOfComponent(c);
-		
-	
+
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel tab = new JPanel(f);
 		tab.setOpaque(false);
 
-		
 		JLabel lblTitle = new JLabel(wahlName);
 
 		JButton schliessen = new JButton();
@@ -127,33 +134,33 @@ public class TabLeiste extends JTabbedPane {
 		setTabComponentAt(pos, tab);
 
 		pf.setWahlen(wahlen);
-		//Erstelle anonymen ActionListener für den "x" Knopf
-		
+		// Erstelle anonymen ActionListener für den "x" Knopf
+
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				/*Wird versucht, einen Tab zu schließen, wird zuerst gefragt, ob dieser Tab gespeichert
-				werden soll */
+
+				/*
+				 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt,
+				 * ob dieser Tab gespeichert werden soll
+				 */
 				int eingabe = JOptionPane.showConfirmDialog(null,
-                        "Soll Datei gespeichert werden?",
-                        "Einverständnis",
-                        JOptionPane.YES_NO_CANCEL_OPTION);
-				
-				if(eingabe == 0) {
+						"Soll Datei gespeichert werden?", "Einverständnis",
+						JOptionPane.YES_NO_CANCEL_OPTION);
+
+				if (eingabe == 0) {
 					new ExportDialog(TabLeiste.this);
-				} else
-					if ( eingabe == 1) {
-						remove(c);
-						pf.getWahlen().remove(c);		
-					}
-				
+				} else if (eingabe == 1) {
+					remove(c);
+					pf.getWahlen().remove(c);
+				}
+
 			}
 		};
 
 		schliessen.addActionListener(listener);
 		setSelectedComponent(c);
-	
+
 	}
 
 	/**
@@ -164,11 +171,11 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * @param pf the pf to set
+	 * @param pf
+	 *            the pf to set
 	 */
 	public void setPf(Programmfenster pf) {
 		this.pf = pf;
 	}
-	
-	
+
 }

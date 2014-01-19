@@ -3,14 +3,11 @@ package wahlgenerator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Bundesland;
 import model.Bundestagswahl;
-import model.Kandidat;
 import model.Landesliste;
 import model.Mandat;
 import model.Partei;
-import model.Sitzverteilung;
 import model.Zweitstimme;
 
 /**
@@ -49,12 +46,13 @@ public class StimmgewichtSimulator {
 	 */
 	/**
 	 * der Konstruktor der Klasse
+	 * @param ausgangsWahl die Ausgangswahl
 	 */
-	public StimmgewichtSimulator(Bundestagswahl bw) {
+	public StimmgewichtSimulator(Bundestagswahl ausgangsWahl) {
 		// TODO Sitzverteilung von bw berechnen
 		try {
 			this.setAusgangsWahl(ausgangsWahl);
-			this.setVerwandteWahl(bw.deepCopy());
+			this.setVerwandteWahl(ausgangsWahl.deepCopy());
 			this.berechneRelevanteZweitstimmen();
 			this.setRelevanteParteien(waehleParteien());
 
@@ -83,9 +81,9 @@ public class StimmgewichtSimulator {
 			for (Bundesland b : relevanteBundeslaender) {
 				for (Zweitstimme z : zweitstimmen) {
 					if (z.getGebiet().equals(b)) {
-						 //&& z.getAnzahl() < Anzahl Wahlberechtigte TODO
+						// && z.getAnzahl() < Anzahl Wahlberechtigte TODO
 						z.setAnzahl(z.getAnzahl() + 5);
-						//negatives Stimmgewicht aufgetreten?
+						// negatives Stimmgewicht aufgetreten?
 						if (vergleicheSitzverteilungen(p)) {
 							return true;
 						}
@@ -110,27 +108,21 @@ public class StimmgewichtSimulator {
 	 * @return true, wenn negatives Stimmgewicht aufgetreten ist
 	 */
 	private boolean vergleicheSitzverteilungen(Partei p) {
-		//TODO
-		/*Sitzverteilung alt = this.ausgangsWahl.;
-		Sitzverteilung neu = this.verwandteWahl.
-		
-		int mandatsZahlAlt = 0;
-		for (Kandidat a : alt.getAbgeordnete()) {
-			if (a.getPartei().equals(p)) {
-				 mandatsZahlAlt++;
-			}
-		}
-	
-		int mandatsZahlNeu = 0;
-		for (Kandidat a : neu.getAbgeordnete()) {
-			if (a.getPartei().equals(p)) {
-				 mandatsZahlNeu++;
-			}
-		}
-		
-		
-		return (mandatsZahlNeu < mandatsZahlAlt);*/
-		
+		// TODO
+		/*
+		 * Sitzverteilung alt = this.ausgangsWahl.; Sitzverteilung neu =
+		 * this.verwandteWahl.
+		 * 
+		 * int mandatsZahlAlt = 0; for (Kandidat a : alt.getAbgeordnete()) { if
+		 * (a.getPartei().equals(p)) { mandatsZahlAlt++; } }
+		 * 
+		 * int mandatsZahlNeu = 0; for (Kandidat a : neu.getAbgeordnete()) { if
+		 * (a.getPartei().equals(p)) { mandatsZahlNeu++; } }
+		 * 
+		 * 
+		 * return (mandatsZahlNeu < mandatsZahlAlt);
+		 */
+
 		return false;
 	}
 
@@ -232,8 +224,10 @@ public class StimmgewichtSimulator {
 	}
 
 	/**
-	 * @param bw
-	 *            the bw to set
+	 * Setzt eine neue Ausgangswahl
+	 * 
+	 * @param ausgangsWahl
+	 *            neue Ausgangswahl
 	 */
 	public void setAusgangsWahl(Bundestagswahl ausgangsWahl) {
 		if (ausgangsWahl == null) {

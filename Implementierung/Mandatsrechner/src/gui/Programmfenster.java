@@ -1,6 +1,5 @@
 package gui;
 
-import gui.dialoge.EinstellungenDialog;
 import importexport.ImportExportManager;
 
 import java.awt.Image;
@@ -18,35 +17,49 @@ import model.Bundestagswahl;
  * Die Klasse Programmfenster repräsentiert die allgemeine Ansicht des Programms
  * 
  * @author Manuel
- *
+ * 
  */
 
-public final class Programmfenster extends JFrame{
+public final class Programmfenster extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6856366470846315047L;
 	private Menu menu = null;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 	private TabLeiste tabs;
-	
+
+	/**
+	 * Die Main- Klasse des Programms. Hier startet das Programm.
+	 * 
+	 * @param args
+	 *            Startargumente
+	 */
 	public static void main(String[] args) {
-		
+
 		new Programmfenster();
 	}
-	
-	public Programmfenster() {	
-		//allgemeine Anpassungen des Programmfensters
-	    setTitle("Mandatsverteilung im Deutschen Bundestag");
-		setSize(1024,768);
+
+	/**
+	 * Der Konstruktor des Programmfensters
+	 */
+	public Programmfenster() {
+		// allgemeine Anpassungen des Programmfensters
+		setTitle("Mandatsverteilung im Deutschen Bundestag");
+		setSize(1024, 768);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png").getImage();
+		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png")
+				.getImage();
 		setIconImage(icon);
-	
-		//Menü- Leiste erstellen
+
+		// Menü- Leiste erstellen
 		menu = new Menu(this);
 		setJMenuBar(menu);
-		
-		//Wahl 2013
+
+		// Wahl 2013
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
@@ -59,66 +72,97 @@ public final class Programmfenster extends JFrame{
 			e.printStackTrace();
 		}
 
-		
 		wahlen.add(new WahlFenster(w));
-		
-		
-		
-		//Tab- Leiste erstellen	
+
+		// Tab- Leiste erstellen
 		tabs = new TabLeiste(this);
 		this.add(tabs);
-		
+
 		setVisible(true);
 	}
-	
-	
+
 	/**
 	 * Diese Methode wechselt zu einem anderen geöffneten Tab
-	 * @param wf Tab, zu dem gewechselt werden soll
+	 * 
+	 * @param wf
+	 *            Tab, zu dem gewechselt werden soll
 	 */
-	
+
 	public void wechsleTab(WahlFenster wf) {
 		for (WahlFenster w : wahlen) {
 			if (w.equals(wf)) {
 				tabs.setSelectedComponent(wf);
 			}
-			
+
 		}
 	}
-	
-	
-	
-	
-   
-   
-  
+
+	/**
+	 * Gibt das Menü zurück
+	 * 
+	 * @return menu
+	 */
 	public Menu getMenu() {
 		return menu;
 	}
 
+	/**
+	 * Setzt das Menü
+	 * 
+	 * @param menu das Menü
+	 */
 	public void setMenu(Menu menu) {
-		this.menu = menu;
+		if (menu == null) {
+			throw new IllegalArgumentException("Menü war null.");
+		} else {
+			this.menu = menu;
+		}
+
 	}
 
-
+	/**
+	 * Gibt die Liste an Wahlfenstern zurück
+	 * 
+	 * @return Wahlfenster
+	 */
 	public List<WahlFenster> getWahlen() {
 		return wahlen;
 	}
 
+	/**
+	 * Setzt die Wahlfenster
+	 * 
+	 * @param wahlen
+	 *            Wahlfenster
+	 */
 	public void setWahlen(List<WahlFenster> wahlen) {
-		this.wahlen = wahlen;
+		if (wahlen == null) {
+			throw new IllegalArgumentException("Wahlfenster waren null.");
+		} else {
+			this.wahlen = wahlen;
+		}
 	}
 
+	/**
+	 * Gibt die Tableiste zurück
+	 * 
+	 * @return Tableiste
+	 */
 	public TabLeiste getTabs() {
 		return tabs;
 	}
 
+	/**
+	 * Setzt eine neue Tableiste
+	 * 
+	 * @param tabs die Tableiste
+	 */
 	public void setTabs(TabLeiste tabs) {
-		this.tabs = tabs;
+		if (tabs == null) {
+			throw new IllegalArgumentException("Tableiste war null.");
+		} else {
+			this.tabs = tabs;
+		}
 	}
-
-	 
-	 
-	 
 
 }
