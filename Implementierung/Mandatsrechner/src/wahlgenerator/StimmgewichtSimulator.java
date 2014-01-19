@@ -1,5 +1,6 @@
 package wahlgenerator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import model.Zweitstimme;
 
 /**
  * Diese Klasse soll in der Lage sein, zu einer von NegStimmgewichtWahlgenerator
- * erzeugten Bundestagswahl durch Simulation eine verwandte Bundestagswahl in
+ * erzeugten Bundestagswahl durch Simulation eine "verwandte" Bundestagswahl in
  * der Art zu erzeugen, dass zwischen diesen zwei Bundestagswahlen der Effekt
  * des negativen Stimmgewichts auftritt
  * 
@@ -24,46 +25,104 @@ import model.Zweitstimme;
 public class StimmgewichtSimulator {
 
 	/**
-	 * Die Ausgangsbundestagswahl, zu der eine verwandte Wahl erzeugt werden
+	 * Die Ausgangsbundestagswahl, zu der eine "verwandte" Wahl erzeugt werden
 	 * soll
 	 */
-	private Bundestagswahl bw;
+	private Bundestagswahl ausgangsWahl;
+
+	/**
+	 * Die zur Ausgangswahl "verwandte" Bundestagswahl
+	 */
+	private Bundestagswahl verwandteWahl;
+
+	/**
+	 * Parteien, bei denen negatives Stimmgewicht auftreten kann
+	 */
+	private List<Partei> relevanteParteien = new ArrayList<Partei>();
 
 	/*
 	 * Bei mindestens einer Partei muss der prozentuale Anteil ihrer relevanten
 	 * Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein.
 	 * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf
-	 * Landeslisten abgegeben werden, die keine überhangmandate erzielen
+	 * Landeslisten abgegeben werden, die keine Uberhangmandate erzielen
 	 */
 	/**
 	 * der Konstruktor der Klasse
 	 */
 	public StimmgewichtSimulator(Bundestagswahl bw) {
-		this.setBw(bw);
+		// TODO Sitzverteilung von bw berechnen
+		try {
+			this.setAusgangsWahl(ausgangsWahl);
+			this.setVerwandteWahl(bw.deepCopy());
+			this.berechneRelevanteZweitstimmen();
+			this.setRelevanteParteien(waehleParteien());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
+	/**
+	 * Es werden die Zweitstimmen einer relevanten Partei in einem geeigneten
+	 * Bundeesland schrittweise um den konstanten Faktor 5 erhöht. Dies
+	 * geschieht maximal solange bis sie nicht mehr erhöht werden können, weil
+	 * sie größer als die Anzahl der Wahlberechtigten sind. Falls ein negatives
+	 * Stimmgewicht im Vergleich zu der Ausgangsbundestagswahl ermittelt wurde,
+	 * bricht die Suche ebenfalls ab
+	 * 
+	 * @return true wenn negatives Stimmgewicht eingetreten ist
+	 */
 	public boolean berechneNegStimmgewicht() {
 
-		List<Partei> parteien = waehleParteien();
-		List<Bundesland> bundeslaender = waehleBundeslaender();
+		for (Partei p : relevanteParteien) {
+			List<Bundesland> relevanteBundeslaender = waehleBundeslaender(p);
+			List<Zweitstimme> zweitstimmen = p.getZweitstimme();
+			for (Bundesland b : relevanteBundeslaender) {
+				for (Zweitstimme z : zweitstimmen) {
+					if (z.getGebiet().equals(b)) {
+						 //&& z.getAnzahl() < Anzahl Wahlberechtigte TODO
+						z.setAnzahl(z.getAnzahl() + 5);
+						//negatives Stimmgewicht aufgetreten?
+						if (vergleicheSitzverteilungen(p)) {
+							return true;
+						}
+					}
+				}
+			}
+
+		}
 
 		return false;
 	}
 
-	private boolean vergleicheSitzverteilungen() {
-		return true;
+	/**
+	 * Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen
+	 * Bundestagswahlen.Wenn die Sitzanzahl für die gegebene Partei in der
+	 * Ausgangsbundestagswahl größer ist als in der neu berechneten
+	 * Bundestagswahl, tritt negativer Stimmeffekt auf und es wird false
+	 * ausgegeben, andernfalls true
+	 * 
+	 * @param p
+	 *            die Partei, deren Sitze betrachtet werden
+	 * @return
+	 */
+	private boolean vergleicheSitzverteilungen(Partei p) {
+		// TODO
+		return false;
 	}
 
 	/**
 	 * In dieser Methode werden die Parteien gewählt, deren prozentualer Anteil
-	 * an relevanten Zweitstimmen größer als der prozentuale Anteil an Mandate
+	 * an relevanten Zweitstimmen größer als der prozentuale Anteil an Mandaten
 	 * ist
 	 * 
 	 * @return Liste an relevanten Parteien, d.h. diejenigen, die das
 	 *         beschriebene Merkmal aufweisen
 	 */
 	private List<Partei> waehleParteien() {
-		List<Partei> alleParteien = this.bw.getParteien();
+		List<Partei> alleParteien = this.ausgangsWahl.getParteien();
 
 		List<Partei> relevanteParteien = new ArrayList<Partei>();
 
@@ -93,29 +152,49 @@ public class StimmgewichtSimulator {
 		return null;
 	}
 
-	private List<Bundesland> waehleBundeslaender() {
-		return null;
+	/**
+	 * Diese Methode wählt, von den Parteien abhängig, die Bundesländer, für die
+	 * negatives Stimmgewicht auftreten kann
+	 * 
+	 * @param p
+	 *            Partei
+	 * @return Liste an Bundesländern
+	 */
+	private List<Bundesland> waehleBundeslaender(Partei p) {
+		List<Landesliste> landeslisten = p.getLandesliste();
+		List<Bundesland> relevanteBundeslaender = new ArrayList<Bundesland>();
+
+		for (Landesliste l : landeslisten) {
+			// überprüfe, ob die Partei in einem Bundesland Überhandmandate hat
+			// falls ja, kann negatives Stimmgewicht auftreten und sie ist
+			// relevant
+			if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
+				relevanteBundeslaender.add(l.getBundesland());
+			}
+		}
+		return relevanteBundeslaender;
 	}
 
 	/**
 	 * Berechnet für alle Parteien die relevanten Zweitstimmen
 	 * 
+	 * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf
+	 * Landeslisten abgegeben werden, die keine Uberhangmandate erzielen
+	 * 
 	 */
 	private void berechneRelevanteZweitstimmen() {
 
-		for (Partei p : this.bw.getParteien()) {
-			List<Landesliste> landesliste = p.getLandesliste();
+		for (Partei p : this.verwandteWahl.getParteien()) {
+			List<Landesliste> landeslisten = p.getLandesliste();
 			int anzahl = 0;
 
-			for (int i = 0; i < landesliste.size(); i++) {
+			for (Landesliste l : landeslisten) {
 
 				// überprüft, ob Partei Zweitstimmen in einem Bundesland
 				// erhalten
 				// hat, in dem es keine Überhangmandate hält
-				if (landesliste.get(i).getKandidaten(Mandat.UEBERHANGMADAT)
-						.size() == 0) {
-					anzahl += p.getZweitstimme(landesliste.get(i)
-							.getBundesland());
+				if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
+					anzahl += l.getBundesland().getZweitstimmenAnzahl(p);
 
 				}
 			}
@@ -127,20 +206,62 @@ public class StimmgewichtSimulator {
 	/**
 	 * @return the bw
 	 */
-	public Bundestagswahl getBw() {
-		return bw;
+	public Bundestagswahl getAusgangsWahl() {
+		return ausgangsWahl;
 	}
 
 	/**
 	 * @param bw
 	 *            the bw to set
 	 */
-	public void setBw(Bundestagswahl bw) {
-		if (bw == null) {
+	public void setAusgangsWahl(Bundestagswahl ausgangsWahl) {
+		if (ausgangsWahl == null) {
 			throw new IllegalArgumentException(
 					"Übergebene Bundestagswahl war null");
 		} else {
-			this.bw = bw;
+			this.ausgangsWahl = ausgangsWahl;
+		}
+
+	}
+
+	/**
+	 * @return the relevanteParteien
+	 */
+	public List<Partei> getRelevanteParteien() {
+		return relevanteParteien;
+	}
+
+	/**
+	 * @param relevanteParteien
+	 *            the relevanteParteien to set
+	 */
+	public void setRelevanteParteien(List<Partei> relevanteParteien) {
+		if (relevanteParteien == null) {
+			throw new IllegalArgumentException(
+					"Liste mit relevanten Parteien war null.");
+		} else {
+			this.relevanteParteien = relevanteParteien;
+		}
+
+	}
+
+	/**
+	 * @return the verwandteWahl
+	 */
+	public Bundestagswahl getVerwandteWahl() {
+		return verwandteWahl;
+	}
+
+	/**
+	 * @param verwandteWahl
+	 *            the verwandteWahl to set
+	 */
+	public void setVerwandteWahl(Bundestagswahl verwandteWahl) {
+		if (verwandteWahl == null) {
+			throw new IllegalArgumentException(
+					"Übergebene Bundestagswahl war null");
+		} else {
+			this.verwandteWahl = verwandteWahl;
 		}
 
 	}

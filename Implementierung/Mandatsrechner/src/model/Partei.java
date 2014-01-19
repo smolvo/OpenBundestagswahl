@@ -365,16 +365,16 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 
 	/**
-	 * Gibt die Anzahl der Zweitstimmen der Partei in dem jeweiligen Gebiet
+	 * Gibt die Anzahl der Zweitstimmen der Partei in dem jeweiligen Wahlkreis
 	 * 
-	 * @param gebiet das Gebiet, zu dem dei Zweitstimmenanzahl gegeben werden soll
+	 * @param wk der Wahlkreis, zu dem die Zweitstimmenanzahl gegeben werden soll
 	 * @return die Anzahl der Zweitstimmen
 	 */
 
-	public int getZweitstimme(Wahlkreis gebiet) {
+	public int getZweitstimme(Wahlkreis wk) {
 		int anzahlZweitstimmen = 0; 
 		for (Zweitstimme z : zweitstimme) {
-			if (z.getGebiet().equals(gebiet)) {
+			if (z.getGebiet().equals(wk)) {
 				anzahlZweitstimmen = z.getAnzahl();
 			}
 			
