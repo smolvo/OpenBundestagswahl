@@ -1,5 +1,6 @@
 package gui;
 
+import gui.dialoge.EinstellungenDialog;
 import importexport.ImportExportManager;
 
 import java.awt.Image;

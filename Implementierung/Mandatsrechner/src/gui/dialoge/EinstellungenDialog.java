@@ -46,7 +46,7 @@ public class EinstellungenDialog extends JDialog {
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
+		this.setAlwaysOnTop(true);
 		this.setLayout(new BorderLayout());
 	
 		//Wahl 2013
