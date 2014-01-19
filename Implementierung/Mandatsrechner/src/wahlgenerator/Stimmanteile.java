@@ -8,27 +8,35 @@ import model.Partei;
 public class Stimmanteile {
 	
 	/** Die zugehörige Partei. */
-	private Partei partei;
+	private final Partei partei;
 	
-	/** Anteil der Erststimmen dieser Partei. */
-	private float prozErststimmen;
+	/** Anteil der Erststimmen dieser Partei. Dieser Wert muss zwischen 0 und 1 liegen.*/
+	private final float anteilErststimmen;
 	
-	/**  */
-	private float prozZweitstimmen;
+	/** Anteil der Zweitstimmen dieser Partei. Dieser Wert muss zwischen 0 und 1 liegen.*/
+	private final float anteilZweitstimmen;
 	
 	
 	/**
 	 * Parametrisierter Konstruktor.
 	 * @param partei Die zugehörige Partei.
-	 * @param prozErststimmen Anteil der Erststimmen dieser Partei.
-	 * @param prozZweitstimmen Anteil der Zweitstimmen dieser Partei.
+	 * @param anteilErststimmen Anteil der Erststimmen dieser Partei [0,1].
+	 * @param anteilZweitstimmen Anteil der Zweitstimmen dieser Partei [0,1].
 	 */
-	public Stimmanteile(Partei partei, float prozErststimmen, float prozZweitstimmen) {
-		this.setPartei(partei);
-		this.setProzErststimmen(prozErststimmen);
-		this.setProzZweitstimmen(prozZweitstimmen);
+	public Stimmanteile(Partei partei, float anteilErststimmen, float anteilZweitstimmen) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter 'partei' ist null!");
+		}
+		if (anteilErststimmen < 0 || anteilErststimmen > 1) {
+			throw new IllegalArgumentException("Der Wert des Parameters 'anteilErststimmen' liegt nicht im Intervall [0,1]!");
+		}
+		if (anteilZweitstimmen < 0 || anteilZweitstimmen > 1) {
+			throw new IllegalArgumentException("Der Wert des Parameters 'anteilZweitstimmen' liegt nicht im Intervall [0,1]!");
+		}		
+		this.partei = partei;
+		this.anteilErststimmen = anteilErststimmen;
+		this.anteilZweitstimmen = anteilZweitstimmen;
 	}
-
 
 	/**
 	 * Gibt die zugehörige Partei zurück.
@@ -38,29 +46,21 @@ public class Stimmanteile {
 		return partei;
 	}
 
-
-	public void setPartei(Partei partei) {
-		this.partei = partei;
+	/**
+	 * Gibt den Anteil der Erststimmen dieser Partei zurück.
+	 * Dieser Wert liegt zwischen 0 und 1.
+	 * @return den Anteil der Erststimmen dieser Partei
+	 */
+	public float getAnteilErststimmen() {
+		return anteilErststimmen;
 	}
 
-
-	public float getProzErststimmen() {
-		return prozErststimmen;
+	/**
+	 * Gibt den Anteil der Zweitstimmen dieser Partei zurück.
+	 * Dieser Wert liegt zwischen 0 und 1.
+	 * @return den Anteil der Zweitstimmen dieser Partei
+	 */
+	public float getAnteilZweitstimmen() {
+		return anteilZweitstimmen;
 	}
-
-
-	public void setProzErststimmen(float prozErststimmen) {
-		this.prozErststimmen = prozErststimmen;
-	}
-
-
-	public float getProzZweitstimmen() {
-		return prozZweitstimmen;
-	}
-
-
-	public void setProzZweitstimmen(float prozZweitstimmen) {
-		this.prozZweitstimmen = prozZweitstimmen;
-	}
-	
 }

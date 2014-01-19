@@ -11,9 +11,6 @@ public class Erststimme extends Stimme implements Serializable {
 
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -950583325552486249L;
-
-	/** Das zugehörige Gebiet. */
-	private Gebiet gebiet;
 	
 	/** Der zugehörige Kanditat. */
 	private Kandidat kandidat;
@@ -29,26 +26,6 @@ public class Erststimme extends Stimme implements Serializable {
 		this.setAnzahl(anzahl);
 		this.setKandidat(kandidat);
 		this.setGebiet(gebiet);
-	}
-	
-	/**
-	 * Gibt das zugehörige Gebiet zurück
-	 * @return das zugehörige Gebiet
-	 */
-	public Gebiet getGebiet() {
-		return this.gebiet;
-	}
-	
-	/**
-	 * Setze das Gebiet
-	 * @param gebiet Das zugehörige Gebiet.
-	 * @throws IllegalArgumentException wenn das übergebende Gebiet leer ist
-	 */
-	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
-		if (gebiet.equals(null)) {
-		      throw new IllegalArgumentException("Gebiet ist null!");
-		}
-		this.gebiet = gebiet;
 	}
 	
 	/**
@@ -69,6 +46,30 @@ public class Erststimme extends Stimme implements Serializable {
 		      throw new IllegalArgumentException("Kandidat ist null!");
 		}
 		this.kandidat = kandidat;
+	}
+	
+	@Override
+	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (this.getGebiet().getWahlberechtigte() < 
+				(this.getGebiet().getErststimmeGesamt() - this.getAnzahl() + anzahl)) {
+			throw new IllegalArgumentException("Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
+		}
+		this.anzahl = anzahl;
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (this.getGebiet().getWahlberechtigte() < 
+				(this.getGebiet().getErststimmeGesamt() + anzahl)) {
+			throw new IllegalArgumentException("Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
+		}
+		this.anzahl += anzahl;
 	}
  
 }

@@ -11,9 +11,6 @@ public class Zweitstimme extends Stimme implements Serializable, Comparable<Zwei
 	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -2753165575954824955L;
 	
-	/** Das zugehörige Gebiet. */
-	private Gebiet gebiet;
-	
 	/** Die zugehörige Partei. */
 	private Partei partei;
 	
@@ -49,30 +46,34 @@ public class Zweitstimme extends Stimme implements Serializable, Comparable<Zwei
 		}
 		this.partei = partei;
 	}
-	
-	/**
-	 * Gibt das zugehörige Gebiet zurück
-	 * @return das zugehörige Gebiet
-	 */
-	public Gebiet getGebiet() {
-		return gebiet;
-	}
-	
-	/**
-	 * Setzt das zugehörige Gebiet dieser Zweitstimme.
-	 * @param gebiet das zugehörige Gebiet
-	 * @throws IllegalArgumentException wenn der Parameter gebiet null ist.
-	 */
-	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
-		if (gebiet == null) {
-			throw new IllegalArgumentException("Der Parameter \"gebiet\" ist null!");
-		}
-		this.gebiet = gebiet;
-	}
 
 	@Override
 	public int compareTo(Zweitstimme andere) {
 		return Integer.compare(this.getAnzahl(), andere.getAnzahl());
+	}
+
+	@Override
+	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (this.getGebiet().getWahlberechtigte() < 
+				(this.getGebiet().getZweitstimmeGesamt() - this.getAnzahl() + anzahl)) {
+			throw new IllegalArgumentException("Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
+		}
+		this.anzahl = anzahl;
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (this.getGebiet().getWahlberechtigte() < 
+				(this.getGebiet().getZweitstimmeGesamt() + anzahl)) {
+			throw new IllegalArgumentException("Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
+		}
+		this.anzahl += anzahl;
 	}
 
 }

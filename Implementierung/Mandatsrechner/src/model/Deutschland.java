@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -164,5 +165,17 @@ public class Deutschland extends Gebiet implements Serializable {
 			anzahl += bl.getZweitstimmenAnzahl(partei);
 		}
 		return anzahl;
+	}
+	
+	/**
+	 * Gibt eine Liste der Wahlkreise aller Bundesländer zurück.
+	 * @return eine Liste der Wahlkreise aller Bundesländer
+	 */
+	public ArrayList<Wahlkreis> getWahlkreise() {
+		ArrayList<Wahlkreis> alleWk = new ArrayList<>();
+		for (Bundesland bl : this.getBundeslaender()) {
+			alleWk.addAll(bl.getWahlkreise());
+		}
+		return alleWk;
 	}
 }

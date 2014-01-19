@@ -165,4 +165,20 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return anzahl;
 	}
+	
+	/**
+	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurück und null, wenn kein solches
+	 * Objekt mit der gegebenen Partei existiert.
+	 * @param partei die Partei deren Zweitstimme Objekt gesucht werden soll
+	 * @return das Zweitstimme-Objekt der gegebenen Partei zurück und null, wenn kein solches
+	 * Objekt mit der gegebenen Partei existiert.
+	 */
+	public Zweitstimme getZweitstimme(Partei partei) {
+		for(Zweitstimme zweitStimme : this.getZweitstimmen()){
+			if(zweitStimme.getPartei() == partei){
+				return zweitStimme;
+			}
+		}
+		return null;
+	}
 }
