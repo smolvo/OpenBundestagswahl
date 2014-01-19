@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/** Die relevanten Zweistimmen der Partei */
 	private RelevanteZweitstimmen relevanteZweitstimmen;
+	
+	private HashMap<Bundesland,Integer> mindestSitzanzahl = new HashMap<Bundesland,Integer>();
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
@@ -368,7 +371,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @return die Anzahl der Zweitstimmen
 	 */
 
-	public int getZweitstimme(Gebiet gebiet) {
+	public int getZweitstimme(Wahlkreis gebiet) {
 		int anzahlZweitstimmen = 0; 
 		for (Zweitstimme z : zweitstimme) {
 			if (z.getGebiet().equals(gebiet)) {
@@ -415,6 +418,10 @@ public class Partei implements Serializable, Comparable<Partei> {
 			}
 		}
 		return gesuchteLandesliste;
+	}
+	
+	public void addMindestsitzanzahl(Bundesland bl, int mindestSitzanzahl){
+		this.mindestSitzanzahl.put(bl, mindestSitzanzahl);
 	}
 
 	
