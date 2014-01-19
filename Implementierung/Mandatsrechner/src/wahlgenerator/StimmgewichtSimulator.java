@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.Bundesland;
 import model.Bundestagswahl;
+import model.Kandidat;
 import model.Landesliste;
 import model.Mandat;
 import model.Partei;
@@ -99,17 +100,37 @@ public class StimmgewichtSimulator {
 
 	/**
 	 * Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen
-	 * Bundestagswahlen.Wenn die Sitzanzahl für die gegebene Partei in der
+	 * Bundestagswahlen. Wenn die Sitzanzahl für die gegebene Partei in der
 	 * Ausgangsbundestagswahl größer ist als in der neu berechneten
 	 * Bundestagswahl, tritt negativer Stimmeffekt auf und es wird false
 	 * ausgegeben, andernfalls true
 	 * 
 	 * @param p
 	 *            die Partei, deren Sitze betrachtet werden
-	 * @return
+	 * @return true, wenn negatives Stimmgewicht aufgetreten ist
 	 */
 	private boolean vergleicheSitzverteilungen(Partei p) {
-		// TODO
+		//TODO
+		/*Sitzverteilung alt = this.ausgangsWahl.;
+		Sitzverteilung neu = this.verwandteWahl.
+		
+		int mandatsZahlAlt = 0;
+		for (Kandidat a : alt.getAbgeordnete()) {
+			if (a.getPartei().equals(p)) {
+				 mandatsZahlAlt++;
+			}
+		}
+	
+		int mandatsZahlNeu = 0;
+		for (Kandidat a : neu.getAbgeordnete()) {
+			if (a.getPartei().equals(p)) {
+				 mandatsZahlNeu++;
+			}
+		}
+		
+		
+		return (mandatsZahlNeu < mandatsZahlAlt);*/
+		
 		return false;
 	}
 
