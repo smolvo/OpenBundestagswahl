@@ -245,5 +245,14 @@ public class Bundesland extends Gebiet implements Serializable, Comparable<Bunde
 		return anzahl;
 	}
 	
-	
+	public Landesliste getLandesliste(Partei partei){
+		Landesliste result = null;
+		for(Landesliste land : this.getLandesliste()){
+			if(land.getPartei().equals(partei)){
+				result = land;
+			}
+		}
+		return result;
+		
+	}
 }

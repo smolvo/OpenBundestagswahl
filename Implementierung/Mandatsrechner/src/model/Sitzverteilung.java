@@ -67,5 +67,13 @@ public class Sitzverteilung implements Serializable {
 		}
 		this.bericht = bericht;
 	}
+
+	/**
+	 * Fügt einen Kandidaten zur Liste hinzu.
+	 * @param kandidat wird zur Liste hinzugefügt 
+	 */
+	public void addAbgeordnete(Kandidat kandidat){
+		this.getAbgeordnete().add(kandidat);
+	}
 	
 }

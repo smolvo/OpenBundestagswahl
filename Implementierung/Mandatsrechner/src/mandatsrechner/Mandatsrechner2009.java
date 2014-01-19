@@ -23,9 +23,10 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 	
 	public Bundestagswahl berechneAlles(Bundestagswahl bw){
 		
-		// Initialisierung:
-		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmenAnzahlGesamt() / 20;
 		
+		// Initialisierung:
+		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
+		bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
 		
 		//**Sitze für jedes Bundesland mithilge des zuteilungsdivisor berechnen
 		zuteilungsdivisor = 0;
@@ -73,6 +74,8 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 				}
 				gewinner.setMandat(Mandat.DIREKMANDAT);
 				wk.setWahlkreisSieger(gewinner);
+				bw.getSitzverteilung().addAbgeordnete(gewinner);
+			
 			}
 		}	
 		//**Ende
@@ -89,25 +92,8 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 		LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
 			
 		for(Partei part : alleParteien){
-				/*
-				 * Enes:
-				 * Brauchen wir getSperrklauselAnzahl wirklich? Du hast da die 5% Klausel hardgecoded, es ist
-				 * aber nicht in jeder Wahl 5%, es kann sich bei der nächsten Wahl z.B. ändern. Ich würde daher diese
-				 * Variable in "Deutschland" entfernen und sie nur in dieser Klasse behalten.
-				 * 
-				 * Bei der nachfolgenden Abfrage ist soviel ich sehe etwas fehlerhaft
-				 */
-				/*if(part.getZweitstimmenAnzahlGesamt() <= bw.getDeutschland().getSperrklauselAnzahl() || part.getAnzahlDirektmandate() <= 3){ //TODO 3 als Konstante setzen
-					//Sperrklausel erfüllt
-					part.setImBundestag(true);
-					
-				}else if(part.getAnzahlDirektmandate() >= 1 ){ // TODO 1 als Konstante setzen? Enes: Man brauch kein else-if
-					
-					//Partei verliert Zweitstimmen aber die Direktmandate kommen noch in den Bundestag
-					part.setImBundestag(false);
-				}*/
 				
-			if(part.getZweitstimmenAnzahlGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
+			if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
 				// Partei im Bundestag falls Anforderungen erfüllt sind.
 				part.setImBundestag(true);
 				//Partei in die Liste hinzufügen
@@ -132,7 +118,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
 			
 			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
-			landesdivisor = bl.getZweitstimmenAnzahlGesamt() / sitzeBundesland;
+			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
 			isCorrect = false;
 			//System.err.println(sitzeBundesland+" "+landesdivisor);
 			while(!isCorrect){
@@ -155,9 +141,26 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 			
 			for(Partei part : relevanteParteien){
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT, bl);
-				int mindestSitzanzahl = 
-				part.addMindestsitzanzahl(bl, );
-
+				int mindestSitzanzahl = Math.round(bl.getZweitstimmenAnzahl(part)/landesdivisor);
+				int diffKandidat = mindestSitzanzahl - direktmandate;
+				part.addMindestsitzanzahl(bl, Math.max(direktmandate, mindestSitzanzahl));
+				if(diffKandidat > 0){
+					for(int i = 0 ; i <= diffKandidat ; i++){
+						//Nehme aus der Bundestagswahl die Landesliste der Partei und füge den i-ten Listenkandidaten in die Sitzverteilung hinzu
+						if(bl.getLandesliste(part).getListenkandidaten().size() >= i+1){
+							//TODO Testen
+							bw.getSitzverteilung().addAbgeordnete(bl.getLandesliste(part).getListenkandidaten().get(i));
+						}else{
+							//TODO negatives Stimmengewicht
+						}
+					}
+				}else{
+					//TODO Überhangmandate
+					
+				}
+					
+				
+			
 			}
 			if(this.debug){
 				System.out.println("\nLandesdivisor "+bl.getName()+": "+landesdivisor);
@@ -166,11 +169,8 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 				}
 				
 			}
+			
 		}
-		
-		
-		
-		
 		
 		return bw;
 	}
