@@ -1,5 +1,6 @@
 package wahlgenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Bundesland;
@@ -7,6 +8,7 @@ import model.Bundestagswahl;
 import model.Landesliste;
 import model.Mandat;
 import model.Partei;
+import model.Sitzverteilung;
 import model.Zweitstimme;
 
 /**
@@ -37,10 +39,11 @@ public class StimmgewichtSimulator {
 	 * der Konstruktor der Klasse
 	 */
 	public StimmgewichtSimulator(Bundestagswahl bw) {
-
+		this.setBw(bw);
 	}
 
 	public boolean berechneNegStimmgewicht() {
+
 		List<Partei> parteien = waehleParteien();
 		List<Bundesland> bundeslaender = waehleBundeslaender();
 
@@ -53,27 +56,38 @@ public class StimmgewichtSimulator {
 
 	/**
 	 * In dieser Methode werden die Parteien gewählt, deren prozentualer Anteil
-	 * ihrer relevanten Zweitstimmen größer als der prozentuale Anteil ihrer
-	 * Mandate ist
+	 * an relevanten Zweitstimmen größer als der prozentuale Anteil an Mandate
+	 * ist
 	 * 
-	 * @return Liste an Parteien, die das beschriebene Merkmal aufweisen
+	 * @return Liste an relevanten Parteien, d.h. diejenigen, die das
+	 *         beschriebene Merkmal aufweisen
 	 */
 	private List<Partei> waehleParteien() {
 		List<Partei> alleParteien = this.bw.getParteien();
-		List<Zweitstimme> alleZweitstimmenObjekt = this.bw.get
-		
-		
-		//berechnet relevante Zweistimmen für alle Parteien
-		for(Partei p : alleParteien) {
-			
-			List<Landesliste> landesliste = p.getLandesliste();
-			
-			for(int i = 0; i < landesliste.size(); i++) {
-				
-				//überprüft, ob Partei Zweitstimmen in einem Bundesland erhalten hat, in dem es keine Überhangmandate hält
-				if (landesliste.get(i).getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
-					p.addRelevanteZweitstimmen(new RelevanteZweitstimmen(p.getZweitstimme(landesliste.get(i).getBundesland()), p));
-				}
+
+		List<Partei> relevanteParteien = new ArrayList<Partei>();
+
+		// berechnet insgesamte Anzahl an relevanten Zweitstimmen, d.h. addiert
+		// die relevanten Zweitstimmen aller Parteien
+
+		int relevanteZweitstimmenGesamt = 0;
+		for (Partei p : alleParteien) {
+			relevanteZweitstimmenGesamt += p.getRelevanteZweitstimmen()
+					.getAnzahl();
+		}
+
+		// berechnet für jede Partei jeweils den Anteil ihrer relevanten
+		// Zweitstimmen und den Anteil ihrer Mandate
+		float anteilRelevanteZweitstimmmen = 0;
+		float anteilMandate = 0;
+		for (Partei p : alleParteien) {
+			anteilRelevanteZweitstimmmen = p.getRelevanteZweitstimmen()
+					.getAnzahl() / relevanteZweitstimmenGesamt;
+			// anteilMandate = p.getAnzahlMandate() / TODO Anzahl Sitze des
+			// Bundestags;
+
+			if (anteilRelevanteZweitstimmmen > anteilMandate) {
+				relevanteParteien.add(p);
 			}
 		}
 		return null;
@@ -81,6 +95,33 @@ public class StimmgewichtSimulator {
 
 	private List<Bundesland> waehleBundeslaender() {
 		return null;
+	}
+
+	/**
+	 * Berechnet für alle Parteien die relevanten Zweitstimmen
+	 * 
+	 */
+	private void berechneRelevanteZweitstimmen() {
+
+		for (Partei p : this.bw.getParteien()) {
+			List<Landesliste> landesliste = p.getLandesliste();
+			int anzahl = 0;
+
+			for (int i = 0; i < landesliste.size(); i++) {
+
+				// überprüft, ob Partei Zweitstimmen in einem Bundesland
+				// erhalten
+				// hat, in dem es keine Überhangmandate hält
+				if (landesliste.get(i).getKandidaten(Mandat.UEBERHANGMADAT)
+						.size() == 0) {
+					anzahl += p.getZweitstimme(landesliste.get(i)
+							.getBundesland());
+
+				}
+			}
+
+			p.setRelevanteZweitstimmen(new RelevanteZweitstimmen(anzahl));
+		}
 	}
 
 	/**

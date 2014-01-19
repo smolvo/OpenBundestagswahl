@@ -25,10 +25,6 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 	 */
 	private static final long serialVersionUID = -2753165575954824955L;
 
-
-	/** Die zugehörige Partei. */
-	private Partei partei;
-
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Zweitstimmen.
 	 * 
@@ -39,35 +35,12 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 	 * @param partei
 	 *            Die zugehörige Partei.
 	 */
-	public RelevanteZweitstimmen(int anzahl, Partei partei) {
+	public RelevanteZweitstimmen(int anzahl) {
 		this.setAnzahl(anzahl);
-		this.setPartei(partei);
+
 	}
 
-	/**
-	 * Gibt die zugehörige Partei zurück.
-	 * 
-	 * @return die zugehörige Partei
-	 */
-	public Partei getPartei() {
-		return partei;
-	}
 
-	/**
-	 * Setzt die zugehörige Partei dieser Zweitstimme.
-	 * 
-	 * @param partei
-	 *            die zugehörige Partei
-	 * @throws IllegalArgumentException
-	 *             wenn der Parameter partei null ist.
-	 */
-	public void setPartei(Partei partei) throws IllegalArgumentException {
-		if (partei == null) {
-			throw new IllegalArgumentException(
-					"Der Parameter \"partei\" ist null!");
-		}
-		this.partei = partei;
-	}
 
 
 

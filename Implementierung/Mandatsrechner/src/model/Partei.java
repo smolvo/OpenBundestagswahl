@@ -44,7 +44,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private int zweitstimmeGesamt;
 
 	/** Die relevanten Zweistimmen der Partei */
-	private List<RelevanteZweitstimmen> relevanteZweitstimmen;
+	private RelevanteZweitstimmen relevanteZweitstimmen;
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
@@ -339,7 +339,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/**
 	 * @return the relevanteZweitstimmen
 	 */
-	public List<RelevanteZweitstimmen> getRelevanteZweitstimmen() {
+	public RelevanteZweitstimmen getRelevanteZweitstimmen() {
 		return relevanteZweitstimmen;
 	}
 
@@ -348,31 +348,18 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 *            the relevanteZweitstimmen to set
 	 */
 	public void setRelevanteZweitstimmen(
-			List<RelevanteZweitstimmen> relevanteZweitstimmen) {
+			RelevanteZweitstimmen relevanteZweitstimmen) {
 		if (relevanteZweitstimmen == null) {
 			throw new IllegalArgumentException(
 					"relevante Zweitstimmen war null.");
 		} else {
 			this.relevanteZweitstimmen = relevanteZweitstimmen;
+		
 		}
 
 	}
 
-	/**
-	 * fügt ein weiteres relevanteZweistimmen-Objekt hinzu
-	 * 
-	 * @param rel
-	 *            das Objekt, dass hinzugefügt werden soll
-	 */
-	public void addRelevanteZweitstimmen(RelevanteZweitstimmen rel) {
-		if (rel == null) {
-			throw new IllegalArgumentException(
-					"relevante Zweitstimmen war null.");
-		} else {
-			this.relevanteZweitstimmen.add(rel);
-		}
 
-	}
 
 	/**
 	 * Gibt die Anzahl der Zweitstimmen der Partei in dem jeweiligen Gebiet
@@ -430,4 +417,18 @@ public class Partei implements Serializable, Comparable<Partei> {
 		return gesuchteLandesliste;
 	}
 
+	
+	/**
+	 * Gibt an, wie viele Mandate eine Partei insgesamt besitzt
+	 * @return die Anzahl an Mandate
+	 */
+	public int getAnzahlMandate() {
+		int anzahlMandate = 0;
+		for (Kandidat kandidat : getMitglieder()) {
+			if (!kandidat.getMandat().equals(Mandat.KEINMANDAT)) {
+				anzahlMandate++;
+			}
+		}
+		return anzahlMandate;
+	}
 }
