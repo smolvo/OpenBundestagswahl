@@ -47,12 +47,11 @@ public abstract class AbstrakterWahlgenerator {
 	}
 	
 	/**
-	 * Berechnet anzahlZweitstimmen und anzahlErststimmen
-	 * Hierzu werden die Stimmanteile mithilfe der Anzahl aller Wahlberechtiger
-	 * in absolute Zahlen umgerechnet
+	 * Bestimmt anzahlZweitstimmen und anzahlErststimmen
 	 */
 	private void berechneGesamtanzahlStimmen() {
-		//TODO
+		this.setAnzahlErststimmen(this.basisWahl.getDeutschland().getErststimmeGesamt());
+		this.setAnzahlZweitstimmen(this.basisWahl.getDeutschland().getZweitstimmeGesamt());
 	}
 	
 	/**

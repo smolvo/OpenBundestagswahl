@@ -52,14 +52,14 @@ public class LandDiagramm extends JPanel {
 		List<Zweitstimme> zw = bundLand.getZweitstimmen();
 		for (int i = 0; i < 4; i++) {
 			double proZweit = (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
+					(double) bundLand.getZweitstimmenAnzahlGesamt()) * 1000) / 10);
 			parteien.add(zw.get(i).getPartei());
 			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
 		}
 		double sonstige = 0;
 		for (int i = 4; i < zw.size(); i++) {
 			sonstige += (Math.rint(((double) zw.get(i).getAnzahl() / 
-					(double) bundLand.getZweitstimmeGesamt()) * 1000) / 10);
+					(double) bundLand.getZweitstimmenAnzahlGesamt()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 		

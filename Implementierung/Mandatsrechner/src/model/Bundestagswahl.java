@@ -119,11 +119,12 @@ public class Bundestagswahl implements Serializable {
 	 * Erzeugt durch Serialisierung eine tiefe Kopie dieses Objekts und gibt diese zurück.
 	 * @return eine tiefe Kopie dieses Objekts
 	 * @throws IOException Beim Serialisieren oder Deserialisieren
-	 * @throws ClassNotFoundException Falls die Klasse beim deserialisieren nicht gefunden wird
 	 */
-	public Bundestagswahl deepCopy() throws IOException, ClassNotFoundException {
+	public Bundestagswahl deepCopy() throws IOException {
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
+		
+		Bundestagswahl result = null;
 		
 		try {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -136,13 +137,15 @@ public class Bundestagswahl implements Serializable {
 			ois = new ObjectInputStream(bin);
 			
 			// gib das geklonte Objekt zurück
-			return (Bundestagswahl) ois.readObject();			
+			result = (Bundestagswahl) ois.readObject();			
 		} catch (Exception e) {
-			throw(e);
+			e.printStackTrace();
 		} finally {
 			oos.close();
 			ois.close();
 		}
+		
+		return result;
 	}
 	
 }

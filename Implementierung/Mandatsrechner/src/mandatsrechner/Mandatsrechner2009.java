@@ -24,7 +24,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 	public Bundestagswahl berechneAlles(Bundestagswahl bw){
 		
 		// Initialisierung:
-		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
+		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmenAnzahlGesamt() / 20;
 		
 		
 		//**Sitze für jedes Bundesland mithilge des zuteilungsdivisor berechnen
@@ -97,7 +97,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 				 * 
 				 * Bei der nachfolgenden Abfrage ist soviel ich sehe etwas fehlerhaft
 				 */
-				/*if(part.getZweitstimmeGesamt() <= bw.getDeutschland().getSperrklauselAnzahl() || part.getAnzahlDirektmandate() <= 3){ //TODO 3 als Konstante setzen
+				/*if(part.getZweitstimmenAnzahlGesamt() <= bw.getDeutschland().getSperrklauselAnzahl() || part.getAnzahlDirektmandate() <= 3){ //TODO 3 als Konstante setzen
 					//Sperrklausel erfüllt
 					part.setImBundestag(true);
 					
@@ -107,7 +107,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 					part.setImBundestag(false);
 				}*/
 				
-			if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
+			if(part.getZweitstimmenAnzahlGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
 				// Partei im Bundestag falls Anforderungen erfüllt sind.
 				part.setImBundestag(true);
 				//Partei in die Liste hinzufügen
@@ -132,7 +132,7 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
 			
 			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
-			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
+			landesdivisor = bl.getZweitstimmenAnzahlGesamt() / sitzeBundesland;
 			isCorrect = false;
 			//System.err.println(sitzeBundesland+" "+landesdivisor);
 			while(!isCorrect){

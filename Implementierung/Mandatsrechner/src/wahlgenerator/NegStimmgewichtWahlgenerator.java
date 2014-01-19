@@ -1,18 +1,12 @@
-/**
- * 
- */
 package wahlgenerator;
 
 import java.util.List;
-
 import model.Bundestagswahl;
 
 /**
- * @author Manuel
- *
- *Erzeugt Bundestagswahl, die die Voraussetzungen erfüllen, welche für die Simulation des negativen Stimmgewichts
- *benötigt werden
- **/
+ * Erzeugt Bundestagswahl, die die Voraussetzungen erfüllen, welche für die Simulation des negativen Stimmgewichts
+ * benötigt werden
+ */
 
 
 public class NegStimmgewichtWahlgenerator extends AbstrakterWahlgenerator {

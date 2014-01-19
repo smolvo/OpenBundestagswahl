@@ -25,10 +25,22 @@ public abstract class Gebiet implements Serializable {
 	 */
 	public int getZweitstimmeGesamt() {
 		zweitstimmeGesamt = 0;
-		for(Zweitstimme zweit : getZweitstimmen()){
+		for(Zweitstimme zweit : this.getZweitstimmen()){
 			zweitstimmeGesamt += zweit.getAnzahl();
 		}
 		return zweitstimmeGesamt;
+	}
+	
+	/**
+	 * Gibt die Erststimmenanzahl aller Kandidaten im Gebiet
+	 * @return die Erststimmenanzahl aller Kandidaten
+	 */
+	public int getErststimmeGesamt() {
+		int erststimmeGesamt = 0;
+		for(Erststimme erst : this.getErststimmen()){
+			erststimmeGesamt += erst.getAnzahl();
+		}
+		return erststimmeGesamt;
 	}
 	
 	/**
