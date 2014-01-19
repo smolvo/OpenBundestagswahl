@@ -93,4 +93,12 @@ public abstract class Gebiet implements Serializable {
 	public String toString() {
 		return this.name;
 	}
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten
+	 * Partei zurück.
+	 * @param partei Die gesuchte Partei.
+	 * @return die Anzahl der Stimmen.
+	 */
+	abstract public int getZweitstimmenAnzahl(Partei partei);
 }

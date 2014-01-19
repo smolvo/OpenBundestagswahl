@@ -235,5 +235,15 @@ public class Bundesland extends Gebiet implements Serializable, Comparable<Bunde
 	public int compareTo(Bundesland andere) {
 		return this.getName().compareTo(andere.getName());
 	}
+
+	@Override
+	public int getZweitstimmenAnzahl(Partei partei) {
+		int anzahl = 0;
+		for(Wahlkreis wk : this.getWahlkreise()){
+			anzahl += wk.getZweitstimmenAnzahl(partei);
+		}
+		return anzahl;
+	}
+	
 	
 }

@@ -156,4 +156,13 @@ public class Deutschland extends Gebiet implements Serializable {
 		sperrklauselAnzahl = zweitstimmeGesamt / 20;
 		return sperrklauselAnzahl;
 	}
+
+	@Override
+	public int getZweitstimmenAnzahl(Partei partei) {
+		int anzahl = 0;
+		for(Bundesland bl : this.getBundeslaender()){
+			anzahl += bl.getZweitstimmenAnzahl(partei);
+		}
+		return anzahl;
+	}
 }

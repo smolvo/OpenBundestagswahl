@@ -11,6 +11,9 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 
 	private int sperrklauselAnzahl;
 	private final int minDirektmandate = 3;
+	
+	
+	
 	public static Mandatsrechner2009 getInstance() {
 		if(Mandatsrechner2009.instance==null){
 			Mandatsrechner2009.instance = new Mandatsrechner2009();
@@ -104,50 +107,71 @@ public class Mandatsrechner2009 extends Mandatsrechner{
 					part.setImBundestag(false);
 				}*/
 				
-		if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
-			// Partei im Bundestag falls Anforderungen erfüllt sind.
-			part.setImBundestag(true);
-			//Partei in die Liste hinzufügen
-			if(!relevanteParteien.contains(part)){
-				relevanteParteien.add(part);
+			if(part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl || part.getAnzahlDirektmandate() >= this.minDirektmandate) {
+				// Partei im Bundestag falls Anforderungen erfüllt sind.
+				part.setImBundestag(true);
+				//Partei in die Liste hinzufügen
+				if(!relevanteParteien.contains(part)){
+					relevanteParteien.add(part);
+				}
+			} else {
+				// Ansonsten ist die Partei nicht im Bundestag.
+				part.setImBundestag(false);
 			}
-		} else {
-			// Ansonsten ist die Partei nicht im Bundestag.
-			part.setImBundestag(false);
-		}
-				
+					
 		}
 			
-			
-		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
-			
-			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
-			float landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
-			isCorrect = false;
-			while(!isCorrect){
-				int sitzePartei = 0;
-				
-				for(Partei part : relevanteParteien){
-					//TODO Nach erster Nachkommastelle
-					sitzePartei += Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
-				}
-				if(sitzePartei == sitzeBundesland){
-					isCorrect = true;
-				}else if(sitzePartei < sitzeBundesland){
-					landesdivisor -= 0.1;
-				}else{
-					//sitzanzahl > sitzeBundesland
-					landesdivisor += 0.1;
-				}
-			}	
-		}
-		
 		if(this.debug){
 			System.out.println("\nParteien im Bundestag:");
 			for(Partei part : bw.getParteien()){
 				System.out.println(part.getName()+": "+((part.isImBundestag())?"Ja":"Nein"));
 			}
 		}
+		
+		float landesdivisor=0;
+		for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
+			
+			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()/zuteilungsdivisor);
+			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
+			isCorrect = false;
+			//System.err.println(sitzeBundesland+" "+landesdivisor);
+			while(!isCorrect){
+				int sitzePartei = 0;
+				
+				for(Partei part : relevanteParteien){
+					//TODO Nach erster Nachkommastelle
+					sitzePartei += Math.round(bl.getZweitstimmenAnzahl(part)/landesdivisor);
+				}
+				//System.out.println(sitzePartei + " " + sitzeBundesland);
+				if(sitzePartei == sitzeBundesland){
+					isCorrect = true;
+				}else if(sitzePartei < sitzeBundesland){
+					landesdivisor -= 0.5;
+				}else{
+					//sitzanzahl > sitzeBundesland
+					landesdivisor += 0.5;
+				}
+			}
+			
+			for(Partei part : relevanteParteien){
+				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT, bl);
+				int mindestSitzanzahl = 
+				part.addMindestsitzanzahl(bl, );
+
+			}
+			if(this.debug){
+				System.out.println("\nLandesdivisor "+bl.getName()+": "+landesdivisor);
+				for(Partei part : relevanteParteien){
+					System.out.println("Sitze "+part.getName()+": "+Math.round(bl.getZweitstimmenAnzahl(part)/landesdivisor));
+				}
+				
+			}
+		}
+		
+		
+		
+		
+		
 		return bw;
 	}
 	

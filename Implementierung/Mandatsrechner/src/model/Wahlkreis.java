@@ -154,4 +154,15 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		this.wahlkreisnummer = wahlkreisnummer;
 	}
+
+	@Override
+	public int getZweitstimmenAnzahl(Partei partei) {
+		int anzahl = 0;
+		for(Zweitstimme zweitStimme : this.getZweitstimmen()){
+			if(zweitStimme.getPartei() == partei){
+				anzahl = zweitStimme.getAnzahl();
+			}
+		}
+		return anzahl;
+	}
 }
