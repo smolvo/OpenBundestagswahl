@@ -45,13 +45,19 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 		// durchlaufe alle Bundesländer
 		for (Bundesland bl : btw.getDeutschland().getBundeslaender()) {
+			
+			System.out.println("Bundesland: " + bl.getName());
+			
 			// durchlaufe alle Wahlkreise
 			for (Wahlkreis wk : bl.getWahlkreise()) {
+				
+				System.out.println("... Wahlkreis: " + wk.getName());
 				
 				/* Durchlaufe alle Erststimmen-Objekte dieses Wahlkreises.
 				 * Das ist pro Kandidat in diesem Wahlkreis eins.
 				 */
 				for (Erststimme erst : wk.getErststimmen()) {
+					//System.out.println("... ... " + erst.getKandidat().getName() + " - Erststimmen: " + erst.getAnzahl());
 					// erstmal die Anzahl auf 0 setzen
 					erst.setAnzahl(0);
 				}
@@ -60,33 +66,48 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				 * Das ist pro Partei in diesem Wahlkreis eins.
 				 */
 				for (Zweitstimme zweit : wk.getZweitstimmen()) {
+					//System.out.println("... ... " + zweit.getPartei().getName() + " - Zweitstimmen: " + zweit.getAnzahl());
 					// erstmal die Anzahl auf 0 setzen
 					zweit.setAnzahl(0);
+					
 				}
 				
 			}
 		}
 		
 		
-		for (Partei partei : btw.getParteien()) {
+		//for (Partei partei : btw.getParteien()) {
+		for (Stimmanteile sa : this.getStimmanteile()) {
+			
+			Partei partei = sa.getPartei();
 			
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen());
 			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen());
+			
+			System.out.println("\n" + partei.getName());
+			System.out.println("anzahlErststimmen: " + anzahlErststimmen + "\nanzahlZweitstimmen: " + anzahlZweitstimmen);
 			
 			ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
 			int anzahlWahlkreise = alleWahlkreise.size();
 			
 			Random rand = new Random();
 			
-			
 			for (int i = 0; i < anzahlZweitstimmen; i++) {
 				// Wahlkreis zufällig wählen
 				Wahlkreis zufaelligerWK = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
+				System.out.println("Zufälliger Wahlkreis: " + zufaelligerWK.getName());
+				System.out.println(zufaelligerWK.getZweitstimmeGesamt());
 				
 				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
 				if (zufaelligerWK.getZweitstimmeGesamt() < zufaelligerWK.getWahlberechtigte()) {
 					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
+					
+					if (zufaelligerWK.getZweitstimme(partei) == null) {
+						System.out.println("zufaelligerWK.getZweitstimme(partei) == null");
+					}
 					zufaelligerWK.getZweitstimme(partei).erhoeheAnzahl(1);
+					
+					
 				} else {
 					i--;
 				}
@@ -121,13 +142,11 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 * @return
 	 */
 	private Stimmanteile getAnteileVonPartei(Partei partei) {
-		
 		for (Stimmanteile stimmanteile : this.getStimmanteile()) {
 			if (stimmanteile.getPartei().getName() == partei.getName()) {
 				return stimmanteile;
 			}
 		}
-		
 		throw new IllegalArgumentException("Die gegebene Partei ist in der Liste der Stimmanteile nicht vorhanden!");
 	}
 	
