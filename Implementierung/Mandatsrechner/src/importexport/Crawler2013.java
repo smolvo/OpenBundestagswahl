@@ -303,7 +303,7 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		Kandidat unbekannterKandidat = new Kandidat("Unbekannt", "Unbekannt",
+		Kandidat unbekannterKandidat = new Kandidat("-", "-",
 				0, Mandat.KEINMANDAT, null);
 		// Erzeuge Bundeslaender.
 		for (int i = 0; i < rows.size() && !error; i++) {
