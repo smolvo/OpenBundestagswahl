@@ -1,5 +1,7 @@
 package gui.ansicht.tabellenfenster;
 
+import java.awt.Color;
+
 import gui.GUIPartei;
 
 
@@ -44,6 +46,7 @@ public class TabellenFenster extends JScrollPane {
 	 * @param gebiet Gebiet
 	 */
 	public void tabellenFuellen(Gebiet gebiet) {
+		this.setBackground(Color.WHITE);
 		if (gebiet instanceof Deutschland) {
 			Deutschland land = (Deutschland) gebiet;
 			tabellenFuellen(land);

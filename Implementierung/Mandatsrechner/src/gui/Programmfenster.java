@@ -2,6 +2,7 @@ package gui;
 
 import importexport.ImportExportManager;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
@@ -47,9 +48,9 @@ public final class Programmfenster extends JFrame {
 	public Programmfenster() {
 		// allgemeine Anpassungen des Programmfensters
 		setTitle("Mandatsverteilung im Deutschen Bundestag");
-		setSize(1024, 768);
+		this.setMinimumSize(new Dimension(1024, 768));
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png")
 				.getImage();

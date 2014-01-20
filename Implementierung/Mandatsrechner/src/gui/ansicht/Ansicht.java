@@ -51,9 +51,8 @@ public class Ansicht extends JPanel {
 		this.fenster = fenster;
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
-		kartenFensterSetzen();
-		layoutSetzen();
-		this.setMaximumSize(new Dimension(1024, 768));
+		initialisieren();
+		this.setMinimumSize(new Dimension(1024, 768));
 	}
 	
 	/**
@@ -82,10 +81,10 @@ public class Ansicht extends JPanel {
 		add(diagrammFenster, gbc);
 		
 		gbc.weightx = 1;
-		gbc.weighty = 1;
+		gbc.weighty = 1.5;
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.gridheight = 2;
+		gbc.gridheight = gbc.gridheight * 2;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(tabellenFenster, gbc);
 	}
@@ -94,13 +93,28 @@ public class Ansicht extends JPanel {
 	 * Diese Methode wird vom Konstruktor verwendet, um das
 	 * Kartenfenster zu setzen.
 	 */
-	private void kartenFensterSetzen() {
+	private void initialisieren() {
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(kartenFenster, gbc);
+		
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(diagrammFenster, gbc);
+		
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		gbc.gridheight = 2;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(tabellenFenster, gbc);
 	}
 	
 	

@@ -41,7 +41,7 @@ public class BundDiagramm {
 		this.flaeche = flaeche;
         JFreeChart chart = createChart(land);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(300, 200));
+        chartPanel.setPreferredSize(new Dimension(350, 250));
         flaeche.add(chartPanel, BorderLayout.CENTER);
     }
     

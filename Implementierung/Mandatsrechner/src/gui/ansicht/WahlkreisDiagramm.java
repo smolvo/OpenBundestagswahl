@@ -22,30 +22,36 @@ import model.Wahlkreis;
 
 /**
  * Diese Klasse repräsentiert das Diagramm der Wahlkreisansicht.
+ * 
  * @author Anton
- *
+ * 
  */
 public class WahlkreisDiagramm {
 
 	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
 	private final JPanel flaeche;
-	
+
 	/**
 	 * Der Konstruktor erstellt das Diagramm.
-	 * @param wk Wahlkreis
+	 * 
+	 * @param wk
+	 *            Wahlkreis
 	 */
 	public WahlkreisDiagramm(Wahlkreis wk, JPanel flaeche) {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(300, 200));
-        flaeche.add(chartPanel, BorderLayout.CENTER);
+		ChartPanel chartPanel = new ChartPanel(chart);
+		// chartPanel.setPreferredSize(new Dimension(600, 450));
+		// chartPanel.setMinimumSize(new Dimension(600, 450));
+		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
-	
+
 	/**
-	 * Diese Mehthode wird vom Konstruktor verwendet, um das
-	 * Diagramm zu erstellen.
-	 * @param wk der Wahlkreis
+	 * Diese Mehthode wird vom Konstruktor verwendet, um das Diagramm zu
+	 * erstellen.
+	 * 
+	 * @param wk
+	 *            der Wahlkreis
 	 * @return JFreeChart
 	 */
 	private JFreeChart createChart(Wahlkreis wk) {
@@ -53,29 +59,32 @@ public class WahlkreisDiagramm {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Erststimme> er = wk.getErststimmen();
 		for (int i = 0; i < 4; i++) {
-			double proZweit = (Math.rint(((double) er.get(i).getAnzahl() / 
-					(double) wk.getErststimmeGesamt()) * 1000) / 10);
+			double proZweit = (Math
+					.rint(((double) er.get(i).getAnzahl() / (double) wk
+							.getErststimmeGesamt()) * 1000) / 10);
 			parteien.add(er.get(i).getKandidat().getPartei());
-			result.setValue(proZweit, " ", er.get(i).getKandidat().getPartei().getName());
+			result.setValue(proZweit, " ", er.get(i).getKandidat().getPartei()
+					.getName());
 		}
 		double sonstige = 0;
 		for (int i = 4; i < er.size(); i++) {
-			sonstige += (Math.rint(((double) er.get(i).getAnzahl() / 
-					(double) wk.getErststimmeGesamt()) * 1000) / 10);
+			sonstige += (Math
+					.rint(((double) er.get(i).getAnzahl() / (double) wk
+							.getErststimmeGesamt()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
-		
-		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null, null,
-	    		result, PlotOrientation.VERTICAL, false, false, false);
-	    CategoryPlot plot = chart.getCategoryPlot();
-	    BarRenderer barRenderer = (BarRenderer) plot.getRenderer();
-	    
-	    	// färben
-	    for (int i = 0; i < parteien.size(); i++) {
-	       	barRenderer.setSeriesPaint(i, parteien.get(i).getFarbe());
-        }
-	    plot.setForegroundAlpha(1.0f);
-	  
-	    return chart;
+
+		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
+				null, result, PlotOrientation.VERTICAL, false, false, false);
+		CategoryPlot plot = chart.getCategoryPlot();
+		BarRenderer barRenderer = (BarRenderer) plot.getRenderer();
+
+		// färben
+		for (int i = 0; i < parteien.size(); i++) {
+			barRenderer.setSeriesPaint(i, parteien.get(i).getFarbe());
+		}
+		plot.setForegroundAlpha(1.0f);
+
+		return chart;
 	}
 }
