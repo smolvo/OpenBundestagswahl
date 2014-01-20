@@ -1,17 +1,18 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.2}{Pakete}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Datenmodell}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Import/Export}{section.2}% 4
-\BOOKMARK [3][-]{subsubsection.2.2.1}{ImportExportManager}{subsection.2.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Export}{subsection.2.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.2.3}{Import}{subsection.2.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{GUI und GUI-Logik}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.4}{Chronik}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.5}{Mandatsrechner}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.6}{Wahlgenerator}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.7}{Wahlvergleich}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.8}{Steuerung}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.9}{Sonstiges}{section.2}% 14
-\BOOKMARK [1][-]{section.3}{Vorschau auf die n\344chste Phase}{}% 15
-\BOOKMARK [2][-]{subsection.3.1}{Ideen und Ziele}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.2}{Zeitplan}{section.3}% 17
+\BOOKMARK [2][-]{subsection.1.1}{Notationshinweise}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Pakete}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Datenmodell}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Import/Export}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.1}{ImportExportManager}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Export}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Import}{subsection.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{GUI und GUI-Logik}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Chronik}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Mandatsrechner}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.6}{Wahlgenerator}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.7}{Wahlvergleich}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.8}{Steuerung}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.9}{Sonstiges}{section.2}% 15
+\BOOKMARK [1][-]{section.3}{Vorschau auf die n\344chste Phase}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Ideen und Ziele}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.2}{Zeitplan}{section.3}% 18
