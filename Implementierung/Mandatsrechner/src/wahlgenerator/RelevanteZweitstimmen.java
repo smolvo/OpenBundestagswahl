@@ -9,13 +9,13 @@ import model.Stimme;
  * Zweitstimmen größer als der prozentuale Anteil ihrer Mandate sein.
  * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf
  * Landeslisten abgegeben werden, die keine überhangmandate erzielen
- */
+ */ 
 
 /**
  * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten
  * abgegeben werden, die keine Überhangmandate erzielen.
  */
-public class RelevanteZweitstimmen extends Stimme implements Serializable {
+public class RelevanteZweitstimmen extends  Stimme implements Serializable {
 
 	/**
 	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
@@ -32,6 +32,26 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 	public RelevanteZweitstimmen(int anzahl) {
 		this.setAnzahl(anzahl);
 
+	}
+
+	@Override
+	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+
+		this.anzahl = anzahl;
+		
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		
+		this.setAnzahl(this.anzahl + anzahl);
+		
 	}
 
 }

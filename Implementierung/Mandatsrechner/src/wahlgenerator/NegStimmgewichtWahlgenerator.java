@@ -19,7 +19,7 @@ public class NegStimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+
 	public void verteileStimmen() {
 		// TODO
 		
@@ -28,6 +28,13 @@ public class NegStimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
 		sind all diejenigen Zweitstimmen, die auf Landeslisten abgegeben werden, die keine
 		überhangmandate erzielen*/
 		
+		
+	}
+
+
+	@Override
+	public void verteileStimmen(Bundestagswahl btw) {
+		// TODO Auto-generated method stub
 		
 	}
 
