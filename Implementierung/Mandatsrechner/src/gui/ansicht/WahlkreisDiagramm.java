@@ -41,8 +41,7 @@ public class WahlkreisDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
 		ChartPanel chartPanel = new ChartPanel(chart);
-		// chartPanel.setPreferredSize(new Dimension(600, 450));
-		// chartPanel.setMinimumSize(new Dimension(600, 450));
+		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 

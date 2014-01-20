@@ -7,31 +7,33 @@ import javax.swing.table.AbstractTableModel;
 import model.Zweitstimme;
 
 /**
- * Diese Klasse erweitert die AbstractTableModel Klasse und
- * soll die Tabelle im Tabellenfenster der Landesansicht darstellen.
- *
+ * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
+ * Tabellenfenster der Landesansicht darstellen.
+ * 
  */
 public class LandTableModel extends AbstractTableModel {
 
 	/** repr‰sentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Zweitstimmen", "%", 
-			"Direktmandate", "‹berhangsmandate"};
-	
+	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
+			"Direktmandate", "‹berhangsmandate" };
+
 	/** h‰lt alle relevanten Daten */
 	private LandDaten daten;
 
 	/** das Tabellenfenster */
 	private TabellenFenster tabellenfenster;
-	
+
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
-	 * @param daten Daten
+	 * 
+	 * @param daten
+	 *            Daten
 	 */
 	public LandTableModel(LandDaten daten, TabellenFenster tabellenfenster) {
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return daten.size();
@@ -58,7 +60,7 @@ public class LandTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if (columnIndex != 1) {
@@ -72,21 +74,22 @@ public class LandTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
 	}
-	
+
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 1) {
 			String stringAnzahl = (String) obj;
 			Zweitstimme stimme = daten.getStimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht().getFenster().getSteuerung();
+			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+					.getFenster().getSteuerung();
 			int anzahl = -1;
-		try{
-			anzahl = Integer.parseInt(stringAnzahl);
-			guiSteuerung.wertAenderung(stimme, anzahl);
-		} catch (NumberFormatException e) {
-			System.out.println("‰‰‰tsch");
-		}
-//		daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
+			try {
+				anzahl = Integer.parseInt(stringAnzahl);
+				guiSteuerung.wertAenderung(stimme, anzahl);
+			} catch (NumberFormatException e) {
+				System.out.println("‰‰‰tsch");
+			}
+			// daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

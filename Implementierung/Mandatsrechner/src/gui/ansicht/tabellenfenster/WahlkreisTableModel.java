@@ -7,31 +7,34 @@ import javax.swing.table.AbstractTableModel;
 import model.Zweitstimme;
 
 /**
- * Diese Klasse erweitert die AbstractTableModel Klasse und
- * soll die Tabelle im Tabellenfenster der Wahlkreisansicht darstellen.
- *
+ * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
+ * Tabellenfenster der Wahlkreisansicht darstellen.
+ * 
  */
 public class WahlkreisTableModel extends AbstractTableModel {
 
 	/** repr‰sentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Kandidat", "Erststimmen", "%", "Zweitstimmen", 
-			"%", "Direktmandate"};
-	
+	private String[] columns = new String[] { "Partei", "Kandidat",
+			"Erststimmen", "%", "Zweitstimmen", "%", "Direktmandate" };
+
 	/** h‰lt alle relevanten Daten */
 	private WahlkreisDaten daten;
 
 	/** das Tabellenfenster */
 	private TabellenFenster tabellenfenster;
-	
+
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
-	 * @param daten Daten
+	 * 
+	 * @param daten
+	 *            Daten
 	 */
-	public WahlkreisTableModel(WahlkreisDaten daten, TabellenFenster tabellenfenster) {
+	public WahlkreisTableModel(WahlkreisDaten daten,
+			TabellenFenster tabellenfenster) {
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return daten.size();
@@ -62,7 +65,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if (columnIndex != 3) {
@@ -76,21 +79,22 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
 	}
-	
+
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 3) {
 			String stringAnzahl = (String) obj;
 			Zweitstimme stimme = daten.getZweitstimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht().getFenster().getSteuerung();
+			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+					.getFenster().getSteuerung();
 			int anzahl = -1;
-			try{
+			try {
 				anzahl = Integer.parseInt(stringAnzahl);
 				guiSteuerung.wertAenderung(stimme, anzahl);
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
 			}
-//			daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
+			// daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

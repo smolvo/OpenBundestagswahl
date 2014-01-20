@@ -9,8 +9,9 @@ import wahlvergleich.WahlvergleichDaten;
 import wahlvergleich.WahlvergleichTableModel;
 
 /**
- * Diese Klasse repräsentiert das Wahlvergleichsfenster.
- * In diesem werden bestimmmte Daten zweier BTW-Objektes angezeigt.
+ * Diese Klasse repräsentiert das Wahlvergleichsfenster. In diesem werden
+ * bestimmmte Daten zweier BTW-Objektes angezeigt.
+ * 
  * @author Anton
  * 
  */
@@ -18,15 +19,18 @@ public class VergleichsFenster extends JScrollPane {
 
 	/**
 	 * Der Konstruktor erstellt ein Vergleichsfenster.
+	 * 
 	 * @param daten
 	 */
 	public VergleichsFenster(WahlvergleichDaten daten) {
 		zeigeVergleich(daten);
 	}
-	
+
 	/**
 	 * Diese Methode füllt das Fenster mit der Tabelle.
-	 * @param daten Daten
+	 * 
+	 * @param daten
+	 *            Daten
 	 */
 	private void zeigeVergleich(WahlvergleichDaten daten) {
 		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);

@@ -9,32 +9,35 @@ import javax.swing.table.AbstractTableModel;
 import model.Zweitstimme;
 
 /**
- * Diese Klasse erweitert die AbstractTableModel Klasse und
- * soll die Tabelle im Tabellenfenster der Bundesansicht darstellen.
- *
+ * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
+ * Tabellenfenster der Bundesansicht darstellen.
+ * 
  */
 public class BundTableModel extends AbstractTableModel {
 
 	/** repr‰sentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Zweitstimmen", "%", "Sitze", 
-			"Direktmandate", "‹berhangsmandate", "Ausgleichsmandate"};
-	
+	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
+			"Sitze", "Direktmandate", "‹berhangsmandate", "Ausgleichsmandate" };
+
 	/** h‰lt alle relevanten Daten */
 	private BundDaten daten;
-	
+
 	/** das Tabellenfenster */
 	private TabellenFenster tabellenfenster;
-	
+
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
-	 * @param daten die Daten
-	 * @param tabellenfenster das tabellenfenster
+	 * 
+	 * @param daten
+	 *            die Daten
+	 * @param tabellenfenster
+	 *            das tabellenfenster
 	 */
 	public BundTableModel(BundDaten daten, TabellenFenster tabellenfenster) {
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return daten.size();
@@ -65,7 +68,7 @@ public class BundTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if (columnIndex != 1) {
@@ -79,21 +82,23 @@ public class BundTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
 	}
-	
+
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 1) {
 			String stringAnzahl = (String) obj;
 			Zweitstimme stimme = daten.getStimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht().getFenster().getSteuerung();
+			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+					.getFenster().getSteuerung();
 			int anzahl = -1;
-			try{
+			try {
 				anzahl = Integer.parseInt(stringAnzahl);
-				guiSteuerung.wertAenderung(stimme, anzahl);
+				if (anzahl >= 0) {
+					guiSteuerung.wertAenderung(stimme, anzahl);
+				}
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
 			}
-//			daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

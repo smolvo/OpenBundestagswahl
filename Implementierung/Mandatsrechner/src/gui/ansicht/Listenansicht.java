@@ -12,24 +12,26 @@ import model.Gebiet;
 
 /**
  * Diese Klasse repräsentiert die Listenansicht des Kartenfensters.
- *
+ * 
  */
 public class Listenansicht extends JScrollPane implements TreeSelectionListener {
-	
+
 	/** repräsentiert das dazugehörige Kartenfenster */
 	private KartenFenster kartenfenster;
-	
+
 	/**
-	 * Im Konstruktor der Klasse wird eine Baumstruktur angelegt.
-	 * Die erste Stufe bildet Deutschland, die zweite alle Bundesländer
-	 * und die dritte die Wahlkreise der Bundesländer.
-	 * @param land alle Bundesländer
+	 * Im Konstruktor der Klasse wird eine Baumstruktur angelegt. Die erste
+	 * Stufe bildet Deutschland, die zweite alle Bundesländer und die dritte die
+	 * Wahlkreise der Bundesländer.
+	 * 
+	 * @param land
+	 *            alle Bundesländer
 	 */
 	public Listenansicht(Deutschland land, KartenFenster kartenfenster) {
 		this.kartenfenster = kartenfenster;
 		DeutschlandTree tree = new DeutschlandTree(land);
-        tree.addTreeSelectionListener(this);
-		this.setViewportView(tree);		
+		tree.addTreeSelectionListener(this);
+		this.setViewportView(tree);
 	}
 
 	@Override

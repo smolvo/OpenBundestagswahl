@@ -5,9 +5,9 @@ import java.util.List;
 import model.Stimme;
 
 /**
- * Diese Klasse hält alle Dateien die eine Partei betreffen,
- * um diese im Tabellenfenster anzeigen zu lassen.
- *
+ * Diese Klasse hält alle Dateien die eine Partei betreffen, um diese im
+ * Tabellenfenster anzeigen zu lassen.
+ * 
  */
 public class GUIPartei {
 
@@ -25,13 +25,18 @@ public class GUIPartei {
 
 	/**
 	 * Konstruktor
-	 * @param sitze Anzahl Sitze
-	 * @param direktmandate Anzahl Direktmandate
-	 * @param ueberhangsmandate Anzahl Überhangsmandate
-	 * @param ausgleichsmandate Anzahl Ausgleichsmandate
+	 * 
+	 * @param sitze
+	 *            Anzahl Sitze
+	 * @param direktmandate
+	 *            Anzahl Direktmandate
+	 * @param ueberhangsmandate
+	 *            Anzahl Überhangsmandate
+	 * @param ausgleichsmandate
+	 *            Anzahl Ausgleichsmandate
 	 */
-	public GUIPartei(int sitze, int direktmandate, 
-			int ueberhangsmandate, int ausgleichsmandate) {
+	public GUIPartei(int sitze, int direktmandate, int ueberhangsmandate,
+			int ausgleichsmandate) {
 		this.sitze = sitze;
 		this.direktmandate = direktmandate;
 		this.ueberhangsmandate = ueberhangsmandate;
@@ -40,6 +45,7 @@ public class GUIPartei {
 
 	/**
 	 * Gibt die Sitzanzahl aus.
+	 * 
 	 * @return Sitzanzahl
 	 */
 	public int getSitze() {
@@ -48,7 +54,9 @@ public class GUIPartei {
 
 	/**
 	 * Setzt die Anzahl der Sitze.
-	 * @param sitze Anzahl
+	 * 
+	 * @param sitze
+	 *            Anzahl
 	 */
 	public void setSitze(int sitze) {
 		this.sitze = sitze;
@@ -56,6 +64,7 @@ public class GUIPartei {
 
 	/**
 	 * Gibt die Direktmandatanzahl aus.
+	 * 
 	 * @return Direktmandatanzahl
 	 */
 	public int getDirektmandate() {
@@ -64,7 +73,9 @@ public class GUIPartei {
 
 	/**
 	 * Setzt die Anzahl an Direktmandaten.
-	 * @param direktmandate Anzahl
+	 * 
+	 * @param direktmandate
+	 *            Anzahl
 	 */
 	public void setDirektmandate(int direktmandate) {
 		this.direktmandate = direktmandate;
@@ -72,6 +83,7 @@ public class GUIPartei {
 
 	/**
 	 * Gibt die Überhangsmandatanzahl aus.
+	 * 
 	 * @return Überhangsmandatanzahl
 	 */
 	public int getUeberhangsmandate() {
@@ -80,7 +92,9 @@ public class GUIPartei {
 
 	/**
 	 * Setzt die Anzahl an Überhangsmandaten.
-	 * @param ueberhangsmandate Anzahl
+	 * 
+	 * @param ueberhangsmandate
+	 *            Anzahl
 	 */
 	public void setUeberhangsmandate(int ueberhangsmandate) {
 		this.ueberhangsmandate = ueberhangsmandate;
@@ -88,6 +102,7 @@ public class GUIPartei {
 
 	/**
 	 * Gibt die Ausgleichsmandatanzahl aus.
+	 * 
 	 * @return Ausgleichsmandatanzahl
 	 */
 	public int getAusgleichsmandate() {
@@ -96,7 +111,9 @@ public class GUIPartei {
 
 	/**
 	 * Setzt die Anzahl an Ausgleichsmandaten.
-	 * @param ausgleichsmandate Anzahl
+	 * 
+	 * @param ausgleichsmandate
+	 *            Anzahl
 	 */
 	public void setAusgleichsmandate(int ausgleichsmandate) {
 		this.ausgleichsmandate = ausgleichsmandate;
