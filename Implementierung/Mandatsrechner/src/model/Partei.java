@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import wahlgenerator.RelevanteZweitstimmen;
 
@@ -437,5 +440,23 @@ public class Partei implements Serializable, Comparable<Partei> {
 			}
 		}
 		return anzahlMandate;
+	}
+	
+	/**
+	 * Gibt die Summe der Mindestsitze aller Bundeslaender
+	 * von einer Partei zurueck.
+	 * @return
+	 * 		anzahl der Mindestsitze einer Partei.
+	 */
+	public int getMindestsitzAnzahl() {
+		int anzahl = 0;
+		Set<Bundesland> set = this.mindestSitzanzahl.keySet();
+		Iterator<Bundesland> i = set.iterator();
+		
+		while (i.hasNext()) {
+			int val = (int) ((Map.Entry) i.next()).getValue();
+			anzahl += val;
+		}
+		return anzahl;
 	}
 }

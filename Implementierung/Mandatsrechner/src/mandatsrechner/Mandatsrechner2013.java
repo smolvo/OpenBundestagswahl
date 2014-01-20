@@ -1,8 +1,11 @@
 package mandatsrechner;
 
+import java.util.List;
+
 import model.Bundesland;
 import model.Bundestagswahl;
 import model.Wahlkreis;
+import model.Partei;
 
 public class Mandatsrechner2013 extends Mandatsrechner {
 
@@ -22,8 +25,38 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 
 	public Bundestagswahl berechneAlles(Bundestagswahl bw){
 		bw = rechner2009.berechneAlles(bw);
+		float parteidivisor = 0;
+		boolean isCorrect = false;
 		
+		List<Partei> relevanteParteien = rechner2009.getRelevanteParteien();
 		
+		for (Partei partei : relevanteParteien) {
+			if (parteidivisor == 0) {
+				parteidivisor = partei.getZweitstimmeGesamt() / partei.getAnzahlMandate();
+			} else {
+				parteidivisor = Math.min(parteidivisor,  partei.getZweitstimmeGesamt() / partei.getAnzahlMandate());
+			}
+		}
+		
+		while (!isCorrect) {
+			isCorrect = true;
+			for (Partei partei : relevanteParteien) {
+				int mindestSitze = partei.getMindestsitzAnzahl();
+				if (Math.floor(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
+					isCorrect = false;
+					break;
+				}
+			}
+			if (!isCorrect) {
+				parteidivisor += 1;
+			}
+		}
+		
+	
+		
+		if (rechner2009.debug) {
+			System.out.println("\nParteidivisor: " + parteidivisor);
+		}
 		return bw;
 		
 	}
