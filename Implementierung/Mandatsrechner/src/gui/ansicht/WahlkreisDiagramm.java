@@ -1,6 +1,7 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class WahlkreisDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.scale(new Rectangle(flaeche.getWidth(), flaeche.getHeight()));
+        chartPanel.setPreferredSize(new Dimension(300, 200));
         flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 	

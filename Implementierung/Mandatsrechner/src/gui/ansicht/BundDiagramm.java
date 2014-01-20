@@ -2,6 +2,7 @@ package gui.ansicht;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class BundDiagramm {
 		this.flaeche = flaeche;
         JFreeChart chart = createChart(land);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.scale(new Rectangle(flaeche.getWidth(), flaeche.getHeight()));
+        chartPanel.setPreferredSize(new Dimension(300, 200));
         flaeche.add(chartPanel, BorderLayout.CENTER);
     }
     
