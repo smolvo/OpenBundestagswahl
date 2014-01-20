@@ -27,7 +27,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private LinkedList<Kandidat> mitglieder;
 
 	/** Der Name dieser Partei. */
-	private String name;
+	private String name; 
 
 	/** Das Kürzel dieser Partei. */
 	private String kuerzel;
