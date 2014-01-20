@@ -7,6 +7,11 @@ import model.Wahlkreis;
 public class Mandatsrechner2013 extends Mandatsrechner {
 
 	private static Mandatsrechner2013 instance;
+	private Mandatsrechner2009 rechner2009;
+	
+	public Mandatsrechner2013(){
+		this.rechner2009 = new Mandatsrechner2009();
+	}
 	
 	public static Mandatsrechner getInstance() {
 		if(Mandatsrechner2013.instance==null){
@@ -15,6 +20,14 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		return Mandatsrechner2013.instance;
 	}
 
+	public Bundestagswahl berechneAlles(Bundestagswahl bw){
+		bw = rechner2009.berechneAlles(bw);
+		
+		
+		return bw;
+		
+	}
+	
 	@Override
 	public Bundestagswahl berechne(Bundestagswahl bw) {
 		// TODO Auto-generated method stub
