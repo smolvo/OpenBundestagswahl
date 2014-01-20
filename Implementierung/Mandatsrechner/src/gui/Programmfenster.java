@@ -49,7 +49,7 @@ public final class Programmfenster extends JFrame {
 		setTitle("Mandatsverteilung im Deutschen Bundestag");
 		setSize(1024, 768);
 		setLocationRelativeTo(null);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Image icon = new ImageIcon("src/gui/resources/images/wahl2.png")
 				.getImage();

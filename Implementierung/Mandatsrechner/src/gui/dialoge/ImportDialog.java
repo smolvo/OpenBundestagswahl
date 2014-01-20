@@ -58,8 +58,15 @@ public class ImportDialog extends JDialog {
 				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
 				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
 
+				
 				ImportExportManager i = new ImportExportManager();
-				Bundestagswahl w = i.importieren(eingeleseneDateien);
+				Bundestagswahl w = null;
+				try {
+					w = i.importieren(eingeleseneDateien);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				tabs.neuerTab(new WahlFenster(w), w.getName());
 				
