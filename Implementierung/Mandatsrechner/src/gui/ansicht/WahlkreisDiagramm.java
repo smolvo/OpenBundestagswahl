@@ -1,6 +1,7 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +24,21 @@ import model.Wahlkreis;
  * @author Anton
  *
  */
-public class WahlkreisDiagramm extends JPanel {
+public class WahlkreisDiagramm {
 
+	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
+	private final JPanel flaeche;
+	
 	/**
 	 * Der Konstruktor erstellt das Diagramm.
 	 * @param wk Wahlkreis
 	 */
-	public WahlkreisDiagramm(Wahlkreis wk) {
+	public WahlkreisDiagramm(Wahlkreis wk, JPanel flaeche) {
+		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
         ChartPanel chartPanel = new ChartPanel(chart);
-        add(chartPanel, BorderLayout.CENTER);
+        chartPanel.scale(new Rectangle(flaeche.getWidth(), flaeche.getHeight()));
+        flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 	
 	/**

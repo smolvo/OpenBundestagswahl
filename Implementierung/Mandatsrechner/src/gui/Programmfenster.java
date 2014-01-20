@@ -79,6 +79,7 @@ public final class Programmfenster extends JFrame {
 		this.add(tabs);
 
 		setVisible(true);
+		pack();
 	}
 
 	/**

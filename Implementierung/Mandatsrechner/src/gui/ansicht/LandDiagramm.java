@@ -1,6 +1,7 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,19 +24,24 @@ import model.Zweitstimme;
  * @author Anton
  *
  */
-public class LandDiagramm extends JPanel {
+public class LandDiagramm {
 
 
 	private static final long serialVersionUID = 5982851750497212488L;
 
+	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
+	private final JPanel flaeche;
+	
 	/**
 	 * Der Konstruktor erstellt das Diagramm.
 	 * @param bundLand Bundesland
 	 */
-	public LandDiagramm(Bundesland bundLand) {
+	public LandDiagramm(Bundesland bundLand, JPanel flaeche) {
+		this.flaeche = flaeche;
         JFreeChart chart = createChart(bundLand);
         ChartPanel chartPanel = new ChartPanel(chart);
-        add(chartPanel, BorderLayout.CENTER);
+        chartPanel.scale(new Rectangle(flaeche.getWidth(), flaeche.getHeight()));
+        flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 	
 	/**

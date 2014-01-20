@@ -1,5 +1,6 @@
 package gui.ansicht;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -52,6 +53,7 @@ public class Ansicht extends JPanel {
 		this.setLayout(new GridBagLayout());
 		kartenFensterSetzen();
 		layoutSetzen();
+		this.setMaximumSize(new Dimension(1024, 768));
 	}
 	
 	/**

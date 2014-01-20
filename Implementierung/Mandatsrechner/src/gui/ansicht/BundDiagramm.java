@@ -2,6 +2,8 @@ package gui.ansicht;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -24,17 +26,22 @@ import org.jfree.util.Rotation;
  * @author Anton
  *
  */
-public class BundDiagramm extends JPanel {
+public class BundDiagramm {
+	
+	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
+	private final JPanel flaeche;
 	
 	/**
 	 * Konstruktor erstellt ein Diagramm und fügt es hinzu.
 	 * @param land Deutschland
+	 * @param flaeche Diagrammfläche
 	 */
-	public BundDiagramm(Deutschland land) {
-		this.setLayout(new BorderLayout());
+	public BundDiagramm(Deutschland land, JPanel flaeche) {
+		this.flaeche = flaeche;
         JFreeChart chart = createChart(land);
         ChartPanel chartPanel = new ChartPanel(chart);
-        add(chartPanel, BorderLayout.CENTER);
+        chartPanel.scale(new Rectangle(flaeche.getWidth(), flaeche.getHeight()));
+        flaeche.add(chartPanel, BorderLayout.CENTER);
     }
     
     

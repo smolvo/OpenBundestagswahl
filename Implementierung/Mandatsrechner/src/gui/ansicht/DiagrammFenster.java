@@ -23,6 +23,7 @@ public class DiagrammFenster extends JPanel {
 	 * @param gebiet Gebiet-Objekt welches visualisiert werden soll
 	 */
 	public void erstelleDiagramm(Gebiet gebiet) {
+		
 		if (gebiet instanceof Deutschland) {
 			Deutschland land = (Deutschland) gebiet;
 			erstelleDiagramm(land);
@@ -40,8 +41,7 @@ public class DiagrammFenster extends JPanel {
 	 * @param land Deutschland
 	 */
 	public void erstelleDiagramm(Deutschland land) {
-		BundDiagramm dia = new BundDiagramm(land);
-		this.add(dia, BorderLayout.CENTER);
+		BundDiagramm dia = new BundDiagramm(land, this);
 	}
 	
 	/**
@@ -49,8 +49,7 @@ public class DiagrammFenster extends JPanel {
 	 * @param land Deutschland
 	 */
 	public void erstelleDiagramm(Bundesland bundLand) {
-		LandDiagramm dia = new LandDiagramm(bundLand);
-		this.add(dia, BorderLayout.CENTER);
+		LandDiagramm dia = new LandDiagramm(bundLand, this);
 	}
 	
 	/**
@@ -58,8 +57,7 @@ public class DiagrammFenster extends JPanel {
 	 * @param land Deutschland
 	 */
 	public void erstelleDiagramm(Wahlkreis wk) {
-		WahlkreisDiagramm dia = new WahlkreisDiagramm(wk);
-		this.add(dia, BorderLayout.CENTER);
+		WahlkreisDiagramm dia = new WahlkreisDiagramm(wk, this);
 	}
 	
 	/**

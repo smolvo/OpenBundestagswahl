@@ -41,8 +41,8 @@ public class Test {
 			}
 		}
 				
-		BundDiagramm dia = new BundDiagramm(w.getDeutschland());
-		frame.add(dia);
+//		BundDiagramm dia = new BundDiagramm(w.getDeutschland());
+//		frame.add(dia);
 		frame.setVisible(true);
 	}
 }
