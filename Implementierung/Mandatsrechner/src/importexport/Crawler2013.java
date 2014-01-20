@@ -224,6 +224,7 @@ public class Crawler2013 extends Crawler {
 				
 			}
 		}
+		read.close();
 		return bewerber;
 	}
 
