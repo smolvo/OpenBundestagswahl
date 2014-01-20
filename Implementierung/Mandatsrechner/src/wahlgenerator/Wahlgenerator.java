@@ -80,14 +80,36 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			
 			
 			for (int i = 0; i < anzahlZweitstimmen; i++) {
-				// TODO check anzahl wahlberechtigter
-				alleWahlkreise.get(rand.nextInt(anzahlWahlkreise)).getZweitstimme(partei).erhoeheAnzahl(1);
+				// Wahlkreis zufällig wählen
+				Wahlkreis zufaelligerWK = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 				
+				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
+				if (zufaelligerWK.getZweitstimmeGesamt() < zufaelligerWK.getWahlberechtigte()) {
+					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
+					zufaelligerWK.getZweitstimme(partei).erhoeheAnzahl(1);
+				} else {
+					i--;
+				}
 				// es kann hier theoretisch vorkommen, dass CSU in einem anderen BL als Bayern Stimmen erhält und CDU in Bayern.
 				// Aber das haben wir ja nicht ausgeschlossen
 			}
 			
-			//TODO Erststimmen
+			for (int i = 0; i < anzahlErststimmen; i++) {
+				// Wahlkreis zufällig wählen
+				Wahlkreis zufaelligerWK2 = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
+				
+				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
+				if (zufaelligerWK2.getErststimmeGesamt() < zufaelligerWK2.getWahlberechtigte()) {
+					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
+					for (Erststimme erst : zufaelligerWK2.getErststimmen()) {
+						if (erst.getKandidat().getPartei().getName() == partei.getName()) {
+							erst.erhoeheAnzahl(1);
+						}
+					}
+				} else {
+					i--;
+				}
+			}
 			
 		}
 		

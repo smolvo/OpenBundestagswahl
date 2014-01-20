@@ -56,7 +56,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 */
 	public int getErststimmeGesamt() {
 		int erststimmeGesamt = 0;
-		for(Erststimme erst : getErststimmen()){
+		for(Erststimme erst : getErststimmen()) {
 			erststimmeGesamt += erst.getAnzahl();
 		}
 		return erststimmeGesamt;

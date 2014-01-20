@@ -23,9 +23,9 @@ public class Erststimme extends Stimme implements Serializable {
 	 * @param kandidat Der zugehörige Kanditat.
 	 */
 	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
-		this.setAnzahl(anzahl);
-		this.setKandidat(kandidat);
 		this.setGebiet(gebiet);
+		this.setKandidat(kandidat);
+		this.setAnzahl(anzahl);
 	}
 	
 	/**
