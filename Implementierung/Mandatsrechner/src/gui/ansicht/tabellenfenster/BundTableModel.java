@@ -1,6 +1,12 @@
 package gui.ansicht.tabellenfenster;
 
+import java.io.IOException;
+
+import gui.GUISteuerung;
+
 import javax.swing.table.AbstractTableModel;
+
+import model.Zweitstimme;
 
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und
@@ -16,12 +22,17 @@ public class BundTableModel extends AbstractTableModel {
 	/** h‰lt alle relevanten Daten */
 	private BundDaten daten;
 	
+	/** das Tabellenfenster */
+	private TabellenFenster tabellenfenster;
+	
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
 	 * @param daten die Daten
+	 * @param tabellenfenster das tabellenfenster
 	 */
-	public BundTableModel(BundDaten daten) {
+	public BundTableModel(BundDaten daten, TabellenFenster tabellenfenster) {
 		this.daten = daten;
+		this.tabellenfenster = tabellenfenster;
 	}
 	
 	@Override
@@ -72,7 +83,17 @@ public class BundTableModel extends AbstractTableModel {
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 1) {
-			
+			String stringAnzahl = (String) obj;
+			Zweitstimme stimme = daten.getStimmen(rowIndex);
+			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht().getFenster().getSteuerung();
+			int anzahl = -1;
+			try{
+				anzahl = Integer.parseInt(stringAnzahl);
+				guiSteuerung.wertAenderung(stimme, anzahl);
+			} catch (NumberFormatException e) {
+				System.out.println("‰‰‰tsch");
+			}
+//			daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

@@ -71,7 +71,7 @@ public class TabellenFenster extends JScrollPane {
 					Integer.toString(gp.getUeberhangsmandate()), Integer.toString(gp.getAusgleichsmandate()));
 		}
 		
-		BundTableModel tabelle = new BundTableModel(daten);
+		BundTableModel tabelle = new BundTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
@@ -90,7 +90,7 @@ public class TabellenFenster extends JScrollPane {
 					Integer.toString(gp.getDirektmandate()), Integer.toString(gp.getUeberhangsmandate()));
 		}
 		
-		LandTableModel tabelle = new LandTableModel(daten);
+		LandTableModel tabelle = new LandTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
@@ -117,7 +117,7 @@ public class TabellenFenster extends JScrollPane {
 			}
 		}
 
-		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten);
+		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
