@@ -34,6 +34,8 @@ public class TestWahlgenerator {
 		
 		Bundestagswahl genWahl = wg.erzeugeBTW();
 		
+		System.out.println(w.getName());
+		
 	}
 
 }

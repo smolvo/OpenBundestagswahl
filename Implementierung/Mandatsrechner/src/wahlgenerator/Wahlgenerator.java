@@ -95,18 +95,19 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			for (int i = 0; i < anzahlZweitstimmen; i++) {
 				// Wahlkreis zufällig wählen
 				Wahlkreis zufaelligerWK = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
-				System.out.println("Zufälliger Wahlkreis: " + zufaelligerWK.getName());
-				System.out.println(zufaelligerWK.getZweitstimmeGesamt());
+				//System.out.println("Zufälliger Wahlkreis: " + zufaelligerWK.getName());
+				//System.out.println(zufaelligerWK.getZweitstimmeGesamt());
 				
 				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
 				if (zufaelligerWK.getZweitstimmeGesamt() < zufaelligerWK.getWahlberechtigte()) {
 					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
 					
-					if (zufaelligerWK.getZweitstimme(partei) == null) {
-						System.out.println("zufaelligerWK.getZweitstimme(partei) == null");
+					//zufaelligerWK.getZweitstimme(partei).erhoeheAnzahl(1);
+					for (Zweitstimme zweit : zufaelligerWK.getZweitstimmen()) {
+						if (zweit.getPartei().getName() == partei.getName()) {
+							zweit.erhoeheAnzahl(1);
+						}
 					}
-					zufaelligerWK.getZweitstimme(partei).erhoeheAnzahl(1);
-					
 					
 				} else {
 					i--;
@@ -123,7 +124,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				if (zufaelligerWK2.getErststimmeGesamt() < zufaelligerWK2.getWahlberechtigte()) {
 					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
 					for (Erststimme erst : zufaelligerWK2.getErststimmen()) {
-						if (erst.getKandidat().getPartei().getName() == partei.getName()) {
+						if (erst.getKandidat().getPartei() != null && erst.getKandidat().getPartei().getName() == partei.getName()) {
 							erst.erhoeheAnzahl(1);
 						}
 					}
