@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import chronik.Chronik;
+
 /**
  * Diese Klasse repraesentiert eine Bundestagswahl.
  */
@@ -33,6 +35,9 @@ public class Bundestagswahl implements Serializable {
 
 	/** Die berechnete Sitzverteilung dieser Bundestagswahl. */
 	private Sitzverteilung sitzverteilung;
+	
+	/** Chronik-Container */
+	private Chronik chronik;
 
 	/**
 	 * Parametrisierter Konstruktor fuer Bundestagswahlen.
@@ -53,6 +58,8 @@ public class Bundestagswahl implements Serializable {
 		this.setParteien(parteien);
 		// Sitzverteilung wird hier nicht gesetzt sondern muss vom
 		// Mandatsrechner berechnet werden.
+		
+		this.chronik = new Chronik();
 	}
 
 	/**
@@ -181,6 +188,82 @@ public class Bundestagswahl implements Serializable {
 		}
 
 		return result;
+	}
+	
+	/**
+	 * Verändere die Stimmen in einer Bundestagswahl.
+	 * Speichert vorher die aktuelle Bundestagswahl in der Chronik.
+	 * @param stimme
+	 * 		die zu verändernde stimme.
+	 * @return 
+	 * 		true wenn erfolgreich.
+	 */
+	public boolean setzeStimme(Stimme stimme) {
+		// TODO
+		boolean success = true;
+		try {
+			this.chronik.sichereBundestagswahl(this.deepCopy());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			success = false;
+		}
+		if (stimme instanceof Erststimme) {
+			success = this.setzeStimmenAnzahl((Erststimme) stimme);
+		} else if (stimme instanceof Zweitstimme) {
+			success = this.setzeStimmenAnzahl((Zweitstimme) stimme);
+		} else {
+			success = false;
+		}
+		
+		if (!success /*&& !this.pruefeDaten*/) {
+			// TODO
+			Bundestagswahl revert = this.chronik.restauriereBundestagswahl();
+			//this.setDeutschland(revert.deutschland);
+			//this.setName(revert)
+		}
+		return success;
+	}
+	
+	/**
+	 * Erststimme kann/darf nur in Wahlkreisen veraendert
+	 * werden.
+	 * @param stimme
+	 * 				
+	 * @return
+	 */
+	private boolean setzeStimmenAnzahl(Erststimme stimme) {
+		System.out.println("Setze erststimme");
+		boolean success = false;
+		for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
+			 if (wk.equals(stimme.getGebiet())) {
+				 for (Erststimme erststimme : wk.getErststimmen()) {
+					 if (erststimme.getKandidat().equals(stimme.getKandidat())) {
+						 erststimme.setAnzahl(stimme.getAnzahl());
+						 success = true;
+						 break;
+					 }
+				 }
+				 break;
+			 }
+		}
+		return success;
+	}
+	
+	// TODO
+	private boolean setzeStimmenAnzahl (Zweitstimme stimme) {
+		System.out.println("Setze zweitstimme");
+		boolean success = false;
+		if (stimme.getGebiet() instanceof Deutschland) {
+			// TODO
+		} else if (stimme.getGebiet() instanceof Bundesland) {
+			// TODO
+		} else if (stimme.getGebiet() instanceof Wahlkreis) {
+			// TODO
+		} else {
+			success = false;
+		}
+		return success;
 	}
 
 }
