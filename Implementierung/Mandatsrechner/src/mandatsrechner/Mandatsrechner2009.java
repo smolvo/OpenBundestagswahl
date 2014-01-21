@@ -174,6 +174,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			for (Partei part : relevanteParteien) {
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT,
 						bl);
+				//System.err.println(direktmandate);
 				int mindestSitzanzahl = Math.round(bl
 						.getZweitstimmenAnzahl(part) / landesdivisor);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
@@ -182,7 +183,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
-						// Partei und f�ge den i-ten Listenkandidaten in die
+						// Partei und 	fuege den i-ten Listenkandidaten in die
 						// Sitzverteilung hinzu
 						if (bl.getLandesliste(part).getListenkandidaten()
 								.size() >= i + 1) {
@@ -197,7 +198,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 						}
 					}
 				} else {
-					for(int i = 0 ; i < diffKandidat ; i++){
+					for (int i = 0; i < diffKandidat; i++) {
 						bl.getDirektMandate(part).get(i).setMandat(Mandat.UEBERHANGMADAT);
 					}
 				}

@@ -363,6 +363,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * Setzt die relevanten Zweitstimmen.
 	 * 
 	 * @param relevanteZweitstimmen
+	 * 			relevante Zweitstimmen
 	 * @throws IllegalArgumentException
 	 *             wenn die relevanten Zweitstimmen null sind.
 	 * 
@@ -417,9 +418,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 					"Mandat oder Bundesland waren null.");
 		}
 		int anzahlMandate = 0;
-		for (Kandidat kandidat : getMitglieder()) {
+		for (Kandidat kandidat : this.getMitglieder()) {
 			if (kandidat.getMandat().equals(m)
-					&& kandidat.getPartei().getLandesliste(b).equals(b)) {
+					&& kandidat.getPartei().getLandesliste(b).getBundesland().equals(b)) {
 				anzahlMandate++;
 			}
 		}
@@ -449,7 +450,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * FÃ¼gt eine neue Mindestsitzanzahl fuer ein Bundesland hinzu.
+	 * Fuegt eine neue Mindestsitzanzahl fuer ein Bundesland hinzu.
 	 * 
 	 * @param bl
 	 *            das Bundesland.
@@ -462,6 +463,20 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		this.mindestSitzanzahl.put(bl, mindestSitzanzahl);
 	}
+	
+	/**
+	 * Gibt die mindestsitzanzahl dieser Partei für ein Bundesland 
+	 * zurück.
+	 * @param bl
+	 * 			das gesuchte Bundesland.
+	 * @return
+	 * 			gibt 0 zurück falls key nicht gefunden wurde.
+	 */
+	public int getMindestsitzanzahl(Bundesland bl) {
+		int anzahl = this.mindestSitzanzahl.get(bl);
+
+		return anzahl;
+	}
 
 	/**
 	 * Gibt an, wie viele Mandate eine Partei insgesamt besitzt
@@ -472,6 +487,22 @@ public class Partei implements Serializable, Comparable<Partei> {
 		int anzahlMandate = 0;
 		for (Kandidat kandidat : getMitglieder()) {
 			if (!kandidat.getMandat().equals(Mandat.KEINMANDAT)) {
+				anzahlMandate++;
+			}
+		}
+		return anzahlMandate;
+	}
+	
+	/**
+	 * Gibt an, wie viel Mandate eine Partei insgesamt besitzt
+	 * @param mandat
+	 * 				bestimmter Mandat
+	 * @return die Anzahl an Mandate
+	 */
+	public int getAnzahlMandate(Mandat mandat) {
+		int anzahlMandate = 0;
+		for (Kandidat kandidat : getMitglieder()) {
+			if (kandidat.getMandat().equals(mandat)) {
 				anzahlMandate++;
 			}
 		}
@@ -490,8 +521,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			int val = (int) ((Map.Entry) i.next()).getValue();
-			anzahl += val;
+			Bundesland key = (Bundesland) i.next();
+			anzahl += this.mindestSitzanzahl.get(key);
 		}
 		return anzahl;
 	}

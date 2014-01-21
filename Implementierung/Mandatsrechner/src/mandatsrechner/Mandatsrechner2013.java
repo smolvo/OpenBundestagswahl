@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.Bundesland;
 import model.Bundestagswahl;
+import model.Mandat;
 import model.Wahlkreis;
 import model.Partei;
 
@@ -16,7 +17,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		this.rechner2009 = new Mandatsrechner2009();
 	}
 	
-	public static Mandatsrechner getInstance() {
+	public static Mandatsrechner2013 getInstance() {
 		if(Mandatsrechner2013.instance==null){
 			Mandatsrechner2013.instance = new Mandatsrechner2013();
 		}
@@ -38,6 +39,14 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			}
 		}
 		
+		if (rechner2009.debug) {
+			System.out.println("\nAlt Parteidivisor: " + parteidivisor);
+			for (Partei partei : relevanteParteien) {
+				System.out.println(partei.getName() + ": " + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
+			}
+			
+		}
+		
 		while (!isCorrect) {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
@@ -55,7 +64,10 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	
 		
 		if (rechner2009.debug) {
-			System.out.println("\nParteidivisor: " + parteidivisor);
+			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
+			for (Partei partei : relevanteParteien) {
+				System.out.println(partei.getName() + ": Direktmandate-"+partei.getAnzahlMandate(Mandat.DIREKMANDAT)+" Sitze-" + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
+			}
 		}
 		return bw;
 		
