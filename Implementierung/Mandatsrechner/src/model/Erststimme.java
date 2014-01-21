@@ -3,62 +3,72 @@ package model;
 import java.io.Serializable;
 
 /**
- * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den Klassen 
- * Gebiet und Kandidat zusammen arbeitet.
- * Außerdem erbt diese von der Klasse Stimme.
+ * Assoziationsklasse die Anzahl aller Erststimmen beinhaltet und mit den
+ * Klassen Gebiet und Kandidat zusammen arbeitet. Ausserdem erbt diese von der
+ * Klasse Stimme.
  */
 public class Erststimme extends Stimme implements Serializable {
 
-	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
-	private static final long serialVersionUID = -950583325552486249L;
-	
-	/** Der zugehörige Kanditat. */
-	private Kandidat kandidat;
-	
-	
 	/**
-	 * Mit diesem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
-	 * @param anzahl Die Anzahl der Stimmen
-	 * @param gebiet Das zugehörige Gebiet.
-	 * @param kandidat Der zugehörige Kanditat.
+	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
+	 * verwendet wird.
+	 */
+	private static final long serialVersionUID = -950583325552486249L;
+
+	/** Der zugehoerige Kanditat. */
+	private Kandidat kandidat;
+
+	/**
+	 * Mit diesem Konsruktor ist es mï¿½glich alle Attribute auf einmal zu setzen
+	 * 
+	 * @param anzahl
+	 *            Die Anzahl der Stimmen
+	 * @param gebiet
+	 *            Das zugehï¿½rige Gebiet.
+	 * @param kandidat
+	 *            Der zugehï¿½rige Kanditat.
 	 */
 	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
 		this.setGebiet(gebiet);
 		this.setKandidat(kandidat);
 		this.setAnzahl(anzahl);
 	}
-	
+
 	/**
-	 * Gibt den verbundenen Kandidaten zurück
-	 * @return der verbundene Kandidat
+	 * Gibt den verbundenen Kandidaten zurueck.
+	 * 
+	 * @return der verbundene Kandidat.
 	 */
 	public Kandidat getKandidat() {
-		return kandidat;
+		return this.kandidat;
 	}
-	
+
 	/**
-	 * Setze den Kandidaten
-	 * @param kandidat der neue Kanditat
-	 * @throws IllegalArgumentException wenn der Kandidat leer ist
+	 * Setze den Kandidaten.
+	 * 
+	 * @param kandidat
+	 *            der neue Kanditat.
+	 * @throws IllegalArgumentException
+	 *             wenn der Kandidat leer ist.
 	 */
 	public void setKandidat(Kandidat kandidat) throws IllegalArgumentException {
 		if (kandidat.equals(null)) {
-		      throw new IllegalArgumentException("Kandidat ist null!");
+			throw new IllegalArgumentException("Kandidat ist null!");
 		}
 		this.kandidat = kandidat;
 	}
-	
+
 	@Override
 	public void setAnzahl(int anzahl) throws IllegalArgumentException {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		/*
-		if (this.getGebiet().getWahlberechtigte() < 
-				(this.getGebiet().getErststimmeGesamt() - this.getAnzahl() + anzahl)) {
-			throw new IllegalArgumentException("Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
-		}
-		*/
+		 * if (this.getGebiet().getWahlberechtigte() <
+		 * (this.getGebiet().getErststimmeGesamt() - this.getAnzahl() + anzahl))
+		 * { throw new IllegalArgumentException(
+		 * "Anzahl der Erststimmen > Anzahl der Wahlberechtigten!"); }
+		 */
 		this.anzahl = anzahl;
 	}
 
@@ -67,11 +77,12 @@ public class Erststimme extends Stimme implements Serializable {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
-		if (this.getGebiet().getWahlberechtigte() < 
-				(this.getGebiet().getErststimmeGesamt() + anzahl)) {
-			throw new IllegalArgumentException("Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
+		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
+				.getErststimmeGesamt() + anzahl)) {
+			throw new IllegalArgumentException(
+					"Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
 		}
 		this.anzahl += anzahl;
 	}
- 
+
 }

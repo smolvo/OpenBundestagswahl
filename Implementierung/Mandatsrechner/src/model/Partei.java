@@ -13,12 +13,12 @@ import java.util.Set;
 import wahlgenerator.RelevanteZweitstimmen;
 
 /**
- * Diese Klasse repräsentiert eine Partei.
+ * Diese Klasse repraesentiert eine Partei.
  */
 public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
-	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -6711521521647518265L;
@@ -30,9 +30,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private LinkedList<Kandidat> mitglieder;
 
 	/** Der Name dieser Partei. */
-	private String name; 
+	private String name;
 
-	/** Das Kürzel dieser Partei. */
+	/** Das Krzel dieser Partei. */
 	private String kuerzel;
 
 	/** Die Farbe dieser Partei. */
@@ -49,17 +49,17 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/** Die relevanten Zweistimmen der Partei */
 	private RelevanteZweitstimmen relevanteZweitstimmen;
-	
-	private HashMap<Bundesland,Integer> mindestSitzanzahl = new HashMap<Bundesland,Integer>();
+
+	private HashMap<Bundesland, Integer> mindestSitzanzahl = new HashMap<Bundesland, Integer>();
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
-	 * hier erzeugt aber nicht befüllt.
+	 * hier erzeugt aber nicht befï¿½llt.
 	 * 
 	 * @param name
 	 *            Der Name dieser Partei.
 	 * @param kuerzel
-	 *            Das Kürzel dieser Partei.
+	 *            Das Kï¿½rzel dieser Partei.
 	 * @param farbe
 	 *            Farbe dieser Partei
 	 */
@@ -74,14 +74,14 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste wird hier nur erzeugt
-	 * aber nicht befüllt.
+	 * aber nicht befï¿½llt.
 	 * 
 	 * @param landesliste
 	 *            Die Liste aller Landeslisten dieser Partei.
 	 * @param name
 	 *            Der Name dieser Partei.
 	 * @param kuerzel
-	 *            Das Kürzel dieser Partei.
+	 *            Das Kï¿½rzel dieser Partei.
 	 * @param farbe
 	 *            Die Farbe dieser Partei.
 	 */
@@ -95,7 +95,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt das Landesliste-Objekt zurück
+	 * Gibt das Landesliste-Objekt zurï¿½ck
 	 * 
 	 * @return das Landesliste-Objekt
 	 */
@@ -120,7 +120,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Fügt eine Landesliste zur Liste aller Landeslisten dieser Partei hinzu.
+	 * Fï¿½gt eine Landesliste zur Liste aller Landeslisten dieser Partei hinzu.
 	 * 
 	 * @param landesliste
 	 *            Die Liste aller Landeslisten dieser Partei.
@@ -130,7 +130,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Liste der Mitglieder zurück
+	 * Gibt die Liste der Mitglieder zurï¿½ck
 	 * 
 	 * @return Liste der Mitglieder
 	 */
@@ -155,7 +155,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Fügt ein neues Mitglied zur Liste hinzu
+	 * Fï¿½gt ein neues Mitglied zur Liste hinzu
 	 * 
 	 * @param mitglied
 	 *            das neue Mitglied
@@ -170,11 +170,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt alle Mitglieder mit dem gewünschten Mandat zurück
+	 * Gibt alle Mitglieder mit dem gewï¿½nschten Mandat zurueck.
 	 * 
 	 * @param mandat
-	 *            das gewünschte Mandat
-	 * @return die Liste mit den Mitgliedern
+	 *            das gewuenschte Mandat.
+	 * @return die Liste mit den Mitgliedern.
 	 */
 	public LinkedList<Kandidat> getMitglieder(Mandat mandat) {
 		LinkedList<Kandidat> res = new LinkedList<Kandidat>();
@@ -187,19 +187,19 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt den Namen der Partei zurück
+	 * Gibt den Namen der Partei zurueck
 	 * 
 	 * @return den Namen der Partei
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	/**
-	 * Setzt den neuen Namen der Partei
+	 * Setzt den neuen Namen der Partei.
 	 * 
 	 * @param name
-	 *            der neue Name
+	 *            der neue Name.
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter name null ist.
 	 */
@@ -211,19 +211,19 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt das Kürzel der Partei zurück
+	 * Gibt das Kuerzel der Partei zurueck.
 	 * 
-	 * @return das Kürzel der Partei
+	 * @return das Kuerzel der Partei.
 	 */
 	public String getKuerzel() {
-		return kuerzel;
+		return this.kuerzel;
 	}
 
 	/**
-	 * Setzt das Kürzel der Partei
+	 * Setzt das Kuerzel der Partei.
 	 * 
 	 * @param kuerzel
-	 *            der Partei
+	 *            der Partei.
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter kuerzel null ist.
 	 */
@@ -235,19 +235,19 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Farbe der Partei zurück
+	 * Gibt die Farbe der Partei zurueck.
 	 * 
-	 * @return die Farbe der Partei
+	 * @return die Farbe der Partei.
 	 */
 	public Color getFarbe() {
-		return farbe;
+		return this.farbe;
 	}
 
 	/**
-	 * Setzt die Farbe der Partei
+	 * Setzt die Farbe der Partei.
 	 * 
 	 * @param farbe
-	 *            der Partei
+	 *            der Partei.
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter farbe null ist.
 	 */
@@ -259,7 +259,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt das Zweitstimmen-Objekt zurück
+	 * Gibt das Zweitstimmen-Objekt zurueck
 	 * 
 	 * @return das Zweitstimmen-Objekt
 	 */
@@ -283,6 +283,14 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.zweitstimme = zweitstimme;
 	}
 
+	/**
+	 * Fuegt ein Zweitstimmenobjekt zur Liste hinzu.
+	 * 
+	 * @param zweitstimme
+	 *            das Objekt
+	 * @throws IllegalArgumentException
+	 *             wenn das Zweitstimmen-Objekt null ist.
+	 */
 	public void addZweitstimme(Zweitstimme zweitstimme) {
 		if (zweitstimme == null) {
 			throw new IllegalArgumentException("Zeitstimme-Objekt ist leer");
@@ -291,9 +299,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Anzahl an Direkmandate zurück
+	 * Gibt die Anzahl an Direkmandate zurueck.
 	 * 
-	 * @return die Anzahl an Direktmandate in der Partei
+	 * @return die Anzahl an Direktmandate in der Partei.
 	 */
 	public int getAnzahlDirektmandate() {
 		int res = 0;
@@ -306,28 +314,28 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt zurück ob die Partei im Bundestag
+	 * Gibt zurueck ob die Partei im Bundestag.
 	 * 
-	 * @return ob Partei im Bundestag ist
+	 * @return ob Partei im Bundestag ist.
 	 */
 	public boolean isImBundestag() {
-		return imBundestag;
+		return this.imBundestag;
 	}
 
 	/**
-	 * Bestimmt ob die Partei im Bundestag ist oder nicht
+	 * Bestimmt ob die Partei im Bundestag ist oder nicht.
 	 * 
 	 * @param imBundestag
-	 *            ob PArtei im Bundestag ist oder nicht
+	 *            ob Partei im Bundestag ist oder nicht.
 	 */
 	public void setImBundestag(boolean imBundestag) {
 		this.imBundestag = imBundestag;
 	}
 
 	/**
-	 * Gibt die Anzahl an Zweistimmen in Deutschland zurück
+	 * Gibt die Anzahl an Zweistimmen in Deutschland zurueck.
 	 * 
-	 * @return die Anzahl an Zweitstimmen in Deutschland
+	 * @return die Anzahl an Zweitstimmen in Deutschland.
 	 */
 	public int getZweitstimmeGesamt() {
 		zweitstimmeGesamt = 0;
@@ -343,15 +351,22 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * @return the relevanteZweitstimmen
+	 * Gibt die relevanten Zweitstimmen zurueck.
+	 * 
+	 * @return die relevanteZweitstimmen.
 	 */
 	public RelevanteZweitstimmen getRelevanteZweitstimmen() {
 		return relevanteZweitstimmen;
 	}
 
 	/**
+	 * Setzt die relevanten Zweitstimmen.
+	 * 
 	 * @param relevanteZweitstimmen
-	 *            the relevanteZweitstimmen to set
+	 * @throws IllegalArgumentException
+	 *             wenn die relevanten Zweitstimmen null sind.
+	 * 
+	 * 
 	 */
 	public void setRelevanteZweitstimmen(
 			RelevanteZweitstimmen relevanteZweitstimmen) {
@@ -360,55 +375,65 @@ public class Partei implements Serializable, Comparable<Partei> {
 					"relevante Zweitstimmen war null.");
 		} else {
 			this.relevanteZweitstimmen = relevanteZweitstimmen;
-		
+
 		}
 
 	}
 
-
-
 	/**
-	 * Gibt die Anzahl der Zweitstimmen der Partei in dem jeweiligen Wahlkreis
+	 * Gibt die Anzahl der Zweitstimmen der Partei in dem jeweiligen Wahlkreis.
 	 * 
-	 * @param wk der Wahlkreis, zu dem die Zweitstimmenanzahl gegeben werden soll
-	 * @return die Anzahl der Zweitstimmen
+	 * @param wk
+	 *            der Wahlkreis, zu dem die Zweitstimmenanzahl gegeben werden
+	 *            soll.
+	 * @return die Anzahl der Zweitstimmen.
 	 */
 
 	public int getZweitstimme(Wahlkreis wk) {
-		int anzahlZweitstimmen = 0; 
+		int anzahlZweitstimmen = 0;
 		for (Zweitstimme z : zweitstimme) {
 			if (z.getGebiet().equals(wk)) {
 				anzahlZweitstimmen = z.getAnzahl();
 			}
-			
+
 		}
 		return anzahlZweitstimmen;
 
 	}
-	
+
 	/**
-	 * Gibt an, wie häufig der im Parameter gegebene Mandattyp in dem gegebenem Bundesland auftritt 
-	 * @param m Mandattyp
-	 * @param b Bundesland
-	 * @return die Anzahl der Mandate eines gegebenen Typs in einem Gebiet
+	 * Gibt an, wie haeufig der im Parameter gegebene Mandattyp in dem gegebenem
+	 * Bundesland auftritt.
+	 * 
+	 * @param m
+	 *            Mandattyp.
+	 * @param b
+	 *            Bundesland.
+	 * @return die Anzahl der Mandate eines gegebenen Typs in einem Gebiet.
 	 */
 	public int getAnzahlMandate(Mandat m, Bundesland b) {
 		if (m == null || b == null) {
-			throw new IllegalArgumentException("Mandat oder Bundesland waren null.");
-		} 
+			throw new IllegalArgumentException(
+					"Mandat oder Bundesland waren null.");
+		}
 		int anzahlMandate = 0;
 		for (Kandidat kandidat : getMitglieder()) {
-			if (kandidat.getMandat().equals(m) && kandidat.getPartei().getLandesliste(b).equals(b)) {
+			if (kandidat.getMandat().equals(m)
+					&& kandidat.getPartei().getLandesliste(b).equals(b)) {
 				anzahlMandate++;
 			}
 		}
 		return anzahlMandate;
 	}
-	
+
 	/**
-	 * Gibt die Landesliste zurück, die zu dem gegeneben Bundesland passt
-	 * @param b das Bundesland, zu dem die Landesliste gesucht wird
+	 * Gibt die Landesliste zurueck, die zu dem gegeneben Bundesland passt.
+	 * 
+	 * @param b
+	 *            das Bundesland, zu dem die Landesliste gesucht wird.
 	 * @return Landesliste
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland null ist.
 	 */
 	public Landesliste getLandesliste(Bundesland b) {
 		if (b == null) {
@@ -422,14 +447,25 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return gesuchteLandesliste;
 	}
-	
-	public void addMindestsitzanzahl(Bundesland bl, int mindestSitzanzahl){
+
+	/**
+	 * FÃ¼gt eine neue Mindestsitzanzahl fuer ein Bundesland hinzu.
+	 * 
+	 * @param bl
+	 *            das Bundesland.
+	 * @param mindestSitzanzahl
+	 *            die dazugoerige Mindestsitzanzahl.
+	 */
+	public void addMindestsitzanzahl(Bundesland bl, int mindestSitzanzahl) {
+		if (bl == null || mindestSitzanzahl < 0) {
+			throw new IllegalArgumentException("Die Eingabeparameter sind null");
+		}
 		this.mindestSitzanzahl.put(bl, mindestSitzanzahl);
 	}
 
-	
 	/**
 	 * Gibt an, wie viele Mandate eine Partei insgesamt besitzt
+	 * 
 	 * @return die Anzahl an Mandate
 	 */
 	public int getAnzahlMandate() {
@@ -441,18 +477,18 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahlMandate;
 	}
-	
+
 	/**
-	 * Gibt die Summe der Mindestsitze aller Bundeslaender
-	 * von einer Partei zurueck.
-	 * @return
-	 * 		anzahl der Mindestsitze einer Partei.
+	 * Gibt die Summe der Mindestsitze aller Bundeslaender von einer Partei
+	 * zurueck.
+	 * 
+	 * @return anzahl der Mindestsitze einer Partei.
 	 */
 	public int getMindestsitzAnzahl() {
 		int anzahl = 0;
 		Set<Bundesland> set = this.mindestSitzanzahl.keySet();
 		Iterator<Bundesland> i = set.iterator();
-		
+
 		while (i.hasNext()) {
 			int val = (int) ((Map.Entry) i.next()).getValue();
 			anzahl += val;

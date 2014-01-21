@@ -3,46 +3,59 @@ package model;
 import java.io.Serializable;
 
 /**
- * Assoziationsklasse die Anzahl aller Zweitstimmen beinhaltet und mit den Klassen 
- * Deutschland und Partei zusammen arbeitet. Außerdem erbt diese von der Klasse Stimme.
+ * Assoziationsklasse die Anzahl aller Zweitstimmen beinhaltet und mit den
+ * Klassen Deutschland und Partei zusammen arbeitet. Ausserdem erbt diese von
+ * der Klasse Stimme.
  */
-public class Zweitstimme extends Stimme implements Serializable, Comparable<Zweitstimme> {
-	
-	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+public class Zweitstimme extends Stimme implements Serializable,
+		Comparable<Zweitstimme> {
+
+	/**
+	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
+	 * verwendet wird.
+	 */
 	private static final long serialVersionUID = -2753165575954824955L;
-	
-	/** Die zugehörige Partei. */
+
+	/** Die zugehï¿½rige Partei. */
 	private Partei partei;
-	
-	
+
 	/**
 	 * Parametrisierter Konstruktor zum erzeugen von Zweitstimmen.
-	 * @param anzahl Die Anzahl der Stimmen.
-	 * @param gebiet Das zugehörige Gebiet.
-	 * @param partei Die zugehörige Partei.
+	 * 
+	 * @param anzahl
+	 *            Die Anzahl der Stimmen.
+	 * @param gebiet
+	 *            Das zugehï¿½rige Gebiet.
+	 * @param partei
+	 *            Die zugehï¿½rige Partei.
 	 */
 	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei) {
 		this.setAnzahl(anzahl);
 		this.setGebiet(gebiet);
 		this.setPartei(partei);
 	}
-	
+
 	/**
-	 * Gibt die zugehörige Partei zurück.
-	 * @return die zugehörige Partei
+	 * Gibt die zugehoerige Partei zurï¿½ck.
+	 * 
+	 * @return die zugehoerige Partei
 	 */
 	public Partei getPartei() {
-		return partei;
+		return this.partei;
 	}
-	
+
 	/**
-	 * Setzt die zugehörige Partei dieser Zweitstimme.
-	 * @param partei die zugehörige Partei
-	 * @throws IllegalArgumentException wenn der Parameter partei null ist.
+	 * Setzt die zugehoerige Partei dieser Zweitstimme.
+	 * 
+	 * @param partei
+	 *            die zugehoerige Partei
+	 * @throws IllegalArgumentException
+	 *             wenn der Parameter partei null ist.
 	 */
 	public void setPartei(Partei partei) throws IllegalArgumentException {
 		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"partei\" ist null!");
 		}
 		this.partei = partei;
 	}
@@ -58,11 +71,11 @@ public class Zweitstimme extends Stimme implements Serializable, Comparable<Zwei
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		/*
-		if (this.getGebiet().getWahlberechtigte() < 
-				(this.getGebiet().getZweitstimmeGesamt() - this.getAnzahl() + anzahl)) {
-			throw new IllegalArgumentException("Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
-		}
-		*/
+		 * if (this.getGebiet().getWahlberechtigte() <
+		 * (this.getGebiet().getZweitstimmeGesamt() - this.getAnzahl() +
+		 * anzahl)) { throw new IllegalArgumentException(
+		 * "Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!"); }
+		 */
 		this.anzahl = anzahl;
 	}
 
@@ -71,9 +84,10 @@ public class Zweitstimme extends Stimme implements Serializable, Comparable<Zwei
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
-		if (this.getGebiet().getWahlberechtigte() < 
-				(this.getGebiet().getZweitstimmeGesamt() + anzahl)) {
-			throw new IllegalArgumentException("Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
+		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
+				.getZweitstimmeGesamt() + anzahl)) {
+			throw new IllegalArgumentException(
+					"Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
 		}
 		this.anzahl += anzahl;
 	}

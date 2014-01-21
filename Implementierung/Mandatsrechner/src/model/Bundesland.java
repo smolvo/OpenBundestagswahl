@@ -6,13 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Klasse die die Bundesl�nder repr�sentiert. Unterklasse von Gebiet.
+ * Klasse die die Bundeslaender repraesentiert. Unterklasse von Gebiet.
  */
 public class Bundesland extends Gebiet implements Serializable,
 		Comparable<Bundesland> {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = 1614716230171638779L;
@@ -20,25 +20,26 @@ public class Bundesland extends Gebiet implements Serializable,
 	/** Einwohnerzahl des Bundeslandes. */
 	private int einwohnerzahl;
 
-	/** Farbe des Bundeslandes */
+	/** Farbe des Bundeslandes. */
 	private Color farbe;
 
-	/** Liste mit den Wahlkreisen im Bundesland */
+	/** Liste mit den Wahlkreisen im Bundesland. */
 	private LinkedList<Wahlkreis> wahlkreise = new LinkedList<Wahlkreis>();
 
-	/** Liste mit den vertrettenden Parteien im Bundesland */
+	/** Liste mit den vertrettenden Parteien im Bundesland. */
 	private LinkedList<Partei> parteien = new LinkedList<Partei>();
 
+	/** Liste mit den Landeslisten des Bundeslandes. */
 	private List<Landesliste> landesliste = new LinkedList<Landesliste>();
 
 	/**
-	 * Parametrisierter Konstruktor f�r Bundesl�nder. Listen werden seperat
-	 * hinzugef�gt
+	 * Parametrisierter Konstruktor fuer Bundeslaender. Listen werden seperat
+	 * hinzugefuegt.
 	 * 
 	 * @param name
-	 *            Der name des Bundeslandes
+	 *            Der name des Bundeslandes.
 	 * @param einwohnerzahl
-	 *            Die Anzahl der Einwohner
+	 *            Die Anzahl der Einwohner.
 	 */
 	public Bundesland(String name, int einwohnerzahl) {
 		this.setName(name);
@@ -46,21 +47,21 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt die Einwohnerzahl zur�ck
+	 * Gibt die Einwohnerzahl zurueck.
 	 * 
-	 * @return die Einwohnerzahl
+	 * @return die Einwohnerzahl.
 	 */
 	public int getEinwohnerzahl() {
-		return einwohnerzahl;
+		return this.einwohnerzahl;
 	}
 
 	/**
-	 * Setzt die Einwohnerzahl
+	 * Setzt die Einwohnerzahl.
 	 * 
 	 * @param einwohnerzahl
-	 *            wird neu gesetzt
+	 *            wird neu gesetzt.
 	 * @throws IllegalArgumentException
-	 *             wenn die zahl negativ ist
+	 *             wenn die zahl negativ ist.
 	 */
 	public void setEinwohnerzahl(int einwohnerzahl)
 			throws IllegalArgumentException {
@@ -71,21 +72,21 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt die Farbe des Bundeslandes zur�ck
+	 * Gibt die Farbe des Bundeslandes zurueck.
 	 * 
-	 * @return die Farbe
+	 * @return die Farbe.
 	 */
 	public Color getFarbe() {
 		return farbe;
 	}
 
 	/**
-	 * Setzt die Farbe des Bundeslandes
+	 * Setzt die Farbe des Bundeslandes.
 	 * 
 	 * @param farbe
-	 *            des Bundeslandes
+	 *            des Bundeslandes.
 	 * @throws IllegalArgumentException
-	 *             wenn die Farbe leer ist
+	 *             wenn die Farbe leer ist.
 	 */
 	public void setFarbe(Color farbe) throws IllegalArgumentException {
 		if (farbe == null) {
@@ -95,21 +96,21 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt eine Liste mit den Wahlkreisen zur�ck
+	 * Gibt eine Liste mit den Wahlkreisen zurueck.
 	 * 
-	 * @return die Liste mit Wahlkreisen
+	 * @return die Liste mit Wahlkreisen.
 	 */
 	public LinkedList<Wahlkreis> getWahlkreise() {
-		return wahlkreise;
+		return this.wahlkreise;
 	}
 
 	/**
-	 * Setzt eine neue Liste mit Wahlkreisen
+	 * Setzt eine neue Liste mit Wahlkreisen.
 	 * 
 	 * @param wahlkreise
-	 *            die neue Liste
+	 *            die neue Liste.
 	 * @throws IllegalArgumentException
-	 *             wenn die Liste leer ist
+	 *             wenn die Liste leer ist.
 	 */
 	public void setWahlkreise(LinkedList<Wahlkreis> wahlkreise)
 			throws IllegalArgumentException {
@@ -120,21 +121,21 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt die Liste mit Parteien zur�ck
+	 * Gibt die Liste mit Parteien zurueck.
 	 * 
-	 * @return die Liste mit Parteien
+	 * @return die Liste mit Parteien.
 	 */
 	public LinkedList<Partei> getParteien() {
-		return parteien;
+		return this.parteien;
 	}
 
 	/**
-	 * Setzt eine neue Liste mit Parteien
+	 * Setzt eine neue Liste mit Parteien.
 	 * 
 	 * @param parteien
-	 *            die neue Liste
+	 *            die neue Liste.
 	 * @throws IllegalArgumentException
-	 *             wenn die Liste leer ist
+	 *             wenn die Liste leer ist.
 	 */
 	public void setParteien(LinkedList<Partei> parteien)
 			throws IllegalArgumentException {
@@ -145,10 +146,12 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * F�gt eine Partei zur Liste hinzu
+	 * Fuegt eine neue Partei zur Liste hinzu.
 	 * 
 	 * @param partei
-	 *            ist der neue Partei
+	 *            ist der neue Partei.
+	 * @throws IllegalArgumentException
+	 *             wenn die Partei null ist.
 	 */
 	public void addPartei(Partei partei) {
 		if (partei == null) {
@@ -158,10 +161,12 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * F�gt einen Wahlkreis zur Liste hinzu
+	 * Fuegt einen neuen Wahlkreis hinzu.
 	 * 
 	 * @param wahlkreis
 	 *            Der Wahlkreis der hinzugef�gt wird
+	 * @throws IllegalArgumentException
+	 *             wenn der Wahlkreis null ist.
 	 */
 	public void addWahlkreis(Wahlkreis wahlkreis) {
 		if (wahlkreis == null) {
@@ -239,7 +244,7 @@ public class Bundesland extends Gebiet implements Serializable,
 	 * @param landesliste
 	 *            Die Landesliste die gesetzt wird.
 	 * @throws IllegalArgumentException
-	 *             wenn die Liste leer ist
+	 *             wenn die Liste leer ist.
 	 */
 	public void setLandeliste(List<Landesliste> landesliste)
 			throws IllegalArgumentException {
@@ -250,22 +255,26 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt die Liste aller Landeslisten dieses Bundeslandes zur�ck.
+	 * Gibt die Liste aller Landeslisten dieses Bundeslandes zurueck.
 	 * 
-	 * @return die Landesliste dieses Bundeslandes
+	 * @return die Landesliste dieses Bundeslandes.
 	 */
 	public List<Landesliste> getLandesliste() {
 		return this.landesliste;
 	}
 
 	/**
-	 * F�gt eine Landesliste zu dieser der Liste aller Landeslisten dieses
-	 * Bundeslandes hinzu.
+	 * Fuegt eine neue Landesliste zum Bundeslandes hinzu.
 	 * 
 	 * @param landesliste
-	 *            Die Landesliste die hinzugef�gt wird.
+	 *            Die Landesliste die hinzugefuegt wird.
+	 * @throws IllegalArgumentException
+	 *             wenn die Landesliste null ist.
 	 */
 	public void addLandesliste(Landesliste landesliste) {
+		if (landesliste == null) {
+			throw new IllegalArgumentException("Landesliste ist null.");
+		}
 		this.landesliste.add(landesliste);
 	}
 
@@ -283,7 +292,19 @@ public class Bundesland extends Gebiet implements Serializable,
 		return anzahl;
 	}
 
+	/**
+	 * Gibt die Landesliste zur jeweiligen Partei zurueck.
+	 * 
+	 * @param partei
+	 *            die gewuenschte Partei.
+	 * @return die Landesliste der Partei im Bundesland.
+	 * @throws IllegalArgumentException
+	 *             wenn die Partei null ist.
+	 */
 	public Landesliste getLandesliste(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Partei ist null.");
+		}
 		Landesliste result = null;
 		for (Landesliste land : this.getLandesliste()) {
 			if (land.getPartei().equals(partei)) {
@@ -295,19 +316,19 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Gibt eine Liste mit den Kandidaten die ein Direktmandate
+	 * Gibt eine Liste mit den Kandidaten die ein Direktmandate zurueck.
 	 * 
 	 * @param part
-	 *            die Partei der Kandidaten
-	 * @return Liste mit den Direktmandate einer Partei
+	 *            die Partei der Kandidaten.
+	 * @return Liste mit den Direktmandate einer Partei.
 	 */
-	public LinkedList<Kandidat> getDirektMandate(Partei part){
-		if(part == null){
+	public LinkedList<Kandidat> getDirektMandate(Partei part) {
+		if (part == null) {
 			throw new IllegalArgumentException("Partei ist leer");
 		}
 		LinkedList<Kandidat> direktmandate = new LinkedList<Kandidat>();
-		for (Wahlkreis wk : this.getWahlkreise()){
-			if (wk.getWahlkreisSieger().getPartei() == part){
+		for (Wahlkreis wk : this.getWahlkreise()) {
+			if (wk.getWahlkreisSieger().getPartei() == part) {
 				direktmandate.add(wk.getWahlkreisSieger());
 			}
 		}

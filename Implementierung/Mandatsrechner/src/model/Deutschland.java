@@ -6,15 +6,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Klasse die alle Bundesländer beinhaltet. 
+ * Klasse die alle Bundeslaender beinhaltet. 
  *
  */
 public class Deutschland extends Gebiet implements Serializable {
 	
-	/** Automatisch generierte serialVersionUID die für das De-/Serialisieren verwendet wird. */
+	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = -2346463735187246165L;
 	
-	/** Liste mit den enthaltenden Bundesländer. */
+	/** Liste mit den enthaltenden Bundeslaender. */
 	private LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 	
 	/**Einwohnerzahl in Deutschland*/
@@ -24,8 +24,8 @@ public class Deutschland extends Gebiet implements Serializable {
 	private int sperrklauselAnzahl;
 	/**
 	 * Angepasster Konstruktor.
-	 * @param name Der Name
-	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten
+	 * @param name Der Name.
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 */
 	public Deutschland(String name, int wahlberechtigte) {
 		this.setName(name);
@@ -34,9 +34,9 @@ public class Deutschland extends Gebiet implements Serializable {
 	
 	/**
 	 * Angepasster Konstruktor.
-	 * @param name Der Name
-	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten
-	 * @param zweitstimme Die Liste aller Zweitstimmenobjekte (pro Partei und Gebiet)
+	 * @param name Der Name.
+	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
+	 * @param zweitstimme Die Liste aller Zweitstimmenobjekte (pro Partei und Gebiet).
 	 */
 	public Deutschland(String name, int wahlberechtigte, LinkedList<Zweitstimme> zweitstimme) {
 		this.setName(name);
@@ -45,17 +45,17 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 	
 	/**
-	 * Gibt eine Liste mit den Bundesländer zurück.
-	 * @return die Liste mit Bundesländer
+	 * Gibt eine Liste mit den Bundeslaender zurueck.
+	 * @return die Liste mit Bundeslaender.
 	 */
 	public LinkedList<Bundesland> getBundeslaender() {
-		return bundeslaender;
+		return this.bundeslaender;
 	}
 	
 	/**
-	 * Setzt eine neue Liste mit Bundeslämder.
-	 * @param bundeslaender die neue Liste
-	 * @throws IllegalArgumentException wenn die Liste leer ist
+	 * Setzt eine neue Liste mit Bundeslaemder.
+	 * @param bundeslaender die neue Liste.
+	 * @throws IllegalArgumentException wenn die Liste leer ist.
 	 */
 	public void setBundeslaender(LinkedList<Bundesland> bundeslaender) throws IllegalArgumentException {
 		if (bundeslaender == null || bundeslaender.isEmpty()) {
@@ -65,8 +65,8 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 	
 	/**
-	 * Fügt ein Bundesland zur Liste hinzu.
-	 * @param bundesland ist das neue Bundesland
+	 * Fuegt ein Bundesland zur Liste hinzu.
+	 * @param bundesland ist das neue Bundesland.
 	 */
 	public void addBundesland(Bundesland bundesland) {
 		if (bundesland == null) {
@@ -137,11 +137,11 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 	
 	/**
-	 * Berechnet und gibt die Einwohnerzahl
-	 * @return die Einwohnerzahl
+	 * Berechnet und gibt die Einwohnerzahl zurueck.
+	 * @return die Einwohnerzahl.
 	 */
 	public int getEinwohneranzahl() {
-		//Einwohneranzahl zurücksetzen
+		//Einwohneranzahl zuruecksetzen
 		einwohneranzahl = 0;
 		for(Bundesland bl : this.bundeslaender){
 			einwohneranzahl += bl.getEinwohnerzahl();
@@ -150,8 +150,8 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Berechnet 5% aller Zweitstimmen in Deutschland und gibt diese Zahl zurueck
-	 * @return 5% der Zweitstimmen in Deutschland
+	 * Berechnet 5% aller Zweitstimmen in Deutschland und gibt diese Zahl zurueck.
+	 * @return 5% der Zweitstimmen in Deutschland.
 	 */
 	public int getSperrklauselAnzahl(){
 		sperrklauselAnzahl = zweitstimmeGesamt / 20;
@@ -168,8 +168,8 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 	
 	/**
-	 * Gibt eine Liste der Wahlkreise aller Bundesländer zurück.
-	 * @return eine Liste der Wahlkreise aller Bundesländer
+	 * Gibt eine Liste der Wahlkreise aller Bundeslaender zurueck.
+	 * @return eine Liste der Wahlkreise aller Bundeslaender
 	 */
 	public ArrayList<Wahlkreis> getWahlkreise() {
 		ArrayList<Wahlkreis> alleWk = new ArrayList<>();
