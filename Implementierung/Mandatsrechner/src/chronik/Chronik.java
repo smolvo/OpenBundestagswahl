@@ -2,52 +2,52 @@ package chronik;
 
 import java.util.Stack;
 
-import model.Stimme;
+import model.Bundestagswahl;
 
 /**
  * Die Chronik setzt Stimmen, die in der GUI verändert
- * wurden zurück. Es können höchstens so viele Stimmen 
- * zurückgesetzt werden, wie in maxStimmen.
+ * wurden zurück. Es können höchstens so viele Bundestagswahlen 
+ * zurückgesetzt werden, wie in maxBundestagswahl.
  * @author 13genesis37
  *
  */
 public class Chronik {
 	
 	/**
-	 * Anzahl der maximalen Stimmen, die zurückgesetzt
+	 * Anzahl der maximalen Bundestagswahlen, die zurückgesetzt
 	 * werden können.
 	 */
-	final private int maxStimmen = 5; 
+	final private int maxBundestagswahlen = 5; 
 	
 	/**
 	 * Ein Stack mit den letzten Stimmen
 	 */
-	Stack<Stimme> stimmen = new Stack<Stimme>();
+	Stack<Bundestagswahl> bundestagswahlen = new Stack<Bundestagswahl>();
 	/**
-	 * Sichert eine Stimme. Wird bei jeder Veränderung
-	 * einer Stimme aufgerufen. Die Operation entspricht
+	 * Sichert eine Bundestagswahl. Wird bei jeder Veränderung
+	 * einer Bundestagswahl aufgerufen. Die Operation entspricht
 	 * dem push Befehl eines Stacks.
-	 * @param s die Veränderte Stimme.
+	 * @param s die Veränderte Bundestagswahl.
 	 */
-	public void sichereStimme(Stimme s) {
+	public void sichereBundestagswahl(Bundestagswahl s) {
 		
-		if (this.stimmen.size() > maxStimmen) {
-			this.stimmen.remove(0);
+		if (this.bundestagswahlen.size() > maxBundestagswahlen) {
+			this.bundestagswahlen.remove(0);
 		}
 		
-		this.stimmen.push(s);
+		this.bundestagswahlen.push(s);
 	}
 	
 	/**
-	 * Restauriert die zuletzt hinzugefügte Stimme.
+	 * Restauriert die zuletzt hinzugefügte Bundestagswahl.
 	 * Entspricht dem pull Befehl eines Stacks.
-	 * @return die zuletzt hinzugefügte Stimme.
+	 * @return die zuletzt hinzugefügte Bundestagswahl.
 	 */
-	public Stimme restauriereStimme() {
-		Stimme s = null;
-		if (this.stimmen.size() > 0) {
-			s = this.stimmen.pop();
+	public Bundestagswahl restauriereBundestagswahl() {
+		Bundestagswahl btw = null;
+		if (this.bundestagswahlen.size() > 0) {
+			btw = this.bundestagswahlen.pop();
 		}
-		return s;
+		return btw;
 	}
 }
