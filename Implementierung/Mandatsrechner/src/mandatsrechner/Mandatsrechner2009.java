@@ -44,7 +44,8 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 
 		// Initialisierung:
 		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
-		bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
+		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), ""));
+		//bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
 
 		// **Sitze fuer jedes Bundesland mithilge des zuteilungsdivisor
 		// berechnen
@@ -163,10 +164,10 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				if (sitzePartei == sitzeBundesland) {
 					isCorrect = true;
 				} else if (sitzePartei < sitzeBundesland) {
-					landesdivisor -= 0.5;
+					landesdivisor -= 1;
 				} else {
 					// sitzanzahl > sitzeBundesland
-					landesdivisor += 0.5;
+					landesdivisor += 1;
 				}
 			}
 
