@@ -12,40 +12,44 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 
 	private int sperrklauselAnzahl;
 	private final int minDirektmandate = 3;
-	/** relevante Dateien**/
+	/** relevante Dateien **/
 	private LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
+
 	public static Mandatsrechner2009 getInstance() {
 		if (Mandatsrechner2009.instance == null) {
 			Mandatsrechner2009.instance = new Mandatsrechner2009();
 		}
 		return Mandatsrechner2009.instance;
 	}
-	
+
 	/**
 	 * Setzt die neue Parteiliste
-	 * @param parteiliste die neue Parteiliste
+	 * 
+	 * @param parteiliste
+	 *            die neue Parteiliste
 	 */
-	public void setRelevanteParteien(LinkedList<Partei> parteiliste){
-		if(parteiliste == null){
+	public void setRelevanteParteien(LinkedList<Partei> parteiliste) {
+		if (parteiliste == null) {
 			throw new IllegalArgumentException("Parteiliste ist leer");
 		}
 		this.relevanteParteien = parteiliste;
 	}
-	
+
 	/**
 	 * Gibt die Liste mit relevanten Parteien
+	 * 
 	 * @return die Liste mit den relevanten Parteien
 	 */
-	public LinkedList<Partei> getRelevanteParteien(){
+	public LinkedList<Partei> getRelevanteParteien() {
 		return this.relevanteParteien;
 	}
-	
+
 	public Bundestagswahl berechneAlles(Bundestagswahl bw) {
 
 		// Initialisierung:
 		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
 		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), ""));
-		//bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
+		// bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
 
 		// **Sitze fuer jedes Bundesland mithilge des zuteilungsdivisor
 		// berechnen
@@ -117,7 +121,6 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		LinkedList<Partei> alleParteien = bw.getParteien(); // Alle Parteien der
 															// Bundestagswahl
 		// relevante Parteien
-		
 
 		for (Partei part : alleParteien) {
 
@@ -174,7 +177,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			for (Partei part : relevanteParteien) {
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT,
 						bl);
-				//System.err.println(direktmandate);
+				// System.err.println(direktmandate);
 				int mindestSitzanzahl = Math.round(bl
 						.getZweitstimmenAnzahl(part) / landesdivisor);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
@@ -183,23 +186,37 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
-						// Partei und 	fuege den i-ten Listenkandidaten in die
+						// Partei und fuege den i-ten Listenkandidaten in die
 						// Sitzverteilung hinzu
+						// Dabei darf der Kandidat kein Wahlkreissieger sein
 						if (bl.getLandesliste(part).getListenkandidaten()
 								.size() >= i + 1) {
 							// TODO Testen
-							bw.getSitzverteilung().addAbgeordnete(
-									bl.getLandesliste(part)
-											.getListenkandidaten().get(i));
-							bl.getLandesliste(part).getListenkandidaten()
-									.get(i).setMandat(Mandat.MANDAT);
+							Kandidat neuerAbgeordneter = bl
+									.getLandesliste(part).getListenkandidaten()
+									.get(i);
+							//Hat der Kandidat schon ein Mandat?
+							if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
+								bw.getSitzverteilung().addAbgeordnete(
+										bl.getLandesliste(part)
+												.getListenkandidaten().get(i));
+								bl.getLandesliste(part).getListenkandidaten()
+										.get(i).setMandat(Mandat.MANDAT);
+							} else {
+								// Kandidat hat schon ein Mandat, deswegen wird
+								// diffKandidat erhöht, damit die Schleife den
+								// fehlenden Kandidaten ausgleicht. Der Kandidat
+								// wird sozusagen übersprungen.
+								diffKandidat++;
+							}
 						} else {
 							// TODO negatives Stimmengewicht
 						}
 					}
 				} else {
 					for (int i = 0; i < diffKandidat; i++) {
-						bl.getDirektMandate(part).get(i).setMandat(Mandat.UEBERHANGMADAT);
+						bl.getDirektMandate(part).get(i)
+								.setMandat(Mandat.UEBERHANGMADAT);
 					}
 				}
 
