@@ -94,7 +94,6 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
 			}
-			// daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

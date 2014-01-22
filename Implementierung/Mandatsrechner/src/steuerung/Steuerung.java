@@ -1,23 +1,68 @@
 package steuerung;
 
+import wahlgenerator.Stimmanteile;
+import model.Bundestagswahl;
 import model.Stimme;
 
-public class Steuerung {
+/**
+ * Diese Klasse repräsentiert die Hauptsteuerung des Programmes.
+ * @author Batman
+ *
+ */
+public final class Steuerung {
 
+	/** zeigt an ob ein Steuerungs-Objekt bereits existiert */
+	private static Steuerung instance;
 	
-	public Steuerung() {
-		
+	/** repräsentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
+	private Bundestagswahl btw;
+	
+	
+	private Steuerung() {
+		// TODO
 	}
 	
-	public void importieren() {
-		
+	public static void importieren() {
+		// TODO
 	}
 	
-	public void exportieren() {
-		
+	public static void exportieren() {
+		// TODO
 	}
 	
-	public void aktualisiereDaten(Stimme stimme, int anzahl) {
-		
+	public static void berechneSitzverteilung(Bundestagswahl btw) {
+		// TODO
+	}
+	
+	public static void zufaelligeWahlgenerierung(Stimmanteile anteile) {
+		// TODO
+	}
+	
+	public static void negStimmgewichtGenerierung(Stimmanteile anteile) {
+		// TODO
+	}
+	
+	public static void aktualisiereDaten(Stimme stimme, int anzahl) {
+		// TODO
+	}
+	
+	public static void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
+		// TODO
+	}
+	
+	public static boolean zurueckSetzen() {
+		// TODO
+		return false;
+	}
+	
+	/**
+	 * Gibt die aktuelle Steuerung aus.
+	 * @return Steuerung
+	 */
+	public static Steuerung getInstance() {
+		if (instance == null) {
+			instance = new Steuerung();
+		}
+		return instance;
 	}
 }
