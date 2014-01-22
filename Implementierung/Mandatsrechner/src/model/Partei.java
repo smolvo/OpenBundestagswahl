@@ -344,6 +344,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		return zweitstimmeGesamt;
 	}
 
+	
 	@Override
 	public int compareTo(Partei andere) {
 		return Integer.compare(this.getZweitstimmeGesamt(), andere.getZweitstimmeGesamt());
