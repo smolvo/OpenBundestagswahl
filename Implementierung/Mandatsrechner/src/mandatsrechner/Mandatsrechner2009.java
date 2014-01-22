@@ -61,16 +61,16 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			sitzanzahl = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 				// TODO Nach erster Nachkommastelle
-				sitzanzahl += this.runden(bl.getEinwohnerzahl()
+				sitzanzahl += Math.round(bl.getEinwohnerzahl()
 						/ zuteilungsdivisor);
 			}
 			if (sitzanzahl == minSitze) {
 				isCorrect = true;
 			} else if (sitzanzahl < minSitze) {
-				zuteilungsdivisor -= 50;
+				zuteilungsdivisor -= 10;
 			} else {
 				// sitzanzahl > minSitze
-				zuteilungsdivisor += 50;
+				zuteilungsdivisor += 10;
 			}
 		}
 		// **Ende
@@ -329,14 +329,21 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	 * @return
 	 * 		die gerundete zahl.
 	 */
-	public int runden(float zahl){
+	public int runden(float zahl) {
 		
 		int kommastelle = (int) ((zahl - (int) zahl) * 10);
 		//System.err.println(kommastelle);
 		int gerundet = 0;
-		if(kommastelle >=5){
+		if (kommastelle == 5) {
+			int rand = (Math.random() < 0.5) ? 0 : 1;
+			if (rand == 1) {
+				gerundet = (int) Math.ceil(zahl);
+			} else {
+				gerundet = (int) Math.floor(zahl);
+			}
+		} else if (kommastelle > 5) {
 			gerundet = (int) Math.ceil(zahl);
-		}else{
+		} else {
 			gerundet = (int) Math.floor(zahl);
 		}
 		//System.err.println("###### "+zahl+" "+gerundet);
