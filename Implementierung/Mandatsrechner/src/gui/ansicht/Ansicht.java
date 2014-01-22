@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 import gui.WahlFenster;
+import gui.ansicht.diagrammfenster.DiagrammFenster;
 import gui.ansicht.tabellenfenster.TabellenFenster;
 import model.Deutschland;
 import model.Gebiet;

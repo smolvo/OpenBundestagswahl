@@ -1,9 +1,10 @@
 package gui.ansicht.tabellenfenster;
 
 import java.awt.Color;
+import java.util.Collections;
+import java.util.List;
 
 import gui.GUIPartei;
-
 import gui.ansicht.Ansicht;
 
 import javax.swing.JScrollPane;
@@ -70,7 +71,9 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Deutschland land) {
 		BundDaten daten = new BundDaten();
-		for (Zweitstimme zw : land.getZweitstimmen()) {
+		List<Zweitstimme> stimmen = land.getZweitstimmen();
+		Collections.sort(stimmen);
+		for (Zweitstimme zw : stimmen) {
 			GUIPartei gp = parteiErstellen(zw);
 			double proZweit = (Math
 					.rint(((double) zw.getAnzahl() / (double) land
@@ -96,7 +99,9 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Bundesland bl) {
 		LandDaten daten = new LandDaten();
-		for (Zweitstimme zw : bl.getZweitstimmen()) {
+		List<Zweitstimme> stimmen = bl.getZweitstimmen();
+		Collections.sort(stimmen);
+		for (Zweitstimme zw : stimmen) {
 			GUIPartei gp = parteiErstellen(zw);
 			double proZweit = (Math.rint(((double) zw.getAnzahl() / (double) bl
 					.getZweitstimmeGesamt()) * 1000) / 10);

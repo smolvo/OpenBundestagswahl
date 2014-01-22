@@ -1,4 +1,4 @@
-package gui.ansicht;
+package gui.ansicht.diagrammfenster;
 
 import java.awt.BorderLayout;
 
