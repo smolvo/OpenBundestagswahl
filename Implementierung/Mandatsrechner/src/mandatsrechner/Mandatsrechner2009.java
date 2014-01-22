@@ -110,10 +110,6 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				gewinner.setMandat(Mandat.DIREKMANDAT);
 				wk.setWahlkreisSieger(gewinner);
 				bw.getSitzverteilung().addAbgeordnete(gewinner);
-				if(bl.getName().equals("Hamburg")){
-					System.err.println("Gewinnerpartei: "+gewinner.getName()+" "+gewinner.getPartei().getName()+" "+gewinner.getPartei().getAnzahlMandate(Mandat.DIREKMANDAT, bl));
-					
-				}
 			}
 		
 		}
@@ -192,7 +188,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 				part.addMindestsitzanzahl(bl,
 						Math.max(direktmandate, mindestSitzanzahl));
-				System.err.println(direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl));
+				//System.err.println(direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl));
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
@@ -346,5 +342,9 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		//System.err.println("###### "+zahl+" "+gerundet);
 		return gerundet;
 		//return Math.round(zahl);
+	}
+	
+	public float getZuteilungsdivisor(){
+		return this.zuteilungsdivisor;
 	}
 }
