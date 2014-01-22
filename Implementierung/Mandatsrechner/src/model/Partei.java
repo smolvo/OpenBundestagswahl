@@ -418,11 +418,23 @@ public class Partei implements Serializable, Comparable<Partei> {
 					"Mandat oder Bundesland waren null.");
 		}
 		int anzahlMandate = 0;
-		for (Kandidat kandidat : this.getMitglieder()) {
-			Landesliste landesliste = kandidat.getLandesliste(); 
-			if (landesliste != null && kandidat.getMandat().equals(m)
-					&& landesliste.getBundesland().equals(b)) {
-				anzahlMandate++;
+		/* Kandidaten (Direktmandate) muessen nicht in der Landesliste sein!!!
+		 * Wichtig!!! Bitte beachten.
+		 * 
+		 */
+		if(m.equals(Mandat.DIREKMANDAT)){
+			for (Wahlkreis wk : b.getWahlkreise()) {
+				if (wk.getWahlkreisSieger()!=null && wk.getWahlkreisSieger().getPartei().equals(this)) {
+					anzahlMandate++;
+				}
+			}
+		} else {
+			for (Kandidat kandidat : this.getMitglieder()) {
+				Landesliste landesliste = kandidat.getLandesliste(); 
+				if (landesliste != null && kandidat.getMandat().equals(m)
+						&& landesliste.getBundesland().equals(b)) {
+					anzahlMandate++;
+				}
 			}
 		}
 		return anzahlMandate;

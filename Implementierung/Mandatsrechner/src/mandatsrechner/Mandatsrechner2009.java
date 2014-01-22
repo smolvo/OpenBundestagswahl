@@ -96,9 +96,9 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				int max = 0;
 				Kandidat gewinner = null;
 				for (Erststimme erst : wk.getErststimmen()) {
-					// TODO parallelit�t!
+					// TODO parallelitaet!
 					// TODO Kandidaten mit gleicher Erststimmenanzahl
-
+					
 					if (max < erst.getAnzahl()) {
 						// Kandidaten Mandat zuweisen und als Wahlkreissieger in
 						// den Wahlkreis eintragen
@@ -106,16 +106,22 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 						max = erst.getAnzahl();
 					}
 				}
+				
 				gewinner.setMandat(Mandat.DIREKMANDAT);
 				wk.setWahlkreisSieger(gewinner);
 				bw.getSitzverteilung().addAbgeordnete(gewinner);
-
+				if(bl.getName().equals("Hamburg")){
+					System.err.println("Gewinnerpartei: "+gewinner.getName()+" "+gewinner.getPartei().getName()+" "+gewinner.getPartei().getAnzahlMandate(Mandat.DIREKMANDAT, bl));
+					
+				}
 			}
+		
 		}
+		
 		// **Ende
 		// **relevanten Parteien bestimmen
 		/*
-		 * Hier findet die �berpr�fung der Sperrklausel, doch wo sind alle
+		 * Hier findet die Ueberpruefung der Sperrklausel, doch wo sind alle
 		 * Parteien? Ich br�uchte eine Liste von allen Parteien die �berpr�ft
 		 * werden m�ssen die die Bedingungen erf�llen (Sperrklausel) kommen in
 		 * den Bundestag (Flag setzen) Als platzhalter erstelle ich vorerst eine
@@ -130,9 +136,9 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 
 			if (part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl
 					|| part.getAnzahlDirektmandate() >= this.minDirektmandate) {
-				// Partei im Bundestag falls Anforderungen erf�llt sind.
+				// Partei im Bundestag falls Anforderungen erfuellt sind.
 				part.setImBundestag(true);
-				// Partei in die Liste hinzuf�gen
+				// Partei in die Liste hinzufuegen
 				if (!relevanteParteien.contains(part)) {
 					relevanteParteien.add(part);
 				}
@@ -208,9 +214,9 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 										.get(i).setMandat(Mandat.MANDAT);
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird
-								// diffKandidat erhöht, damit die Schleife den
+								// diffKandidat erhoeht, damit die Schleife den
 								// fehlenden Kandidaten ausgleicht. Der Kandidat
-								// wird sozusagen übersprungen.
+								// wird sozusagen Uebersprungen.
 								diffKandidat++;
 							}
 						} else {
@@ -218,7 +224,8 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 						}
 					}
 				} else {
-					for (int i = 0; i < diffKandidat; i++) {
+					//System.err.println("-"+Math.abs(diffKandidat));
+					for (int i = 0; i < Math.abs(diffKandidat); i++) {
 						bl.getDirektMandate(part).get(i)
 								.setMandat(Mandat.UEBERHANGMADAT);
 					}
@@ -322,11 +329,13 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	 * Rundet die Kommazahl mit dem gew�nschten
 	 * Rundungsalgprithmus auf oder ab.
 	 * @param zahl
+	 * 		die zu rundende zahl.
 	 * @return
+	 * 		die gerundete zahl.
 	 */
 	public int runden(float zahl){
 		
-		/*int kommastelle = (int) ((zahl - (int) zahl) * 10);
+		int kommastelle = (int) ((zahl - (int) zahl) * 10);
 		//System.err.println(kommastelle);
 		int gerundet = 0;
 		if(kommastelle >=5){
@@ -335,7 +344,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			gerundet = (int) Math.floor(zahl);
 		}
 		//System.err.println("###### "+zahl+" "+gerundet);
-		return gerundet;*/
-		return Math.round(zahl);
+		return gerundet;
+		//return Math.round(zahl);
 	}
 }

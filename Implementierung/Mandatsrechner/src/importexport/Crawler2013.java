@@ -296,6 +296,7 @@ public class Crawler2013 extends Crawler {
 					kandidaten.add(mitglied);
 					kandidatenInfo.add(new String[] { iterative[4],
 							iterative[5], iterative[6] });
+
 					parteien.get(j).addMitglied(mitglied);
 					break;
 				}
