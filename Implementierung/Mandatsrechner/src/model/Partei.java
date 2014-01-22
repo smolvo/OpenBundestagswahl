@@ -419,8 +419,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		int anzahlMandate = 0;
 		for (Kandidat kandidat : this.getMitglieder()) {
-			if (kandidat.getMandat().equals(m)
-					&& kandidat.getPartei().getLandesliste(b).getBundesland().equals(b)) {
+			Landesliste landesliste = kandidat.getLandesliste(); 
+			if (landesliste != null && kandidat.getMandat().equals(m)
+					&& landesliste.getBundesland().equals(b)) {
 				anzahlMandate++;
 			}
 		}

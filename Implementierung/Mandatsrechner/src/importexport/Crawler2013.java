@@ -370,6 +370,7 @@ public class Crawler2013 extends Crawler {
 								&& this.getBundeslandName(
 										kandidatenInfo.get(k)[1]).equals(
 										bundeslaender.get(i).getName())) {
+							kandidaten.get(k).setLandesliste(landesliste);
 							landesliste
 									.addKandidat(
 											Integer.parseInt(kandidatenInfo

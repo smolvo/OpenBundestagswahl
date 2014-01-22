@@ -51,13 +51,14 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
+				System.out.println(Math.floor(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
 				if (Math.floor(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
 			}
 			if (!isCorrect) {
-				parteidivisor += 1;
+				parteidivisor -= 1;
 			}
 		}
 		
@@ -66,7 +67,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		if (rechner2009.debug) {
 			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
 			for (Partei partei : relevanteParteien) {
-				System.out.println(partei.getName() + ": Direktmandate-"+partei.getAnzahlMandate(Mandat.DIREKMANDAT)+" Sitze-" + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
+				System.out.println(partei.getName() + ": " + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
 			}
 		}
 		return bw;

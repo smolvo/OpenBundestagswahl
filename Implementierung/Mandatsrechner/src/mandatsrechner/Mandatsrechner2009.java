@@ -61,29 +61,33 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			sitzanzahl = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 				// TODO Nach erster Nachkommastelle
-				sitzanzahl += Math.round(bl.getEinwohnerzahl()
+				sitzanzahl += this.runden(bl.getEinwohnerzahl()
 						/ zuteilungsdivisor);
 			}
 			if (sitzanzahl == minSitze) {
 				isCorrect = true;
 			} else if (sitzanzahl < minSitze) {
-				zuteilungsdivisor -= 0.1;
+				zuteilungsdivisor -= 50;
 			} else {
 				// sitzanzahl > minSitze
-				zuteilungsdivisor += 0.1;
+				zuteilungsdivisor += 50;
 			}
 		}
 		// **Ende
 
 		if (super.debug) {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
+			int summe = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
+				int zahl = this.runden(bl.getEinwohnerzahl()
+						/ zuteilungsdivisor);
+				summe += zahl;
 				System.out
 						.println(bl.getName()
 								+ ": "
-								+ Math.round(bl.getEinwohnerzahl()
-										/ zuteilungsdivisor));
+								+ zahl);
 			}
+			System.out.println("Summe aller Sitze: " + summe);
 		}
 
 		// **Direkmandate bestimmen
@@ -146,43 +150,43 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 						+ ((part.isImBundestag()) ? "Ja" : "Nein"));
 			}
 		}
-
+		
 		float landesdivisor = 0;
 		for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 
-			int sitzeBundesland = Math.round(bl.getEinwohnerzahl()
+			int sitzeBundesland = this.runden(bl.getEinwohnerzahl()
 					/ zuteilungsdivisor);
 			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
 			isCorrect = false;
-			// System.err.println(sitzeBundesland+" "+landesdivisor);
+			//System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
 			while (!isCorrect) {
 				int sitzePartei = 0;
 
 				for (Partei part : relevanteParteien) {
 					// TODO Nach erster Nachkommastelle
-					sitzePartei += Math.round(bl.getZweitstimmenAnzahl(part)
+					sitzePartei += this.runden(bl.getZweitstimmenAnzahl(part)
 							/ landesdivisor);
 				}
-				// System.out.println(sitzePartei + " " + sitzeBundesland);
 				if (sitzePartei == sitzeBundesland) {
 					isCorrect = true;
 				} else if (sitzePartei < sitzeBundesland) {
-					landesdivisor -= 1;
+					landesdivisor -= 10;
 				} else {
 					// sitzanzahl > sitzeBundesland
-					landesdivisor += 1;
+					landesdivisor += 10;
 				}
 			}
 
 			for (Partei part : relevanteParteien) {
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT,
 						bl);
-				// System.err.println(direktmandate);
-				int mindestSitzanzahl = Math.round(bl
+				
+				int mindestSitzanzahl = this.runden(bl
 						.getZweitstimmenAnzahl(part) / landesdivisor);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 				part.addMindestsitzanzahl(bl,
 						Math.max(direktmandate, mindestSitzanzahl));
+				System.err.println(direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl));
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
@@ -224,13 +228,17 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			if (this.debug) {
 				System.out.println("\nLandesdivisor " + bl.getName() + ": "
 						+ landesdivisor);
+				int sum = 0;
 				for (Partei part : relevanteParteien) {
-					System.out.println("Sitze "
+					System.out.println(""
 							+ part.getName()
 							+ ": "
-							+ Math.round(bl.getZweitstimmenAnzahl(part)
-									/ landesdivisor));
+							+ bl.getZweitstimmenAnzahl(part)
+							+ " - "
+							+ part.getMindestsitzanzahl(bl));
+					sum += part.getMindestsitzanzahl(bl);
 				}
+				System.out.println("Summe: " + sum);
 
 			}
 
@@ -309,5 +317,25 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/**
+	 * Rundet die Kommazahl mit dem gewünschten
+	 * Rundungsalgprithmus auf oder ab.
+	 * @param zahl
+	 * @return
+	 */
+	public int runden(float zahl){
+		
+		/*int kommastelle = (int) ((zahl - (int) zahl) * 10);
+		//System.err.println(kommastelle);
+		int gerundet = 0;
+		if(kommastelle >=5){
+			gerundet = (int) Math.ceil(zahl);
+		}else{
+			gerundet = (int) Math.floor(zahl);
+		}
+		//System.err.println("###### "+zahl+" "+gerundet);
+		return gerundet;*/
+		return Math.round(zahl);
+	}
 }
