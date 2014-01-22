@@ -1,9 +1,12 @@
 package gui.ansicht;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Paint;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -57,6 +60,7 @@ public class WahlkreisDiagramm {
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Erststimme> er = wk.getErststimmen();
+		Collections.sort(er);
 		for (int i = 0; i < 4; i++) {
 			double proZweit = (Math
 					.rint(((double) er.get(i).getAnzahl() / (double) wk
@@ -76,12 +80,14 @@ public class WahlkreisDiagramm {
 		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
 				null, result, PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
-		BarRenderer barRenderer = (BarRenderer) plot.getRenderer();
-
-		// färben
+		// färben der Parteienbalken
+		Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
-			barRenderer.setSeriesPaint(i, parteien.get(i).getFarbe());
+			farben[i] = parteien.get(i).getFarbe();
 		}
+		farben[farben.length - 1] = Color.GRAY;
+		BarRenderer barRenderer = new BalkenRenderer(farben);
+		plot.setRenderer(barRenderer);
 		plot.setForegroundAlpha(1.0f);
 
 		return chart;

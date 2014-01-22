@@ -62,7 +62,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 
 	@Override
 	public int compareTo(Zweitstimme andere) {
-		return Integer.compare(this.getAnzahl(), andere.getAnzahl());
+		return Integer.compare(andere.getAnzahl(), this.getAnzahl());
 	}
 
 	@Override

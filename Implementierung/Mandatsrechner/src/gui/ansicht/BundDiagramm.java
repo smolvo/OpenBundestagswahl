@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -60,9 +62,11 @@ public class BundDiagramm {
 	private JFreeChart createChart(Deutschland land) {
 		ArrayList<Integer> daten = new ArrayList<Integer>();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
+		List<Zweitstimme> stimmen = land.getZweitstimmen();
+		Collections.sort(stimmen);
 		DefaultPieDataset result = new DefaultPieDataset();
 		int sum = 0;
-		for (Zweitstimme zw : land.getZweitstimmen()) {
+		for (Zweitstimme zw : stimmen) {
 			int sitze = 0;
 			for (Kandidat kan : zw.getPartei().getMitglieder()) {
 				if (!(kan.getMandat().equals(Mandat.KEINMANDAT))) {
