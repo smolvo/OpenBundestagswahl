@@ -10,28 +10,30 @@ import model.Stimme;
 
 /**
  * Diese Klasse repräsentiert die Hauptsteuerung des Programmes.
+ * 
  * @author Batman
- *
+ * 
  */
 public final class Steuerung {
 
 	/** zeigt an ob ein Steuerungs-Objekt bereits existiert */
 	private static Steuerung instance;
-	
+
 	/** repräsentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
 	private Bundestagswahl btw;
-	
+
 	/**
 	 * Privater Konstruktor, wegen Benutzung des Singleton-Patterns.
 	 */
 	private Steuerung() {
 	}
-	
+
 	/**
-	 * Diese Methode importiert eine neue Bundestagswahl in
-	 * das Programm mit einem Vektor, der gefüllt ist mit
-	 * den dazu relevanten Daten.
-	 * @param csvDateien relevante Daten
+	 * Diese Methode importiert eine neue Bundestagswahl in das Programm mit
+	 * einem Vektor, der gefüllt ist mit den dazu relevanten Daten.
+	 * 
+	 * @param csvDateien
+	 *            relevante Daten
 	 * @return neue Bundestagswahl
 	 */
 	public static Bundestagswahl importieren(File[] csvDateien) {
@@ -45,73 +47,83 @@ public final class Steuerung {
 		}
 		return w;
 	}
-	
+
 	/**
-	 * Diese Methode exportiert die aktuelle Bundestagswahl
-	 * auf den angegebenen Pfad.
-	 * @param pfad Pfad
+	 * Diese Methode exportiert die aktuelle Bundestagswahl auf den angegebenen
+	 * Pfad.
+	 * 
+	 * @param pfad
+	 *            Pfad
 	 */
 	public static void exportieren(String pfad) {
-		
+
 	}
-	
+
 	/**
-	 * Diese Methode startet eine neue Berechnung der Sitzverteilung
-	 * der aktuellen Bundestagswahl.
-	 * @param btw aktuelle Bundestagswahl
+	 * Diese Methode startet eine neue Berechnung der Sitzverteilung der
+	 * aktuellen Bundestagswahl.
+	 * 
+	 * @param btw
+	 *            aktuelle Bundestagswahl
 	 */
 	public static void berechneSitzverteilung(Bundestagswahl btw) {
 		// TODO
 	}
-	
+
 	/**
-	 * Diese Methode generiert eine zufällige Wahl auf Grund 
-	 * bestimmter Stimmenanteile.
-	 * @param anteile die Stimmenanteile
+	 * Diese Methode generiert eine zufällige Wahl auf Grund bestimmter
+	 * Stimmenanteile.
+	 * 
+	 * @param anteile
+	 *            die Stimmenanteile
 	 */
 	public static Bundestagswahl zufaelligeWahlgenerierung(Stimmanteile anteile) {
 		// TODO
 		return null;
 	}
-	
-	
+
 	public static void negStimmgewichtGenerierung(Stimmanteile anteile) {
 		// TODO
 	}
-	
+
 	/**
-	 * Diese Methode aktualisiert den Datensatz, sobald eine
-	 * bestimmte Anzahl an Erst- oder Zweitstimmen geändert
-	 * wurde.
-	 * @param stimme die betroffene Stimme
-	 * @param anzahl der neue Wert
+	 * Diese Methode aktualisiert den Datensatz, sobald eine bestimmte Anzahl an
+	 * Erst- oder Zweitstimmen geändert wurde.
+	 * 
+	 * @param stimme
+	 *            die betroffene Stimme
+	 * @param anzahl
+	 *            der neue Wert
 	 */
 	public static void aktualisiereDaten(Stimme stimme, int anzahl) {
 		// TODO
 	}
-	
+
 	/**
 	 * Durch diese Methode wird die aktuelle Bundestagswahl mit einer
 	 * ausgewählten Bundestagswahl verglichen.
-	 * @param vergleichsWahl andere Wahl
+	 * 
+	 * @param vergleichsWahl
+	 *            andere Wahl
 	 */
 	public static void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
 		// TODO
 	}
-	
+
 	/**
-	 * Mit dieser Methode wird das Programm eine Stimmenänderung
-	 * zurück gesetzt. Es wird ausgegeben, ob dies erfolgreich
-	 * war.
+	 * Mit dieser Methode wird das Programm eine Stimmenänderung zurück gesetzt.
+	 * Es wird ausgegeben, ob dies erfolgreich war.
+	 * 
 	 * @return true false
 	 */
 	public static boolean zurueckSetzen() {
 		// TODO
 		return false;
 	}
-	
+
 	/**
 	 * Gibt die aktuelle Steuerung aus.
+	 * 
 	 * @return Steuerung
 	 */
 	public static Steuerung getInstance() {
@@ -123,6 +135,7 @@ public final class Steuerung {
 
 	/**
 	 * Gibt die Bundestagswahl aus.
+	 * 
 	 * @return Bundestagswahl
 	 */
 	public Bundestagswahl getBtw() {
@@ -131,7 +144,9 @@ public final class Steuerung {
 
 	/**
 	 * Setzt die Bundestagswahl.
-	 * @param btw Bundestagswahl
+	 * 
+	 * @param btw
+	 *            Bundestagswahl
 	 */
 	public void setBtw(Bundestagswahl btw) {
 		this.btw = btw;

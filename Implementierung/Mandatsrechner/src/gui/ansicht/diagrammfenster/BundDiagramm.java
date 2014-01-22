@@ -32,7 +32,7 @@ import org.jfree.util.Rotation;
  */
 public class BundDiagramm {
 
-	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
+	/** repräsentiert den Bereich auf dem das Diagramm angezeigt wird. */
 	private final JPanel flaeche;
 
 	/**

@@ -4,6 +4,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import gui.ansicht.diagrammfenster.BundDiagramm;
+import gui.ansicht.diagrammfenster.DiagrammFenster;
 import gui.ansicht.tabellenfenster.BundTableModel;
 
 import javax.swing.JFrame;
@@ -49,6 +50,7 @@ public class VergleichsFenster extends JFrame {
 		JTable jTabelle = new JTable(tabelle);
 		JScrollPane scrollPane = new JScrollPane(jTabelle);
 
+		// Das Vergleichstabellenfenster
 		this.gbc = new GridBagConstraints();
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
@@ -58,19 +60,21 @@ public class VergleichsFenster extends JFrame {
 		gbc.fill = GridBagConstraints.BOTH;
 		add(scrollPane, gbc);
 
-		BundDiagramm diagrammErsteWahl = new BundDiagramm(vergleich.getBtw1(),
-				new JPanel());
+		// Diagramm der ersten Bundestagswahl
+		DiagrammFenster diagramm1 = new DiagrammFenster();
+		diagramm1.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(diagrammErsteWahl, gbc);
+		add(diagramm1, gbc);
 
-		BundDiagramm diagrammZweiteWahl = new BundDiagramm(vergleich.getBtw2(),
-				new JPanel());
+		// Diagramm der zweiten Bundestagswahl
+		DiagrammFenster diagramm2 = new DiagrammFenster();
+		diagramm2.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
 		gbc.gridx = 2;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(diagrammZweiteWahl, gbc);
+		add(diagramm2, gbc);
 
 	}
 }
