@@ -167,6 +167,16 @@ public class Deutschland extends Gebiet implements Serializable {
 		return anzahl;
 	}
 	
+	public int getErststimmenAnzahl(Partei partei) {
+		int anzahl = 0;
+		for (Bundesland bl: this.getBundeslaender()) {
+			for (Wahlkreis wahlkreis: bl.getWahlkreise()) {
+				anzahl += wahlkreis.getErststimmenAnzahl(partei);
+			}
+		}
+		return anzahl;
+	}
+	
 	/**
 	 * Gibt eine Liste der Wahlkreise aller Bundeslaender zurueck.
 	 * @return eine Liste der Wahlkreise aller Bundeslaender

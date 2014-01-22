@@ -227,6 +227,16 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		return anzahl;
 	}
 
+	public int getErststimmenAnzahl(Partei partei) {
+		int anzahl = 0;
+		for (Erststimme erststimme: this.getErststimmen()) {
+			if (erststimme.getKandidat().getPartei() == partei) {
+				anzahl = erststimme.getAnzahl();
+			}
+		}
+		return anzahl;
+	}
+	
 	/**
 	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zur�ck und null, wenn
 	 * kein solches Objekt mit der gegebenen Partei existiert.

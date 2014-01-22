@@ -61,13 +61,13 @@ public class Wahlvergleich {
 					String partei = parteiWahl1.getName();
 					// index der ersten Partei aus BTW 1
 					
-					int indexErststimmePartei1 = btw1.getDeutschland().getErststimmen().indexOf(parteiWahl1);
+//					int indexErststimmePartei1 = btw1.getDeutschland().getErststimmen().indexOf(parteiWahl1);
 					// index der zweiten Partei aus BTW2
-					int indexErststimmePartei2 = btw2.getDeutschland().getErststimmen().indexOf(parteiWahl2);
+//					int indexErststimmePartei2 = btw2.getDeutschland().getErststimmen().indexOf(parteiWahl2);
 					// Anzahl Erststimmen der ersten Partei
-					int anzahlEinsErst = btw1.getDeutschland().getErststimmen().get(indexErststimmePartei1).getAnzahl();
+					int anzahlEinsErst = btw1.getDeutschland().getErststimmenAnzahl(parteiWahl1);
 					// Anzahl der Erststimmen der zweiten Partei
-					int anzahlZweiErst = btw2.getDeutschland().getErststimmen().get(indexErststimmePartei2).getAnzahl();
+					int anzahlZweiErst = btw2.getDeutschland().getErststimmenAnzahl(parteiWahl2);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 1
 					double prozentEinsErst = (Math.rint(((double) anzahlEinsErst / (double) btw1.getDeutschland().getErststimmeGesamt()) * 1000) / 10);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 2
