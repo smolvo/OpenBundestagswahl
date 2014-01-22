@@ -1,10 +1,10 @@
 package mandatsrechner;
 
-import java.util.HashMap;
 import java.util.List;
 
 import model.Bundesland;
 import model.Bundestagswahl;
+import model.Kandidat;
 import model.Mandat;
 import model.Wahlkreis;
 import model.Partei;
@@ -68,7 +68,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
 				//System.out.println(Math.floor(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
-				if (Math.floor(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
+				if (rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -78,7 +78,54 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			}
 		}
 		
-	
+		for (Partei partei : relevanteParteien) {
+			int neueSitzanzahl = rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor); 
+			int diffSitze = neueSitzanzahl - partei.getMindestsitzAnzahl();
+			//System.out.println(partei.getName() + " " + diffSitze);
+			if (diffSitze > 0) {
+				isCorrect = false;
+				float multiplikator = 0.1f;
+				while (!isCorrect) {
+					int sitzeBundesland = 0;
+					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
+						sitzeBundesland += rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator);
+						
+					}
+					
+					//System.err.println(partei.getName() + " " + multiplikator);
+					if (sitzeBundesland == neueSitzanzahl) {
+						isCorrect = true;
+					} else if (sitzeBundesland < neueSitzanzahl) {
+						multiplikator += 0.1f;
+					} else {
+						multiplikator -= 0.001f;
+					}
+				}
+				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
+					int sitzeBundesland = rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator);
+					if (sitzeBundesland != partei.getMindestsitzanzahl(bl)) {
+						int diffSitzeBundesland = sitzeBundesland - partei.getMindestsitzanzahl(bl);
+						for (int i = 0; i < diffSitzeBundesland; i++) {
+							Kandidat neuerAbgeordneter = partei.getLandesliste(bl).getListenkandidaten().get(i);
+							if (neuerAbgeordneter == null) {
+								// Negatives Stimmgewicht.
+								System.err.println("Kein Abgeordneter gefunden.");
+							} else if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
+								bw.getSitzverteilung().addAbgeordnete(neuerAbgeordneter);
+								neuerAbgeordneter.setMandat(Mandat.AUSGLEICHSMANDAT);
+							} else {
+								
+								diffSitzeBundesland += 1;
+							}
+							//System.err.println("Add "+diffSitzeBundesland+" candidates from "+partei.getName()+" to "+bl.getName());
+						}
+						
+					}
+				}
+				
+			}
+			
+		}
 		
 		if (rechner2009.debug) {
 			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
