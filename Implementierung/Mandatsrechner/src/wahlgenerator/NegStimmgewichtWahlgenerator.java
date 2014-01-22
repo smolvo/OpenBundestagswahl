@@ -10,11 +10,13 @@ import model.Bundestagswahl;
 
 public class NegStimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
 
+
 	public NegStimmgewichtWahlgenerator(Bundestagswahl basisWahl,
 			List<Stimmanteile> stimmanteile) {
 		super(basisWahl, stimmanteile);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public void verteileStimmen() {
 		// TODO

@@ -83,6 +83,11 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		return erststimmeGesamt;
 	}
 	
+	/**
+	 * Gibt das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur gegebenen Partei zugehörig ist zurück.
+	 * @param partei die zugehörige Partei zur erwarteten Erststimme
+	 * @return das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur gegebenen Partei zugehörig ist
+	 */
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
 		for (Erststimme erst : this.erststimmen) {

@@ -422,9 +422,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 		 * Wichtig!!! Bitte beachten.
 		 * 
 		 */
-		if(m.equals(Mandat.DIREKMANDAT)){
+		if (m.equals(Mandat.DIREKMANDAT)) {
 			for (Wahlkreis wk : b.getWahlkreise()) {
-				if (wk.getWahlkreisSieger()!=null && wk.getWahlkreisSieger().getPartei().equals(this)) {
+				if (wk.getWahlkreisSieger() != null && wk.getWahlkreisSieger().getPartei().equals(this)) {
 					anzahlMandate++;
 				}
 			}

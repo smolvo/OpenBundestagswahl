@@ -7,8 +7,15 @@ import java.util.LinkedList;
 
 import model.Bundestagswahl;
 
+/**
+ * Einfache Testklasse zum Wahlgenerator.
+ */
 public class TestWahlgenerator {
 
+	/**
+	 * Main Methode zum testen
+	 * @param args Argumente
+	 */
 	public static void main(String[] args) {
 		
 		ImportExportManager i = new ImportExportManager();
@@ -19,7 +26,6 @@ public class TestWahlgenerator {
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("Leine gültige CSV-Datei :/");
 		}
@@ -36,7 +42,7 @@ public class TestWahlgenerator {
 		
 		Bundestagswahl genWahl = wg.erzeugeBTW();
 		
-		System.out.println(System.currentTimeMillis() -start + "ms Laufzeit");
+		System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
 		
 		i.exportieren("files/random.csv", genWahl);
 		

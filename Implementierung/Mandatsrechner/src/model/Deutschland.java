@@ -143,7 +143,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	public int getEinwohneranzahl() {
 		//Einwohneranzahl zuruecksetzen
 		einwohneranzahl = 0;
-		for(Bundesland bl : this.bundeslaender){
+		for (Bundesland bl : this.bundeslaender) {
 			einwohneranzahl += bl.getEinwohnerzahl();
 		}
 		return einwohneranzahl;
@@ -153,7 +153,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	 * Berechnet 5% aller Zweitstimmen in Deutschland und gibt diese Zahl zurueck.
 	 * @return 5% der Zweitstimmen in Deutschland.
 	 */
-	public int getSperrklauselAnzahl(){
+	public int getSperrklauselAnzahl() {
 		sperrklauselAnzahl = zweitstimmeGesamt / 20;
 		return sperrklauselAnzahl;
 	}
@@ -161,7 +161,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public int getZweitstimmenAnzahl(Partei partei) {
 		int anzahl = 0;
-		for(Bundesland bl : this.getBundeslaender()){
+		for (Bundesland bl : this.getBundeslaender()) {
 			anzahl += bl.getZweitstimmenAnzahl(partei);
 		}
 		return anzahl;

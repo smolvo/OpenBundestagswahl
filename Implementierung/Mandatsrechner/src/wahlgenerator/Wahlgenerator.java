@@ -16,12 +16,21 @@ import model.Zweitstimme;
  */
 public class Wahlgenerator extends AbstrakterWahlgenerator {
 
+	/**
+	 * Erzeugt einen neuen Wahlgenerator.
+	 * @param basisWahl Bundestagswahl mit Basisdaten (Gebiete, Kandidaten, usw...)
+	 * @param stimmanteile Eine Liste von Stimmanteilen auf Basis derer die Stimmen verteilt werden.
+	 */
 	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
 		// TODO check das jede Partei in Stimmanteile auch in btw vorkommt
 		// umgekehrt muss nicht sein
 		super(basisWahl, stimmanteile);
 	}
 	
+	/**
+	 * Generiert eine Bundestagswahl auf basis der BTW des basisWahl Attributs und der Liste der Stimmanteile.
+	 * @return eine generierte Bundestagswahl
+	 */
 	public Bundestagswahl erzeugeBTW() {
 		
 		Bundestagswahl clone = null;
@@ -67,7 +76,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			
 			// die aktuelle Partei
 			for (Partei part : btw.getParteien()) {
-				if ( part.getName().equals(saPartei.getName()) ) {
+				if (part.getName().equals(saPartei.getName())) {
 					partei = part;
 				}
 			}
@@ -97,7 +106,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 					
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min( (anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getErststimmeGesamt()) );
+					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getErststimmeGesamt()));
 					
 					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
 					// zufällig eine in dem Intervall [1,max]
@@ -120,7 +129,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 					
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min( (anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getZweitstimmeGesamt()) );
+					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getZweitstimmeGesamt()));
 					
 					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
 					// zufällig eine in dem Intervall [1,max]

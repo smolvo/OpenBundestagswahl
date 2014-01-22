@@ -57,6 +57,7 @@ public abstract class AbstrakterWahlgenerator {
 	/**
 	 * Diese Methode verteilt alle Erst- und Zweitstimmen auf die Wahlkreise
 	 * der Bundestagswahl.
+	 * @param btw Die Bundestagswahl auf diejenige die Stimmen verteilt werden sollen
 	 */
 	public abstract void verteileStimmen(Bundestagswahl btw);
 
