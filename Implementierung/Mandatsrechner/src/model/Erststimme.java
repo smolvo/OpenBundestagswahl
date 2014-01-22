@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Klassen Gebiet und Kandidat zusammen arbeitet. Ausserdem erbt diese von der
  * Klasse Stimme.
  */
-public class Erststimme extends Stimme implements Serializable {
+public class Erststimme extends Stimme implements Serializable, Comparable<Erststimme> {
 
 	/**
 	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
@@ -83,6 +83,11 @@ public class Erststimme extends Stimme implements Serializable {
 					"Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
 		}
 		this.anzahl += anzahl;
+	}
+
+	@Override
+	public int compareTo(Erststimme andere) {
+		return Integer.compare(andere.getAnzahl(), this.getAnzahl());
 	}
 
 }
