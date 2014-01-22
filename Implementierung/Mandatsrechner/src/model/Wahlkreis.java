@@ -82,6 +82,16 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return erststimmeGesamt;
 	}
+	
+	public Erststimme getErststimme(Partei partei) {
+		Erststimme ergebnis = null;
+		for (Erststimme erst : this.erststimmen) {
+			if (erst.getKandidat().getPartei() == partei) {
+				ergebnis = erst;
+			}
+		}
+		return ergebnis;
+	}
 
 	/**
 	 * Gibt den Kandidaten mit den meisten Erststimmen zurueck.

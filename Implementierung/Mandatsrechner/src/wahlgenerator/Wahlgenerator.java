@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.Bundesland;
 import model.Bundestagswahl;
 import model.Erststimme;
 import model.Partei;
@@ -43,43 +42,39 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	@Override
 	public void verteileStimmen(Bundestagswahl btw) {
 		
-		// durchlaufe alle Bundesländer
-		for (Bundesland bl : btw.getDeutschland().getBundeslaender()) {
-			
-			System.out.println("Bundesland: " + bl.getName());
-			
-			// durchlaufe alle Wahlkreise
-			for (Wahlkreis wk : bl.getWahlkreise()) {
-				
-				System.out.println("... Wahlkreis: " + wk.getName());
-				
-				/* Durchlaufe alle Erststimmen-Objekte dieses Wahlkreises.
-				 * Das ist pro Kandidat in diesem Wahlkreis eins.
-				 */
-				for (Erststimme erst : wk.getErststimmen()) {
-					//System.out.println("... ... " + erst.getKandidat().getName() + " - Erststimmen: " + erst.getAnzahl());
-					// erstmal die Anzahl auf 0 setzen
-					erst.setAnzahl(0);
-				}
-				
-				/* Durchlaufe alle Zweitstimmen-Objekte dieses Wahlkreises.
-				 * Das ist pro Partei in diesem Wahlkreis eins.
-				 */
-				for (Zweitstimme zweit : wk.getZweitstimmen()) {
-					//System.out.println("... ... " + zweit.getPartei().getName() + " - Zweitstimmen: " + zweit.getAnzahl());
-					// erstmal die Anzahl auf 0 setzen
-					zweit.setAnzahl(0);
-					
-				}
-				
+		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
+		int anzahlWahlkreise = alleWahlkreise.size();
+		
+		// durchlaufe alle Wahlkreise
+		for (Wahlkreis wk : alleWahlkreise) {
+			//System.out.println("Wahlkreis: " + wk.getName());
+			// durchlaufe alle Erststimmen
+			for (Erststimme erst : wk.getErststimmen()) {
+				// Anzahl auf 0 setzen
+				erst.setAnzahl(0);
+			}
+			// durchlaufe alle Zweitstimmen
+			for (Zweitstimme zweit : wk.getZweitstimmen()) {
+				// Anzahl auf 0 setzen
+				zweit.setAnzahl(0);
 			}
 		}
 		
-		
-		//for (Partei partei : btw.getParteien()) {
+		// durchlaufe Parteien für die Stimmen verteilt werden sollen
 		for (Stimmanteile sa : this.getStimmanteile()) {
+			Partei saPartei = sa.getPartei();
+			Partei partei = null;
 			
-			Partei partei = sa.getPartei();
+			// die aktuelle Partei
+			for (Partei part : btw.getParteien()) {
+				if ( part.getName().equals(saPartei.getName()) ) {
+					partei = part;
+				}
+			}
+			
+			if (partei == null) {
+				throw new NullPointerException("Partei ist null! Diese Exception sollte nicht vorkommen!");
+			}
 			
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen());
 			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen());
@@ -87,50 +82,62 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			System.out.println("\n" + partei.getName());
 			System.out.println("anzahlErststimmen: " + anzahlErststimmen + "\nanzahlZweitstimmen: " + anzahlZweitstimmen);
 			
-			ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
-			int anzahlWahlkreise = alleWahlkreise.size();
-			
 			Random rand = new Random();
 			
-			for (int i = 0; i < anzahlZweitstimmen; i++) {
-				// Wahlkreis zufällig wählen
-				Wahlkreis zufaelligerWK = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
-				//System.out.println("Zufälliger Wahlkreis: " + zufaelligerWK.getName());
-				//System.out.println(zufaelligerWK.getZweitstimmeGesamt());
-				
-				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
-				if (zufaelligerWK.getZweitstimmeGesamt() < zufaelligerWK.getWahlberechtigte()) {
-					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
-					
-					//zufaelligerWK.getZweitstimme(partei).erhoeheAnzahl(1);
-					for (Zweitstimme zweit : zufaelligerWK.getZweitstimmen()) {
-						if (zweit.getPartei().getName() == partei.getName()) {
-							zweit.erhoeheAnzahl(1);
-						}
-					}
-					
-				} else {
-					i--;
-				}
-				// es kann hier theoretisch vorkommen, dass CSU in einem anderen BL als Bayern Stimmen erhält und CDU in Bayern.
-				// Aber das haben wir ja nicht ausgeschlossen
-			}
 			
-			for (int i = 0; i < anzahlErststimmen; i++) {
-				// Wahlkreis zufällig wählen
-				Wahlkreis zufaelligerWK2 = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
+			Wahlkreis wk = null;
+			int vergebeneErst = 0;
+			int vergebeneZweit = 0;
+			int stimmzahl;
+			
+			while (vergebeneErst < anzahlErststimmen || vergebeneZweit < anzahlZweitstimmen) {
 				
-				// Check ob Anzahl der Wahlberechtigten nicht überschritten wird
-				if (zufaelligerWK2.getErststimmeGesamt() < zufaelligerWK2.getWahlberechtigte()) {
-					// man könnte hier statt einer Stimme eine zufällige Anzahl von Stimmen innerhalb eines Intervalls vergeben
-					for (Erststimme erst : zufaelligerWK2.getErststimmen()) {
-						if (erst.getKandidat().getPartei() != null && erst.getKandidat().getPartei().getName() == partei.getName()) {
-							erst.erhoeheAnzahl(1);
-						}
+				if (vergebeneErst < anzahlErststimmen) {
+					// Wahlkreis zufällig wählen
+					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
+					
+					// Die maximale Stimmzahl die vergeben werden darf ermitteln
+					stimmzahl = Math.min( (anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getErststimmeGesamt()) );
+					
+					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
+					// zufällig eine in dem Intervall [1,max]
+					if (stimmzahl != 0) {
+						stimmzahl = rand.nextInt(stimmzahl) + 1;
 					}
-				} else {
-					i--;
+					
+					// zugehöriges Erststimmenobjekt finden
+					Erststimme erst = wk.getErststimme(partei);
+					
+					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
+					if (erst != null) {
+						erst.erhoeheAnzahl(stimmzahl);
+						vergebeneErst += stimmzahl;
+					}
 				}
+				
+				if (vergebeneZweit < anzahlZweitstimmen) {
+					// Wahlkreis zufällig wählen
+					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
+					
+					// Die maximale Stimmzahl die vergeben werden darf ermitteln
+					stimmzahl = Math.min( (anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getZweitstimmeGesamt()) );
+					
+					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
+					// zufällig eine in dem Intervall [1,max]
+					if (stimmzahl != 0) {
+						stimmzahl = rand.nextInt(stimmzahl) + 1;
+					}
+					
+					// zugehöriges Erststimmenobjekt finden
+					Zweitstimme zweit = wk.getZweitstimme(partei);
+					
+					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
+					if (zweit != null) {
+						zweit.erhoeheAnzahl(stimmzahl);
+						vergebeneZweit += stimmzahl;
+					}
+				}
+				
 			}
 			
 		}
@@ -144,7 +151,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 */
 	private Stimmanteile getAnteileVonPartei(Partei partei) {
 		for (Stimmanteile stimmanteile : this.getStimmanteile()) {
-			if (stimmanteile.getPartei().getName() == partei.getName()) {
+			if (stimmanteile.getPartei().getName().equals(partei.getName())) {
 				return stimmanteile;
 			}
 		}

@@ -29,12 +29,17 @@ public class TestWahlgenerator {
 		
 		LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
 		stimmAnt.add(new Stimmanteile(w.getParteien().getFirst(), 0.3f, 0.3f));
-		stimmAnt.add(new Stimmanteile(w.getParteien().getLast(), 0.7f, 0.7f));
+		stimmAnt.add(new Stimmanteile(w.getParteien().get(3), 0.7f, 0.7f));
 		Wahlgenerator wg = new Wahlgenerator(w, stimmAnt);
+		
+		long start = System.currentTimeMillis();
 		
 		Bundestagswahl genWahl = wg.erzeugeBTW();
 		
-		System.out.println(w.getName());
+		System.out.println(System.currentTimeMillis() -start + "ms Laufzeit");
+		
+		i.exportieren("files/random.csv", genWahl);
+		
 		
 	}
 
