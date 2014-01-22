@@ -1,6 +1,7 @@
 package gui;
 
 import steuerung.Steuerung;
+import wahlvergleich.Wahlvergleich;
 import model.Bundestagswahl;
 import model.Gebiet;
 import model.Stimme;
@@ -20,9 +21,6 @@ public class GUISteuerung {
 	/** repräsentiert das Wahlfenster in dem die BTW angezeigt wird */
 	private final WahlFenster wahlfenster;
 
-	/** repräsentiert die Steuerung des Programms */
-	private final Steuerung steuerung;
-
 	/**
 	 * Der Konstruktor initialisiert eine neue GUI Steuerung.
 	 * 
@@ -31,11 +29,9 @@ public class GUISteuerung {
 	 * @param wahlfenster
 	 *            dazugehöriges Wahlfenster
 	 */
-	public GUISteuerung(Bundestagswahl btw, WahlFenster wahlfenster,
-			Steuerung steuerung) {
+	public GUISteuerung(Bundestagswahl btw, WahlFenster wahlfenster) {
 		this.btw = btw;
 		this.wahlfenster = wahlfenster;
-		this.steuerung = steuerung;
 	}
 
 	/**
@@ -58,7 +54,22 @@ public class GUISteuerung {
 	 *            der neue Wert
 	 */
 	public void wertAenderung(Stimme stimme, int anzahl) {
-		steuerung.aktualisiereDaten(stimme, anzahl);
+		Steuerung.aktualisiereDaten(stimme, anzahl);
+	}
+
+	/**
+	 * Diese Methode erstellt ein neues Fenster in dem zwei Bundestagswahlen
+	 * verglichen werden.
+	 * 
+	 * @param btw1
+	 *            erste Bundestagswahl
+	 * @param btw2
+	 *            zweite Bundestagswahl
+	 */
+	public void vergleichen(Bundestagswahl btw1, Bundestagswahl btw2) {
+		Wahlvergleich vergleich = new Wahlvergleich(btw1, btw2);
+		VergleichsFenster vergleichsFenster = new VergleichsFenster(vergleich);
+		// TODO logisch?
 	}
 
 	/**
@@ -77,14 +88,5 @@ public class GUISteuerung {
 	 */
 	public WahlFenster getWahlfenster() {
 		return wahlfenster;
-	}
-
-	/**
-	 * Gibt die Steuerung aus.
-	 * 
-	 * @return Steuerung
-	 */
-	public Steuerung getSteuerung() {
-		return this.steuerung;
 	}
 }

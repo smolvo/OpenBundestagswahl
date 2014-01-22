@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import steuerung.Steuerung;
 import model.Bundestagswahl;
 
 /**
@@ -56,22 +57,19 @@ public final class Programmfenster extends JFrame {
 				.getImage();
 		setIconImage(icon);
 
+		// Steuerung initialisieren
+		Steuerung.getInstance();
+		
 		// Menü- Leiste erstellen
 		menu = new Menu(this);
 		setJMenuBar(menu);
 
+
 		// Wahl 2013
-		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
-		Bundestagswahl w = null;
-		try {
-			w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Bundestagswahl w = Steuerung.importieren(csvDateien);
 
 		wahlen.add(new WahlFenster(w));
 

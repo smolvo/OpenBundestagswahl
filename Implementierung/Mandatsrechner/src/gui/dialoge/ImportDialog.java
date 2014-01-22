@@ -15,6 +15,7 @@ import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import steuerung.Steuerung;
 import model.Bundestagswahl;
 
 /**
@@ -58,15 +59,7 @@ public class ImportDialog extends JDialog {
 				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
 				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
 
-				
-				ImportExportManager i = new ImportExportManager();
-				Bundestagswahl w = null;
-				try {
-					w = i.importieren(eingeleseneDateien);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				Bundestagswahl w = Steuerung.importieren(eingeleseneDateien);
 				
 				tabs.neuerTab(new WahlFenster(w), w.getName());
 				
