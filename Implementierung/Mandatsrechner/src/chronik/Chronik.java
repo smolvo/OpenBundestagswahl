@@ -1,5 +1,6 @@
 package chronik;
 
+import java.io.Serializable;
 import java.util.Stack;
 
 import model.Bundestagswahl;
@@ -11,8 +12,13 @@ import model.Bundestagswahl;
  * @author 13genesis37
  *
  */
-public class Chronik {
+public class Chronik implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9220795187148958406L;
+
 	/**
 	 * Anzahl der maximalen Bundestagswahlen, die zurückgesetzt
 	 * werden können.

@@ -61,7 +61,9 @@ public class StimmgewichtSimulator {
 			//this.setAusgangsWahl(Mandatsrechner2009.getInstance()
 				//	.berechneAlles(ausgangsWahl));
 			this.setAusgangsWahl(ausgangsWahl);
+			//TODO Fehler bei deepCopy
 			this.setVerwandteWahl(ausgangsWahl.deepCopy());
+			//this.setVerwandteWahl(ausgangsWahl);
 			//this.berechneRelevanteZweitstimmen();
 			//this.setRelevanteParteien(waehleParteien());
 
