@@ -117,7 +117,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 					}
 				}
 				
-				gewinner.setMandat(Mandat.DIREKMANDAT);
+				gewinner.setMandat(Mandat.DIREKTMANDAT);
 				wk.setWahlkreisSieger(gewinner);
 				bw.getSitzverteilung().addAbgeordnete(gewinner);
 			}
@@ -190,7 +190,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			}
 
 			for (Partei part : relevanteParteien) {
-				int direktmandate = part.getAnzahlMandate(Mandat.DIREKMANDAT,
+				int direktmandate = part.getAnzahlMandate(Mandat.DIREKTMANDAT,
 						bl);
 				
 				int mindestSitzanzahl = this.runden(bl
@@ -327,7 +327,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				max = erst.getAnzahl();
 			}
 		}
-		gewinner.setMandat(Mandat.DIREKMANDAT);
+		gewinner.setMandat(Mandat.DIREKTMANDAT);
 		wk.setWahlkreisSieger(gewinner);
 		// TODO Eintrag im Bericht f�r den Direktmandat setzen
 		return wk;

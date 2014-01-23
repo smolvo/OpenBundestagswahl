@@ -9,7 +9,7 @@ public enum Mandat {
 	MANDAT("Mandat"),
 
 	/** Durch die meisten Erststimmen zugeteiltes Mandat. */
-	DIREKMANDAT("Direktmadat"),
+	DIREKTMANDAT("Direktmadat"),
 
 	/** Mandat mit mehr Direkmandaten als durch Zweitstimmen zugeteilte Mandate. */
 	UEBERHANGMADAT("�berhangmandat"),

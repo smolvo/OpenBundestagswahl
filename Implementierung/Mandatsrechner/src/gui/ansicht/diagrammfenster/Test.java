@@ -37,7 +37,7 @@ public class Test {
 		List<Zweitstimme> stimmen = w.getDeutschland().getZweitstimmen();
 		for (int k = 0; k < 5; k++) {
 			for (Kandidat kand : stimmen.get(k).getPartei().getMitglieder()) {
-				kand.setMandat(Mandat.DIREKMANDAT);
+				kand.setMandat(Mandat.DIREKTMANDAT);
 			}
 		}
 				

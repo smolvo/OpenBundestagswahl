@@ -305,7 +305,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	public int getAnzahlDirektmandate() {
 		int res = 0;
 		for (Kandidat kandidat : getMitglieder()) {
-			if (kandidat.getMandat().equals(Mandat.DIREKMANDAT)) {
+			if (kandidat.getMandat().equals(Mandat.DIREKTMANDAT)) {
 				res++;
 			}
 		}
@@ -422,7 +422,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		 * Wichtig!!! Bitte beachten.
 		 * 
 		 */
-		if (m.equals(Mandat.DIREKMANDAT)) {
+		if (m.equals(Mandat.DIREKTMANDAT)) {
 			for (Wahlkreis wk : b.getWahlkreise()) {
 				if (wk.getWahlkreisSieger() != null && wk.getWahlkreisSieger().getPartei().equals(this)) {
 					anzahlMandate++;

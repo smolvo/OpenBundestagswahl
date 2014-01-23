@@ -129,7 +129,7 @@ public class TabellenFenster extends JScrollPane {
 			Erststimme er = wk.getErststimmen().get(i);
 			Zweitstimme zw = wk.getZweitstimmen().get(i);
 			boolean direktMan = false;
-			if (er.getKandidat().getMandat().equals(Mandat.DIREKMANDAT)) {
+			if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
 				direktMan = true;
 			}
 			if ((zw.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
