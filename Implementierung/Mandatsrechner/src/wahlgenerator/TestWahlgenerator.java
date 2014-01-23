@@ -5,6 +5,7 @@ import importexport.ImportExportManager;
 import java.io.File;
 import java.util.LinkedList;
 
+import test.Debug;
 import model.Bundestagswahl;
 
 /**
@@ -17,6 +18,8 @@ public class TestWahlgenerator {
 	 * @param args Argumente
 	 */
 	public static void main(String[] args) {
+		
+		Debug.setAktiv(true);
 		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];

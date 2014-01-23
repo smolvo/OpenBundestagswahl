@@ -22,15 +22,12 @@ import model.Zweitstimme;
  * der Art zu erzeugen, dass zwischen diesen zwei Bundestagswahlen der Effekt
  * des negativen Stimmgewichts auftritt
  * 
- * @author Manuel
- * 
  */
 
 public class StimmgewichtSimulator {
 
 	/**
-	 * Die Ausgangsbundestagswahl, zu der eine "verwandte" Wahl erzeugt werden
-	 * soll
+	 * Die Ausgangsbundestagswahl, zu der eine "verwandte" Wahl erzeugt werden soll
 	 */
 	private Bundestagswahl ausgangsWahl;
 

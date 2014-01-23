@@ -17,7 +17,7 @@ import wahlgenerator.Wahlgenerator;
  * @author Simon
  *
  */
-public class WahlgeneratorTests {
+public class WahlgeneratorTest {
 
 	/**
 	 * @throws java.lang.Exception

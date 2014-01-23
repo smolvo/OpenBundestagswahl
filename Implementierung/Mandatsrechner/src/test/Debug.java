@@ -12,7 +12,9 @@ public class Debug {
 	private Debug() {}
 	
 	public static void print(String nachricht) {
-		System.out.println(nachricht);
+		if (aktiv) {
+			System.out.println(nachricht);
+		}
 	}
 
 	public static boolean isAktiv() {

@@ -8,10 +8,10 @@ import model.Bundestagswahl;
  * Simulation des negativen Stimmgewichts benötigt werden
  */
 
-public class NegStimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
+public class StimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
 
 
-	public NegStimmgewichtWahlgenerator(Bundestagswahl basisWahl,
+	public StimmgewichtWahlgenerator(Bundestagswahl basisWahl,
 			List<Stimmanteile> stimmanteile) {
 		super(basisWahl, stimmanteile);
 		// TODO Auto-generated constructor stub

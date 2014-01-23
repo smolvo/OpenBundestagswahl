@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.swing.DebugGraphics;
 
+import test.Debug;
 import model.Bundestagswahl;
 import model.Erststimme;
 import model.Partei;
@@ -89,8 +90,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen());
 			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen());
 			
-			System.out.println("\n" + partei.getName());
-			System.out.println("anzahlErststimmen: " + anzahlErststimmen + "\nanzahlZweitstimmen: " + anzahlZweitstimmen);
+			Debug.print(partei.getName() + ", anzahlErststimmen: " + anzahlErststimmen + ", anzahlZweitstimmen: " + anzahlZweitstimmen);
 			
 			Random rand = new Random();
 			
