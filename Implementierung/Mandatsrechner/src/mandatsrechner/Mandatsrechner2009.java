@@ -15,6 +15,10 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	/** relevante Dateien **/
 	private LinkedList<Partei> relevanteParteien;
 
+	private Mandatsrechner2009(){
+		// 
+	}
+	
 	public static Mandatsrechner2009 getInstance() {
 		if (Mandatsrechner2009.instance == null) {
 			Mandatsrechner2009.instance = new Mandatsrechner2009();
