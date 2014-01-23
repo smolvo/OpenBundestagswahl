@@ -44,7 +44,14 @@ public class StimmgewichtSimulator {
 	 */
 	private List<Partei> relevanteParteien = new ArrayList<Partei>();
 
+	/**
+	 * Der Mandatsrechner mit dem gültigen Wahlgesetz von 2009
+	 */
 	private Mandatsrechner2009 rechner;
+	
+	/**
+	 * Generator für zufällige Zahlen
+	 */
 	private Random rand;
 
 	/*
@@ -69,8 +76,8 @@ public class StimmgewichtSimulator {
 
 			this.setVerwandteWahl(ausgangsWahl.deepCopy());
 
-			rand = new Random();
-			rechner = Mandatsrechner2009.getInstance();
+			this.rand = new Random();
+			this.rechner = Mandatsrechner2009.getInstance();
 			// this.berechneRelevanteZweitstimmen();
 			// this.setRelevanteParteien(waehleParteien());
 
@@ -213,7 +220,7 @@ public class StimmgewichtSimulator {
 
 	/**
 	 * Diese Methode überprüft, ob bei einer gegebenen Partei ihr Anteil an
-	 * relativen Zweitstimmen größer ist als ihr Anteil an Mandaten Die Anteile
+	 * relativen Zweitstimmen größer ist als ihr Anteil an Mandaten. Die Anteile
 	 * werden bundesweit betrachtet
 	 * 
 	 * @param p
@@ -240,6 +247,7 @@ public class StimmgewichtSimulator {
 				.getAnzahl() / (float) relevanteZweitstimmenGesamt;
 
 		// berechnet den Anteil an Mandaten
+		//TODO Konsolenausgaben für Debugging entfernen
 		System.out.println("CDU Mandate: "
 				+ p.getAnzahlMandate()
 				+ " Gesamt: "

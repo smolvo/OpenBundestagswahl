@@ -11,7 +11,7 @@ import model.Stimme;
 /**
  * Diese Klasse repräsentiert die Hauptsteuerung des Programmes.
  * 
- * @author Batman
+ * @author Anton
  * 
  */
 public final class Steuerung {
@@ -56,7 +56,8 @@ public final class Steuerung {
 	 *            Pfad
 	 */
 	public static void exportieren(String pfad) {
-
+		ImportExportManager i = new ImportExportManager();
+		i.exportieren(pfad, btw);
 	}
 
 	/**

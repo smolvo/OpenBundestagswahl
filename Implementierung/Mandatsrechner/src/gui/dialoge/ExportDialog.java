@@ -12,6 +12,7 @@ import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import steuerung.Steuerung;
 import model.Bundestagswahl;
 
 public class ExportDialog extends JDialog{
@@ -43,10 +44,11 @@ public class ExportDialog extends JDialog{
         if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
         {
 
-        	ImportExportManager i = new ImportExportManager();
-        	Bundestagswahl w = ((WahlFenster) tabLeiste.getSelectedComponent()).getBtw();
-			i.exportieren(dateiAuswahl.getSelectedFile().toString(), w);
         	
+        	
+        	String pfad = dateiAuswahl.getSelectedFile().toString();
+
+        	Steuerung.exportieren(pfad);
         } else {
         	JOptionPane.showMessageDialog(pf,
 					"Speichern abgebrochen.", "Meldung",
