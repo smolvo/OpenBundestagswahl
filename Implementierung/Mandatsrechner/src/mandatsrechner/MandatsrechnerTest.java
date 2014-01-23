@@ -26,10 +26,11 @@ public class MandatsrechnerTest {
 			System.out.println("Leine gültige CSV-Datei :/");
 		}
 		
-		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
+		Mandatsrechner2009 m = Mandatsrechner2009.getInstance();
 		
 		if (w != null) {
 			Bundestagswahl newW = m.berechneAlles(w);
+			newW = m.berechneAlles(newW);
 		}
 	}
 

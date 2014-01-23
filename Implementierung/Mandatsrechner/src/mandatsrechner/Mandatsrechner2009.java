@@ -13,7 +13,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	private int sperrklauselAnzahl;
 	private final int minDirektmandate = 3;
 	/** relevante Dateien **/
-	private LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
+	private LinkedList<Partei> relevanteParteien;
 
 	public static Mandatsrechner2009 getInstance() {
 		if (Mandatsrechner2009.instance == null) {
@@ -49,8 +49,14 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		// Initialisierung:
 		this.sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
 		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), ""));
+		this.relevanteParteien = new LinkedList<Partei>();
 		// bw.getSitzverteilung().setAbgeordnete(new LinkedList<Kandidat>());
-
+		//Setze alle Kandidaten auf wieder zurueck
+		for (Partei partei : bw.getParteien()) {
+			for (Kandidat kandidat : partei.getMitglieder()) {
+				kandidat.setMandat(Mandat.KEINMANDAT);
+			}
+		}
 		// **Sitze fuer jedes Bundesland mithilge des zuteilungsdivisor
 		// berechnen
 		zuteilungsdivisor = 0;
@@ -74,12 +80,12 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			}
 		}
 		// **Ende
-
+		//System.err.println(zuteilungsdivisor);
 		if (super.debug) {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-				int zahl = this.runden(bl.getEinwohnerzahl()
+				int zahl = Math.round(bl.getEinwohnerzahl()
 						/ zuteilungsdivisor);
 				summe += zahl;
 				System.out
@@ -129,7 +135,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		// relevante Parteien
 
 		for (Partei part : alleParteien) {
-
+			
 			if (part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl
 					|| part.getAnzahlDirektmandate() >= this.minDirektmandate) {
 				// Partei im Bundestag falls Anforderungen erfuellt sind.
@@ -246,7 +252,15 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			}
 
 		}
-
+		if (this.debug) {
+			System.out.println("\nSitzverteilung");
+			int summe = 0;
+			for (Partei partei : relevanteParteien) {
+				System.out.println(partei.getName() + ": " + partei.getMindestsitzAnzahl());
+				summe +=  partei.getMindestsitzAnzahl();
+			}
+			System.out.println("Summe: " + summe);
+		}
 		return bw;
 	}
 
@@ -334,14 +348,15 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		int kommastelle = (int) ((zahl - (int) zahl) * 10);
 		//System.err.println(kommastelle);
 		int gerundet = 0;
-		if (kommastelle == 5) {
+		/*if (kommastelle == 5) {
 			int rand = (Math.random() < 0.5) ? 0 : 1;
 			if (rand == 1) {
 				gerundet = (int) Math.ceil(zahl);
 			} else {
 				gerundet = (int) Math.floor(zahl);
 			}
-		} else if (kommastelle > 5) {
+		} else */
+		if (kommastelle > 5) {
 			gerundet = (int) Math.ceil(zahl);
 		} else {
 			gerundet = (int) Math.floor(zahl);

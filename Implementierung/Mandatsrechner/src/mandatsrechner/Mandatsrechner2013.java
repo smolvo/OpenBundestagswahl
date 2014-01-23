@@ -15,7 +15,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	private Mandatsrechner2009 rechner2009;
 	
 	public Mandatsrechner2013(){
-		this.rechner2009 = new Mandatsrechner2009();
+		this.rechner2009 = Mandatsrechner2009.getInstance();
 	}
 	
 	public static Mandatsrechner2013 getInstance() {
