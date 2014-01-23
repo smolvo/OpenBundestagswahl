@@ -2,12 +2,9 @@ package wahlvergleich;
 
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 
 import model.Bundestagswahl;
-import model.Erststimme;
 import model.Partei;
-import model.Zweitstimme;
 
 /**
  * Diese Klasse implementiert den Vergleich zwischen zwei
@@ -21,7 +18,9 @@ public class Wahlvergleich {
 	private Bundestagswahl btw2;
 	
 	/**
-	 * Der Konstruktor initialisiert die Differenzen.
+	 * Der Konstruktor initialisiert zwei Bundestagswahlen
+	 * @param btw1 Bundestagswahl 1
+	 * @param btw2 Bundestagswahl 2
 	 */
 	public Wahlvergleich(Bundestagswahl btw1, Bundestagswahl btw2) {
 		this.btw1 = btw1;
@@ -29,13 +28,19 @@ public class Wahlvergleich {
 	}
 	
 	
-	
+	/**
+	 * gibt die Bundestagswahl 1 zurück
+	 * @return
+	 */
 	public Bundestagswahl getBtw1() {
 		return btw1;
 	}
 
 
-
+	/**
+	 * gibt die Bundestagswahl 2 zurück
+	 * @return
+	 */
 	public Bundestagswahl getBtw2() {
 		return btw2;
 	}
@@ -59,11 +64,6 @@ public class Wahlvergleich {
 				 if (parteiWahl1.getName().equals(parteiWahl2.getName())) {
 					// Name der aktuell im Vergleich befindlichen Partei
 					String partei = parteiWahl1.getName();
-					// index der ersten Partei aus BTW 1
-					
-//					int indexErststimmePartei1 = btw1.getDeutschland().getErststimmen().indexOf(parteiWahl1);
-					// index der zweiten Partei aus BTW2
-//					int indexErststimmePartei2 = btw2.getDeutschland().getErststimmen().indexOf(parteiWahl2);
 					// Anzahl Erststimmen der ersten Partei
 					int anzahlEinsErst = btw1.getDeutschland().getErststimmenAnzahl(parteiWahl1);
 					// Anzahl der Erststimmen der zweiten Partei
@@ -84,7 +84,7 @@ public class Wahlvergleich {
 					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getZweitstimmeGesamt()) * 1000) / 10);
 					// errechnet die Differenz der Zweitstimmen
 					int diffZweit = anzahlEinsZweit - anzahlZweiZweit;
-					
+	System.out.println(partei + " " + anzahlEinsErst + " " + prozentEinsErst);
 					daten.addZeile(partei,
 							Integer.toString(anzahlEinsErst),
 							Double.toString(prozentEinsErst),
@@ -97,8 +97,7 @@ public class Wahlvergleich {
 							Integer.toString(anzahlZweiZweit),
 							Double.toString(prozentZweiZweit));
 				 }
-			 
-		}
+			 }
 	}
 		return daten;
 }
