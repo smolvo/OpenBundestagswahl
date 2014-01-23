@@ -144,8 +144,8 @@ public class StimmgewichtSimulatorTest {
 
 	@Test
 	public void simonTest() {
-
-		Partei p = w.getParteien().get(0);
+		Debug.setAktiv(true);
+		Partei p = simu.getVerwandteWahl().getParteien().get(0);
 		// Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
 		// Anteil relev. Zs > Mandate
 		while (!simu.bedingungErfuellt(p)) {

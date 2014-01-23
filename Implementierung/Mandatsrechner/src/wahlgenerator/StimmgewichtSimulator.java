@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
+import test.Debug;
 import mandatsrechner.Mandatsrechner2009;
 import model.Bundesland;
 import model.Bundestagswahl;
@@ -196,21 +197,23 @@ public class StimmgewichtSimulator {
 
 				// in diesem Wahlkreis wird nun die Zweitstimmenanzahl erhöht
 				// TODO System.out.println entfernen
-				System.out.print("ZS im WK " + wk + " von "
-						+ wk.getZweitstimme(p).getAnzahl());
-				wk.getZweitstimme(p).erhoeheAnzahl(10);
+				//System.out.print("ZS im WK " + wk + " von "
+				//		+ wk.getZweitstimme(p).getAnzahl());
+				wk.getZweitstimme(p).erhoeheAnzahl(1000);
 
 				//Sitzverteilung neu berechnen
-				System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
-						+ " erhöht");
+				//System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
+				//		+ " erhöht");
+				long start = System.currentTimeMillis();
 				this.setVerwandteWahl(rechner.berechneAlles(this.verwandteWahl));
-				System.out.print("Relevante ZS von "
-						+ p.getRelevanteZweitstimmen().getAnzahl());
+				Debug.print("Laufzeit Mandatsrechner" + (start - System.currentTimeMillis()) + "ms");
+				//System.out.print("Relevante ZS von "
+				//		+ p.getRelevanteZweitstimmen().getAnzahl());
 				
 				//relevante ZS neu berechnen
 				berechneRelevanteZweitstimmen();
-				System.out.print(" auf "
-						+ p.getRelevanteZweitstimmen().getAnzahl());
+				//System.out.print(" auf "
+				//		+ p.getRelevanteZweitstimmen().getAnzahl());
 
 			}
 		}
@@ -228,6 +231,7 @@ public class StimmgewichtSimulator {
 	// TODO private setzen, nur fürs testen public
 	public boolean bedingungErfuellt(Partei p) {
 		List<Partei> alleParteien = this.verwandteWahl.getParteien();
+	
 
 		// berechnet insgesamte Anzahl an relevanten Zweitstimmen, d.h. addiert
 		// die relevanten Zweitstimmen aller Parteien
@@ -241,6 +245,10 @@ public class StimmgewichtSimulator {
 		float anteilRelevanteZweitstimmen = 0;
 		float anteilMandate = 0;
 		// berechnet den Anteil an relevanten Zweitstimmen
+	
+		
+		
+
 		anteilRelevanteZweitstimmen = (float) p.getRelevanteZweitstimmen()
 				.getAnzahl() / (float) relevanteZweitstimmenGesamt;
 
@@ -331,7 +339,9 @@ public class StimmgewichtSimulator {
 				}
 			}
 
+			
 			p.setRelevanteZweitstimmen(new RelevanteZweitstimmen(anzahl));
+			//System.out.println(p.getName() + " " + p.getRelevanteZweitstimmen());
 
 		}
 
