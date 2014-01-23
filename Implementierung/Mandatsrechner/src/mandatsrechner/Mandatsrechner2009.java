@@ -167,7 +167,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 		for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 
 			int sitzeBundesland = this.runden(bl.getEinwohnerzahl()
-					/ zuteilungsdivisor);
+					/ zuteilungsdivisor, false);
 			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
 			isCorrect = false;
 			//System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
@@ -177,7 +177,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 				for (Partei part : relevanteParteien) {
 					// TODO Nach erster Nachkommastelle
 					sitzePartei += this.runden(bl.getZweitstimmenAnzahl(part)
-							/ landesdivisor);
+							/ landesdivisor, false);
 				}
 				if (sitzePartei == sitzeBundesland) {
 					isCorrect = true;
@@ -194,7 +194,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 						bl);
 				
 				int mindestSitzanzahl = this.runden(bl
-						.getZweitstimmenAnzahl(part) / landesdivisor);
+						.getZweitstimmenAnzahl(part) / landesdivisor, false);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 				part.addMindestsitzanzahl(bl,
 						Math.max(direktmandate, mindestSitzanzahl));
@@ -347,20 +347,19 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	 * @return
 	 * 		die gerundete zahl.
 	 */
-	public int runden(float zahl) {
+	public int runden(float zahl,boolean randomize) {
 		
 		int kommastelle = (int) ((zahl - (int) zahl) * 10);
 		//System.err.println(kommastelle);
 		int gerundet = 0;
-		/*if (kommastelle == 5) {
+		if (randomize && kommastelle == 5) {
 			int rand = (Math.random() < 0.5) ? 0 : 1;
 			if (rand == 1) {
 				gerundet = (int) Math.ceil(zahl);
 			} else {
 				gerundet = (int) Math.floor(zahl);
 			}
-		} else */
-		if (kommastelle > 5) {
+		} else if (kommastelle > 5) {
 			gerundet = (int) Math.ceil(zahl);
 		} else {
 			gerundet = (int) Math.floor(zahl);

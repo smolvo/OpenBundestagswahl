@@ -68,7 +68,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
 				//System.out.println(Math.floor(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
-				if (rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
+				if (rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor, true) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -79,7 +79,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		}
 		
 		for (Partei partei : relevanteParteien) {
-			int neueSitzanzahl = rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor); 
+			int neueSitzanzahl = rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor, true); 
 			int diffSitze = neueSitzanzahl - partei.getMindestsitzAnzahl();
 			//System.out.println(partei.getName() + " " + diffSitze);
 			if (diffSitze > 0) {
@@ -88,7 +88,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 				while (!isCorrect) {
 					int sitzeBundesland = 0;
 					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-						sitzeBundesland += rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator);
+						sitzeBundesland += rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator, true);
 						
 					}
 					
@@ -102,7 +102,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 					}
 				}
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-					int sitzeBundesland = rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator);
+					int sitzeBundesland = rechner2009.runden(partei.getMindestsitzanzahl(bl) * multiplikator, true);
 					if (sitzeBundesland != partei.getMindestsitzanzahl(bl)) {
 						int diffSitzeBundesland = sitzeBundesland - partei.getMindestsitzanzahl(bl);
 						for (int i = 0; i < diffSitzeBundesland; i++) {
