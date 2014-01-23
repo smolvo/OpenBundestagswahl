@@ -91,13 +91,17 @@ public class BundTableModel extends AbstractTableModel {
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
+			boolean aenderung = false;
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
 				if (anzahl >= 0) {
-					guiSteuerung.wertAenderung(stimme, anzahl);
+					aenderung = guiSteuerung.wertAenderung(stimme, anzahl);
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
+			}
+			if (aenderung) {
+				daten.getStimmen(rowIndex).setAnzahl(anzahl);
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);

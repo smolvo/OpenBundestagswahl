@@ -52,9 +52,10 @@ public class GUISteuerung {
 	 *            die betroffene Stimmenanzahl
 	 * @param anzahl
 	 *            der neue Wert
+	 * @return ob der Wert geändert werden konnte
 	 */
-	public void wertAenderung(Stimme stimme, int anzahl) {
-		Steuerung.aktualisiereDaten(stimme, anzahl);
+	public boolean wertAenderung(Stimme stimme, int anzahl) {
+		return Steuerung.aktualisiereDaten(stimme, anzahl);
 	}
 
 	/**

@@ -94,8 +94,10 @@ public final class Steuerung {
 	 *            die betroffene Stimme
 	 * @param anzahl
 	 *            der neue Wert
+	 * @return true or false
 	 */
-	public static void aktualisiereDaten(Stimme stimme, int anzahl) {
+	public static boolean aktualisiereDaten(Stimme stimme, int anzahl) {
+		return true;
 		// TODO
 	}
 

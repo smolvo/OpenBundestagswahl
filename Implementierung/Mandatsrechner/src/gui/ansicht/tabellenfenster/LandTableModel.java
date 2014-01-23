@@ -83,13 +83,16 @@ public class LandTableModel extends AbstractTableModel {
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
+			boolean aenderung = false;
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
 				guiSteuerung.wertAenderung(stimme, anzahl);
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
 			}
-			// daten.getStimmen(rowIndex).setAnzahl(Integer.parseInt(anzahl));
+			if (aenderung) {
+				daten.getStimmen(rowIndex).setAnzahl(anzahl);
+			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}

@@ -88,11 +88,15 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
+			boolean aenderung = false;
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
 				guiSteuerung.wertAenderung(stimme, anzahl);
 			} catch (NumberFormatException e) {
 				System.out.println("‰‰‰tsch");
+			}
+			if (aenderung) {
+				daten.getErststimmen(rowIndex).setAnzahl(anzahl);
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
