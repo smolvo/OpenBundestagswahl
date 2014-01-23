@@ -55,7 +55,7 @@ public class GUISteuerung {
 	 * @return ob der Wert geändert werden konnte
 	 */
 	public boolean wertAenderung(Stimme stimme, int anzahl) {
-		return Steuerung.aktualisiereDaten(stimme, anzahl);
+		return Steuerung.getInstance().aktualisiereDaten(stimme, anzahl);
 	}
 
 	/**

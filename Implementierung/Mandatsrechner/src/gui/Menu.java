@@ -4,13 +4,17 @@ import gui.dialoge.AboutDialog;
 import gui.dialoge.EinstellungenDialog;
 import gui.dialoge.ExportDialog;
 import gui.dialoge.ImportDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+
+import steuerung.Steuerung;
 
 /**
  * 
@@ -163,7 +167,7 @@ public class Menu extends JMenuBar {
 			}
 
 			else if (e.getSource() == menu.rueckgaengig) {
-				// TODO rückgängig
+				Steuerung.getInstance().zurueckSetzen();
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
 			} else if (e.getSource() == menu.vergleichen) {

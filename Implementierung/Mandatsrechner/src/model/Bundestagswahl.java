@@ -266,4 +266,12 @@ public class Bundestagswahl implements Serializable {
 		return success;
 	}
 
+	/**
+	 * Diese Methode gibt die letzte Bundestagswahl aus.
+	 * @return letzte Bundestagswahl
+	 */
+	public Bundestagswahl getAlteBTW() {
+		return this.chronik.restauriereBundestagswahl();
+	}
+
 }

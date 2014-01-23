@@ -14,7 +14,7 @@ import model.Stimme;
  * @author Anton
  * 
  */
-public final class Steuerung {
+public class Steuerung {
 
 	/** zeigt an ob ein Steuerungs-Objekt bereits existiert */
 	private static Steuerung instance;
@@ -36,7 +36,7 @@ public final class Steuerung {
 	 *            relevante Daten
 	 * @return neue Bundestagswahl
 	 */
-	public static Bundestagswahl importieren(File[] csvDateien) {
+	public Bundestagswahl importieren(File[] csvDateien) {
 		ImportExportManager i = new ImportExportManager();
 		Bundestagswahl w = null;
 		try {
@@ -55,7 +55,7 @@ public final class Steuerung {
 	 * @param pfad
 	 *            Pfad
 	 */
-	public static void exportieren(String pfad) {
+	public void exportieren(String pfad) {
 		ImportExportManager i = new ImportExportManager();
 		i.exportieren(pfad, btw);
 	}
@@ -67,7 +67,7 @@ public final class Steuerung {
 	 * @param btw
 	 *            aktuelle Bundestagswahl
 	 */
-	public static void berechneSitzverteilung(Bundestagswahl btw) {
+	public void berechneSitzverteilung(Bundestagswahl btw) {
 		// TODO
 	}
 
@@ -78,12 +78,12 @@ public final class Steuerung {
 	 * @param anteile
 	 *            die Stimmenanteile
 	 */
-	public static Bundestagswahl zufaelligeWahlgenerierung(Stimmanteile anteile) {
+	public Bundestagswahl zufaelligeWahlgenerierung(Stimmanteile anteile) {
 		// TODO
 		return null;
 	}
 
-	public static void negStimmgewichtGenerierung(Stimmanteile anteile) {
+	public void negStimmgewichtGenerierung(Stimmanteile anteile) {
 		// TODO
 	}
 
@@ -97,7 +97,7 @@ public final class Steuerung {
 	 *            der neue Wert
 	 * @return true or false
 	 */
-	public static boolean aktualisiereDaten(Stimme stimme, int anzahl) {
+	public boolean aktualisiereDaten(Stimme stimme, int anzahl) {
 		return true;
 		// TODO
 	}
@@ -109,7 +109,7 @@ public final class Steuerung {
 	 * @param vergleichsWahl
 	 *            andere Wahl
 	 */
-	public static void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
+	public void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
 		// TODO
 	}
 
@@ -119,8 +119,12 @@ public final class Steuerung {
 	 * 
 	 * @return true false
 	 */
-	public static boolean zurueckSetzen() {
-		// TODO
+	public boolean zurueckSetzen() {
+		Bundestagswahl alteBTW = btw.getAlteBTW();
+		if (alteBTW != null) {
+			this.btw = alteBTW;
+			return true;
+		}
 		return false;
 	}
 
