@@ -121,6 +121,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					if (erst != null) {
 						erst.erhoeheAnzahl(stimmzahl);
 						vergebeneErst += stimmzahl;
+					} else {
+						System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
 					}
 				}
 				
@@ -144,6 +146,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					if (zweit != null) {
 						zweit.erhoeheAnzahl(stimmzahl);
 						vergebeneZweit += stimmzahl;
+					} else {
+						System.out.println("Zweitstimme ist null!, " + partei.getName() + " : " + wk.getName());
 					}
 				}
 				
