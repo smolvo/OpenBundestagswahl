@@ -68,13 +68,12 @@ public class StimmgewichtSimulator {
 		this.rechner = Mandatsrechner2009.getInstance();
 		try {
 			// TODO Sitzverteilung von bw berechnen
-			// this.setAusgangsWahl(rechner.berechneAlles(ausgangsWahl));
-			this.setAusgangsWahl(ausgangsWahl);
-
+			this.setAusgangsWahl(rechner.berechneAlles(ausgangsWahl));
+			
 			this.setVerwandteWahl(ausgangsWahl.deepCopy());
 
 			
-			// this.berechneRelevanteZweitstimmen();
+			this.berechneRelevanteZweitstimmen();
 			// this.setRelevanteParteien(waehleParteien());
 
 		} catch (IOException e) {
@@ -174,10 +173,7 @@ public class StimmgewichtSimulator {
 	// erniedrigt werden
 
 	public void erhoeheRelevantenAnteil(Partei p) {
-		//Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
-		//Anteil relev. Zs > Mandate
-		while (!bedingungErfuellt(p)) {
-
+		
 			List<Landesliste> alleLandeslisten = p.getLandesliste();
 			List<Landesliste> ohneUeberhang = new ArrayList<Landesliste>();
 
@@ -218,7 +214,7 @@ public class StimmgewichtSimulator {
 
 			}
 		}
-	}
+	
 
 	/**
 	 * Diese Methode überprüft, ob bei einer gegebenen Partei ihr Anteil an

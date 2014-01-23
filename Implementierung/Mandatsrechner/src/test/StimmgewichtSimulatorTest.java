@@ -52,98 +52,106 @@ public class StimmgewichtSimulatorTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		 w2 = w.deepCopy();
-			Mandatsrechner2009.getInstance().berechneAlles(w);
-			
+
+		this.rechner09 = Mandatsrechner2009.getInstance();
+		this.rechner13 = Mandatsrechner2013.getInstance();
+
+		rechner09.berechneAlles(w);
+
 		this.simu = new StimmgewichtSimulator(w);
-		simu.berechneRelevanteZweitstimmen();
-		
 		
 	}
-
 
 	public void testBerechneRelevanteZweitstimmen() {
 		simu.berechneRelevanteZweitstimmen();
 		for (Partei p : simu.getVerwandteWahl().getParteien()) {
 			System.out.println(p.getName());
 			for (Landesliste l : p.getLandesliste()) {
-				
+
 				if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() > 0) {
 					System.out.print(l.getBundesland().toString() + " ");
-				System.out.println(" Überhangmandate: "
-						+ l.getKandidaten(Mandat.UEBERHANGMADAT).size());
-				
+					System.out.println(" Überhangmandate: "
+							+ l.getKandidaten(Mandat.UEBERHANGMADAT).size());
+
+				}
+
 			}
-				
-				
-			}
-			System.out.println(
-					p.getRelevanteZweitstimmen().getAnzahl());
+			System.out.println(p.getRelevanteZweitstimmen().getAnzahl());
 		}
 
 	}
-	
 
 	public void testTest() {
-	
+
 		List<Partei> relevanteParteien = simu.waehleParteien();
-		
+
 		for (Partei p : relevanteParteien) {
 			System.out.println(p.getName());
 		}
 		System.out.println(relevanteParteien.size());
-		
-		for (Partei x : simu.getVerwandteWahl().getParteien() ) {
+
+		for (Partei x : simu.getVerwandteWahl().getParteien()) {
 			if (x.getName().equals("CDU")) {
 				simu.erhoeheRelevantenAnteil(x);
-				
+
 			}
-			}
+		}
 		relevanteParteien = simu.waehleParteien();
 		for (Partei y : relevanteParteien) {
 			System.out.println(y.getName());
 		}
-		}
-		
-	
+	}
+
 	public void testWaehleParteien() {
-List<Partei> relevanteParteien = simu.waehleParteien();
-		
+		List<Partei> relevanteParteien = simu.waehleParteien();
+
 		for (Partei p : relevanteParteien) {
 			System.out.println(p.getName());
 		}
 		System.out.println(relevanteParteien.size());
 	}
-	
-	@Test
+
 	public void rechnerTest() {
 
-		this.rechner09 = Mandatsrechner2009.getInstance();
-		this.rechner13 = Mandatsrechner2013.getInstance();
-		
-		
 		rechner09.berechneAlles(w);
 		System.out.println("Mandatsrechner2009 Ergebnisse");
-		System.out.println("1. Gesamtanzahl Sitze : " + w.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("1. Gesamtanzahl Sitze : "
+				+ w.getSitzverteilung().getAbgeordnete().size());
 		rechner09.berechneAlles(w);
-		System.out.println("2. Gesamtanzahl Sitze : " + w.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("2. Gesamtanzahl Sitze : "
+				+ w.getSitzverteilung().getAbgeordnete().size());
 		rechner09.berechneAlles(w);
-		System.out.println("3. Gesamtanzahl Sitze : " + w.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("3. Gesamtanzahl Sitze : "
+				+ w.getSitzverteilung().getAbgeordnete().size());
 		rechner09.berechneAlles(w);
-		System.out.println("4. Gesamtanzahl Sitze : " + w.getSitzverteilung().getAbgeordnete().size());
-		
+		System.out.println("4. Gesamtanzahl Sitze : "
+				+ w.getSitzverteilung().getAbgeordnete().size());
+
 		rechner13.berechneAlles(w2);
 		System.out.println("Mandatsrechner2013 Ergebnisse");
-		System.out.println("1. Gesamtanzahl Sitze : " + w2.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("1. Gesamtanzahl Sitze : "
+				+ w2.getSitzverteilung().getAbgeordnete().size());
 		rechner13.berechneAlles(w2);
-		System.out.println("2. Gesamtanzahl Sitze : " + w2.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("2. Gesamtanzahl Sitze : "
+				+ w2.getSitzverteilung().getAbgeordnete().size());
 		rechner13.berechneAlles(w2);
-		System.out.println("3. Gesamtanzahl Sitze : " + w2.getSitzverteilung().getAbgeordnete().size());
+		System.out.println("3. Gesamtanzahl Sitze : "
+				+ w2.getSitzverteilung().getAbgeordnete().size());
 		rechner13.berechneAlles(w2);
-		System.out.println("4. Gesamtanzahl Sitze : " + w2.getSitzverteilung().getAbgeordnete().size()); 
+		System.out.println("4. Gesamtanzahl Sitze : "
+				+ w2.getSitzverteilung().getAbgeordnete().size());
 	}
-	
-	
+
+	@Test
+	public void simonTest() {
+
+		Partei p = w.getParteien().get(0);
+		// Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
+		// Anteil relev. Zs > Mandate
+		while (!simu.bedingungErfuellt(p)) {
+
+			simu.erhoeheRelevantenAnteil(p);
+		}
+	}
 
 }
