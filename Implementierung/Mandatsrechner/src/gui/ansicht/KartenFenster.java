@@ -28,7 +28,7 @@ public class KartenFenster extends JTabbedPane {
 	}
 	
 	/**
-	 *  
+	 *  Array mit den Namen aller Bundesländer
 	 */
 	String[] alleLaender = new String[] {"Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", 
 			 "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
