@@ -167,6 +167,11 @@ public class Deutschland extends Gebiet implements Serializable {
 		return anzahl;
 	}
 	
+	/**
+	 * Gibt die Summe aller zur übergebenen Partei gehörenden Erststimmen in Deutschland zurück
+	 * @param partei die Partei deren Erststimmen abgefragt werden
+	 * @return die Summe der erststimmen
+	 */
 	public int getErststimmenAnzahl(Partei partei) {
 		int anzahl = 0;
 		for (Bundesland bl: this.getBundeslaender()) {
