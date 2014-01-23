@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wahlgenerator;
+package test;
 
 import static org.junit.Assert.*;
 import importexport.ImportExportManager;
@@ -19,6 +19,8 @@ import model.Partei;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import wahlgenerator.StimmgewichtSimulator;
 
 /**
  * @author Manuel

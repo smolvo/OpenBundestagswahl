@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.DebugGraphics;
+
 import model.Bundestagswahl;
 import model.Erststimme;
 import model.Partei;
@@ -56,7 +58,6 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 		// durchlaufe alle Wahlkreise
 		for (Wahlkreis wk : alleWahlkreise) {
-			//System.out.println("Wahlkreis: " + wk.getName());
 			// durchlaufe alle Erststimmen
 			for (Erststimme erst : wk.getErststimmen()) {
 				// Anzahl auf 0 setzen
