@@ -64,17 +64,16 @@ public class StimmgewichtSimulator {
 	 *            die Ausgangswahl
 	 */
 	public StimmgewichtSimulator(Bundestagswahl ausgangsWahl) {
-
+		this.rand = new Random();
+		this.rechner = Mandatsrechner2009.getInstance();
 		try {
 			// TODO Sitzverteilung von bw berechnen
-			// this.setAusgangsWahl(Mandatsrechner2009.getInstance()
-			// .berechneAlles(ausgangsWahl));
+			// this.setAusgangsWahl(rechner.berechneAlles(ausgangsWahl));
 			this.setAusgangsWahl(ausgangsWahl);
 
 			this.setVerwandteWahl(ausgangsWahl.deepCopy());
 
-			this.rand = new Random();
-			this.rechner = Mandatsrechner2009.getInstance();
+			
 			// this.berechneRelevanteZweitstimmen();
 			// this.setRelevanteParteien(waehleParteien());
 
@@ -161,10 +160,11 @@ public class StimmgewichtSimulator {
 	}
 
 	/**
-	 * Erhöht für eine Partei in einem Bundesland solange ihre Zweitstimmen um
-	 * einen konkreten Wert, bis ihr Anteil an relativen Zweitstimmen größer ist
-	 * als ihr Anteil an Mandaten
+	 * Erhöht für eine Partei in einem Bundesland solange ihre relevanten ZS um
+	 * einen konkreten Wert, bis ihr Anteil an der Gesamtheit größer ist
+	 * als der Anteil an Mandaten
 	 * 
+	 * Relevante ZS sind ZS, die nur auf Landeslisten ohne Überhangmandate abgegeben wurden
 	 * @param p
 	 *            die Partei, bei der Zweitstimmen erhöht werden sollen
 	 */
@@ -174,11 +174,14 @@ public class StimmgewichtSimulator {
 	// erniedrigt werden
 
 	public void erhoeheRelevantenAnteil(Partei p) {
+		//Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
+		//Anteil relev. Zs > Mandate
 		while (!bedingungErfuellt(p)) {
 
 			List<Landesliste> alleLandeslisten = p.getLandesliste();
 			List<Landesliste> ohneUeberhang = new ArrayList<Landesliste>();
 
+			//wählt alle Landeslisten, auf die keine Überhangmandate fallen
 			for (Landesliste land : alleLandeslisten) {
 				if (p.getAnzahlMandate(Mandat.UEBERHANGMADAT,
 						land.getBundesland()) == 0) {
@@ -196,17 +199,19 @@ public class StimmgewichtSimulator {
 				Wahlkreis wk = l.getBundesland().getWahlkreise().get(i);
 
 				// in diesem Wahlkreis wird nun die Zweitstimmenanzahl erhöht
-				// und die Sitzverteilung darauf neu berechnet
 				// TODO System.out.println entfernen
 				System.out.print("ZS im WK " + wk + " von "
 						+ wk.getZweitstimme(p).getAnzahl());
 				wk.getZweitstimme(p).erhoeheAnzahl(10);
 
+				//Sitzverteilung neu berechnen
 				System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
 						+ " erhöht");
 				this.setVerwandteWahl(rechner.berechneAlles(this.verwandteWahl));
 				System.out.print("Relevante ZS von "
 						+ p.getRelevanteZweitstimmen().getAnzahl());
+				
+				//relevante ZS neu berechnen
 				berechneRelevanteZweitstimmen();
 				System.out.print(" auf "
 						+ p.getRelevanteZweitstimmen().getAnzahl());
@@ -244,12 +249,7 @@ public class StimmgewichtSimulator {
 				.getAnzahl() / (float) relevanteZweitstimmenGesamt;
 
 		// berechnet den Anteil an Mandaten
-		//TODO Konsolenausgaben für Debugging entfernen
-		System.out.println("CDU Mandate: "
-				+ p.getAnzahlMandate()
-				+ " Gesamt: "
-				+ this.verwandteWahl.getSitzverteilung().getAbgeordnete()
-						.size());
+
 		anteilMandate = (float) p.getAnzahlMandate()
 				/ (float) this.verwandteWahl.getSitzverteilung()
 						.getAbgeordnete().size();
