@@ -30,7 +30,7 @@ public class Wahlvergleich {
 	
 	/**
 	 * gibt die Bundestagswahl 1 zurück
-	 * @return
+	 * @return die erste Bundestagswahl
 	 */
 	public Bundestagswahl getBtw1() {
 		return btw1;
@@ -39,7 +39,7 @@ public class Wahlvergleich {
 
 	/**
 	 * gibt die Bundestagswahl 2 zurück
-	 * @return
+	 * @return die zweite Bndestagswahl
 	 */
 	public Bundestagswahl getBtw2() {
 		return btw2;
