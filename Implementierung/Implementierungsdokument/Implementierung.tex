@@ -56,23 +56,30 @@
 Die dritte Phase unseres Projektes - die Implementierung. Unser Ziel in dieser Phase ist es, die bisherigen Errungenschaften in der Pflichten- und Entwurfsphase als ausführbares Programm umzusetzen und dabei möglichst wenig von den bisherigen Entwürfen auszuweichen. Hierbei ist uns jedoch aufgefallen, dass Veränderungen am Entwurf unumgänglich sind. Der Grund hierfür ist, dass bestimmte Sachen einfach nicht beachtet wurden, und somit übersehen worden sind. \\
 Dieses Dokument wird das fertige Programm mit seinen Funktionen erläutern und alle Veränderungen mit den zugehörigen Entwurfsentscheidungen ausführlich erklären. Anschließend werden wir eine Einblick in die nächste Phase geben. \\
 
+Dieses Dokument ist im Zuge der Implementierungsphase entstanden. Ziel dieser Phase, ist die Umsetzung der in der Pflichten- und Entwurfsphase festgelegten Strukturen und Prozessabläufe unter Berücksichtigung gegebener Rahmenbedingungen, Regeln und Zielvorgaben. \\
+Da sich jedoch während der Implementierung Sachverhalte ergeben, die mit dem eigentlichen Entwurf nicht vollständig zu vereinbaren sind, ist es notwendig einige Änderungen bzw. Anpassungen, aber auch Erweiterungen vorzunehmen. Diese, vom eigentlichen Plan abweichenden Entscheidungen, werden im Folgenden erläutert. \\
+Abschließend wird ein kurzer Ausblick auf die nächste Phase gegeben. \\
+
+
 \subsection{Notationshinweise}
-{\myma{Klassennamen}} werden in der Erklärung des Klassendiagramms textuell hervorgehoben indem sie \textbf{fett} und in einer anderen Schriftart geschrieben werden.\newline
-{\mymo{Methodennamen}} werden in der Erklärung des Klassendiagramms textuell hervorgehoben indem sie \textit{kursiv} und in einer anderen Schriftart geschrieben werden.\newline
+{\myma{Klassennamen}} werden in diesem Dokument textuell hervorgehoben, indem sie \textbf{fett} und in einer anderen Schriftart geschrieben werden.\newline
+{\mymo{Methodennamen}} werden hervorgehoben, indem sie  \textit{kursiv} und ebenfalls in einer anderen Schriftart geschrieben werden.\newline
 Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 \newpage
 
 \section{Pakete}
 
-	\subsection{Datenmodell}
+\subsection{Datenmodell}
 
-	\subsection{Import/Export}
-		\subsubsection{ImportExportManager}		
-		\subsubsection{Export}
-		\subsubsection{Import}
-	\subsection{GUI und GUI-Logik}	
-	
-	\subsection{Chronik}
+\subsection{Import/Export}	
+\subsubsection{ImportExportManager}			
+\subsubsection{Export}
+\subsubsection{Import}
+\subsection{GUI und GUI-Logik}	
+\subsubsection{Programmfenster}
+Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main- Klasse und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
+Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom {\myma{Programmfenster}} gehalten wird, realisiert. \\
+Zusätzlich besitzt es ein {\myma{Menu}}, welches dem Benutzer ermöglicht, den gewünschten Befehl auszuwählen und ausführen zu lassen, ohne genaue Steuerbefehle kennen und anwenden zu müssen. \\
 	
 	\subsection{Mandatsrechner}
 	
