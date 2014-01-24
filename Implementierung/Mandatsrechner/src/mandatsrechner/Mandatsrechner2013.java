@@ -53,15 +53,15 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		// Bestimme die Mandate der Zweitstimmen ( + Unterverteilung)
 		this.berechneZweitstimmenMandate(bw, relevanteParteien);
 
-		if (false && rechner2009.debug) {
+		if (rechner2009.debug) {
 			System.out.println("\nSitzverteilung");
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				if(partei.getName().equals("SPD")){
+				/*if(partei.getName().equals("SPD")){
 					for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
 						System.out.println(bl.getName()+": "+partei.getMindestsitzanzahl(bl));
 					}
-				}
+				}*/
 				System.out.println(partei.getName() + ": " + partei.getMindestsitzAnzahl());
 				summe +=  partei.getMindestsitzAnzahl();
 			}
@@ -110,9 +110,9 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		float parteidivisor = 0;
 		for (Partei partei : relevanteParteien) {
 			if (parteidivisor == 0) {
-				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl())-0.5);
+				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl()-0.5));
 			} else {
-				parteidivisor = Math.min(parteidivisor,  partei.getZweitstimmeGesamt() / partei.getMindestsitzAnzahl());
+				parteidivisor = (float) Math.min(parteidivisor, (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl()-0.5)));
 			}
 			//System.err.println(partei.getZweitstimmeGesamt() + " "+ partei.getMindestsitzAnzahl() +" "+parteidivisor);
 		}
@@ -138,8 +138,8 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
-				//System.out.println(Math.floor(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
-				if (this.runden(partei.getZweitstimmeGesamt() / parteidivisor, false) < mindestSitze) {
+				//System.out.println(Math.round(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
+				if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -153,8 +153,8 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				System.out.println(partei.getName() + ": " + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
-				summe +=  ((int) (partei.getZweitstimmeGesamt() / parteidivisor));
+				System.out.println(partei.getName() + ": " + (Math.round(partei.getZweitstimmeGesamt() / parteidivisor)));
+				summe +=  (Math.round(partei.getZweitstimmeGesamt() / parteidivisor));
 			}
 			System.out.println("Summe: " + summe);
 		}
