@@ -564,7 +564,7 @@ public class Crawler2013 extends Crawler {
 			color = color.BLACK;
 			break;
 		case "FDP":
-			color = color.GREEN.brighter();
+			color = color.YELLOW;
 			break;
 		case "DIE LINKE":
 			color = color.RED.darker();
