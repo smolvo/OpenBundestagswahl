@@ -82,6 +82,14 @@ public class Sitzverteilung implements Serializable {
 		}
 		this.bericht = bericht;
 	}
+	
+	/**
+	 * Fügt einen neuen Eintrag als eine neue Zeile in den Bericht hinzu
+	 * @param eintrag die neue Zeile im Bericht
+	 */
+	public void addBerichtEintrag(String eintrag){
+		this.bericht += "\n"+eintrag;
+	}
 
 	/**
 	 * Fuegt einen Kandidaten zur Liste hinzu.

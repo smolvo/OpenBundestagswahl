@@ -12,7 +12,7 @@ public enum Mandat {
 	DIREKTMANDAT("Direktmadat"),
 
 	/** Mandat mit mehr Direkmandaten als durch Zweitstimmen zugeteilte Mandate. */
-	UEBERHANGMADAT("�berhangmandat"),
+	UEBERHANGMADAT("Ueberhangmandat"),
 
 	/** Durch Ueberhangmandate zugeteilte Mandate zum Ausgleich */
 	AUSGLEICHSMANDAT("Ausgleichsmandat"),
