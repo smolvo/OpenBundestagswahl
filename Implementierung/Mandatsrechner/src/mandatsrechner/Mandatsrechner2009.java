@@ -80,14 +80,16 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 	 * 
 	 * @param bundestagswahl
 	 *            Die Bundestagswahl mit den zu berechnenden Parteien.
+	 * @param sperrklauselAnzahl
+	 * 			 Prozentsatz der mindest-benoetigten Zweitstimmen.
 	 * @return die Liste mit den relevanten Parteien
 	 */
 	public LinkedList<Partei> berechneRelevanteParteien(
-			Bundestagswahl bundestagswahl) {
+			Bundestagswahl bundestagswahl, int sperrklauselAnzahl) {
 		LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
 
 		for (Partei part : bundestagswahl.getParteien()) {
-			if (part.getZweitstimmeGesamt() >= this.sperrklauselAnzahl
+			if (part.getZweitstimmeGesamt() >= sperrklauselAnzahl
 					|| part.getAnzahlDirektmandate() >= this.minDirektmandate) {
 				// Partei im Bundestag falls Anforderungen erfuellt sind.
 				part.setImBundestag(true);
@@ -172,7 +174,7 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			}
 		}
 		berechneDirektmandat(bundestagswahl);
-		this.relevanteParteien = berechneRelevanteParteien(bundestagswahl);
+		this.relevanteParteien = berechneRelevanteParteien(bundestagswahl, this.sperrklauselAnzahl);
 
 		// Berechnung der Sitzverteilung nach d'Hondt.
 
