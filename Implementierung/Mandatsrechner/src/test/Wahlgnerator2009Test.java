@@ -11,7 +11,7 @@ public class Wahlgnerator2009Test {
 		// TODO Auto-generated method stub
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("files/Ergebnis2013.csv");
+		csvDateien[0] = new File("files/Ergebnis2009.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
 		Bundestagswahl bundestagswahl = null;
 		try {
@@ -26,7 +26,8 @@ public class Wahlgnerator2009Test {
 		
 		
 		if (bundestagswahl != null) {
-			Bundestagswahl newW = rechner2009.berechneAlles(bundestagswahl);
+			Bundestagswahl newW = rechner2009.berechneSaintLague(bundestagswahl);
+			Bundestagswahl newnewW = rechner2009.berechneHondt(bundestagswahl);
 			//newW = m.berechneAlles(newW);
 		}
 	}

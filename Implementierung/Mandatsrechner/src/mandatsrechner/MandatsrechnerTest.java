@@ -16,7 +16,7 @@ public class MandatsrechnerTest {
 		// TODO Auto-generated method stub
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("files/Ergebnis2013.csv");
+		csvDateien[0] = new File("files/Ergebnis2009.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
 		Bundestagswahl w = null;
 		try {
