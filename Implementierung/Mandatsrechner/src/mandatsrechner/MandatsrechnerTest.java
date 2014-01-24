@@ -4,6 +4,7 @@ import importexport.ImportExportManager;
 
 import java.io.File;
 
+import test.Debug;
 import model.Bundestagswahl;
 
 public class MandatsrechnerTest {
@@ -23,13 +24,13 @@ public class MandatsrechnerTest {
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block	
 			e1.printStackTrace();
-			System.out.println("Leine gültige CSV-Datei :/");
+			System.out.println("Leine gï¿½ltige CSV-Datei :/");
 		}
 		
-		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
-		
+		Mandatsrechner2009 rechner = new Mandatsrechner2009();
+		Debug.isAktiv();
 		if (w != null) {
-			Bundestagswahl newW = m.berechneAlles(w);
+			Bundestagswahl newW = rechner.berechneSitzverteilung(w);
 			//newW = m.berechneAlles(newW);
 		}
 	}
