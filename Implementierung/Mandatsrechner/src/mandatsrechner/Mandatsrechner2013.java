@@ -41,7 +41,11 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			}
 			System.out.println("Summe: " + summe);
 		}
-
+		
+		/*
+		 * Finden eines geeigneten minimalen Parteidivisors um die anzahl der neuen Mindestsitze zu bestimmen.
+		 * Der Parteidivisor ist min(zweitstimme einer partei / (mindestsitze - 0.5));
+		 */
 		for (Partei partei : relevanteParteien) {
 			if (parteidivisor == 0) {
 				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl() - 0.5));
@@ -63,6 +67,11 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			
 		}
 		
+		/**
+		 *  Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre Anzahl an
+		 *  Mindestsitze erfuellen.
+		 *  
+		 */
 		while (!isCorrect) {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
@@ -78,6 +87,12 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			}
 		}
 		
+		/**
+		 * Die Zweitstimmen einer Partei dividiert durch den parteidivisor ergeben nun die neue
+		 * Mindestanzahl an Sitzen.
+		 * Nun wird ein Multiplikator bestimmt, der die Ausgleichsmandate einer Parei
+		 * auf die Landeslisten dieser Partei im Verhältnis der Zweitstimmen verteilt.
+		 */
 		for (Partei partei : relevanteParteien) {
 			int neueSitzanzahl = rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor, true); 
 			int diffSitze = neueSitzanzahl - partei.getMindestsitzAnzahl();
