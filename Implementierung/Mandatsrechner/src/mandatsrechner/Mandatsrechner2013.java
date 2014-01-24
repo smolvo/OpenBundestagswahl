@@ -53,10 +53,15 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		// Bestimme die Mandate der Zweitstimmen ( + Unterverteilung)
 		this.berechneZweitstimmenMandate(bw, relevanteParteien);
 
-		if (rechner2009.debug) {
+		if (false && rechner2009.debug) {
 			System.out.println("\nSitzverteilung");
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
+				if(partei.getName().equals("SPD")){
+					for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
+						System.out.println(bl.getName()+": "+partei.getMindestsitzanzahl(bl));
+					}
+				}
 				System.out.println(partei.getName() + ": " + partei.getMindestsitzAnzahl());
 				summe +=  partei.getMindestsitzAnzahl();
 			}
@@ -105,14 +110,14 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		float parteidivisor = 0;
 		for (Partei partei : relevanteParteien) {
 			if (parteidivisor == 0) {
-				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl() - 0.5));
+				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl())-0.5);
 			} else {
 				parteidivisor = Math.min(parteidivisor,  partei.getZweitstimmeGesamt() / partei.getMindestsitzAnzahl());
 			}
 			//System.err.println(partei.getZweitstimmeGesamt() + " "+ partei.getMindestsitzAnzahl() +" "+parteidivisor);
 		}
 		
-		if (false && super.debug) {
+		if (super.debug) {
 			System.out.println("\nAlt Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
@@ -134,7 +139,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
 				//System.out.println(Math.floor(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
-				if (rechner2009.runden(partei.getZweitstimmeGesamt() / parteidivisor, true) < mindestSitze) {
+				if (this.runden(partei.getZweitstimmeGesamt() / parteidivisor, false) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -187,6 +192,17 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	
 	private void berechneZweitstimmenMandate(Bundestagswahl bw, List<Partei> relevanteParteien){
 		float zuteilungsdivisor = this.rechner2009.berechneZuteilungsdivisor(bw);
+		if (super.debug) {
+			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
+			int summe = 0;
+			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
+				int zahl = Math
+						.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
+				summe += zahl;
+				System.out.println(bl.getName() + ": " + zahl+" Einwohner: "+bl.getEinwohnerzahl());
+			}
+			System.out.println("Summe aller Sitze: " + summe);
+		}
 		float landesdivisor = 0;
 		boolean isCorrect = false;
 		for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
@@ -268,6 +284,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 						+ landesdivisor);
 				int sum = 0;
 				for (Partei part : relevanteParteien) {
+					
 					System.out.println(""
 							+ part.getName()
 							+ ": "
@@ -318,6 +335,19 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 				}
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 					int sitzeBundesland = this.runden(partei.getMindestsitzanzahl(bl) * multiplikator, true);
+					/*if(partei.getName().equals("SPD") && bl.getName().equals("Bayern")){
+						System.out.println(bl.getName()+": "+partei.getMindestsitzanzahl(bl)+" "+sitzeBundesland);
+						List<Kandidat> kandidaten = partei.getMitglieder();
+						int count = 1;
+						for(Kandidat k : kandidaten){
+							
+							if(!k.getMandat().equals(Mandat.KEINMANDAT) && k.getLandesliste()!=null && k.getLandesliste().getBundesland().equals(bl) ){
+								System.out.println(count+": "+k.getName()+ " "+k.getMandat());
+								count++;
+							}
+							
+						}
+					}*/
 					if (sitzeBundesland != partei.getMindestsitzanzahl(bl)) {
 						int diffSitzeBundesland = sitzeBundesland - partei.getMindestsitzanzahl(bl);
 						for (int i = 0; i < diffSitzeBundesland; i++) {

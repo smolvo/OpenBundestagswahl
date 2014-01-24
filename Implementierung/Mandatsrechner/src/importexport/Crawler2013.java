@@ -491,52 +491,52 @@ public class Crawler2013 extends Crawler {
 		int anzahl = 0;
 		switch (name) {
 		case "Baden-Württemberg":
-			anzahl = 9483500;
+			anzahl = 9482902;//9483500;
 			break;
 		case "Bayern":
-			anzahl = 11352000;
+			anzahl = 11353264;//11352000;
 			break;
 		case "Berlin":
-			anzahl = 3019900;
+			anzahl = 3025288; //3019900;
 			break;
 		case "Brandenburg":
-			anzahl = 2420700;
+			anzahl = 2418267; //2420700;
 			break;
 		case "Bremen":
-			anzahl = 575300;
+			anzahl = 575805;//575300;
 			break;
 		case "Hamburg":
-			anzahl = 1558300;
+			anzahl = 1559655; //1558300;
 			break;
 		case "Hessen":
-			anzahl = 5390000;
+			anzahl = 5388350; //5390000;
 			break;
 		case "Mecklenburg-Vorpommern":
-			anzahl = 1587000;
+			anzahl = 1585032;//1587000;
 			break;
 		case "Niedersachsen":
-			anzahl = 7354900;
+			anzahl = 7354892; //7354900;
 			break;
 		case "Nordrhein-Westfalen":
-			anzahl = 15906800;
+			anzahl = 15895182; //15906800;
 			break;
 		case "Rheinland-Pfalz":
-			anzahl = 3675300;
+			anzahl = 3672888; //3675300;
 			break;
 		case "Saarland":
-			anzahl = 919600;
+			anzahl = 919402; //919600;
 			break;
 		case "Sachsen":
-			anzahl = 4007100;
+			anzahl = 4005278; //4007100;
 			break;
 		case "Sachsen-Anhalt":
-			anzahl = 2252200;
+			anzahl = 2247673; //2252200;
 			break;
 		case "Schleswig-Holstein":
-			anzahl = 2687200;
+			anzahl = 2686085; //2687200;
 			break;
 		case "Thüringen":
-			anzahl = 2157700;
+			anzahl = 2154202; //2157700;
 			break;
 		default:
 			anzahl = 0;

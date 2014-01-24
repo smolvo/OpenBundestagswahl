@@ -120,10 +120,10 @@ public class Mandatsrechner2009 extends Mandatsrechner {
 			if (sitzanzahl == minSitze) {
 				break;
 			} else if (sitzanzahl < minSitze) {
-				zuteilungsdivisor -= 10;
+				zuteilungsdivisor -= 1;
 			} else {
 				// sitzanzahl > minSitze
-				zuteilungsdivisor += 10;
+				zuteilungsdivisor += 1;
 			}
 		}
 		

@@ -30,7 +30,7 @@ public class MandatsrechnerTest {
 		
 		if (w != null) {
 			Bundestagswahl newW = m.berechneAlles(w);
-			newW = m.berechneAlles(newW);
+			//newW = m.berechneAlles(newW);
 		}
 	}
 
