@@ -30,8 +30,11 @@ public class MandatsrechnerTest {
 		Mandatsrechner2009 rechner = new Mandatsrechner2009();
 		Debug.isAktiv();
 		if (w != null) {
-			Bundestagswahl newW = rechner.berechneSitzverteilung(w);
-			//newW = m.berechneAlles(newW);
+			Bundestagswahl newW = rechner.berechneAlles(w);
+			newW = rechner.berechneAlles(newW);
+			System.out.println(newW.getSitzverteilung().getBericht());
+			System.out.println(newW.getSitzverteilung().getAbgeordnete().size());
+			
 		}
 	}
 

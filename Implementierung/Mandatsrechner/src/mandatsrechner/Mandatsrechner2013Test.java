@@ -23,14 +23,16 @@ public class Mandatsrechner2013Test {
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block	
 			e1.printStackTrace();
-			System.out.println("Leine gültige CSV-Datei :/");
+			System.out.println("Leine gï¿½ltige CSV-Datei :/");
 		}
 		
-		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
+		Mandatsrechner2013 m = new Mandatsrechner2013();
 		
 		if (w != null) {
 			Bundestagswahl newW = m.berechneAlles(w);
 			//newW = m.berechneAlles(newW);
+			System.out.println(w.getSitzverteilung().getBericht());
+			System.out.println(w.getSitzverteilung().getAbgeordnete().size());
 		}
 	}
 

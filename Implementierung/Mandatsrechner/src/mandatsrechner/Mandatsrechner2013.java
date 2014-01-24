@@ -11,45 +11,43 @@ import model.Sitzverteilung;
 import model.Wahlkreis;
 import model.Partei;
 
+/**
+ * Mandatsrechner mit dem Verteilungsverfahren von SainteLague/Schepers. Diese
+ * Klasse ist ähnlich aufgebaut wie Mandatsrechner2009 nur das auch
+ * ausgleichmandate berechnet werden.
+ * 
+ */
 public class Mandatsrechner2013 extends Mandatsrechner {
 
-	private static Mandatsrechner2013 instance;
-	private Mandatsrechner2009 rechner2009;
-	
-	public Mandatsrechner2013(){
-		this.rechner2009 = new Mandatsrechner2009();
-	}
-	
-	public static Mandatsrechner2013 getInstance() {
-		if(Mandatsrechner2013.instance==null){
-			Mandatsrechner2013.instance = new Mandatsrechner2013();
-		}
-		return Mandatsrechner2013.instance;
-	}
+	/*
+	 * Da der Mandatsrechner 2009 fast das gleiche Verafahren benutzt werden die
+	 * Funktionen der Klasse für die Berechnung der Sitzverteilung in dieser
+	 * Klasse genutzt.
+	 */
+	private Mandatsrechner2009 rechner2009 = new Mandatsrechner2009();
 
-	public Bundestagswahl berechneAlles(Bundestagswahl bw){
-		
+	public Bundestagswahl berechneAlles(Bundestagswahl bw) {
+
 		// Initialisierung:
 		float parteidivisor = 0;
-	
-		int sperrklauselAnzahl = bw.getDeutschland()
-				.getZweitstimmeGesamt() / 20;
-		
-		bw.setSitzverteilung(new Sitzverteilung(
-				new LinkedList<Kandidat>(), ""));
+
+		int sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
+
+		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), ""));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bw.getParteien()) {
 			for (Kandidat kandidat : partei.getMitglieder()) {
 				kandidat.setMandat(Mandat.KEINMANDAT);
 			}
 		}
-		
+
 		// Berechne Direktmandate
 		this.rechner2009.berechneDirektmandat(bw);
-		
+
 		// Bestimme Relevante Parteien.
-		List<Partei> relevanteParteien = this.rechner2009.berechneRelevanteParteien(bw, sperrklauselAnzahl);
-		
+		List<Partei> relevanteParteien = this.rechner2009
+				.berechneRelevanteParteien(bw, sperrklauselAnzahl);
+
 		// Bestimme die Mandate der Zweitstimmen ( + Unterverteilung)
 		this.berechneZweitstimmenMandate(bw, relevanteParteien);
 
@@ -57,26 +55,26 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			System.out.println("\nSitzverteilung");
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				/*if(partei.getName().equals("SPD")){
-					for(Bundesland bl : bw.getDeutschland().getBundeslaender()){
-						System.out.println(bl.getName()+": "+partei.getMindestsitzanzahl(bl));
-					}
-				}*/
-				System.out.println(partei.getName() + ": " + partei.getMindestsitzAnzahl());
-				summe +=  partei.getMindestsitzAnzahl();
+				/*
+				 * if(partei.getName().equals("SPD")){ for(Bundesland bl :
+				 * bw.getDeutschland().getBundeslaender()){
+				 * System.out.println(bl
+				 * .getName()+": "+partei.getMindestsitzanzahl(bl)); } }
+				 */
+				System.out.println(partei.getName() + ": "
+						+ partei.getMindestsitzAnzahl());
+				summe += partei.getMindestsitzAnzahl();
 			}
 			System.out.println("Summe: " + summe);
 		}
-		
+
 		// Ausgleichsmandate (Schritt 3 - Oberverteilung)
 		this.berechneSitzeZweitstimmenverhaeltnis(bw, relevanteParteien);
-		
-		
-		
+
 		return bw;
-		
+
 	}
-	
+
 	@Override
 	public Bundestagswahl berechne(Bundestagswahl bw) {
 		// TODO Auto-generated method stub
@@ -98,47 +96,56 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	@Override
 	protected void erstelleBericht(String zeile) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	private float berechneParteidivisor(List<Partei> relevanteParteien){
+
+	private float berechneParteidivisor(List<Partei> relevanteParteien) {
 
 		/*
-		 * Finden eines geeigneten minimalen Parteidivisors um die anzahl der neuen Mindestsitze zu bestimmen.
-		 * Der Parteidivisor ist min(zweitstimme einer partei / (mindestsitze - 0.5));
+		 * Finden eines geeigneten minimalen Parteidivisors um die anzahl der
+		 * neuen Mindestsitze zu bestimmen. Der Parteidivisor ist
+		 * min(zweitstimme einer partei / (mindestsitze - 0.5));
 		 */
 		float parteidivisor = 0;
 		for (Partei partei : relevanteParteien) {
 			if (parteidivisor == 0) {
-				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl()-0.5));
+				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei
+						.getMindestsitzAnzahl() - 0.5));
 			} else {
-				parteidivisor = (float) Math.min(parteidivisor, (partei.getZweitstimmeGesamt() / (partei.getMindestsitzAnzahl()-0.5)));
+				parteidivisor = (float) Math.min(parteidivisor, (partei
+						.getZweitstimmeGesamt() / (partei
+						.getMindestsitzAnzahl() - 0.5)));
 			}
-			//System.err.println(partei.getZweitstimmeGesamt() + " "+ partei.getMindestsitzAnzahl() +" "+parteidivisor);
+			// System.err.println(partei.getZweitstimmeGesamt() + " "+
+			// partei.getMindestsitzAnzahl() +" "+parteidivisor);
 		}
-		
+
 		if (super.debug) {
 			System.out.println("\nAlt Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				System.out.println(partei.getName() + ": " + ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
-				summe +=  ((int) (partei.getZweitstimmeGesamt() / parteidivisor));
+				System.out
+						.println(partei.getName()
+								+ ": "
+								+ ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
+				summe += ((int) (partei.getZweitstimmeGesamt() / parteidivisor));
 			}
 			System.out.println("Summe: " + summe);
-			
+
 		}
-		
+
 		/**
-		 *  Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre Anzahl an
-		 *  Mindestsitze erfuellen.
-		 *  
+		 * Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre
+		 * Anzahl an Mindestsitze erfuellen.
+		 * 
 		 */
 		boolean isCorrect = false;
 		while (!isCorrect) {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
-				//System.out.println(Math.round(partei.getZweitstimmeGesamt() / parteidivisor)+ " " + mindestSitze);
+				// System.out.println(Math.round(partei.getZweitstimmeGesamt() /
+				// parteidivisor)+ " " + mindestSitze);
 				if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
@@ -148,19 +155,23 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 				parteidivisor -= 1;
 			}
 		}
-		
+
 		if (super.debug) {
 			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				System.out.println(partei.getName() + ": " + (Math.round(partei.getZweitstimmeGesamt() / parteidivisor)));
-				summe +=  (Math.round(partei.getZweitstimmeGesamt() / parteidivisor));
+				System.out.println(partei.getName()
+						+ ": "
+						+ (Math.round(partei.getZweitstimmeGesamt()
+								/ parteidivisor)));
+				summe += (Math.round(partei.getZweitstimmeGesamt()
+						/ parteidivisor));
 			}
 			System.out.println("Summe: " + summe);
 		}
 		return parteidivisor;
 	}
-	
+
 	/**
 	 * Rundet die Kommazahl mit dem gew�nschten Rundungsalgprithmus auf oder ab.
 	 * 
@@ -189,9 +200,11 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 		return gerundet;
 		// return Math.round(zahl);
 	}
-	
-	private void berechneZweitstimmenMandate(Bundestagswahl bw, List<Partei> relevanteParteien){
-		float zuteilungsdivisor = this.rechner2009.berechneZuteilungsdivisor(bw);
+
+	private void berechneZweitstimmenMandate(Bundestagswahl bw,
+			List<Partei> relevanteParteien) {
+		float zuteilungsdivisor = this.rechner2009
+				.berechneZuteilungsdivisor(bw);
 		if (super.debug) {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
@@ -199,7 +212,8 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 				int zahl = Math
 						.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
 				summe += zahl;
-				System.out.println(bl.getName() + ": " + zahl+" Einwohner: "+bl.getEinwohnerzahl());
+				System.out.println(bl.getName() + ": " + zahl + " Einwohner: "
+						+ bl.getEinwohnerzahl());
 			}
 			System.out.println("Summe aller Sitze: " + summe);
 		}
@@ -211,7 +225,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 					/ zuteilungsdivisor, false);
 			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
 			isCorrect = false;
-			//System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
+			// System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
 			while (!isCorrect) {
 				int sitzePartei = 0;
 
@@ -233,13 +247,14 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			for (Partei part : relevanteParteien) {
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKTMANDAT,
 						bl);
-				
-				int mindestSitzanzahl = this.runden(bl
-						.getZweitstimmenAnzahl(part) / landesdivisor, false);
+
+				int mindestSitzanzahl = this.runden(
+						bl.getZweitstimmenAnzahl(part) / landesdivisor, false);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 				part.addMindestsitzanzahl(bl,
 						Math.max(direktmandate, mindestSitzanzahl));
-				//System.err.println(direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl));
+				// System.err.println(direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate,
+				// mindestSitzanzahl));
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
@@ -252,13 +267,21 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 							Kandidat neuerAbgeordneter = bl
 									.getLandesliste(part).getListenkandidaten()
 									.get(i);
-							//Hat der Kandidat schon ein Mandat?
+							// Hat der Kandidat schon ein Mandat?
 							if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
 								bw.getSitzverteilung().addAbgeordnete(
 										bl.getLandesliste(part)
 												.getListenkandidaten().get(i));
 								bl.getLandesliste(part).getListenkandidaten()
 										.get(i).setMandat(Mandat.MANDAT);
+								bw.getSitzverteilung().addBerichtEintrag(
+										neuerAbgeordneter.getName()
+												+ " von der "
+												+ neuerAbgeordneter.getPartei()
+														.getName()
+												+ " bekommt in dem Bundesland "
+												+ bl.getName() + " ein "
+												+ Mandat.MANDAT.toString());
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird
 								// diffKandidat erhoeht, damit die Schleife den
@@ -271,11 +294,18 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 						}
 					}
 				} else {
-					//System.err.println("-"+Math.abs(diffKandidat));
+					// System.err.println("-"+Math.abs(diffKandidat));
+					String neuerEintrag = "Die Kandidaten ";
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
 						bl.getDirektMandate(part).get(i)
 								.setMandat(Mandat.UEBERHANGMADAT);
+						neuerEintrag += bl.getDirektMandate(part).get(i)
+								.getName()
+								+ " ,";
 					}
+					neuerEintrag += " sind in dem Bundesland " + bl.getName()
+							+ " Ueberhangmandate";
+					bw.getSitzverteilung().addBerichtEintrag(neuerEintrag);
 				}
 
 			}
@@ -284,12 +314,9 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 						+ landesdivisor);
 				int sum = 0;
 				for (Partei part : relevanteParteien) {
-					
-					System.out.println(""
-							+ part.getName()
-							+ ": "
-							+ bl.getZweitstimmenAnzahl(part)
-							+ " - "
+
+					System.out.println("" + part.getName() + ": "
+							+ bl.getZweitstimmenAnzahl(part) + " - "
 							+ part.getMindestsitzanzahl(bl));
 					sum += part.getMindestsitzanzahl(bl);
 				}
@@ -299,32 +326,36 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 
 		}
 	}
-	
-	private void berechneSitzeZweitstimmenverhaeltnis(Bundestagswahl bw, 
-			List<Partei> relevanteParteien){
+
+	private void berechneSitzeZweitstimmenverhaeltnis(Bundestagswahl bw,
+			List<Partei> relevanteParteien) {
 		/**
-		 * Die Zweitstimmen einer Partei dividiert durch den parteidivisor ergeben nun die neue
-		 * Mindestanzahl an Sitzen.
-		 * Nun wird ein Multiplikator bestimmt, der die Ausgleichsmandate einer Parei
-		 * auf die Landeslisten dieser Partei im Verh�ltnis der Zweitstimmen verteilt.
+		 * Die Zweitstimmen einer Partei dividiert durch den parteidivisor
+		 * ergeben nun die neue Mindestanzahl an Sitzen. Nun wird ein
+		 * Multiplikator bestimmt, der die Ausgleichsmandate einer Parei auf die
+		 * Landeslisten dieser Partei im Verh�ltnis der Zweitstimmen verteilt.
 		 */
 		float parteidivisor = this.berechneParteidivisor(relevanteParteien);
 		boolean isCorrect = false;
 		for (Partei partei : relevanteParteien) {
-			int neueSitzanzahl = this.runden(partei.getZweitstimmeGesamt() / parteidivisor, true); 
+			int neueSitzanzahl = this.runden(partei.getZweitstimmeGesamt()
+					/ parteidivisor, true);
 			int diffSitze = neueSitzanzahl - partei.getMindestsitzAnzahl();
-			//System.out.println(partei.getName() + " " + diffSitze);
+			// System.out.println(partei.getName() + " " + diffSitze);
 			if (diffSitze > 0) {
 				isCorrect = false;
 				float multiplikator = 0.1f;
 				while (!isCorrect) {
 					int sitzeBundesland = 0;
 					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-						sitzeBundesland += this.runden(partei.getMindestsitzanzahl(bl) * multiplikator, true);
-						
+						sitzeBundesland += this
+								.runden(partei.getMindestsitzanzahl(bl)
+										* multiplikator, true);
+
 					}
-					
-					//System.err.println(partei.getName() + " " + multiplikator);
+
+					// System.err.println(partei.getName() + " " +
+					// multiplikator);
 					if (sitzeBundesland == neueSitzanzahl) {
 						isCorrect = true;
 					} else if (sitzeBundesland < neueSitzanzahl) {
@@ -334,42 +365,64 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 					}
 				}
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-					int sitzeBundesland = this.runden(partei.getMindestsitzanzahl(bl) * multiplikator, true);
-					/*if(partei.getName().equals("SPD") && bl.getName().equals("Bayern")){
-						System.out.println(bl.getName()+": "+partei.getMindestsitzanzahl(bl)+" "+sitzeBundesland);
-						List<Kandidat> kandidaten = partei.getMitglieder();
-						int count = 1;
-						for(Kandidat k : kandidaten){
-							
-							if(!k.getMandat().equals(Mandat.KEINMANDAT) && k.getLandesliste()!=null && k.getLandesliste().getBundesland().equals(bl) ){
-								System.out.println(count+": "+k.getName()+ " "+k.getMandat());
-								count++;
-							}
-							
-						}
-					}*/
+					int sitzeBundesland = this.runden(
+							partei.getMindestsitzanzahl(bl) * multiplikator,
+							true);
+					/*
+					 * if(partei.getName().equals("SPD") &&
+					 * bl.getName().equals("Bayern")){
+					 * System.out.println(bl.getName
+					 * ()+": "+partei.getMindestsitzanzahl
+					 * (bl)+" "+sitzeBundesland); List<Kandidat> kandidaten =
+					 * partei.getMitglieder(); int count = 1; for(Kandidat k :
+					 * kandidaten){
+					 * 
+					 * if(!k.getMandat().equals(Mandat.KEINMANDAT) &&
+					 * k.getLandesliste()!=null &&
+					 * k.getLandesliste().getBundesland().equals(bl) ){
+					 * System.out.println(count+": "+k.getName()+
+					 * " "+k.getMandat()); count++; }
+					 * 
+					 * } }
+					 */
 					if (sitzeBundesland != partei.getMindestsitzanzahl(bl)) {
-						int diffSitzeBundesland = sitzeBundesland - partei.getMindestsitzanzahl(bl);
+						int diffSitzeBundesland = sitzeBundesland
+								- partei.getMindestsitzanzahl(bl);
 						for (int i = 0; i < diffSitzeBundesland; i++) {
-							Kandidat neuerAbgeordneter = partei.getLandesliste(bl).getListenkandidaten().get(i);
+							Kandidat neuerAbgeordneter = partei
+									.getLandesliste(bl).getListenkandidaten()
+									.get(i);
 							if (neuerAbgeordneter == null) {
 								// Negatives Stimmgewicht.
-								System.err.println("Kein Abgeordneter gefunden.");
+								System.err
+										.println("Kein Abgeordneter gefunden.");
 							} else if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
-								bw.getSitzverteilung().addAbgeordnete(neuerAbgeordneter);
-								neuerAbgeordneter.setMandat(Mandat.AUSGLEICHSMANDAT);
+								bw.getSitzverteilung().addAbgeordnete(
+										neuerAbgeordneter);
+								neuerAbgeordneter
+										.setMandat(Mandat.AUSGLEICHSMANDAT);
+								bw.getSitzverteilung().addBerichtEintrag(
+										neuerAbgeordneter.getName()
+												+ " von der "
+												+ neuerAbgeordneter.getPartei()
+														.getName()
+												+ " bekommt in dem Bundesland "
+												+ bl.getName()
+												+ " ein "
+												+ Mandat.AUSGLEICHSMANDAT
+														.toString());
 							} else {
-								
+
 								diffSitzeBundesland += 1;
 							}
-							//System.err.println("Add "+diffSitzeBundesland+" candidates from "+partei.getName()+" to "+bl.getName());
+							// System.err.println("Add "+diffSitzeBundesland+" candidates from "+partei.getName()+" to "+bl.getName());
 						}
-						
+
 					}
 				}
-				
+
 			}
-			
+
 		}
 	}
 
