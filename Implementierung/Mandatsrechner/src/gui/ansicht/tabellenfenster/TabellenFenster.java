@@ -125,26 +125,31 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Wahlkreis wk) {
 		WahlkreisDaten daten = new WahlkreisDaten();
-		for (int i = 0; i < wk.getErststimmen().size(); i++) {
-			Erststimme er = wk.getErststimmen().get(i);
-			Zweitstimme zw = wk.getZweitstimmen().get(i);
-			boolean direktMan = false;
-			if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
-				direktMan = true;
+		for (Zweitstimme zw : wk.getZweitstimmen()) {
+			Erststimme korresErst = null;
+			for (Erststimme er: wk.getErststimmen()) {
+				if (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName())) {
+					korresErst = er;
+				}
 			}
-			if ((zw.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
-				double prozentualeErst = (Math
-						.rint(((double) er.getAnzahl() / (double) wk
-								.getErststimmeGesamt()) * 1000) / 10);
-				double prozentualeZweit = (Math
-						.rint(((double) zw.getAnzahl() / (double) wk
-								.getZweitstimmeGesamt()) * 1000) / 10);
-				daten.addZeile(zw.getPartei().getName(), er.getKandidat()
-						.getName(), zw, er, Double.toString(prozentualeZweit),
-						Double.toString(prozentualeErst), direktMan);
+			if (korresErst != null) {
+				boolean direktMan = false;
+				if (korresErst.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
+					direktMan = true;
+				}
+				if ((zw.getAnzahl() != 0) || (korresErst.getAnzahl() != 0)) {
+					double prozentualeErst = (Math
+							.rint(((double) korresErst.getAnzahl() / (double) wk
+									.getErststimmeGesamt()) * 1000) / 10);
+					double prozentualeZweit = (Math
+							.rint(((double) zw.getAnzahl() / (double) wk
+									.getZweitstimmeGesamt()) * 1000) / 10);
+					daten.addZeile(zw.getPartei().getName(), korresErst.getKandidat()
+							.getName(), zw, korresErst, Double.toString(prozentualeZweit),
+							Double.toString(prozentualeErst), direktMan);
+				}
 			}
 		}
-
 		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
