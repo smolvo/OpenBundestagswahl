@@ -53,7 +53,6 @@ public final class Programmfenster extends JFrame {
 		setResizable(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		// TODO PFAD FIXEN
 		Image icon = new ImageIcon("src/main/resources/gui/images/wahl2.png")
 				.getImage();
 		setIconImage(icon);

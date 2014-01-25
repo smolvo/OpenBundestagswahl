@@ -75,7 +75,7 @@ public class TabLeiste extends JTabbedPane {
 
 		JButton neuerTab = new JButton();
 		neuerTab.setOpaque(false);
-		neuerTab.setIcon(new ImageIcon("src/gui/resources/images/neuerTab.png"));
+		neuerTab.setIcon(new ImageIcon("src/main/resources/gui/images/neuerTab.png"));
 
 		neuerTab.setBorder(null);
 		neuerTab.setContentAreaFilled(false);
