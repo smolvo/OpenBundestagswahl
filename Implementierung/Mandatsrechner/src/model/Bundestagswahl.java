@@ -1,5 +1,6 @@
 package model;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 import chronik.Chronik;
-
+import test.Debug;
 /**
  * Diese Klasse repraesentiert eine Bundestagswahl.
  */
@@ -250,9 +251,13 @@ public class Bundestagswahl implements Serializable {
 		return success;
 	}
 	
-	// TODO
+	/**
+	 * Setzt die ZweitstimmenAnzahl
+	 * @param stimme 
+	 * @return
+	 **/
 	private boolean setzeStimmenAnzahl (Zweitstimme stimme) {
-		System.out.println("Setze zweitstimme");
+		Debug.print("Setze zweitstimme");
 		boolean success = false;
 		if (stimme.getGebiet() instanceof Deutschland) {
 			// TODO

@@ -4,6 +4,7 @@ import importexport.ImportExportManager;
 
 import java.io.File;
 
+import test.Debug;
 import model.Bundestagswahl;
 
 public class Mandatsrechner2013Test {
@@ -12,7 +13,7 @@ public class Mandatsrechner2013Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
@@ -29,10 +30,11 @@ public class Mandatsrechner2013Test {
 		Mandatsrechner2013 m = new Mandatsrechner2013();
 		
 		if (w != null) {
-			Bundestagswahl newW = m.berechneAlles(w);
+			Bundestagswahl newW = m.berechneAlles(m.berechneAlles(m.berechneAlles(w)));
 			//newW = m.berechneAlles(newW);
-			System.out.println(w.getSitzverteilung().getBericht());
-			System.out.println(w.getSitzverteilung().getAbgeordnete().size());
+			
+			Debug.print(w.getSitzverteilung().getBericht());
+			//System.out.println(w.getSitzverteilung().getAbgeordnete().size());
 		}
 	}
 

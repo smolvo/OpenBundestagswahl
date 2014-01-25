@@ -3,6 +3,7 @@ package mandatsrechner;
 import java.util.LinkedList;
 import java.util.List;
 
+import test.Debug;
 import model.Bundesland;
 import model.Bundestagswahl;
 import model.Kandidat;
@@ -24,7 +25,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	 * Funktionen der Klasse für die Berechnung der Sitzverteilung in dieser
 	 * Klasse genutzt.
 	 */
-	private Mandatsrechner2009 rechner2009 = new Mandatsrechner2009();
+	private Mandatsrechner2009 rechner2009 = Mandatsrechner2009.getInstance();
 
 	public Bundestagswahl berechneAlles(Bundestagswahl bw) {
 
@@ -46,12 +47,12 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 
 		// Bestimme Relevante Parteien.
 		List<Partei> relevanteParteien = this.rechner2009
-				.berechneRelevanteParteien(bw, sperrklauselAnzahl);
+				.berechneRelevanteParteien(bw);
 
 		// Bestimme die Mandate der Zweitstimmen ( + Unterverteilung)
 		this.berechneZweitstimmenMandate(bw, relevanteParteien);
 
-		if (rechner2009.debug) {
+		if (Debug.isAktiv()) {
 			System.out.println("\nSitzverteilung");
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
