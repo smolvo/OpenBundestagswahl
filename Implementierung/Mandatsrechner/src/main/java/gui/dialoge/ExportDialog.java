@@ -47,7 +47,7 @@ public class ExportDialog extends JDialog{
         	
         	String pfad = dateiAuswahl.getSelectedFile().toString();
 
-        	Steuerung.exportieren(pfad);
+        	Steuerung.getInstance().exportieren(pfad);
         } else {
         	JOptionPane.showMessageDialog(pf,
 					"Speichern abgebrochen.", "Meldung",

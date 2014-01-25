@@ -67,7 +67,6 @@ public class BundDiagramm implements MouseListener {
 		List<Zweitstimme> stimmen = land.getZweitstimmen();
 		Collections.sort(stimmen);
 		DefaultPieDataset result = new DefaultPieDataset();
-		int sum = 0;
 		for (Zweitstimme zw : stimmen) {
 			int sitze = 0;
 			for (Kandidat kan : zw.getPartei().getMitglieder()) {
@@ -79,12 +78,8 @@ public class BundDiagramm implements MouseListener {
 				daten.add(sitze);
 				parteien.add(zw.getPartei());
 				result.setValue(zw.getPartei().getName(), sitze);
-				sum += sitze;
 			}
 		}
-//		// unteres viertel soll leer sein
-//		float angle = (float) ((sum / 270.0) * 90.0);
-//		result.setValue("", angle);
 
 		JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung",
 				result, false, true, false);
@@ -94,8 +89,6 @@ public class BundDiagramm implements MouseListener {
 		for (int i = 0; i < daten.size(); i++) {
 			plot.setSectionPaint(result.getKey(i), parteien.get(i).getFarbe());
 		}
-		Color nichts = new Color(0, 0, 0, 0);
-		plot.setSectionPaint("", nichts);
 		plot.setLabelLinksVisible(false);
 		plot.setLabelBackgroundPaint(Color.white);
 
@@ -108,6 +101,7 @@ public class BundDiagramm implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 //		BerichtsFenster berichtsfenster = new BerichtsFenster();
+		System.out.println("hi");
 	}
 
 	@Override
@@ -123,7 +117,7 @@ public class BundDiagramm implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		
-		
+		System.out.println("hi");
 	}
 
 	@Override

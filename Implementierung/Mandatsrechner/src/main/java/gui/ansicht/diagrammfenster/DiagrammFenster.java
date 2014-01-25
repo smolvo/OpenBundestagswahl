@@ -1,6 +1,8 @@
 package main.java.gui.ansicht.diagrammfenster;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
@@ -17,7 +19,7 @@ import main.java.model.Wahlkreis;
  * @author Anton
  * 
  */
-public class DiagrammFenster extends JPanel {
+public class DiagrammFenster extends JPanel implements MouseListener {
 
 	/**
 	 * Diese Methode identifiziert das Gebiets-Objekt.
@@ -78,5 +80,33 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("hi");
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		System.out.println("hi");
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
