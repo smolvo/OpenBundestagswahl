@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
@@ -32,10 +33,10 @@ import org.jfree.util.Rotation;
  * @author Anton
  * 
  */
-public class BundDiagramm implements MouseListener {
+public class BundDiagramm extends JPanel {
 
 	/** repräsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final JPanel flaeche;
+	private final DiagrammFenster flaeche;
 
 	/**
 	 * Konstruktor erstellt ein Diagramm und fügt es hinzu.
@@ -45,14 +46,53 @@ public class BundDiagramm implements MouseListener {
 	 * @param flaeche
 	 *            Diagrammfläche
 	 */
-	public BundDiagramm(Deutschland land, JPanel flaeche) {
+	public BundDiagramm(Deutschland land, DiagrammFenster flaeche) {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(land);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Diese Methode setzt einen Listener zu einem ChartPanel.
+	 * @param chartPanel ChartPanel
+	 * @param flaeche die Fläche unter dem ChartPanel
+	 */
+	private void listenerSetzen(ChartPanel chartPanel, final DiagrammFenster flaeche) {
+		chartPanel.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Bundestagswahl btw = flaeche.getAnsicht().getFenster().getBtw();
+				flaeche.zeigeSitzverteilung(btw);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// nichts
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// nichts
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// nichts
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+	}
+	
 	/**
 	 * Diese Methode erstellt ein Kuchendiagramm zur Sitzverteilung im
 	 * Bundestag.
@@ -96,33 +136,5 @@ public class BundDiagramm implements MouseListener {
 		plot.setDirection(Rotation.CLOCKWISE);
 		plot.setForegroundAlpha(1.0f);
 		return chart;
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-//		BerichtsFenster berichtsfenster = new BerichtsFenster();
-		System.out.println("hi");
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// nichts
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// nichts
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		
-		System.out.println("hi");
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

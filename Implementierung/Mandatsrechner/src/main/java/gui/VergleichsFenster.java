@@ -65,7 +65,7 @@ public class VergleichsFenster extends JFrame {
 		add(skrollFenster, gbc);
 
 		// Diagramm der ersten Bundestagswahl
-		DiagrammFenster diagramm1 = new DiagrammFenster();
+		DiagrammFenster diagramm1 = new DiagrammFenster(null);
 		diagramm1.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
@@ -77,7 +77,7 @@ public class VergleichsFenster extends JFrame {
 		add(diagramm1, gbc);
 
 		// Diagramm der zweiten Bundestagswahl
-		DiagrammFenster diagramm2 = new DiagrammFenster();
+		DiagrammFenster diagramm2 = new DiagrammFenster(null);
 		diagramm2.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
 		gbc.gridx = 1;
 		gbc.gridy = 1;

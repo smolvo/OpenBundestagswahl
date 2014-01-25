@@ -49,7 +49,7 @@ public class Ansicht extends JPanel {
 	public Ansicht(Deutschland land, WahlFenster fenster) {
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(land);
-		this.diagrammFenster = new DiagrammFenster();
+		this.diagrammFenster = new DiagrammFenster(this);
 		this.diagrammFenster.erstelleDiagramm(land);
 		this.kartenFenster = new KartenFenster(this);
 		this.kartenFenster.zeigeInformationen(land);
@@ -71,7 +71,7 @@ public class Ansicht extends JPanel {
 		remove(diagrammFenster);
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(gebiet);
-		this.diagrammFenster = new DiagrammFenster();
+		this.diagrammFenster = new DiagrammFenster(this);
 		this.diagrammFenster.erstelleDiagramm(gebiet);
 		layoutSetzen();
 	}

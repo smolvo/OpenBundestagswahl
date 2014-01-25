@@ -6,6 +6,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+import main.java.gui.BerichtTableModel;
+import main.java.gui.BerichtsFenster;
+import main.java.gui.VergleichsFenster;
+import main.java.gui.ansicht.Ansicht;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
@@ -19,8 +23,19 @@ import main.java.model.Wahlkreis;
  * @author Anton
  * 
  */
-public class DiagrammFenster extends JPanel implements MouseListener {
+public class DiagrammFenster extends JPanel {
 
+	/** repräsentiert die Ansicht des Diagrammfensters */
+	private Ansicht ansicht;
+	
+	/**
+	 * Der Konstruktor erzeugt initialisiert ein neues Diagrammfenster.
+	 * @param ansicht die Ansicht
+	 */
+	public DiagrammFenster(Ansicht ansicht) {
+		this.ansicht = ansicht;
+	}
+	
 	/**
 	 * Diese Methode identifiziert das Gebiets-Objekt.
 	 * 
@@ -79,34 +94,15 @@ public class DiagrammFenster extends JPanel implements MouseListener {
 	 *            Bundestagswahl-Objekt welches visualisiert werden soll
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
-
+		BerichtTableModel tabelle = new BerichtTableModel(btw.getSitzverteilung().getBericht());
+		BerichtsFenster bericht = new BerichtsFenster(tabelle);
 	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println("hi");
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		System.out.println("hi");
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	
+	/**
+	 * Gibts die Ansicht aus.
+	 * @return Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return ansicht;
 	}
 }
