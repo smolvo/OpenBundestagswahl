@@ -66,8 +66,8 @@ public final class Programmfenster extends JFrame {
 
 		// Wahl 2013
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("files/Ergebnis2013.csv");
-		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
+		csvDateien[0] = new File("src/main/resources/Ergebnis2013.csv");
+		csvDateien[1] = new File("src/main/resources/Wahlbewerber2013.csv");
 		Bundestagswahl w = Steuerung.getInstance().importieren(csvDateien);
 
 		wahlen.add(new WahlFenster(w));
