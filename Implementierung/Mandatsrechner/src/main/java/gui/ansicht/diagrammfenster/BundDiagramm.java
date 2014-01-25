@@ -80,9 +80,9 @@ public class BundDiagramm {
 				sum += sitze;
 			}
 		}
-		// unteres viertel soll leer sein
-		float angle = (float) ((sum / 270.0) * 90.0);
-		result.setValue("", angle);
+//		// unteres viertel soll leer sein
+//		float angle = (float) ((sum / 270.0) * 90.0);
+//		result.setValue("", angle);
 
 		JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung",
 				result, false, true, false);

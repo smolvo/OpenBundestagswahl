@@ -3,6 +3,7 @@ package main.java.steuerung;
 import java.io.File;
 
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.model.Stimme;
 import main.java.wahlgenerator.Stimmanteile;
@@ -41,9 +42,9 @@ public class Steuerung {
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.btw = w;
 		return w;
 	}
 
@@ -66,8 +67,8 @@ public class Steuerung {
 	 * @param btw
 	 *            aktuelle Bundestagswahl
 	 */
-	public void berechneSitzverteilung(Bundestagswahl btw) {
-		// TODO
+	public void berechneSitzverteilung() {
+		this.btw = Mandatsrechner2013.getInstance().berechneAlles(this.btw);
 	}
 
 	/**
