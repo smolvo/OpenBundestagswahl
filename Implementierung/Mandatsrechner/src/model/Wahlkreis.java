@@ -227,6 +227,11 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		return anzahl;
 	}
 
+	/**
+	 * Gibt die Gesamtanzahl an Erststimmen für die uebergebene Partei zurueck
+	 * @param partei die partei deren Erststimmen ermittelt werden sollen
+	 * @return die gesamstanzahl der Erststimmen
+	 */
 	public int getErststimmenAnzahl(Partei partei) {
 		int anzahl = 0;
 		for (Erststimme erststimme: this.getErststimmen()) {
