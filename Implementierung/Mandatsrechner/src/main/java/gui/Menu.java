@@ -61,12 +61,12 @@ public class Menu extends JMenuBar {
 		// der Menu-Reiter "Datei"
 		importieren = new JMenuItem("Importieren");
 		importieren.setIcon(new ImageIcon(
-				"src/gui/resources/images/importieren.png"));
+				"src/main/resources/gui/images/importieren.png"));
 		speichern = new JMenuItem("Speichern");
 		speichern.setIcon(new ImageIcon(
-				"src/gui/resources/images/speichern.png"));
+				"src/main/resources/gui/images/speichern.png"));
 		beenden = new JMenuItem("Beenden");
-		beenden.setIcon(new ImageIcon("src/gui/resources/images/beenden.png"));
+		beenden.setIcon(new ImageIcon("src/main/resources/gui/images/beenden.png"));
 
 		datei.add(importieren);
 		datei.add(speichern);
@@ -76,10 +76,10 @@ public class Menu extends JMenuBar {
 		// der Menu-Reiter "Bearbeiten"
 		rueckgaengig = new JMenuItem("Rückgängig");
 		rueckgaengig.setIcon(new ImageIcon(
-				"src/gui/resources/images/rueckgaengig.png"));
+				"src/main/resources/gui/images/rueckgaengig.png"));
 		wiederherstellen = new JMenuItem("Wiederherstellen");
 		wiederherstellen.setIcon(new ImageIcon(
-				"src/gui/resources/images/wiederherstellen.png"));
+				"src/main/resources/gui/images/wiederherstellen.png"));
 
 		bearbeiten.add(rueckgaengig);
 		bearbeiten.add(wiederherstellen);
@@ -87,14 +87,14 @@ public class Menu extends JMenuBar {
 		// der Menu-Reiter "Extras"
 		vergleichen = new JMenuItem("Vergleichen");
 		vergleichen.setIcon(new ImageIcon(
-				"src/gui/resources/images/vergleichen.png"));
+				"src/main/resources/gui/images/vergleichen.png"));
 		wahldatenGenerieren = new JMenu("Wahldaten generieren");
 		negativesStimmgewicht = new JMenuItem(
 				"negatives Stimmgewicht generieren");
 		zufaelligeWahl = new JMenuItem("zufällige Wahl generieren");
 		einstellungen = new JMenuItem("Einstellungen");
 		einstellungen.setIcon(new ImageIcon(
-				"src/gui/resources/images/einstellungen.png"));
+				"src/main/resources/gui/images/einstellungen.png"));
 
 		extras.add(vergleichen);
 		extras.add(wahldatenGenerieren);
@@ -105,9 +105,9 @@ public class Menu extends JMenuBar {
 
 		// der Menu-Reiter "Hilfe"
 		handbuch = new JMenuItem("Handbuch");
-		handbuch.setIcon(new ImageIcon("src/gui/resources/images/handbuch.png"));
+		handbuch.setIcon(new ImageIcon("src/main/resources/gui/images/handbuch.png"));
 		about = new JMenuItem("About");
-		about.setIcon(new ImageIcon("src/gui/resources/images/about.png"));
+		about.setIcon(new ImageIcon("src/main/resources/gui/images/about.png"));
 
 		hilfe.add(handbuch);
 		hilfe.add(about);
