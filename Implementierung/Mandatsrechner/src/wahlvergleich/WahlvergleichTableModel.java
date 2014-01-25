@@ -61,4 +61,9 @@ public class WahlvergleichTableModel extends AbstractTableModel {
 		}
 	}
 
+	@Override
+	public String getColumnName(int columnIndex) {
+		return columns[columnIndex];
+	}
+
 }

@@ -35,6 +35,8 @@ public class VergleichsFenster extends JFrame {
 	 *            Vergleichsdaten
 	 */
 	public VergleichsFenster(Wahlvergleich vergleich) {
+		this.setLayout(new GridBagLayout());
+		this.setSize(1024, 768);
 		zeigeVergleich(vergleich);
 	}
 
@@ -48,22 +50,29 @@ public class VergleichsFenster extends JFrame {
 		WahlvergleichDaten daten = vergleich.wahlvergleich();
 		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
-		JScrollPane scrollPane = new JScrollPane(jTabelle);
-
+		JScrollPane skrollFenster = new JScrollPane(jTabelle);
+		
 		// Das Vergleichstabellenfenster
 		this.gbc = new GridBagConstraints();
-		gbc.weightx = 0.5;
-		gbc.weighty = 0.5;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		gbc.gridheight = 1;
 		gbc.gridwidth = 2;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(scrollPane, gbc);
+		JPanel flaeche = new JPanel();
+		flaeche.add(skrollFenster);
+		add(skrollFenster, gbc);
 
 		// Diagramm der ersten Bundestagswahl
 		DiagrammFenster diagramm1 = new DiagrammFenster();
 		diagramm1.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
-		gbc.gridx = 1;
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(diagramm1, gbc);
@@ -71,7 +80,7 @@ public class VergleichsFenster extends JFrame {
 		// Diagramm der zweiten Bundestagswahl
 		DiagrammFenster diagramm2 = new DiagrammFenster();
 		diagramm2.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
-		gbc.gridx = 2;
+		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(diagramm2, gbc);

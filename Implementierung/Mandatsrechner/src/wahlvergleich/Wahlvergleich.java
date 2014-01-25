@@ -84,7 +84,6 @@ public class Wahlvergleich {
 					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getZweitstimmeGesamt()) * 1000) / 10);
 					// errechnet die Differenz der Zweitstimmen
 					int diffZweit = anzahlEinsZweit - anzahlZweiZweit;
-	System.out.println(partei + " " + anzahlEinsErst + " " + prozentEinsErst);
 					daten.addZeile(partei,
 							Integer.toString(anzahlEinsErst),
 							Double.toString(prozentEinsErst),
