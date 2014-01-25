@@ -15,10 +15,10 @@ import model.Partei;
 /**
  * Mandatsrechner mit dem Verteilungsverfahren von SainteLague/Schepers. Diese
  * Klasse ist ähnlich aufgebaut wie Mandatsrechner2009 nur das auch
- * ausgleichmandate berechnet werden.
+ * Ausgleichmandate berechnet werden.
  * 
  */
-public class Mandatsrechner2013 extends Mandatsrechner {
+public class Mandatsrechner2013 {
 
 	/*
 	 * Da der Mandatsrechner 2009 fast das gleiche Verafahren benutzt werden die
@@ -26,6 +26,27 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 	 * Klasse genutzt.
 	 */
 	private Mandatsrechner2009 rechner2009 = Mandatsrechner2009.getInstance();
+
+	/** Entwurdmuster: Einzelstueck */
+	private static Mandatsrechner2013 instanz;
+
+	/**
+	 * Privater Konstruktor fuer das Entwurfsmuster Einzelstueck.
+	 */
+	private Mandatsrechner2013() {
+	}
+
+	/**
+	 * Gibt die Instanz der Klasse zurueck.
+	 * 
+	 * @return die Instanz der Klasse.
+	 */
+	public static Mandatsrechner2013 getInstance() {
+		if (instanz == null) {
+			instanz = new Mandatsrechner2013();
+		}
+		return instanz;
+	}
 
 	public Bundestagswahl berechneAlles(Bundestagswahl bw) {
 
@@ -76,29 +97,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 
 	}
 
-	@Override
-	public Bundestagswahl berechne(Bundestagswahl bw) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Bundesland berechne(Bundesland bl, int sitzeBundesland) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Wahlkreis berechne(Wahlkreis wk) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected void erstelleBericht(String zeile) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	private float berechneParteidivisor(List<Partei> relevanteParteien) {
 
@@ -121,8 +120,8 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			// partei.getMindestsitzAnzahl() +" "+parteidivisor);
 		}
 
-		if (super.debug) {
-			System.out.println("\nAlt Parteidivisor: " + parteidivisor);
+		if (Debug.isAktiv()) {
+			Debug.print("\nAlt Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
 				System.out
@@ -131,7 +130,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 								+ ((int) (partei.getZweitstimmeGesamt() / parteidivisor)));
 				summe += ((int) (partei.getZweitstimmeGesamt() / parteidivisor));
 			}
-			System.out.println("Summe: " + summe);
+			Debug.print("Summe: " + summe);
 
 		}
 
@@ -157,24 +156,25 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			}
 		}
 
-		if (super.debug) {
-			System.out.println("\nNeu Parteidivisor: " + parteidivisor);
+		if (Debug.isAktiv()) {
+			Debug.print("\nNeu Parteidivisor: " + parteidivisor);
 			int summe = 0;
 			for (Partei partei : relevanteParteien) {
-				System.out.println(partei.getName()
+				Debug.print(partei.getName()
 						+ ": "
 						+ (Math.round(partei.getZweitstimmeGesamt()
 								/ parteidivisor)));
 				summe += (Math.round(partei.getZweitstimmeGesamt()
 						/ parteidivisor));
 			}
-			System.out.println("Summe: " + summe);
+			Debug.print("Summe: " + summe);
 		}
 		return parteidivisor;
 	}
 
 	/**
-	 * Rundet die Kommazahl mit dem gew�nschten Rundungsalgprithmus auf oder ab.
+	 * Rundet die Kommazahl mit dem gew�nschten Rundungsalgprithmus auf oder
+	 * ab.
 	 * 
 	 * @param zahl
 	 *            die zu rundende zahl.
@@ -206,7 +206,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 			List<Partei> relevanteParteien) {
 		float zuteilungsdivisor = this.rechner2009
 				.berechneZuteilungsdivisor(bw);
-		if (super.debug) {
+		if (Debug.isAktiv()) {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
@@ -310,7 +310,7 @@ public class Mandatsrechner2013 extends Mandatsrechner {
 				}
 
 			}
-			if (this.debug) {
+			if (Debug.isAktiv()) {
 				System.out.println("\nLandesdivisor " + bl.getName() + ": "
 						+ landesdivisor);
 				int sum = 0;
