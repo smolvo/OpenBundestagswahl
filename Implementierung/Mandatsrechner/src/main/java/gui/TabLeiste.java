@@ -123,7 +123,7 @@ public class TabLeiste extends JTabbedPane {
 		schliessen.setOpaque(false);
 
 		schliessen.setIcon(new ImageIcon(
-				"src/gui/resources/images/tabSchlieﬂen.png"));
+				"src/main/resources/gui/images/tabSchlieﬂen.png"));
 
 		schliessen.setBorder(null);
 
