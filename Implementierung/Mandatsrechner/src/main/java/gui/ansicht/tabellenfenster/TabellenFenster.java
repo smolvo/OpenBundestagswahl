@@ -170,15 +170,15 @@ public class TabellenFenster extends JScrollPane {
 		int ueberMan = 0;
 		int ausglMan = 0;
 		for (Kandidat kan : partei.getMitglieder()) {
-			if (kan.getMandat().equals("Mandat")) {
+			if (kan.getMandat().equals(Mandat.MANDAT)) {
 				sitze++;
-			} else if (kan.getMandat().equals("Direktmandat")) {
+			} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
 				direktMan++;
 				sitze++;
-			} else if (kan.getMandat().equals("Überhangmandat")) {
+			} else if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
 				ueberMan++;
 				sitze++;
-			} else if (kan.getMandat().equals("Ausgleichsmandat")) {
+			} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
 				ausglMan++;
 				sitze++;
 			}

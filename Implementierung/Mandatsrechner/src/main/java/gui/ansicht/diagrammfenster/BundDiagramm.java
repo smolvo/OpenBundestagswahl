@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +32,7 @@ import org.jfree.util.Rotation;
  * @author Anton
  * 
  */
-public class BundDiagramm {
+public class BundDiagramm implements MouseListener {
 
 	/** repräsentiert den Bereich auf dem das Diagramm angezeigt wird. */
 	private final JPanel flaeche;
@@ -101,5 +103,32 @@ public class BundDiagramm {
 		plot.setDirection(Rotation.CLOCKWISE);
 		plot.setForegroundAlpha(1.0f);
 		return chart;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+//		BerichtsFenster berichtsfenster = new BerichtsFenster();
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// nichts
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// nichts
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
