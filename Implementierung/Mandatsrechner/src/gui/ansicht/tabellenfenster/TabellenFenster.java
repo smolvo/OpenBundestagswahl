@@ -125,27 +125,27 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Wahlkreis wk) {
 		WahlkreisDaten daten = new WahlkreisDaten();
-		for (Zweitstimme zw : wk.getZweitstimmen()) {
-			Erststimme korresErst = null;
-			for (Erststimme er: wk.getErststimmen()) {
+		for (Erststimme er: wk.getErststimmen()) {
+			Zweitstimme korresZweit = null;
+			for (Zweitstimme zw : wk.getZweitstimmen()) {
 				if ((er.getKandidat().getPartei() != null) && (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName()))) {
-					korresErst = er;
+					korresZweit = zw;
 				}
 			}
-			if (korresErst != null) {
+			if (korresZweit != null) {
 				boolean direktMan = false;
-				if (korresErst.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
+				if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
 					direktMan = true;
 				}
-				if ((zw.getAnzahl() != 0) || (korresErst.getAnzahl() != 0)) {
+				if ((korresZweit.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
 					double prozentualeErst = (Math
-							.rint(((double) korresErst.getAnzahl() / (double) wk
+							.rint(((double) er.getAnzahl() / (double) wk
 									.getErststimmeGesamt()) * 1000) / 10);
 					double prozentualeZweit = (Math
-							.rint(((double) zw.getAnzahl() / (double) wk
+							.rint(((double) korresZweit.getAnzahl() / (double) wk
 									.getZweitstimmeGesamt()) * 1000) / 10);
-					daten.addZeile(zw.getPartei().getName(), korresErst.getKandidat()
-							.getName(), zw, korresErst, Double.toString(prozentualeZweit),
+					daten.addZeile(korresZweit.getPartei().getName(), er.getKandidat()
+							.getName(), korresZweit, er, Double.toString(prozentualeZweit),
 							Double.toString(prozentualeErst), direktMan);
 				}
 			}

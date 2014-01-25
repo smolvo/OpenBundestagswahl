@@ -14,9 +14,12 @@ import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.Range;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import model.Erststimme;
@@ -80,6 +83,13 @@ public class WahlkreisDiagramm {
 		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
 				null, result, PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
+
+		// y-Achsenabschnitt festlegen
+        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+        rangeAxis.setRange(new Range(0, 60));
+        plot.setRangeAxis(rangeAxis);
+        
+		
 		// färben der Parteienbalken
 		Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
