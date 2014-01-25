@@ -47,7 +47,7 @@ public class DeutschlandKarte extends JPanel {
 	BufferedImage[] bundeslandBilderGefaerbt = new BufferedImage[16];
 
 	/** Dieser String gibt den Pfad des Speicherortes der Bundesland-Bilder an */
-	String pfad = "src/gui/resources/Bundeslaender/";
+	String pfad = "src/main/resources/gui/bundeslaender/";
 	
 	/** erstellt ein BufferedImage in der größe 900 * 1024  */
 	BufferedImage grossVersion = new BufferedImage(900, 1024, BufferedImage.TYPE_INT_ARGB);
