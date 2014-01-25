@@ -8,7 +8,7 @@ import org.jfree.chart.renderer.category.BarRenderer;
 /**
      * A custom renderer that returns a different color for each item in a single series.
      */
-    class BalkenRenderer extends BarRenderer {
+    public class BalkenRenderer extends BarRenderer {
 
             /** The colors. */
             private Paint[] colors;

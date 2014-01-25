@@ -33,7 +33,7 @@ import org.jfree.util.Rotation;
  * @author Anton
  * 
  */
-public class BundDiagramm extends JPanel {
+public class BundDiagramm {
 
 	/** repräsentiert den Bereich auf dem das Diagramm angezeigt wird. */
 	private final DiagrammFenster flaeche;
@@ -86,7 +86,7 @@ public class BundDiagramm extends JPanel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// nichts
 				
 			}
 			
