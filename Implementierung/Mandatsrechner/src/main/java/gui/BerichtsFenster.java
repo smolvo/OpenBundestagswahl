@@ -1,4 +1,4 @@
-package mandatsrechner;
+package main.java.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;

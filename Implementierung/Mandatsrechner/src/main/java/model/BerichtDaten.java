@@ -1,4 +1,4 @@
-package mandatsrechner;
+package main.java.model;
 
 import java.util.LinkedList;
 

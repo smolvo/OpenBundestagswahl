@@ -1,6 +1,8 @@
-package mandatsrechner;
+package main.java.gui;
 
 import javax.swing.table.AbstractTableModel;
+
+import main.java.model.BerichtDaten;
 
 /**
  * Diese Klasse repräsentiert das Tabellenmodell der 

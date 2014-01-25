@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import test.java.Debug;
+import main.java.model.BerichtDaten;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
@@ -55,7 +56,7 @@ public class Mandatsrechner2013 {
 
 		int sperrklauselAnzahl = bw.getDeutschland().getZweitstimmeGesamt() / 20;
 
-		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), ""));
+		bw.setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bw.getParteien()) {
 			for (Kandidat kandidat : partei.getMitglieder()) {
@@ -275,14 +276,13 @@ public class Mandatsrechner2013 {
 												.getListenkandidaten().get(i));
 								bl.getLandesliste(part).getListenkandidaten()
 										.get(i).setMandat(Mandat.MANDAT);
-								bw.getSitzverteilung().addBerichtEintrag(
-										neuerAbgeordneter.getName()
-												+ " von der "
-												+ neuerAbgeordneter.getPartei()
-														.getName()
-												+ " bekommt in dem Bundesland "
-												+ bl.getName() + " ein "
-												+ Mandat.MANDAT.toString());
+								bw
+								.getSitzverteilung()
+								.getBericht()
+								.zeileHinzufuegen(neuerAbgeordneter.getName(),
+										neuerAbgeordneter.getPartei().getName(),
+										Mandat.MANDAT.toString(), bl.getName(),
+										"");
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird
 								// diffKandidat erhoeht, damit die Schleife den
@@ -296,17 +296,18 @@ public class Mandatsrechner2013 {
 					}
 				} else {
 					// System.err.println("-"+Math.abs(diffKandidat));
-					String neuerEintrag = "Die Kandidaten ";
+					Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
-						bl.getDirektMandate(part).get(i)
-								.setMandat(Mandat.UEBERHANGMADAT);
-						neuerEintrag += bl.getDirektMandate(part).get(i)
-								.getName()
-								+ " ,";
+						ueberhangmandat = bl.getDirektMandate(part).get(i);
+						ueberhangmandat.setMandat(Mandat.UEBERHANGMADAT);
+						bw.getSitzverteilung().getBericht()
+						.zeileHinzufuegen(ueberhangmandat.getName(),
+								ueberhangmandat.getPartei().getName(),
+								Mandat.UEBERHANGMADAT.toString(), 
+								bl.getName(),
+								"");
 					}
-					neuerEintrag += " sind in dem Bundesland " + bl.getName()
-							+ " Ueberhangmandate";
-					bw.getSitzverteilung().addBerichtEintrag(neuerEintrag);
+					
 				}
 
 			}
@@ -402,16 +403,13 @@ public class Mandatsrechner2013 {
 										neuerAbgeordneter);
 								neuerAbgeordneter
 										.setMandat(Mandat.AUSGLEICHSMANDAT);
-								bw.getSitzverteilung().addBerichtEintrag(
-										neuerAbgeordneter.getName()
-												+ " von der "
-												+ neuerAbgeordneter.getPartei()
-														.getName()
-												+ " bekommt in dem Bundesland "
-												+ bl.getName()
-												+ " ein "
-												+ Mandat.AUSGLEICHSMANDAT
-														.toString());
+								bw
+								.getSitzverteilung()
+								.getBericht()
+								.zeileHinzufuegen(neuerAbgeordneter.getName(),
+										neuerAbgeordneter.getPartei().getName(),
+										Mandat.AUSGLEICHSMANDAT.toString(), bl.getName(),
+										"");
 							} else {
 
 								diffSitzeBundesland += 1;

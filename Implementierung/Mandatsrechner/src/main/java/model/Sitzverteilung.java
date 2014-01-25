@@ -17,8 +17,8 @@ public class Sitzverteilung implements Serializable {
 	/** Die Liste aller Abgeordneten in dieser Sitzverteilung. */
 	private LinkedList<Kandidat> abgeordnete;
 
-	/** Der Bericht wie diese Sitzverteilung zustande gekommen ist. */
-	private String bericht;
+	/** Enthält Informationen zur Sitzverteilung*/
+	private BerichtDaten bericht;
 
 	/**
 	 * Parametrisierter Konstruktor zum Erzeugen von Sitzverteilungen.
@@ -28,10 +28,11 @@ public class Sitzverteilung implements Serializable {
 	 * @param bericht
 	 *            Der Bericht wie diese Sitzverteilung zustande gekommen ist.
 	 */
-	public Sitzverteilung(LinkedList<Kandidat> abgeordnete, String bericht) {
+	public Sitzverteilung(LinkedList<Kandidat> abgeordnete, BerichtDaten bericht) {
 		this.setAbgeordnete(abgeordnete);
 		this.setBericht(bericht);
 	}
+
 
 	/**
 	 * Gibt die Liste aller Abgeordneten.
@@ -58,38 +59,28 @@ public class Sitzverteilung implements Serializable {
 		}
 		this.abgeordnete = abgeordnete;
 	}
-
+	
 	/**
-	 * Gibt den Bericht dieser Sitzverteilung.
-	 * 
-	 * @return den Bericht dieser Sitzverteilung
+	 * Setzt den neuen Bericht
+	 * @param bericht der neue Bericht
+	 * @throws wenn der Bericht null ist
 	 */
-	public String getBericht() {
-		return this.bericht;
-	}
-
-	/**
-	 * Setzt den Bericht dieser Sitzverteilung.
-	 * 
-	 * @param bericht
-	 *            den Bericht dieser Sitzverteilung
-	 * @throws IllegalArgumentException
-	 *             wenn der Parameter bericht null ist.
-	 */
-	public void setBericht(String bericht) throws IllegalArgumentException {
-		if (bericht == null) {
-			throw new IllegalArgumentException("Parameter 'bericht' ist null!");
+	public void setBericht(BerichtDaten bericht) {
+		if(bericht == null){
+			throw new IllegalArgumentException("Bericht ist null");
 		}
 		this.bericht = bericht;
+		
 	}
 	
 	/**
-	 * FÃ¼gt einen neuen Eintrag als eine neue Zeile in den Bericht hinzu
-	 * @param eintrag die neue Zeile im Bericht
+	 * Gibt den Bericht zurück
+	 * @return den Bericht
 	 */
-	public void addBerichtEintrag(String eintrag){
-		this.bericht += "\n"+eintrag;
+	public BerichtDaten getBericht() {
+		return this.bericht;
 	}
+
 
 	/**
 	 * Fuegt einen Kandidaten zur Liste hinzu.

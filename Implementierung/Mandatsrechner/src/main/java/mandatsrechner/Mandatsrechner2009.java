@@ -21,6 +21,11 @@ public class Mandatsrechner2009 {
 
 	}
 
+	/**
+	 * Gibt die Instanz des Mandatsrechner zurueck
+	 * 
+	 * @return die Instanz
+	 */
 	public static Mandatsrechner2009 getInstance() {
 		if (instanz == null) {
 			instanz = new Mandatsrechner2009();
@@ -67,13 +72,14 @@ public class Mandatsrechner2009 {
 				wahlkreis.setWahlkreisSieger(gewinner);
 				bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
 				// Eintrag in der Sitzverteilung erstellen
-				bundestagswahl.getSitzverteilung().addBerichtEintrag(
-						gewinner.getName() + " von der "
-								+ gewinner.getPartei().getName()
-								+ " gewinnt im Wahlkreis "
-								+ wahlkreis.getName() + " in "
-								+ bundesland.getName() + " ein "
-								+ Mandat.DIREKTMANDAT.toString());
+				bundestagswahl
+						.getSitzverteilung()
+						.getBericht()
+						.zeileHinzufuegen(gewinner.getName(),
+								gewinner.getPartei().getName(),
+								Mandat.DIREKTMANDAT.toString(), bundesland.getName(),
+								wahlkreis.getName());
+
 			}
 		}
 		return bundestagswahl;
@@ -204,7 +210,7 @@ public class Mandatsrechner2009 {
 		}
 		// Initialisierung:
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
-				new LinkedList<Kandidat>(), ""));
+				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bundestagswahl.getParteien()) {
 			for (Kandidat kandidat : partei.getMitglieder()) {
@@ -315,7 +321,7 @@ public class Mandatsrechner2009 {
 	public Bundestagswahl berechneSainteLague(Bundestagswahl bundestagswahl) {
 		// Initialisierung:
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
-				new LinkedList<Kandidat>(), ""));
+				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bundestagswahl.getParteien()) {
 			for (Kandidat kandidat : partei.getMitglieder()) {
@@ -389,17 +395,11 @@ public class Mandatsrechner2009 {
 								neuerAbgeordneter.setMandat(Mandat.MANDAT);
 								bundestagswahl
 										.getSitzverteilung()
-										.addBerichtEintrag(
-												neuerAbgeordneter.getName()
-														+ " von der "
-														+ neuerAbgeordneter
-																.getPartei()
-																.getName()
-														+ " bekommt in dem Bundesland "
-														+ bundesland.getName()
-														+ " ein "
-														+ Mandat.MANDAT
-																.toString());
+										.getBericht()
+										.zeileHinzufuegen(neuerAbgeordneter.getName(),
+												neuerAbgeordneter.getPartei().getName(),
+												Mandat.MANDAT.toString(), bundesland.getName(),
+												"");
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird
 								// diffKandidat erhoeht, damit die Schleife den
@@ -413,18 +413,18 @@ public class Mandatsrechner2009 {
 					}
 				} else {
 					// System.err.println("-"+Math.abs(diffKandidat));
-					String neuerEintrag = "Die Kandidaten ";
+					Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
-						bundesland.getDirektMandate(part).get(i)
-								.setMandat(Mandat.UEBERHANGMADAT);
-						neuerEintrag += bundesland.getDirektMandate(part)
-								.get(i).getName()
-								+ " ,";
+						ueberhangmandat = bundesland.getDirektMandate(part).get(i);
+						ueberhangmandat.setMandat(Mandat.UEBERHANGMADAT);
+						bundestagswahl.getSitzverteilung().getBericht()
+						.zeileHinzufuegen(ueberhangmandat.getName(),
+								ueberhangmandat.getPartei().getName(),
+								Mandat.UEBERHANGMADAT.toString(), 
+								bundesland.getName(),
+								"");
 					}
-					neuerEintrag += " sind in dem Bundesland "
-							+ bundesland.getName() + " Ueberhangmandate";
-					bundestagswahl.getSitzverteilung().addBerichtEintrag(
-							neuerEintrag);
+					
 				}
 
 			}
