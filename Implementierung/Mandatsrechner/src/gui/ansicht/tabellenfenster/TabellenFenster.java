@@ -128,7 +128,7 @@ public class TabellenFenster extends JScrollPane {
 		for (Zweitstimme zw : wk.getZweitstimmen()) {
 			Erststimme korresErst = null;
 			for (Erststimme er: wk.getErststimmen()) {
-				if (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName())) {
+				if ((er.getKandidat().getPartei() != null) && (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName()))) {
 					korresErst = er;
 				}
 			}
