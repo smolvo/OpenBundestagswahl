@@ -273,8 +273,7 @@ public class Crawler2013 extends Crawler {
 			if (rows.get(i)[2].equals("")) {
 				// deutschland = new
 				// Deutschland(rows.get(i)[1],values.get(i)[0][0]);
-				deutschland = new Deutschland("Deutschland",
-						values.get(i)[0][0]);
+				deutschland = new Deutschland("Deutschland");
 				nrDeutschland = (rows.get(i)[0]);
 
 			}

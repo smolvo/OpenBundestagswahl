@@ -100,18 +100,12 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public List<Zweitstimme> getZweitstimmenProPartei() {
 		
-		List<Zweitstimme> zweitstimmen = new LinkedList<>();
 		
-		for (Bundesland bundesland : this.getBundeslaender()) {
-			zweitstimmen.addAll(bundesland.getZweitstimmenProPartei());
-		}
-		
-		/*
 		// TODO Auto-generated method stub
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
-		int[] tempZweitstimmen = new int[this.bundeslaender.get(0).getZweitstimmen().size()];
+		int[] tempZweitstimmen = new int[this.bundeslaender.get(0).getZweitstimmenProPartei().size()];
 		for (int i = 0; i < this.bundeslaender.size(); i++) {
-			List<Zweitstimme> bundeslaenderZweitstimme = bundeslaender.get(i).getZweitstimmen();
+			List<Zweitstimme> bundeslaenderZweitstimme = bundeslaender.get(i).getZweitstimmenProPartei();
 			for (int j = 0; j < bundeslaenderZweitstimme.size(); j++) {
 				tempZweitstimmen[j] += bundeslaenderZweitstimme.get(j).getAnzahl();
 			}
@@ -120,9 +114,9 @@ public class Deutschland extends Gebiet implements Serializable {
 			zweitstimmen.add(new Zweitstimme(
 					tempZweitstimmen[i],
 					this,
-					this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei()));
+					this.bundeslaender.get(0).getZweitstimmenProPartei().get(i).getPartei()));
 		}
-		*/
+		
 		return zweitstimmen;
 	}
 	

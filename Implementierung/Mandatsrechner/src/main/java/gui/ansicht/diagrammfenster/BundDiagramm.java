@@ -119,7 +119,10 @@ public class BundDiagramm {
 
 		// färben
 		for (int i = 0; i < daten.size(); i++) {
-			plot.setSectionPaint(result.getKey(i), parteien.get(i).getFarbe());
+			/* TODO
+			 * FARBEN ÜBERPRÜFEN!!!
+			 */
+			//plot.setSectionPaint(result.getKey(i), parteien.get(i).getFarbe());
 		}
 		plot.setLabelLinksVisible(false);
 		plot.setLabelBackgroundPaint(Color.white);
