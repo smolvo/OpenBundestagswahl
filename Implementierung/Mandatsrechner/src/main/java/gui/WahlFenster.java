@@ -140,4 +140,9 @@ public class WahlFenster extends JPanel {
 	public void setBtw(Bundestagswahl btw) {
 		this.btw = btw;
 	}
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }

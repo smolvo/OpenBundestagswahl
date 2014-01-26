@@ -2,11 +2,13 @@ package main.java.steuerung;
 
 import java.io.File;
 
+import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.model.Stimme;
 import main.java.wahlgenerator.Stimmanteile;
+import main.java.wahlvergleich.Wahlvergleich;
 
 /**
  * Diese Klasse repräsentiert die Hauptsteuerung des Programmes.
@@ -110,7 +112,9 @@ public class Steuerung {
 	 *            andere Wahl
 	 */
 	public void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
-		// TODO
+		Wahlvergleich vergleich = new Wahlvergleich(this.btw, vergleichsWahl);
+		VergleichsFenster fenster = new VergleichsFenster(vergleich);
+		fenster.setVisible(true);
 	}
 
 	/**

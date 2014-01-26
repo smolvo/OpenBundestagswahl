@@ -14,14 +14,14 @@ public class ParteiDifferenzen {
 	private final Partei partei;
 	
 	/** repräsentiert die Differenz */
-	private final float diff;
+	private final int diff;
 	
 	/**
 	 * Der Konstruktor erstellt eine neue Differenz.
 	 * @param partei Partei
 	 * @param diff Differenz
 	 */
-	public ParteiDifferenzen(Partei partei, float diff) {
+	public ParteiDifferenzen(Partei partei, int diff) {
 		this.partei = partei;
 		this.diff = diff;
 	}
@@ -38,7 +38,7 @@ public class ParteiDifferenzen {
 	 * Gibt die Differenz aus.
 	 * @return Differenz
 	 */
-	public float getDiff() {
+	public int getDiff() {
 		return diff;
 	}
 }

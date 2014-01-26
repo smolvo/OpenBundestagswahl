@@ -177,5 +177,13 @@ public class TabLeiste extends JTabbedPane {
 	public void setPf(Programmfenster pf) {
 		this.pf = pf;
 	}
+	
+	/**
+	 * Gibt die Wahlen aus.
+	 * @return Wahlen
+	 */
+	public List<WahlFenster> getWahlfenster() {
+		return this.wahlen;
+	}
 
 }

@@ -66,7 +66,7 @@ public class VergleichsFenster extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridheight = 1;
-		gbc.gridwidth = 3;
+		gbc.gridwidth = 4;
 		gbc.fill = GridBagConstraints.BOTH;
 		JPanel flaeche = new JPanel();
 		flaeche.add(skrollFenster);
@@ -95,7 +95,7 @@ public class VergleichsFenster extends JFrame {
 		// Diagramm der zweiten Bundestagswahl
 		DiagrammFenster diagramm2 = new DiagrammFenster(null);
 		diagramm2.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
-		gbc.gridx = 2;
+		gbc.gridx = 3;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(diagramm2, gbc);
@@ -125,7 +125,7 @@ public class VergleichsFenster extends JFrame {
 					sitzeZweiteWahl++;
 				}
 			}
-			float diff = sitzeErsteWahl / sitzeZweiteWahl;
+			int diff = sitzeErsteWahl - sitzeZweiteWahl;
 			differenzen[i] = new ParteiDifferenzen(parteien.get(i), diff);
 		}
 		return differenzen;

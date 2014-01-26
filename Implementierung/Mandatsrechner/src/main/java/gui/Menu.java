@@ -13,6 +13,7 @@ import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.EinstellungenDialog;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
+import main.java.gui.dialoge.VergleichDialog;
 import main.java.steuerung.Steuerung;
 
 /**
@@ -170,7 +171,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
 			} else if (e.getSource() == menu.vergleichen) {
-				// new VergleichsDialog();
+				new VergleichDialog(pf.getTabs());
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
 			} else if (e.getSource() == menu.zufaelligeWahl) {
