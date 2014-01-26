@@ -11,10 +11,10 @@ public class Stimmanteile {
 	private final Partei partei;
 	
 	/** Anteil der Erststimmen dieser Partei. Dieser Wert muss zwischen 0 und 1 liegen.*/
-	private final float anteilErststimmen;
+	private float anteilErststimmen;
 	
 	/** Anteil der Zweitstimmen dieser Partei. Dieser Wert muss zwischen 0 und 1 liegen.*/
-	private final float anteilZweitstimmen;
+	private float anteilZweitstimmen;
 	
 	
 	/**
@@ -37,7 +37,7 @@ public class Stimmanteile {
 		this.anteilErststimmen = anteilErststimmen;
 		this.anteilZweitstimmen = anteilZweitstimmen;
 	}
-
+	
 	/**
 	 * Gibt die zugehörige Partei zurück.
 	 * @return Die zugehörige Partei.
@@ -54,6 +54,11 @@ public class Stimmanteile {
 	public float getAnteilErststimmen() {
 		return anteilErststimmen;
 	}
+	
+
+	public void setAnteilErststimmen(float anteilErststimmen) {
+		this.anteilErststimmen = anteilErststimmen;
+	}
 
 	/**
 	 * Gibt den Anteil der Zweitstimmen dieser Partei zurück.
@@ -62,5 +67,10 @@ public class Stimmanteile {
 	 */
 	public float getAnteilZweitstimmen() {
 		return anteilZweitstimmen;
+	}
+	
+
+	public void setAnteilZweitstimmen(float anteilZweitstimmen) {
+		this.anteilZweitstimmen = anteilZweitstimmen;
 	}
 }

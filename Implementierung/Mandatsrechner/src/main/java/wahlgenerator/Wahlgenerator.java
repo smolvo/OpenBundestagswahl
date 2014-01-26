@@ -36,6 +36,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 */
 	public Bundestagswahl erzeugeBTW() {
 		
+		this.verteileRestAnteile();
+		
 		Bundestagswahl clone = null;
 		
 		// erstelle tiefe Kopie
@@ -45,10 +47,75 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			e.printStackTrace();
 		}
 		
+		
+		
+		float sumErstAnteil = 0;
+		float sumZweitAnteil = 0;
+		
+		for (Stimmanteile sa : this.getStimmanteile()) {
+			sumErstAnteil += sa.getAnteilErststimmen();
+			sumZweitAnteil += sa.getAnteilZweitstimmen();
+			Debug.print("Partei: " + sa.getPartei().getName() + ", ErstAnteil: " + sa.getAnteilErststimmen() + ", ZweitAnteil " + sa.getAnteilZweitstimmen());
+		}
+		Debug.print("===> sumErstAnteil: " + sumErstAnteil + ", sumZweitAnteil: " + sumZweitAnteil);
+		
+		
+		
+		
+		
 		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
 		
 		return clone;
+	}
+	
+	private void verteileRestAnteile() {
+		
+		float sumErstAnteil = 0;
+		float sumZweitAnteil = 0;
+		
+		for (Stimmanteile sa : this.getStimmanteile()) {
+			sumErstAnteil += sa.getAnteilErststimmen();
+			sumZweitAnteil += sa.getAnteilZweitstimmen();
+		}
+		
+		float restErstAnteil = 1 - sumErstAnteil;
+		float restZweitAnteil = 1- sumZweitAnteil;
+		Debug.print("\nrestErstAnteil: " + restErstAnteil + ", restZweitAnteil: " + restZweitAnteil + "\n");
+		
+		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
+		Random rand = new Random();
+		
+		while (restErstAnteil > 0 || restZweitAnteil > 0) {
+			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
+			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
+			
+			// Prüfe ob für diese Partei in dieser Schleife schonmal Anteile erzeugt wurden und wähle diese aus
+			Stimmanteile anteil = this.getAnteileVonPartei(partei);
+			if (anteil == null) {
+				anteil = new Stimmanteile(partei, 0, 0);
+				this.getStimmanteile().add(anteil);
+			}
+			
+			// füge eine zufällige Anzahl von Erst- und Zweit-Anteilen hinzu
+			float anteilErst = 0;
+			float anteilZweit = 0;
+			if (restErstAnteil < 0.01) {
+				anteilErst = restErstAnteil;
+			} else {
+				anteilErst = (rand.nextInt(100) * restErstAnteil) / 100;
+			}
+			if (restZweitAnteil < 0.01) {
+				anteilZweit = restZweitAnteil;
+			} else {
+				anteilZweit = (rand.nextInt(100) * restZweitAnteil) / 100;
+			}
+			
+			anteil.setAnteilErststimmen(anteilErst);
+			anteil.setAnteilZweitstimmen(anteilZweit);
+			restErstAnteil -= anteilErst;
+			restZweitAnteil -= anteilZweit;
+		}
 	}
 	
 	@Override
@@ -158,6 +225,25 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 	}
 	
+	private boolean hatParteiStimmanteile(Partei partei) {
+		for (Stimmanteile sa : this.getStimmanteile()) {
+			if (sa.getPartei().equals(partei)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private ArrayList<Partei> getParteienOhneAnteile() {
+		ArrayList<Partei> parteien = new ArrayList<>();
+		for (Partei partei : this.getBasisWahl().getParteien()) {
+			if (!this.hatParteiStimmanteile(partei)) {
+				parteien.add(partei);
+			}
+		}
+		return parteien;
+	}
+	
 	/**
 	 * 
 	 * @param partei
@@ -169,7 +255,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				return stimmanteile;
 			}
 		}
-		throw new IllegalArgumentException("Die gegebene Partei ist in der Liste der Stimmanteile nicht vorhanden!");
+		return null;
 	}
 	
 }
