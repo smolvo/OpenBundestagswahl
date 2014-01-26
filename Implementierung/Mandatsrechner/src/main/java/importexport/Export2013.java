@@ -54,8 +54,8 @@ public class Export2013 extends Export {
 				List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 				for (int j = 0; j < wahlkreise.size(); j++) {
 					bf.write(wahlkreise.get(j).getWahlkreisnummer() + ";\"" + wahlkreise.get(j).getName() + "\";" + relevanteNr + ";" + wahlkreise.get(j).getWahlberechtigte() + ";;;;");
-					List<Erststimme> erststimmen = wahlkreise.get(j).getErststimmen();
-					List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmen();
+					List<Erststimme> erststimmen = wahlkreise.get(j).getErststimmenProPartei();
+					List<Zweitstimme> zweitstimmen = wahlkreise.get(j).getZweitstimmenProPartei();
 					for (int k = 0; k < (parteiOffset - 1); k++) {
 						bf.write(";;;;");
 					}
@@ -76,8 +76,8 @@ public class Export2013 extends Export {
 				}
 				
 				bf.write(relevanteNr + ";\"" + bundeslaender.get(i).getName() + "\";99;" + bundeslaender.get(i).getWahlberechtigte() + ";;;;");
-				List<Zweitstimme> zweitstimmen = bundeslaender.get(i).getZweitstimmen();
-				List<Erststimme> erststimmen = bundeslaender.get(i).getErststimmen();
+				List<Zweitstimme> zweitstimmen = bundeslaender.get(i).getZweitstimmenProPartei();
+				List<Erststimme> erststimmen = bundeslaender.get(i).getErststimmenProPartei();
 				for (int k = 0; k < (parteiOffset - 1); k++) {
 					bf.write(";;;;");
 				}
@@ -102,8 +102,8 @@ public class Export2013 extends Export {
 			}
 			
 			bf.write("99;\"Bundesgebiet\";;" + bw.getDeutschland().getWahlberechtigte() + ";;;;");
-			List<Erststimme> erststimmen = bw.getDeutschland().getErststimmen();
-			List<Zweitstimme> zweitstimmen = bw.getDeutschland().getZweitstimmen();
+			List<Erststimme> erststimmen = bw.getDeutschland().getErststimmenProPartei();
+			List<Zweitstimme> zweitstimmen = bw.getDeutschland().getZweitstimmenProPartei();
 			for (int k = 0; k < (parteiOffset - 1); k++) {
 				bf.write(";;;;");
 			}

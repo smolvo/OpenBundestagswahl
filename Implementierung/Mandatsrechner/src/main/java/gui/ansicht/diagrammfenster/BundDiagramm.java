@@ -96,7 +96,7 @@ public class BundDiagramm {
 	private JFreeChart createChart(Deutschland land) {
 		ArrayList<Integer> daten = new ArrayList<Integer>();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> stimmen = land.getZweitstimmen();
+		List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
 		DefaultPieDataset result = new DefaultPieDataset();
 		for (Zweitstimme zw : stimmen) {

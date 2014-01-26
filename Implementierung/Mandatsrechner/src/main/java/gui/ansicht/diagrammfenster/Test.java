@@ -33,7 +33,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		
-		List<Zweitstimme> stimmen = w.getDeutschland().getZweitstimmen();
+		List<Zweitstimme> stimmen = w.getDeutschland().getZweitstimmenProPartei();
 		for (int k = 0; k < 5; k++) {
 			for (Kandidat kand : stimmen.get(k).getPartei().getMitglieder()) {
 				kand.setMandat(Mandat.DIREKTMANDAT);

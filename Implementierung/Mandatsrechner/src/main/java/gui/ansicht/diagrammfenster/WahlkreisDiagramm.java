@@ -62,7 +62,7 @@ public class WahlkreisDiagramm {
 	private JFreeChart createChart(Wahlkreis wk) {
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Erststimme> er = wk.getErststimmen();
+		List<Erststimme> er = wk.getErststimmenProPartei();
 		Collections.sort(er);
 		for (int i = 0; i < 6; i++) {
 			double proZweit = (Math

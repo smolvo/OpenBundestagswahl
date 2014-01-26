@@ -621,9 +621,9 @@ public class Crawler2013 extends Crawler {
 				System.out.println("--> " + wahlkreise.get(j).getName() + " ("
 						+ wahlkreise.get(j).getWahlkreisnummer() + ")");
 				List<Zweitstimme> zweitstimmen = wahlkreise.get(j)
-						.getZweitstimmen();
+						.getZweitstimmenProPartei();
 				List<Erststimme> erststimmen = wahlkreise.get(j)
-						.getErststimmen();
+						.getErststimmenProPartei();
 				for (int k = 0; k < zweitstimmen.size(); k++) {
 					System.out.println("--->"
 							+ zweitstimmen.get(k).getPartei().getName()

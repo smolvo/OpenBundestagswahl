@@ -47,10 +47,10 @@ public class TestWahlgenerator {
 		System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
 		
 		System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
-		System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+		System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmenProPartei().get(0).getAnzahl());
 		
 		System.out.println(w.getDeutschland().getBundeslaender().get(7).getName());
-		System.out.println(w.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+		System.out.println(w.getDeutschland().getBundeslaender().get(7).getErststimmenProPartei().get(0).getAnzahl());
 		
 		i.exportieren("files/random.csv", genWahl);
 		

@@ -64,7 +64,7 @@ public class LandDiagramm {
 	private JFreeChart createChart(Bundesland bundLand) {
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> zw = bundLand.getZweitstimmen();
+		List<Zweitstimme> zw = bundLand.getZweitstimmenProPartei();
 		Collections.sort(zw);
 		for (int i = 0; i < 6; i++) {
 			double proZweit = (Math

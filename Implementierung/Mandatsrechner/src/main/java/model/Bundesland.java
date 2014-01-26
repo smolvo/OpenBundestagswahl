@@ -2,11 +2,9 @@ package main.java.model;
 
 import java.awt.Color;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.hamcrest.Condition.Step;
 
 /**
  * Klasse die die Bundeslaender repraesentiert. Unterklasse von Gebiet.
@@ -179,29 +177,13 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	@Override
-	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Erststimme> getErststimmen() {
+	public List<Erststimme> getErststimmenProPartei() {
+		
 		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
 		
-		// durchlaufe alle Wahlkreise
-		for (Wahlkreis wahlkreis : this.getWahlkreise()) {
-			// durchlaufe alle Erststimmen
-			for (Erststimme erststimme : wahlkreis.getErststimmen()) {
-				if (erststimme != null) {
-					erststimmen.add(erststimme);
-				}
-			}
-		}
-		
-		/*
-		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmen().size()];
+		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmenProPartei().size()];
 		for (int i = 0; i < this.wahlkreise.size(); i++) {
-			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i).getErststimmen();
+			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i).getErststimmenProPartei();
 			for (int j = 0; j < wahlkreisErststimme.size(); j++) {
 				//System.out.println("wahlkreisersttimmen: " + wahlkreisErststimme.size());
 				if (wahlkreisErststimme.get(j) != null) {
@@ -213,19 +195,18 @@ public class Bundesland extends Gebiet implements Serializable,
 			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat(
 					"Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
-		*/
 		
 		return erststimmen;
 	}
 
 	@Override
-	public List<Zweitstimme> getZweitstimmen() {
+	public List<Zweitstimme> getZweitstimmenProPartei() {
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
 		int[] tempZweitstimmen = new int[this.wahlkreise.get(0)
-				.getZweitstimmen().size()];
+				.getZweitstimmenProPartei().size()];
 		for (int i = 0; i < this.wahlkreise.size(); i++) {
 			List<Zweitstimme> wahlkreisZweitstimme = wahlkreise.get(i)
-					.getZweitstimmen();
+					.getZweitstimmenProPartei();
 			for (int j = 0; j < wahlkreisZweitstimme.size(); j++) {
 				tempZweitstimmen[j] += wahlkreisZweitstimme.get(j).getAnzahl();
 			}
@@ -233,7 +214,7 @@ public class Bundesland extends Gebiet implements Serializable,
 		for (int i = 0; i < tempZweitstimmen.length; i++) {
 			zweitstimmen
 					.add(new Zweitstimme(tempZweitstimmen[i], this,
-							this.wahlkreise.get(0).getZweitstimmen().get(i)
+							this.wahlkreise.get(0).getZweitstimmenProPartei().get(i)
 									.getPartei()));
 		}
 

@@ -1,7 +1,6 @@
 package main.java.model;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public abstract class Gebiet implements Serializable {
 	 */
 	public int getAnzahlZweitstimmen() {
 		zweitstimmeGesamt = 0;
-		for (Zweitstimme zweit : this.getZweitstimmen()) {
+		for (Zweitstimme zweit : this.getZweitstimmenProPartei()) {
 			zweitstimmeGesamt += zweit.getAnzahl();
 		}
 		return zweitstimmeGesamt;
@@ -42,7 +41,7 @@ public abstract class Gebiet implements Serializable {
 	 */
 	public int getAnzahlErststimmen() {
 		int erststimmeGesamt = 0;
-		for (Erststimme erst : this.getErststimmen()) {
+		for (Erststimme erst : this.getErststimmenProPartei()) {
 			erststimmeGesamt += erst.getAnzahl();
 		}
 		return erststimmeGesamt;
@@ -80,42 +79,22 @@ public abstract class Gebiet implements Serializable {
 	abstract public int getWahlberechtigte();
 
 	/**
-	 * Setzt die Liste aller Zweitstimmenobjekte fï¿½r dieses Gebiet (pro Partei
-	 * eins).
-	 * 
-	 * @param zweitstimmen
-	 *            eine Liste aller Zweitstimmenobjekte fï¿½r dieses Gebiet (pro
-	 *            Partei eins).
-	 * @throws IllegalArgumentException
-	 *             wenn die zweitstimmenliste null oder leer ist.
-	 */
-	abstract public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen)
-			throws IllegalArgumentException;
-
-	/**
-	 * Gibt die Erststimmen in einem Gebiet zurueck. Falls das aktuelle Gebiet
-	 * ein "Bundesland"-Objekt ist, wird die Summe aller Erststimmen der
-	 * Wahlkreise zurueck- gegeben.
+	 * Gibt Pro Partei ein Erststimmen-Objekt als Liste zurück.
+	 * Jedes Objekt hat als Anzahl die Summe aller Stimmen dem
+	 * jeweiligen Gebiet bzw. in den Untergebieten.
 	 * 
 	 * @return die Erststimmen in einem Gebiet.
 	 */
-	abstract public List<Erststimme> getErststimmen();
+	abstract public List<Erststimme> getErststimmenProPartei();
 
 	/**
-	 * Gibt die Zweitstimmen in einem Gebiet zurueck.
+	 * Gibt Pro Partei ein Zweitstimmen-Objekt als Liste zurück.
+	 * Jedes Objekt hat als Anzahl die Summe aller Stimmen dem
+	 * jeweiligen Gebiet bzw. in den Untergebieten.
 	 * 
 	 * @return die Zweitstimmen in einem Gebiet.
 	 */
-	abstract public List<Zweitstimme> getZweitstimmen();
-
-	/**
-	 * Beschreibt dieses Gebiet.
-	 * 
-	 * @return einen String der dieses Gebiet beschreibt.
-	 */
-	public String toString() {
-		return this.name;
-	}
+	abstract public List<Zweitstimme> getZweitstimmenProPartei();
 
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurueck.
@@ -125,4 +104,13 @@ public abstract class Gebiet implements Serializable {
 	 * @return die Anzahl der Stimmen.
 	 */
 	abstract public int getAnzahlZweitstimmen(Partei partei);
+
+	/**
+	 * Beschreibt dieses Gebiet.
+	 * 
+	 * @return einen String der dieses Gebiet beschreibt.
+	 */
+	public String toString() {
+		return this.name;
+	}
 }

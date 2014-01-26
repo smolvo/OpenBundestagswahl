@@ -53,7 +53,7 @@ public class Mandatsrechner2009 {
 			for (Wahlkreis wahlkreis : bundesland.getWahlkreise()) {
 				int max = 0;
 				Kandidat gewinner = null;
-				for (Erststimme erst : wahlkreis.getErststimmen()) {
+				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
 					// TODO parallelitaet!
 					// TODO Kandidaten mit gleicher Erststimmenanzahl
 

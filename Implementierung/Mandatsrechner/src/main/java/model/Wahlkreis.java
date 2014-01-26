@@ -3,8 +3,6 @@ package main.java.model;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import test.java.Debug;
-
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und der
  * Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet.
@@ -48,6 +46,8 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
+		this.erststimmen = new LinkedList<>();
+		this.zweitstimmen = new LinkedList<>();
 	}
 
 	/**
@@ -70,6 +70,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		this.setName(name);
 		this.setWahlberechtigte(wahlberechtigte);
 		this.setErststimmen(erststimmen);
+		this.zweitstimmen = new LinkedList<>();
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 */
 	public int getAnzahlErststimmen() {
 		int erststimmeGesamt = 0;
-		for (Erststimme erst : getErststimmen()) {
+		for (Erststimme erst : getErststimmenProPartei()) {
 			erststimmeGesamt += erst.getAnzahl();
 		}
 		return erststimmeGesamt;
@@ -92,12 +93,9 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 */
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
-		for (Erststimme erst : this.erststimmen) {
-			if (erst.getKandidat().getPartei() == null) {
-				//Debug.print("Kandidat: " + erst.getKandidat().getName());
-			}
-			
-			if (erst.getKandidat().getPartei() != null && erst.getKandidat().getPartei().equals(partei)) {
+		for (Erststimme erst : this.erststimmen) {			
+			if (erst.getKandidat().getPartei() != null 
+					&& erst.getKandidat().getPartei().equals(partei)) {
 				ergebnis = erst;
 			}
 		}
@@ -134,7 +132,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 * 
 	 * @return alle Erststimmen des Wahlkreises
 	 */
-	public LinkedList<Erststimme> getErststimmen() {
+	public LinkedList<Erststimme> getErststimmenProPartei() {
 		return this.erststimmen;
 	}
 
@@ -143,7 +141,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 * 
 	 * @return alle Zweitstimmen des Wahlkreises
 	 */
-	public LinkedList<Zweitstimme> getZweitstimmen() {
+	public LinkedList<Zweitstimme> getZweitstimmenProPartei() {
 		return this.zweitstimmen;
 	}
 
@@ -185,10 +183,9 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	public int getWahlberechtigte() {
 		return this.wahlberechtigte;
 	}
-
-	@Override
-	public void setWahlberechtigte(int wahlberechtigte)
-			throws IllegalArgumentException {
+	
+	
+	public void setWahlberechtigte(int wahlberechtigte) throws IllegalArgumentException {
 		if (wahlberechtigte < 0) {
 			throw new IllegalArgumentException(
 					"Der Parameter \"wahlberechtigte\" ist negativ!");
@@ -225,7 +222,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
 		int anzahl = 0;
-		for (Zweitstimme zweitStimme : this.getZweitstimmen()) {
+		for (Zweitstimme zweitStimme : this.getZweitstimmenProPartei()) {
 			if (zweitStimme.getPartei() == partei) {
 				anzahl = zweitStimme.getAnzahl();
 			}
@@ -240,7 +237,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 */
 	public int getErststimmenAnzahl(Partei partei) {
 		int anzahl = 0;
-		for (Erststimme erststimme: this.getErststimmen()) {
+		for (Erststimme erststimme: this.getErststimmenProPartei()) {
 			if (erststimme.getKandidat().getPartei() == partei) {
 				anzahl = erststimme.getAnzahl();
 			}
@@ -263,8 +260,8 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		if (partei == null) {
 			throw new IllegalArgumentException("Partei ist null");
 		}
-		for (Zweitstimme zweitStimme : this.getZweitstimmen()) {
-			if (zweitStimme.getPartei() == partei) {
+		for (Zweitstimme zweitStimme : this.getZweitstimmenProPartei()) {
+			if (zweitStimme.getPartei().equals(partei)) {
 				return zweitStimme;
 			}
 		}

@@ -238,7 +238,7 @@ public class Bundestagswahl implements Serializable {
 		boolean success = false;
 		for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
 			 if (wk.equals(stimme.getGebiet())) {
-				 for (Erststimme erststimme : wk.getErststimmen()) {
+				 for (Erststimme erststimme : wk.getErststimmenProPartei()) {
 					 if (erststimme.getKandidat().equals(stimme.getKandidat())) {
 						 erststimme.setAnzahl(stimme.getAnzahl());
 						 success = true;

@@ -136,7 +136,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		// durchlaufe alle Wahlkreise
 		for (Wahlkreis wk : alleWahlkreise) {
 			// durchlaufe alle Erststimmen
-			for (Erststimme erst : wk.getErststimmen()) {
+			for (Erststimme erst : wk.getErststimmenProPartei()) {
 				// Anzahl auf 0 setzen
 				erst.setAnzahl(0);
 				
@@ -146,7 +146,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				//erst = null;
 			}
 			// durchlaufe alle Zweitstimmen
-			for (Zweitstimme zweit : wk.getZweitstimmen()) {
+			for (Zweitstimme zweit : wk.getZweitstimmenProPartei()) {
 				// Anzahl auf 0 setzen
 				zweit.setAnzahl(0);
 				//zweit = null;
@@ -214,7 +214,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 						erst = new Erststimme(stimmzahl, wk, kan);
 						//erst.setKandidat(kan);
 						
-						wk.getErststimmen().add(erst);
+						wk.getErststimmenProPartei().add(erst);
 					}
 					vergebeneErst += stimmzahl;
 				}
