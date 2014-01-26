@@ -82,7 +82,8 @@ public class WahlgeneratorTest {
 		// Wahlgenerierung
 		
 				LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
-				stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 30, 30));
+				stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 2, 1));
+				
 				stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(3), 25, 13));
 				Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
 				
@@ -92,13 +93,13 @@ public class WahlgeneratorTest {
 				
 				System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
 				
-				System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
-				System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+				//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
+				//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 				
-				System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
-				System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+				//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
+				//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 				
-				i.exportieren("src/main/resources/importexport/random.csv", genWahl);
+				i.exportieren("src/main/resources/importexport/BLABLA.csv", genWahl);
 		
 	}
 

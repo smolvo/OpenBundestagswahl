@@ -9,6 +9,8 @@ import test.java.Debug;
 import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
+import main.java.model.Kandidat;
+import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
@@ -137,6 +139,10 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			for (Erststimme erst : wk.getErststimmen()) {
 				// Anzahl auf 0 setzen
 				erst.setAnzahl(0);
+				
+				if (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat)) {
+					erst = null;
+				}
 				//erst = null;
 			}
 			// durchlaufe alle Zweitstimmen
@@ -166,8 +172,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 			
 			
-			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen());
-			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen());
+			int anzahlErststimmen = this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100;
+			int anzahlZweitstimmen = this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100;
 			
 			Debug.print(partei.getName() + ", anzahlErststimmen: " + anzahlErststimmen + ", anzahlZweitstimmen: " + anzahlZweitstimmen);
 			
@@ -200,10 +206,15 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
 					if (erst != null) {
 						erst.erhoeheAnzahl(stimmzahl);
-						//vergebeneErst += stimmzahl;
+						vergebeneErst += stimmzahl;
 					} else {
-						//System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
-						wk.getErststimmen().add(new Erststimme(stimmzahl, wk, ImportExportManager.unbekannterKandidat));
+						System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
+						//Kandidat kan = new Kandidat(Mandat.KEINMANDAT, partei, erst);
+						Kandidat kan = new Kandidat("unbekannt", "-", 0, Mandat.KEINMANDAT, partei);
+						erst = new Erststimme(stimmzahl, wk, kan);
+						//erst.setKandidat(kan);
+						
+						wk.getErststimmen().add(erst);
 					}
 					vergebeneErst += stimmzahl;
 				}
@@ -227,11 +238,12 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
 					if (zweit != null) {
 						zweit.erhoeheAnzahl(stimmzahl);
+						vergebeneZweit += stimmzahl;
 					} else {
 						System.out.println("Zweitstimme ist null!, " + partei.getName() + " : " + wk.getName());
-						wk.getZweitstimmen().add(new Zweitstimme(stimmzahl, wk, partei));
+						//wk.getZweitstimmen().add(new Zweitstimme(stimmzahl, wk, partei));
 					}
-					vergebeneZweit += stimmzahl;
+					//vergebeneZweit += stimmzahl;
 				}
 				
 			}

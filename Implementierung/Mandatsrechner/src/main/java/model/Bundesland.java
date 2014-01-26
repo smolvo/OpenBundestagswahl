@@ -184,20 +184,34 @@ public class Bundesland extends Gebiet implements Serializable,
 	@Override
 	public List<Erststimme> getErststimmen() {
 		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
-		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmen()
-				.size()];
+		
+		// durchlaufe alle Wahlkreise
+		for (Wahlkreis wahlkreis : this.getWahlkreise()) {
+			// durchlaufe alle Erststimmen
+			for (Erststimme erststimme : wahlkreis.getErststimmen()) {
+				if (erststimme != null) {
+					erststimmen.add(erststimme);
+				}
+			}
+		}
+		
+		/*
+		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmen().size()];
 		for (int i = 0; i < this.wahlkreise.size(); i++) {
-			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i)
-					.getErststimmen();
+			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i).getErststimmen();
 			for (int j = 0; j < wahlkreisErststimme.size(); j++) {
-				tempStimmen[j] += wahlkreisErststimme.get(j).getAnzahl();
+				//System.out.println("wahlkreisersttimmen: " + wahlkreisErststimme.size());
+				if (wahlkreisErststimme.get(j) != null) {
+					tempStimmen[j] += wahlkreisErststimme.get(j).getAnzahl();
+				}
 			}
 		}
 		for (int i = 0; i < tempStimmen.length; i++) {
 			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat(
 					"Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
-
+		*/
+		
 		return erststimmen;
 	}
 

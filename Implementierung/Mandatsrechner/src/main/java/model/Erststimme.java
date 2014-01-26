@@ -52,7 +52,7 @@ public class Erststimme extends Stimme implements Serializable, Comparable<Ersts
 	 *             wenn der Kandidat leer ist.
 	 */
 	public void setKandidat(Kandidat kandidat) throws IllegalArgumentException {
-		if (kandidat.equals(null)) {
+		if (kandidat == null) {
 			throw new IllegalArgumentException("Kandidat ist null!");
 		}
 		this.kandidat = kandidat;

@@ -167,7 +167,7 @@ public class Kandidat implements Serializable {
 	 *             wenn das Mandat leer ist.
 	 */
 	public void setMandat(Mandat mandat) throws IllegalArgumentException {
-		if (mandat.equals(null)) {
+		if (mandat == null) {
 			throw new IllegalArgumentException("Mandat ist null!");
 		}
 		this.mandat = mandat;

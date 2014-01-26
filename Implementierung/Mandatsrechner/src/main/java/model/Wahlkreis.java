@@ -3,6 +3,8 @@ package main.java.model;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import test.java.Debug;
+
 /**
  * Klasse die mit der Deutschland-Klasse, der Kandidat-Klasse und der
  * Erststimmen-Klasse zusammenarbeitet. Sie erbt von der Oberklasse Gebiet.
@@ -91,7 +93,11 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
 		for (Erststimme erst : this.erststimmen) {
-			if (erst.getKandidat().getPartei() == partei) {
+			if (erst.getKandidat().getPartei() == null) {
+				Debug.print("Kandidat: " + erst.getKandidat().getName());
+			}
+			
+			if (erst.getKandidat().getPartei() != null && erst.getKandidat().getPartei().equals(partei)) {
 				ergebnis = erst;
 			}
 		}

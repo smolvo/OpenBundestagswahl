@@ -83,6 +83,14 @@ public class Deutschland extends Gebiet implements Serializable {
 
 	@Override
 	public List<Erststimme> getErststimmen() {
+		
+		List<Erststimme> erststimmen = new LinkedList<>();
+		
+		for (Bundesland bundesland : this.getBundeslaender()) {
+			erststimmen.addAll(bundesland.getErststimmen());
+		}
+		
+		/*
 		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
 		int[] tempStimmen = new int[this.bundeslaender.get(0).getErststimmen().size()];
 		for (int i = 0; i < this.bundeslaender.size(); i++) {
@@ -97,7 +105,7 @@ public class Deutschland extends Gebiet implements Serializable {
 					this,
 					new Kandidat("Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
-		
+		*/
 		return erststimmen;
 	}
 
