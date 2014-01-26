@@ -3,6 +3,8 @@ package main.java.importexport;
 import java.io.File;
 
 import main.java.model.Bundestagswahl;
+import main.java.model.Kandidat;
+import main.java.model.Mandat;
 
 /**
  * Der ImportExportManager ist zustaendig fuer das Erstellen
@@ -17,6 +19,12 @@ public class ImportExportManager {
 	 */
 	private Crawler crawler[];
 	private Export exporter[];
+	
+	/**
+	 * Ein default-Wert fuer unbekannte Kandidaten.
+	 */
+	public static Kandidat unbekannterKandidat = new Kandidat("-", "-",
+			0, Mandat.KEINMANDAT, null);
 	
 	/**
 	 * Hier koennen weitere Algorithmen ergaenzt werden.

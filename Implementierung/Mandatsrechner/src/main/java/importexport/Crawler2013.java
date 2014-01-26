@@ -304,8 +304,7 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		Kandidat unbekannterKandidat = new Kandidat("-", "-",
-				0, Mandat.KEINMANDAT, null);
+		
 		// Erzeuge Bundeslaender.
 		for (int i = 0; i < rows.size() && !error; i++) {
 			if (rows.get(i)[2].equals(nrDeutschland + "")) {
@@ -313,8 +312,10 @@ public class Crawler2013 extends Crawler {
 						this.getEinwohnerzahl(rows.get(i)[1]));
 				tempNummer = rows.get(i)[0];
 				LinkedList<Partei> blParteien = new LinkedList<Partei>();
+				System.out.println(b.getName()+":");
 				for (int j = 0; j < parteien.size(); j++) {
 					if (values.get(i)[parteiOffset + j][0]!=0 || values.get(i)[parteiOffset + j][1]!=0) {
+						System.out.println(parteien.get(j).getName());
 						blParteien.add(parteien.get(j));
 					}
 				}
@@ -341,7 +342,7 @@ public class Crawler2013 extends Crawler {
 								}
 							}
 							if (kandidat == null) {
-								kandidat = unbekannterKandidat;
+								kandidat = ImportExportManager.unbekannterKandidat;
 							}
 							erststimme.add(new Erststimme(
 									values.get(j)[parteiOffset + k][0], w,
