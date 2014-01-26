@@ -22,14 +22,15 @@ public class Deutschland extends Gebiet implements Serializable {
 	
 	/** Ist die Anzahl an Zweitstimmen mit der eine Partei sicher in Bundestag ist */
 	private int sperrklauselAnzahl;
+	
+	
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name Der Name.
 	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 */
-	public Deutschland(String name, int wahlberechtigte) {
+	public Deutschland(String name) {
 		this.setName(name);
-		this.setWahlberechtigte(wahlberechtigte);
 	}
 	
 	/**
@@ -38,9 +39,8 @@ public class Deutschland extends Gebiet implements Serializable {
 	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 * @param zweitstimme Die Liste aller Zweitstimmenobjekte (pro Partei und Gebiet).
 	 */
-	public Deutschland(String name, int wahlberechtigte, LinkedList<Zweitstimme> zweitstimme) {
+	public Deutschland(String name, LinkedList<Zweitstimme> zweitstimme) {
 		this.setName(name);
-		this.setWahlberechtigte(wahlberechtigte);
 		this.setZweitstimmen(zweitstimme);
 	}
 	
@@ -146,12 +146,6 @@ public class Deutschland extends Gebiet implements Serializable {
 		}
 		return wahlberechtigte;
 	}
-
-	@Override
-	public void setWahlberechtigte(int wahlberechtigte) {
-		// TODO Auto-generated method stub
-		throw new IllegalAccessError("Noch nicht implementiert!");
-	}
 	
 	/**
 	 * Berechnet und gibt die Einwohnerzahl zurueck.
@@ -178,9 +172,12 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
 		int anzahl = 0;
-		for (Bundesland bl : this.getBundeslaender()) {
-			anzahl += bl.getAnzahlZweitstimmen(partei);
+	
+		// durchlaufe alle Zweitstimmen und summiere die Anzahlen
+		for (Zweitstimme zweitstimme : this.getZweitstimmen()) {
+			anzahl += zweitstimme.getAnzahl();
 		}
+		
 		return anzahl;
 	}
 	
@@ -191,11 +188,12 @@ public class Deutschland extends Gebiet implements Serializable {
 	 */
 	public int getAnzahlErststimmen(Partei partei) {
 		int anzahl = 0;
-		for (Bundesland bl: this.getBundeslaender()) {
-			for (Wahlkreis wahlkreis: bl.getWahlkreise()) {
-				anzahl += wahlkreis.getErststimmenAnzahl(partei);
-			}
+		
+		// durchlaufe alle Erststimmen und summiere die Anzahlen
+		for (Erststimme erststimme : this.getErststimmen()) {
+			anzahl += erststimme.getAnzahl();
 		}
+		
 		return anzahl;
 	}
 	

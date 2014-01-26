@@ -249,12 +249,6 @@ public class Bundesland extends Gebiet implements Serializable,
 		return wahlberechtigte;
 	}
 
-	@Override
-	public void setWahlberechtigte(int wahlberechtigte) {
-		// TODO Auto-generated method stub
-
-	}
-
 	/**
 	 * Setzt eine neue Liste von Landeslisten.
 	 * 

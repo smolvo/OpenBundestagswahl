@@ -80,17 +80,6 @@ public abstract class Gebiet implements Serializable {
 	abstract public int getWahlberechtigte();
 
 	/**
-	 * Setzt die Anzahl der Wahlberechtigten.
-	 * 
-	 * @param wahlberechtigte
-	 *            die Anzahl der Wahlberechtigten.
-	 * @throws IllegalArgumentException
-	 *             wenn die Anzahl negativ ist.
-	 */
-	abstract public void setWahlberechtigte(int wahlberechtigte)
-			throws IllegalArgumentException;
-
-	/**
 	 * Setzt die Liste aller Zweitstimmenobjekte f�r dieses Gebiet (pro Partei
 	 * eins).
 	 * 
