@@ -14,11 +14,13 @@ public class Mandatsrechner2013Test {
 	 */
 	public static void main(String[] args) {
 		
+		//Debug.setAktiv(true);
+		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
-		Bundestagswahl w = null;
+		/*Bundestagswahl w = null;
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
@@ -30,12 +32,13 @@ public class Mandatsrechner2013Test {
 		Mandatsrechner2013 m = new Mandatsrechner2013();
 		
 		if (w != null) {
-			Bundestagswahl newW = m.berechneAlles(m.berechneAlles(m.berechneAlles(w)));
+			System.out.println("Test");
+			Bundestagswahl newW = m.berechneAlles(w);
 			//newW = m.berechneAlles(newW);
 			
-			Debug.print(w.getSitzverteilung().getBericht());
+			//Debug.print(w.getSitzverteilung().getBericht());
 			//System.out.println(w.getSitzverteilung().getAbgeordnete().size());
-		}
+		}*/
 	}
 
 }

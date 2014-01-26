@@ -159,7 +159,7 @@ public class Mandatsrechner2009 {
 	}
 
 	/**
-	 * Rundet die Kommazahl mit dem gew�nschten Rundungsalgprithmus auf oder
+	 * Rundet die Kommazahl mit dem gewuenschten Rundungsalgprithmus auf oder
 	 * ab.
 	 * 
 	 * @param zahl

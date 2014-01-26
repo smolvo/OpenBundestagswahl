@@ -27,13 +27,13 @@ public class MandatsrechnerTest {
 			System.out.println("Leine g�ltige CSV-Datei :/");
 		}
 		
-		Mandatsrechner2009 rechner = new Mandatsrechner2009();
-		Debug.isAktiv();
+		Mandatsrechner2009 rechner = Mandatsrechner2009.getInstance();
+		Debug.setAktiv(true);
 		if (w != null) {
-			Bundestagswahl newW = rechner.berechneAlles(w);
-			newW = rechner.berechneAlles(newW);
-			Debug.isAktiv();
-			Debug.print(newW.getSitzverteilung().getBericht());
+			Bundestagswahl newW = rechner.berechneHondt(w);
+			//newW = rechner.berechneAlles(newW);
+			//Debug.isAktiv();
+			//Debug.print(newW.getSitzverteilung().getBericht());
 			
 			//System.out.println(newW.getSitzverteilung().getAbgeordnete().size());
 			
