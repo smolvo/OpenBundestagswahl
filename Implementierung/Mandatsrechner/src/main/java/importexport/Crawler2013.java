@@ -312,10 +312,10 @@ public class Crawler2013 extends Crawler {
 						this.getEinwohnerzahl(rows.get(i)[1]));
 				tempNummer = rows.get(i)[0];
 				LinkedList<Partei> blParteien = new LinkedList<Partei>();
-				System.out.println(b.getName()+":");
+				//System.out.println(b.getName()+":");
 				for (int j = 0; j < parteien.size(); j++) {
 					if (values.get(i)[parteiOffset + j][0]!=0 || values.get(i)[parteiOffset + j][1]!=0) {
-						System.out.println(parteien.get(j).getName());
+						//System.out.println(parteien.get(j).getName());
 						blParteien.add(parteien.get(j));
 					}
 				}
