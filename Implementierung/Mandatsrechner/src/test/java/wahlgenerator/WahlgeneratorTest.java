@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
+import main.java.model.Partei;
 import main.java.wahlgenerator.Stimmanteile;
 import main.java.wahlgenerator.Wahlgenerator;
 
@@ -81,26 +82,103 @@ public class WahlgeneratorTest {
 		
 		// Wahlgenerierung
 		
-				LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
-				stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 2, 1));
-				
-				stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(3), 25, 13));
-				Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
-				
-				long start = System.currentTimeMillis();
-				
-				Bundestagswahl genWahl = wg.erzeugeBTW();
-				
-				System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
-				
-				//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
-				//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
-				
-				//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
-				//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
-				
-				i.exportieren("src/main/resources/importexport/BLABLA.csv", genWahl);
+		LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
+		//stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 2, 1));
+		stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(25), 100, 100));
 		
-	}
+		Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
+		
+		long start = System.currentTimeMillis();
+		
+		Bundestagswahl genWahl = wg.erzeugeBTW();
+		
+		System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
+		
+		//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
+		//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+		
+		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
+		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
+		
+		i.exportieren("src/main/resources/importexport/3333.csv", genWahl);
 
+	}
+	
+	@Test
+	public final void verteileRestAnteileTest() {
+		
+		LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
+		
+		for (Partei partei : wahl1.getParteien()) {
+			if (partei.getName().equals("CDU")) {
+				stimmAnt.add(new Stimmanteile(partei, 23, 17));
+			}
+			if (partei.getName().equals("SPD")) {
+				stimmAnt.add(new Stimmanteile(partei, 13, 26));
+			}
+			if (partei.getName().equals("FDP")) {
+				stimmAnt.add(new Stimmanteile(partei, 0, 3));
+			}
+			if (partei.getName().equals("AfD")) {
+				stimmAnt.add(new Stimmanteile(partei, 5, 0));
+			}
+		}
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
+		
+		wg.erzeugeBTW();
+		
+		int sumErstAnteile = 0;
+		int sumZweitAnteile = 0;
+		for (Stimmanteile anteil : wg.getStimmanteile()) {
+			sumErstAnteile += anteil.getAnteilErststimmen();
+			sumZweitAnteile += anteil.getAnteilZweitstimmen();
+		}
+		
+		
+		for (Stimmanteile anteil : stimmAnt) {
+			System.out.println(anteil.getPartei().getName() + " - Erststimmenanteil: " + anteil.getAnteilErststimmen()
+					+ ", Zweitstimmenanteil: " + anteil.getAnteilZweitstimmen());
+		}
+		
+		assertTrue("Die Summe aller Erststimmenanteile ist " + sumErstAnteile + " und nicht 100%!", sumErstAnteile == 100);
+		assertTrue("Die Summe aller Zweitstimmenanteile ist " + sumZweitAnteile + " und nicht 100%!", sumZweitAnteile == 100);
+	}
+	
+	
+	@Test
+	public final void afdTest() {
+		
+		LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
+		
+		for (Partei partei : wahl1.getParteien()) {
+			if (partei.getName().equals("AfD")) {
+				stimmAnt.add(new Stimmanteile(partei, 100, 100));
+			}
+		}
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
+		
+		Bundestagswahl gen = wg.erzeugeBTW();
+		
+		int sumErstAnteile = 0;
+		int sumZweitAnteile = 0;
+		for (Stimmanteile anteil : wg.getStimmanteile()) {
+			sumErstAnteile += anteil.getAnteilErststimmen();
+			sumZweitAnteile += anteil.getAnteilZweitstimmen();
+		}
+		
+		
+		for (Stimmanteile anteil : stimmAnt) {
+			System.out.println(anteil.getPartei().getName() + " - Erststimmenanteil: " + anteil.getAnteilErststimmen()
+					+ ", Zweitstimmenanteil: " + anteil.getAnteilZweitstimmen());
+		}
+		
+		assertTrue("Die Summe aller Erststimmenanteile ist " + sumErstAnteile + " und nicht 100%!", sumErstAnteile == 100);
+		assertTrue("Die Summe aller Zweitstimmenanteile ist " + sumZweitAnteile + " und nicht 100%!", sumZweitAnteile == 100);
+		
+		//System.out.println(gen.);
+		
+		i.exportieren("src/main/resources/importexport/22222.csv", gen);
+	}
 }

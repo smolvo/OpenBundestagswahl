@@ -94,7 +94,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		Erststimme ergebnis = null;
 		for (Erststimme erst : this.erststimmen) {
 			if (erst.getKandidat().getPartei() == null) {
-				Debug.print("Kandidat: " + erst.getKandidat().getName());
+				//Debug.print("Kandidat: " + erst.getKandidat().getName());
 			}
 			
 			if (erst.getKandidat().getPartei() != null && erst.getKandidat().getPartei().equals(partei)) {

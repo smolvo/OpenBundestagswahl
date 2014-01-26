@@ -2,6 +2,7 @@ package main.java.wahlgenerator;
 
 import java.util.List;
 
+import test.java.Debug;
 import main.java.model.Bundestagswahl;
 
 /** 
@@ -50,8 +51,14 @@ public abstract class AbstrakterWahlgenerator {
 	 * Bestimmt anzahlZweitstimmen und anzahlErststimmen
 	 */
 	private void berechneGesamtanzahlStimmen() {
-		this.setAnzahlErststimmen(this.basisWahl.getDeutschland().getErststimmeGesamt());
-		this.setAnzahlZweitstimmen(this.basisWahl.getDeutschland().getZweitstimmeGesamt());
+		
+		this.setAnzahlErststimmen(
+				this.basisWahl.getDeutschland().getErststimmeGesamt());
+		this.setAnzahlZweitstimmen(
+				this.basisWahl.getDeutschland().getZweitstimmeGesamt());
+		
+		Debug.print("AnzahlErststimmen Gesamt DEUTSCHLAND: " + this.getAnzahlErststimmen());
+		Debug.print("AnzahlZweitstimmen Gesamt DEUTSCHLAND: " + this.getAnzahlZweitstimmen());
 	}
 	
 	/**

@@ -29,8 +29,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 		super(basisWahl, stimmanteile);
 		
-		float summeErst = 0;
-		float summeZweit = 0;
+		int summeErst = 0;
+		int summeZweit = 0;
 		for (Stimmanteile sa : stimmanteile) {
 			if (!basisWahl.getParteien().contains(sa.getPartei())) {
 				throw new IllegalArgumentException("Partei \"" + sa.getPartei().getName() + "\" existiert in der BasisWahl nicht!");
@@ -69,7 +69,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			sumErstAnteil += sa.getAnteilErststimmen();
 			sumZweitAnteil += sa.getAnteilZweitstimmen();
-			Debug.print("Partei: " + sa.getPartei().getName() + "\n    ErstAnteil: " + sa.getAnteilErststimmen() + "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%");
+			Debug.print("Partei: " + sa.getPartei().getName() + ", ErstAnteil: " + sa.getAnteilErststimmen() + "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%");
 		}
 		Debug.print("===> sumErstAnteil: " + sumErstAnteil + "%, sumZweitAnteil: " + sumZweitAnteil + "%");
 		
@@ -92,7 +92,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 		int restErstAnteil = 100 - sumErstAnteil;
 		int restZweitAnteil = 100 - sumZweitAnteil;
-		Debug.print("\nrestErstAnteil: " + restErstAnteil + "%, restZweitAnteil: " + restZweitAnteil + "%\n");
+		Debug.print("restErstAnteil: " + restErstAnteil + "%, restZweitAnteil: " + restZweitAnteil + "%\n");
 		
 		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
 		Random rand = new Random();
@@ -140,9 +140,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				// Anzahl auf 0 setzen
 				erst.setAnzahl(0);
 				
-				if (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat)) {
-					erst = null;
-				}
+				//if (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat)) {
+				//	erst = null;
+				//}
 				//erst = null;
 			}
 			// durchlaufe alle Zweitstimmen
@@ -208,7 +208,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 						erst.erhoeheAnzahl(stimmzahl);
 						vergebeneErst += stimmzahl;
 					} else {
-						System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
+						//System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
 						//Kandidat kan = new Kandidat(Mandat.KEINMANDAT, partei, erst);
 						Kandidat kan = new Kandidat("unbekannt", "-", 0, Mandat.KEINMANDAT, partei);
 						erst = new Erststimme(stimmzahl, wk, kan);
