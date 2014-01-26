@@ -21,7 +21,7 @@ public class Wahlgnerator2009Test {
 			System.out.println("Keine g�ltige CSV-Datei :/");
 		}
 		
-		Mandatsrechner2009 rechner2009 = new Mandatsrechner2009();
+		Mandatsrechner2009 rechner2009 = Mandatsrechner2009.getInstance();
 		
 		
 		if (bundestagswahl != null) {

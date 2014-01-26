@@ -29,6 +29,8 @@ public class WahlgeneratorTest {
 
 	private static Bundestagswahl wahl1;
 	
+	private static ImportExportManager i;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -37,7 +39,7 @@ public class WahlgeneratorTest {
 		
 		Debug.setAktiv(true);
 		
-		ImportExportManager i = new ImportExportManager();
+		i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
@@ -80,8 +82,8 @@ public class WahlgeneratorTest {
 		// Wahlgenerierung
 		
 				LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
-				stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 0.3f, 0.3f));
-				stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(3), 0.5f, 0.7f));
+				stimmAnt.add(new Stimmanteile(wahl1.getParteien().getFirst(), 30, 30));
+				stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(3), 25, 13));
 				Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
 				
 				long start = System.currentTimeMillis();
@@ -96,7 +98,7 @@ public class WahlgeneratorTest {
 				System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
 				System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 				
-				//i.exportieren("src/main/resources/importexport/random.csv", genWahl);
+				i.exportieren("src/main/resources/importexport/random.csv", genWahl);
 		
 	}
 
