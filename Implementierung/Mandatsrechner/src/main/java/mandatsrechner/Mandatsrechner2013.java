@@ -179,8 +179,7 @@ public class Mandatsrechner2013 {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-				int zahl = Math
-						.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
+				int zahl = this.rechner2009.runden(bl.getEinwohnerzahl() / zuteilungsdivisor, false);
 				summe += zahl;
 				System.out.println(bl.getName() + ": " + zahl + " Einwohner: "
 						+ bl.getEinwohnerzahl());

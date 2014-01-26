@@ -137,6 +137,7 @@ public class Mandatsrechner2009 {
 	 */
 	protected float berechneZuteilungsdivisor(Bundestagswahl bundestagswahl) {
 		int minSitze = bundestagswahl.getDeutschland().getWahlkreise().size() * 2;
+		Debug.print("Anzahl der Wahlkreise: " + minSitze);
 		float zuteilungsdivisor = bundestagswahl.getDeutschland()
 				.getEinwohneranzahl() / minSitze;
 		int sitzanzahl = 0;
@@ -144,9 +145,10 @@ public class Mandatsrechner2009 {
 			sitzanzahl = 0;
 			for (Bundesland bundesland : bundestagswahl.getDeutschland()
 					.getBundeslaender()) {
-				sitzanzahl += Math.round(bundesland.getEinwohnerzahl()
-						/ zuteilungsdivisor);
+				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
+						/ zuteilungsdivisor, false);
 			}
+			Debug.print("Test: " + sitzanzahl + " - " + minSitze);
 			if (sitzanzahl < minSitze) {
 				zuteilungsdivisor -= 1;
 			} else {
@@ -154,7 +156,7 @@ public class Mandatsrechner2009 {
 				zuteilungsdivisor += 1;
 			}
 		}
-
+		
 		return zuteilungsdivisor;
 	}
 

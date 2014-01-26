@@ -11,6 +11,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import test.java.Debug;
+
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
@@ -393,7 +395,7 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		if (this.debug) {
+		if (Debug.isAktiv()) {
 			this.debugDeutschland(deutschland);
 		}
 
