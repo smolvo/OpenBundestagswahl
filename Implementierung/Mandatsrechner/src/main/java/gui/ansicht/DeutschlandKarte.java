@@ -9,21 +9,23 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.model.Bundesland;
 import main.java.model.Deutschland;
-
-
+/**
+ * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
+ *
+ */
+/** alle Bundeslaender, nötig für Färbung */
 /**
  * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
  *
@@ -35,22 +37,16 @@ public class DeutschlandKarte extends JPanel {
 	
 	boolean groesseGeaendert = true;
 	
+	BufferedImage buttonBild;
+	
+	JButton bBayern;
+	
 	/**
 	 * Konstruktor der Klasse.
 	 * @param land das gesamte Land
 	 */
 	public DeutschlandKarte(Deutschland land) {
 		this.land = land;
-		this.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("geklickt an: " + e.getPoint());
-				if (klickAufKarte(e.getPoint())) {
-					System.out.println("auf karte geklickt");
-				}
-				
-			}
-		});
 		this.addComponentListener(new ComponentAdapter() {
 			
 			@Override
@@ -58,6 +54,8 @@ public class DeutschlandKarte extends JPanel {
 				skaliere();
 			}
 		});
+		
+		bBayern = new JButton("Bayern");
 	}
 	
 	
@@ -92,13 +90,6 @@ public class DeutschlandKarte extends JPanel {
 	 */
 	private void skaliere() {
 		skaliert = grossVersion.getScaledInstance((int)(0.879*this.getHeight()), this.getHeight(), Image.SCALE_SMOOTH);
-	}
-	
-	private boolean klickAufKarte(Point klick) {
-		if ((klick.getX() < skaliert.getWidth(null)) && (klick.getY() < skaliert.getHeight(null))) {
-		return true;
-		}
-		return false;
 	}
 	
 	/**
@@ -183,9 +174,9 @@ public class DeutschlandKarte extends JPanel {
 	 */
 	private BufferedImage importImg(String pfad) {
 			try {
-				BufferedImage landBild = ImageIO.read(new File(pfad));
+				BufferedImage bild = ImageIO.read(new File(pfad));
 				bilderImportiert = true;
-				return landBild;
+				return bild;
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;
