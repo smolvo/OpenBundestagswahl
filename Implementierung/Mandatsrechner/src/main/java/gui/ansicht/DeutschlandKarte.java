@@ -4,8 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,13 +33,34 @@ public class DeutschlandKarte extends JPanel {
 	/** alle Bundeslaender, nötig für Färbung */
 	private Deutschland land;
 	
+	boolean groesseGeaendert = true;
+	
 	/**
 	 * Konstruktor der Klasse.
 	 * @param land das gesamte Land
 	 */
 	public DeutschlandKarte(Deutschland land) {
 		this.land = land;
+		this.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("geklickt an: " + e.getPoint());
+				if (klickAufKarte(e.getPoint())) {
+					System.out.println("auf karte geklickt");
+				}
+				
+			}
+		});
+		this.addComponentListener(new ComponentAdapter() {
+			
+			@Override
+			public void componentResized(ComponentEvent e) {
+				skaliere();
+			}
+		});
 	}
+	
+	
 	
 	/** wahr wenn bereits bilder importiert wurden, sonst falsch */
 	boolean bilderImportiert = false;
@@ -40,11 +68,15 @@ public class DeutschlandKarte extends JPanel {
 	/** in diesem array werden die importierten Bilder der Bundeslaender gespeichert */
 	BufferedImage[] bundeslandBilder = new BufferedImage[16];
 	
+	/** in diesem Array werden die Bilder der Bundeslaender nachdem sie eingefärbt wurden gespeichert */
+	BufferedImage[] bundeslandBilderGefaerbt = new BufferedImage[16];
+	
 	/** in diesem Array werden die Namen der importierten Bundeslaender gespeichert */
 	String[] bundeslandNamen = new String[16];
 	
-	/** in diesem Array werden die Bilder der Bundeslaender nachdem sie eingefärbt wurden gespeichert */
-	BufferedImage[] bundeslandBilderGefaerbt = new BufferedImage[16];
+	Double[] posX = new Double[] {0.1944, 0.3366, 0.6888, 0.5333, 0.3022, 0.4066, 0.2322, 0.4477, 0.1377, 0.0711, 0.0855, 0.1033, 0.5933, 0.4677, 0.2555, 0.4177};
+	
+	Double[] posY = new Double[] {0.6387, 0.5391, 0.2871, 0.1777, 0.2207, 0.1611, 0.4180, 0.0332, 0.0918, 0.3115, 0.4941, 0.6484, 0.4082, 0.2432, 0.0, 0.4160};
 
 	/** Dieser String gibt den Pfad des Speicherortes der Bundesland-Bilder an */
 	String pfad = "src/main/resources/gui/bundeslaender/";
@@ -58,8 +90,15 @@ public class DeutschlandKarte extends JPanel {
 	/** skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefügt 
 	 * wurden entsprechend der aktuellen größe des JPanels 
 	 */
-	public void skaliere() {
-	skaliert = grossVersion.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+	private void skaliere() {
+		skaliert = grossVersion.getScaledInstance((int)(0.879*this.getHeight()), this.getHeight(), Image.SCALE_SMOOTH);
+	}
+	
+	private boolean klickAufKarte(Point klick) {
+		if ((klick.getX() < skaliert.getWidth(null)) && (klick.getY() < skaliert.getHeight(null))) {
+		return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -67,15 +106,14 @@ public class DeutschlandKarte extends JPanel {
 	 * führt alle noetigen Aktionen aus um die eingefaerbte Deutschlandkare zu erstellen
 	 */
 	public void paintComponent(Graphics g) {
+		
 		if (!bilderImportiert) {
 			importieren();
-			skaliere();
-		}
-			
 			faerbeLand();
 			erstelleGrafik();
-			g.drawImage(skaliert, 0, 0, this);
-		
+			skaliere();
+		}
+		g.drawImage(skaliert,0, 0, this);
 	}
 	
 	/**
@@ -97,25 +135,14 @@ public class DeutschlandKarte extends JPanel {
 	private void erstelleGrafik() {
 		Graphics2D grossVersionGraphics = grossVersion.createGraphics();
 		grossVersionGraphics.setBackground(Color.WHITE);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[0], 175, 654, this);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[1], 303, 552, this);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[2], 620, 294, this);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[3], 480, 182, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[4], 272, 226, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[5], 366, 165, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[6], 209, 428, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[7], 403, 34, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[8], 124, 94, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[9], 64, 319, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[10], 77, 506, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[11], 93, 664, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[12], 534, 418, this);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[13], 421, 249, this);
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[14], 230, 0, this);			
-		grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[15], 376, 426, this);
+		int panelBreite = grossVersion.getWidth();
+		int panelHoehe = grossVersion.getHeight();
+		for (int i = 0; i < 16; i++) {
+			
+			grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[i], (int)(posX[i]*panelBreite), (int)(posY[i]*panelHoehe),null);
+		}
 	}
 
-	
 	/**
 	 * faerbt die Bilder der Bundeslaender entsprechend der Farbe der Partei die 
 	 * in diesem Bundesland den höchsten Zweitstimmenanteil hat. Das gefaerbte Bild wird in
@@ -124,8 +151,12 @@ public class DeutschlandKarte extends JPanel {
 	private void faerbeLand() {
 		LinkedList<Bundesland> bundeslaender = land.getBundeslaender();
 		Collections.sort(bundeslaender);
+		for (Bundesland bl: bundeslaender) {
+			bl.setFarbe(bl.ermittleStaerkstePartei().getFarbe());
+		}
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
+			
 			Color bwfarbe = bundeslaender.get(i).getFarbe();
 			try {
 				int hoehe = aktuellesBild.getHeight();
@@ -153,10 +184,13 @@ public class DeutschlandKarte extends JPanel {
 	private BufferedImage importImg(String pfad) {
 			try {
 				BufferedImage landBild = ImageIO.read(new File(pfad));
+				bilderImportiert = true;
 				return landBild;
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;
 			}
 		}
+
+
 }

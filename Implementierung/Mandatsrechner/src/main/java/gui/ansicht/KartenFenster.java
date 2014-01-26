@@ -33,7 +33,7 @@ public class KartenFenster extends JTabbedPane {
 	String[] alleLaender = new String[] {"Baden-Württemberg", "Bayern", "Berlin", "Brandenburg", 
 			 "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
 			 "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
-			 "Saarland", "Sachsen-Anhalt", "Sachsen",
+			 "Saarland", "Sachsen", "Sachsen-Anhalt", 
 			 "Schleswig-Holstein", "Thüringen"};
 	
 	/**

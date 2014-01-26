@@ -2,8 +2,11 @@ package main.java.model;
 
 import java.awt.Color;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.hamcrest.Condition.Step;
 
 /**
  * Klasse die die Bundeslaender repraesentiert. Unterklasse von Gebiet.
@@ -26,7 +29,7 @@ public class Bundesland extends Gebiet implements Serializable,
 	/** Liste mit den Wahlkreisen im Bundesland. */
 	private LinkedList<Wahlkreis> wahlkreise = new LinkedList<Wahlkreis>();
 
-	/** Liste mit den vertrettenden Parteien im Bundesland. */
+	/** Liste mit den im Bundesland vertretenen Parteien */
 	private LinkedList<Partei> parteien = new LinkedList<Partei>();
 
 	/** Liste mit den Landeslisten des Bundeslandes. */
@@ -276,7 +279,20 @@ public class Bundesland extends Gebiet implements Serializable,
 	public List<Landesliste> getLandesliste() {
 		return this.landesliste;
 	}
-
+	
+	public Partei ermittleStaerkstePartei() {
+		Partei staerkstePartei = null;
+		int max=0;
+		for(Partei partei : parteien ){
+			if(getZweitstimmenAnzahl(partei)>max){
+				max = getZweitstimmenAnzahl(partei);
+				staerkstePartei = partei;
+			}
+		}
+		return staerkstePartei;
+		
+	}
+	
 	/**
 	 * Fuegt eine neue Landesliste zum Bundeslandes hinzu.
 	 * 
@@ -299,6 +315,9 @@ public class Bundesland extends Gebiet implements Serializable,
 
 	@Override
 	public int getZweitstimmenAnzahl(Partei partei) {
+		if(partei == null){
+			throw new IllegalArgumentException("Partei ist null");
+		}
 		int anzahl = 0;
 		for (Wahlkreis wk : this.getWahlkreise()) {
 			anzahl += wk.getZweitstimmenAnzahl(partei);
