@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
@@ -50,6 +54,16 @@ public class BundDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(land);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.setBackground(Color.WHITE);
+		chartPanel.addComponentListener(new ComponentAdapter() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+			}			
+			
+		});
 		listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
@@ -61,35 +75,13 @@ public class BundDiagramm {
 	 * @param flaeche die Fläche unter dem ChartPanel
 	 */
 	private void listenerSetzen(ChartPanel chartPanel, final DiagrammFenster flaeche) {
-		chartPanel.addMouseListener(new MouseListener() {
+		chartPanel.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Bundestagswahl btw = flaeche.getAnsicht().getFenster().getBtw();
 				flaeche.zeigeSitzverteilung(btw);
 			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// nichts
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// nichts
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// nichts
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// nichts
-				
-			}
-			
 		});
 	}
 	
@@ -136,5 +128,9 @@ public class BundDiagramm {
 		plot.setDirection(Rotation.CLOCKWISE);
 		plot.setForegroundAlpha(1.0f);
 		return chart;
+	}
+	
+	public Dimension resize() {
+		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
 	}
 }

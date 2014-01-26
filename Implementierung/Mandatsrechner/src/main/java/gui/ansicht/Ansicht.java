@@ -80,6 +80,9 @@ public class Ansicht extends JPanel {
 	 * Durch diese Methode wird das allgemeine Layout der Ansichten gesetzt
 	 */
 	private void layoutSetzen() {
+		gbc.ipadx = 50;
+		gbc.ipady = 50;
+		
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.gridx = 0;
@@ -101,6 +104,9 @@ public class Ansicht extends JPanel {
 	 * setzen.
 	 */
 	private void initialisieren() {
+		gbc.ipadx = 50;
+		gbc.ipady = 50;
+		
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.gridx = 0;

@@ -44,6 +44,7 @@ public class VergleichsFenster extends JFrame {
 	public VergleichsFenster(Wahlvergleich vergleich) {
 		this.setLayout(new GridBagLayout());
 		this.setSize(1024, 768);
+		this.setTitle("Vergleich");
 		zeigeVergleich(vergleich);
 	}
 

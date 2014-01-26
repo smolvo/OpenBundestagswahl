@@ -40,7 +40,7 @@ public class DiffDiagramm extends JPanel {
 		for (int i = 0; i < diff.length; i++) {
 			result.setValue(diff[i].getDiff(), " ", diff[i].getPartei().getName());
 		}
-		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
+		JFreeChart chart = ChartFactory.createBarChart("Stimmendifferenzen", null,
 				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 

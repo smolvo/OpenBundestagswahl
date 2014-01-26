@@ -21,6 +21,7 @@ public class BerichtsFenster extends JFrame {
 	public BerichtsFenster(BerichtTableModel tabellenModell) {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(1024, 768);
+		this.setTitle("Mandatsübersicht");
 		JTable jTabelle = new JTable(tabellenModell);
 		JScrollPane pane = new JScrollPane(jTabelle);
 		this.add(pane);
