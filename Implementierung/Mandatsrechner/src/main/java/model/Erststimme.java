@@ -78,7 +78,7 @@ public class Erststimme extends Stimme implements Serializable, Comparable<Ersts
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
-				.getErststimmeGesamt() + anzahl)) {
+				.getAnzahlErststimmen() + anzahl)) {
 			throw new IllegalArgumentException(
 					"Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
 		}

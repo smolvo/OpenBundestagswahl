@@ -107,7 +107,7 @@ public class Mandatsrechner2009 {
 		}
 		LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
 		int sperrklauselAnzahl = bundestagswahl.getDeutschland()
-				.getZweitstimmeGesamt() / 20;
+				.getAnzahlZweitstimmen() / 20;
 		for (Partei part : bundestagswahl.getParteien()) {
 			if (part.getZweitstimmeGesamt() >= sperrklauselAnzahl
 					|| part.getAnzahlDirektmandate() >= this.MINDIREKTMANDATE) {
@@ -247,7 +247,7 @@ public class Mandatsrechner2009 {
 				// Queue für die Berechnung der Zweitstimmen
 				LinkedList<Double> berechneteZweitstimmen = new LinkedList<Double>();
 				berechneteZweitstimmen.add((double) bundesland
-						.getZweitstimmenAnzahl(partei));
+						.getAnzahlZweitstimmen(partei));
 				parteiStimme.put(partei, berechneteZweitstimmen);
 
 			}
@@ -259,7 +259,7 @@ public class Mandatsrechner2009 {
 				while (iterator.hasNext()) {
 					Partei key = (Partei) iterator.next();
 					parteiStimme.get(key).add(
-							(double) bundesland.getZweitstimmenAnzahl(key)
+							(double) bundesland.getAnzahlZweitstimmen(key)
 									/ (Math.pow(2, (double) i)));
 					System.out.print("");
 				}
@@ -342,7 +342,7 @@ public class Mandatsrechner2009 {
 
 			int sitzeBundesland = this.runden(bundesland.getEinwohnerzahl()
 					/ zuteilungsdivisor, false);
-			landesdivisor = bundesland.getZweitstimmeGesamt() / sitzeBundesland;
+			landesdivisor = bundesland.getAnzahlZweitstimmen() / sitzeBundesland;
 
 			// System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
 			int sitzePartei = 0;
@@ -352,7 +352,7 @@ public class Mandatsrechner2009 {
 				for (Partei part : relevanteParteien) {
 
 					sitzePartei += this.runden(
-							bundesland.getZweitstimmenAnzahl(part)
+							bundesland.getAnzahlZweitstimmen(part)
 									/ landesdivisor, false);
 				}
 				if (sitzePartei < sitzeBundesland) {
@@ -369,7 +369,7 @@ public class Mandatsrechner2009 {
 						bundesland);
 
 				int mindestSitzanzahl = this.runden(
-						bundesland.getZweitstimmenAnzahl(part) / landesdivisor,
+						bundesland.getAnzahlZweitstimmen(part) / landesdivisor,
 						false);
 				// Wichtig zur Bestimmung von Ueberhangmandate
 				int diffKandidat = mindestSitzanzahl - direktmandate;
@@ -437,7 +437,7 @@ public class Mandatsrechner2009 {
 				for (Partei part : relevanteParteien) {
 
 					Debug.print("" + part.getName() + ": "
-							+ bundesland.getZweitstimmenAnzahl(part) + " - "
+							+ bundesland.getAnzahlZweitstimmen(part) + " - "
 							+ part.getMindestsitzanzahl(bundesland));
 					sum += part.getMindestsitzanzahl(bundesland);
 				}

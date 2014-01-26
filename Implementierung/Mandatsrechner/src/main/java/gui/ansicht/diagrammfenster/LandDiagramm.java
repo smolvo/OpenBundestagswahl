@@ -69,7 +69,7 @@ public class LandDiagramm {
 		for (int i = 0; i < 4; i++) {
 			double proZweit = (Math
 					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
-							.getZweitstimmeGesamt()) * 1000) / 10);
+							.getAnzahlZweitstimmen()) * 1000) / 10);
 			parteien.add(zw.get(i).getPartei());
 			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
 		}
@@ -78,7 +78,7 @@ public class LandDiagramm {
 		for (int i = 4; i < zw.size(); i++) {
 			sonstige += (Math
 					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
-							.getZweitstimmeGesamt()) * 1000) / 10);
+							.getAnzahlZweitstimmen()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 

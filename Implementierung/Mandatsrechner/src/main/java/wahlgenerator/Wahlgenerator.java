@@ -192,7 +192,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 					
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getErststimmeGesamt()));
+					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getAnzahlErststimmen()));
 					
 					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
 					// zufällig eine in dem Intervall [1,max]
@@ -224,7 +224,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 					
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getZweitstimmeGesamt()));
+					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getAnzahlZweitstimmen()));
 					
 					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
 					// zufällig eine in dem Intervall [1,max]

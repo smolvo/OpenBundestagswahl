@@ -65,13 +65,13 @@ public class Wahlvergleich {
 					// Name der aktuell im Vergleich befindlichen Partei
 					String partei = parteiWahl1.getName();
 					// Anzahl Erststimmen der ersten Partei
-					int anzahlEinsErst = btw1.getDeutschland().getErststimmenAnzahl(parteiWahl1);
+					int anzahlEinsErst = btw1.getDeutschland().getAnzahlErststimmen(parteiWahl1);
 					// Anzahl der Erststimmen der zweiten Partei
-					int anzahlZweiErst = btw2.getDeutschland().getErststimmenAnzahl(parteiWahl2);
+					int anzahlZweiErst = btw2.getDeutschland().getAnzahlErststimmen(parteiWahl2);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 1
-					double prozentEinsErst = (Math.rint(((double) anzahlEinsErst / (double) btw1.getDeutschland().getErststimmeGesamt()) * 1000) / 10);
+					double prozentEinsErst = (Math.rint(((double) anzahlEinsErst / (double) btw1.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 2
-					double prozentZweiErst = (Math.rint(((double) anzahlZweiErst / (double) btw2.getDeutschland().getErststimmeGesamt()) * 1000) / 10);
+					double prozentZweiErst = (Math.rint(((double) anzahlZweiErst / (double) btw2.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
 					// errechnet die Differenz der Erststimmen
 					int diffErst = anzahlEinsErst - anzahlZweiErst;
 					// Anzahl Zweitstimmen der ersten Partei
@@ -79,9 +79,9 @@ public class Wahlvergleich {
 					// Anzahl Zweitstimmen der zweiten Partei
 					int anzahlZweiZweit = parteiWahl2.getZweitstimmeGesamt();
 					// errechnet den prozentualen Anteil Zweitstimmen von Partei 1
-					double prozentEinsZweit = (Math.rint(((double) anzahlEinsZweit / (double) btw1.getDeutschland().getZweitstimmeGesamt()) * 1000) / 10);
+					double prozentEinsZweit = (Math.rint(((double) anzahlEinsZweit / (double) btw1.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
 					// errechnet den prozentualen Anteil Zweitstimmen von Partei 2
-					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getZweitstimmeGesamt()) * 1000) / 10);
+					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
 					// errechnet die Differenz der Zweitstimmen
 					int diffZweit = anzahlEinsZweit - anzahlZweiZweit;
 					daten.addZeile(partei,

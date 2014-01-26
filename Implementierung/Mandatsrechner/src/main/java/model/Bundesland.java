@@ -284,8 +284,8 @@ public class Bundesland extends Gebiet implements Serializable,
 		Partei staerkstePartei = null;
 		int max=0;
 		for(Partei partei : parteien ){
-			if(getZweitstimmenAnzahl(partei)>max){
-				max = getZweitstimmenAnzahl(partei);
+			if(getAnzahlZweitstimmen(partei)>max){
+				max = getAnzahlZweitstimmen(partei);
 				staerkstePartei = partei;
 			}
 		}
@@ -314,13 +314,13 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	@Override
-	public int getZweitstimmenAnzahl(Partei partei) {
+	public int getAnzahlZweitstimmen(Partei partei) {
 		if(partei == null){
 			throw new IllegalArgumentException("Partei ist null");
 		}
 		int anzahl = 0;
 		for (Wahlkreis wk : this.getWahlkreise()) {
-			anzahl += wk.getZweitstimmenAnzahl(partei);
+			anzahl += wk.getAnzahlZweitstimmen(partei);
 		}
 		return anzahl;
 	}

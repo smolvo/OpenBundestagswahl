@@ -32,7 +32,7 @@ public class ImportExportTest {
 		//System.out.println(csvDatei.getName());
 		//int integer = Integer.parseInt("");
 		
-		System.out.println(w.getDeutschland().getWahlkreise().get(0).getZweitstimmeGesamt());
+		System.out.println(w.getDeutschland().getWahlkreise().get(0).getAnzahlZweitstimmen());
 		System.out.println(w.getDeutschland().getWahlkreise().get(0).hashCode());
 		
 		// clone durch Serialisierung
@@ -41,7 +41,7 @@ public class ImportExportTest {
 			// clone
 			Bundestagswahl w2 = w.deepCopy();
 			
-			System.out.println(w2.getDeutschland().getWahlkreise().get(0).getZweitstimmeGesamt());
+			System.out.println(w2.getDeutschland().getWahlkreise().get(0).getAnzahlZweitstimmen());
 			System.out.println(w2.getDeutschland().getWahlkreise().get(0).hashCode());
 			
 			// ein paar kleine Tests

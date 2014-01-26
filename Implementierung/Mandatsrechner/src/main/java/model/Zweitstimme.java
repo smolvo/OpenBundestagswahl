@@ -85,7 +85,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
-				.getZweitstimmeGesamt() + anzahl)) {
+				.getAnzahlZweitstimmen() + anzahl)) {
 			throw new IllegalArgumentException(
 					"Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
 		}

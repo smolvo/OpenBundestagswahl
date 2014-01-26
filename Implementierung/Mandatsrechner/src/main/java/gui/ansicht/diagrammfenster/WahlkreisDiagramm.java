@@ -67,7 +67,7 @@ public class WahlkreisDiagramm {
 		for (int i = 0; i < 4; i++) {
 			double proZweit = (Math
 					.rint(((double) er.get(i).getAnzahl() / (double) wk
-							.getErststimmeGesamt()) * 1000) / 10);
+							.getAnzahlErststimmen()) * 1000) / 10);
 			parteien.add(er.get(i).getKandidat().getPartei());
 			result.setValue(proZweit, " ", er.get(i).getKandidat().getPartei()
 					.getName());
@@ -76,7 +76,7 @@ public class WahlkreisDiagramm {
 		for (int i = 4; i < er.size(); i++) {
 			sonstige += (Math
 					.rint(((double) er.get(i).getAnzahl() / (double) wk
-							.getErststimmeGesamt()) * 1000) / 10);
+							.getAnzahlErststimmen()) * 1000) / 10);
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 

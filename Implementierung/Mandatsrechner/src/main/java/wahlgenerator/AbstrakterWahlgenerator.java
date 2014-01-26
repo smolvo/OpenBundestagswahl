@@ -53,9 +53,9 @@ public abstract class AbstrakterWahlgenerator {
 	private void berechneGesamtanzahlStimmen() {
 		
 		this.setAnzahlErststimmen(
-				this.basisWahl.getDeutschland().getErststimmeGesamt());
+				this.basisWahl.getDeutschland().getAnzahlErststimmen());
 		this.setAnzahlZweitstimmen(
-				this.basisWahl.getDeutschland().getZweitstimmeGesamt());
+				this.basisWahl.getDeutschland().getAnzahlZweitstimmen());
 		
 		Debug.print("AnzahlErststimmen Gesamt DEUTSCHLAND: " + this.getAnzahlErststimmen());
 		Debug.print("AnzahlZweitstimmen Gesamt DEUTSCHLAND: " + this.getAnzahlZweitstimmen());

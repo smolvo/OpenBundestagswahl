@@ -192,7 +192,7 @@ public class Mandatsrechner2013 {
 
 			int sitzeBundesland = this.rechner2009.runden(bl.getEinwohnerzahl()
 					/ zuteilungsdivisor, false);
-			landesdivisor = bl.getZweitstimmeGesamt() / sitzeBundesland;
+			landesdivisor = bl.getAnzahlZweitstimmen() / sitzeBundesland;
 			isCorrect = false;
 			// System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
 			while (!isCorrect) {
@@ -200,7 +200,7 @@ public class Mandatsrechner2013 {
 
 				for (Partei part : relevanteParteien) {
 					// TODO Nach erster Nachkommastelle
-					sitzePartei += this.rechner2009.runden(bl.getZweitstimmenAnzahl(part)
+					sitzePartei += this.rechner2009.runden(bl.getAnzahlZweitstimmen(part)
 							/ landesdivisor, false);
 				}
 				if (sitzePartei == sitzeBundesland) {
@@ -218,7 +218,7 @@ public class Mandatsrechner2013 {
 						bl);
 
 				int mindestSitzanzahl = this.rechner2009.runden(
-						bl.getZweitstimmenAnzahl(part) / landesdivisor, false);
+						bl.getAnzahlZweitstimmen(part) / landesdivisor, false);
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 				part.addMindestsitzanzahl(bl,
 						Math.max(direktmandate, mindestSitzanzahl));
@@ -285,7 +285,7 @@ public class Mandatsrechner2013 {
 				for (Partei part : relevanteParteien) {
 
 					System.out.println("" + part.getName() + ": "
-							+ bl.getZweitstimmenAnzahl(part) + " - "
+							+ bl.getAnzahlZweitstimmen(part) + " - "
 							+ part.getMindestsitzanzahl(bl));
 					sum += part.getMindestsitzanzahl(bl);
 				}

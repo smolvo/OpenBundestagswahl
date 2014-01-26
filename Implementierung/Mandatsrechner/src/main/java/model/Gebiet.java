@@ -27,7 +27,7 @@ public abstract class Gebiet implements Serializable {
 	 * 
 	 * @return die Zweistimmenanzahl aller Partein.
 	 */
-	public int getZweitstimmeGesamt() {
+	public int getAnzahlZweitstimmen() {
 		zweitstimmeGesamt = 0;
 		for (Zweitstimme zweit : this.getZweitstimmen()) {
 			zweitstimmeGesamt += zweit.getAnzahl();
@@ -40,7 +40,7 @@ public abstract class Gebiet implements Serializable {
 	 * 
 	 * @return die Erststimmenanzahl aller Kandidaten.
 	 */
-	public int getErststimmeGesamt() {
+	public int getAnzahlErststimmen() {
 		int erststimmeGesamt = 0;
 		for (Erststimme erst : this.getErststimmen()) {
 			erststimmeGesamt += erst.getAnzahl();
@@ -135,5 +135,5 @@ public abstract class Gebiet implements Serializable {
 	 *            Die gesuchte Partei.
 	 * @return die Anzahl der Stimmen.
 	 */
-	abstract public int getZweitstimmenAnzahl(Partei partei);
+	abstract public int getAnzahlZweitstimmen(Partei partei);
 }

@@ -111,6 +111,14 @@ public class Deutschland extends Gebiet implements Serializable {
 
 	@Override
 	public List<Zweitstimme> getZweitstimmen() {
+		
+		List<Zweitstimme> zweitstimmen = new LinkedList<>();
+		
+		for (Bundesland bundesland : this.getBundeslaender()) {
+			zweitstimmen.addAll(bundesland.getZweitstimmen());
+		}
+		
+		/*
 		// TODO Auto-generated method stub
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
 		int[] tempZweitstimmen = new int[this.bundeslaender.get(0).getZweitstimmen().size()];
@@ -126,7 +134,7 @@ public class Deutschland extends Gebiet implements Serializable {
 					this,
 					this.bundeslaender.get(0).getZweitstimmen().get(i).getPartei()));
 		}
-		
+		*/
 		return zweitstimmen;
 	}
 
@@ -142,6 +150,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public void setWahlberechtigte(int wahlberechtigte) {
 		// TODO Auto-generated method stub
+		throw new IllegalAccessError("Noch nicht implementiert!");
 	}
 	
 	/**
@@ -167,10 +176,10 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 
 	@Override
-	public int getZweitstimmenAnzahl(Partei partei) {
+	public int getAnzahlZweitstimmen(Partei partei) {
 		int anzahl = 0;
 		for (Bundesland bl : this.getBundeslaender()) {
-			anzahl += bl.getZweitstimmenAnzahl(partei);
+			anzahl += bl.getAnzahlZweitstimmen(partei);
 		}
 		return anzahl;
 	}
@@ -180,7 +189,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	 * @param partei die partei deren Erststimmen ermittelt werden sollen
 	 * @return die gesamstanzahl der Erststimmen
 	 */
-	public int getErststimmenAnzahl(Partei partei) {
+	public int getAnzahlErststimmen(Partei partei) {
 		int anzahl = 0;
 		for (Bundesland bl: this.getBundeslaender()) {
 			for (Wahlkreis wahlkreis: bl.getWahlkreise()) {

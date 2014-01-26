@@ -76,7 +76,7 @@ public class TabellenFenster extends JScrollPane {
 			GUIPartei gp = parteiErstellen(zw);
 			double proZweit = (Math
 					.rint(((double) zw.getAnzahl() / (double) land
-							.getZweitstimmeGesamt()) * 1000) / 10);
+							.getAnzahlZweitstimmen()) * 1000) / 10);
 			daten.addZeile(zw.getPartei().getName(), zw,
 					Double.toString(proZweit), Integer.toString(gp.getSitze()),
 					Integer.toString(gp.getDirektmandate()),
@@ -103,7 +103,7 @@ public class TabellenFenster extends JScrollPane {
 		for (Zweitstimme zw : stimmen) {
 			GUIPartei gp = parteiErstellen(zw);
 			double proZweit = (Math.rint(((double) zw.getAnzahl() / (double) bl
-					.getZweitstimmeGesamt()) * 1000) / 10);
+					.getAnzahlZweitstimmen()) * 1000) / 10);
 			daten.addZeile(zw.getPartei().getName(), zw,
 					Double.toString(proZweit),
 					Integer.toString(gp.getDirektmandate()),
@@ -139,10 +139,10 @@ public class TabellenFenster extends JScrollPane {
 				if ((korresZweit.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
 					double prozentualeErst = (Math
 							.rint(((double) er.getAnzahl() / (double) wk
-									.getErststimmeGesamt()) * 1000) / 10);
+									.getAnzahlErststimmen()) * 1000) / 10);
 					double prozentualeZweit = (Math
 							.rint(((double) korresZweit.getAnzahl() / (double) wk
-									.getZweitstimmeGesamt()) * 1000) / 10);
+									.getAnzahlZweitstimmen()) * 1000) / 10);
 					daten.addZeile(korresZweit.getPartei().getName(), er.getKandidat()
 							.getName(), korresZweit, er, Double.toString(prozentualeZweit),
 							Double.toString(prozentualeErst), direktMan);

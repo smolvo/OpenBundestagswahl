@@ -77,7 +77,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 * 
 	 * @return die Erststimmenanzahl aller Partein.
 	 */
-	public int getErststimmeGesamt() {
+	public int getAnzahlErststimmen() {
 		int erststimmeGesamt = 0;
 		for (Erststimme erst : getErststimmen()) {
 			erststimmeGesamt += erst.getAnzahl();
@@ -223,7 +223,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	@Override
-	public int getZweitstimmenAnzahl(Partei partei) {
+	public int getAnzahlZweitstimmen(Partei partei) {
 		int anzahl = 0;
 		for (Zweitstimme zweitStimme : this.getZweitstimmen()) {
 			if (zweitStimme.getPartei() == partei) {

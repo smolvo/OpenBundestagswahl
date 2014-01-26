@@ -69,7 +69,7 @@ public class StimmgewichtSimulator {
 		this.rechner = Mandatsrechner2009.getInstance();
 		try {
 			// TODO Sitzverteilung von bw berechnen
-			this.setAusgangsWahl(rechner.berechneAlles(ausgangsWahl));
+			//this.setAusgangsWahl(rechner.berechneAlles(ausgangsWahl));
 			
 			this.setVerwandteWahl(ausgangsWahl.deepCopy());
 
@@ -134,8 +134,8 @@ public class StimmgewichtSimulator {
 	// TODO private setzen, nur zum testen public
 	private boolean vergleicheSitzverteilungen(Partei p) {
 		// TODO
-		this.setVerwandteWahl(Mandatsrechner2009.getInstance().berechneAlles(
-				verwandteWahl));
+		//this.setVerwandteWahl(Mandatsrechner2009.getInstance().berechneAlles(
+			//	verwandteWahl));
 
 		Sitzverteilung alt = this.ausgangsWahl.getSitzverteilung();
 		Sitzverteilung neu = this.verwandteWahl.getSitzverteilung();
@@ -205,7 +205,7 @@ public class StimmgewichtSimulator {
 				//System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
 				//		+ " erhöht");
 				long start = System.currentTimeMillis();
-				this.setVerwandteWahl(rechner.berechneAlles(this.verwandteWahl));
+				//this.setVerwandteWahl(rechner.berechneAlles(this.verwandteWahl));
 				Debug.print("Laufzeit Mandatsrechner" + (start - System.currentTimeMillis()) + "ms");
 				//System.out.print("Relevante ZS von "
 				//		+ p.getRelevanteZweitstimmen().getAnzahl());
@@ -335,7 +335,7 @@ public class StimmgewichtSimulator {
 				// erhalten
 				// hat, in dem es keine Überhangmandate hält
 				if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
-					anzahl += l.getBundesland().getZweitstimmenAnzahl(p);
+					anzahl += l.getBundesland().getAnzahlZweitstimmen(p);
 				}
 			}
 
