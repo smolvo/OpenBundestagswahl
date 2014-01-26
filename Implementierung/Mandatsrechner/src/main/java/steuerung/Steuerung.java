@@ -100,8 +100,9 @@ public class Steuerung {
 	 * @return true or false
 	 */
 	public boolean aktualisiereDaten(Stimme stimme, int anzahl) {
-		return true;
-		// TODO
+		stimme.setAnzahl(anzahl);
+		boolean erfolg = this.btw.setzeStimme(stimme);
+		return erfolg;
 	}
 
 	/**
