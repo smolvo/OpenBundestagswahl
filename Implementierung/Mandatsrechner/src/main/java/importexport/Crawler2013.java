@@ -312,7 +312,13 @@ public class Crawler2013 extends Crawler {
 				Bundesland b = new Bundesland(rows.get(i)[1],
 						this.getEinwohnerzahl(rows.get(i)[1]));
 				tempNummer = rows.get(i)[0];
-
+				LinkedList<Partei> blParteien = new LinkedList<Partei>();
+				for (int j = 0; j < parteien.size(); j++) {
+					if (values.get(i)[parteiOffset + j][0]!=0 || values.get(i)[parteiOffset + j][1]!=0) {
+						blParteien.add(parteien.get(j));
+					}
+				}
+				b.setParteien(blParteien);
 				for (int j = 0; j < rows.size() && !error; j++) {
 					if (rows.get(j)[2].equals(tempNummer)) {
 						Wahlkreis w = new Wahlkreis(rows.get(j)[1],
