@@ -1,5 +1,6 @@
 package main.java.gui.ansicht.tabellenfenster;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import main.java.gui.GUISteuerung;
@@ -67,7 +68,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if (columnIndex != 3) {
+		if ((columnIndex != 3) || (columnIndex != 5)) {
 			return false;
 		} else {
 			return true;
@@ -92,7 +93,9 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				anzahl = Integer.parseInt(stringAnzahl);
 				guiSteuerung.wertAenderung(stimme, anzahl);
 			} catch (NumberFormatException e) {
-				System.out.println("‰‰‰tsch");
+				JOptionPane.showMessageDialog(this.tabellenfenster,
+						"Nur positive ganze Zahlen erlaubt.", "Meldung",
+						JOptionPane.INFORMATION_MESSAGE, null);
 			}
 			if (aenderung) {
 				daten.getErststimmen(rowIndex).setAnzahl(anzahl);

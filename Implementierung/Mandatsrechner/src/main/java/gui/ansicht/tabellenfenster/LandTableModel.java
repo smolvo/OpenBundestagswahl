@@ -62,11 +62,7 @@ public class LandTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if (columnIndex != 1) {
-			return false;
-		} else {
-			return true;
-		}
+		return false;
 	}
 
 	@Override

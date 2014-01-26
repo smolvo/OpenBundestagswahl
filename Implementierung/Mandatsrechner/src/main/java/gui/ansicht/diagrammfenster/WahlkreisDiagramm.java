@@ -64,7 +64,7 @@ public class WahlkreisDiagramm {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Erststimme> er = wk.getErststimmen();
 		Collections.sort(er);
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			double proZweit = (Math
 					.rint(((double) er.get(i).getAnzahl() / (double) wk
 							.getAnzahlErststimmen()) * 1000) / 10);
@@ -73,7 +73,7 @@ public class WahlkreisDiagramm {
 					.getName());
 		}
 		double sonstige = 0;
-		for (int i = 4; i < er.size(); i++) {
+		for (int i = 6; i < er.size(); i++) {
 			sonstige += (Math
 					.rint(((double) er.get(i).getAnzahl() / (double) wk
 							.getAnzahlErststimmen()) * 1000) / 10);

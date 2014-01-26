@@ -66,7 +66,7 @@ public class LandDiagramm {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Zweitstimme> zw = bundLand.getZweitstimmen();
 		Collections.sort(zw);
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			double proZweit = (Math
 					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
 							.getAnzahlZweitstimmen()) * 1000) / 10);
@@ -75,7 +75,7 @@ public class LandDiagramm {
 		}
 //		Collections.sort(parteien);
 		double sonstige = 0;
-		for (int i = 4; i < zw.size(); i++) {
+		for (int i = 6; i < zw.size(); i++) {
 			sonstige += (Math
 					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
 							.getAnzahlZweitstimmen()) * 1000) / 10);

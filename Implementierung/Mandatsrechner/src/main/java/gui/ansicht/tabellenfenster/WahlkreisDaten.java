@@ -30,7 +30,7 @@ public class WahlkreisDaten {
 	private LinkedList<String> erstProzent;
 
 	/** Liste der Direktmandate */
-	private LinkedList<Boolean> direktmandate;
+	private LinkedList<String> direktmandate;
 
 	/**
 	 * Der Konstruktor initialisiert alle Listen.
@@ -42,7 +42,7 @@ public class WahlkreisDaten {
 		this.erststimmen = new LinkedList<Erststimme>();
 		this.zweitProzent = new LinkedList<String>();
 		this.erstProzent = new LinkedList<String>();
-		this.direktmandate = new LinkedList<Boolean>();
+		this.direktmandate = new LinkedList<String>();
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class WahlkreisDaten {
 	 */
 	public void addZeile(String partei, String name, Zweitstimme zweitStimme,
 			Erststimme erstStimme, String zweitProzent, String erstProzent,
-			Boolean direktmandat) {
+			String direktmandat) {
 		if (zweitStimme != null) {
 			this.zweitstimmen.add(zweitStimme);
 		}
@@ -169,7 +169,7 @@ public class WahlkreisDaten {
 	 *            Listenindex
 	 * @return Direktmandate
 	 */
-	public Boolean getDirektmandate(int index) {
+	public String getDirektmandate(int index) {
 		return direktmandate.get(index);
 	}
 

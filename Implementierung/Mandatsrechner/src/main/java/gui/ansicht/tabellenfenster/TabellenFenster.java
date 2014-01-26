@@ -14,6 +14,7 @@ import main.java.model.Deutschland;
 import main.java.model.Erststimme;
 import main.java.model.Gebiet;
 import main.java.model.Kandidat;
+import main.java.model.Landesliste;
 import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
@@ -97,22 +98,39 @@ public class TabellenFenster extends JScrollPane {
 	 *            Bundesland-Objekt welches visualisiert werden soll
 	 */
 	private void tabellenFuellen(Bundesland bl) {
+		List<Landesliste> landesliste = bl.getLandesliste();
 		LandDaten daten = new LandDaten();
 		List<Zweitstimme> stimmen = bl.getZweitstimmen();
 		Collections.sort(stimmen);
 		for (Zweitstimme zw : stimmen) {
-			GUIPartei gp = parteiErstellen(zw);
+			int direktMan = 0;
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				if (wk.getWahlkreisSieger().getPartei().getName()
+						.equals(zw.getPartei().getName())) {
+					direktMan++;
+				}
+			}
+			Landesliste liste = getListe(zw.getPartei(), landesliste);
+			GUIPartei gp = parteiErstellen(liste);
 			double proZweit = (Math.rint(((double) zw.getAnzahl() / (double) bl
 					.getAnzahlZweitstimmen()) * 1000) / 10);
 			daten.addZeile(zw.getPartei().getName(), zw,
-					Double.toString(proZweit),
-					Integer.toString(gp.getDirektmandate()),
+					Double.toString(proZweit), Integer.toString(direktMan),
 					Integer.toString(gp.getUeberhangsmandate()));
 		}
 
 		LandTableModel tabelle = new LandTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
+	}
+
+	private Landesliste getListe(Partei partei, List<Landesliste> liste) {
+		for (Landesliste list : liste) {
+			if (partei.getName().equals(list.getPartei().getName())) {
+				return list;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -124,17 +142,19 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private void tabellenFuellen(Wahlkreis wk) {
 		WahlkreisDaten daten = new WahlkreisDaten();
-		for (Erststimme er: wk.getErststimmen()) {
+		for (Erststimme er : wk.getErststimmen()) {
 			Zweitstimme korresZweit = null;
 			for (Zweitstimme zw : wk.getZweitstimmen()) {
-				if ((er.getKandidat().getPartei() != null) && (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName()))) {
+				if ((er.getKandidat().getPartei() != null)
+						&& (zw.getPartei().getName().equals(er.getKandidat()
+								.getPartei().getName()))) {
 					korresZweit = zw;
 				}
 			}
 			if (korresZweit != null) {
-				boolean direktMan = false;
+				boolean direktManBoolean = false;
 				if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
-					direktMan = true;
+					direktManBoolean = true;
 				}
 				if ((korresZweit.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
 					double prozentualeErst = (Math
@@ -143,9 +163,14 @@ public class TabellenFenster extends JScrollPane {
 					double prozentualeZweit = (Math
 							.rint(((double) korresZweit.getAnzahl() / (double) wk
 									.getAnzahlZweitstimmen()) * 1000) / 10);
-					daten.addZeile(korresZweit.getPartei().getName(), er.getKandidat()
-							.getName(), korresZweit, er, Double.toString(prozentualeZweit),
-							Double.toString(prozentualeErst), direktMan);
+					String direktMan = "nein";
+					if (direktManBoolean) {
+						direktMan = "ja";
+					}
+					daten.addZeile(korresZweit.getPartei().getName(), er
+							.getKandidat().getName(), korresZweit, er, Double
+							.toString(prozentualeZweit), Double
+							.toString(prozentualeErst), direktMan);
 				}
 			}
 		}
@@ -162,14 +187,36 @@ public class TabellenFenster extends JScrollPane {
 	 *            Zweitstimmen Objekt
 	 * @return GUIPartei-Objekt
 	 */
-	private GUIPartei parteiErstellen(Zweitstimme zw) {
-		Partei partei = zw.getPartei();
+	private GUIPartei parteiErstellen(Landesliste liste) {
 		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
 		int sitze = 0;
 		int direktMan = 0;
 		int ueberMan = 0;
 		int ausglMan = 0;
-		for (Kandidat kan : partei.getMitglieder()) {
+		for (Kandidat kan : liste.getListenkandidaten()) {
+			if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
+				ueberMan++;
+			}
+		}
+		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
+		return gp;
+	}
+
+	/**
+	 * Diese Methode erstellt aus einer Zweitstimme ein GUIPartei-Objekt,
+	 * welches alle Daten, die angezeigt werden müssen beinhaltet.
+	 * 
+	 * @param zw
+	 *            Zweitstimmen Objekt
+	 * @return GUIPartei-Objekt
+	 */
+	private GUIPartei parteiErstellen(Zweitstimme zw) {
+		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
+		int sitze = 0;
+		int direktMan = 0;
+		int ueberMan = 0;
+		int ausglMan = 0;
+		for (Kandidat kan : zw.getPartei().getMitglieder()) {
 			if (kan.getMandat().equals(Mandat.MANDAT)) {
 				sitze++;
 			} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
