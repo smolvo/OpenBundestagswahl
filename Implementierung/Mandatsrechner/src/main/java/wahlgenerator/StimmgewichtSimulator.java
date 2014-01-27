@@ -127,11 +127,18 @@ public class StimmgewichtSimulator {
 
 			for (Bundesland bundesland : bundeslaender) {
 				// TODO entfernen wenn alles funktioniert
-				if (!bundesland.getName().equals("Brandenburg")) {
-					continue;
-				}
+				//if (!bundesland.getName().equals("Brandenburg")) {
+				//	continue;
+				//}
 				int begrenzung = (int) (bundesland
 						.getAnzahlZweitstimmen(partei) * 1.2);
+				try {
+					kopie1 = ausgangsWahl.deepCopy();
+					kopie2 = ausgangsWahl.deepCopy();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				while (bundesland.getAnzahlZweitstimmen(partei) < begrenzung) {
 
@@ -143,13 +150,7 @@ public class StimmgewichtSimulator {
 						return true;
 					}
 
-					try {
-						kopie1 = ausgangsWahl.deepCopy();
-						kopie2 = ausgangsWahl.deepCopy();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					
 					
 					/*
 					long start = System.currentTimeMillis();
@@ -190,8 +191,8 @@ public class StimmgewichtSimulator {
 	private void erhoeheZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
 
-		int stimmanzahl = 1000;
-
+		int stimmanzahl = 10000;
+		
 		Wahlkreis wk;
 		do {
 			// wählt einen zufälligen Wahlkreis
@@ -199,8 +200,9 @@ public class StimmgewichtSimulator {
 			wk = bundesland.getWahlkreise().get(i);
 			// System.out.print("Zweitstimmenanzahl im WK " + wk + " von " +
 			// wk.getZweitstimme(partei).getAnzahl());
-		} while ((wk.getZweitstimme(partei).getAnzahl() + stimmanzahl) > wk
-				.getWahlberechtigte());
+			System.out.println(wk.getAnzahlZweitstimmen() + " + " + stimmanzahl + " > " + wk.getWahlberechtigte() 
+					+ " = " + ((wk.getAnzahlZweitstimmen() + stimmanzahl) > wk.getWahlberechtigte()) + " " + wk.getName());
+		} while ((wk.getAnzahlZweitstimmen() + stimmanzahl) > wk.getWahlberechtigte());
 
 		wk.getZweitstimme(partei).erhoeheAnzahl(stimmanzahl);
 
@@ -213,7 +215,7 @@ public class StimmgewichtSimulator {
 		Debug.setAktiv(false);
 		this.setKopie1(rechner.berechneSainteLague(this.kopie1));
 		Debug.setAktiv(true);
-		//Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
+		Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
 
 		letzterWK = wk;
 
@@ -254,7 +256,7 @@ public class StimmgewichtSimulator {
 			}
 		}
 		System.out.println("    Mandatszahl alt: " + mandatsZahlAlt
-				+ " Mandatszahl neu: " + mandatsZahlNeu);
+				+ " Mandatszahl neu: " + p.getAnzahlMandate() +"ZS neu in D: " + p.getZweitstimmeGesamt());
 		return (mandatsZahlNeu < mandatsZahlAlt);
 
 	}

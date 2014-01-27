@@ -2,16 +2,20 @@ package main.java.wahlgenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import test.java.Debug;
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2009;
+import main.java.model.BerichtDaten;
 import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
 import main.java.model.Partei;
+import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
@@ -28,6 +32,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
 		
 		super(basisWahl, stimmanteile);
+		
+		//this.getBasisWahl().setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), new BerichtDaten()));
 		
 		int summeErst = 0;
 		int summeZweit = 0;
@@ -62,6 +68,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		// Setze die komplette Auswertung auf NULL
+		Mandatsrechner2009.getInstance().initialisiere(clone);
 		
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
