@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
 
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
+import main.java.steuerung.Steuerung;
 import main.java.wahlgenerator.Stimmanteile;
 
 /**
@@ -71,11 +72,15 @@ public class GeneratorFenster extends JFrame {
 
 	/** die aktuelle Anzahl der Zweitstimmen, die der Nutzer eingegeben hat */
 	private int gesamtZweitstimmen = 0;
+	
+	/** repräsentiert das Programmfenster */
+	private Programmfenster pf;
 
 	/**
 	 * Der Konstruktor legt das Layout fest und initialisiert das Fenster.
 	 */
-	public GeneratorFenster(List<Bundestagswahl> basiswahlen) {
+	public GeneratorFenster(List<Bundestagswahl> basiswahlen, Programmfenster pf) {
+		this.pf = pf;
 		this.wahlen = basiswahlen;
 		this.ausgesuchteWahl = basiswahlen.get(0);
 		this.setTitle("Wahlgenerierung");
@@ -134,7 +139,10 @@ public class GeneratorFenster extends JFrame {
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
 					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
-					
+					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile);
+					WahlFenster neuesFenster = new WahlFenster(btw);
+					pf.getWahlen().add(neuesFenster);
+					pf.getTabs().neuerTab(neuesFenster, ausgesuchteWahl.getName());
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
 							"Es dürfen keine Parteien doppelt vorkommen.",
@@ -440,7 +448,7 @@ public class GeneratorFenster extends JFrame {
 	 */
 	private LinkedList<Stimmanteile> erstelleStimmanteile(Partei[] parteien, int[] erst, int[] zweit) {
 		LinkedList<Stimmanteile> anteile = new LinkedList<Stimmanteile>();
-		for (int i = 0; i < anteile.size(); i++) {
+		for (int i = 0; i < parteien.length; i++) {
 			Stimmanteile anteil = new Stimmanteile(parteien[i], erst[i], zweit[i]);
 			anteile.add(anteil);
 		}

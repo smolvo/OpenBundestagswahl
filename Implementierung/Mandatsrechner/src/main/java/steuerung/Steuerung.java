@@ -1,6 +1,7 @@
 package main.java.steuerung;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
@@ -8,6 +9,7 @@ import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.model.Stimme;
 import main.java.wahlgenerator.Stimmanteile;
+import main.java.wahlgenerator.Wahlgenerator;
 import main.java.wahlvergleich.Wahlvergleich;
 
 /**
@@ -80,9 +82,10 @@ public class Steuerung {
 	 * @param anteile
 	 *            die Stimmenanteile
 	 */
-	public Bundestagswahl zufaelligeWahlgenerierung(Stimmanteile anteile) {
-		// TODO
-		return null;
+	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw, LinkedList<Stimmanteile> anteile) {
+		Wahlgenerator wg = new Wahlgenerator(btw, anteile);
+		Bundestagswahl neueBtw = wg.erzeugeBTW();
+		return neueBtw;
 	}
 
 	public void negStimmgewichtGenerierung(Stimmanteile anteile) {

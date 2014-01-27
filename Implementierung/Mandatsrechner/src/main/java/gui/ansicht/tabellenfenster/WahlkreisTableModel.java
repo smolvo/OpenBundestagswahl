@@ -68,11 +68,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if ((columnIndex != 3) || (columnIndex != 5)) {
-			return false;
-		} else {
-			return true;
-		}
+		return true;
 	}
 
 	@Override
@@ -82,7 +78,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
-		if (columnIndex == 3) {
+		if (columnIndex == 4) {
 			String stringAnzahl = (String) obj;
 			Zweitstimme stimme = daten.getZweitstimmen(rowIndex);
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
@@ -98,7 +94,12 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						JOptionPane.INFORMATION_MESSAGE, null);
 			}
 			if (aenderung) {
+				this.tabellenfenster.getAnsicht().berechnungNotwendig();
 				daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+			} else {
+				JOptionPane.showMessageDialog(this.tabellenfenster,
+						"Stimme konnte nicht geändert werden.", "Meldung",
+						JOptionPane.INFORMATION_MESSAGE, null);
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);

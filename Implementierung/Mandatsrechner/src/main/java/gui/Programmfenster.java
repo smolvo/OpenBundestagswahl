@@ -73,7 +73,6 @@ public final class Programmfenster extends JFrame {
 		Bundestagswahl w = Steuerung.getInstance().importieren(csvDateien);
 		Steuerung.getInstance().berechneSitzverteilung();
 
-		System.out.println();
 		wahlen.add(new WahlFenster(w));
 
 		// Tab- Leiste erstellen

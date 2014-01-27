@@ -175,7 +175,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
 			} else if (e.getSource() == menu.zufaelligeWahl) {
-				new GeneratorFenster(pf.getBundestagswahlen());
+				new GeneratorFenster(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {
 				// TODO Handbuch
 			} else if (e.getSource() == menu.about) {

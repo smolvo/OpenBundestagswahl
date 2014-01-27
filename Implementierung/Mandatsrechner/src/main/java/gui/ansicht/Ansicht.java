@@ -1,9 +1,13 @@
 package main.java.gui.ansicht;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.gui.WahlFenster;
@@ -11,6 +15,7 @@ import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 import main.java.gui.ansicht.tabellenfenster.TabellenFenster;
 import main.java.model.Deutschland;
 import main.java.model.Gebiet;
+import main.java.steuerung.Steuerung;
 
 /**
  * Die abstrakte Klasse Ansicht, der grafischen Benutzeroberfläche.
@@ -37,6 +42,9 @@ public class Ansicht extends JPanel {
 
 	/** Das im Moment angezeigte Gebiet */
 	private Gebiet aktuellesGebiet;
+	
+	/** zeigt an ob eine Stimme geändert wurde */
+	private boolean wurdeVeraendert;
 
 	/**
 	 * Der Konstruktor setzt eine neue Ansicht.
@@ -47,6 +55,7 @@ public class Ansicht extends JPanel {
 	 *            das Wahlfenster der Ansicht
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
+		this.wurdeVeraendert = false;
 		this.fenster = fenster;
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(land);
@@ -58,45 +67,6 @@ public class Ansicht extends JPanel {
 		this.setLayout(new GridBagLayout());
 		initialisieren();
 		this.setMinimumSize(new Dimension(1024, 768));
-	}
-
-	/**
-	 * Diese Methode ändert die aktuelle Ansicht in eine neue.
-	 * 
-	 * @param gebiet
-	 *            Gebiet, welches angezeigt werden soll
-	 */
-	public void ansichtAendern(Gebiet gebiet) {
-		remove(tabellenFenster);
-		remove(diagrammFenster);
-		this.tabellenFenster = new TabellenFenster(this);
-		this.tabellenFenster.tabellenFuellen(gebiet);
-		this.diagrammFenster = new DiagrammFenster(this);
-		this.diagrammFenster.erstelleDiagramm(gebiet);
-		layoutSetzen();
-	}
-
-	/**
-	 * Durch diese private Methode wird das Diagramm- und das Tabellenfenster gesetzt.
-	 */
-	private void layoutSetzen() {
-		gbc.ipadx = 50;
-		gbc.ipady = 50;
-		
-		gbc.weightx = 0.5;
-		gbc.weighty = 0.5;
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(diagrammFenster, gbc);
-
-		gbc.weightx = 1;
-		gbc.weighty = 1.5;
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		gbc.gridheight = gbc.gridheight * 2;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(tabellenFenster, gbc);
 	}
 
 	/**
@@ -129,7 +99,79 @@ public class Ansicht extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		add(tabellenFenster, gbc);
 	}
+	
+	/**
+	 * Diese Methode ändert die aktuelle Ansicht in eine neue.
+	 * 
+	 * @param gebiet
+	 *            Gebiet, welches angezeigt werden soll
+	 */
+	public void ansichtAendern(Gebiet gebiet) {
+		remove(tabellenFenster);
+		remove(diagrammFenster);
+		this.tabellenFenster = new TabellenFenster(this);
+		this.tabellenFenster.tabellenFuellen(gebiet);
+		this.diagrammFenster = new DiagrammFenster(this);
+		this.diagrammFenster.erstelleDiagramm(gebiet);
+		layoutSetzen();
+	}
 
+	/**
+	 * Durch diese private Methode wird das Diagramm- und das Tabellenfenster gesetzt.
+	 */
+	private void layoutSetzen() {
+		gbc.ipadx = 50;
+		gbc.ipady = 50;
+		
+		if (!this.wurdeVeraendert) {
+			gbc.weightx = 0.5;
+			gbc.weighty = 0.5;
+			gbc.gridx = 0;
+			gbc.gridy = 1;
+			gbc.fill = GridBagConstraints.BOTH;
+			add(diagrammFenster, gbc);
+		}
+
+		gbc.weightx = 1;
+		gbc.weighty = 1.5;
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		gbc.gridheight = gbc.gridheight * 2;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(tabellenFenster, gbc);
+	}
+
+	/**
+	 * Diese Methode wird aufgerufen, wenn eine Stimme geändert wurde
+	 * und eine neue Berechnung notwendig ist.
+	 */
+	public void berechnungNotwendig() {
+		this.wurdeVeraendert = true;
+		remove(diagrammFenster);
+		this.diagrammFenster = new DiagrammFenster(this);
+		
+		JButton berechne = new JButton("Berechne");
+		berechne.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Steuerung.getInstance().berechneSitzverteilung();
+				wurdeVeraendert = false;
+			}
+			
+		});
+		berechne.setSize(new Dimension(150, 50));
+		this.diagrammFenster.add(berechne, BorderLayout.CENTER);
+		
+		
+		gbc.weightx = 0.5;
+		gbc.weighty = 0.5;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(diagrammFenster, gbc);
+	}
+	
 	/**
 	 * Holt das Tabellenfenster der Ansicht.
 	 * 
