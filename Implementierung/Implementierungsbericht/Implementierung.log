@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.11)  27 JAN 2014 20:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  28 JAN 2014 00:10
 entering extended mode
 **Implementierung.tex
 
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.tex
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -15,9 +15,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,19 +32,19 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -194,7 +194,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -225,7 +225,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -249,19 +249,19 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
 Language: germanb 2008/06/01 v2.6m German support from the babel system
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
@@ -269,24 +269,24 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@austrian = a dialect from \language\l@german 
 Package babel Info: Making " an active character on input line 102.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
@@ -327,44 +327,44 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
@@ -372,18 +372,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count101
@@ -399,16 +399,16 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen122
 \Gm@dimlist=\toks22
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
 \c@endnote=\count104
 \endnotesep=\dimen123
 \@enotes=\write3
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip46
 \f@ncyO@elh=\skip47
 \f@ncyO@erh=\skip48
@@ -419,14 +419,14 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -465,24 +465,24 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen124
 \Hy@linkcounter=\count105
 \Hy@pagecounter=\count106
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count107
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -494,7 +494,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count108
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
@@ -519,20 +519,20 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 \c@bookmark@seq@number=\count114
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip55
 )
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.aux)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
@@ -547,8 +547,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count115
 \scratchdimen=\dimen128
@@ -598,10 +597,10 @@ LaTeX Font Info:    ... okay on input line 20.
 
 \AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring OFF on input line 20.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count121
@@ -610,10 +609,10 @@ LaTeX Info: Redefining \ref on input line 20.
 LaTeX Info: Redefining \pageref on input line 20.
 LaTeX Info: Redefining \nameref on input line 20.
 
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.out)
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.out)
 \@outlinefile=\write4
  <KIT-Logo.png, id=63, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
@@ -623,22 +622,23 @@ Package pdftex.def Info: KIT-Logo.png used on input line 35.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/N/Dropbox/PSE/SV
-N/pse13-1/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warning 
-(ext4): destination with the same identifier (name{page.1}) has been already us
-ed, duplicate ignored
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Batman/Desktop/p
+se/pse13-1/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warning
+ (ext4): destination with the same identifier (name{page.1}) has been already u
+sed, duplicate ignored
 <to be read again> 
                    \relax 
 l.40 ...e\thispagestyle{empty}\hspace{1em}\newpage
                                                    [1]
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.toc
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write5
@@ -666,7 +666,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--62
  []
 
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 65.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <12> not available
@@ -679,31 +679,373 @@ been already used, duplicate ignored
                    \relax 
 l.68 \newpage
               [1]
-Overfull \hbox (45.12057pt too wide) in paragraph at lines 82--85
+Overfull \hbox (45.12057pt too wide) in paragraph at lines 81--84
 \OT1/pcr/b/n/12 Wahlfenstern\OT1/cmr/m/n/12 . Die-se wer-den mit-hil-fe ei-ner 
 \OT1/pcr/b/n/12 TabLeiste\OT1/cmr/m/n/12 , die eben-falls vom \OT1/pcr/b/n/12 P
 rogrammfenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--85
+Underfull \hbox (badness 10000) in paragraph at lines 81--84
 
  []
 
 
-Overfull \hbox (3.46617pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/cmr/m/n/12 
-be-rech-net die Sitz-ver-tei-lung nach Sainte-Lague/Sche-
+Overfull \hbox (19.6013pt too wide) in paragraph at lines 88--103
+\OT1/cmr/m/n/12 (\OT1/pcr/m/sl/12 Initialisieren() \OT1/pcr/m/n/12 und \OT1/pcr
+/m/sl/12 ansichtAendern()\OT1/pcr/m/n/12 ) aufgespalten. Dies war von
  []
 
 
-Overfull \hbox (53.65678pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/12 Ge-bie-ten son-dern nach Ober- und Un-ter-ver-tei-lung ori-en-t
-iert ist. Da-mit der \OT1/pcr/b/n/12 Mandatsrechner2013
+Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 N[]oten, weil bei der erstmaligen Ansichtserstellung alle drei 
+Fenster
+ []
+
+
+Overfull \hbox (43.8319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 erstellt werden m[]ussen, bei einer Ansichts[]anderung aber nur
+ \OT1/pcr/b/n/12 Diagramm-
+ []
+
+
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 Eine weitere Abweichung vom Entwurf ist die \OT1/pcr/m/sl/12 be
+rechnungNotwendig()\OT1/pcr/m/n/12 ,
+ []
+
+
+Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 welche festlegt, dass eine Stimme in einem Wahlkreis ge[]andert
+ wurde.
+ []
+
+
+Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 Wurde eine Stimme ge[]andert werden keine Diagramme angezeigt, 
+sondern
+ []
+
+
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 Der Hauptgrund f[]ur diese []Anderung ist, dass es dadurch m[]o
+glich ist
+ []
+
+
+Overfull \hbox (43.8319pt too wide) in paragraph at lines 88--103
+\OT1/pcr/m/n/12 mehrere Stimmen nacheinander zu []andern, ohne dass nach jeder 
+[]Anderung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--103
+
  []
 
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 TabellenFenster \OT1/pcr/m/n/12 ist das ers
+te der drei Komponenten der \OT1/pcr/b/n/12 Ansicht\OT1/pcr/m/n/12 . 
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 Nicht wie im Entwurf vorgeschlagen in einer Klasse, haben wir d
+as
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 dieses in mehrere Klassen unterteilt. Da es drei Arten von Tabe
+llen
+ []
+
+
+Overfull \hbox (43.8319pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 gibt (Land, Bundesland, Wahlkreis) gibt es zu jeder Art zwei Kl
+assen,
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 ein Mal die Daten-Klasse und eine TabelModel-Klasse. Dies hat d
+ie
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 im Entwurf vorgeschlagene \OT1/pcr/b/n/12 Tabellenzellen\OT1/pc
+r/m/n/12 -Klasse zur Auslese von
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 ge[]anderten Stimmen abgel[]ost, da man dadurch viel leichte an
+ die,
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 in der Tabelle ge[]anderten Stimmen kommt. Das \OT1/pcr/b/n/12 
+TabellenFenster \OT1/pcr/m/n/12 an
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/n/12 sich erstellt die Tabellen wie im Entwurf vorgeschlagen mit der
+
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 105--113
+\OT1/pcr/m/sl/12 tabellenFuellen()\OT1/pcr/m/n/12 -Methode, wobei diese f[]ur d
+ie drei Gebietsarten
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
+[]\OT1/pcr/m/n/12 uberladen ist. Die Erstellung der Klasse \OT1/pcr/b/n/12 GUIP
+artei \OT1/pcr/m/n/12 war notwendig,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--113
+
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 DiagrammFenster \OT1/pcr/m/n/12 ist das zwe
+ite der drei Komponenten. Die Klasse
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/n/12 an sich wurde fast genauso implementiert wie im Entwurfsdokumen
+t
+ []
+
+
+Overfull \hbox (79.83188pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/n/12 festgelegt. Das einzige was noch hinzugef[]ugt wurde waren die 
+verschiedenen
+ []
+
+
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/n/12 Diagramm-Klassen, die die Diagramme darstellen sollen. Die Meth
+ode
+ []
+
+
+Overfull \hbox (51.03189pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/sl/12 erstelleDiagramm() \OT1/pcr/m/n/12 wurde []uberladen, weil die
+ drei Arten von Diagrammen
+ []
+
+
+Overfull \hbox (173.43184pt too wide) in paragraph at lines 115--118
+\OT1/pcr/m/n/12 in den vorher genannten Klassen erstellt werden. Die Methode \O
+T1/pcr/m/sl/12 zeigeSitzplatzverteilung()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
+
+ []
+
+[3]
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 120--122
+\OT1/pcr/m/n/12 Im \OT1/pcr/b/n/12 BerichtsFenster \OT1/pcr/m/n/12 werden Daten
+ visualisiert, die veranschaulichen
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 120--122
+\OT1/pcr/m/n/12 sollen, woher Mandate der Abgeordneten kommen. Dieses wurde als
+
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 120--122
+\OT1/pcr/m/n/12 Tabelle implementiert, []ahnlich wie das \OT1/pcr/b/n/12 Tabell
+enFenster\OT1/pcr/m/n/12 , um die hohe
+ []
+
+
+Overfull \hbox (58.23189pt too wide) in paragraph at lines 120--122
+\OT1/pcr/m/n/12 Menge an Daten m[]oglichs []ubersichtlich zu halten. Zu dem \OT
+1/pcr/b/n/12 BerichtsFenster
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
+
+ []
+
+
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 124--126
+\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 KartenFenster \OT1/pcr/m/n/12 ist die letzt
+e Komponente der \OT1/pcr/b/n/12 Ansicht\OT1/pcr/m/n/12 . Wie schon
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 124--126
+\OT1/pcr/m/n/12 im Pflichtenheft festgelegt, ist es als Tabfenster implementier
+t
+ []
+
+
+Overfull \hbox (58.23189pt too wide) in paragraph at lines 124--126
+\OT1/pcr/m/n/12 und wie im Entwurf festgelegt gibt es die Methode \OT1/pcr/m/sl
+/12 zeigeInformationen()\OT1/pcr/m/n/12 ,
+ []
+
+
+Overfull \hbox (79.83188pt too wide) in paragraph at lines 124--126
+\OT1/pcr/m/n/12 Das einzige was vom Entwurf abweicht ist das Weglassen des Zur[
+]uck-Knopfes,
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 124--126
+\OT1/pcr/m/n/12 welches unn[]otig wurde, da man sich in der Verzeichnisstruktur
+ von
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--126
+
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 128--130
+\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 Vergleichsfenster \OT1/pcr/m/n/12 wurde wie
+ im Pflichtenheft und im Entwurf
+ []
+
+
+Overfull \hbox (22.2319pt too wide) in paragraph at lines 128--130
+\OT1/pcr/m/n/12 beschrieben implementiert, wobei ein weiteres Diagramm hinzugef
+[]ugt
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 128--130
+\OT1/pcr/m/n/12 wurde, welches die Sitzdifferenzen der zwei Wahlen anzeigt. Die
+s
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 128--130
+\OT1/pcr/m/n/12 f[]ordert die Verdeutlichung der Unterschiede zwischen zwei Wah
+len. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 Die Klasse \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/pcr/m/n/12 b
+erechnet die Sitzverteilung nach
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 Sainte-Lagu[]e/Schepers ohne Ausgleichsmandate und \OT1/pcr/b/n
+/12 Mandatsrechner2013
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu[]e/Sche
+per,
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
+\OT1/pcr/b/n/12 Mandatsrechner2013 \OT1/pcr/m/n/12 dadurch den \OT1/pcr/b/n/12 
+Mandatsrechner2009 \OT1/pcr/m/n/12 zur Berechnung
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 nutzt, f[]allt die Notwendigkeit der Oberklasse \OT1/pcr/b/n/12
+ Mandatsrechner \OT1/pcr/m/n/12 weg.
+ []
+
+
+Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/b/n/12 Mandatsrechner2013 \OT1/pcr/m/n/12 ein Objekt der Klasse \OT1/p
+cr/b/n/12 Mandatsrecher2009\OT1/pcr/m/n/12 . Zudem
+ []
+
+
+Overfull \hbox (51.03189pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 wurde noch in \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/pcr/m/n/1
+2 das Verteilungsverfahren nach d'Hondt
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 implementiert, damit eine alternative Berechnung der Sitzvertei
+lung
+ []
+
+
+Overfull \hbox (36.6319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 m[]oglich ist. Die []Uberladung der Methoden \OT1/pcr/m/sl/12 b
+echne(Gebiet gebiet) \OT1/pcr/m/n/12 wurde
+ []
+
+
+Overfull \hbox (36.6319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 aufgehoben, da die Berechnung nicht nach Gebieten sondern nach 
+Ober-
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 und Unterverteilung orientiert ist. Damit der \OT1/pcr/b/n/12 M
+andatsrechner2013
+ []
+
+
+Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 m[]oglichst viel wieder verwendet werden kann, wurden Bereiche 
+die
+ []
+
+
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 in beiden Berechnungsklassen Verwundung finden ausgelagert. F[]
+ur
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 die Implementierung des Entwurfsmuster Einzelst[]uck wurden m[]
+oglichst
+ []
+
+
+Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 wenig globale Variablen, die vor jeder Berechnung neu initialis
+iert
+ []
+
+
+Overfull \hbox (51.03189pt too wide) in paragraph at lines 138--139
+\OT1/pcr/m/n/12 werden, verwendet, damit in dem Mandatsrechner nicht gewollte Z
+ust[]ande
+ []
+
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 160.
 
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
@@ -711,37 +1053,48 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
 
-(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
-lementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
-Package rerunfilecheck Info: File `Implementierung.out' has not changed.
-(rerunfilecheck)             Checksum: 8358A4EA131EAD74C98B887305DF8002;927.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
- ) 
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 160.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
+
+
+Package rerunfilecheck Warning: File `Implementierung.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Implementierung.out':
+(rerunfilecheck)             Before: 8358A4EA131EAD74C98B887305DF8002;927
+(rerunfilecheck)             After:  E4226C418A47D4D9D775E38C72189788;1597.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 95 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 7122 strings out of 493921
- 101386 string characters out of 3144887
- 193163 words of memory out of 3000000
+ 7134 strings out of 493921
+ 100881 string characters out of 3147278
+ 194163 words of memory out of 3000000
  10285 multiletter control sequences out of 15000+200000
- 12456 words of font info for 46 fonts, out of 3000000 for 9000
+ 12755 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,11n,43p,1302b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (6 pages, 206403 bytes).
+ 29i,11n,43p,1302b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/u
+crb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Implementierung.pdf (8 pages, 234253 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -77,12 +77,63 @@ Kandidaten haben nun einen Namen und einen bestimmten Platz in der Landesliste.
 Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Mithilfe dieser Wahlbewerber-Datei werden die vorher ausgelesenen Kandidaten befüllt. Die Wahlbewerber-Datei für die Bundestagswahl 2013 wird im Programm mit übergeben und kann im Notfall für Bundestagswahl 2009 genutzt werden. Zudem wurde eine Config-Datei(ebenfalls im .csv-Format) hinzugefügt, die die Einwohnerzahl der Bundesländer und die Farben der Partei beinhaltet. Dadurch müssen diese Werte nicht mehr im Programmcode gespeichert und können durch das Editieren der Datei einfach angepasst werden. 
 
 \subsection{GUI und GUI-Logik}
-3 Ansichten 
 \subsubsection{Programmfenster}
 Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main- Klasse und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
 Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom {\myma{Programmfenster}} gehalten wird, realisiert. \\
 Zusätzlich besitzt es ein {\myma{Menu}}, welches dem Benutzer ermöglicht, den gewünschten Befehl auszuwählen und ausführen zu lassen, ohne genaue Steuerbefehle kennen und anwenden zu müssen. \\
-	
+
+\subsubsection{WahlFenster}
+
+\subsubsection{Ansicht}
+Die {\myma{Ansicht}} die Hauptkomponente des {\myma{WahlFenster}}s. Sie enthält die im Späteren näher erläuterten
+{\myma{Tabellen-}}, {\myma{Diagramm-}} und {\myma{Kartenfenster}}. Anders als im Entwurf festgelegt, haben wir uns
+entschieden nur eine Ansicht zu implementieren. Hauptgrund dafür war, dass eine {\myma{Ansicht}} ausreichend ist, da
+bei Ansichtswechsel nur ein neues {\myma{DiagrammFenster}} und ein neues {\myma{TabellenFenster}} erzeugt
+werden müssen, das {\myma{KartenFenster}} bleibt, dank JTree das selbe. Immer wieder das selbe KartenFenster-Objekt
+zwischen den drei verschiedenen Ansichten hin und her zu schieben wäre weit aus aufwendiger als einfach nur eine
+universale Ansicht einzuführen. \\
+Die im Entwurf spezifizierte Methode {\mymo{zeigeKomponenten()}} wurde in zwei Methoden ({\mymo{Initialisieren()} und 
+{\mymo{ansichtAendern()}}) aufgespalten. Dies war von Nöten, weil bei der erstmaligen Ansichtserstellung
+alle drei Fenster erstellt werden müssen, bei einer Ansichtsänderung aber nur {\myma{Diagramm-}} und {\myma{Kartenfenster}} neu erstellt werden müssen. \\
+Eine weitere Abweichung vom Entwurf ist die {\mymo{berechnungNotwendig()}}, welche festlegt, dass eine Stimme in einem
+Wahlkreis geändert wurde. Wurde eine Stimme geändert werden keine Diagramme angezeigt, sondern ein Berechne-Knopf
+an der {\myma{DiagrammFenster}} Stelle angezeigt.\\
+Der Hauptgrund für diese Änderung ist, dass es dadurch möglich ist mehrere Stimmen nacheinander zu ändern, ohne
+dass nach jeder Änderung eine neue Berechnung durchgeführt werden muss.\\
+
+\subsubsection{TabellenFenster}
+Das {\myma{TabellenFenster}} ist das erste der drei Komponenten der {\myma{Ansicht}}. \\
+Nicht wie im Entwurf vorgeschlagen in einer Klasse, haben wir das dieses in mehrere Klassen unterteilt.
+Da es drei Arten von Tabellen gibt (Land, Bundesland, Wahlkreis) gibt es zu jeder Art zwei Klassen, ein Mal
+die Daten-Klasse und eine TabelModel-Klasse. Dies hat die im Entwurf vorgeschlagene {\myma{Tabellenzellen}}-Klasse
+zur Auslese von geänderten Stimmen abgelöst, da man dadurch viel leichte an die, in der Tabelle geänderten 
+Stimmen kommt. Das {\myma{TabellenFenster}} an sich erstellt die Tabellen wie im Entwurf vorgeschlagen mit der
+{\mymo{tabellenFuellen()}}-Methode, wobei diese für die drei Gebietsarten überladen ist. Die Erstellung der Klasse
+{\myma{GUIPartei}} war notwendig, um Daten wie Sitze, Direktmandate, etc. festzuhalten. \\
+
+\subsubsection{DiagrammFenster}
+Das {\myma{DiagrammFenster}} ist das zweite der drei Komponenten. Die Klasse an sich wurde fast genauso implementiert
+wie im Entwurfsdokument festgelegt. Das einzige was noch hinzugefügt wurde waren die verschiedenen Diagramm-Klassen, die die Diagramme darstellen sollen. Die Methode {\mymo{erstelleDiagramm()}} wurde überladen, weil die drei Arten von Diagrammen in den vorher genannten Klassen erstellt werden. Die Methode {\mymo{zeigeSitzplatzverteilung()}} öffnet das
+folgende {\myma{BerichtsFenster}}. \\
+
+\subsubsection{BerichtsFenster}
+Im {\myma{BerichtsFenster}} werden Daten visualisiert, die veranschaulichen sollen, woher Mandate der Abgeordneten kommen. Dieses wurde als Tabelle implementiert, ähnlich wie das {\myma{TabellenFenster}}, um die hohe Menge an Daten
+möglichs übersichtlich zu halten. Zu dem {\myma{BerichtsFenster}} gehören die Klassen {\myma{BerichtTableModel}} und {\myma{BerichtDaten}}.\\
+
+\subsubsection{KartenFenster}
+Das {\myma{KartenFenster}} ist die letzte Komponente der {\myma{Ansicht}}. Wie schon im Pflichtenheft festgelegt, ist es als Tabfenster implementiert und wie im Entwurf festgelegt gibt es die Methode {\mymo{zeigeInformationen()}}, die die Karte erstellt und eine Verzeichnisstruktur anlegt.\\
+Das einzige was vom Entwurf abweicht ist das Weglassen des Zurück-Knopfes, welches unnötig wurde, da man sich in der Verzeichnisstruktur von Ansicht zu Ansicht navigieren kann. \\
+
+\subsubsection{VergleichsFenster}
+Das {\myma{Vergleichsfenster}} wurde wie im Pflichtenheft und im Entwurf beschrieben implementiert, wobei ein weiteres
+Diagramm hinzugefügt wurde, welches die Sitzdifferenzen der zwei Wahlen anzeigt. Dies fördert die Verdeutlichung der Unterschiede zwischen zwei Wahlen.\\
+
+\subsubsection{GUISteuerung}
+
+\subsubsection{TabellenFenster}
+
+
+
 \subsection{Mandatsrechner}
 Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-Lagu\"e/Schepers ohne Ausgleichsmandate und {\myma{Mandatsrechner2013}} berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu\"e/Scheper, aber mit Ausgleichsmandate. Da der \\{\myma{Mandatsrechner2013}} dadurch den {\myma{Mandatsrechner2009}} zur Berechnung nutzt, fällt die Notwendigkeit der Oberklasse {\myma{Mandatsrechner}} weg. Deswegen hält der \\ {\myma{Mandatsrechner2013}} ein Objekt der Klasse {\myma{Mandatsrecher2009}}. Zudem wurde noch in {\myma{Mandatsrechner2009}} das Verteilungsverfahren nach d'Hondt implementiert, damit eine alternative Berechnung der Sitzverteilung möglich ist. Die Überladung der Methoden {\mymo{bechne(Gebiet gebiet)}} wurde aufgehoben, da die Berechnung nicht nach Gebieten sondern nach Ober- und Unterverteilung orientiert ist. Damit der {\myma{Mandatsrechner2013}} möglichst viel wieder verwendet werden kann, wurden Bereiche die in beiden Berechnungsklassen Verwundung finden ausgelagert. Für die Implementierung des Entwurfsmuster Einzelstück wurden möglichst wenig globale Variablen, die vor jeder Berechnung neu initialisiert werden, verwendet, damit in dem Mandatsrechner nicht gewollte Zustände ausgeschlossen werden können.
 	
