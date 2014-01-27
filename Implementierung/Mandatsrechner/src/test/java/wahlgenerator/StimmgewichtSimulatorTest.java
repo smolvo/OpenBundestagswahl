@@ -64,6 +64,7 @@ public class StimmgewichtSimulatorTest {
 	}
 
 	public void testBerechneRelevanteZweitstimmen() {
+		/*
 		simu.berechneRelevanteZweitstimmen();
 		for (Partei p : simu.getVerwandteWahl().getParteien()) {
 			System.out.println(p.getName());
@@ -79,6 +80,7 @@ public class StimmgewichtSimulatorTest {
 			}
 			System.out.println(p.getRelevanteZweitstimmen().getAnzahl());
 		}
+		*/
 
 	}
 
@@ -90,7 +92,7 @@ public class StimmgewichtSimulatorTest {
 			System.out.println(p.getName());
 		}
 		System.out.println(relevanteParteien.size());
-
+/*
 		for (Partei x : simu.getVerwandteWahl().getParteien()) {
 			if (x.getName().equals("CDU")) {
 				simu.erhoeheRelevantenAnteil(x);
@@ -101,6 +103,7 @@ public class StimmgewichtSimulatorTest {
 		for (Partei y : relevanteParteien) {
 			System.out.println(y.getName());
 		}
+		*/
 	}
 
 	public void testWaehleParteien() {
@@ -146,13 +149,13 @@ public class StimmgewichtSimulatorTest {
 	//@Test
 	public void simonTest() {
 		Debug.setAktiv(true);
-		Partei p = simu.getVerwandteWahl().getParteien().get(0);
+		//Partei p = simu.getVerwandteWahl().getParteien().get(0);
 		// Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
 		// Anteil relev. Zs > Mandate
-		while (!simu.bedingungErfuellt(p)) {
-
-			simu.erhoeheRelevantenAnteil(p);
-		}
+		//while (!simu.bedingungErfuellt(p)) {
+//
+	//		simu.erhoeheRelevantenAnteil(p);
+		//}
 	}
 
 	

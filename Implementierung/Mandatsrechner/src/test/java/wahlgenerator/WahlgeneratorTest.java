@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 import main.java.importexport.ImportExportManager;
+import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
 import main.java.wahlgenerator.Stimmanteile;
@@ -177,7 +178,15 @@ public class WahlgeneratorTest {
 		assertTrue("Die Summe aller Erststimmenanteile ist " + sumErstAnteile + " und nicht 100%!", sumErstAnteile == 100);
 		assertTrue("Die Summe aller Zweitstimmenanteile ist " + sumZweitAnteile + " und nicht 100%!", sumZweitAnteile == 100);
 		
-		//System.out.println(gen.);
+		System.out.println("--> Zweitstimmen gesamt: " + gen.getDeutschland().getAnzahlZweitstimmen());
+		for (Bundesland land : gen.getDeutschland().getBundeslaender()) {
+			System.out.println(land.getName() + " : " + land.getAnzahlZweitstimmen());
+		}
+		
+		System.out.println("--> Erststimmen gesamt: " + gen.getDeutschland().getAnzahlErststimmen());
+		for (Bundesland land : gen.getDeutschland().getBundeslaender()) {
+			System.out.println(land.getName() + " : " + land.getAnzahlErststimmen());
+		}
 		
 		i.exportieren("src/main/resources/importexport/afd_100_prozent_test.csv", gen);
 	}

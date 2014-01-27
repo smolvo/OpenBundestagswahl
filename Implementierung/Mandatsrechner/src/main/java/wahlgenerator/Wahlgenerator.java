@@ -221,8 +221,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 						//erst.setKandidat(kan);
 						
 						wk.getErststimmenProPartei().add(erst);
+						vergebeneErst += stimmzahl;
 					}
-					vergebeneErst += stimmzahl;
 				}
 				
 				if (vergebeneZweit < anzahlZweitstimmen) {

@@ -34,11 +34,14 @@ public class StimmgewichtSimulator {
 	 */
 	private Bundestagswahl ausgangsWahl;
 
+	private Bundestagswahl kopie1;
 	/**
 	 * Die zur Ausgangswahl "verwandte" Bundestagswahl
 	 */
-	private Bundestagswahl verwandteWahl;
+	
+	private Bundestagswahl kopie2;
 
+	
 	/**
 	 * Parteien, bei denen negatives Stimmgewicht auftreten kann
 	 */
@@ -49,10 +52,13 @@ public class StimmgewichtSimulator {
 	 */
 	private Mandatsrechner2009 rechner;
 	
+	
 	/**
 	 * Generator für zufällige Zahlen
 	 */
 	private Random rand;
+	
+	private Wahlkreis letzterWK;
 
 	/*
 	 * Bei mindestens einer Partei muss der prozentuale Anteil ihrer relevanten
@@ -75,10 +81,11 @@ public class StimmgewichtSimulator {
 	
 			
 			// Mandate für Ausgangswahl berechnen
-			this.setAusgangsWahl(rechner.berechneSainteLague(ausgangsWahl));
+			//this.setAusgangsWahl(rechner.berechneSainteLague(ausgangsWahl));
 			
 			try {
-				this.setVerwandteWahl(ausgangsWahl.deepCopy());
+				this.setKopie1(ausgangsWahl.deepCopy());
+				this.setKopie2(ausgangsWahl.deepCopy());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,9 +95,6 @@ public class StimmgewichtSimulator {
 			//this.berechneRelevanteZweitstimmen();
 			
 			//this.setRelevanteParteien(waehleParteien());
-			
-
-
 	}
 
 	/**
@@ -105,65 +109,75 @@ public class StimmgewichtSimulator {
 	 */
 	public boolean berechneNegStimmgewicht() {
 		
-		LinkedList<Partei> parteienSortiert = this.getVerwandteWahl().getParteien();
+		final int stimmanzahl = 1000;
 		
-		Collections.sort(parteienSortiert, Partei.NACH_UEBERHANGMANDATEN);
+		rechner.berechneSainteLague(kopie2);
 		
-		for (Partei partei : parteienSortiert) {
-			
+		LinkedList<Partei> parteienSortiertKopie1 = this.getKopie1().getParteien();
+		LinkedList<Partei> parteienSortiertKopie2 = this.getKopie2().getParteien();
+		
+		Collections.sort(parteienSortiertKopie1, Partei.NACH_UEBERHANGMANDATEN);
+		Collections.sort(parteienSortiertKopie2, Partei.NACH_UEBERHANGMANDATEN);
+		
+		
+	
+		for (Partei partei : parteienSortiertKopie1) {
 			
 			//List<Bundesland> relevanteBundeslaender = waehleBundeslaender(partei);
-			List<Bundesland> bundeslaenderSortiert = this.getVerwandteWahl().getDeutschland().getBundeslaender();
+			//List<Bundesland> bundeslaenderSortiert = this.getVerwandteWahl().getDeutschland().getBundeslaender();
 			//Collections.sort(bundeslaenderSortiert, partei.BLAENDER_NACH_UEBERHANGMANDATEN);
 			
+			//List<Zweitstimme> zweitstimmen = partei.getZweitstimme();
 			
-			List<Zweitstimme> zweitstimmen = partei.getZweitstimme();
+			List<Bundesland> bundeslaender = this.getKopie1().getDeutschland().getBundeslaender();
+			for (Bundesland b : bundeslaender) {
 			
-			
-			for (Bundesland b : bundeslaenderSortiert) {
-			
+				int begrenzung = (int) (b.getAnzahlZweitstimmen(partei) * 1.2);
 				
-				
-				
-				// wählt aus der zufällig erhaltenen Landesliste einen
-				// zufälligen Wahlkreis
-				int i = rand.nextInt(b.getWahlkreise().size());
-				Wahlkreis wk = b.getWahlkreise().get(i);
+				while (b.getAnzahlZweitstimmen(partei) < begrenzung) {
+					Wahlkreis wk;
+					do {
+						// wählt einen zufälligen Wahlkreis
+						int i = rand.nextInt(b.getWahlkreise().size());
+						wk = b.getWahlkreise().get(i);
+						//System.out.print("Zweitstimmenanzahl im WK " + wk + " von " + wk.getZweitstimme(partei).getAnzahl());
+					} while ( (wk.getZweitstimme(partei).getAnzahl() + stimmanzahl) > wk.getWahlberechtigte() );
+					
+					wk.getZweitstimme(partei).erhoeheAnzahl(stimmanzahl);
+					
+					//System.out.println(" auf " + wk.getZweitstimme(partei).getAnzahl() + " erhöht");
+					Debug.print("Anzahl Zweitstimmen: " + b.getAnzahlZweitstimmen());
+					
+					//long start = System.currentTimeMillis();
+					Debug.setAktiv(false);
+					this.setKopie1(rechner.berechneSainteLague(this.kopie1));
+					Debug.setAktiv(true);
+					//Debug.print("Laufzeit Mandatsrechner " + (System.currentTimeMillis() - start) + "ms");
+					
+					//System.out.print("Relevante ZS von "
+					//		+ p.getRelevanteZweitstimmen().getAnzahl());
+					
+					//relevante ZS neu berechnen
+					//berechneRelevanteZweitstimmen();
+					//System.out.print(" auf "
+					//		+ p.getRelevanteZweitstimmen().getAnzahl());
 
-				// in diesem Wahlkreis wird nun die Zweitstimmenanzahl erhöht
-				// TODO System.out.println entfernen
-				//System.out.print("ZS im WK " + wk + " von "
-				//		+ wk.getZweitstimme(p).getAnzahl());
-				wk.getZweitstimme(partei).erhoeheAnzahl(100);
-
-				//Sitzverteilung neu berechnen
-				//System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
-				//		+ " erhöht");
-				long start = System.currentTimeMillis();
-				Debug.setAktiv(false);
-				this.setVerwandteWahl(rechner.berechneSainteLague(this.verwandteWahl));
-				Debug.setAktiv(true);
-				Debug.print("Laufzeit Mandatsrechner " + (System.currentTimeMillis() - start) + "ms");
-				//System.out.print("Relevante ZS von "
-				//		+ p.getRelevanteZweitstimmen().getAnzahl());
+					Debug.print("Anzahl Mandate von " + partei.getName() + ": " + partei.getAnzahlMandate() + " in " + b.getName());	
 				
-				//relevante ZS neu berechnen
-				berechneRelevanteZweitstimmen();
-				//System.out.print(" auf "
-				//		+ p.getRelevanteZweitstimmen().getAnzahl());
-
-				
-				Debug.print("Anzahl Mandate von " + partei.getName() + ": " + partei.getAnzahlMandate() + " in " + b.getName());
-						// negatives Stimmgewicht aufgetreten?
-						if (vergleicheSitzverteilungen(partei)) {
-							Debug.print("NEGATIVES STIMMGEWICHT GEFUNDEN !!!!!!!!!!!! YAYYY");
-							return true;
-						}
+					
+					// negatives Stimmgewicht aufgetreten?
+					if (vergleicheSitzverteilungen(partei)) {
+						Debug.print("NEGATIVES STIMMGEWICHT GEFUNDEN !!!!!!!!!!!! YAYYY");
+						return true;
 					}
 				}
+			}
+				
+		}
 		return false;
 	}
 
+	
 	/**
 	 * Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen
 	 * Bundestagswahlen. Wenn die Sitzanzahl für die gegebene Partei in der
@@ -182,19 +196,19 @@ public class StimmgewichtSimulator {
 		//this.setVerwandteWahl(Mandatsrechner2009.getInstance().berechneAlles(
 			//	verwandteWahl));
 
-		Sitzverteilung alt = this.ausgangsWahl.getSitzverteilung();
-		Sitzverteilung neu = this.verwandteWahl.getSitzverteilung();
+		Sitzverteilung neu = this.kopie1.getSitzverteilung();
+		Sitzverteilung alt = this.kopie2.getSitzverteilung();
 
 		int mandatsZahlAlt = 0;
 		for (Kandidat a : alt.getAbgeordnete()) {
-			if (a.getPartei().equals(p)) {
+			if (a.getPartei().getName().equals(p.getName())) {
 				mandatsZahlAlt++;
 			}
 		}
 
 		int mandatsZahlNeu = 0;
 		for (Kandidat a : neu.getAbgeordnete()) {
-			if (a.getPartei().equals(p)) {
+			if (a.getPartei().getName().equals(p.getName())) {
 				mandatsZahlNeu++;
 			}
 		}
@@ -275,7 +289,7 @@ public class StimmgewichtSimulator {
 	 */
 	// TODO private setzen, nur fürs testen public
 	public boolean bedingungErfuellt(Partei p) {
-		List<Partei> alleParteien = this.verwandteWahl.getParteien();
+		List<Partei> alleParteien = this.kopie2.getParteien();
 	
 
 		// berechnet insgesamte Anzahl an relevanten Zweitstimmen, d.h. addiert
@@ -300,7 +314,7 @@ public class StimmgewichtSimulator {
 		// berechnet den Anteil an Mandaten
 
 		anteilMandate = (float) p.getAnzahlMandate()
-				/ (float) this.verwandteWahl.getSitzverteilung()
+				/ (float) this.kopie2.getSitzverteilung()
 						.getAbgeordnete().size();
 
 		System.out.println(p.getName() + " " + anteilMandate + " "
@@ -323,7 +337,7 @@ public class StimmgewichtSimulator {
 
 	// TODO private setzten, nur zum testen public
 	public List<Partei> waehleParteien() {
-		List<Partei> alleParteien = this.verwandteWahl.getParteien();
+		List<Partei> alleParteien = this.kopie2.getParteien();
 
 		List<Partei> relevanteParteien = new ArrayList<Partei>();
 		for (Partei p : alleParteien) {
@@ -370,7 +384,7 @@ public class StimmgewichtSimulator {
 	// TODO private setzten, nur zum testen public
 	public void berechneRelevanteZweitstimmen() {
 		
-		for (Partei p : this.verwandteWahl.getParteien()) {
+		for (Partei p : this.kopie2.getParteien()) {
 			List<Landesliste> landeslisten = p.getLandesliste();
 			int anzahl = 0;
 
@@ -439,22 +453,31 @@ public class StimmgewichtSimulator {
 	/**
 	 * @return the verwandteWahl
 	 */
-	public Bundestagswahl getVerwandteWahl() {
-		return verwandteWahl;
+	public Bundestagswahl getKopie2() {
+		return kopie2;
 	}
 
 	/**
 	 * @param verwandteWahl
 	 *            the verwandteWahl to set
 	 */
-	public void setVerwandteWahl(Bundestagswahl verwandteWahl) {
+	public void setKopie2(Bundestagswahl verwandteWahl) {
 		if (verwandteWahl == null) {
 			throw new IllegalArgumentException(
 					"Übergebene Bundestagswahl war null");
 		} else {
-			this.verwandteWahl = verwandteWahl;
+			this.kopie2 = verwandteWahl;
 		}
 
 	}
 
+	public Bundestagswahl getKopie1() {
+		return kopie1;
+	}
+
+	public void setKopie1(Bundestagswahl wahlKopie) {
+		this.kopie1 = wahlKopie;
+	}
+
+	
 }

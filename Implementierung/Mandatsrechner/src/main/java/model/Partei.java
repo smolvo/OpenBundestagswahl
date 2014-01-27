@@ -73,9 +73,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 			
 			int result;
 			
-			if (part1UeMand > part2UeMand) {
+			if (part1UeMand < part2UeMand) {
 				result = 1;
-			} else if (part1UeMand < part2UeMand) {
+			} else if (part1UeMand > part2UeMand) {
 				result = -1;
 			} else {
 				result = 0;
