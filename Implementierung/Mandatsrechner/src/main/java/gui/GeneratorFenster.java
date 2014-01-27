@@ -53,13 +53,14 @@ public class GeneratorFenster extends JFrame {
 	 * Fenster.
 	 */
 	public GeneratorFenster(List<Bundestagswahl> basiswahlen) {
-		this.wahlen = wahlen;
+		this.wahlen = basiswahlen;
 		this.setTitle("Wahlgenerierung");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setBounds(500, 50, 335, 600);
 		this.setLayout(null);
 		initialisiere(wahlen);
+		this.setVisible(true);
 	}
 	
 	/**

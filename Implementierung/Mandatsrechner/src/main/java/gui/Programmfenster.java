@@ -95,6 +95,7 @@ public final class Programmfenster extends JFrame {
 		for (WahlFenster w : wahlen) {
 			if (w.equals(wf)) {
 				tabs.setSelectedComponent(wf);
+				Steuerung.getInstance().setBtw(wf.getBtw());
 			}
 
 		}
