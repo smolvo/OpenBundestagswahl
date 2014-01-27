@@ -65,6 +65,10 @@ public final class Programmfenster extends JFrame {
 		menu = new Menu(this);
 		setJMenuBar(menu);
 
+		// Tab- Leiste erstellen
+		tabs = new TabLeiste(this);
+		this.add(tabs);
+
 
 		// Wahl 2013
 		File[] csvDateien = new File[2];
@@ -72,14 +76,20 @@ public final class Programmfenster extends JFrame {
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w = Steuerung.getInstance().importieren(csvDateien);
 
-		wahlen.add(new WahlFenster(w));
-
-		// Tab- Leiste erstellen
-		tabs = new TabLeiste(this);
-		this.add(tabs);
+		wahlHinzufuegen(w);
 
 		setVisible(true);
 		pack();
+	}
+	
+	/**
+	 * Fügt eine Wahl hinzu.
+	 * @param w Wahl
+	 */
+	public void wahlHinzufuegen(Bundestagswahl w) {
+		WahlFenster fenster = new WahlFenster(w);
+		wahlen.add(fenster);
+		tabs.neuerTab(fenster, w.getName());
 	}
 
 
