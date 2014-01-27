@@ -16,6 +16,7 @@ import javax.swing.JTabbedPane;
 
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
+import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters Jeder Tab
@@ -32,6 +33,8 @@ public class TabLeiste extends JTabbedPane {
 	private static final long serialVersionUID = -1890561914275560319L;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 	private Programmfenster pf;
+	
+	private final JComponent plusButton = new JPanel();
 
 	/**
 	 * Der Konstruktor der Tableiste
@@ -53,7 +56,7 @@ public class TabLeiste extends JTabbedPane {
 			neuerTab(w, w.getName());
 
 		}
-		neuerTabButton(new JPanel());
+		neuerTabButton();
 		setVisible(true);
 	}
 
@@ -65,9 +68,9 @@ public class TabLeiste extends JTabbedPane {
 	 * @param c
 	 *            JComponent
 	 */
-	public void neuerTabButton(final JComponent c) {
-		add(c);
-		int pos = indexOfComponent(c);
+	public void neuerTabButton() {
+		add(plusButton);
+		int pos = indexOfComponent(plusButton);
 
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel pnlTab = new JPanel(f);
@@ -90,9 +93,9 @@ public class TabLeiste extends JTabbedPane {
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				remove(c);
+				remove(plusButton);
 				new ImportDialog(TabLeiste.this);
-				neuerTabButton(c);
+				neuerTabButton();
 			}
 		};
 		neuerTab.addActionListener(listener);
@@ -109,7 +112,7 @@ public class TabLeiste extends JTabbedPane {
 	 *            Name der im Tab gezeigten Wahl
 	 */
 
-	public void neuerTab(final JComponent c, final String wahlName) {
+	public void neuerTab(final WahlFenster c, final String wahlName) {
 		add(c);
 		int pos = indexOfComponent(c);
 
@@ -153,13 +156,16 @@ public class TabLeiste extends JTabbedPane {
 				} else if (eingabe == 1) {
 					remove(c);
 					pf.getWahlen().remove(c);
+					setSelectedComponent(TabLeiste.this.getComponentAt(0));
 				}
 
 			}
 		};
 
+		this.remove(plusButton);
+		neuerTabButton();
 		schliessen.addActionListener(listener);
-		setSelectedComponent(c);
+		Steuerung.getInstance().setBtw(c.getBtw());
 
 	}
 

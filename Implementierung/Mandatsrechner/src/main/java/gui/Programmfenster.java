@@ -82,22 +82,7 @@ public final class Programmfenster extends JFrame {
 		pack();
 	}
 
-	/**
-	 * Diese Methode wechselt zu einem anderen geöffneten Tab
-	 * 
-	 * @param wf
-	 *            Tab, zu dem gewechselt werden soll
-	 */
 
-	public void wechsleTab(WahlFenster wf) {
-		for (WahlFenster w : wahlen) {
-			if (w.equals(wf)) {
-				tabs.setSelectedComponent(wf);
-				Steuerung.getInstance().setBtw(wf.getBtw());
-			}
-
-		}
-	}
 
 	/**
 	 * Gibt das Menü zurück

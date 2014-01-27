@@ -143,6 +143,7 @@ public class GeneratorFenster extends JFrame {
 					WahlFenster neuesFenster = new WahlFenster(btw);
 					pf.getWahlen().add(neuesFenster);
 					pf.getTabs().neuerTab(neuesFenster, ausgesuchteWahl.getName());
+					
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
 							"Es dürfen keine Parteien doppelt vorkommen.",
