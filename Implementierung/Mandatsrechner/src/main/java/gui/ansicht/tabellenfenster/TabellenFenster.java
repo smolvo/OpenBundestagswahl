@@ -120,6 +120,7 @@ public class TabellenFenster extends JScrollPane {
 					sitze++;
 				} else if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
 					ueberMan++;
+					direktMan++;
 					sitze++;
 				} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
 					ausglMan++;

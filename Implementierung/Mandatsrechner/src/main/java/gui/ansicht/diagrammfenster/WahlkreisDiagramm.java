@@ -46,15 +46,15 @@ public class WahlkreisDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.addComponentListener(new ComponentAdapter() {
-
-			@Override
-			public void componentResized(ComponentEvent e) {
-				ChartPanel panel = (ChartPanel) e.getComponent();
-				panel.setSize(resize());
-			}
-
-		});
+//		chartPanel.addComponentListener(new ComponentAdapter() {
+//
+//			@Override
+//			public void componentResized(ComponentEvent e) {
+//				ChartPanel panel = (ChartPanel) e.getComponent();
+//				panel.setSize(resize());
+//			}
+//
+//		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}

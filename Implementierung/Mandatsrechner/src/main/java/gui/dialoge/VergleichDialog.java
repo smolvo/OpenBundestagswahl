@@ -45,12 +45,13 @@ public class VergleichDialog {
 					JOptionPane.INFORMATION_MESSAGE, null);
 		} else {
 			JFrame wahlAussuche = new JFrame();
-			wahlAussuche.setSize(200, 150);
+			wahlAussuche.setBounds(550, 250, 200, 150);
+			wahlAussuche.setResizable(false);
 			wahlAussuche.setLayout(null);
 			JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
 			text.setBounds(5, 5, 190, 40);
 			JComboBox<WahlFenster> box = erstelleBox(tabs);
-			box.setBounds(5, 65, 190, 80);
+			box.setBounds(15, 45, 150, 25);
 			box.addActionListener(new ActionListener(){
 
 				@Override

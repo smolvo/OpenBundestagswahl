@@ -51,15 +51,15 @@ public class BundDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(land);
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.addComponentListener(new ComponentAdapter() {
-
-			@Override
-			public void componentResized(ComponentEvent e) {
-				ChartPanel panel = (ChartPanel) e.getComponent();
-				panel.setSize(resize());
-			}
-
-		});
+//		chartPanel.addComponentListener(new ComponentAdapter() {
+//
+//			@Override
+//			public void componentResized(ComponentEvent e) {
+//				ChartPanel panel = (ChartPanel) e.getComponent();
+//				panel.setSize(resize());
+//			}
+//
+//		});
 		listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
