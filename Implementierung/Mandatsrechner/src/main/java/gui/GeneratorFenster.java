@@ -242,7 +242,7 @@ public class GeneratorFenster extends JFrame {
 		JComboBox<Partei> box = new JComboBox<Partei>(parteiArray);
 		box.setBounds(20, 5, 40, 20);
 		box.setPreferredSize(new Dimension(140, 20));
-		JSlider erst = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+		JSlider erst = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		erst.setBounds(70, 5, 50, 20);
 		erst.setPreferredSize(new Dimension(100, 50));
 		erst.setMajorTickSpacing(50);
@@ -262,7 +262,7 @@ public class GeneratorFenster extends JFrame {
 			
 		});
 		
-		JSlider zweit = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+		JSlider zweit = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		zweit.setBounds(130, 5, 50, 20);
 		zweit.setPreferredSize(new Dimension(100, 50));
 		zweit.setMajorTickSpacing(50);

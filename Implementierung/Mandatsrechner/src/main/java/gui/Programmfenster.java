@@ -71,7 +71,6 @@ public final class Programmfenster extends JFrame {
 		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w = Steuerung.getInstance().importieren(csvDateien);
-		Steuerung.getInstance().berechneSitzverteilung();
 
 		wahlen.add(new WahlFenster(w));
 
