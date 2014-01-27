@@ -70,21 +70,21 @@ Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 \section{Pakete}
 
 \subsection{Datenmodell}
-
+Da die verwendeten Listen im Datenmodell durch die Berechnungen und Zuweisungen recht groß wurden, wurde zusätzliche Funktionalität in das Datenmodell gebracht. Dies erleichterte den Zugriff auf die benötigten Daten für verschiedene Komponente wie zum Beispiel {\myma{Mandatsrechner}}, {\myma{Wahlgenerator}} und {\myma{GUI}}.
+Zudem wurde die Klasse {\myma{BerichtDaten}} für die Klasse {\myma{Sitzverteilung}} erstellt. Dies war notwendig, damit die Berichttabelle in der GUI korrekt befüllt werden kann. Dabei hält die Klasse {\myma{BerichtDaten}} fünf Listen die jeweils die dazugehörigen Spalten befüllen. 
+Kandidaten haben nun einen Namen und einen bestimmten Platz in der Landesliste.
 \subsection{Import/Export}	
-Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf haben wir das Exportieren vom Importieren getrennt.
+Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Mithilfe dieser Wahlbewerber-Datei werden die vorher ausgelesenen Kandidaten befüllt. Die Wahlbewerber-Datei für die Bundestagswahl 2013 wird im Programm mit übergeben und kann im Notfall für Bundestagswahl 2009 genutzt werden. Zudem wurde eine Config-Datei(ebenfalls im .csv-Format) hinzugefügt, die die Einwohnerzahl der Bundesländer und die Farben der Partei beinhaltet. Dadurch müssen diese Werte nicht mehr im Programmcode gespeichert und können durch das Editieren der Datei einfach angepasst werden. 
 
-\subsubsection{ImportExportManager}
-
-\subsubsection{Export}
-\subsubsection{Import}
-\subsection{GUI und GUI-Logik}	
+\subsection{GUI und GUI-Logik}
+3 Ansichten 
 \subsubsection{Programmfenster}
 Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main- Klasse und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
 Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom {\myma{Programmfenster}} gehalten wird, realisiert. \\
 Zusätzlich besitzt es ein {\myma{Menu}}, welches dem Benutzer ermöglicht, den gewünschten Befehl auszuwählen und ausführen zu lassen, ohne genaue Steuerbefehle kennen und anwenden zu müssen. \\
 	
-	\subsection{Mandatsrechner}
+\subsection{Mandatsrechner}
+Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-Lagu\"e/Schepers ohne Ausgleichsmandate und {\myma{Mandatsrechner2013}} berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu\"e/Scheper, aber mit Ausgleichsmandate. Da der \\{\myma{Mandatsrechner2013}} dadurch den {\myma{Mandatsrechner2009}} zur Berechnung nutzt, fällt die Notwendigkeit der Oberklasse {\myma{Mandatsrechner}} weg. Deswegen hält der \\ {\myma{Mandatsrechner2013}} ein Objekt der Klasse {\myma{Mandatsrecher2009}}. Zudem wurde noch in {\myma{Mandatsrechner2009}} das Verteilungsverfahren nach d'Hondt implementiert, damit eine alternative Berechnung der Sitzverteilung möglich ist. Die Überladung der Methoden {\mymo{bechne(Gebiet gebiet)}} wurde aufgehoben, da die Berechnung nicht nach Gebieten sondern nach Ober- und Unterverteilung orientiert ist. Damit der {\myma{Mandatsrechner2013}} möglichst viel wieder verwendet werden kann, wurden Bereiche die in beiden Berechnungsklassen Verwundung finden ausgelagert. Für die Implementierung des Entwurfsmuster Einzelstück wurden möglichst wenig globale Variablen, die vor jeder Berechnung neu initialisiert werden, verwendet, damit in dem Mandatsrechner nicht gewollte Zustände ausgeschlossen werden können.
 	
 	\subsection{Wahlgenerator}
 	
