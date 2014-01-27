@@ -143,6 +143,15 @@ public class StimmgewichtSimulator {
 						return true;
 					}
 
+					try {
+						kopie1 = ausgangsWahl.deepCopy();
+						kopie2 = ausgangsWahl.deepCopy();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					/*
 					long start = System.currentTimeMillis();
 
 					letztePartei = partei;
@@ -157,10 +166,11 @@ public class StimmgewichtSimulator {
 
 					}
 					
+					
 					Debug.print("Laufzeit Anpassung von Kopie2 ohne deep copy "
 							+ (System.currentTimeMillis() - start) + "ms");
-							
-					/*
+					*/		
+					
 					long start2 = System.currentTimeMillis();
 					try {
 						kopie2 = kopie1.deepCopy();
@@ -168,9 +178,8 @@ public class StimmgewichtSimulator {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					Debug.print("Laufzeit Anpassung von Kopie2 mit deep copy "
-							+ (System.currentTimeMillis() - start2) + "ms");
-					*/
+					//Debug.print("Laufzeit Anpassung von Kopie2 mit deep copy " + (System.currentTimeMillis() - start2) + "ms");
+					
 				}
 			}
 
@@ -197,15 +206,14 @@ public class StimmgewichtSimulator {
 
 		// System.out.println(" auf " + wk.getZweitstimme(partei).getAnzahl() +
 		// " erhöht");
-		Debug.print("Anzahl Zweitstimmen: "
-				+ bundesland.getAnzahlZweitstimmen(partei));
-
+		Debug.print("Anzahl Zweitstimmen von " + partei.getName() + " in " + bundesland.getName() + ": " + bundesland.getAnzahlZweitstimmen(partei));
+		
+		
 		long start = System.currentTimeMillis();
 		Debug.setAktiv(false);
 		this.setKopie1(rechner.berechneSainteLague(this.kopie1));
 		Debug.setAktiv(true);
-		Debug.print("Laufzeit Mandatsrechner: "
-				+ (System.currentTimeMillis() - start) + "ms");
+		//Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
 
 		letzterWK = wk;
 
@@ -245,7 +253,7 @@ public class StimmgewichtSimulator {
 				mandatsZahlNeu++;
 			}
 		}
-		System.out.println("Mandatszahl alt: " + mandatsZahlAlt
+		System.out.println("    Mandatszahl alt: " + mandatsZahlAlt
 				+ " Mandatszahl neu: " + mandatsZahlNeu);
 		return (mandatsZahlNeu < mandatsZahlAlt);
 
