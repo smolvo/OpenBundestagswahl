@@ -206,7 +206,7 @@ public class Config {
 	}
 	
 	private void exportConfig () throws Exception {
-		FileWriter f = new FileWriter(new File("src/main/resources/config2.csv"));
+		FileWriter f = new FileWriter(new File(this.configPath));
 		BufferedWriter bf = new BufferedWriter(f);
 		
 		Set<String> set = this.data.keySet();
