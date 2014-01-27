@@ -2,6 +2,8 @@ package main.java.wahlvergleich;
 
 import java.awt.Dimension;
 import java.awt.Paint;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.JPanel;
 
@@ -26,6 +28,15 @@ public class DiffDiagramm extends JPanel {
 	public DiffDiagramm(ParteiDifferenzen[] diff) {
 		JFreeChart chart = createChart(diff);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.addComponentListener(new ComponentAdapter() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+			}
+
+		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		this.add(chartPanel);
 	}
@@ -40,8 +51,8 @@ public class DiffDiagramm extends JPanel {
 		for (int i = 0; i < diff.length; i++) {
 			result.setValue(diff[i].getDiff(), " ", diff[i].getPartei().getName());
 		}
-		JFreeChart chart = ChartFactory.createBarChart("Stimmendifferenzen", null,
-				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false, false, false);
+		JFreeChart chart = ChartFactory.createBarChart("Sitzdifferenzen", null,
+				null, result, PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
@@ -59,5 +70,15 @@ public class DiffDiagramm extends JPanel {
 		plot.setForegroundAlpha(1.0f);
 
 		return chart;
+	}
+
+	/**
+	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
+	 * das Diagramm befindet, aus.
+	 * 
+	 * @return Dimension
+	 */
+	public Dimension resize() {
+		return new Dimension(this.getWidth(), this.getHeight());
 	}
 }

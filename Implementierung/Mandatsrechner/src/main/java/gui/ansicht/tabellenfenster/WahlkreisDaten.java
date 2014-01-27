@@ -104,6 +104,9 @@ public class WahlkreisDaten {
 	 * @return Partei
 	 */
 	public String getParteiName(int index) {
+		if (index < 0 || index > parteien.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return parteien.get(index);
 	}
 
@@ -115,6 +118,9 @@ public class WahlkreisDaten {
 	 * @return Kandidat
 	 */
 	public String getKandidatName(int index) {
+		if (index < 0 || index > kandidaten.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return kandidaten.get(index);
 	}
 
@@ -126,6 +132,9 @@ public class WahlkreisDaten {
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getZweitstimmen(int index) {
+		if (index < 0 || index > zweitstimmen.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return zweitstimmen.get(index);
 	}
 
@@ -137,6 +146,9 @@ public class WahlkreisDaten {
 	 * @return Zweitstimme
 	 */
 	public Erststimme getErststimmen(int index) {
+		if (index < 0 || index > erststimmen.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return erststimmen.get(index);
 	}
 
@@ -148,6 +160,9 @@ public class WahlkreisDaten {
 	 * @return Prozentanzahl
 	 */
 	public String getZweitprozent(int index) {
+		if (index < 0 || index > zweitProzent.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return zweitProzent.get(index);
 	}
 
@@ -159,6 +174,9 @@ public class WahlkreisDaten {
 	 * @return Prozentanzahl
 	 */
 	public String getErstprozent(int index) {
+		if (index < 0 || index > erstProzent.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return erstProzent.get(index);
 	}
 
@@ -170,6 +188,9 @@ public class WahlkreisDaten {
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
+		if (index < 0 || index > direktmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return direktmandate.get(index);
 	}
 

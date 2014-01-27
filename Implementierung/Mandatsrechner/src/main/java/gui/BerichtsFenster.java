@@ -5,18 +5,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
- * Diese Klasse repräsentiert das Berichtsfenster.
- * In diesem werden Daten angezeigt, die erläutern
- * sollen wie ein Abgeordneter an sein Mandat gekommen
+ * Diese Klasse repräsentiert das Berichtsfenster. In diesem werden Daten
+ * angezeigt, die erläutern sollen wie ein Abgeordneter an sein Mandat gekommen
  * ist.
+ * 
  * @author Anton
- *
+ * 
  */
 public class BerichtsFenster extends JFrame {
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.
-	 * @param tabellenModell die Berichtstabelle
+	 * 
+	 * @param tabellenModell
+	 *            die Berichtstabelle
 	 */
 	public BerichtsFenster(BerichtTableModel tabellenModell) {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

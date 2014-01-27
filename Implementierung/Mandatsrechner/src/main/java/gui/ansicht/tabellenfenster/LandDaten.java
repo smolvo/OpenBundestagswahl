@@ -86,6 +86,9 @@ public class LandDaten {
 	 * @return Partei
 	 */
 	public String getParteien(int index) {
+		if (index < 0 || index > parteien.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return parteien.get(index);
 	}
 
@@ -97,6 +100,9 @@ public class LandDaten {
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getStimmen(int index) {
+		if (index < 0 || index > stimmen.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return stimmen.get(index);
 	}
 
@@ -108,6 +114,9 @@ public class LandDaten {
 	 * @return Prozentanzahl
 	 */
 	public String getProzent(int index) {
+		if (index < 0 || index > prozent.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return prozent.get(index);
 	}
 
@@ -119,6 +128,9 @@ public class LandDaten {
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
+		if (index < 0 || index > direktmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return direktmandate.get(index);
 	}
 
@@ -130,6 +142,9 @@ public class LandDaten {
 	 * @return Überhangsmandate
 	 */
 	public String getUeberhangsmandate(int index) {
+		if (index < 0 || index > ueberhangsmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return ueberhangsmandate.get(index);
 	}
 

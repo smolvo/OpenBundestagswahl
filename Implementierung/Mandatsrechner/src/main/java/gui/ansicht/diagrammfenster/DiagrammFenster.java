@@ -1,14 +1,10 @@
 package main.java.gui.ansicht.diagrammfenster;
 
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 import main.java.gui.BerichtTableModel;
 import main.java.gui.BerichtsFenster;
-import main.java.gui.VergleichsFenster;
 import main.java.gui.ansicht.Ansicht;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
@@ -29,7 +25,7 @@ public class DiagrammFenster extends JPanel {
 	private Ansicht ansicht;
 	
 	/**
-	 * Der Konstruktor erzeugt initialisiert ein neues Diagrammfenster.
+	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
 	 * @param ansicht die Ansicht
 	 */
 	public DiagrammFenster(Ansicht ansicht) {
@@ -63,7 +59,7 @@ public class DiagrammFenster extends JPanel {
 	 *            Deutschland
 	 */
 	public void erstelleDiagramm(Deutschland land) {
-		BundDiagramm dia = new BundDiagramm(land, this);
+		new BundDiagramm(land, this);
 	}
 
 	/**
@@ -73,7 +69,7 @@ public class DiagrammFenster extends JPanel {
 	 *            Deutschland
 	 */
 	public void erstelleDiagramm(Bundesland bundLand) {
-		LandDiagramm dia = new LandDiagramm(bundLand, this);
+		new LandDiagramm(bundLand, this);
 	}
 
 	/**
@@ -83,7 +79,7 @@ public class DiagrammFenster extends JPanel {
 	 *            Deutschland
 	 */
 	public void erstelleDiagramm(Wahlkreis wk) {
-		WahlkreisDiagramm dia = new WahlkreisDiagramm(wk, this);
+		new WahlkreisDiagramm(wk, this);
 	}
 
 	/**
@@ -95,7 +91,7 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
 		BerichtTableModel tabelle = new BerichtTableModel(btw.getSitzverteilung().getBericht());
-		BerichtsFenster bericht = new BerichtsFenster(tabelle);
+		 new BerichtsFenster(tabelle);
 	}
 	
 	/**

@@ -91,7 +91,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			boolean aenderung = false;
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
-				guiSteuerung.wertAenderung(stimme, anzahl);
+				aenderung = guiSteuerung.wertAenderung(stimme, anzahl);
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(this.tabellenfenster,
 						"Nur positive ganze Zahlen erlaubt.", "Meldung",

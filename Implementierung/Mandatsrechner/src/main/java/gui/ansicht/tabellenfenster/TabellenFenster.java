@@ -250,13 +250,12 @@ public class TabellenFenster extends JScrollPane {
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
-
 	
-	/** Gibt die Ansicht aus.
-	 * 
+	/**
+	 * Gibt die Ansicht aus.
 	 * @return Ansicht
 	 */
 	public Ansicht getAnsicht() {
-		return ansicht;
+		return this.ansicht;
 	}
 }

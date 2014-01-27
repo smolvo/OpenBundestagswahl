@@ -13,25 +13,28 @@ import main.java.model.Wahlkreis;
 /**
  * Diese Klasse repräsentiert die Vorlage der Baumstruktur der Bundes- und
  * Wahlkreisanzeige in der Liste des Kartenfensters.
- *
+ * 
+ * @author Anton
+ * 
  */
 public class DeutschlandModel implements TreeModel {
 
 	/** repräsentiert die Wurzel des Baumes */
 	private Deutschland wurzel;
-	
+
 	/** repräsentiert die Liste von Listenern */
-	private Vector<TreeModelListener> treeModelListeners =
-	        new Vector<TreeModelListener>();
-	
+	private Vector<TreeModelListener> treeModelListeners = new Vector<TreeModelListener>();
+
 	/**
 	 * Der Konstruktor der einen neuen Baum instanziiert.
-	 * @param land Wurzel
+	 * 
+	 * @param land
+	 *            Wurzel
 	 */
-	public DeutschlandModel (Deutschland land) {
+	public DeutschlandModel(Deutschland land) {
 		this.wurzel = land;
 	}
-	
+
 	@Override
 	public Object getRoot() {
 		return this.wurzel;
@@ -70,8 +73,8 @@ public class DeutschlandModel implements TreeModel {
 
 	@Override
 	public void valueForPathChanged(TreePath path, Object newValue) {
-		System.out.println("*** valueForPathChanged : "
-                + path + " --> " + newValue);
+		System.out.println("*** valueForPathChanged : " + path + " --> "
+				+ newValue);
 	}
 
 	@Override

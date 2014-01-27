@@ -1,7 +1,5 @@
 package main.java.gui.ansicht.tabellenfenster;
 
-import java.io.IOException;
-
 import javax.swing.table.AbstractTableModel;
 
 import main.java.gui.GUISteuerung;
@@ -76,29 +74,5 @@ public class BundTableModel extends AbstractTableModel {
 	@Override
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
-	}
-
-	@Override
-	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
-		if (columnIndex == 1) {
-			String stringAnzahl = (String) obj;
-			Zweitstimme stimme = daten.getStimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
-					.getFenster().getSteuerung();
-			int anzahl = -1;
-			boolean aenderung = false;
-			try {
-				anzahl = Integer.parseInt(stringAnzahl);
-				if (anzahl >= 0) {
-					aenderung = guiSteuerung.wertAenderung(stimme, anzahl);
-				}
-			} catch (NumberFormatException e) {
-				System.out.println("‰‰‰tsch");
-			}
-			if (aenderung) {
-				daten.getStimmen(rowIndex).setAnzahl(anzahl);
-			}
-		}
-		fireTableCellUpdated(rowIndex, columnIndex);
 	}
 }

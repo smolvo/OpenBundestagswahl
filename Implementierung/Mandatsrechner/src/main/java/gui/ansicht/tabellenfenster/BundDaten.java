@@ -77,7 +77,7 @@ public class BundDaten {
 	}
 
 	/**
-	 * Diese Methode überprüft, ob ein String null ist, wenn nicht wird es der
+	 * Diese Methode überprüft, ob ein String null ist, wenn nicht wird er der
 	 * Liste angehangen,
 	 * 
 	 * @param string
@@ -101,6 +101,9 @@ public class BundDaten {
 	 * @return Partei
 	 */
 	public String getParteien(int index) {
+		if (index < 0 || index > parteien.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return parteien.get(index);
 	}
 
@@ -112,6 +115,9 @@ public class BundDaten {
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getStimmen(int index) {
+		if (index < 0 || index > stimmen.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return stimmen.get(index);
 	}
 
@@ -123,6 +129,9 @@ public class BundDaten {
 	 * @return Prozentanzahl
 	 */
 	public String getProzent(int index) {
+		if (index < 0 || index > prozent.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return prozent.get(index);
 	}
 
@@ -134,6 +143,9 @@ public class BundDaten {
 	 * @return Sitzanzahl
 	 */
 	public String getSitze(int index) {
+		if (index < 0 || index > sitze.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return sitze.get(index);
 	}
 
@@ -145,6 +157,9 @@ public class BundDaten {
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
+		if (index < 0 || index > direktmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return direktmandate.get(index);
 	}
 
@@ -156,6 +171,9 @@ public class BundDaten {
 	 * @return Überhangsmandate
 	 */
 	public String getUeberhangsmandate(int index) {
+		if (index < 0 || index > ueberhangsmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return ueberhangsmandate.get(index);
 	}
 
@@ -167,6 +185,9 @@ public class BundDaten {
 	 * @return Ausgleichsmandate
 	 */
 	public String getAusgleichsmandate(int index) {
+		if (index < 0 || index > ausgleichsmandate.size()) {
+			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+		}
 		return ausgleichsmandate.get(index);
 	}
 

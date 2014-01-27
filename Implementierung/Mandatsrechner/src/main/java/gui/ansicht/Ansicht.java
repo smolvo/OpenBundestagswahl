@@ -77,7 +77,7 @@ public class Ansicht extends JPanel {
 	}
 
 	/**
-	 * Durch diese Methode wird das allgemeine Layout der Ansichten gesetzt
+	 * Durch diese private Methode wird das Diagramm- und das Tabellenfenster gesetzt.
 	 */
 	private void layoutSetzen() {
 		gbc.ipadx = 50;
@@ -146,6 +146,9 @@ public class Ansicht extends JPanel {
 	 *            neues Tabellenfenster
 	 */
 	public void setTabellenFenster(TabellenFenster tabellenFenster) {
+		if(tabellenFenster == null){
+			throw new IllegalArgumentException("Fenster ist leer");
+		}
 		this.tabellenFenster = tabellenFenster;
 	}
 
@@ -165,6 +168,9 @@ public class Ansicht extends JPanel {
 	 *            neues Diagrammfenster
 	 */
 	public void setDiagrammFenster(DiagrammFenster diagrammFenster) {
+		if(diagrammFenster == null){
+			throw new IllegalArgumentException("Fenster ist leer");
+		}
 		this.diagrammFenster = diagrammFenster;
 	}
 
@@ -184,6 +190,9 @@ public class Ansicht extends JPanel {
 	 *            neues Kartenfenster
 	 */
 	public void setKartenFenster(KartenFenster kartenFenster) {
+		if(kartenFenster == null){
+			throw new IllegalArgumentException("Fenster ist leer");
+		}
 		this.kartenFenster = kartenFenster;
 	}
 
@@ -208,6 +217,9 @@ public class Ansicht extends JPanel {
 	 *            the aktuellesGebiet to set
 	 */
 	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
+		if(aktuellesGebiet == null){
+			throw new IllegalArgumentException("Gebiet ist leer");
+		}
 		this.aktuellesGebiet = aktuellesGebiet;
 	}
 }

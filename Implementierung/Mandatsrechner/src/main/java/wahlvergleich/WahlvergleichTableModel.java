@@ -2,26 +2,30 @@ package main.java.wahlvergleich;
 
 import javax.swing.table.AbstractTableModel;
 
-import main.java.gui.ansicht.tabellenfenster.LandDaten;
-
+/**
+ * Diese Klasse repräsentiert das Tabellenmodell des Wahlvergleiches. In ihr
+ * werden Spaltennamen und die Daten gehalten.
+ * 
+ * @author Anton
+ * 
+ */
 public class WahlvergleichTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] {"Partei", "Anzahl", "%", "Differenz", "Anzahl", 
-			"%", "Differenz", "Anzahl", "%", "Anzahl", "%"};
-	
+	private String[] columns = new String[] { "Partei", "Erststimmenanzahl",
+			"%", "Differenz", "Zweitstimmenanzahl", "%", "Differenz",
+			"Erststimmenanzahl", "%", "Zweitstimmenanzahl", "%" };
+
 	/** hält alle relevanten Daten */
 	private WahlvergleichDaten daten;
-	
-	
+
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
 	 */
 	public WahlvergleichTableModel(WahlvergleichDaten daten) {
 		this.daten = daten;
 	}
-	
-	
+
 	@Override
 	public int getRowCount() {
 		return daten.size();
@@ -65,5 +69,4 @@ public class WahlvergleichTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
 	}
-
 }

@@ -10,7 +10,11 @@ import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 
 /**
- * Diese Klasse repräsentiert die Listenansicht des Kartenfensters.
+ * Diese Klasse repräsentiert die Listenansicht des Kartenfensters. In ihr wird
+ * eine Verzeichnisstruktur angelegt die Deutschland, alle Bundesländer und alle
+ * Wahlkreise enthält.
+ * 
+ * @author Anton
  * 
  */
 public class Listenansicht extends JScrollPane implements TreeSelectionListener {

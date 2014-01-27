@@ -8,6 +8,8 @@ import main.java.model.Deutschland;
  * Diese Klasse repräsentiert den Baum der im Kartenfenster in Form einer Liste
  * angezeigt wird.
  * 
+ * @author Anton
+ * 
  */
 public class DeutschlandTree extends JTree {
 

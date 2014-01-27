@@ -4,18 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
-import java.awt.Rectangle;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -35,22 +33,32 @@ import main.java.model.Wahlkreis;
 public class WahlkreisDiagramm {
 
 	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final JPanel flaeche;
+	private final DiagrammFenster flaeche;
 
 	/**
-	 * Der Konstruktor erstellt das Diagramm.
+	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
+	 * createChart(Wahlkreis) und fügt es hinzu.
 	 * 
 	 * @param wk
 	 *            Wahlkreis
 	 */
-	public WahlkreisDiagramm(Wahlkreis wk, JPanel flaeche) {
+	public WahlkreisDiagramm(Wahlkreis wk, DiagrammFenster flaeche) {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(wk);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.addComponentListener(new ComponentAdapter() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+			}
+
+		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
-
+	
 	/**
 	 * Diese Mehthode wird vom Konstruktor verwendet, um das Diagramm zu
 	 * erstellen.
@@ -101,5 +109,15 @@ public class WahlkreisDiagramm {
 		plot.setForegroundAlpha(1.0f);
 
 		return chart;
+	}
+
+	/**
+	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
+	 * das Diagramm befindet, aus.
+	 * 
+	 * @return Dimension
+	 */
+	public Dimension resize() {
+		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
 	}
 }

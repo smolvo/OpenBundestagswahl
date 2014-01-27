@@ -4,19 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
-import java.awt.Rectangle;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.SymbolAxis;
-import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -35,27 +32,36 @@ import main.java.model.Zweitstimme;
  */
 public class LandDiagramm {
 
-	private static final long serialVersionUID = 5982851750497212488L;
-
 	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final JPanel flaeche;
+	private final DiagrammFenster flaeche;
 
 	/**
-	 * Der Konstruktor erstellt das Diagramm.
+	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
+	 * createChart(Bundesland) und fügt es hinzu.
 	 * 
 	 * @param bundLand
 	 *            Bundesland
 	 */
-	public LandDiagramm(Bundesland bundLand, JPanel flaeche) {
+	public LandDiagramm(Bundesland bundLand, DiagrammFenster flaeche) {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(bundLand);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.addComponentListener(new ComponentAdapter() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+			}
+
+		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.CENTER);
 	}
 
 	/**
-	 * Diese Methode erstellt das Diagramm.
+	 * Diese private Methode wird vom Konstruktor verwendet und erstellt das
+	 * Diagramm.
 	 * 
 	 * @param bundLand
 	 *            Bundesland
@@ -73,7 +79,7 @@ public class LandDiagramm {
 			parteien.add(zw.get(i).getPartei());
 			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
 		}
-//		Collections.sort(parteien);
+		// Collections.sort(parteien);
 		double sonstige = 0;
 		for (int i = 6; i < zw.size(); i++) {
 			sonstige += (Math
@@ -83,14 +89,15 @@ public class LandDiagramm {
 		result.setValue(sonstige, " ", "Sonstige");
 
 		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
-				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false, false, false);
+				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false,
+				false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
-        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setRange(new Range(0, 60));
-        plot.setRangeAxis(rangeAxis);
-        
+		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		rangeAxis.setRange(new Range(0, 75));
+		plot.setRangeAxis(rangeAxis);
+
 		// färben der Parteienbalken
 		Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
@@ -102,5 +109,15 @@ public class LandDiagramm {
 		plot.setForegroundAlpha(1.0f);
 
 		return chart;
+	}
+
+	/**
+	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
+	 * das Diagramm befindet, aus.
+	 * 
+	 * @return Dimension
+	 */
+	public Dimension resize() {
+		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
 	}
 }

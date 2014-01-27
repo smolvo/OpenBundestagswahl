@@ -3,19 +3,13 @@ package main.java.gui.ansicht.diagrammfenster;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.swing.JPanel;
 
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
@@ -43,7 +37,8 @@ public class BundDiagramm {
 	private final DiagrammFenster flaeche;
 
 	/**
-	 * Konstruktor erstellt ein Diagramm und fügt es hinzu.
+	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
+	 * createChart(Deutschland) und fügt es hinzu.
 	 * 
 	 * @param land
 	 *            Deutschland
@@ -54,15 +49,14 @@ public class BundDiagramm {
 		this.flaeche = flaeche;
 		JFreeChart chart = createChart(land);
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.setBackground(Color.WHITE);
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
-			}			
-			
+			}
+
 		});
 		listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
@@ -71,10 +65,14 @@ public class BundDiagramm {
 
 	/**
 	 * Diese Methode setzt einen Listener zu einem ChartPanel.
-	 * @param chartPanel ChartPanel
-	 * @param flaeche die Fläche unter dem ChartPanel
+	 * 
+	 * @param chartPanel
+	 *            ChartPanel
+	 * @param flaeche
+	 *            die Fläche unter dem ChartPanel
 	 */
-	private void listenerSetzen(ChartPanel chartPanel, final DiagrammFenster flaeche) {
+	private void listenerSetzen(ChartPanel chartPanel,
+			final DiagrammFenster flaeche) {
 		chartPanel.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -84,10 +82,10 @@ public class BundDiagramm {
 			}
 		});
 	}
-	
+
 	/**
-	 * Diese Methode erstellt ein Kuchendiagramm zur Sitzverteilung im
-	 * Bundestag.
+	 * Diese private Methode wird vom Konstruktor verwendet und erstellt ein
+	 * Kuchendiagramm zur Sitzverteilung im Bundestag.
 	 * 
 	 * @param land
 	 *            Deutschland
@@ -129,7 +127,13 @@ public class BundDiagramm {
 		plot.setForegroundAlpha(1.0f);
 		return chart;
 	}
-	
+
+	/**
+	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
+	 * das Diagramm befindet, aus.
+	 * 
+	 * @return Dimension
+	 */
 	public Dimension resize() {
 		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
 	}

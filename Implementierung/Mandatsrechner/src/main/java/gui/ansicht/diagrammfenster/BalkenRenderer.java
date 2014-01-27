@@ -1,37 +1,42 @@
 package main.java.gui.ansicht.diagrammfenster;
 
 import java.awt.Paint;
-import java.util.LinkedList;
 
 import org.jfree.chart.renderer.category.BarRenderer;
 
 /**
-     * A custom renderer that returns a different color for each item in a single series.
-     */
-    public class BalkenRenderer extends BarRenderer {
+ * Diese Klasse hilft die Farben der Balkendiagramme festzulegen.
+ * 
+ * @author Anton
+ * 
+ */
+public class BalkenRenderer extends BarRenderer {
 
-            /** The colors. */
-            private Paint[] colors;
+	/** repräsentiert die Farben */
+	private Paint[] farben;
 
-            /**
-             * Creates a new renderer.
-             *
-             * @param colors  the colors.
-             */
-            public BalkenRenderer(final Paint[] colors) {
-                this.colors = colors;
-            }
+	/**
+	 * Der Konstruktor legt die Farben fest.
+	 * 
+	 * @param farben
+	 *            Farben
+	 */
+	public BalkenRenderer(final Paint[] farben) {
+		this.farben = farben;
+	}
 
-            /**
-             * Returns the paint for an item.  Overrides the default behaviour inherited from
-             * AbstractSeriesRenderer.
-             *
-             * @param row  the series.
-             * @param column  the category.
-             *
-             * @return The item color.
-             */
-            public Paint getItemPaint(final int row, final int column) {
-                return this.colors[column % this.colors.length];
-            }
-    }
+	/**
+	 * Diese Methode legt die Farben der Farben fest. Überschreibt das Verhalten
+	 * des AbstractSeriesRenderer.
+	 * 
+	 * @param zeile
+	 *            Zeile
+	 * @param spalte
+	 *            Balken
+	 * 
+	 * @return Farbe
+	 */
+	public Paint getItemPaint(final int zeile, final int spalte) {
+		return this.farben[spalte % this.farben.length];
+	}
+}
