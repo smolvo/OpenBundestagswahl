@@ -135,6 +135,7 @@ public class GeneratorFenster extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (ueberpruefeParteien()) {
+					generiere.setEnabled(false);
 					Partei[] parteien = panesToParteien();
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
@@ -143,7 +144,7 @@ public class GeneratorFenster extends JFrame {
 					WahlFenster neuesFenster = new WahlFenster(btw);
 					pf.getWahlen().add(neuesFenster);
 					pf.getTabs().neuerTab(neuesFenster, ausgesuchteWahl.getName());
-					
+					generiere.setEnabled(true);					
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
 							"Es dürfen keine Parteien doppelt vorkommen.",

@@ -37,7 +37,7 @@ public class Mandatsrechner2009 {
 	 * Fuehrt eine Initialisierung der Mandate durch.
 	 * @param bundestagswahl
 	 */
-	protected void initialisiere(Bundestagswahl bundestagswahl){
+	public void initialisiere(Bundestagswahl bundestagswahl){
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
 				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck

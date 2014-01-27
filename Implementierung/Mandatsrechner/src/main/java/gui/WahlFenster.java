@@ -55,7 +55,6 @@ public class WahlFenster extends JPanel {
 		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland(), this);
 		setLayout(new BorderLayout());
 		this.add(aktuelleAnsicht, BorderLayout.CENTER);
-		Steuerung.getInstance().berechneSitzverteilung();
 	}
 
 	/**

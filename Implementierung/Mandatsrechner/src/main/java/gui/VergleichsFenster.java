@@ -44,6 +44,7 @@ public class VergleichsFenster extends JFrame {
 		this.setSize(1024, 768);
 		this.setTitle("Vergleich");
 		zeigeVergleich(vergleich);
+		erstelleDiagramme(vergleich);
 		this.pack();
 	}
 
@@ -85,6 +86,12 @@ public class VergleichsFenster extends JFrame {
 		JPanel flaeche = new JPanel();
 		flaeche.add(skrollFenster);
 		add(skrollFenster, gbc);
+	}
+	
+	/**
+	 * Diese Methode wird vom Konstruktor verwendet, um die Diagramme zu erstellen.
+	 */
+	private void erstelleDiagramme(Wahlvergleich vergleich) {
 
 		// Diagramm der ersten Bundestagswahl
 		DiagrammFenster diagramm1 = new DiagrammFenster(null);
@@ -109,7 +116,7 @@ public class VergleichsFenster extends JFrame {
 		gbc.gridwidth = 1;
 		gbc.gridx = 2;
 		gbc.gridy = 2;
-		add(diagramm2, gbc);
+		add(diagramm2, gbc);		
 	}
 
 	/**
