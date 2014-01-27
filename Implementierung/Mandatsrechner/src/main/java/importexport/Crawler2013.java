@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 import test.java.Debug;
 
+import main.config.Config;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
@@ -499,7 +500,8 @@ public class Crawler2013 extends Crawler {
 	 */
 	private int getEinwohnerzahl(String name) {
 		int anzahl = 0;
-		switch (name) {
+		
+		/*switch (name) {
 		case "Baden-Württemberg":
 			anzahl = 9482902;//9483500;
 			break;
@@ -550,6 +552,23 @@ public class Crawler2013 extends Crawler {
 			break;
 		default:
 			anzahl = 0;
+		}*/
+		List<String[]> einwohnerzahlen = Config.getConfig("einwohnerzahl");
+		boolean found = false;
+		for (String[] blEinwohner : einwohnerzahlen) {
+			if(blEinwohner[0].equals(name)) {
+				try{
+					anzahl = Integer.parseInt(blEinwohner[1]);
+				} catch (Exception e) {
+					e.printStackTrace();
+					anzahl = 0;
+				}
+				found = true;
+				break;
+			}
+		}
+		if(!found){
+			anzahl = 0;
 		}
 		return anzahl;
 	}
@@ -565,7 +584,7 @@ public class Crawler2013 extends Crawler {
 	private Color getParteiFarbe(String parteiName) {
 		Color color = Color.GRAY;
 		//String parteiname = partei.getName();
-		switch (parteiName) {
+		/*switch (parteiName) {
 		case "SPD":
 			color = color.RED;
 			break;
@@ -588,6 +607,21 @@ public class Crawler2013 extends Crawler {
 		default:
 			color = color.GRAY;
 
+		}*/
+		List<String[]> farben = Config.getConfig("farben_parteien");
+		for (String[] farbe : farben) {
+			if (farbe[0].equals(parteiName)) {
+				try {
+					int red = Integer.parseInt(farbe[1]);
+					int green = Integer.parseInt(farbe[2]);
+					int blue = Integer.parseInt(farbe[3]);
+					color = new Color(red,green,blue);
+				} catch (Exception e) {
+					e.printStackTrace();
+					color = Color.GRAY;
+				}
+				break;
+			}
 		}
 		return color;
 

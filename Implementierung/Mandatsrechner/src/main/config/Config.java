@@ -13,6 +13,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+/**
+ * Speichert Daten ueber Sessions hinweg.
+ * Falls nur einfache Daten (z.B. ein String) gespeichert
+ * werden sollen, so kann die Funktion getConfigField und
+ * setConfigField verwendet werden.
+ * @author 13genesis37
+ *
+ */
 public class Config {
 
 	private String configPath = "src/main/resources/config.csv";
@@ -24,9 +32,20 @@ public class Config {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Config c = Config.getInstance();
-		c.debugConfig();
-		try {
+		//c.debugConfig();
+		/*try {
+		
 			c.exportConfig();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		System.out.println(c.getConfigField("test"));
+		try {
+			c.setConfigField("hallo", "test");
+			c.exportConfig();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,6 +104,18 @@ public class Config {
 		return Config.getInstance().data.get(key);
 	}
 	
+	public static String getConfigField(String key){
+		List<String[]> list = Config.getConfig(null);
+		String value = "";
+		for (String[] field : list) {
+			if(field[0].equals(key)) {
+				value = field[1];
+				break;
+			}
+		}
+		return value;
+	}
+	
 	/**
 	 * Setzt eine Einstellung in der Config.
 	 * Falls key null ist, wird der standartwert genommen,
@@ -105,6 +136,23 @@ public class Config {
 		config.exportConfig();
 	}
 	
+	public static void setConfigField(String key, String value) throws Exception{
+		Config config = Config.getInstance();
+		List<String[]> list = config.getConfig(null);
+		boolean found = false;
+		for (String[] field : list) {
+			if(field[0].equals(key)) {
+				found = true;
+				field[1] = value;
+				break;
+			}
+		}
+		if(!found){
+			list.add(new String[]{key, value});
+		}
+		config.exportConfig();
+	}
+	
 	/**
 	 * Importiert die Config Datei.
 	 * @throws Exception
@@ -119,7 +167,7 @@ public class Config {
 		//int headSize = 0;
 		//String curHead = "";
 		for (int i = 0; i < lines.size(); i++) {
-			System.err.println("Line "+i);
+			//System.err.println("Line "+i);
 			if(lines.get(i).length == 1 ){
 				if(lines.get(i)[0]=="") {
 					continue;
@@ -127,14 +175,17 @@ public class Config {
 					//this.data.put(this.getField(lines.get(i)[0]), null);
 					//curHead = lines.get(i)[0];
 					
-					System.out.println(lines.get(i)[0]);
+					//System.out.println(lines.get(i)[0]);
 					List<String[]> dataContent = new ArrayList<String[]>();
 					//int headSize = lines.get(++i).length;
 					int j = i;
 					j++; // Überspringe die Kopfzeile (Namen der Zellen);
 					while (lines.get(j)[0]!="") {
 						j++;
-						System.out.println(lines.get(j)[0]+" "+lines.get(j)[1]);
+						//System.out.println(j);
+						if(lines.size() <= j){
+							break;
+						}
 						if(lines.get(j)!=null){
 							dataContent.add(lines.get(j));
 						}
