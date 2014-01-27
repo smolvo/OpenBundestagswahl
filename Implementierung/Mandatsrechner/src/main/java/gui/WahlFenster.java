@@ -49,6 +49,7 @@ public class WahlFenster extends JPanel {
 	 */
 	public WahlFenster(Bundestagswahl btw) {
 		this.btw = btw;
+		Steuerung.getInstance().berechneSitzverteilung();
 		this.name = btw.getName();
 		this.steuerung = new GUISteuerung(btw, this);
 		this.aktuelleAnsicht = new Ansicht(btw.getDeutschland(), this);
