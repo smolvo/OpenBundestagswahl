@@ -1,17 +1,33 @@
-Einwohnerzahl Bundesländer	
-Baden-Württemberg	9482902
-Bayern	11353264
-Berlin	3025288
-Brandenburg	2418267
-Bremen	575805
-Hamburg	1559655
-Hessen	5388350
-Mecklenburg-Vorpommern	1585032
-Niedersachsen	7354892
-Nordrhein-Westfalen	15895182
-Rheinland-Pfalz	3672888
-Saarland	919402
-Sachsen	4005278
-Sachsen-Anhalt	2247673
-Schleswig-Holstein	2686085
-Thüringen	2154202
+einwohnerzahl			
+Name	Anzahl		
+Baden-Württemberg	9482902		
+Bayern	11353264		
+Berlin	3025288		
+Brandenburg	2418267		
+Bremen	575805		
+Hamburg	1559655		
+Hessen	5388350		
+Mecklenburg-Vorpommern	1585032		
+Niedersachsen	7354892		
+Nordrhein-Westfalen	15895182		
+Rheinland-Pfalz	3672888		
+Saarland	919402		
+Sachsen	4005278		
+Sachsen-Anhalt	2247673		
+Schleswig-Holstein	2686085		
+Thüringen	2154202		
+			
+farben_parteien			
+Name	Rot	Grün	Blau
+SPD	226	0	25
+CDU	0	0	0
+CSU	0	0	0
+FDP	255	255	0
+DIE LINKE	220	0	0
+GRÜNE	70	187	0
+PIRATEN	255	128	0
+default	192	192	192
+			
+sonstige			
+Feld	Inhalt		
+test	123		
