@@ -54,4 +54,9 @@ public class RelevanteZweitstimmen extends  Stimme implements Serializable {
 		
 	}
 
+	@Override
+	public Stimme deepCopy() {
+		throw new IllegalAccessError("Nicht implementiert!");
+	}
+
 }

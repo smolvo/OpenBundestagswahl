@@ -2,7 +2,6 @@ package main.java.model;
 
 import java.awt.Color;
 import java.io.Serializable;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 

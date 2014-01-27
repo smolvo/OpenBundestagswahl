@@ -17,7 +17,6 @@ import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
-import main.java.model.Zweitstimme;
 
 /**
  * Diese Klasse soll in der Lage sein, zu einer von NegStimmgewichtWahlgenerator
@@ -57,9 +56,9 @@ public class StimmgewichtSimulator {
 	 */
 	private Random rand;
 
-	private Wahlkreis letzterWK;
+	//private Wahlkreis letzterWK;
 
-	private Partei letztePartei;
+	//private Partei letztePartei;
 
 	/*
 	 * Bei mindestens einer Partei muss der prozentuale Anteil ihrer relevanten
@@ -219,7 +218,7 @@ public class StimmgewichtSimulator {
 		Debug.setAktiv(true);
 		Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
 
-		letzterWK = wk;
+		//letzterWK = wk;
 
 	}
 
@@ -252,7 +251,7 @@ public class StimmgewichtSimulator {
 		Debug.setAktiv(true);
 		Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
 
-		letzterWK = wk;
+		//letzterWK = wk;
 
 	}
 	/**

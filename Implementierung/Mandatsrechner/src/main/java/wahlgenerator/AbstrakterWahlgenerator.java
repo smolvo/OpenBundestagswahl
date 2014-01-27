@@ -2,7 +2,6 @@ package main.java.wahlgenerator;
 
 import java.util.List;
 
-import test.java.Debug;
 import main.java.model.Bundestagswahl;
 
 /** 

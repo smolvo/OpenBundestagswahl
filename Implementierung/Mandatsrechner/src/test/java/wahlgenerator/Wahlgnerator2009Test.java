@@ -25,7 +25,7 @@ public class Wahlgnerator2009Test {
 		
 		
 		if (bundestagswahl != null) {
-			Bundestagswahl newW = rechner2009.berechneSaintLague(bundestagswahl);
+			Bundestagswahl newW = rechner2009.berechneSainteLague(bundestagswahl);
 			Bundestagswahl newnewW = rechner2009.berechneHondt(bundestagswahl);
 			//newW = m.berechneAlles(newW);
 		}

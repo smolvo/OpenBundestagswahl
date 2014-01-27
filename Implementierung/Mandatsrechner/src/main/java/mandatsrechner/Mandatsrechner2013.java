@@ -4,13 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import test.java.Debug;
-import main.java.model.BerichtDaten;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
 import main.java.model.Partei;
-import main.java.model.Sitzverteilung;
 
 /**
  * Mandatsrechner mit dem Verteilungsverfahren von SainteLague/Schepers. Diese
@@ -169,14 +167,14 @@ public class Mandatsrechner2013 {
 		 * Landeslisten dieser Partei im Verh�ltnis der Zweitstimmen verteilt.
 		 */
 		float parteidivisor = this.berechneParteidivisor(relevanteParteien);
-		boolean isCorrect = false;
+		//boolean isCorrect = false;
 		for (Partei partei : relevanteParteien) {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); //partei.getMindestsitzAnzahl();
 			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getMindestsitzAnzahl());
 			if (diffSitze > 0) {
-				isCorrect = false;
+				//isCorrect = false;
 				float multiplikator = 0.1f;
 				int sitzeBundesland = 0;
 				while (sitzeBundesland != neueSitzanzahl) {

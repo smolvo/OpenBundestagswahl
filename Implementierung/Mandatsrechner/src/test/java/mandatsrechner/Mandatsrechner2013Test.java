@@ -5,7 +5,6 @@ import java.io.File;
 import test.java.Debug;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
-import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Mandat;
 import main.java.model.Partei;
