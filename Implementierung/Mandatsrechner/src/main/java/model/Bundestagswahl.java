@@ -276,6 +276,10 @@ public class Bundestagswahl implements Serializable {
 		return success;
 	}
 
+	public boolean zurueckSetzen () {
+		Stimme alteStimme = this.chronik.restauriereStimme();
+		return this.setzeStimme(alteStimme);
+	}
 	@Override
 	public String toString() {
 		return this.name;

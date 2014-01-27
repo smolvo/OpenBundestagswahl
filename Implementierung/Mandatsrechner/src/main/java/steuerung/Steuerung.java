@@ -125,12 +125,7 @@ public class Steuerung {
 	 * @return true false
 	 */
 	public boolean zurueckSetzen() {
-		Bundestagswahl alteBTW = btw.getAlteBTW();
-		if (alteBTW != null) {
-			this.btw = alteBTW;
-			return true;
-		}
-		return false;
+		return this.btw.zurueckSetzen();
 	}
 
 	/**
