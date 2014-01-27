@@ -3,12 +3,14 @@ package main.java.model;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import test.java.Debug;
 import main.java.wahlgenerator.RelevanteZweitstimmen;
 
 /**
@@ -50,7 +52,68 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private RelevanteZweitstimmen relevanteZweitstimmen;
 
 	private HashMap<Bundesland, Integer> mindestSitzanzahl = new HashMap<Bundesland, Integer>();
-
+	
+	/**
+	 * Comparator zum sortieren von Parteien nach der Anzahl der Überhangsmandate.
+	 */
+	public static final Comparator<Partei> NACH_UEBERHANGMANDATEN = new Comparator<Partei>() {
+		
+		@Override
+		public int compare(Partei part1, Partei part2) {
+			
+			if (part1 == null || part2 == null) {
+				throw new IllegalArgumentException("Einer der Partei-Parameter ist null!");
+			}
+			
+			int part1UeMand = part1.getAnzahlMandate(Mandat.UEBERHANGMADAT);
+			int part2UeMand = part2.getAnzahlMandate(Mandat.UEBERHANGMADAT);
+			
+			Debug.print(part1.getName() + " " + part1UeMand);
+			Debug.print(part2.getName() + " " + part2UeMand);
+			
+			int result;
+			
+			if (part1UeMand > part2UeMand) {
+				result = 1;
+			} else if (part1UeMand < part2UeMand) {
+				result = -1;
+			} else {
+				result = 0;
+			}
+			
+			return result;
+		}
+	};
+	
+	
+	/*
+	public static final Comparator<Bundesland> BLAENDER_NACH_UEBERHANGMANDATEN = new Comparator<Bundesland>() {
+		
+		@Override
+		public int compare(Bundesland land1, Bundesland land2) {
+			
+			if (land1 == null || land2 == null) {
+				throw new IllegalArgumentException("Einer der Bundesland-Parameter ist null!");
+			}
+			
+			int land1UeMand = land1.getLandesliste(Partei.).getKandidaten(Mandat.UEBERHANGMADAT).size();
+			int land2UeMand = land2.getLandesliste(Partei.this).getKandidaten(Mandat.UEBERHANGMADAT).size();
+			
+			int result;
+			
+			if (land1UeMand > land2UeMand) {
+				result = 1;
+			} else if (land1UeMand < land2UeMand) {
+				result = -1;
+			} else {
+				result = 0;
+			}
+			
+			return result;
+		}
+	};
+	*/
+	
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
 	 * hier erzeugt aber nicht befï¿½llt.
@@ -521,7 +584,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahlMandate;
 	}
-
+	
 	/**
 	 * Gibt die Summe der Mindestsitze aller Bundeslaender von einer Partei
 	 * zurueck.
@@ -539,6 +602,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
+
 	
 	@Override
 	public String toString() {

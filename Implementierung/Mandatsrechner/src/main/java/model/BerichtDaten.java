@@ -1,8 +1,12 @@
 package main.java.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class BerichtDaten {
+public class BerichtDaten implements Serializable {
+
+	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */
+	private static final long serialVersionUID = -8855434025330264096L;
 
 	/** repräsentiert den Namen des Politikers */
 	private LinkedList<String> name;

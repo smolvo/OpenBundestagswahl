@@ -34,32 +34,32 @@ public class StimmgewichtSimulatorTest {
 	private Mandatsrechner2009 rechner09 = null;
 	private Mandatsrechner2013 rechner13 = null;
 
-	private Bundestagswahl w = null;
-	private Bundestagswahl w2 = null;
+	private Bundestagswahl wahl1 = null;
+	private Bundestagswahl wahl2 = null;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		Debug.setAktiv(true);
+		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("files/Ergebnis2013.csv");
-		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
-
+		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
+		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
+		wahl1 = null;
 		try {
-			this.w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			wahl1 = i.importieren(csvDateien);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println("Leine gültige CSV-Datei :/");
 		}
 
 		this.rechner09 = Mandatsrechner2009.getInstance();
 		this.rechner13 = Mandatsrechner2013.getInstance();
 
-		rechner09.berechneAlles(w);
-
-		this.simu = new StimmgewichtSimulator(w);
+		this.simu = new StimmgewichtSimulator(wahl1);
 		
 	}
 
@@ -114,36 +114,36 @@ public class StimmgewichtSimulatorTest {
 
 	public void rechnerTest() {
 
-		rechner09.berechneAlles(w);
+		rechner09.berechneSainteLague(wahl1);
 		System.out.println("Mandatsrechner2009 Ergebnisse");
 		System.out.println("1. Gesamtanzahl Sitze : "
-				+ w.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneAlles(w);
+				+ wahl1.getSitzverteilung().getAbgeordnete().size());
+		rechner09.berechneSainteLague(wahl1);
 		System.out.println("2. Gesamtanzahl Sitze : "
-				+ w.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneAlles(w);
+				+ wahl1.getSitzverteilung().getAbgeordnete().size());
+		rechner09.berechneSainteLague(wahl1);
 		System.out.println("3. Gesamtanzahl Sitze : "
-				+ w.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneAlles(w);
+				+ wahl1.getSitzverteilung().getAbgeordnete().size());
+		rechner09.berechneSainteLague(wahl1);
 		System.out.println("4. Gesamtanzahl Sitze : "
-				+ w.getSitzverteilung().getAbgeordnete().size());
+				+ wahl1.getSitzverteilung().getAbgeordnete().size());
 
-		rechner13.berechneAlles(w2);
+		rechner13.berechneAlles(wahl2);
 		System.out.println("Mandatsrechner2013 Ergebnisse");
 		System.out.println("1. Gesamtanzahl Sitze : "
-				+ w2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(w2);
+				+ wahl2.getSitzverteilung().getAbgeordnete().size());
+		rechner13.berechneAlles(wahl2);
 		System.out.println("2. Gesamtanzahl Sitze : "
-				+ w2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(w2);
+				+ wahl2.getSitzverteilung().getAbgeordnete().size());
+		rechner13.berechneAlles(wahl2);
 		System.out.println("3. Gesamtanzahl Sitze : "
-				+ w2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(w2);
+				+ wahl2.getSitzverteilung().getAbgeordnete().size());
+		rechner13.berechneAlles(wahl2);
 		System.out.println("4. Gesamtanzahl Sitze : "
-				+ w2.getSitzverteilung().getAbgeordnete().size());
+				+ wahl2.getSitzverteilung().getAbgeordnete().size());
 	}
 
-	@Test
+	//@Test
 	public void simonTest() {
 		Debug.setAktiv(true);
 		Partei p = simu.getVerwandteWahl().getParteien().get(0);
@@ -155,4 +155,11 @@ public class StimmgewichtSimulatorTest {
 		}
 	}
 
+	
+	@Test
+	public void simonTest2() {
+		Debug.setAktiv(true);
+		
+		assertTrue(simu.berechneNegStimmgewicht());
+	}
 }

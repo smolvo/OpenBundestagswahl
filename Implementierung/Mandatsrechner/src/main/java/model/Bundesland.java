@@ -2,6 +2,7 @@ package main.java.model;
 
 import java.awt.Color;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,10 +13,7 @@ import java.util.List;
 public class Bundesland extends Gebiet implements Serializable,
 		Comparable<Bundesland> {
 
-	/**
-	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
-	 * verwendet wird.
-	 */
+	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */
 	private static final long serialVersionUID = 1614716230171638779L;
 
 	/** Einwohnerzahl des Bundeslandes. */
@@ -33,6 +31,9 @@ public class Bundesland extends Gebiet implements Serializable,
 	/** Liste mit den Landeslisten des Bundeslandes. */
 	private List<Landesliste> landesliste = new LinkedList<Landesliste>();
 
+
+	
+	
 	/**
 	 * Parametrisierter Konstruktor fuer Bundeslaender. Listen werden seperat
 	 * hinzugefuegt.
