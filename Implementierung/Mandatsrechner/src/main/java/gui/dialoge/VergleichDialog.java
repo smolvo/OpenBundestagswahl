@@ -46,9 +46,11 @@ public class VergleichDialog {
 		} else {
 			JFrame wahlAussuche = new JFrame();
 			wahlAussuche.setSize(200, 150);
-			wahlAussuche.setLayout(new BorderLayout());
+			wahlAussuche.setLayout(null);
 			JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
+			text.setBounds(5, 5, 190, 40);
 			JComboBox<WahlFenster> box = erstelleBox(tabs);
+			box.setBounds(5, 65, 190, 80);
 			box.addActionListener(new ActionListener(){
 
 				@Override
@@ -59,8 +61,8 @@ public class VergleichDialog {
 				}
 				
 			});
-			wahlAussuche.add(text, BorderLayout.PAGE_START);
-			wahlAussuche.add(box, BorderLayout.CENTER);
+			wahlAussuche.add(text);
+			wahlAussuche.add(box);
 			wahlAussuche.setVisible(true);
 		}
 	}
