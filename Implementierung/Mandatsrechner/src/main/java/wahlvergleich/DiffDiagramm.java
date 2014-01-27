@@ -79,6 +79,6 @@ public class DiffDiagramm extends JPanel {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(), this.getHeight());
+		return new Dimension(this.getWidth(), (int) (0.6 * this.getWidth()));
 	}
 }

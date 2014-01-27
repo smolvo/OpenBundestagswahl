@@ -2,7 +2,6 @@ package main.java.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -45,6 +44,7 @@ public class VergleichsFenster extends JFrame {
 		this.setSize(1024, 768);
 		this.setTitle("Vergleich");
 		zeigeVergleich(vergleich);
+		this.pack();
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class VergleichsFenster extends JFrame {
 		JTable jTabelle = new JTable(tabelle);
 		JScrollPane skrollFenster = new JScrollPane(jTabelle);
 		this.gbc = new GridBagConstraints();
-		this.gbc.anchor = GridBagConstraints.EAST;
+		this.gbc.anchor = GridBagConstraints.CENTER;
 		this.gbc.fill = GridBagConstraints.BOTH;
 
 		// Überschriften der Wahlen
@@ -95,25 +95,21 @@ public class VergleichsFenster extends JFrame {
 		gbc.gridy = 2;
 		add(diagramm1, gbc);
 
-		// Diagramm der zweiten Bundestagswahl
-
+		// Diagramm der Differenzen
 		DiffDiagramm diagramm3 = new DiffDiagramm(holeDifferenzen(
 				vergleich.getBtw1(), vergleich.getBtw2()));
-		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
 		gbc.gridx = 1;
 		gbc.gridy = 2;
 		add(diagramm3, gbc);
 
 		// Diagramm der zweiten Bundestagswahl
 		DiagrammFenster diagramm2 = new DiagrammFenster(null);
-		diagramm2.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
+		diagramm2.erstelleDiagramm(vergleich.getBtw2().getDeutschland());
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
 		gbc.gridx = 2;
 		gbc.gridy = 2;
 		add(diagramm2, gbc);
-
 	}
 
 	/**

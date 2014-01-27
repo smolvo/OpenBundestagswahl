@@ -118,6 +118,6 @@ public class LandDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
+		return new Dimension(this.flaeche.getWidth(), (int) (0.6 * this.flaeche.getWidth()));
 	}
 }

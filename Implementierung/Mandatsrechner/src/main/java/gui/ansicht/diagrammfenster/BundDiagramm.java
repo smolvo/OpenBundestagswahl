@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Kandidat;
@@ -77,8 +79,14 @@ public class BundDiagramm {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Bundestagswahl btw = flaeche.getAnsicht().getFenster().getBtw();
-				flaeche.zeigeSitzverteilung(btw);
+				try {
+					Bundestagswahl btw = flaeche.getAnsicht().getFenster().getBtw();
+					flaeche.zeigeSitzverteilung(btw);
+				} catch (NullPointerException npe) {
+		        	JOptionPane.showMessageDialog(e.getComponent(),
+							"Berichstanzeige momentan nicht möglich.", "Meldung",
+							JOptionPane.INFORMATION_MESSAGE, null);
+				}
 			}
 		});
 	}
@@ -135,6 +143,6 @@ public class BundDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), this.flaeche.getHeight());
+		return new Dimension(this.flaeche.getWidth(), (int) (0.6 * this.flaeche.getWidth()));
 	}
 }
