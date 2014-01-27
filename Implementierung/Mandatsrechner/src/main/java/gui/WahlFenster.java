@@ -68,24 +68,7 @@ public class WahlFenster extends JPanel {
 		this.aktuelleAnsicht.ansichtAendern(gebiet);
 		this.add(aktuelleAnsicht);
 	}
-
-	// TODO
-	public void zurueckButton() {
-		JButton zurueck = new JButton(new ImageIcon(
-				"src/gui/resources/images/ansichtZurueck.png"));
-		zurueck.setSize(70, 50);
-
-		// Erstelle anonymen ActionListener für den Zurück- Knopf
-		ActionListener listener = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// WahlFenster.this.wechsleAnsicht(letzteAnsicht.getAktuellesGebiet());
-			}
-		};
-		zurueck.addActionListener(listener);
-
-	}
-
+	
 	/**
 	 * Gibt den Namen aus.
 	 * 
