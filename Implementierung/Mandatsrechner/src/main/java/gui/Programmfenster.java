@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -167,4 +168,16 @@ public final class Programmfenster extends JFrame {
 		}
 	}
 
+	/**
+	 * Diese Methode gibt eine Liste an Bundestagswahlen aus, die
+	 * in das Programm geladen wurden.
+	 * @return
+	 */
+	public List<Bundestagswahl> getBundestagswahlen() {
+		List<Bundestagswahl> btws = new LinkedList<Bundestagswahl>();
+		for (WahlFenster fenster : this.wahlen) {
+			btws.add(fenster.getBtw());
+		}
+		return btws;
+	}
 }

@@ -279,4 +279,8 @@ public class Bundestagswahl implements Serializable {
 		return this.chronik.restauriereBundestagswahl();
 	}
 
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }
