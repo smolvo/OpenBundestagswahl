@@ -1,8 +1,10 @@
 package main.java.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -14,9 +16,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
+import main.java.wahlgenerator.Stimmanteile;
 
 /**
  * Diese Klasse repräsentiert das GeneratorFenster. In ihr können Erst- und
@@ -42,6 +47,12 @@ public class GeneratorFenster extends JFrame {
 
 	/** Stimmenanteile */
 	private JLabel stimmenanteile;
+	
+	/** gesamte Erststimmen */
+	private JLabel gesamtErst;
+	
+	/** gesamte Zweitstimmen */
+	private JLabel gesamtZweit;
 
 	/** Combobox um die Basiswahl auszusuchen */
 	private JComboBox<Bundestagswahl> basiswahlAuswahl;
@@ -54,6 +65,12 @@ public class GeneratorFenster extends JFrame {
 
 	/** Generiere Knopf */
 	private JButton generiere;
+	
+	/** die aktuelle Anzahl der Erststimmen, die der Nutzer eingegeben hat */
+	private int gesamtErststimmen = 0;
+
+	/** die aktuelle Anzahl der Zweitstimmen, die der Nutzer eingegeben hat */
+	private int gesamtZweitstimmen = 0;
 
 	/**
 	 * Der Konstruktor legt das Layout fest und initialisiert das Fenster.
@@ -97,18 +114,27 @@ public class GeneratorFenster extends JFrame {
 
 		setPane();
 
+		this.gesamtErst = new JLabel("Erststimmen gesamt: 0" + "%");
+		this.gesamtErst.setBounds(30, 500, 160, 20);
+		this.gesamtErst.setForeground(Color.GREEN);
+		
+		this.gesamtZweit = new JLabel("Zweitstimmen gesamt: 0" + "%");
+		this.gesamtZweit.setBounds(220, 500, 170, 20);
+		this.gesamtZweit.setForeground(Color.GREEN);
+		
+
 		this.generiere = new JButton("Generiere");
-		this.generiere.setBounds(160, 510, 115, 30);
+		this.generiere.setBounds(160, 530, 115, 30);
 		this.generiere.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (ueberpruefeParteien()) {
+					Partei[] parteien = panesToParteien();
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
-					for (int i = 0; i < erst.length; i++) {
-						System.out.println(erst[i] + " " + zweit[i]);
-					}
+					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
+					
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
 							"Es dürfen keine Parteien doppelt vorkommen.",
@@ -121,6 +147,8 @@ public class GeneratorFenster extends JFrame {
 
 		this.add(basiswahl);
 		this.add(stimmenanteile);
+		this.add(gesamtErst);
+		this.add(gesamtZweit);
 		this.add(basiswahlAuswahl);
 		this.add(generiere);
 	}
@@ -144,6 +172,7 @@ public class GeneratorFenster extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				generiere.setEnabled(false);
 				zeileHinzufuegen();
 			}
 
@@ -212,6 +241,19 @@ public class GeneratorFenster extends JFrame {
 		erst.setMinorTickSpacing(10);
 		erst.setPaintLabels(true);
 		erst.setPaintTicks(true);
+		erst.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				generiere.setEnabled(false);
+				int[] erstStimmen = erstToIntegers();
+				gesamtErststimmen = stimmenGesamt(erstStimmen);
+				gesamtErst.setText("Erststimmen gesamt: " + gesamtErststimmen + "%");
+				checkStimmen();
+			}
+			
+		});
+		
 		JSlider zweit = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
 		zweit.setBounds(130, 5, 50, 20);
 		zweit.setPreferredSize(new Dimension(100, 50));
@@ -219,6 +261,19 @@ public class GeneratorFenster extends JFrame {
 		zweit.setMinorTickSpacing(10);
 		zweit.setPaintLabels(true);
 		zweit.setPaintTicks(true);
+		zweit.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				generiere.setEnabled(false);
+				int[] zweitStimmen = zweitToIntegers();
+				gesamtZweitstimmen = stimmenGesamt(zweitStimmen);
+				gesamtZweit.setText("Zweitstimmen gesamt: " + gesamtZweitstimmen + "%");
+				checkStimmen();
+			}
+			
+		});
+
 
 		subPanel.add(minus);
 		subPanel.add(box);
@@ -274,11 +329,11 @@ public class GeneratorFenster extends JFrame {
 	 * @return true, false
 	 */
 	private boolean ueberpruefeParteien() {
-		String[] parteien = scrollPaneToStrings();
+		Partei[] parteien = panesToParteien();
 		for (int i = 0; i < hauptPanel.getComponentCount() - 1; i++) {
 			for (int j = i; j < hauptPanel.getComponentCount() - 1; j++) {
 				if (i != j) {
-					if (parteien[i].equals(parteien[j])) {
+					if (parteien[i].getName().equals(parteien[j].getName())) {
 						return false;
 					}
 				}
@@ -293,16 +348,14 @@ public class GeneratorFenster extends JFrame {
 	 * 
 	 * @return Liste der Parteien
 	 */
-	private String[] scrollPaneToStrings() {
-		String[] parteien = new String[hauptPanel.getComponentCount() - 1];
+	private Partei[] panesToParteien() {
+		Partei[] parteien = new Partei[hauptPanel.getComponentCount() - 1];
 
 		for (int i = 1; i < hauptPanel.getComponentCount(); i++) {
 			JPanel panel = (JPanel) hauptPanel.getComponent(i);
 			JComboBox<String> pane = (JComboBox) panel.getComponent(1);
-			Partei partei = (Partei) pane.getSelectedItem();
-			parteien[i - 1] = partei.getName();
+			parteien[i - 1] = (Partei) pane.getSelectedItem();
 		}
-
 		return parteien;
 	}
 
@@ -338,5 +391,59 @@ public class GeneratorFenster extends JFrame {
 			zweitstimmenAnteile[i - 1] = slider.getValue();
 		}
 		return zweitstimmenAnteile;
+	}
+	
+	/**
+	 * Diese Methode wird verwendet, um ein Array aufzusummieren.
+	 * Wird verwendet, um die gesamte Anzahl Erst- und Zweitstimmen
+	 * aufzusummieren.
+	 * @param stimmen Stimmenanzahl Vektor
+	 * @return insgesamt
+	 */
+	private int stimmenGesamt(int[] stimmen) {
+		int summe = 0;
+		for (int i = 0; i < stimmen.length; i++) {
+			summe += stimmen[i];
+		}
+		return summe;
+	}
+	
+	/**
+	 * Diese Methode überprüft, ob die Gesamtanzahl Erst- oder
+	 * Zweitstimmen größer als 100 ist.
+	 */
+	private void checkStimmen() {
+		if (gesamtErststimmen <= 100 && gesamtZweitstimmen <= 100) {
+			generiere.setEnabled(true);
+		}
+		if (gesamtErststimmen > 100) {
+			gesamtErst.setForeground(Color.RED);
+		}
+		if (gesamtZweitstimmen > 100) {
+			gesamtZweit.setForeground(Color.RED);
+		}
+		if (gesamtErststimmen <= 100) {
+			gesamtErst.setForeground(Color.GREEN);
+		}
+		if (gesamtZweitstimmen <= 100) {
+			gesamtZweit.setForeground(Color.GREEN);
+		}
+	}
+	
+	/**
+	 * Erstellt eine Liste mit Stimmanteilen aus einem Vektor von Parteien,
+	 * einem Vektor von Erst- und einem Vektor vo Zweitstimmen.
+	 * @param parteien Parteien
+	 * @param erst Erststimmen
+	 * @param zweit Zweitstimmen
+	 * @return Liste Anteile
+	 */
+	private LinkedList<Stimmanteile> erstelleStimmanteile(Partei[] parteien, int[] erst, int[] zweit) {
+		LinkedList<Stimmanteile> anteile = new LinkedList<Stimmanteile>();
+		for (int i = 0; i < anteile.size(); i++) {
+			Stimmanteile anteil = new Stimmanteile(parteien[i], erst[i], zweit[i]);
+			anteile.add(anteil);
+		}
+		return anteile;
 	}
 }
