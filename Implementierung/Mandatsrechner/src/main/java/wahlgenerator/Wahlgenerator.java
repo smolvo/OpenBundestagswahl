@@ -2,25 +2,21 @@ package main.java.wahlgenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import test.java.Debug;
-import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2009;
-import main.java.model.BerichtDaten;
 import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
 import main.java.model.Partei;
-import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
 /**
- * 
+ * Diese Klasse dient zum gernerieren von Bundestagswahlen.
  */
 public class Wahlgenerator extends AbstrakterWahlgenerator {
 
@@ -89,6 +85,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		return clone;
 	}
 	
+	/**
+	 * Verteilt die übrigen Anteile der Erst- und Zweitstimmen auf zufällige Parteien.
+	 */
 	private void verteileRestAnteile() {
 		
 		int sumErstAnteil = 0;
@@ -136,6 +135,11 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		Debug.print("fertig...");
 	}
 	
+	/**
+	 * Verteilt die Stimmen der Parteien für diejenigen Stimmanteile angegeben sind 
+	 * auf zufällige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien bleiben dabei erhalten.
+	 * Bundesland- und Wahlkreisweit werden die Stimmen zufällig verteilt. 
+	 */
 	@Override
 	public void verteileStimmen(Bundestagswahl btw) {
 		
@@ -267,7 +271,15 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 	}
 	
+	/**
+	 * Prüft ob für die gegebene Partei Stimmanteile gegeben sind.
+	 * @param partei Die Partei für diejenige geprüft werden soll ob Stimmanteile gegeben sind.
+	 * @return Ob für die gegebene Partei Stimmanteile gegeben sind.
+	 */
 	private boolean hatParteiStimmanteile(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			if (sa.getPartei().equals(partei)) {
 				return true;
@@ -276,6 +288,10 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		return false;
 	}
 	
+	/**
+	 * Gibt eine Liste aller Parteien zurück, für diejenigen keine
+	 * @return
+	 */
 	private ArrayList<Partei> getParteienOhneAnteile() {
 		ArrayList<Partei> parteien = new ArrayList<>();
 		for (Partei partei : this.getBasisWahl().getParteien()) {

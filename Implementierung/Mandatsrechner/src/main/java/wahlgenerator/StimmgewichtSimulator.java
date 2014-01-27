@@ -130,8 +130,8 @@ public class StimmgewichtSimulator {
 				//if (!bundesland.getName().equals("Brandenburg")) {
 				//	continue;
 				//}
-				int begrenzung = (int) (bundesland
-						.getAnzahlZweitstimmen(partei) * 1.2);
+				//int begrenzung = (int) (bundesland.getAnzahlZweitstimmen(partei) * 1.2);
+				int begrenzung = (int) (bundesland.getAnzahlZweitstimmen() * 1.2);
 				try {
 					kopie1 = ausgangsWahl.deepCopy();
 					kopie2 = ausgangsWahl.deepCopy();
@@ -140,7 +140,8 @@ public class StimmgewichtSimulator {
 					e1.printStackTrace();
 				}
 
-				while (bundesland.getAnzahlZweitstimmen(partei) < begrenzung) {
+				//while (bundesland.getAnzahlZweitstimmen(partei) < begrenzung) {
+				while (bundesland.getAnzahlZweitstimmen() < begrenzung) {
 
 					this.erhoeheZweitstimmen(kopie1, partei, bundesland);
 
@@ -171,7 +172,7 @@ public class StimmgewichtSimulator {
 					Debug.print("Laufzeit Anpassung von Kopie2 ohne deep copy "
 							+ (System.currentTimeMillis() - start) + "ms");
 					*/		
-					
+					/*
 					long start2 = System.currentTimeMillis();
 					try {
 						kopie2 = kopie1.deepCopy();
@@ -179,6 +180,7 @@ public class StimmgewichtSimulator {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					*/
 					//Debug.print("Laufzeit Anpassung von Kopie2 mit deep copy " + (System.currentTimeMillis() - start2) + "ms");
 					
 				}
@@ -191,7 +193,7 @@ public class StimmgewichtSimulator {
 	private void erhoeheZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
 
-		int stimmanzahl = 10000;
+		int stimmanzahl = 30000;
 		
 		Wahlkreis wk;
 		do {

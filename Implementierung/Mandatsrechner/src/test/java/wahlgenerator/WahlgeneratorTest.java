@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
@@ -95,13 +96,19 @@ public class WahlgeneratorTest {
 		
 		System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
 		
-		//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
+		System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getName());
 		//System.out.println(genWahl.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 		
 		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
 		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 		
-		//i.exportieren("src/main/resources/importexport/3333.csv", genWahl);
+		genWahl = Mandatsrechner2009.getInstance().berechneSainteLague(genWahl);
+		System.out.println(genWahl.getParteien().getFirst().getAnzahlMandate());
+		genWahl.getParteien().getFirst().getZweitstimme().getFirst().erhoeheAnzahl(200000);;
+		genWahl = Mandatsrechner2009.getInstance().berechneSainteLague(genWahl);
+		System.out.println(genWahl.getParteien().getFirst().getAnzahlMandate());
+		
+		i.exportieren("src/main/resources/importexport/3333.csv", genWahl);
 
 	}
 	
@@ -190,4 +197,12 @@ public class WahlgeneratorTest {
 		
 		i.exportieren("src/main/resources/importexport/afd_100_prozent_test.csv", gen);
 	}
+	
+	
+	@Test
+	public final void Test() {
+		
+	}
+	
+	
 }
