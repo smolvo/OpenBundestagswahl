@@ -96,5 +96,18 @@ public class Zweitstimme extends Stimme implements Serializable,
 	public Stimme deepCopy() {
 		return new Zweitstimme(this.anzahl, this.gebiet, this.partei);
 	}
+	
+
+	
+	public void erniedrigeAnzahl(int stimmanzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if ((anzahl - stimmanzahl) < 0) {
+			throw new IllegalArgumentException("Stimmzahlen wären kleiner 0!");
+		}
+		this.anzahl -= anzahl;
+	}
+
 
 }

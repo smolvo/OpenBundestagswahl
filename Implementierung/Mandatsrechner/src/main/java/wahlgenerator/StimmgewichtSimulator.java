@@ -221,6 +221,38 @@ public class StimmgewichtSimulator {
 
 	}
 
+	private void erniedrigeZweitstimmen(Bundestagswahl bundestagswahl,
+			Partei partei, Bundesland bundesland) {
+
+		int stimmanzahl = 10000;
+		
+		Wahlkreis wk;
+		do {
+			// wählt einen zufälligen Wahlkreis
+			int i = rand.nextInt(bundesland.getWahlkreise().size());
+			wk = bundesland.getWahlkreise().get(i);
+			// System.out.print("Zweitstimmenanzahl im WK " + wk + " von " +
+			// wk.getZweitstimme(partei).getAnzahl());
+			System.out.println(wk.getAnzahlZweitstimmen() + " + " + stimmanzahl + " > " + wk.getWahlberechtigte() 
+					+ " = " + ((wk.getAnzahlZweitstimmen() + stimmanzahl) > wk.getWahlberechtigte()) + " " + wk.getName());
+		} while ((wk.getAnzahlZweitstimmen() - stimmanzahl) < 0);
+
+		wk.getZweitstimme(partei).erniedrigeAnzahl(stimmanzahl);
+
+		// System.out.println(" auf " + wk.getZweitstimme(partei).getAnzahl() +
+		// " erhöht");
+		Debug.print("Anzahl Zweitstimmen von " + partei.getName() + " in " + bundesland.getName() + ": " + bundesland.getAnzahlZweitstimmen(partei));
+		
+		
+		long start = System.currentTimeMillis();
+		Debug.setAktiv(false);
+		this.setKopie1(rechner.berechneSainteLague(this.kopie1));
+		Debug.setAktiv(true);
+		Debug.print("Laufzeit Mandatsrechner: " + (System.currentTimeMillis() - start) + "ms");
+
+		letzterWK = wk;
+
+	}
 	/**
 	 * Vergleicht die Sitzverteilungen der beiden in Stimmgewicht gegebenen
 	 * Bundestagswahlen. Wenn die Sitzanzahl für die gegebene Partei in der
