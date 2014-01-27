@@ -90,4 +90,10 @@ public class Erststimme extends Stimme implements Serializable, Comparable<Ersts
 		return Integer.compare(andere.getAnzahl(), this.getAnzahl());
 	}
 
+	@Override
+	public Stimme deepCopy() {
+		// TODO Auto-generated method stub
+		return new Erststimme(this.anzahl, this.gebiet, this.kandidat);
+	}
+
 }

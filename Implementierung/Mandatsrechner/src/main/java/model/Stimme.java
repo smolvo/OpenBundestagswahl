@@ -17,7 +17,7 @@ public abstract class Stimme implements Serializable {
 	protected int anzahl;
 
 	/** Das zugehoerige Gebiet. */
-	private Gebiet gebiet;
+	protected Gebiet gebiet;
 
 	/**
 	 * Gibt das zugehoerige Gebiet zurueck.
@@ -76,5 +76,11 @@ public abstract class Stimme implements Serializable {
 	 */
 	public abstract void erhoeheAnzahl(int anzahl)
 			throws IllegalArgumentException;
+	
+	/**
+	 * Erzeugt eine Deep-Copy einer Stimme.
+	 * @return ein neues Stimmen-Objekt.
+	 */
+	public abstract Stimme deepCopy();
 
 }

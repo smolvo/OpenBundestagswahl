@@ -92,4 +92,9 @@ public class Zweitstimme extends Stimme implements Serializable,
 		this.anzahl += anzahl;
 	}
 
+	@Override
+	public Stimme deepCopy() {
+		return new Zweitstimme(this.anzahl, this.gebiet, this.partei);
+	}
+
 }

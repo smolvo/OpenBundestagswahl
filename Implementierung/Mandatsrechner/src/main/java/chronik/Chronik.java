@@ -4,12 +4,12 @@ package main.java.chronik;
 import java.io.Serializable;
 import java.util.Stack;
 
-import main.java.model.Bundestagswahl;
+import main.java.model.Stimme;
 
 /**
  * Die Chronik setzt Stimmen, die in der GUI verändert
- * wurden zurück. Es können höchstens so viele Bundestagswahlen 
- * zurückgesetzt werden, wie in maxBundestagswahl.
+ * wurden zurück. Es können höchstens so viele Stimmen 
+ * zurückgesetzt werden, wie in maxStimmen.
  * @author 13genesis37
  *
  */
@@ -21,40 +21,40 @@ public class Chronik implements Serializable{
 	private static final long serialVersionUID = -9220795187148958406L;
 
 	/**
-	 * Anzahl der maximalen Bundestagswahlen, die zurückgesetzt
+	 * Anzahl der maximalen Stimmen, die zurückgesetzt
 	 * werden können.
 	 */
-	final private int maxBundestagswahlen = 5; 
+	final private int maxStimmen = 5; 
 	
 	/**
 	 * Ein Stack mit den letzten Stimmen
 	 */
-	Stack<Bundestagswahl> bundestagswahlen = new Stack<Bundestagswahl>();
+	Stack<Stimme> stimmen = new Stack<Stimme>();
 	/**
-	 * Sichert eine Bundestagswahl. Wird bei jeder Veränderung
-	 * einer Bundestagswahl aufgerufen. Die Operation entspricht
+	 * Sichert eine Stimme. Wird bei jeder Veränderung
+	 * einer Stimme aufgerufen. Die Operation entspricht
 	 * dem push Befehl eines Stacks.
-	 * @param s die Veränderte Bundestagswahl.
+	 * @param s die Veränderte Stimme.
 	 */
-	public void sichereBundestagswahl(Bundestagswahl s) {
+	public void sichereStimme(Stimme s) {
 		
-		if (this.bundestagswahlen.size() > maxBundestagswahlen) {
-			this.bundestagswahlen.remove(0);
+		if (this.stimmen.size() > maxStimmen) {
+			this.stimmen.remove(0);
 		}
 		
-		this.bundestagswahlen.push(s);
+		this.stimmen.push(s.deepCopy());
 	}
 	
 	/**
-	 * Restauriert die zuletzt hinzugefügte Bundestagswahl.
+	 * Restauriert die zuletzt hinzugefügte Stimme.
 	 * Entspricht dem pull Befehl eines Stacks.
-	 * @return die zuletzt hinzugefügte Bundestagswahl.
+	 * @return die zuletzt hinzugefügte Stimme.
 	 */
-	public Bundestagswahl restauriereBundestagswahl() {
-		Bundestagswahl btw = null;
-		if (this.bundestagswahlen.size() > 0) {
-			btw = this.bundestagswahlen.pop();
+	public Stimme restauriereStimme() {
+		Stimme stimme = null;
+		if (this.stimmen.size() > 0) {
+			stimme = this.stimmen.pop();
 		}
-		return btw;
+		return stimme;
 	}
 }

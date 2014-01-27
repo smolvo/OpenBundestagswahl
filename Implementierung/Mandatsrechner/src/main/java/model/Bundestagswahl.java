@@ -202,13 +202,7 @@ public class Bundestagswahl implements Serializable {
 	public boolean setzeStimme(Stimme stimme) {
 		// TODO
 		boolean success = true;
-		try {
-			this.chronik.sichereBundestagswahl(this.deepCopy());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			success = false;
-		}
+		
 		if (stimme instanceof Erststimme) {
 			success = this.setzeStimmenAnzahl((Erststimme) stimme);
 		} else if (stimme instanceof Zweitstimme) {
@@ -218,10 +212,8 @@ public class Bundestagswahl implements Serializable {
 		}
 		
 		if (!success /*&& !this.pruefeDaten*/) {
-			// TODO
-			Bundestagswahl revert = this.chronik.restauriereBundestagswahl();
-			//this.setDeutschland(revert.deutschland);
-			//this.setName(revert)
+			throw new IllegalArgumentException("Stimme nicht gefunden.");
+			//boolean secondSuccess = this.setzeStimme(chronik.restauriereStimme());
 		}
 		return success;
 	}
@@ -240,7 +232,8 @@ public class Bundestagswahl implements Serializable {
 			 if (wk.equals(stimme.getGebiet())) {
 				 for (Erststimme erststimme : wk.getErststimmenProPartei()) {
 					 if (erststimme.getKandidat().equals(stimme.getKandidat())) {
-						 erststimme.setAnzahl(stimme.getAnzahl());
+						 this.chronik.sichereStimme(erststimme);
+						 erststimme.setAnzahl(erststimme.getAnzahl());
 						 success = true;
 						 break;
 					 }
@@ -260,23 +253,27 @@ public class Bundestagswahl implements Serializable {
 		Debug.print("Setze zweitstimme");
 		boolean success = false;
 		if (stimme.getGebiet() instanceof Deutschland) {
-			// TODO
+			throw new  IllegalArgumentException("Zweitstimmen können in Deutschland nicht verändert werden.");
 		} else if (stimme.getGebiet() instanceof Bundesland) {
-			// TODO
+			throw new  IllegalArgumentException("Zweitstimmen können in Bundesländern nicht verändert werden.");
 		} else if (stimme.getGebiet() instanceof Wahlkreis) {
-			// TODO
+			for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
+				 if (wk.equals(stimme.getGebiet())) {
+					 for (Zweitstimme zweitstimme : wk.getZweitstimmenProPartei()) {
+						 if (zweitstimme.getPartei().equals(stimme.getPartei())) {
+							 this.chronik.sichereStimme(zweitstimme);
+							 zweitstimme.setAnzahl(zweitstimme.getAnzahl());
+							 success = true;
+							 break;
+						 }
+					 }
+					 break;
+				 }
+			}
 		} else {
 			success = false;
 		}
 		return success;
-	}
-
-	/**
-	 * Diese Methode gibt die letzte Bundestagswahl aus.
-	 * @return letzte Bundestagswahl
-	 */
-	public Bundestagswahl getAlteBTW() {
-		return this.chronik.restauriereBundestagswahl();
 	}
 
 	@Override
