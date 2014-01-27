@@ -98,6 +98,14 @@ public class BerichtDaten {
 	public String getBundesland(int index) {
 		return bundesland.get(index);
 	}
+	
+	/**
+	 * gibt alle Bundesländer aus.
+	 * @return Liste der Bundesländer
+	 */
+	public LinkedList<String> getBundeslaender() {
+		return this.bundesland;
+	}
 
 	/**
 	 * Gibt den Wahlkreis aus.

@@ -47,13 +47,13 @@ public class Ansicht extends JPanel {
 	 *            das Wahlfenster der Ansicht
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
+		this.fenster = fenster;
 		this.tabellenFenster = new TabellenFenster(this);
 		this.tabellenFenster.tabellenFuellen(land);
 		this.diagrammFenster = new DiagrammFenster(this);
 		this.diagrammFenster.erstelleDiagramm(land);
 		this.kartenFenster = new KartenFenster(this);
 		this.kartenFenster.zeigeInformationen(land);
-		this.fenster = fenster;
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		initialisieren();

@@ -14,9 +14,9 @@ import main.java.model.Deutschland;
 import main.java.model.Erststimme;
 import main.java.model.Gebiet;
 import main.java.model.Kandidat;
-import main.java.model.Landesliste;
 import main.java.model.Mandat;
 import main.java.model.Partei;
+import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
@@ -70,11 +70,13 @@ public class TabellenFenster extends JScrollPane {
 	 *            Deutschland-Objekt welches visualisiert werden soll
 	 */
 	private void tabellenFuellen(Deutschland land) {
+		Sitzverteilung bundestag = this.ansicht.getFenster().getBtw()
+				.getSitzverteilung();
 		BundDaten daten = new BundDaten();
 		List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
 		for (Zweitstimme zw : stimmen) {
-			GUIPartei gp = parteiErstellen(zw);
+			GUIPartei gp = parteiDatenDeutschland(zw.getPartei(), bundestag);
 			double proZweit = (Math
 					.rint(((double) zw.getAnzahl() / (double) land
 							.getAnzahlZweitstimmen()) * 1000) / 10);
@@ -91,6 +93,45 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
+	 * Diese private Methode wird von tabellenFuellen für Deutschland verwendet
+	 * und erstellt aus einer Sitzverteilung und einer Partei ein
+	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden müssen
+	 * beinhaltet.
+	 * 
+	 * @param partei
+	 *            Partei
+	 * @param bundestag
+	 *            die Sitzplatzverteilung
+	 * @return GUIPartei-Objekt
+	 */
+	private GUIPartei parteiDatenDeutschland(Partei partei,
+			Sitzverteilung bundestag) {
+		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
+		int sitze = 0;
+		int direktMan = 0;
+		int ueberMan = 0;
+		int ausglMan = 0;
+		for (Kandidat kan : bundestag.getAbgeordnete()) {
+			if (kan.getPartei().getName().equals(partei.getName())) {
+				if (kan.getMandat().equals(Mandat.MANDAT)) {
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
+					direktMan++;
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
+					ueberMan++;
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
+					ausglMan++;
+					sitze++;
+				}
+			}
+		}
+		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
+		return gp;
+	}
+
+	/**
 	 * Befüllt die Zeilen und Spalten der Tabelle in der Landesansicht mit den
 	 * relevanten Daten.
 	 * 
@@ -98,7 +139,8 @@ public class TabellenFenster extends JScrollPane {
 	 *            Bundesland-Objekt welches visualisiert werden soll
 	 */
 	private void tabellenFuellen(Bundesland bl) {
-		List<Landesliste> landesliste = bl.getLandesliste();
+		Sitzverteilung bundestag = this.ansicht.getFenster().getBtw()
+				.getSitzverteilung();
 		LandDaten daten = new LandDaten();
 		List<Zweitstimme> stimmen = bl.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
@@ -110,8 +152,7 @@ public class TabellenFenster extends JScrollPane {
 					direktMan++;
 				}
 			}
-			Landesliste liste = getListe(zw.getPartei(), landesliste);
-			GUIPartei gp = parteiErstellen(liste);
+			GUIPartei gp = parteiDatenBundesland(zw.getPartei(), bl.getName(), bundestag);
 			double proZweit = (Math.rint(((double) zw.getAnzahl() / (double) bl
 					.getAnzahlZweitstimmen()) * 1000) / 10);
 			daten.addZeile(zw.getPartei().getName(), zw,
@@ -124,13 +165,44 @@ public class TabellenFenster extends JScrollPane {
 		this.setViewportView(jTabelle);
 	}
 
-	private Landesliste getListe(Partei partei, List<Landesliste> liste) {
-		for (Landesliste list : liste) {
-			if (partei.getName().equals(list.getPartei().getName())) {
-				return list;
+	/**
+	 * Diese private Methode wird von tabellenFuellen für Bundesländer verwendet
+	 * und erstellt aus einer Sitzverteilung, einem Bundesland und einer Partei ein
+	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden müssen
+	 * beinhaltet.
+	 * @param partei die Partei
+	 * @param bundesland das Bundesland
+	 * @param bundestag die Sitzplatzverteilung
+	 * @return Daten
+	 */
+	private GUIPartei parteiDatenBundesland(Partei partei, String bundesland,
+			Sitzverteilung bundestag) {
+		int sitze = 0;
+		int direktMan = 0;
+		int ueberMan = 0;
+		int ausglMan = 0;
+		int listenZaehler = 0;
+		for (Kandidat kan : bundestag.getAbgeordnete()) {
+			if ((kan.getPartei().getName().equals(partei.getName()))
+					&& (bundestag.getBericht().getBundeslaender()
+							.get(listenZaehler).equals(bundesland))) {
+				if (kan.getMandat().equals(Mandat.MANDAT)) {
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
+					direktMan++;
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
+					ueberMan++;
+					sitze++;
+				} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
+					ausglMan++;
+					sitze++;
+				}
 			}
+			listenZaehler++;
 		}
-		return null;
+		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
+		return gp;
 	}
 
 	/**
@@ -179,63 +251,8 @@ public class TabellenFenster extends JScrollPane {
 		this.setViewportView(jTabelle);
 	}
 
-	/**
-	 * Diese Methode erstellt aus einer Zweitstimme ein GUIPartei-Objekt,
-	 * welches alle Daten, die angezeigt werden müssen beinhaltet.
-	 * 
-	 * @param zw
-	 *            Zweitstimmen Objekt
-	 * @return GUIPartei-Objekt
-	 */
-	private GUIPartei parteiErstellen(Landesliste liste) {
-		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
-		int sitze = 0;
-		int direktMan = 0;
-		int ueberMan = 0;
-		int ausglMan = 0;
-		for (Kandidat kan : liste.getListenkandidaten()) {
-			if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
-				ueberMan++;
-			}
-		}
-		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
-		return gp;
-	}
-
-	/**
-	 * Diese Methode erstellt aus einer Zweitstimme ein GUIPartei-Objekt,
-	 * welches alle Daten, die angezeigt werden müssen beinhaltet.
-	 * 
-	 * @param zw
-	 *            Zweitstimmen Objekt
-	 * @return GUIPartei-Objekt
-	 */
-	private GUIPartei parteiErstellen(Zweitstimme zw) {
-		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
-		int sitze = 0;
-		int direktMan = 0;
-		int ueberMan = 0;
-		int ausglMan = 0;
-		for (Kandidat kan : zw.getPartei().getMitglieder()) {
-			if (kan.getMandat().equals(Mandat.MANDAT)) {
-				sitze++;
-			} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
-				direktMan++;
-				sitze++;
-			} else if (kan.getMandat().equals(Mandat.UEBERHANGMADAT)) {
-				ueberMan++;
-				sitze++;
-			} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
-				ausglMan++;
-				sitze++;
-			}
-		}
-		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
-		return gp;
-	}
-
-	/**
-	 * Gibt die Ansicht aus.
+	
+	/** Gibt die Ansicht aus.
 	 * 
 	 * @return Ansicht
 	 */
