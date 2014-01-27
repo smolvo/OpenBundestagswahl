@@ -539,4 +539,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }

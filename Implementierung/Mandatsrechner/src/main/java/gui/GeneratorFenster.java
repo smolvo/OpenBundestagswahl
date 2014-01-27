@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 
 import main.java.model.Bundestagswahl;
+import main.java.model.Partei;
 
 /**
  * Diese Klasse repräsentiert das GeneratorFenster.
@@ -29,6 +30,9 @@ public class GeneratorFenster extends JFrame {
 	
 	/** repräsentiert die Liste der Basiswahlen */
 	private List<Bundestagswahl> wahlen;
+	
+	/** repräsentiert die Wahl die gerade vom Benutzer als Standardwahl festgelegt wurde */
+	private Bundestagswahl ausgesuchteWahl;
 	
 	/** Basiswahl */
 	private JLabel basiswahl;
@@ -54,10 +58,11 @@ public class GeneratorFenster extends JFrame {
 	 */
 	public GeneratorFenster(List<Bundestagswahl> basiswahlen) {
 		this.wahlen = basiswahlen;
+		this.ausgesuchteWahl = basiswahlen.get(0);
 		this.setTitle("Wahlgenerierung");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
-		this.setBounds(500, 50, 335, 600);
+		this.setBounds(500, 50, 435, 600);
 		this.setLayout(null);
 		initialisiere(wahlen);
 		this.setVisible(true);
@@ -71,7 +76,7 @@ public class GeneratorFenster extends JFrame {
 		Bundestagswahl[] wahlenArray = wahlen.toArray(new Bundestagswahl[wahlen.size()]);
 		this.basiswahl = new JLabel("Basiswahl: ");
 		basiswahl.setBounds(5, 5, 90, 20);
-		this.stimmenanteile = new JLabel("Stimmenanteile:  Erststimmen          Zweitstimmen");
+		this.stimmenanteile = new JLabel("Stimmenanteile:              Erststimmen          Zweitstimmen");
 		stimmenanteile.setBounds(5, 40, 350, 30);
 		this.basiswahlAuswahl = new JComboBox<Bundestagswahl>(wahlenArray);
 		basiswahlAuswahl.setBounds(90, 5, 200, 20);
@@ -79,6 +84,7 @@ public class GeneratorFenster extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ausgesuchteWahl = (Bundestagswahl) e.getSource();
 				resetPane();
 			}
 			
@@ -87,7 +93,7 @@ public class GeneratorFenster extends JFrame {
 		resetPane();
 
 		this.generiere = new JButton("Generiere");
-		this.generiere.setBounds(100, 510,115, 30);
+		this.generiere.setBounds(200, 510,115, 30);
 		this.generiere.addActionListener(new ActionListener() {
 
 			@Override
@@ -125,13 +131,13 @@ public class GeneratorFenster extends JFrame {
 			this.repaint();
 		}
 		this.hauptPanel = new JPanel();
-		this.hauptPanel.setBounds(5, 5, 300, 0);
+		this.hauptPanel.setBounds(5, 5, 350, 0);
 		this.hauptPanel.setLayout(null);
 		
 		// plus-Button
 		int y = this.hauptPanel.getHeight();
 		JPanel subPanel = new JPanel();
-		subPanel.setBounds(10, y + 10, 290, 33);
+		subPanel.setBounds(10, y + 10, 395, 33);
 		JButton plus = new JButton();
 		plus.addActionListener(new ActionListener() {
 
@@ -147,7 +153,7 @@ public class GeneratorFenster extends JFrame {
 		hauptPanel.add(subPanel);
 		
 		this.pane = new JScrollPane();
-		this.pane.setBounds(5, 80, 320, 400);
+		this.pane.setBounds(5, 80, 420, 400);
 		this.pane.setViewportView(hauptPanel);
 		this.pane.setHorizontalScrollBar(null);
 
@@ -168,7 +174,7 @@ public class GeneratorFenster extends JFrame {
 		plus.setBounds(plus.getX(), plus.getY() + 60, plus.getWidth(), plus.getHeight());
 		
 		JPanel subPanel = new JPanel();
-		subPanel.setBounds(10, y, 290, 40);
+		subPanel.setBounds(10, y, 390, 40);
 		
 		JButton minus = new JButton();
 		minus.setBounds(5, 5, 10, 10);
@@ -181,8 +187,11 @@ public class GeneratorFenster extends JFrame {
 				zeileEntfernen((JPanel) button.getParent());
 			}
 		});
-		JComboBox<String> box = new JComboBox<String>(new String[] {"SPD", "CDU"});
+		List<Partei> parteien = this.ausgesuchteWahl.getParteien();
+		Partei[] parteiArray = parteien.toArray(new Partei[parteien.size()]);
+		JComboBox<Partei> box = new JComboBox<Partei>(parteiArray);
 		box.setBounds(20, 5, 40, 20);
+		box.setPreferredSize(new Dimension(140, 20));
 		JSlider erst = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
 		erst.setBounds(70, 5, 50, 20);
 		erst.setPreferredSize(new Dimension(100, 30));
@@ -256,7 +265,8 @@ public class GeneratorFenster extends JFrame {
 		for (int i = 1; i < hauptPanel.getComponentCount(); i++) {
 			JPanel panel = (JPanel) hauptPanel.getComponent(i);
 			JComboBox<String> pane = (JComboBox) panel.getComponent(1);
-			parteien[i - 1] = (String) pane.getSelectedItem();		
+			Partei partei = (Partei) pane.getSelectedItem();
+			parteien[i - 1] = partei.getName();
 		}
 		
 		return parteien;
