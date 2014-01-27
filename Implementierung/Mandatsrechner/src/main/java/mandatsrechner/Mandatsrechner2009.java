@@ -37,7 +37,7 @@ public class Mandatsrechner2009 {
 	 * Fuehrt eine Initialisierung der Mandate durch.
 	 * @param bundestagswahl
 	 */
-	protected void initialisiere(Bundestagswahl bundestagswahl){
+	public void initialisiere(Bundestagswahl bundestagswahl){
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
 				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
@@ -399,7 +399,9 @@ public class Mandatsrechner2009 {
 
 				part.addMindestsitzanzahl(bundesland,
 						Math.max(direktmandate, mindestSitzanzahl));
-				//System.out.println("###" + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl));
+				if(part.getName().equals("CDU") && bundesland.getName().equals("Saarland")){
+					System.out.println("###Landesdivisor: "+landesdivisor+" Zweitstimmen: "+bundesland.getAnzahlZweitstimmen(part)+" | " + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl)+" Diff:"+diffKandidat);
+				}
 				if (diffKandidat > 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
@@ -429,14 +431,16 @@ public class Mandatsrechner2009 {
 								// diffKandidat erhoeht, damit die Schleife den
 								// fehlenden Kandidaten ausgleicht. Der Kandidat
 								// wird sozusagen Uebersprungen.
+								//System.out.println("Diffkandidat: "+diffKandidat);
 								diffKandidat++;
 							}
 						} else {
+							throw new IllegalArgumentException("Mieeeeep. Kein Listenkandidat gefunden.");
 							// TODO negatives Stimmengewicht
 						}
 					}
 				} else {
-					// System.err.println("-"+Math.abs(diffKandidat));
+					//System.err.println("-"+Math.abs(diffKandidat));
 					Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
 						ueberhangmandat = bundesland.getDirektMandate(part).get(i);
