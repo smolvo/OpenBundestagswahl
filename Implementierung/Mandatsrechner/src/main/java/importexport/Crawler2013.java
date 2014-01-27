@@ -343,7 +343,9 @@ public class Crawler2013 extends Crawler {
 								}
 							}
 							if (kandidat == null) {
-								kandidat = ImportExportManager.unbekannterKandidat;
+								// unbekannte Kandidaten haben jetzt auch Parteizugehörigkeiten
+								//kandidat = ImportExportManager.unbekannterKandidat;
+								kandidat = new Kandidat("-", "-", 0, Mandat.KEINMANDAT, parteien.get(k));
 							}
 							erststimme.add(new Erststimme(
 									values.get(j)[parteiOffset + k][0], w,

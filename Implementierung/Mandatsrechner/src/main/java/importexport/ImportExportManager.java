@@ -23,8 +23,7 @@ public class ImportExportManager {
 	/**
 	 * Ein default-Wert fuer unbekannte Kandidaten.
 	 */
-	public static Kandidat unbekannterKandidat = new Kandidat("-", "-",
-			0, Mandat.KEINMANDAT, null);
+	//public static Kandidat unbekannterKandidat = new Kandidat("-", "-",	0, Mandat.KEINMANDAT, null);
 	
 	/**
 	 * Hier koennen weitere Algorithmen ergaenzt werden.

@@ -140,6 +140,10 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				// Anzahl auf 0 setzen
 				erst.setAnzahl(0);
 				
+				if (erst.getKandidat().getPartei() == null) {
+					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: " + erst.getKandidat().getName() + ", Partei: NULL");
+				}
+				
 				//if (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat)) {
 				//	erst = null;
 				//}
@@ -172,10 +176,12 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 			
 			
-			int anzahlErststimmen = this.getAnzahlErststimmen() * this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100;
-			int anzahlZweitstimmen = this.getAnzahlZweitstimmen() * this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100;
+			int anzahlErststimmen = (int)(this.getAnzahlErststimmen() * (this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
+			int anzahlZweitstimmen = (int)(this.getAnzahlZweitstimmen() * (this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
 			
-			Debug.print(partei.getName() + ", anzahlErststimmen: " + anzahlErststimmen + ", anzahlZweitstimmen: " + anzahlZweitstimmen);
+			Debug.print(partei.getName() 
+					+ ", anzahlErststimmen: " + anzahlErststimmen + " (" + this.getAnteileVonPartei(partei).getAnteilErststimmen() 
+					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " (" + this.getAnteileVonPartei(partei).getAnteilZweitstimmen() +"%)");
 			
 			Random rand = new Random();
 			

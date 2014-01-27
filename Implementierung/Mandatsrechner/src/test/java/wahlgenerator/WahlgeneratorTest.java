@@ -100,7 +100,7 @@ public class WahlgeneratorTest {
 		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getName());
 		//System.out.println(wahl1.getDeutschland().getBundeslaender().get(7).getErststimmen().get(0).getAnzahl());
 		
-		i.exportieren("src/main/resources/importexport/3333.csv", genWahl);
+		//i.exportieren("src/main/resources/importexport/3333.csv", genWahl);
 
 	}
 	
@@ -179,6 +179,6 @@ public class WahlgeneratorTest {
 		
 		//System.out.println(gen.);
 		
-		i.exportieren("src/main/resources/importexport/22222.csv", gen);
+		i.exportieren("src/main/resources/importexport/afd_100_prozent_test.csv", gen);
 	}
 }

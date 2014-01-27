@@ -57,8 +57,8 @@ public abstract class AbstrakterWahlgenerator {
 		this.setAnzahlZweitstimmen(
 				this.basisWahl.getDeutschland().getAnzahlZweitstimmen());
 		
-		Debug.print("AnzahlErststimmen Gesamt DEUTSCHLAND: " + this.getAnzahlErststimmen());
-		Debug.print("AnzahlZweitstimmen Gesamt DEUTSCHLAND: " + this.getAnzahlZweitstimmen());
+		//Debug.print("AnzahlErststimmen Gesamt DEUTSCHLAND: " + this.getAnzahlErststimmen());
+		//Debug.print("AnzahlZweitstimmen Gesamt DEUTSCHLAND: " + this.getAnzahlZweitstimmen());
 	}
 	
 	/**
