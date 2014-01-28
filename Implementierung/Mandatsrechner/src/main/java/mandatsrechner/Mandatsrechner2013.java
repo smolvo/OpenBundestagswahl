@@ -172,7 +172,7 @@ public class Mandatsrechner2013 {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); //partei.getMindestsitzAnzahl();
-			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
+			//System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
 			if (diffSitze > 0) {
 				//isCorrect = false;
 				float multiplikator = 0.1f;
@@ -252,10 +252,10 @@ public class Mandatsrechner2013 {
 
 			} else {
 				
-				System.out.println("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
+				//System.out.println("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
 				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.MANDAT);
 				for (int i = abgeordnete.size() - 1; i>=(abgeordnete.size() + diffSitze); i--) {
-					System.out.println("-");
+					//System.out.println("-");
 					abgeordnete.get(i).setMandat(Mandat.KEINMANDAT);
 				}
 			}
