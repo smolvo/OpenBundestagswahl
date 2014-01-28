@@ -221,6 +221,10 @@ public class Mandatsrechner2013 {
 						int diffSitzeBundesland = sitzeBundesland
 								- partei.getMindestsitzanzahl(bl);
 						for (int i = 0; i < diffSitzeBundesland; i++) {
+							if(partei.getLandesliste(bl).getListenkandidaten().size() <= i){
+								// Wahlgenerator verursacht Wahlen ohne Landeslisten.
+								break;
+							}
 							Kandidat neuerAbgeordneter = partei
 									.getLandesliste(bl).getListenkandidaten()
 									.get(i);
@@ -252,7 +256,7 @@ public class Mandatsrechner2013 {
 
 			} else {
 				
-				//System.out.println("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
+				Debug.print("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
 				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.MANDAT);
 				for (int i = abgeordnete.size() - 1; i>=(abgeordnete.size() + diffSitze); i--) {
 					//System.out.println("-");
@@ -290,7 +294,7 @@ public class Mandatsrechner2013 {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bundestagswahl.getDeutschland().getBundeslaender()) {
-				int zahl = this.rechner2009.runden(bl.getEinwohnerzahl() / zuteilungsdivisor, false);
+				int zahl = Math.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
 				summe += zahl;
 				System.out.println(bl.getName() + ": " + zahl + " Einwohner: "
 						+ bl.getEinwohnerzahl());
@@ -378,7 +382,7 @@ public class Mandatsrechner2013 {
 								diffKandidat++;
 							}
 						} else {
-							throw new IllegalArgumentException("Mieeeeep. Kein Listenkandidat gefunden.");
+							//throw new IllegalArgumentException("Mieeeeep. Kein Listenkandidat gefunden.");
 							// TODO negatives Stimmengewicht
 						}
 					}
