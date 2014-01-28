@@ -311,6 +311,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @return die Farbe der Partei.
 	 */
 	public Color getFarbe() {
+		if (this.farbe == null) {
+			return new Color(0, 0, 0, 0);
+		}
 		return this.farbe;
 	}
 

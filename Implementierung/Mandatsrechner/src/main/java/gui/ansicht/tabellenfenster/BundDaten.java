@@ -1,5 +1,6 @@
 package main.java.gui.ansicht.tabellenfenster;
 
+import java.awt.Color;
 import java.util.LinkedList;
 
 import main.java.model.Zweitstimme;
@@ -10,6 +11,8 @@ import main.java.model.Zweitstimme;
  */
 public class BundDaten {
 
+	private LinkedList<Color> farben;
+	
 	/** Liste der Parteien */
 	private LinkedList<String> parteien;
 
@@ -35,6 +38,7 @@ public class BundDaten {
 	 * Der Konstruktor initialisiert alle Listen.
 	 */
 	public BundDaten() {
+		this.farben = new LinkedList<Color>();
 		this.parteien = new LinkedList<String>();
 		this.stimmen = new LinkedList<Zweitstimme>();
 		this.prozent = new LinkedList<String>();
@@ -62,9 +66,10 @@ public class BundDaten {
 	 * @param ausgleichsmandat
 	 *            Anzahl Ausgleichsmandate
 	 */
-	public void addZeile(String partei, Zweitstimme stimme, String prozent,
+	public void addZeile(Color farbe, String partei, Zweitstimme stimme, String prozent,
 			String sitze, String direktmandat, String ueberhangsmandat,
 			String ausgleichsmandat) {
+		this.farben.add(farbe);
 		if (stimme != null) {
 			this.stimmen.add(stimme);
 		}
@@ -93,6 +98,11 @@ public class BundDaten {
 		}
 	}
 
+	
+	public String getFarbe(int index) {
+		return "hallo";
+	}
+	
 	/**
 	 * Gibt eine bestimmte Partei zurück.
 	 * 

@@ -159,7 +159,6 @@ public class Ansicht extends JPanel {
 	 */
 	public void berechnungNotwendig() {
 		this.wurdeVeraendert = true;
-		System.out.println("cool");
 		remove(diagrammFenster);
 		this.diagrammFenster = new DiagrammFenster(this);
 		

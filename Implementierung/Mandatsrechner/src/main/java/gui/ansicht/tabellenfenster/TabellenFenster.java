@@ -85,7 +85,7 @@ public class TabellenFenster extends JScrollPane {
 			double proZweit = (Math
 					.rint(((double) zw.getAnzahl() / (double) land
 							.getAnzahlZweitstimmen()) * 1000) / 10);
-			daten.addZeile(zw.getPartei().getName(), zw,
+			daten.addZeile(zw.getPartei().getFarbe(), zw.getPartei().getName(), zw,
 					Double.toString(proZweit), Integer.toString(gp.getSitze()),
 					Integer.toString(gp.getDirektmandate()),
 					Integer.toString(gp.getUeberhangsmandate()),
