@@ -100,13 +100,13 @@ public class Zweitstimme extends Stimme implements Serializable,
 
 	
 	public void erniedrigeAnzahl(int stimmanzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
+		if (stimmanzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		if ((anzahl - stimmanzahl) < 0) {
 			throw new IllegalArgumentException("Stimmzahlen wären kleiner 0!");
 		}
-		this.anzahl -= anzahl;
+		this.anzahl -= stimmanzahl;
 	}
 
 

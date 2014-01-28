@@ -42,7 +42,7 @@ public class StimmgewichtSimulatorTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		Debug.setAktiv(true);
+		Debug.setAktiv(false);
 		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -161,7 +161,7 @@ public class StimmgewichtSimulatorTest {
 	
 	@Test
 	public void simonTest2() {
-		Debug.setAktiv(true);
+		Debug.setAktiv(false);
 		
 		assertTrue(simu.berechneNegStimmgewicht());
 	}
