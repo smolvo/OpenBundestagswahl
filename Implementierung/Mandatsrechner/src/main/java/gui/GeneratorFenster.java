@@ -106,6 +106,7 @@ public class GeneratorFenster extends JFrame {
 		stimmenanteile.setBounds(5, 40, 435, 30);
 		this.basiswahlAuswahl = new JComboBox<Bundestagswahl>(wahlenArray);
 		basiswahlAuswahl.setBounds(90, 5, 200, 20);
+		
 		basiswahlAuswahl.addActionListener(new ActionListener() {
 
 			@Override
@@ -140,7 +141,8 @@ public class GeneratorFenster extends JFrame {
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
 					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
-					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile);
+					String name = "";
+					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile, name);
 					pf.wahlHinzufuegen(btw);
 					generiere.setEnabled(true);					
 				} else {

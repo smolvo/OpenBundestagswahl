@@ -82,9 +82,9 @@ public class Steuerung {
 	 * @param anteile
 	 *            die Stimmenanteile
 	 */
-	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw, LinkedList<Stimmanteile> anteile) {
+	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw, LinkedList<Stimmanteile> anteile, String name) {
 		Wahlgenerator wg = new Wahlgenerator(btw, anteile);
-		Bundestagswahl neueBtw = wg.erzeugeBTW();
+		Bundestagswahl neueBtw = wg.erzeugeBTW(name);
 		return neueBtw;
 	}
 

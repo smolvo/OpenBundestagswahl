@@ -41,10 +41,7 @@ public abstract class AbstrakterWahlgenerator {
 	 *
 	 * @return generierte Bundestagswahl
 	 */
-	public Bundestagswahl erzeugeBTW() {
-		// TODO
-		return null;
-	}
+	public abstract Bundestagswahl erzeugeBTW(String name);
 	
 	/**
 	 * Bestimmt anzahlZweitstimmen und anzahlErststimmen

@@ -54,7 +54,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 */
 	public Bundestagswahl erzeugeBTW(String name) {
 		
-		if (name == null) {
+		if (name == null) {			
 			throw new IllegalArgumentException("Der Parameter \"name\" ist null!");
 		}
 		
