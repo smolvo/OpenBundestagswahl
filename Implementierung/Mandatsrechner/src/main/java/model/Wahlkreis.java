@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
-	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = 8492979454628956125L;

@@ -25,6 +25,12 @@ import main.java.model.Deutschland;
  */
 public class DeutschlandKarte extends JPanel {
 
+	/**
+	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
+	 * verwendet wird.
+	 */
+	private static final long serialVersionUID = -3499619191276735615L;
+
 	/** alle Bundeslaender, nötig für Färbung */
 	private Deutschland land;
 	
