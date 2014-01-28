@@ -52,7 +52,11 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 * Generiert eine Bundestagswahl auf basis der BTW des basisWahl Attributs und der Liste der Stimmanteile.
 	 * @return eine generierte Bundestagswahl
 	 */
-	public Bundestagswahl erzeugeBTW() {
+	public Bundestagswahl erzeugeBTW(String name) {
+		
+		if (name == null) {
+			throw new IllegalArgumentException("Der Parameter \"name\" ist null!");
+		}
 		
 		this.verteileRestAnteile();
 		
@@ -67,6 +71,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		
 		// Setze die komplette Auswertung auf NULL
 		Mandatsrechner2009.getInstance().initialisiere(clone);
+		
+		// Name der neuen Wahl setzen
+		clone.setName(name);
 		
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
