@@ -103,11 +103,11 @@ public class TabLeiste extends JTabbedPane {
 	
 	private void importiere() {
 		if (pf.getiD() == null) {
-			ImportDialog iD = new ImportDialog(pf.getTabs());
+			ImportDialog iD = new ImportDialog(pf);
 			pf.setiD(iD);
-			pf.getiD().importiereWahl(pf.getTabs());
+			pf.getiD().importiereWahl();
 		} else {
-			pf.getiD().importiereWahl(pf.getTabs());
+			pf.getiD().importiereWahl();
 		}
 	}
 		

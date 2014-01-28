@@ -17,31 +17,26 @@ import main.java.gui.WahlFenster;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repräsentiert den Vergleichsdialog.
- * Er wird aufgerufen wenn ein Vergleich geschehen
- * soll.
+ * Diese Klasse repräsentiert den Vergleichsdialog. Er wird aufgerufen wenn ein
+ * Vergleich geschehen soll.
+ * 
  * @author Anton
- *
+ * 
  */
 public class VergleichDialog {
 
-	/** repräsentiert die geladenen Wahlen */
-	TabLeiste tabs;
-
-	/** repräsentiert das Programmfenster */
-	Programmfenster pf;
-
 	/**
 	 * Der Konstruktor erstellt einen Vergleichsdialog.
-	 * @param tabs
+	 * 
+	 * @param pf das Programmfenster
+	 * 
+	 * @throws NullPointerException
 	 */
-	public VergleichDialog(TabLeiste tabs) {
-
-		
-		this.tabs = tabs;
-		this.pf = tabs.getPf();
-		
-		if (tabs.getTabCount() < 2) {
+	public VergleichDialog(Programmfenster pf) {
+		if (pf == null) {
+			throw new NullPointerException("Geben Sie ein Programmfenster an.");
+		}
+		if (pf.getWahlen().size() < 2) {
 			JOptionPane.showMessageDialog(pf,
 					"Bitte importieren Sie mindestens zwei Wahlen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
@@ -54,29 +49,38 @@ public class VergleichDialog {
 			text.setBounds(5, 5, 190, 40);
 			JComboBox<WahlFenster> box = erstelleBox(pf.getWahlen());
 			box.setBounds(15, 45, 150, 25);
-			box.addActionListener(new ActionListener(){
+			box.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JComboBox<WahlFenster> cb = (JComboBox<WahlFenster>)e.getSource();
-					WahlFenster wahlfenster = (WahlFenster)cb.getSelectedItem();
-			        Steuerung.getInstance().vergleicheWahlen(wahlfenster.getBtw());
+					JComboBox<WahlFenster> cb = (JComboBox<WahlFenster>) e
+							.getSource();
+					WahlFenster wahlfenster = (WahlFenster) cb
+							.getSelectedItem();
+					Steuerung.getInstance().vergleicheWahlen(
+							wahlfenster.getBtw());
 				}
-				
+
 			});
 			wahlAussuche.add(text);
 			wahlAussuche.add(box);
 			wahlAussuche.setVisible(true);
 		}
 	}
-	
+
 	/**
-	 * Diese Methode wird von dem Konstruktor verwendet,
-	 * um eine ComboBox zu erstellen.
-	 * @param list Liste der Wahlen
+	 * Diese Methode wird von dem Konstruktor verwendet, um eine ComboBox zu
+	 * erstellen.
+	 * 
+	 * @param list
+	 *            Liste der Wahlen
 	 * @return ComboBox
+	 * @throw NullpointerException
 	 */
 	private JComboBox<WahlFenster> erstelleBox(List<WahlFenster> list) {
+		if (list == null) {
+			throw new NullPointerException();
+		}
 		WahlFenster[] namen = new WahlFenster[list.size()];
 		for (int i = 0; i < namen.length; i++) {
 			namen[i] = list.get(i);

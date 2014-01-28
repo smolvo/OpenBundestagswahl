@@ -18,31 +18,51 @@ import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repräsentiert den Dialog, der sich öffnet, wenn man im Menü "Importieren" oder 
- * in der Tab- Leiste den "+"- Button klickt
+ * Diese Klasse repräsentiert den Dialog, der sich öffnet, wenn man im Menü
+ * "Importieren" oder in der Tab- Leiste den "+"- Button klickt
  * 
- * Der Benutzer wird aufgefordert die zwei für die Berechnung der Sitzverteilung notwendigen Dateien
- * zu übergeben.
+ * Der Benutzer wird aufgefordert die zwei für die Berechnung der Sitzverteilung
+ * notwendigen Dateien zu übergeben.
+ * 
  * @author Manuel
- *
+ * 
  */
 public class ImportDialog extends JDialog {
 
+	/** zeigt an ob es sich um die erste Ausführung handelt */
 	boolean ersteAusfuehrung = true;
-	JFileChooser ergebnisseAuswahl = null;
-	JFileChooser bewerberAuswahl = null;
-	TabLeiste tabs;
-	File[] eingeleseneDateien = new File[2];
-	Programmfenster pf;
 
-	public ImportDialog(TabLeiste tabs) {
-		
-		this.tabs = tabs;
-		this.pf = tabs.getPf();
+	/** repräsentiert den FileChooser für die Ergebnisse einer Bundestagswahl */
+	JFileChooser ergebnisseAuswahl = null;
+
+	/** repräsentiert den FileChooser für die Bewerber */
+	JFileChooser bewerberAuswahl = null;
+
+	/** repräsentiert den Vektor mit den eingelesenen Daten */
+	private File[] eingeleseneDateien = new File[2];
+
+	/** repräsentiert das Programmfenster */
+	private Programmfenster pf;
+
+	/**
+	 * Der Konstruktor erstellt einen neuen Importdialog mit dem zwei Dateien
+	 * 
+	 * @param pf
+	 *            Programmfenster
+	 * @throws NullPointerException
+	 */
+	public ImportDialog(Programmfenster pf) {
+		if (pf == null) {
+			throw new NullPointerException("Bitte ein Programmfenster angeben.");
+		}
+		this.pf = pf;
 	}
-		
-		public void importiereWahl(TabLeiste tabs2) {
-		
+
+	/**
+	 * Diese Methode importiert eine Wahl in das Programmfenster.
+	 */
+	public void importiereWahl() {
+		// bei der ersten Ausführung wird der FileChooser gesichert
 		if (ersteAusfuehrung) {
 			ergebnisseAuswahl = new JFileChooser();
 			ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
@@ -51,48 +71,28 @@ public class ImportDialog extends JDialog {
 			ersteAusfuehrung = false;
 		}
 
-		
-
-
-		/* Lässt bei beiden Dialogen nur csv- Dateien zu und beschreibt, welche
-		 * Datei in welchem Dialog eingebeben werden soll
-		 */
-		//FileFilter ergebnisFilter = new FileNameExtensionFilter("Datei mit Wahlergebnissen", "csv");
-		//FileFilter bewerberFilter = new FileNameExtensionFilter("Datei mit Wahlbewerbern", "csv");
-		//ergebnisseAuswahl.setFileFilter(ergebnisFilter);
-		//bewerberAuswahl.setFileFilter(bewerberFilter);
-		
-		
-		
 		int rueckgabeWert = ergebnisseAuswahl.showOpenDialog(pf);
 		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
-
 			rueckgabeWert = bewerberAuswahl.showOpenDialog(pf);
 			if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
 				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
 				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
 
-				Bundestagswahl w = Steuerung.getInstance().importieren(eingeleseneDateien);
+				Bundestagswahl w = Steuerung.getInstance().importieren(
+						eingeleseneDateien);
 				Steuerung.getInstance().setBtw(w);
 				Steuerung.getInstance().berechneSitzverteilung();
-				
-				tabs.neuerTab(new WahlFenster(w), w.getName());
-				
+				pf.wahlHinzufuegen(w);
+
 			} else {
 				JOptionPane.showMessageDialog(pf,
 						"Keine Datei mit Wahlbewerber ausgewählt.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 			}
-
 		} else {
 			JOptionPane.showMessageDialog(pf,
 					"Keine Datei mit Wahlergebnisse ausgewählt.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
 		}
-
-		}
-	
-		
-		
-	
+	}
 }

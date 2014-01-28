@@ -153,11 +153,11 @@ public class Menu extends JMenuBar {
 		
 		private void importiere() {
 			if (pf.getiD() == null) {
-				ImportDialog iD = new ImportDialog(pf.getTabs());
+				ImportDialog iD = new ImportDialog(pf);
 				pf.setiD(iD);
-				pf.getiD().importiereWahl(pf.getTabs());
+				pf.getiD().importiereWahl();
 			} else {
-				pf.getiD().importiereWahl(pf.getTabs());
+				pf.getiD().importiereWahl();
 			}
 		}
 			
@@ -185,7 +185,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
 			} else if (e.getSource() == menu.vergleichen) {
-				new VergleichDialog(pf.getTabs());
+				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
 			} else if (e.getSource() == menu.zufaelligeWahl) {
