@@ -68,22 +68,23 @@ public class Mandatsrechner2009 {
 			for (Wahlkreis wahlkreis : bundesland.getWahlkreise()) {
 				int max = 0;
 				Kandidat gewinner = null;
-				try {
-					for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
-						// TODO parallelitaet!
-						// TODO Kandidaten mit gleicher Erststimmenanzahl
-	
-						if (max < erst.getAnzahl()) {
-							// Kandidaten Mandat zuweisen und als Wahlkreissieger in
-							// den Wahlkreis eintragen
-							gewinner = erst.getKandidat();
-							max = erst.getAnzahl();
-						}
+				
+				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
+					// TODO parallelitaet!
+					// TODO Kandidaten mit gleicher Erststimmenanzahl
+					//System.out.println(max+" "+erst.getAnzahl());
+					if (max < erst.getAnzahl()) {
+						// Kandidaten Mandat zuweisen und als Wahlkreissieger in
+						// den Wahlkreis eintragen
+						gewinner = erst.getKandidat();
+						max = erst.getAnzahl();
 					}
-					/*
-					 * bekommt ein Direktmandat und wird als Wahlkreissieger im
-					 * Wahlklreis eingetragen
-					 */
+				}
+				/*
+				 * bekommt ein Direktmandat und wird als Wahlkreissieger im
+				 * Wahlklreis eingetragen
+				 */
+				if(max != 0){
 					gewinner.setMandat(Mandat.DIREKTMANDAT);
 					wahlkreis.setWahlkreisSieger(gewinner);
 					bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
@@ -95,9 +96,8 @@ public class Mandatsrechner2009 {
 									gewinner.getPartei().getName(),
 									Mandat.DIREKTMANDAT.toString(), bundesland.getName(),
 									wahlkreis.getName());
-				} catch (NullPointerException e) {
-					e.printStackTrace();
 				}
+
 			}
 		}
 		return bundestagswahl;
@@ -163,18 +163,19 @@ public class Mandatsrechner2009 {
 			sitzanzahl = 0;
 			for (Bundesland bundesland : bundestagswahl.getDeutschland()
 					.getBundeslaender()) {
-				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
-						/ zuteilungsdivisor, false);
+				sitzanzahl += Math.round(bundesland.getEinwohnerzahl()
+						/ zuteilungsdivisor);
 			}
 			//Debug.print("Test: " + sitzanzahl + " - " + minSitze);
 			if(sitzanzahl == minSitze){
 				// Falls dieser Beak nicht drin ist, passt die Anzahl nicht!
+				Debug.print("ZTD: "+zuteilungsdivisor);
 				break;
 			} else if (sitzanzahl < minSitze) {
-				zuteilungsdivisor -= 1;
+				zuteilungsdivisor -= 10;
 			} else {
 				// sitzanzahl > minSitze
-				zuteilungsdivisor += 1;
+				zuteilungsdivisor += 100;
 			}
 		}
 		return zuteilungsdivisor;
@@ -350,7 +351,7 @@ public class Mandatsrechner2009 {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bundestagswahl.getDeutschland().getBundeslaender()) {
-				int zahl = this.runden(bl.getEinwohnerzahl() / zuteilungsdivisor, false);
+				int zahl = Math.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
 				summe += zahl;
 				System.out.println(bl.getName() + ": " + zahl + " Einwohner: "
 						+ bl.getEinwohnerzahl());
@@ -363,8 +364,8 @@ public class Mandatsrechner2009 {
 		for (Bundesland bundesland : bundestagswahl.getDeutschland()
 				.getBundeslaender()) {
 
-			int sitzeBundesland = this.runden(bundesland.getEinwohnerzahl()
-					/ zuteilungsdivisor, false);
+			int sitzeBundesland = Math.round(bundesland.getEinwohnerzahl()
+					/ zuteilungsdivisor);
 			landesdivisor = bundesland.getAnzahlZweitstimmen() / sitzeBundesland;
 
 			//System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
