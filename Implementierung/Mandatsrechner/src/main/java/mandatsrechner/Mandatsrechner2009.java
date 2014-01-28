@@ -68,33 +68,36 @@ public class Mandatsrechner2009 {
 			for (Wahlkreis wahlkreis : bundesland.getWahlkreise()) {
 				int max = 0;
 				Kandidat gewinner = null;
-				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
-					// TODO parallelitaet!
-					// TODO Kandidaten mit gleicher Erststimmenanzahl
-
-					if (max < erst.getAnzahl()) {
-						// Kandidaten Mandat zuweisen und als Wahlkreissieger in
-						// den Wahlkreis eintragen
-						gewinner = erst.getKandidat();
-						max = erst.getAnzahl();
+				try {
+					for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
+						// TODO parallelitaet!
+						// TODO Kandidaten mit gleicher Erststimmenanzahl
+	
+						if (max < erst.getAnzahl()) {
+							// Kandidaten Mandat zuweisen und als Wahlkreissieger in
+							// den Wahlkreis eintragen
+							gewinner = erst.getKandidat();
+							max = erst.getAnzahl();
+						}
 					}
+					/*
+					 * bekommt ein Direktmandat und wird als Wahlkreissieger im
+					 * Wahlklreis eingetragen
+					 */
+					gewinner.setMandat(Mandat.DIREKTMANDAT);
+					wahlkreis.setWahlkreisSieger(gewinner);
+					bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
+					// Eintrag in der Sitzverteilung erstellen
+					bundestagswahl
+							.getSitzverteilung()
+							.getBericht()
+							.zeileHinzufuegen(gewinner.getName(),
+									gewinner.getPartei().getName(),
+									Mandat.DIREKTMANDAT.toString(), bundesland.getName(),
+									wahlkreis.getName());
+				} catch (NullPointerException e) {
+					e.printStackTrace();
 				}
-				/*
-				 * bekommt ein Direktmandat und wird als Wahlkreissieger im
-				 * Wahlklreis eingetragen
-				 */
-				gewinner.setMandat(Mandat.DIREKTMANDAT);
-				wahlkreis.setWahlkreisSieger(gewinner);
-				bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
-				// Eintrag in der Sitzverteilung erstellen
-				bundestagswahl
-						.getSitzverteilung()
-						.getBericht()
-						.zeileHinzufuegen(gewinner.getName(),
-								gewinner.getPartei().getName(),
-								Mandat.DIREKTMANDAT.toString(), bundesland.getName(),
-								wahlkreis.getName());
-
 			}
 		}
 		return bundestagswahl;
