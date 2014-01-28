@@ -1,22 +1,16 @@
 package main.java.gui.dialoge;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import main.java.gui.Programmfenster;
-import main.java.gui.TabLeiste;
 import main.java.gui.WahlFenster;
 import main.java.steuerung.Steuerung;
 
@@ -28,6 +22,8 @@ import main.java.steuerung.Steuerung;
  * 
  */
 public class VergleichDialog extends JDialog {
+
+	private static final long serialVersionUID = 9047126629592533696L;
 
 	/**
 	 * Der Konstruktor erstellt einen Vergleichsdialog.

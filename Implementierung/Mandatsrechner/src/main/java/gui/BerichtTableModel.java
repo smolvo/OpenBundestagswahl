@@ -7,10 +7,11 @@ import main.java.model.BerichtDaten;
 /**
  * Diese Klasse repräsentiert das Tabellenmodell der 
  * Berichtsklasse.
- * @author Anton
  *
  */
 public class BerichtTableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = -1704078822201051366L;
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Abgeordneter", "Partei", "Mandat",

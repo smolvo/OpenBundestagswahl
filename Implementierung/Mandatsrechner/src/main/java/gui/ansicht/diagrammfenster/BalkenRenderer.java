@@ -7,11 +7,11 @@ import org.jfree.chart.renderer.category.BarRenderer;
 /**
  * Diese Klasse hilft die Farben der Balkendiagramme festzulegen.
  * 
- * @author Anton
- * 
  */
 public class BalkenRenderer extends BarRenderer {
 
+	private static final long serialVersionUID = 3223840021896221244L;
+	
 	/** repräsentiert die Farben */
 	private Paint[] farben;
 

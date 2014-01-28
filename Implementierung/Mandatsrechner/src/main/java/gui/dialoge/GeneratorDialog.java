@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,6 +35,8 @@ import main.java.wahlgenerator.Stimmanteile;
  * 
  */
 public class GeneratorDialog extends JDialog {
+
+	private static final long serialVersionUID = 3558472603505570667L;
 
 	/** repräsentiert die Liste der Basiswahlen */
 	private List<Bundestagswahl> wahlen;

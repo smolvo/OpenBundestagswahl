@@ -4,18 +4,14 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.java.gui.Programmfenster;
 import main.java.gui.TabLeiste;
-import main.java.gui.WahlFenster;
-import main.java.importexport.ImportExportManager;
-import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 public class ExportDialog extends JDialog{
 
+	private static final long serialVersionUID = -6257552145843360427L;
 	JFileChooser dateiAuswahl = new JFileChooser();
 	Programmfenster pf;
 	TabLeiste tabLeiste;

@@ -18,6 +18,8 @@ import main.java.model.Gebiet;
  */
 public class WahlFenster extends JPanel {
 
+	private static final long serialVersionUID = -6169514140570698059L;
+
 	/** repräsentiert den Namen des Tabs */
 	private final String name;
 

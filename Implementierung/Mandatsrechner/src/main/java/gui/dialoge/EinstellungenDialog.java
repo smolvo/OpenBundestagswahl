@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -22,14 +21,12 @@ import main.java.model.Bundestagswahl;
 /**
  * Diese Klasse repräsentiert den Dialog zum Einstellungen
  * Tabeintrag.
- * @author Manuel
- *
  * 
  */
 public class EinstellungenDialog extends JDialog {
 
 	
-	
+	private static final long serialVersionUID = -1289904870757728620L;
 	JPanel buttons = new JPanel();
 	JButton ok = new JButton("OK");
 	JButton abbrechen = new JButton("Abbrechen");

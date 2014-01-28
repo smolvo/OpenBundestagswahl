@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import main.java.gui.dialoge.ImportDialog;
-import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
@@ -24,6 +23,8 @@ import main.java.steuerung.Steuerung;
  */
 
 public final class Programmfenster extends JFrame {
+
+	private static final long serialVersionUID = -7954024258913364304L;
 
 	/** repräsentiert die Menüleiste */
 	private Menu menu;

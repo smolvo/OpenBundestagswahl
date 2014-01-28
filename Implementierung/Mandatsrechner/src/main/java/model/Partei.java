@@ -19,7 +19,7 @@ import main.java.wahlgenerator.RelevanteZweitstimmen;
 public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
-	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -6711521521647518265L;
@@ -40,7 +40,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private Color farbe;
 
 	/** Die Zweitstimmenliste (pro Gebiet) */
-	private LinkedList<Zweitstimme> zweitstimme = null;
+	private LinkedList<Zweitstimme> zweitstimme;
 
 	/** Ist die Partei im Bundestag */
 	private boolean imBundestag;
@@ -51,9 +51,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/** Die relevanten Zweistimmen der Partei */
 	private RelevanteZweitstimmen relevanteZweitstimmen;
 
-	private HashMap<Bundesland, Integer> mindestSitzanzahl = new HashMap<Bundesland, Integer>();
+	/** Die Mindestsitzanzahl pro Bundesland dieser Partei. */
+	private HashMap<Bundesland, Integer> mindestSitzanzahl;
 	
-	private HashMap<Bundesland, Integer> ueberhangMandate = new HashMap<Bundesland, Integer>();
+	/** Die Anzahl der Überhangmandate pro Bundesland dieser Partei. */
+	private HashMap<Bundesland, Integer> ueberhangMandate;
 	
 	/**
 	 * Comparator zum sortieren von Parteien nach der Anzahl der Überhangsmandate.
@@ -134,6 +136,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.mitglieder = new LinkedList<Kandidat>();
 		this.landesliste = new ArrayList<Landesliste>();
 		this.zweitstimme = new LinkedList<Zweitstimme>();
+		this.mindestSitzanzahl = new HashMap<Bundesland, Integer>();
+		this.ueberhangMandate = new HashMap<Bundesland, Integer>();
 	}
 
 	/**
@@ -155,7 +159,10 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.setName(name);
 		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
+		this.zweitstimme = new LinkedList<>();
 		this.mitglieder = new LinkedList<Kandidat>();
+		this.mindestSitzanzahl = new HashMap<Bundesland, Integer>();
+		this.ueberhangMandate = new HashMap<Bundesland, Integer>();
 	}
 
 	/**

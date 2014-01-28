@@ -39,8 +39,6 @@ public class Crawler2013 extends Crawler {
 	 */
 	private int parteiOffset = 4;
 
-	final private boolean debug = false;
-
 	/**
 	 * Importiert csv-Dateien, in dem Format des Bundeswahlleiters im Jahre
 	 * 2013.
@@ -553,7 +551,7 @@ public class Crawler2013 extends Crawler {
 		default:
 			anzahl = 0;
 		}*/
-		List<String[]> einwohnerzahlen = Config.getConfig("einwohnerzahl");
+		List<String[]> einwohnerzahlen = Config.getInstance().getConfig("einwohnerzahl");
 		boolean found = false;
 		for (String[] blEinwohner : einwohnerzahlen) {
 			if(blEinwohner[0].equals(name)) {
@@ -608,7 +606,7 @@ public class Crawler2013 extends Crawler {
 			color = color.GRAY;
 
 		}*/
-		List<String[]> farben = Config.getConfig("farben_parteien");
+		List<String[]> farben = Config.getInstance().getConfig("farben_parteien");
 		for (String[] farbe : farben) {
 			if (farbe[0].equals(parteiName)) {
 				try {

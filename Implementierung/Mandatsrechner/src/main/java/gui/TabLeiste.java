@@ -24,6 +24,8 @@ import main.java.gui.dialoge.ImportDialog;
  */
 public class TabLeiste extends JTabbedPane {
 
+	private static final long serialVersionUID = 566478766242504311L;
+
 	/** repräsentiert das Programmfenster der Tableiste */
 	private final Programmfenster pf;
 	

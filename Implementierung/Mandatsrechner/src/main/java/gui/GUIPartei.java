@@ -1,9 +1,5 @@
 package main.java.gui;
 
-import java.util.List;
-
-import main.java.model.Stimme;
-
 /**
  * Diese Klasse hält alle Dateien die eine Partei betreffen, um diese im
  * Tabellenfenster anzeigen zu lassen.

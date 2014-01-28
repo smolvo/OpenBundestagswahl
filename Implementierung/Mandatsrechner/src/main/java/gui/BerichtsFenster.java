@@ -1,7 +1,6 @@
 package main.java.gui;
 
 import java.awt.Dimension;
-import java.awt.Toolkit;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -13,10 +12,11 @@ import javax.swing.JTable;
  * angezeigt, die erläutern sollen wie ein Abgeordneter an sein Mandat gekommen
  * ist.
  * 
- * @author Anton
  * 
  */
 public class BerichtsFenster extends JDialog {
+
+	private static final long serialVersionUID = -6882730327089576613L;
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.

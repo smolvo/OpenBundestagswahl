@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.LinkedList;
+import java.util.Random;
 
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2009;
@@ -92,7 +93,7 @@ public class WahlgeneratorTest {
 		
 		long start = System.currentTimeMillis();
 		
-		Bundestagswahl genWahl = wg.erzeugeBTW();
+		Bundestagswahl genWahl = wg.erzeugeBTW("Name");
 		
 		System.out.println(System.currentTimeMillis() - start + "ms Laufzeit");
 		
@@ -134,7 +135,7 @@ public class WahlgeneratorTest {
 		
 		Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
 		
-		wg.erzeugeBTW();
+		wg.erzeugeBTW("Name");
 		
 		int sumErstAnteile = 0;
 		int sumZweitAnteile = 0;
@@ -167,7 +168,7 @@ public class WahlgeneratorTest {
 		
 		Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
 		
-		Bundestagswahl gen = wg.erzeugeBTW();
+		Bundestagswahl gen = wg.erzeugeBTW("Name");
 		
 		int sumErstAnteile = 0;
 		int sumZweitAnteile = 0;
@@ -200,7 +201,37 @@ public class WahlgeneratorTest {
 	
 	
 	@Test
-	public final void Test() {
+	public final void anzahlVergebeneStimmenTest() {
+		
+		Random rand = new Random();
+		
+		for (int i = 0; i < 20; i++) {
+			LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
+			int anzahlParteien = this.wahl1.getParteien().size();
+			
+			for (int j = 0; j < 2; j++) {
+				stimmAnt.add(new Stimmanteile(this.wahl1.getParteien().get(rand.nextInt(anzahlParteien)), 50, 50));
+			}
+			
+			Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);
+			
+			Bundestagswahl gen = wg.erzeugeBTW("bla");
+		
+			// Parteien mit Stimmen
+			LinkedList<Partei> relParteien = new LinkedList<>();
+			for (Partei partei : gen.getParteien()) {
+				for (Stimmanteile stimmanteile : stimmAnt) {
+					if (partei.getName().equals(stimmanteile.getPartei().getName())) {
+						relParteien.add(partei);
+					}
+				}
+			}
+			
+			assertTrue("Parteienanzahl = " + relParteien.size(), relParteien.size() == 2);
+			assertTrue(relParteien.getFirst().getZweitstimmeGesamt() == relParteien.getLast().getZweitstimmeGesamt());
+			
+			
+		}
 		
 	}
 	

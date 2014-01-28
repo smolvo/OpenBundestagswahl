@@ -3,8 +3,6 @@ package main.java.importexport;
 import java.io.File;
 
 import main.java.model.Bundestagswahl;
-import main.java.model.Kandidat;
-import main.java.model.Mandat;
 
 /**
  * Der ImportExportManager ist zustaendig fuer das Erstellen

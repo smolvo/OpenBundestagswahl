@@ -5,15 +5,8 @@ import java.io.File;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.java.gui.Programmfenster;
-import main.java.gui.TabLeiste;
-import main.java.gui.WahlFenster;
-import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
@@ -24,10 +17,10 @@ import main.java.steuerung.Steuerung;
  * Der Benutzer wird aufgefordert die zwei für die Berechnung der Sitzverteilung
  * notwendigen Dateien zu übergeben.
  * 
- * @author Manuel
- * 
  */
 public class ImportDialog extends JDialog {
+
+	private static final long serialVersionUID = -1969759039710597635L;
 
 	/** zeigt an ob es sich um die erste Ausführung handelt */
 	boolean ersteAusfuehrung = true;
