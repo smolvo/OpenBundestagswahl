@@ -173,7 +173,7 @@ public class Mandatsrechner2013 {
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); //partei.getMindestsitzAnzahl();
 			//System.out.println("Parteidivisor: "+parteidivisor);
-			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
+			//System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
 			if (diffSitze > 0) {
 				//isCorrect = false;
 				float multiplikator = 0.1f;
@@ -197,13 +197,13 @@ public class Mandatsrechner2013 {
 						multiplikator -= 0.000001f;
 					}
 				}
-				System.out.println("Multiplikator "+partei.getName()+": "+multiplikator);
+				//System.out.println("Multiplikator "+partei.getName()+": "+multiplikator);
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 					
 					sitzeBundesland = this.rechner2009.runden(
 							partei.getMindestsitzanzahl(bl) * multiplikator,
 							true);
-					System.out.println(partei.getName()+" - "+bl.getName()+": Vorhher:"+partei.getMindestsitzanzahl(bl)+"  Nachher:"+sitzeBundesland);
+					//System.out.println(partei.getName()+" - "+bl.getName()+": Vorhher:"+partei.getMindestsitzanzahl(bl)+"  Nachher:"+sitzeBundesland);
 					/*
 					 * if(partei.getName().equals("SPD") &&
 					 * bl.getName().equals("Bayern")){
