@@ -117,6 +117,7 @@ public class Menu extends JMenuBar {
 		about = new JMenuItem("About");
 		about.setIcon(new ImageIcon("src/main/resources/gui/images/about.png"));
 		lizenz = new JMenuItem("Lizenz");
+		lizenz.setIcon(new ImageIcon("src/main/resources/gui/images/gpl.png"));
 		
 		hilfe.add(handbuch);
 		hilfe.add(about);
