@@ -1,7 +1,5 @@
 package main.java.gui.ansicht;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -18,6 +16,8 @@ import main.java.model.Deutschland;
  */
 public class KartenFenster extends JTabbedPane {
 
+	private static final long serialVersionUID = 6496086485300101407L;
+	
 	/** repräsentiert die Ansicht in der sich das Kartenfenster befindet */
 	private Ansicht ansicht;
 	

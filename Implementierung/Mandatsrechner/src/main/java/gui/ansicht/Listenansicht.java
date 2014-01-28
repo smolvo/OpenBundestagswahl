@@ -14,11 +14,11 @@ import main.java.model.Gebiet;
  * eine Verzeichnisstruktur angelegt die Deutschland, alle Bundesländer und alle
  * Wahlkreise enthält.
  * 
- * @author Anton
- * 
  */
 public class Listenansicht extends JScrollPane implements TreeSelectionListener {
 
+	private static final long serialVersionUID = 3812495274375926111L;
+	
 	/** repräsentiert das dazugehörige Kartenfenster */
 	private KartenFenster kartenfenster;
 

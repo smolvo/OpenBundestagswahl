@@ -21,10 +21,10 @@ import main.java.steuerung.Steuerung;
  * Diese Klasse repräsentiert die Ansicht, auf der sicht
  * das Tabellen-, Karten- und Diagrammfenster befinden.
  * 
- * @author Anton
- * 
  */
 public class Ansicht extends JPanel {
+
+	private static final long serialVersionUID = 7008080710664890075L;
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
 	private TabellenFenster tabellenFenster;

@@ -1,6 +1,5 @@
 package main.java.gui.ansicht.tabellenfenster;
 
-import java.awt.Color;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,11 +23,11 @@ import main.java.model.Zweitstimme;
  * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
- * @author Anton
- * 
  */
 public class TabellenFenster extends JScrollPane {
 
+	private static final long serialVersionUID = -8830377095217386485L;
+	
 	/** repräsentiert die Ansicht in der sich die Tabelle befindet */
 	private final Ansicht ansicht;
 

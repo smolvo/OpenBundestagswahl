@@ -14,6 +14,8 @@ import main.java.model.Zweitstimme;
  * 
  */
 public class WahlkreisTableModel extends AbstractTableModel {
+	
+	private static final long serialVersionUID = -6901614554989527176L;
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Kandidat",

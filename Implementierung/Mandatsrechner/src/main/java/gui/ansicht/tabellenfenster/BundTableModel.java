@@ -2,15 +2,14 @@ package main.java.gui.ansicht.tabellenfenster;
 
 import javax.swing.table.AbstractTableModel;
 
-import main.java.gui.GUISteuerung;
-import main.java.model.Zweitstimme;
-
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
  * Tabellenfenster der Bundesansicht darstellen.
  * 
  */
 public class BundTableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = 289753851199135073L;
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",

@@ -16,11 +16,11 @@ import main.java.model.Wahlkreis;
  * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
- * @author Anton
- * 
  */
 public class DiagrammFenster extends JPanel {
 
+	private static final long serialVersionUID = -523400111719339965L;
+	
 	/** repräsentiert die Ansicht des Diagrammfensters */
 	private Ansicht ansicht;
 	
