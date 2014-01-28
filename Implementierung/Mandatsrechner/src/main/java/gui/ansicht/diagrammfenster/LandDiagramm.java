@@ -81,19 +81,24 @@ public class LandDiagramm {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Zweitstimme> zw = bundLand.getZweitstimmenProPartei();
 		Collections.sort(zw);
-		for (int i = 0; i < 6; i++) {
+		int count = 0;
+		int sonstige = 100;
+		// solange sonstige über 5% der Gesamtstimmen haben soll ein weiterer
+		// Balken hinzugefügt werden
+		while (sonstige > 5) {
+			sonstige = 0;
 			double proZweit = (Math
-					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
+					.rint(((double) zw.get(count).getAnzahl() / (double) bundLand
 							.getAnzahlZweitstimmen()) * 1000) / 10);
-			parteien.add(zw.get(i).getPartei());
-			result.setValue(proZweit, " ", zw.get(i).getPartei().getName());
-		}
-		// Collections.sort(parteien);
-		double sonstige = 0;
-		for (int i = 6; i < zw.size(); i++) {
-			sonstige += (Math
-					.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
-							.getAnzahlZweitstimmen()) * 1000) / 10);
+			parteien.add(zw.get(count).getPartei());
+			result.setValue(proZweit, " ", zw.get(count).getPartei().getName());
+
+			for (int i = count; i < zw.size(); i++) {
+				sonstige += (Math
+						.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
+								.getAnzahlZweitstimmen()) * 1000) / 10);
+			}
+			count++;
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 

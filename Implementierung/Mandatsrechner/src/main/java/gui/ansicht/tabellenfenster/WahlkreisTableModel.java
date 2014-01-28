@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import main.java.gui.GUISteuerung;
+import main.java.model.Erststimme;
 import main.java.model.Zweitstimme;
 
 /**
@@ -74,7 +75,11 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return true;
+		if ((columnIndex == 2) || (columnIndex == 4)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -84,28 +89,71 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
-		if (columnIndex == 4) {
+		if (columnIndex == 2) {
 			String stringAnzahl = (String) obj;
-			Zweitstimme stimme = daten.getZweitstimmen(rowIndex);
+			Erststimme erststimme = daten.getErststimmen(rowIndex);
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
+			// zeigt an ob eine Änderung möglich war
 			boolean aenderung = false;
+			// versuche Integer umzuwandeln
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
-				aenderung = guiSteuerung.wertAenderung(stimme, anzahl);
+				aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
 			} catch (NumberFormatException e) {
+				
 				JOptionPane.showMessageDialog(this.tabellenfenster,
 						"Nur positive ganze Zahlen erlaubt.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
+				
 			}
-			if (aenderung) {
-				this.tabellenfenster.getAnsicht().berechnungNotwendig();
-				daten.getErststimmen(rowIndex).setAnzahl(anzahl);
-			} else {
+			if (anzahl != daten.getErststimmen(rowIndex).getAnzahl()) {
+				// wenn die Stimme intern geändert wurde auch in der Tabelle ändern
+				// und berechne-Knopf aufrufen
+				if (aenderung) {
+					this.tabellenfenster.getAnsicht().berechnungNotwendig();
+					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+				} else {
+					
+					JOptionPane.showMessageDialog(this.tabellenfenster,
+							"Stimme konnte nicht geändert werden.", "Meldung",
+							JOptionPane.INFORMATION_MESSAGE, null);
+					
+				}
+			}
+		} else if (columnIndex == 4) {
+			String stringAnzahl = (String) obj;
+			Zweitstimme zweitstimme = daten.getZweitstimmen(rowIndex);
+			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+					.getFenster().getSteuerung();
+			// zeigt an ob eine Änderung möglich war
+			int anzahl = -1;
+			boolean aenderung = false;
+			// versuche Integer umzuwandeln
+			try {
+				anzahl = Integer.parseInt(stringAnzahl);
+				aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
+			} catch (NumberFormatException e) {
+				
 				JOptionPane.showMessageDialog(this.tabellenfenster,
-						"Stimme konnte nicht geändert werden.", "Meldung",
+						"Nur positive ganze Zahlen erlaubt.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
+				
+			}
+			if (anzahl != daten.getZweitstimmen(rowIndex).getAnzahl()) {
+				// wenn die Stimme intern geändert wurde auch in der Tabelle ändern
+				// und berechne-Knopf aufrufen
+				if (aenderung) {
+					this.tabellenfenster.getAnsicht().berechnungNotwendig();
+					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+				} else {
+					
+					JOptionPane.showMessageDialog(this.tabellenfenster,
+							"Stimme konnte nicht geändert werden.", "Meldung",
+							JOptionPane.INFORMATION_MESSAGE, null);
+					
+				}
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);

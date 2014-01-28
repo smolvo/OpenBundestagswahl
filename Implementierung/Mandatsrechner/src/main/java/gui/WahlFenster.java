@@ -1,17 +1,12 @@
 package main.java.gui;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.gui.ansicht.Ansicht;
 import main.java.model.Bundestagswahl;
 import main.java.model.Gebiet;
-import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert die allgemeine Darstellung einer Wahl Sie setzt

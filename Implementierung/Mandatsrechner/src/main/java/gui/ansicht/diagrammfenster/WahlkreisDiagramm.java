@@ -41,7 +41,8 @@ public class WahlkreisDiagramm {
 	 * 
 	 * @param wk
 	 *            Wahlkreis
-	 * @param flaeche Diagrammfläche
+	 * @param flaeche
+	 *            Diagrammfläche
 	 * @throws NullPointerException
 	 */
 	public WahlkreisDiagramm(Wahlkreis wk, final DiagrammFenster flaeche) {
@@ -66,7 +67,7 @@ public class WahlkreisDiagramm {
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.LINE_START);
 	}
-	
+
 	/**
 	 * Diese Mehthode wird vom Konstruktor verwendet, um das Diagramm zu
 	 * erstellen.
@@ -80,19 +81,25 @@ public class WahlkreisDiagramm {
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Erststimme> er = wk.getErststimmenProPartei();
 		Collections.sort(er);
-		for (int i = 0; i < 6; i++) {
+		int count = 0;
+		int sonstige = 100;
+		// solange sonstige über 5% der Gesamtstimmen haben soll ein weiterer
+		// Balken hinzugefügt werden
+		while (sonstige > 5) {
+			sonstige = 0;
 			double proZweit = (Math
-					.rint(((double) er.get(i).getAnzahl() / (double) wk
+					.rint(((double) er.get(count).getAnzahl() / (double) wk
 							.getAnzahlErststimmen()) * 1000) / 10);
-			parteien.add(er.get(i).getKandidat().getPartei());
-			result.setValue(proZweit, " ", er.get(i).getKandidat().getPartei()
-					.getName());
-		}
-		double sonstige = 0;
-		for (int i = 6; i < er.size(); i++) {
-			sonstige += (Math
-					.rint(((double) er.get(i).getAnzahl() / (double) wk
-							.getAnzahlErststimmen()) * 1000) / 10);
+			parteien.add(er.get(count).getKandidat().getPartei());
+			result.setValue(proZweit, " ", er.get(count).getKandidat()
+					.getPartei().getName());
+
+			for (int i = count; i < er.size(); i++) {
+				sonstige += (Math
+						.rint(((double) er.get(i).getAnzahl() / (double) wk
+								.getAnzahlErststimmen()) * 1000) / 10);
+			}
+			count++;
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
@@ -101,11 +108,10 @@ public class WahlkreisDiagramm {
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
-        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setRange(new Range(0, 60));
-        plot.setRangeAxis(rangeAxis);
-        
-		
+		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		rangeAxis.setRange(new Range(0, 60));
+		plot.setRangeAxis(rangeAxis);
+
 		// färben der Parteienbalken
 		Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
@@ -126,6 +132,7 @@ public class WahlkreisDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), (int) (this.flaeche.getHeight()));
+		return new Dimension(this.flaeche.getWidth(),
+				(int) (this.flaeche.getHeight()));
 	}
 }
