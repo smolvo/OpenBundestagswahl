@@ -89,9 +89,11 @@ public final class Programmfenster extends JFrame {
 	 * @param w Wahl
 	 */
 	public void wahlHinzufuegen(Bundestagswahl w) {
+		Steuerung.getInstance().setBtw(w);
+		Steuerung.getInstance().berechneSitzverteilung();
 		WahlFenster fenster = new WahlFenster(w);
-		wahlen.add(fenster);
-		tabs.neuerTab(fenster, w.getName());
+		this.wahlen.add(fenster);
+		this.tabs.neuerTab(fenster, w.getName());
 	}
 
 

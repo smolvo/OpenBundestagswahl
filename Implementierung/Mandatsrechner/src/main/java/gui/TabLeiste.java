@@ -146,7 +146,7 @@ public class TabLeiste extends JTabbedPane {
 		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
 
-		pf.setWahlen(wahlen);
+//		pf.setWahlen(wahlen);
 		// Erstelle anonymen ActionListener für den "x" Knopf
 
 		ActionListener listener = new ActionListener() {
