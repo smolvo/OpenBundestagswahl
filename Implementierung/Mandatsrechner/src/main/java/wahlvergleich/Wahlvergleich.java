@@ -66,6 +66,7 @@ public class Wahlvergleich {
 					String partei = parteiWahl1.getName();
 					// Anzahl Erststimmen der ersten Partei
 					int anzahlEinsErst = btw1.getDeutschland().getAnzahlErststimmen(parteiWahl1);
+					System.out.println(anzahlEinsErst);
 					// Anzahl der Erststimmen der zweiten Partei
 					int anzahlZweiErst = btw2.getDeutschland().getAnzahlErststimmen(parteiWahl2);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 1

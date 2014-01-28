@@ -1,5 +1,9 @@
 package main.java.gui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -12,7 +16,7 @@ import javax.swing.JTable;
  * @author Anton
  * 
  */
-public class BerichtsFenster extends JFrame {
+public class BerichtsFenster extends JDialog {
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.
@@ -26,7 +30,9 @@ public class BerichtsFenster extends JFrame {
 			throw new NullPointerException("Kein Tabellenmodell gefunden.");
 		}
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setSize(1024, 768);
+		this.setModal(true);
+		this.setSize(new Dimension(1024, 768));
+		this.setLocationRelativeTo(null);
 		this.setTitle("Mandatsübersicht");
 		JTable jTabelle = new JTable(tabellenModell);
 		JScrollPane pane = new JScrollPane(jTabelle);

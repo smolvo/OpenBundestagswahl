@@ -1,12 +1,16 @@
 package main.java.gui.dialoge;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,7 +27,7 @@ import main.java.steuerung.Steuerung;
  * @author Anton
  * 
  */
-public class VergleichDialog {
+public class VergleichDialog extends JDialog {
 
 	/**
 	 * Der Konstruktor erstellt einen Vergleichsdialog.
@@ -41,30 +45,32 @@ public class VergleichDialog {
 					"Bitte importieren Sie mindestens zwei Wahlen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
 		} else {
-			JFrame wahlAussuche = new JFrame();
-			wahlAussuche.setBounds(550, 250, 200, 150);
-			wahlAussuche.setResizable(false);
-			wahlAussuche.setLayout(null);
+			final JDialog wahlAuswahl = new JDialog();
+			wahlAuswahl.setSize(200, 200);
+			wahlAuswahl.setLocationRelativeTo(null);
+			wahlAuswahl.setModal(true);
+			wahlAuswahl.setResizable(false);
+			wahlAuswahl.setLayout(null);
 			JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
 			text.setBounds(5, 5, 190, 40);
-			JComboBox<WahlFenster> box = erstelleBox(pf.getWahlen());
-			box.setBounds(15, 45, 150, 25);
-			box.addActionListener(new ActionListener() {
+			final JComboBox<WahlFenster> box = erstelleBox(pf.getWahlen());
+			box.setBounds(10, 45, 180, 25);
+			JButton vergleichBestaetigen = new JButton("Vergleichen");
+			vergleichBestaetigen.setBounds(20, 90, 160, 25);
+			vergleichBestaetigen.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JComboBox<WahlFenster> cb = (JComboBox<WahlFenster>) e
-							.getSource();
-					WahlFenster wahlfenster = (WahlFenster) cb
-							.getSelectedItem();
-					Steuerung.getInstance().vergleicheWahlen(
-							wahlfenster.getBtw());
+					WahlFenster wahlfenster = (WahlFenster) box.getSelectedItem();
+					Steuerung.getInstance().vergleicheWahlen(wahlfenster.getBtw());
+					wahlAuswahl.dispose();
 				}
 
 			});
-			wahlAussuche.add(text);
-			wahlAussuche.add(box);
-			wahlAussuche.setVisible(true);
+			wahlAuswahl.add(text);
+			wahlAuswahl.add(box);
+			wahlAuswahl.add(vergleichBestaetigen);
+			wahlAuswahl.setVisible(true);
 		}
 	}
 
