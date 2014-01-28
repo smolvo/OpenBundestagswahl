@@ -30,23 +30,7 @@ public class Config {
 	private Map<String, List<String[]>> data;
 
 	private File config;
-
 	
-	public static void main(String[] args) {
-
-		Config c = Config.getInstance();
-
-		System.out.println(c.getConfigField("test"));
-		try {
-			c.setConfigField("hallo", "test");
-			c.exportConfig();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 
 	private Config() {
 
@@ -255,7 +239,7 @@ public class Config {
 		while (i.hasNext()) {
 			String key = (String) i.next();
 			List<String[]> dataContent = this.data.get(key);
-			result += "# " + key;
+			result += "# " + key + "\n";
 			for (String[] line : dataContent) {
 				for (String l : line) {
 					result += l + "\t";
