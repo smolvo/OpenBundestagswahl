@@ -210,6 +210,11 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					// Wahlkreis zufällig wählen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 					
+					
+					if (wk.getErststimmenProPartei().size() != 35) {
+						System.out.println("Anzahl Erstimmen: " + wk.getErststimmenProPartei().size());
+					}
+					
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
 					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getAnzahlErststimmen()));
 					
@@ -230,6 +235,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 						//System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
 						//Kandidat kan = new Kandidat(Mandat.KEINMANDAT, partei, erst);
 						Kandidat kan = new Kandidat("unbekannt", "-", 0, Mandat.KEINMANDAT, partei);
+						
 						erst = new Erststimme(stimmzahl, wk, kan);
 						//erst.setKandidat(kan);
 						
