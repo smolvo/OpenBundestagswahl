@@ -99,7 +99,7 @@ public class WahlvergleichDaten {
 		stringCheck(anzahlEinsZweit, this.anzahlEinsZweit);
 		stringCheck(prozentEinsZweit, this.prozentEinsZweit);
 		stringCheck(diffZweit, this.diffZweit);
-		stringCheck(diffZweit, this.anzahlZweiErst);
+		stringCheck(anzahlZweiErst, this.anzahlZweiErst);
 		stringCheck(prozentZweiErst, this.prozentZweiErst);
 		stringCheck(anzahlZweiZweit, this.anzahlZweiZweit);
 		stringCheck(prozentZweiZweit, this.prozentZweiZweit);

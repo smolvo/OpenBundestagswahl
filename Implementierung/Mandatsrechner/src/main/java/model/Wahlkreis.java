@@ -299,7 +299,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		// durchlaufe alle Erststimmen
 		for (Erststimme erststimme : this.getErststimmenProPartei()) {
 			// summiere die Erststimmen der gesuchten Partei
-			if (partei.equals(erststimme.getKandidat().getPartei())) {
+			if (partei.getName().equals(erststimme.getKandidat().getPartei().getName())) {
 				anzahl += erststimme.getAnzahl();
 			}
 		}

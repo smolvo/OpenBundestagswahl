@@ -36,7 +36,7 @@ public class VergleichDialog extends JDialog {
 		if (pf == null) {
 			throw new NullPointerException("Geben Sie ein Programmfenster an.");
 		}
-		if (pf.getWahlen().size() < 2) {
+		if (pf.getWahlen().size() < 1) {
 			JOptionPane.showMessageDialog(pf,
 					"Bitte importieren Sie mindestens zwei Wahlen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);

@@ -159,46 +159,30 @@ public class Deutschland extends Gebiet implements Serializable {
 	 */
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
-		}
-		
-		int anzahl = 0;
-	
-		// durchlaufe alle Zweitstimmen
-		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
-			if (partei.equals(zweitstimme.getPartei())) {
-				// summiere die Zweitstimmen der gesuchten Partei
-				anzahl += zweitstimme.getAnzahl();
+		int sum = 0;
+		for (Bundesland bl : this.bundeslaender) {
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				sum += wk.getZweitstimme(partei).getAnzahl();
 			}
 		}
-		
-		return anzahl;
+		return sum;
 	}
 	
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * Gibt die anzahl der Erststimmen einer bestimmten Partei zurück.
 	 * 
 	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override
 	public int getAnzahlErststimmen(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
-		}
-		
-		int anzahl = 0;
-		
-		// durchlaufe alle Erststimmen
-		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			// summiere die Erststimmen der gesuchten Partei
-			if (partei.equals(erststimme.getKandidat().getPartei())) {
-				anzahl += erststimme.getAnzahl();
+		int sum = 0;
+		for (Bundesland bl : this.bundeslaender) {
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				sum += wk.getAnzahlErststimmen(partei);
 			}
 		}
-		
-		return anzahl;
+		return sum;
 	}
 	
 	/**
@@ -211,5 +195,37 @@ public class Deutschland extends Gebiet implements Serializable {
 			alleWk.addAll(bl.getWahlkreise());
 		}
 		return alleWk;
+	}
+	
+	/**
+	 * Gibt die gesamte Anzahl Erststimmen für Deutschland aus.
+	 * @return alle Erststimmen
+	 */
+	public int getGesamtErststimmen() {
+		int sum = 0;
+		for (Bundesland bl : this.bundeslaender) {
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				for (Erststimme er : wk.getErststimmenProPartei()) {
+					sum += er.getAnzahl();
+				}
+			}
+		}
+		return sum;
+	}
+	
+	/**
+	 * Gibt die gesamte Anzahl Zweitstimmen für Deutschland aus.
+	 * @return alle Zweitstimmen
+	 */
+	public int getGesamtZweitstimmen() {
+		int sum = 0;
+		for (Bundesland bl : this.bundeslaender) {
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				for (Zweitstimme zw : wk.getZweitstimmenProPartei()) {
+					sum += zw.getAnzahl();
+				}
+			}
+		}
+		return sum;
 	}
 }

@@ -53,12 +53,11 @@ public class Wahlvergleich {
 	 */
 	public WahlvergleichDaten wahlvergleich() {
 		WahlvergleichDaten daten = new WahlvergleichDaten();
-		// Liste der Parteien aus Bundestagswahl 1
 		LinkedList<Partei> wahl1Parteien = btw1.getParteien();
-		// Liste der Parteien aus Bundestagswahl 2
 		LinkedList<Partei> wahl2Parteien = btw2.getParteien();
-		// Liste 1 wird alphabetisch sortiert
 		Collections.sort(wahl1Parteien);
+		Collections.sort(wahl2Parteien);
+		// suche die Parteien, die in beiden Wahlen dabei war
 		for (Partei parteiWahl1: wahl1Parteien) {
 			 for (Partei parteiWahl2: wahl2Parteien) {
 				 if (parteiWahl1.getName().equals(parteiWahl2.getName())) {
@@ -66,13 +65,12 @@ public class Wahlvergleich {
 					String partei = parteiWahl1.getName();
 					// Anzahl Erststimmen der ersten Partei
 					int anzahlEinsErst = btw1.getDeutschland().getAnzahlErststimmen(parteiWahl1);
-					System.out.println(anzahlEinsErst);
 					// Anzahl der Erststimmen der zweiten Partei
 					int anzahlZweiErst = btw2.getDeutschland().getAnzahlErststimmen(parteiWahl2);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 1
-					double prozentEinsErst = (Math.rint(((double) anzahlEinsErst / (double) btw1.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
+					double prozentEinsErst = (Math.rint(((double) anzahlEinsErst / (double) btw1.getDeutschland().getGesamtErststimmen()) * 1000) / 10);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 2
-					double prozentZweiErst = (Math.rint(((double) anzahlZweiErst / (double) btw2.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
+					double prozentZweiErst = (Math.rint(((double) anzahlZweiErst / (double) btw2.getDeutschland().getGesamtErststimmen()) * 1000) / 10);
 					// errechnet die Differenz der Erststimmen
 					int diffErst = anzahlEinsErst - anzahlZweiErst;
 					// Anzahl Zweitstimmen der ersten Partei
@@ -80,22 +78,13 @@ public class Wahlvergleich {
 					// Anzahl Zweitstimmen der zweiten Partei
 					int anzahlZweiZweit = parteiWahl2.getZweitstimmeGesamt();
 					// errechnet den prozentualen Anteil Zweitstimmen von Partei 1
-					double prozentEinsZweit = (Math.rint(((double) anzahlEinsZweit / (double) btw1.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
+					double prozentEinsZweit = (Math.rint(((double) anzahlEinsZweit / (double) btw1.getDeutschland().getGesamtZweitstimmen()) * 1000) / 10);
 					// errechnet den prozentualen Anteil Zweitstimmen von Partei 2
-					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
+					double prozentZweiZweit = (Math.rint(((double) anzahlZweiZweit / (double) btw2.getDeutschland().getGesamtZweitstimmen()) * 1000) / 10);
 					// errechnet die Differenz der Zweitstimmen
 					int diffZweit = anzahlEinsZweit - anzahlZweiZweit;
-					daten.addZeile(partei,
-							Integer.toString(anzahlEinsErst),
-							Double.toString(prozentEinsErst),
-							Integer.toString(diffErst),
-							Integer.toString(anzahlZweiErst),
-							Double.toString(prozentZweiErst),
-							Integer.toString(anzahlEinsZweit),
-							Double.toString(prozentEinsZweit),
-							Integer.toString(diffZweit),
-							Integer.toString(anzahlZweiZweit),
-							Double.toString(prozentZweiZweit));
+					daten.addZeile(partei, Integer.toString(anzahlEinsErst), Double.toString(prozentEinsErst), Integer.toString(diffErst), Integer.toString(anzahlEinsZweit), Double.toString(prozentEinsZweit), Integer.toString(diffZweit), Integer.toString(anzahlZweiErst), Double.toString(prozentZweiErst), Integer.toString(anzahlZweiZweit), Double.toString(prozentZweiZweit));
+					
 				 }
 			 }
 	}
