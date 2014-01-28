@@ -5,11 +5,10 @@ import javax.swing.table.AbstractTableModel;
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
  * Tabellenfenster der Bundesansicht darstellen.
+ * @author Anton
  * 
  */
 public class BundTableModel extends AbstractTableModel {
-
-	private static final long serialVersionUID = 289753851199135073L;
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
@@ -17,9 +16,6 @@ public class BundTableModel extends AbstractTableModel {
 
 	/** hält alle relevanten Daten */
 	private BundDaten daten;
-
-	/** das Tabellenfenster */
-	private TabellenFenster tabellenfenster;
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
@@ -30,12 +26,11 @@ public class BundTableModel extends AbstractTableModel {
 	 *            das tabellenfenster
 	 * @throw NullPointerException
 	 */
-	public BundTableModel(BundDaten daten, TabellenFenster tabellenfenster) {
-		if (daten == null || tabellenfenster == null) {
+	public BundTableModel(BundDaten daten) {
+		if (daten == null) {
 			throw new NullPointerException("Einer der Parameter ist null.");
 		}
 		this.daten = daten;
-		this.tabellenfenster = tabellenfenster;
 	}
 
 	@Override

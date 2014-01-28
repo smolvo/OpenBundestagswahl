@@ -22,11 +22,10 @@ import main.java.model.Zweitstimme;
 /**
  * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
+ * @author Anton
  * 
  */
 public class TabellenFenster extends JScrollPane {
-
-	private static final long serialVersionUID = -8830377095217386485L;
 	
 	/** repräsentiert die Ansicht in der sich die Tabelle befindet */
 	private final Ansicht ansicht;
@@ -51,7 +50,7 @@ public class TabellenFenster extends JScrollPane {
 		// wenn kein Gebiet übergeben wird wird eine leere Tabelle erstellt
 		if (gebiet == null) {
 			BundDaten daten = new BundDaten();
-			BundTableModel tabelle = new BundTableModel(daten, this);
+			BundTableModel tabelle = new BundTableModel(daten);
 			JTable jTabelle = new JTable(tabelle);
 			this.setViewportView(jTabelle);
 		}
@@ -85,14 +84,14 @@ public class TabellenFenster extends JScrollPane {
 			double proZweit = (Math
 					.rint(((double) zw.getAnzahl() / (double) land
 							.getAnzahlZweitstimmen()) * 1000) / 10);
-			daten.addZeile(zw.getPartei().getFarbe(), zw.getPartei().getName(), zw,
+			daten.addZeile(zw.getPartei().getName(), zw,
 					Double.toString(proZweit), Integer.toString(gp.getSitze()),
 					Integer.toString(gp.getDirektmandate()),
 					Integer.toString(gp.getUeberhangsmandate()),
 					Integer.toString(gp.getAusgleichsmandate()));
 		}
 
-		BundTableModel tabelle = new BundTableModel(daten, this);
+		BundTableModel tabelle = new BundTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
