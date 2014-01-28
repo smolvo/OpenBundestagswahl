@@ -395,7 +395,7 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		LinkedList<Kandidat> direktmandate = new LinkedList<Kandidat>();
 		for (Wahlkreis wk : this.getWahlkreise()) {
-			if (wk.getWahlkreisSieger().getPartei() == part) {
+			if (wk.getWahlkreisSieger().getPartei().equals(part)) {
 				direktmandate.add(wk.getWahlkreisSieger());
 			}
 		}

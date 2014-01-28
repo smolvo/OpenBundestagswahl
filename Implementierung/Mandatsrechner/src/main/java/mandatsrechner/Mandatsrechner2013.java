@@ -294,7 +294,7 @@ public class Mandatsrechner2013 {
 			System.out.println("Zuteilungsdivisor: " + zuteilungsdivisor);
 			int summe = 0;
 			for (Bundesland bl : bundestagswahl.getDeutschland().getBundeslaender()) {
-				int zahl = Math.round(bl.getEinwohnerzahl() / zuteilungsdivisor);
+				int zahl = this.rechner2009.runden(bl.getEinwohnerzahl() / zuteilungsdivisor, false);
 				summe += zahl;
 				System.out.println(bl.getName() + ": " + zahl + " Einwohner: "
 						+ bl.getEinwohnerzahl());
@@ -349,7 +349,7 @@ public class Mandatsrechner2013 {
 				/*if(part.getName().equals("CDU") && bundesland.getName().equals("Saarland")){
 					System.out.println("###Landesdivisor: "+landesdivisor+" Zweitstimmen: "+bundesland.getAnzahlZweitstimmen(part)+" | " + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl)+" Diff:"+diffKandidat);
 				}*/
-				if (diffKandidat > 0) {
+				if (diffKandidat >= 0) {
 					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
 						// Partei und fuege den i-ten Listenkandidaten in die
@@ -387,7 +387,7 @@ public class Mandatsrechner2013 {
 						}
 					}
 				} else {
-					//System.err.println("-"+Math.abs(diffKandidat));
+					//System.err.println(bundesland.getName()+" - "+part.getName()+" - "+Math.abs(diffKandidat));
 					Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
 						ueberhangmandat = bundesland.getDirektMandate(part).get(i);

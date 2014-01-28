@@ -163,8 +163,8 @@ public class Mandatsrechner2009 {
 			sitzanzahl = 0;
 			for (Bundesland bundesland : bundestagswahl.getDeutschland()
 					.getBundeslaender()) {
-				sitzanzahl += Math.round(bundesland.getEinwohnerzahl()
-						/ zuteilungsdivisor);
+				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
+						/ zuteilungsdivisor,false);
 			}
 			//Debug.print("Test: " + sitzanzahl + " - " + minSitze);
 			if(sitzanzahl == minSitze){
@@ -205,12 +205,12 @@ public class Mandatsrechner2009 {
 			} else {
 				gerundet = (int) Math.floor(zahl);
 			}
-		} else if (kommastelle > 5) {
+		} else if (kommastelle >= 5) {
 			gerundet = (int) Math.ceil(zahl);
 		} else {
 			gerundet = (int) Math.floor(zahl);
 		}
-		// System.err.println("###### "+zahl+" "+gerundet);
+		//System.err.println("###### "+zahl+" "+gerundet);
 		return gerundet;
 		// return Math.round(zahl);
 	}

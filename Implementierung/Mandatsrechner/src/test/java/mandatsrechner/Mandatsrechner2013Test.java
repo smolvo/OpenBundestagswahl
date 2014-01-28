@@ -19,7 +19,7 @@ public class Mandatsrechner2013Test {
 		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
+		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2009.csv");
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w = null;
 		try {
