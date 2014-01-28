@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.EinstellungenDialog;
 import main.java.gui.dialoge.ExportDialog;
+import main.java.gui.dialoge.HandbuchDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.gui.dialoge.LizenzDialog;
 import main.java.gui.dialoge.VergleichDialog;
@@ -196,7 +197,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.zufaelligeWahl) {
 				new GeneratorFenster(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {
-				// TODO Handbuch
+				new HandbuchDialog();
 			} else if (e.getSource() == menu.about) {
 				new AboutDialog();
 			} else if (e.getSource() == menu.lizenz) {
