@@ -94,13 +94,23 @@ public class TabLeiste extends JTabbedPane {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				remove(plusButton);
-				new ImportDialog(TabLeiste.this);
+				importiere();
 				neuerTabButton();
 			}
 		};
 		neuerTab.addActionListener(listener);
-
 	}
+	
+	private void importiere() {
+		if (pf.getiD() == null) {
+			ImportDialog iD = new ImportDialog(pf.getTabs());
+			pf.setiD(iD);
+			pf.getiD().importiereWahl(pf.getTabs());
+		} else {
+			pf.getiD().importiereWahl(pf.getTabs());
+		}
+	}
+		
 
 	/**
 	 * Diese Methode fügt zur Tableiste einen weiteren Tab hinzu. Dabei besitzt

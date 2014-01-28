@@ -77,21 +77,21 @@ public class Ansicht extends JPanel {
 		gbc.ipadx = 50;
 		gbc.ipady = 50;
 		
-		gbc.weightx = 0.5;
-		gbc.weighty = 0.5;
+		gbc.weightx = 0.75;
+		gbc.weighty = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(kartenFenster, gbc);
 
-		gbc.weightx = 0.5;
-		gbc.weighty = 0.5;
+		gbc.weightx = 0.75;
+		gbc.weighty = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(diagrammFenster, gbc);
 
-		gbc.weightx = 1;
+		gbc.weightx = 1.25;
 		gbc.weighty = 1;
 		gbc.gridx = 1;
 		gbc.gridy = 0;

@@ -1,5 +1,7 @@
 package main.java.gui.ansicht;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -42,17 +44,18 @@ public class KartenFenster extends JTabbedPane {
 	 * @param land Deutschland-Objekt welches visualisiert werden soll
 	 */
 	public void zeigeInformationen(Deutschland land) {
+		
 		DeutschlandKarte d = new DeutschlandKarte(land);
+		Listenansicht liste = new Listenansicht(land, this);
 		if (pruefeLaender(land)) {
 			this.addTab("Kartenansicht", d);
+			this.add("Listenansicht", liste);
 		} else {
 			this.addTab("Kartenansicht", null);
 			this.setEnabledAt(0, false);
+			this.add("Listenansicht", liste);
+			this.setSelectedIndex(1);
 		}
-		
-		/* kreiiert die Listenansicht */
-		Listenansicht liste = new Listenansicht(land, this);
-		this.add("Listenansicht", liste);
 	}
 
 	/**
@@ -65,8 +68,8 @@ public class KartenFenster extends JTabbedPane {
 		LinkedList<Bundesland> bundeslaender = land.getBundeslaender();
 		Collections.sort(bundeslaender);
 		boolean gleich = true;
-		for (int i = 0; i == 15; i++) {
-			if (alleLaender[i] != bundeslaender.get(i).getName()) {
+		for (int i = 0; i < 16; i++) {
+			if (!alleLaender[i].equals(bundeslaender.get(i).getName())) {
 				gleich = false;
 			}
 		}

@@ -47,36 +47,23 @@ public class BundDiagramm {
 	 * @param flaeche
 	 *            Diagrammfläche
 	 */
-	public BundDiagramm(Deutschland land, DiagrammFenster flaeche) {
+	public BundDiagramm(Deutschland land, final DiagrammFenster flaeche) {
 		this.flaeche = flaeche;
+		flaeche.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(land);
-		ChartPanel chartPanel = new ChartPanel(chart);
-//		chartPanel.addComponentListener(new ComponentAdapter() {
-//
-//			@Override
-//			public void componentResized(ComponentEvent e) {
-//				ChartPanel panel = (ChartPanel) e.getComponent();
-//				panel.setSize(resize());
-//			}
-//
-//		});
-		listenerSetzen(chartPanel, flaeche);
-		chartPanel.setPreferredSize(new Dimension(450, 250));
-		flaeche.add(chartPanel, BorderLayout.CENTER);
-	}
+		final ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.addComponentListener(new ComponentAdapter() {
 
-	/**
-	 * Diese Methode setzt einen Listener zu einem ChartPanel.
-	 * 
-	 * @param chartPanel
-	 *            ChartPanel
-	 * @param flaeche
-	 *            die Fläche unter dem ChartPanel
-	 */
-	private void listenerSetzen(ChartPanel chartPanel,
-			final DiagrammFenster flaeche) {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+				flaeche.add(chartPanel, BorderLayout.LINE_START);
+			}
+
+		});
 		chartPanel.addMouseListener(new MouseAdapter() {
-
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
@@ -87,8 +74,12 @@ public class BundDiagramm {
 							"Berichstanzeige momentan nicht möglich.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
 				}
+				
 			}
 		});
+//		listenerSetzen(chartPanel, flaeche);
+		chartPanel.setPreferredSize(new Dimension(450, 250));
+		flaeche.add(chartPanel, BorderLayout.LINE_START);
 	}
 
 	/**
@@ -143,6 +134,6 @@ public class BundDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), (int) (0.6 * this.flaeche.getWidth()));
+		return new Dimension(this.flaeche.getWidth(), (int) (this.flaeche.getHeight()));
 	}
 }

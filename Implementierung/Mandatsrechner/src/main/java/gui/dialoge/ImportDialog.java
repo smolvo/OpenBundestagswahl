@@ -28,16 +28,30 @@ import main.java.steuerung.Steuerung;
  */
 public class ImportDialog extends JDialog {
 
-	JFileChooser ergebnisseAuswahl = new JFileChooser();
-	JFileChooser bewerberAuswahl = new JFileChooser();
+	boolean ersteAusfuehrung = true;
+	JFileChooser ergebnisseAuswahl = null;
+	JFileChooser bewerberAuswahl = null;
 	TabLeiste tabs;
 	File[] eingeleseneDateien = new File[2];
 	Programmfenster pf;
 
 	public ImportDialog(TabLeiste tabs) {
-
+		
 		this.tabs = tabs;
 		this.pf = tabs.getPf();
+	}
+		
+		public void importiereWahl(TabLeiste tabs2) {
+		
+		if (ersteAusfuehrung) {
+			ergebnisseAuswahl = new JFileChooser();
+			ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
+			bewerberAuswahl = new JFileChooser();
+			bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
+			ersteAusfuehrung = false;
+		}
+
+		
 
 
 		/* Lässt bei beiden Dialogen nur csv- Dateien zu und beschreibt, welche
@@ -47,8 +61,8 @@ public class ImportDialog extends JDialog {
 		//FileFilter bewerberFilter = new FileNameExtensionFilter("Datei mit Wahlbewerbern", "csv");
 		//ergebnisseAuswahl.setFileFilter(ergebnisFilter);
 		//bewerberAuswahl.setFileFilter(bewerberFilter);
-		ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
-		bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
+		
+		
 		
 		int rueckgabeWert = ergebnisseAuswahl.showOpenDialog(pf);
 		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
@@ -76,6 +90,9 @@ public class ImportDialog extends JDialog {
 					JOptionPane.INFORMATION_MESSAGE, null);
 		}
 
+		}
 	
-	}
+		
+		
+	
 }

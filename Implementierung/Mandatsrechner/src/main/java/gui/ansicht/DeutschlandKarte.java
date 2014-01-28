@@ -4,28 +4,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.model.Bundesland;
 import main.java.model.Deutschland;
-/**
- * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
- *
- */
-/** alle Bundeslaender, nötig für Färbung */
+
+
 /**
  * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
  *
@@ -35,30 +28,8 @@ public class DeutschlandKarte extends JPanel {
 	/** alle Bundeslaender, nötig für Färbung */
 	private Deutschland land;
 	
-	boolean groesseGeaendert = true;
-	
-	BufferedImage buttonBild;
-	
-	JButton bBayern;
-	
-	/**
-	 * Konstruktor der Klasse.
-	 * @param land das gesamte Land
-	 */
-	public DeutschlandKarte(Deutschland land) {
-		this.land = land;
-		this.addComponentListener(new ComponentAdapter() {
-			
-			@Override
-			public void componentResized(ComponentEvent e) {
-				skaliere();
-			}
-		});
-		
-		bBayern = new JButton("Bayern");
-	}
-	
-	
+	/** true wenn das Bild bereits an die Fenstergroesse angepasst wurde, sonst false */
+	boolean skaliert = false;
 	
 	/** wahr wenn bereits bilder importiert wurden, sonst falsch */
 	boolean bilderImportiert = false;
@@ -72,8 +43,10 @@ public class DeutschlandKarte extends JPanel {
 	/** in diesem Array werden die Namen der importierten Bundeslaender gespeichert */
 	String[] bundeslandNamen = new String[16];
 	
+	/** die x-Koordinaten der Bilder relativ zur Bildgroesse  */
 	Double[] posX = new Double[] {0.1944, 0.3366, 0.6888, 0.5333, 0.3022, 0.4066, 0.2322, 0.4477, 0.1377, 0.0711, 0.0855, 0.1033, 0.5933, 0.4677, 0.2555, 0.4177};
 	
+	/** die y-Koordinaten der Bilder relativ zur Bildgroesse  */
 	Double[] posY = new Double[] {0.6387, 0.5391, 0.2871, 0.1777, 0.2207, 0.1611, 0.4180, 0.0332, 0.0918, 0.3115, 0.4941, 0.6484, 0.4082, 0.2432, 0.0, 0.4160};
 
 	/** Dieser String gibt den Pfad des Speicherortes der Bundesland-Bilder an */
@@ -82,29 +55,41 @@ public class DeutschlandKarte extends JPanel {
 	/** erstellt ein BufferedImage in der größe 900 * 1024  */
 	BufferedImage grossVersion = new BufferedImage(900, 1024, BufferedImage.TYPE_INT_ARGB);
 	
-	/**  */
-	Image skaliert = null;
+	/** die darzustellende Karte nach der skalierung */
+	Image skalierteKarte = null;
+	
+	/**
+	 * Konstruktor der Klasse.
+	 * @param land das gesamte Land
+	 */
+	public DeutschlandKarte(Deutschland land) {
+		this.land = land;
+		if (!bilderImportiert) {
+			importieren();
+		}
+		faerbeLand();
+		erstelleGrafik();
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				skaliert = false;
+			}
+		});
+	}
+	
+	public void paintComponent(Graphics g) {
+		if (!skaliert) {
+			skaliere();
+		}
+		g.drawImage(skalierteKarte, 0, 0, null);
+	}
 	
 	/** skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefügt 
 	 * wurden entsprechend der aktuellen größe des JPanels 
 	 */
 	private void skaliere() {
-		skaliert = grossVersion.getScaledInstance((int)(0.879*this.getHeight()), this.getHeight(), Image.SCALE_SMOOTH);
-	}
-	
-	/**
-	 * @param g  
-	 * führt alle noetigen Aktionen aus um die eingefaerbte Deutschlandkare zu erstellen
-	 */
-	public void paintComponent(Graphics g) {
-		
-		if (!bilderImportiert) {
-			importieren();
-			faerbeLand();
-			erstelleGrafik();
-			skaliere();
-		}
-		g.drawImage(skaliert,0, 0, this);
+		skalierteKarte = grossVersion.getScaledInstance((int)(0.879*this.getHeight()), this.getHeight(), Image.SCALE_SMOOTH);
+		skaliert = true;
 	}
 	
 	/**
@@ -119,7 +104,7 @@ public class DeutschlandKarte extends JPanel {
 		}
 		bilderImportiert = true;
 	}
-	
+
 	/**
 	 * erstellt die Deutschlandkarte indem es die eingefaerbten Bilder anhand der Koordinaten abbildet
 	 */
@@ -129,7 +114,6 @@ public class DeutschlandKarte extends JPanel {
 		int panelBreite = grossVersion.getWidth();
 		int panelHoehe = grossVersion.getHeight();
 		for (int i = 0; i < 16; i++) {
-			
 			grossVersionGraphics.drawImage(bundeslandBilderGefaerbt[i], (int)(posX[i]*panelBreite), (int)(posY[i]*panelHoehe),null);
 		}
 	}
@@ -147,7 +131,6 @@ public class DeutschlandKarte extends JPanel {
 		}
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
-			
 			Color bwfarbe = bundeslaender.get(i).getFarbe();
 			try {
 				int hoehe = aktuellesBild.getHeight();
@@ -174,14 +157,12 @@ public class DeutschlandKarte extends JPanel {
 	 */
 	private BufferedImage importImg(String pfad) {
 			try {
-				BufferedImage bild = ImageIO.read(new File(pfad));
+				BufferedImage landBild = ImageIO.read(new File(pfad));
 				bilderImportiert = true;
-				return bild;
+				return landBild;
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;
 			}
 		}
-
-
-}
+	}

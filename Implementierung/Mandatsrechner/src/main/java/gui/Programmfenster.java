@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import main.java.gui.dialoge.ImportDialog;
 import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
@@ -31,6 +32,7 @@ public final class Programmfenster extends JFrame {
 	private Menu menu = null;
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 	private TabLeiste tabs;
+	private ImportDialog iD;
 
 	/**
 	 * Die Main- Klasse des Programms. Hier startet das Programm.
@@ -174,4 +176,13 @@ public final class Programmfenster extends JFrame {
 		}
 		return btws;
 	}
+
+	public ImportDialog getiD() {
+		return iD;
+	}
+
+	public void setiD(ImportDialog iD) {
+		this.iD = iD;
+	}
+	
 }

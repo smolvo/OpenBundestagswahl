@@ -42,21 +42,24 @@ public class WahlkreisDiagramm {
 	 * @param wk
 	 *            Wahlkreis
 	 */
-	public WahlkreisDiagramm(Wahlkreis wk, DiagrammFenster flaeche) {
+	public WahlkreisDiagramm(Wahlkreis wk, final DiagrammFenster flaeche) {
 		this.flaeche = flaeche;
+		flaeche.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(wk);
-		ChartPanel chartPanel = new ChartPanel(chart);
-//		chartPanel.addComponentListener(new ComponentAdapter() {
-//
-//			@Override
-//			public void componentResized(ComponentEvent e) {
-//				ChartPanel panel = (ChartPanel) e.getComponent();
-//				panel.setSize(resize());
-//			}
-//
-//		});
+		final ChartPanel chartPanel = new ChartPanel(chart);
+
+		chartPanel.addComponentListener(new ComponentAdapter() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				ChartPanel panel = (ChartPanel) e.getComponent();
+				panel.setSize(resize());
+				flaeche.add(chartPanel, BorderLayout.LINE_START);
+			}
+
+		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
-		flaeche.add(chartPanel, BorderLayout.CENTER);
+		flaeche.add(chartPanel, BorderLayout.LINE_START);
 	}
 	
 	/**
@@ -118,6 +121,6 @@ public class WahlkreisDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), (int) (0.6 * this.flaeche.getWidth()));
+		return new Dimension(this.flaeche.getWidth(), (int) (this.flaeche.getHeight()));
 	}
 }

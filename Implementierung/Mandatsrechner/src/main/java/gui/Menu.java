@@ -45,6 +45,8 @@ public class Menu extends JMenuBar {
 	private JMenuItem handbuch;
 	private JMenuItem about;
 	private JMenuItem einstellungen;
+	
+	
 
 	/**
 	 * Der Konstruktor des Menüs
@@ -148,10 +150,22 @@ public class Menu extends JMenuBar {
 			super();
 			this.menu = menu;
 		}
+		
+		private void importiere() {
+			if (pf.getiD() == null) {
+				ImportDialog iD = new ImportDialog(pf.getTabs());
+				pf.setiD(iD);
+				pf.getiD().importiereWahl(pf.getTabs());
+			} else {
+				pf.getiD().importiereWahl(pf.getTabs());
+			}
+		}
+			
 
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == menu.importieren) {
-				new ImportDialog(pf.getTabs());
+				importiere();
+				
 			} else if (e.getSource() == menu.speichern) {
 				new ExportDialog(pf.getTabs());
 			} else if (e.getSource() == menu.beenden) {
@@ -185,6 +199,10 @@ public class Menu extends JMenuBar {
 			}
 
 		}
+	
 
 	}
+	
+	
+	
 }
