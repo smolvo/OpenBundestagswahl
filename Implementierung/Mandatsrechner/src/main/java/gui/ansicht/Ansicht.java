@@ -172,6 +172,8 @@ public class Ansicht extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				wurdeVeraendert = false;
+				entferneBerechneKnopf();
+				berechnePanel = null;
 				Steuerung.getInstance().berechneSitzverteilung();
 				fenster.getSteuerung().aktualisiereWahlfenster(aktuellesGebiet);
 			}
@@ -187,6 +189,11 @@ public class Ansicht extends JPanel {
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(berechnePanel, gbc);
+	}
+	
+	public void entferneBerechneKnopf() {
+		this.remove(berechnePanel);
+		this.berechnePanel = null;
 	}
 	
 	/**
