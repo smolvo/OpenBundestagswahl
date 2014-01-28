@@ -172,7 +172,8 @@ public class Mandatsrechner2013 {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); //partei.getMindestsitzAnzahl();
-			//System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
+			//System.out.println("Parteidivisor: "+parteidivisor);
+			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
 			if (diffSitze > 0) {
 				//isCorrect = false;
 				float multiplikator = 0.1f;
@@ -246,21 +247,23 @@ public class Mandatsrechner2013 {
 										"");
 							} else {
 
-								diffSitzeBundesland += 1;
+								diffSitzeBundesland++;
 							}
 							// System.err.println("Add "+diffSitzeBundesland+" candidates from "+partei.getName()+" to "+bl.getName());
 						}
 
 					}
 				}
-
 			} else {
 				
-				Debug.print("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
+				/*Debug.print("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
 				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.LISTENMANDAT);
 				for (int i = abgeordnete.size() - 1; i>=(abgeordnete.size() + diffSitze); i--) {
 					//System.out.println("-");
 					abgeordnete.get(i).setMandat(Mandat.KEINMANDAT);
+				}*/
+				if (diffSitze != 0) {
+					throw new IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}
 			}
 
@@ -333,6 +336,7 @@ public class Mandatsrechner2013 {
 			}
 
 			for (Partei part : relevanteParteien) {
+				//Debug.print(part.getName() + "Anzahl Mandate: "+part.getAnzahlMandate());
 				// Direktmandate einer Partei im Bundesland
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKTMANDAT,
 						bundesland);
@@ -350,7 +354,7 @@ public class Mandatsrechner2013 {
 					System.out.println("###Landesdivisor: "+landesdivisor+" Zweitstimmen: "+bundesland.getAnzahlZweitstimmen(part)+" | " + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl)+" Diff:"+diffKandidat);
 				}*/
 				if (diffKandidat >= 0) {
-					for (int i = 0; i <= diffKandidat; i++) {
+					for (int i = 0; i < diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
 						// Partei und fuege den i-ten Listenkandidaten in die
 						// Sitzverteilung hinzu
@@ -415,6 +419,7 @@ public class Mandatsrechner2013 {
 							+ bundesland.getAnzahlZweitstimmen(part) + " - "
 							+ part.getMindestsitzanzahl(bundesland));
 					sum += part.getMindestsitzanzahl(bundesland);
+					//Debug.print("Anzahl Mandate: "+part.getAnzahlMandate());
 				}
 				Debug.print("Summe: " + sum);
 
