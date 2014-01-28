@@ -172,7 +172,7 @@ public class Mandatsrechner2013 {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); //partei.getMindestsitzAnzahl();
-			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getMindestsitzAnzahl());
+			System.out.println(partei.getName() + " " + diffSitze + " = " +neueSitzanzahl+ " - "+partei.getAnzahlMandate());
 			if (diffSitze > 0) {
 				//isCorrect = false;
 				float multiplikator = 0.1f;
@@ -250,6 +250,14 @@ public class Mandatsrechner2013 {
 					}
 				}
 
+			} else {
+				
+				System.out.println("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
+				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.MANDAT);
+				for (int i = abgeordnete.size() - 1; i>=(abgeordnete.size() + diffSitze); i--) {
+					System.out.println("-");
+					abgeordnete.get(i).setMandat(Mandat.KEINMANDAT);
+				}
 			}
 
 		}
@@ -331,15 +339,14 @@ public class Mandatsrechner2013 {
 				
 				// Wichtig zur Bestimmung von Ueberhangmandate
 				int diffKandidat = mindestSitzanzahl - direktmandate;
-				//int diffKandidat = part.getAnzahlMandate() - direktmandate;
 
 				part.addMindestsitzanzahl(bundesland,
 						Math.max(direktmandate, mindestSitzanzahl));
-				/*if(part.getName().equals("DIE LINKE")){
+				/*if(part.getName().equals("CDU") && bundesland.getName().equals("Saarland")){
 					System.out.println("###Landesdivisor: "+landesdivisor+" Zweitstimmen: "+bundesland.getAnzahlZweitstimmen(part)+" | " + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl)+" Diff:"+diffKandidat);
 				}*/
-				if ((diffKandidat) > 0) {
-					for (int i = 0; i <= (diffKandidat); i++) {
+				if (diffKandidat > 0) {
+					for (int i = 0; i <= diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
 						// Partei und fuege den i-ten Listenkandidaten in die
 						// Sitzverteilung hinzu

@@ -37,7 +37,7 @@ public class Mandatsrechner2013Test {
 			//System.out.println("Test");
 			Bundestagswahl newW = m.berechneAlles(w);
 			//newW = m.berechneAlles(newW);
-			
+			int count = 0;
 			for (Partei partei : newW.getParteien()) {
 				//if(partei.getName().equals("CDU")){
 					/*for (Bundesland bl : newW.getDeutschland().getBundeslaender()) {
@@ -67,7 +67,11 @@ public class Mandatsrechner2013Test {
 					System.out.println("\n");
 					
 				//}
-				
+				if(count<5){
+					count++;
+				}else {
+					break;
+				}
 			}
 			
 			//Debug.print(w.getSitzverteilung().getBericht().toString());
