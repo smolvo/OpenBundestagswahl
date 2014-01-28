@@ -56,8 +56,8 @@ public class Mandatsrechner2013 {
 		
 
 		// Bestimme die Mandate der Zweitstimmen ( + Unterverteilung)
-		bw = this.berechneSainteLague(bw);
-		//this.rechner2009.berechneSainteLague(bw);
+		//bw = this.berechneSainteLague(bw);
+		this.rechner2009.berechneSainteLague(bw);
 		// Bestimme Relevante Parteien.
 		List<Partei> relevanteParteien = this.rechner2009.berechneRelevanteParteien(bw);
 			
