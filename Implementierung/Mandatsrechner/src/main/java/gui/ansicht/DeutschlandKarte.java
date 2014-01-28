@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import main.java.model.Bundesland;
 import main.java.model.Deutschland;
+import main.java.model.Partei;
 
 
 /**
@@ -133,8 +134,10 @@ public class DeutschlandKarte extends JPanel {
 		LinkedList<Bundesland> bundeslaender = land.getBundeslaender();
 		Collections.sort(bundeslaender);
 		for (Bundesland bl: bundeslaender) {
-			System.out.println(bl.ermittleStaerkstePartei().getName());
-			bl.setFarbe(bl.ermittleStaerkstePartei().getFarbe());
+			Partei staerkstePartei = bl.ermittleStaerkstePartei();
+			if (staerkstePartei != null) {
+				bl.setFarbe(bl.ermittleStaerkstePartei().getFarbe());
+			}
 		}
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
