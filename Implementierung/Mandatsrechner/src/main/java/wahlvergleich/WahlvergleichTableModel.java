@@ -11,6 +11,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class WahlvergleichTableModel extends AbstractTableModel {
 
+	private static final long serialVersionUID = 7170688736458797979L;
+
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Erststimmenanzahl",
 			"%", "Differenz", "Zweitstimmenanzahl", "%", "Differenz",

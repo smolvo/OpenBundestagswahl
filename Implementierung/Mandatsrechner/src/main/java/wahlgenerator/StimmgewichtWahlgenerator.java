@@ -38,4 +38,11 @@ public class StimmgewichtWahlgenerator extends AbstrakterWahlgenerator {
 
 	}
 
+
+	@Override
+	public Bundestagswahl erzeugeBTW(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -20,6 +20,8 @@ import org.jfree.data.Range;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 public class DiffDiagramm extends JPanel {
+	
+	private static final long serialVersionUID = -2433019298048096112L;
 
 	/**
 	 * Der Konstruktor erstellt ein Differenzen-Diagramm.
