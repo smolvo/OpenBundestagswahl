@@ -42,6 +42,9 @@ public class Mandatsrechner2009 {
 				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bundestagswahl.getParteien()) {
+			
+			partei.resetUeberhangMandate();
+			
 			for (Kandidat kandidat : partei.getMitglieder()) {
 				kandidat.setMandat(Mandat.KEINMANDAT);
 			}

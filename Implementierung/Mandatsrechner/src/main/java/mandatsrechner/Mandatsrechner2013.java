@@ -388,16 +388,17 @@ public class Mandatsrechner2013 {
 					}
 				} else {
 					//System.err.println(bundesland.getName()+" - "+part.getName()+" - "+Math.abs(diffKandidat));
-					Kandidat ueberhangmandat;
+					//Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
-						ueberhangmandat = bundesland.getDirektMandate(part).get(i);
+						/*ueberhangmandat = bundesland.getDirektMandate(part).get(i);
 						ueberhangmandat.setMandat(Mandat.UEBERHANGMADAT);
 						bundestagswahl.getSitzverteilung().getBericht()
 						.zeileHinzufuegen(ueberhangmandat.getName(),
 								ueberhangmandat.getPartei().getName(),
 								Mandat.UEBERHANGMADAT.toString(), 
 								bundesland.getName(),
-								"");
+								"");*/
+						part.incrementUeberhangMandate(bundesland);
 					}
 					
 				}

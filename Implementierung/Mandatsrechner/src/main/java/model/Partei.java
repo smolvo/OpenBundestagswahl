@@ -53,6 +53,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	private HashMap<Bundesland, Integer> mindestSitzanzahl = new HashMap<Bundesland, Integer>();
 	
+	private HashMap<Bundesland, Integer> ueberhangMandate = new HashMap<Bundesland, Integer>();
+	
 	/**
 	 * Comparator zum sortieren von Parteien nach der Anzahl der Überhangsmandate.
 	 */
@@ -602,7 +604,45 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
+	
+	public int getUeberhangMandate() {
+		int anzahl = 0;
+		Set<Bundesland> set = this.ueberhangMandate.keySet();
+		Iterator<Bundesland> i = set.iterator();
 
+		while (i.hasNext()) {
+			Bundesland key = (Bundesland) i.next();
+			anzahl += this.ueberhangMandate.get(key);
+		}
+		return anzahl;
+	}
+	
+	public int getUeberhangMandate(Bundesland bl) {
+		int anzahl = 0;
+		Set<Bundesland> set = this.ueberhangMandate.keySet();
+		Iterator<Bundesland> i = set.iterator();
+
+		while (i.hasNext()) {
+			Bundesland key = (Bundesland) i.next();
+			if(key.equals(bl)) {
+				anzahl += this.ueberhangMandate.get(key);
+			}
+		}
+		return anzahl;
+	}
+	
+	public void incrementUeberhangMandate (Bundesland bl) {
+		int value = 1;
+		if(this.ueberhangMandate.containsKey(bl)){
+			value = this.ueberhangMandate.get(bl);
+			value += 1;
+		}
+		this.ueberhangMandate.put(bl, value);	
+	}
+
+	public void resetUeberhangMandate () {
+		this.ueberhangMandate = new HashMap<Bundesland,Integer>();
+	}
 	
 	@Override
 	public String toString() {
