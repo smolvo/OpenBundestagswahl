@@ -17,26 +17,25 @@ import javafx.scene.web.WebView;
 
 
 /**
- * Diese Klasse repräsentiert die "About" View in der GUI.
- * Es werden Informationen zu diesem Programm und den Entwicklern angezeigt.
- * Es wird eine Webview erzeugt die, die genannten Informationen anzeigt.
+ * Diese Klasse repräsentiert die "Lizenz" View in der GUI.
+ * Es werden Informationen zur verwendeten Lizenz in einer Webview angezeigt.
  */
-public class AboutDialog extends JDialog {
+public class LizenzDialog extends JDialog {
 
 	/** Automatisch generierte serialVersionUID */
-	private static final long serialVersionUID = -1091530997927819189L;
-
+	private static final long serialVersionUID = 4951470770450608239L;
+	
 	/** Die HTML-Datei die in der Webview angezeigt wird. */
-	private static final File aboutFile = 
-			new File("src/main/resources/hilfe/about.html");
+	private static final File lizenzFile = 
+			new File("src/main/resources/hilfe/lizenz.html");
 	
 	/**
 	 * Das Diallogfenster, dass die Webview enthält
 	 */
-	public AboutDialog() {
+	public LizenzDialog() {
 
 		// allgemeine Anpassungen des Fensters
-		setTitle("Über diese Anwendung");
+		setTitle("Lizenz");
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		setResizable(true);
@@ -85,7 +84,7 @@ public class AboutDialog extends JDialog {
         
         
         try {
-			webEngine.load(aboutFile.toURI().toURL().toString());
+			webEngine.load(lizenzFile.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

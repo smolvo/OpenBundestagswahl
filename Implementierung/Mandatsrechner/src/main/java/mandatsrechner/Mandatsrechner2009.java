@@ -451,7 +451,9 @@ public class Mandatsrechner2009 {
 					Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
 						ueberhangmandat = bundesland.getDirektMandate(part).get(i);
+						
 						ueberhangmandat.setMandat(Mandat.UEBERHANGMADAT);
+						
 						bundestagswahl.getSitzverteilung().getBericht()
 						.zeileHinzufuegen(ueberhangmandat.getName(),
 								ueberhangmandat.getPartei().getName(),

@@ -133,6 +133,7 @@ public class DeutschlandKarte extends JPanel {
 		LinkedList<Bundesland> bundeslaender = land.getBundeslaender();
 		Collections.sort(bundeslaender);
 		for (Bundesland bl: bundeslaender) {
+			System.out.println(bl.ermittleStaerkstePartei().getName());
 			bl.setFarbe(bl.ermittleStaerkstePartei().getFarbe());
 		}
 		for (int i = 0; i < 16; i++) {

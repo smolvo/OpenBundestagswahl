@@ -13,6 +13,7 @@ import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.EinstellungenDialog;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
+import main.java.gui.dialoge.LizenzDialog;
 import main.java.gui.dialoge.VergleichDialog;
 import main.java.steuerung.Steuerung;
 
@@ -44,6 +45,7 @@ public class Menu extends JMenuBar {
 	private JMenuItem zufaelligeWahl;
 	private JMenuItem handbuch;
 	private JMenuItem about;
+	private JMenuItem lizenz;
 	private JMenuItem einstellungen;
 	
 	
@@ -111,9 +113,11 @@ public class Menu extends JMenuBar {
 		handbuch.setIcon(new ImageIcon("src/main/resources/gui/images/handbuch.png"));
 		about = new JMenuItem("About");
 		about.setIcon(new ImageIcon("src/main/resources/gui/images/about.png"));
-
+		lizenz = new JMenuItem("Lizenz");
+		
 		hilfe.add(handbuch);
 		hilfe.add(about);
+		hilfe.add(lizenz);
 
 		rueckgaengig.setEnabled(false);
 		wiederherstellen.setEnabled(false);
@@ -134,7 +138,8 @@ public class Menu extends JMenuBar {
 		zufaelligeWahl.addActionListener(m);
 		handbuch.addActionListener(m);
 		about.addActionListener(m);
-
+		lizenz.addActionListener(m);
+		
 		setVisible(true);
 	}
 
@@ -194,6 +199,8 @@ public class Menu extends JMenuBar {
 				// TODO Handbuch
 			} else if (e.getSource() == menu.about) {
 				new AboutDialog();
+			} else if (e.getSource() == menu.lizenz) {
+				new LizenzDialog();
 			} else if (e.getSource() == menu.einstellungen) {
 				new EinstellungenDialog();
 			}
