@@ -422,13 +422,13 @@ public class Mandatsrechner2009 {
 							if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
 								bundestagswahl.getSitzverteilung()
 										.addAbgeordnete(neuerAbgeordneter);
-								neuerAbgeordneter.setMandat(Mandat.MANDAT);
+								neuerAbgeordneter.setMandat(Mandat.LISTENMANDAT);
 								bundestagswahl
 										.getSitzverteilung()
 										.getBericht()
 										.zeileHinzufuegen(neuerAbgeordneter.getName(),
 												neuerAbgeordneter.getPartei().getName(),
-												Mandat.MANDAT.toString(), bundesland.getName(),
+												Mandat.LISTENMANDAT.toString(), bundesland.getName(),
 												"");
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird

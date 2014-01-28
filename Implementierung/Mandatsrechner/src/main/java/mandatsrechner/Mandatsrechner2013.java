@@ -257,7 +257,7 @@ public class Mandatsrechner2013 {
 			} else {
 				
 				Debug.print("Ausgleichsmandate: "+partei.getName()+" ("+diffSitze+")");
-				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.MANDAT);
+				List<Kandidat> abgeordnete = partei.getMitglieder(Mandat.LISTENMANDAT);
 				for (int i = abgeordnete.size() - 1; i>=(abgeordnete.size() + diffSitze); i--) {
 					//System.out.println("-");
 					abgeordnete.get(i).setMandat(Mandat.KEINMANDAT);
@@ -365,13 +365,13 @@ public class Mandatsrechner2013 {
 							if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
 								bundestagswahl.getSitzverteilung()
 										.addAbgeordnete(neuerAbgeordneter);
-								neuerAbgeordneter.setMandat(Mandat.MANDAT);
+								neuerAbgeordneter.setMandat(Mandat.LISTENMANDAT);
 								bundestagswahl
 										.getSitzverteilung()
 										.getBericht()
 										.zeileHinzufuegen(neuerAbgeordneter.getName(),
 												neuerAbgeordneter.getPartei().getName(),
-												Mandat.MANDAT.toString(), bundesland.getName(),
+												Mandat.LISTENMANDAT.toString(), bundesland.getName(),
 												"");
 							} else {
 								// Kandidat hat schon ein Mandat, deswegen wird

@@ -85,8 +85,8 @@ public class AboutDialog extends JDialog {
             // Obtain the webEngine to navigate
         WebEngine webEngine = webView.getEngine();
         
-        //webEngine.load("src/main/resources/hilfe/about.html");
-        webEngine.load("http://wahlrecht.de");
+        webEngine.load("file://src/main/resources/hilfe/about.html");
+        //webEngine.load("http://wahlrecht.de");
     }
 
 }

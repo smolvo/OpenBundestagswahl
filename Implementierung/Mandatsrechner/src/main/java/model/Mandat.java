@@ -6,7 +6,7 @@ package main.java.model;
 public enum Mandat {
 
 	/** Durch Zweitstimmen zugeteiltes Mandat. */
-	MANDAT("Mandat"),
+	LISTENMANDAT("Listenmandat"),
 
 	/** Durch die meisten Erststimmen zugeteiltes Mandat. */
 	DIREKTMANDAT("Direktmadat"),

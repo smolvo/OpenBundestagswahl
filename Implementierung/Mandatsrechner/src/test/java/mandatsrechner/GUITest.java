@@ -36,7 +36,7 @@ public class GUITest {
 							.getAnzahlMandate(Mandat.UEBERHANGMADAT)) + " "
 					+ partei.getAnzahlMandate(Mandat.UEBERHANGMADAT) + " "
 					+ partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT) + " "
-					+ partei.getAnzahlMandate(Mandat.MANDAT) + " "
+					+ partei.getAnzahlMandate(Mandat.LISTENMANDAT) + " "
 					+ partei.getAnzahlMandate());
 		}
 	}
