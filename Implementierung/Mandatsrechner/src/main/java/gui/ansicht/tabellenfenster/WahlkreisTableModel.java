@@ -5,6 +5,7 @@ import javax.swing.table.AbstractTableModel;
 
 import main.java.gui.GUISteuerung;
 import main.java.model.Erststimme;
+import main.java.model.Gebiet;
 import main.java.model.Zweitstimme;
 
 /**
@@ -114,6 +115,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
+					Gebiet gebiet = tabellenfenster.getAnsicht().getAktuellesGebiet();
+					tabellenfenster.getAnsicht().getFenster().getSteuerung().aktualisiereWahlfenster(gebiet);
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
 				} else {
 					
@@ -148,8 +151,9 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
+					Gebiet gebiet = tabellenfenster.getAnsicht().getAktuellesGebiet();
+					tabellenfenster.getAnsicht().getFenster().getSteuerung().aktualisiereWahlfenster(gebiet);
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
-					
 				} else {
 					
 					JOptionPane.showMessageDialog(this.tabellenfenster,

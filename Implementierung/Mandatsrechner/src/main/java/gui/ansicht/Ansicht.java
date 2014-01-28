@@ -118,6 +118,7 @@ public class Ansicht extends JPanel {
 		if (gebiet == null) {
 			return;
 		}
+		this.aktuellesGebiet = gebiet;
 		remove(tabellenFenster);
 		remove(diagrammFenster);
 		this.tabellenFenster = new TabellenFenster(this);
@@ -170,10 +171,9 @@ public class Ansicht extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Steuerung.getInstance().berechneSitzverteilung();
-				ansichtAendern(fenster.getBtw().getDeutschland());
 				wurdeVeraendert = false;
-				repaint();
+				Steuerung.getInstance().berechneSitzverteilung();
+				fenster.getSteuerung().aktualisiereWahlfenster(aktuellesGebiet);
 			}
 			
 		});
