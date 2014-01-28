@@ -288,6 +288,58 @@ public class Bundesland extends Gebiet implements Serializable,
 		return this.getName().compareTo(andere.getName());
 	}
 
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlZweitstimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
+		int anzahl = 0;
+	
+		// durchlaufe alle Zweitstimmen
+		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
+			if (partei.equals(zweitstimme.getPartei())) {
+				// summiere die Zweitstimmen der gesuchten Partei
+				anzahl += zweitstimme.getAnzahl();
+			}
+		}
+		
+		return anzahl;
+	}
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlErststimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
+		int anzahl = 0;
+		
+		// durchlaufe alle Erststimmen
+		for (Erststimme erststimme : this.getErststimmenProPartei()) {
+			// summiere die Erststimmen der gesuchten Partei
+			if (partei.equals(erststimme.getKandidat().getPartei())) {
+				anzahl += erststimme.getAnzahl();
+			}
+		}
+		
+		return anzahl;
+	}
+	
+	/*
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
 		if(partei == null){
@@ -299,6 +351,13 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return anzahl;
 	}
+	
+	@Override
+	public int getAnzahlErststimmen(Partei partei) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	*/
 
 	/**
 	 * Gibt die Landesliste zur jeweiligen Partei zurueck.

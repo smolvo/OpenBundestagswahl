@@ -97,13 +97,20 @@ public abstract class Gebiet implements Serializable {
 	abstract public List<Zweitstimme> getZweitstimmenProPartei();
 
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurueck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
 	 * 
-	 * @param partei
-	 *            Die gesuchte Partei.
-	 * @return die Anzahl der Stimmen.
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	abstract public int getAnzahlZweitstimmen(Partei partei);
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	abstract public int getAnzahlErststimmen(Partei partei);
 
 	/**
 	 * Beschreibt dieses Gebiet.

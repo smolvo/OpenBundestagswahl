@@ -151,29 +151,51 @@ public class Deutschland extends Gebiet implements Serializable {
 		return sperrklauselAnzahl;
 	}
 
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
 		int anzahl = 0;
 	
-		// durchlaufe alle Zweitstimmen und summiere die Anzahlen
+		// durchlaufe alle Zweitstimmen
 		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
-			anzahl += zweitstimme.getAnzahl();
+			if (partei.equals(zweitstimme.getPartei())) {
+				// summiere die Zweitstimmen der gesuchten Partei
+				anzahl += zweitstimme.getAnzahl();
+			}
 		}
 		
 		return anzahl;
 	}
 	
 	/**
-	 * Gibt die Gesamtanzahl an Erststimmen für die uebergebene Partei zurueck
-	 * @param partei die partei deren Erststimmen ermittelt werden sollen
-	 * @return die gesamstanzahl der Erststimmen
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
+	@Override
 	public int getAnzahlErststimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
 		int anzahl = 0;
 		
-		// durchlaufe alle Erststimmen und summiere die Anzahlen
+		// durchlaufe alle Erststimmen
 		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			anzahl += erststimme.getAnzahl();
+			// summiere die Erststimmen der gesuchten Partei
+			if (partei.equals(erststimme.getKandidat().getPartei())) {
+				anzahl += erststimme.getAnzahl();
+			}
 		}
 		
 		return anzahl;

@@ -219,17 +219,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		this.wahlkreisnummer = wahlkreisnummer;
 	}
 
-	@Override
-	public int getAnzahlZweitstimmen(Partei partei) {
-		int anzahl = 0;
-		for (Zweitstimme zweitStimme : this.getZweitstimmenProPartei()) {
-			if (zweitStimme.getPartei() == partei) {
-				anzahl = zweitStimme.getAnzahl();
-			}
-		}
-		return anzahl;
-	}
-
 	/**
 	 * Gibt die Gesamtanzahl an Erststimmen für die uebergebene Partei zurueck
 	 * @param partei die partei deren Erststimmen ermittelt werden sollen
@@ -267,4 +256,55 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return null;
 	}
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlZweitstimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
+		int anzahl = 0;
+	
+		// durchlaufe alle Zweitstimmen
+		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
+			if (partei.equals(zweitstimme.getPartei())) {
+				// summiere die Zweitstimmen der gesuchten Partei
+				anzahl += zweitstimme.getAnzahl();
+			}
+		}
+		
+		return anzahl;
+	}
+	
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
+	 * 
+	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlErststimmen(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		
+		int anzahl = 0;
+		
+		// durchlaufe alle Erststimmen
+		for (Erststimme erststimme : this.getErststimmenProPartei()) {
+			// summiere die Erststimmen der gesuchten Partei
+			if (partei.equals(erststimme.getKandidat().getPartei())) {
+				anzahl += erststimme.getAnzahl();
+			}
+		}
+		
+		return anzahl;
+	}
+	
 }
