@@ -28,9 +28,15 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	 * 
 	 * @param daten
 	 *            Daten
+	 * @param tabellenfenster
+	 *            das Tabellenfenster
+	 * @throws NullPointerException
 	 */
 	public WahlkreisTableModel(WahlkreisDaten daten,
 			TabellenFenster tabellenfenster) {
+		if (daten == null || tabellenfenster == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}

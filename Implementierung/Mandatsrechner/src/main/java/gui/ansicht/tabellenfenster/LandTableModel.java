@@ -27,8 +27,13 @@ public class LandTableModel extends AbstractTableModel {
 	 * 
 	 * @param daten
 	 *            Daten
+	 * @param tabellenfenster das Tabellenfenster
+	 * @throws NullPointerException
 	 */
 	public LandTableModel(LandDaten daten, TabellenFenster tabellenfenster) {
+		if (daten == null || tabellenfenster == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}

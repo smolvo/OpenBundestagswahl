@@ -49,7 +49,13 @@ public class TabellenFenster extends JScrollPane {
 	 *            Gebiet
 	 */
 	public void tabellenFuellen(Gebiet gebiet) {
-		this.setBackground(Color.WHITE);
+		// wenn kein Gebiet übergeben wird wird eine leere Tabelle erstellt
+		if (gebiet == null) {
+			BundDaten daten = new BundDaten();
+			BundTableModel tabelle = new BundTableModel(daten, this);
+			JTable jTabelle = new JTable(tabelle);
+			this.setViewportView(jTabelle);
+		}
 		if (gebiet instanceof Deutschland) {
 			Deutschland land = (Deutschland) gebiet;
 			tabellenFuellen(land);
@@ -106,6 +112,9 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private GUIPartei parteiDatenDeutschland(Partei partei,
 			Sitzverteilung bundestag) {
+		if (partei == null || bundestag.getAbgeordnete() == null) {
+			return new GUIPartei(0, 0, 0, 0);
+		}
 		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
 		int sitze = 0;
 		int direktMan = 0;
@@ -178,6 +187,9 @@ public class TabellenFenster extends JScrollPane {
 	 */
 	private GUIPartei parteiDatenBundesland(Partei partei, String bundesland,
 			Sitzverteilung bundestag) {
+		if (partei == null || bundestag.getAbgeordnete() == null) {
+			return new GUIPartei(0, 0, 0, 0);
+		}
 		int sitze = 0;
 		int direktMan = 0;
 		int ueberMan = 0;

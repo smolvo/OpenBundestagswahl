@@ -41,8 +41,14 @@ public class LandDiagramm {
 	 * 
 	 * @param bundLand
 	 *            Bundesland
+	 * @param flaeche
+	 *            die Fläche auf dem sich das Diagramm befindet
+	 * @throws NullPointerException
 	 */
 	public LandDiagramm(Bundesland bundLand, final DiagrammFenster flaeche) {
+		if (bundLand == null || flaeche == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(bundLand);
@@ -121,6 +127,7 @@ public class LandDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), (int) (this.flaeche.getHeight()));
+		return new Dimension(this.flaeche.getWidth(),
+				(int) (this.flaeche.getHeight()));
 	}
 }

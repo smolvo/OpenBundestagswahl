@@ -46,8 +46,12 @@ public class BundDiagramm {
 	 *            Deutschland
 	 * @param flaeche
 	 *            Diagrammfläche
+	 * @throws NullPointerException
 	 */
 	public BundDiagramm(Deutschland land, final DiagrammFenster flaeche) {
+		if (land == null) {
+			throw new NullPointerException("Deutschland nicht gefunden.");
+		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(land);
@@ -63,21 +67,22 @@ public class BundDiagramm {
 
 		});
 		chartPanel.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Bundestagswahl btw = flaeche.getAnsicht().getFenster().getBtw();
+					Bundestagswahl btw = flaeche.getAnsicht().getFenster()
+							.getBtw();
 					flaeche.zeigeSitzverteilung(btw);
 				} catch (NullPointerException npe) {
-		        	JOptionPane.showMessageDialog(e.getComponent(),
-							"Berichstanzeige momentan nicht möglich.", "Meldung",
-							JOptionPane.INFORMATION_MESSAGE, null);
+					JOptionPane.showMessageDialog(e.getComponent(),
+							"Berichstanzeige momentan nicht möglich.",
+							"Meldung", JOptionPane.INFORMATION_MESSAGE, null);
 				}
-				
+
 			}
 		});
-//		listenerSetzen(chartPanel, flaeche);
+		// listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
 		flaeche.add(chartPanel, BorderLayout.LINE_START);
 	}
@@ -134,6 +139,7 @@ public class BundDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(), (int) (this.flaeche.getHeight()));
+		return new Dimension(this.flaeche.getWidth(),
+				(int) (this.flaeche.getHeight()));
 	}
 }

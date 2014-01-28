@@ -29,8 +29,12 @@ public class BundTableModel extends AbstractTableModel {
 	 *            die Daten
 	 * @param tabellenfenster
 	 *            das tabellenfenster
+	 * @throw NullPointerException
 	 */
 	public BundTableModel(BundDaten daten, TabellenFenster tabellenfenster) {
+		if (daten == null || tabellenfenster == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.daten = daten;
 		this.tabellenfenster = tabellenfenster;
 	}

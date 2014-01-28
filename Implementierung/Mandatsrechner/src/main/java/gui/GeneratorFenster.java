@@ -141,7 +141,6 @@ public class GeneratorFenster extends JFrame {
 					int[] zweit = zweitToIntegers();
 					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
 					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile);
-//					btw.setSitzverteilung(null);
 					pf.wahlHinzufuegen(btw);
 					generiere.setEnabled(true);					
 				} else {

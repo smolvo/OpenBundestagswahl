@@ -41,8 +41,13 @@ public class WahlkreisDiagramm {
 	 * 
 	 * @param wk
 	 *            Wahlkreis
+	 * @param flaeche Diagrammfläche
+	 * @throws NullPointerException
 	 */
 	public WahlkreisDiagramm(Wahlkreis wk, final DiagrammFenster flaeche) {
+		if (wk == null || flaeche == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(wk);

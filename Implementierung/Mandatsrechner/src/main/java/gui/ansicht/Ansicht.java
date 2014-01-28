@@ -18,7 +18,8 @@ import main.java.model.Gebiet;
 import main.java.steuerung.Steuerung;
 
 /**
- * Die abstrakte Klasse Ansicht, der grafischen Benutzeroberfläche.
+ * Diese Klasse repräsentiert die Ansicht, auf der sicht
+ * das Tabellen-, Karten- und Diagrammfenster befinden.
  * 
  * @author Anton
  * 
@@ -53,8 +54,12 @@ public class Ansicht extends JPanel {
 	 *            Deutschland
 	 * @param fenster
 	 *            das Wahlfenster der Ansicht
+	 * @throws NullPointerException
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
+		if (land == null || fenster == null) {
+			throw new NullPointerException("Einer der Parameter ist null.");
+		}
 		this.wurdeVeraendert = false;
 		this.fenster = fenster;
 		this.tabellenFenster = new TabellenFenster(this);
@@ -107,6 +112,9 @@ public class Ansicht extends JPanel {
 	 *            Gebiet, welches angezeigt werden soll
 	 */
 	public void ansichtAendern(Gebiet gebiet) {
+		if (gebiet == null) {
+			return;
+		}
 		remove(tabellenFenster);
 		remove(diagrammFenster);
 		this.tabellenFenster = new TabellenFenster(this);
@@ -186,6 +194,7 @@ public class Ansicht extends JPanel {
 	 * 
 	 * @param tabellenFenster
 	 *            neues Tabellenfenster
+	 * @throws NullPointerException
 	 */
 	public void setTabellenFenster(TabellenFenster tabellenFenster) {
 		if(tabellenFenster == null){
@@ -208,6 +217,7 @@ public class Ansicht extends JPanel {
 	 * 
 	 * @param diagrammFenster
 	 *            neues Diagrammfenster
+	 * @throws NullPointerException
 	 */
 	public void setDiagrammFenster(DiagrammFenster diagrammFenster) {
 		if(diagrammFenster == null){
@@ -230,6 +240,7 @@ public class Ansicht extends JPanel {
 	 * 
 	 * @param kartenFenster
 	 *            neues Kartenfenster
+	 * @throws NullPointerException
 	 */
 	public void setKartenFenster(KartenFenster kartenFenster) {
 		if(kartenFenster == null){
@@ -257,6 +268,7 @@ public class Ansicht extends JPanel {
 	/**
 	 * @param aktuellesGebiet
 	 *            the aktuellesGebiet to set
+	 * @throws NullPointerException
 	 */
 	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
 		if(aktuellesGebiet == null){

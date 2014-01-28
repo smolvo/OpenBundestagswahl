@@ -3,6 +3,8 @@ package main.java.gui.dialoge;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -50,7 +52,7 @@ public class VergleichDialog {
 			wahlAussuche.setLayout(null);
 			JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
 			text.setBounds(5, 5, 190, 40);
-			JComboBox<WahlFenster> box = erstelleBox(tabs);
+			JComboBox<WahlFenster> box = erstelleBox(pf.getWahlen());
 			box.setBounds(15, 45, 150, 25);
 			box.addActionListener(new ActionListener(){
 
@@ -71,13 +73,13 @@ public class VergleichDialog {
 	/**
 	 * Diese Methode wird von dem Konstruktor verwendet,
 	 * um eine ComboBox zu erstellen.
-	 * @param tabs Tableiste
+	 * @param list Liste der Wahlen
 	 * @return ComboBox
 	 */
-	private JComboBox<WahlFenster> erstelleBox(TabLeiste tabs) {
-		WahlFenster[] namen = new WahlFenster[tabs.getWahlfenster().size()];
+	private JComboBox<WahlFenster> erstelleBox(List<WahlFenster> list) {
+		WahlFenster[] namen = new WahlFenster[list.size()];
 		for (int i = 0; i < namen.length; i++) {
-			namen[i] = tabs.getWahlfenster().get(i);
+			namen[i] = list.get(i);
 		}
 		JComboBox<WahlFenster> box = new JComboBox<WahlFenster>(namen);
 		return box;
