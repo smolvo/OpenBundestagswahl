@@ -255,11 +255,12 @@ public class Bundesland extends Gebiet implements Serializable,
 		return this.landesliste;
 	}
 	
+	
 	public Partei ermittleStaerkstePartei() {
 		Partei staerkstePartei = null;
-		int max=0;
-		for(Partei partei : parteien ){
-			if(getAnzahlZweitstimmen(partei)>max){
+		int max = 0;
+		for (Partei partei : parteien ) {
+			if (getAnzahlZweitstimmen(partei) > max) {
 				max = getAnzahlZweitstimmen(partei);
 				staerkstePartei = partei;
 			}
