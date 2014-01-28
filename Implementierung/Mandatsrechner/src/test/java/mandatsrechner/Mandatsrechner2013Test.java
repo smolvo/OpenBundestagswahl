@@ -55,7 +55,8 @@ public class Mandatsrechner2013Test {
 					}*/
 					
 					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + 
-							partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
+							partei.getAnzahlMandate(Mandat.DIREKTMANDAT) + 
+							partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT);
 					System.out.println(partei.getName()+": ");
 					System.out.println("Mandate: "+partei.getAnzahlMandate(Mandat.LISTENMANDAT));
 					System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT));

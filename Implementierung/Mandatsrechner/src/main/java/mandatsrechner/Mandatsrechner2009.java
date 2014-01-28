@@ -202,7 +202,7 @@ public class Mandatsrechner2009 {
 		// System.err.println(kommastelle);
 		int gerundet = 0;
 		if (randomize && kommastelle == 5) {
-			int rand = (Math.random() < 0.5) ? 0 : 1;
+			int rand = (Math.random() < 0.1) ? 0 : 1;
 			if (rand == 1) {
 				gerundet = (int) Math.ceil(zahl);
 			} else {

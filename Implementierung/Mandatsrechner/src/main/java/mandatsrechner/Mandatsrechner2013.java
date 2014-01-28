@@ -192,15 +192,18 @@ public class Mandatsrechner2013 {
 					if (sitzeBundesland == neueSitzanzahl) {
 						break;
 					} else if (sitzeBundesland < neueSitzanzahl) {
-						multiplikator += 0.1f;
+						multiplikator += 0.001f;
 					} else {
-						multiplikator -= 0.001f;
+						multiplikator -= 0.000001f;
 					}
 				}
+				System.out.println("Multiplikator "+partei.getName()+": "+multiplikator);
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
+					
 					sitzeBundesland = this.rechner2009.runden(
 							partei.getMindestsitzanzahl(bl) * multiplikator,
 							true);
+					System.out.println(partei.getName()+" - "+bl.getName()+": Vorhher:"+partei.getMindestsitzanzahl(bl)+"  Nachher:"+sitzeBundesland);
 					/*
 					 * if(partei.getName().equals("SPD") &&
 					 * bl.getName().equals("Bayern")){
