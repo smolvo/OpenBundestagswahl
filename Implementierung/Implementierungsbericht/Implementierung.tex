@@ -149,7 +149,16 @@ Und zuletzt wurden die Parameter {\myma{Steuerung}} und {\myma{Wahlvergleich}} e
 Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-Lagu\"e/Schepers ohne Ausgleichsmandate und {\myma{Mandatsrechner2013}} berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu\"e/Scheper, aber mit Ausgleichsmandate. Da der \\{\myma{Mandatsrechner2013}} dadurch den {\myma{Mandatsrechner2009}} zur Berechnung nutzt, fällt die Notwendigkeit der Oberklasse {\myma{Mandatsrechner}} weg. Deswegen hält der \\ {\myma{Mandatsrechner2013}} ein Objekt der Klasse {\myma{Mandatsrecher2009}}. Zudem wurde noch in {\myma{Mandatsrechner2009}} das Verteilungsverfahren nach d'Hondt implementiert, damit eine alternative Berechnung der Sitzverteilung möglich ist. Die Überladung der Methoden {\mymo{bechne(Gebiet gebiet)}} wurde aufgehoben, da die Berechnung nicht nach Gebieten sondern nach Ober- und Unterverteilung orientiert ist. Damit der {\myma{Mandatsrechner2013}} möglichst viel wieder verwendet werden kann, wurden Bereiche die in beiden Berechnungsklassen Verwundung finden ausgelagert. Für die Implementierung des Entwurfsmuster Einzelstück wurden möglichst wenig globale Variablen, die vor jeder Berechnung neu initialisiert werden, verwendet, damit in dem Mandatsrechner nicht gewollte Zustände ausgeschlossen werden können.
 	
 	\subsection{Wahlgenerator}
-	
+Die Klasse {\myma{AbstrakterWahlgenerator}} bildet die Oberklasse für die Klasse {\myma{Wahlgenerator}} und enthält alle Attribute und Methoden, die grundsätzlich für die Generierung von Wahlen wichtig sind.\\
+In der Klassse {\myma{Wahlgenerator}} wird die konkrete Implementierung der Methoden {\mymo{erzeugeBTW()}} und insbesondere von {\mymo{verteileStimmen()}} vorgenommen. Es gibt zusätzlich noch die privaten Methoden {\mymo{getAnteileVonPartei()}}, {\mymo{getParteienOhneAnteile()}}, {\mymo{verteileRestAnteile()}} und {\mymo{hatParteiStimmanteile()}} die intern verwendet werden.\\\
+
+In der Entwurfsphase wurde die Anforderung festgelegt, vollständige Stimmanteile von Parteien auf Bundesebene zu bestimmen und eine Bundestagswahl auf dieser Grundlage zu erzeugen.\\
+Während der Implementierungsphase gab es darüber hinaus den Wunsch auch unvollständige Stimmanteile anzugeben. Damit ist gemeint, dass man beispielsweise nur festlegt, dass eine Partei keine Stimmen bekommen soll oder dass eine Partei einen bestimmten Anteil von Erst- und/oder Zweitstimmen bekommen soll, unabhängig davon an welche Parteien die restlichen Anteile verteilt werden. Oder auch vollständig zufällige Bundestagswahlen zu generieren. Diese Funktionalität ist in der privaten Methode {\mymo{verteileRestAnteile()}} implementiert, welche von {\mymo{erzeugeBTW()}} verwendet wird.\\\\
+
+Der Simulator für das negative Stimmgewicht benötigt außerdem nicht wie ursprünglich gedacht eine eigene Implementierung eines konkreten Wahlgenerators, sondern operiert auf bereits vorhandenen Bundestagswahlen, die bereits in der Anwendung zur Verfügung stehen.
+
+	\subsection{Simulation des negativen Stimmgewichts}
+		
 	\subsection{Wahlvergleich}
 	
 \subsection{Steuerung}
