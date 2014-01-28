@@ -1,4 +1,4 @@
-package main.java.gui;
+package main.java.gui.dialoge;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import main.java.gui.Programmfenster;
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
 import main.java.steuerung.Steuerung;
@@ -33,7 +35,7 @@ import main.java.wahlgenerator.Stimmanteile;
  * @author Anton
  * 
  */
-public class GeneratorFenster extends JFrame {
+public class GeneratorDialog extends JDialog {
 
 	/** repräsentiert die Liste der Basiswahlen */
 	private List<Bundestagswahl> wahlen;
@@ -43,6 +45,8 @@ public class GeneratorFenster extends JFrame {
 	 * festgelegt wurde
 	 */
 	private Bundestagswahl ausgesuchteWahl;
+	
+	private JDialog generatorDialog;
 
 	/** Basiswahl */
 	private JLabel basiswahl;
@@ -86,17 +90,19 @@ public class GeneratorFenster extends JFrame {
 	/**
 	 * Der Konstruktor legt das Layout fest und initialisiert das Fenster.
 	 */
-	public GeneratorFenster(List<Bundestagswahl> basiswahlen, Programmfenster pf) {
+	public GeneratorDialog(List<Bundestagswahl> basiswahlen, Programmfenster pf) {
 		this.pf = pf;
 		this.wahlen = basiswahlen;
 		this.ausgesuchteWahl = basiswahlen.get(0);
-		this.setTitle("Wahlgenerierung");
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setResizable(false);
-		this.setBounds(500, 50, 435, 640);
-		this.setLayout(null);
+		this.generatorDialog = new JDialog();
+		generatorDialog.setTitle("Wahlgenerierung");
+		generatorDialog.setSize(435, 640);
+		generatorDialog.setResizable(false);
+		generatorDialog.setModal(true);
+		generatorDialog.setLocationRelativeTo(null);
+		generatorDialog.setLayout(null);
 		initialisiere(wahlen);
-		this.setVisible(true);
+		generatorDialog.setVisible(true);
 	}
 
 	/**
@@ -149,10 +155,10 @@ public class GeneratorFenster extends JFrame {
 		// gesamt Labels
 		this.gesamtErst = new JLabel("Erststimmen gesamt: 0" + "%");
 		this.gesamtErst.setBounds(30, 530, 160, 20);
-		this.gesamtErst.setForeground(Color.GREEN);
+		this.gesamtErst.setForeground(Color.GREEN.darker());
 		this.gesamtZweit = new JLabel("Zweitstimmen gesamt: 0" + "%");
 		this.gesamtZweit.setBounds(220, 530, 170, 20);
-		this.gesamtZweit.setForeground(Color.GREEN);
+		this.gesamtZweit.setForeground(Color.GREEN.darker());
 		
 		// Generiere-Button
 		this.generiere = new JButton("Generiere");
@@ -171,7 +177,8 @@ public class GeneratorFenster extends JFrame {
 					String name = neueWahlNameBox.getText();
 					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile, name);
 					pf.wahlHinzufuegen(btw);
-					generiere.setEnabled(true);					
+					generiere.setEnabled(true);
+					generatorDialog.dispose();
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
 							"Es dürfen keine Parteien doppelt vorkommen.",
@@ -182,14 +189,14 @@ public class GeneratorFenster extends JFrame {
 
 		});
 
-		this.add(this.basiswahl);
-		this.add(this.basiswahlAuswahl);
-		this.add(this.neueWahlNameLabel);
-		this.add(this.neueWahlNameBox);
-		this.add(this.stimmenanteile);
-		this.add(this.gesamtErst);
-		this.add(this.gesamtZweit);
-		this.add(this.generiere);
+		generatorDialog.add(this.basiswahl);
+		generatorDialog.add(this.basiswahlAuswahl);
+		generatorDialog.add(this.neueWahlNameLabel);
+		generatorDialog.add(this.neueWahlNameBox);
+		generatorDialog.add(this.stimmenanteile);
+		generatorDialog.add(this.gesamtErst);
+		generatorDialog.add(this.gesamtZweit);
+		generatorDialog.add(this.generiere);
 	}
 
 	/**
@@ -226,7 +233,7 @@ public class GeneratorFenster extends JFrame {
 		this.pane.setViewportView(hauptPanel);
 		this.pane.setHorizontalScrollBar(null);
 
-		this.add(pane);
+		generatorDialog.add(pane);
 		this.pane.repaint();
 	}
 	
@@ -320,8 +327,8 @@ public class GeneratorFenster extends JFrame {
 		subPanel.add(zweit);
 		this.hauptPanel.add(subPanel);
 		this.pane.setViewportView(this.hauptPanel);
-		this.add(pane);
-		this.repaint();
+		generatorDialog.add(pane);
+		generatorDialog.repaint();
 	}
 
 	/**
@@ -465,10 +472,10 @@ public class GeneratorFenster extends JFrame {
 			gesamtZweit.setForeground(Color.RED);
 		}
 		if (gesamtErststimmen <= 100) {
-			gesamtErst.setForeground(Color.GREEN);
+			gesamtErst.setForeground(Color.GREEN.darker());
 		}
 		if (gesamtZweitstimmen <= 100) {
-			gesamtZweit.setForeground(Color.GREEN);
+			gesamtZweit.setForeground(Color.GREEN.darker());
 		}
 	}
 	

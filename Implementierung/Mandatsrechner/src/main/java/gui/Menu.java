@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.EinstellungenDialog;
 import main.java.gui.dialoge.ExportDialog;
+
+import main.java.gui.dialoge.GeneratorDialog;
 import main.java.gui.dialoge.HandbuchDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.gui.dialoge.LizenzDialog;
@@ -195,7 +197,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
 			} else if (e.getSource() == menu.zufaelligeWahl) {
-				new GeneratorFenster(pf.getBundestagswahlen(), pf);
+				new GeneratorDialog(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {
 				new HandbuchDialog();
 			} else if (e.getSource() == menu.about) {
