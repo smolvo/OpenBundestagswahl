@@ -88,7 +88,7 @@ public class Mandatsrechner2009 {
 				 * Wahlklreis eingetragen
 				 */
 				if(max != 0){
-					System.out.println("Direktmandat: "+gewinner.getPartei()+ " "+ bundesland.getName());
+					//System.out.println("Direktmandat: "+gewinner.getPartei()+ " "+ bundesland.getName());
 					gewinner.setMandat(Mandat.DIREKTMANDAT);
 					wahlkreis.setWahlkreisSieger(gewinner);
 					bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
