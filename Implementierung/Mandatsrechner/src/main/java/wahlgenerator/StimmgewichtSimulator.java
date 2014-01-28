@@ -1,14 +1,12 @@
 package main.java.wahlgenerator;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Random;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import test.java.Debug;
-import main.java.gui.ansicht.tabellenfenster.BundTableModel;
 import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
@@ -19,6 +17,7 @@ import main.java.model.Partei;
 import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
+import test.java.Debug;
 
 /**
  * Diese Klasse soll in der Lage sein, zu einer von NegStimmgewichtWahlgenerator
@@ -62,7 +61,7 @@ public class StimmgewichtSimulator {
 
 	private Partei letztePartei;
 
-	private final int stimmanzahl = 10000;
+	private final int stimmanzahl = 3000;
 
 	private List<Zweitstimme> geaenderteZweitstimmenInWahlkreise;
 
@@ -120,11 +119,11 @@ public class StimmgewichtSimulator {
 
 		for (Partei partei : parteienSortiertKopie1) {
 			letztePartei = partei;
-			if (!partei.getName().equals("SPD")
-					&& !partei.getName().equals("CDU")) {
-				continue;
-			}
-
+			//if (!partei.getName().equals("SPD")
+				//	&& !partei.getName().equals("CDU")) {
+			//	continue;
+			//}
+				
 			// if (!partei.getName().equals("SPD")) {
 			// continue;
 			// }
@@ -154,8 +153,8 @@ public class StimmgewichtSimulator {
 
 					// check auf negatives Stimmgewicht
 					if (this.vergleicheSitzverteilungen(partei)) {
-						System.out
-								.println("NEGATIVES STIMMGEWICHT GEFUNDEN !!!!!!!!!!!! YAYYY");
+						Debug.setAktiv(true);
+						Debug.print("NEGATIVES STIMMGEWICHT GEFUNDEN !!!!!!!!!!!! YAYYY");
 						return true;
 					}
 
@@ -163,11 +162,17 @@ public class StimmgewichtSimulator {
 				}
 
 				setzeKopienAufAusgangswahl();
-Debug.print(partei.getName() + " " +bundesland.getName() + " " + bundesland.getAnzahlZweitstimmen(partei));
-Debug.setAktiv(false);
-setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(kopie1));
-Debug.setAktiv(true);
-Debug.print("Mandate " +kopie1.getParteien().get(1).getAnzahlMandate());
+				this.passeKopie2An();
+				Debug.print(partei.getName() + " " + bundesland.getName() + " "
+						+ bundesland.getAnzahlZweitstimmen(partei));
+				Debug.print(kopie1.getParteien().get(1).getName() + " Mandate "
+						+ kopie1.getParteien().get(1).getAnzahlMandate());
+				Debug.setAktiv(false);
+				setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
+						kopie1));
+				Debug.setAktiv(true);
+				Debug.print(kopie1.getParteien().get(1).getName() + " Mandate "
+						+ kopie1.getParteien().get(1).getAnzahlMandate());
 			}
 		}
 
@@ -365,7 +370,7 @@ Debug.print("Mandate " +kopie1.getParteien().get(1).getAnzahlMandate());
 				mandatsZahlNeu++;
 			}
 		}
-		System.out.println("    Mandatszahl alt: " + mandatsZahlAlt
+		System.out.println(p.getName() + ": Mandatszahl alt: " + mandatsZahlAlt
 				+ " Mandatszahl neu: " + p.getAnzahlMandate());
 		return (mandatsZahlNeu < mandatsZahlAlt);
 
