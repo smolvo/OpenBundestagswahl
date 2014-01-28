@@ -5,6 +5,7 @@ import main.java.model.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList; //Spaeter rausmachen
+import java.util.List;
 import java.util.Set;
 
 import test.java.Debug;
@@ -73,9 +74,6 @@ public class Mandatsrechner2009 {
 				Kandidat gewinner = null;
 				
 				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
-					// TODO parallelitaet!
-					// TODO Kandidaten mit gleicher Erststimmenanzahl
-					//System.out.println(max+" "+erst.getAnzahl());
 					if (max < erst.getAnzahl()) {
 						// Kandidaten Mandat zuweisen und als Wahlkreissieger in
 						// den Wahlkreis eintragen
@@ -88,7 +86,6 @@ public class Mandatsrechner2009 {
 				 * Wahlklreis eingetragen
 				 */
 				if(max != 0){
-					//System.out.println("Direktmandat: "+gewinner.getPartei()+ " "+ bundesland.getName());
 					gewinner.setMandat(Mandat.DIREKTMANDAT);
 					wahlkreis.setWahlkreisSieger(gewinner);
 					bundestagswahl.getSitzverteilung().addAbgeordnete(gewinner);
@@ -160,8 +157,9 @@ public class Mandatsrechner2009 {
 	protected float berechneZuteilungsdivisor(Bundestagswahl bundestagswahl) {
 		int minSitze = bundestagswahl.getDeutschland().getWahlkreise().size() * 2;
 		Debug.print("Anzahl der Wahlkreise: " + minSitze);
-		float zuteilungsdivisor = bundestagswahl.getDeutschland()
-				.getEinwohneranzahl() / minSitze;
+		float zuteilungsdivisor = this.runden(bundestagswahl.getDeutschland()
+				.getEinwohneranzahl() / minSitze, false);
+		System.out.println( bundestagswahl.getDeutschland().getEinwohneranzahl()+" Vorläufig ZD: "+zuteilungsdivisor);
 		int sitzanzahl = 0;
 		while (sitzanzahl != minSitze) {
 			sitzanzahl = 0;
@@ -170,7 +168,7 @@ public class Mandatsrechner2009 {
 				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
 						/ zuteilungsdivisor,false);
 			}
-			//Debug.print("Test: " + sitzanzahl + " - " + minSitze);
+			Debug.print("Test: ZD:"+zuteilungsdivisor+" " + sitzanzahl + " - " + minSitze);
 			if(sitzanzahl == minSitze){
 				// Falls dieser Beak nicht drin ist, passt die Anzahl nicht!
 				Debug.print("ZTD: "+zuteilungsdivisor);
@@ -366,20 +364,22 @@ public class Mandatsrechner2009 {
 		for (Bundesland bundesland : bundestagswahl.getDeutschland()
 				.getBundeslaender()) {
 
+			/*if(!bundesland.getName().equals("Thüringen")){
+				continue;
+			}*/
 			int sitzeBundesland = this.runden(bundesland.getEinwohnerzahl()
 					/ zuteilungsdivisor, false);
-			landesdivisor = bundesland.getAnzahlZweitstimmen() / sitzeBundesland;
+			
+			int relevanteZweitstimmenSumme = this.getRelevanteZweitstimmenSumme(relevanteParteien, bundesland);
+			landesdivisor = relevanteZweitstimmenSumme / sitzeBundesland;
 
-			//System.err.println("SitzeBundesland "+sitzeBundesland+" "+bl.getEinwohnerzahl()+" "+zuteilungsdivisor);
 			int sitzePartei = 0;
 			while (sitzePartei != sitzeBundesland) {
 				sitzePartei = 0;
 
 				for (Partei part : relevanteParteien) {
-
-					sitzePartei += this.runden(
-							bundesland.getAnzahlZweitstimmen(part)
-									/ landesdivisor, false);
+				
+					sitzePartei += this.runden(bundesland.getAnzahlZweitstimmen(part) / landesdivisor, false);
 				}
 				if(sitzePartei == sitzeBundesland) {
 					break;
@@ -392,7 +392,6 @@ public class Mandatsrechner2009 {
 			}
 
 			for (Partei part : relevanteParteien) {
-				//Debug.print(part.getName() + "Anzahl Mandate: "+part.getAnzahlMandate());
 				// Direktmandate einer Partei im Bundesland
 				int direktmandate = part.getAnzahlMandate(Mandat.DIREKTMANDAT,
 						bundesland);
@@ -400,15 +399,12 @@ public class Mandatsrechner2009 {
 				int mindestSitzanzahl = this.runden(
 						bundesland.getAnzahlZweitstimmen(part) / landesdivisor,
 						false);
-				
+				System.out.println(mindestSitzanzahl);
 				// Wichtig zur Bestimmung von Ueberhangmandate
 				int diffKandidat = mindestSitzanzahl - direktmandate;
 
 				part.addMindestsitzanzahl(bundesland,
 						Math.max(direktmandate, mindestSitzanzahl));
-				/*if(part.getName().equals("CDU") && bundesland.getName().equals("Saarland")){
-					System.out.println("###Landesdivisor: "+landesdivisor+" Zweitstimmen: "+bundesland.getAnzahlZweitstimmen(part)+" | " + direktmandate+" "+mindestSitzanzahl+" "+Math.max(direktmandate, mindestSitzanzahl)+" Diff:"+diffKandidat);
-				}*/
 				if (diffKandidat >= 0) {
 					for (int i = 0; i < diffKandidat; i++) {
 						// Nehme aus der Bundestagswahl die Landesliste der
@@ -447,24 +443,14 @@ public class Mandatsrechner2009 {
 						}
 					}
 				} else {
-					//System.err.println(bundesland.getName()+" - "+part.getName()+" - "+Math.abs(diffKandidat));
-					//Kandidat ueberhangmandat;
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {
-						/*ueberhangmandat = bundesland.getDirektMandate(part).get(i);
-						ueberhangmandat.setMandat(Mandat.UEBERHANGMADAT);
-						bundestagswahl.getSitzverteilung().getBericht()
-						.zeileHinzufuegen(ueberhangmandat.getName(),
-								ueberhangmandat.getPartei().getName(),
-								Mandat.UEBERHANGMADAT.toString(), 
-								bundesland.getName(),
-								"");*/
 						part.incrementUeberhangMandate(bundesland);
 					}
 					
 				}
 
 			}
-			if (Debug.isAktiv()) {
+			if (false && Debug.isAktiv()) {
 				
 				Debug.print("\nLandesdivisor " + bundesland.getName() + ": "
 						+ landesdivisor);
@@ -486,17 +472,25 @@ public class Mandatsrechner2009 {
 		Debug.print("\nSitzverteilung");
 		int summe = 0;
 		for (Partei partei : relevanteParteien) {
-			/*
-			 * if(partei.getName().equals("SPD")){ for(Bundesland bl :
-			 * bw.getDeutschland().getBundeslaender()){
-			 * System.out.println(bl
-			 * .getName()+": "+partei.getMindestsitzanzahl(bl)); } }
-			 */
 			Debug.print(partei.getName() + ": "
 					+ partei.getMindestsitzAnzahl());
 			summe += partei.getMindestsitzAnzahl();
 		}
 		Debug.print("Summe: " + summe);
 		return bundestagswahl;
+	}
+	
+	/**
+	 * Gibt die Summe der Zweitstimmen einer Menge von Parteien in
+	 * einem bestimmten Bundesland zurueck.
+	 * @param parteien Liste an Parteien
+	 * @return anzahl der Zweitstimmen
+	 */
+	public int getRelevanteZweitstimmenSumme(List<Partei> parteien, Bundesland bl) {
+		int anzahl = 0;
+		for (Partei partei : parteien) {
+			anzahl += bl.getAnzahlZweitstimmen(partei);
+		}
+		return anzahl;
 	}
 }
