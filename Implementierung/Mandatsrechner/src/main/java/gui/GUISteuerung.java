@@ -69,8 +69,7 @@ public class GUISteuerung {
 	 */
 	public void vergleichen(Bundestagswahl btw1, Bundestagswahl btw2) {
 		Wahlvergleich vergleich = new Wahlvergleich(btw1, btw2);
-		VergleichsFenster vergleichsFenster = new VergleichsFenster(vergleich);
-		// TODO logisch?
+		new VergleichsFenster(vergleich);
 	}
 
 	/**

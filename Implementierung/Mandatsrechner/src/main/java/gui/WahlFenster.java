@@ -24,16 +24,16 @@ import main.java.steuerung.Steuerung;
 public class WahlFenster extends JPanel {
 
 	/** repräsentiert den Namen des Tabs */
-	private String name;
+	private final String name;
 
 	/** repräsentiert die geladene Bundestagswahl */
-	private Bundestagswahl btw;
+	private final Bundestagswahl btw;
 
 	/** repräsentiert die aktuelle Ansicht */
 	private Ansicht aktuelleAnsicht;
 
 	/** repräsentiert die aktuelle Steuerung des Wahlfensters */
-	private GUISteuerung steuerung;
+	private final GUISteuerung steuerung;
 
 	/**
 	 * repräsentiert das zuletzt gezeigte Gebiet, so dass zurück gesprungen
@@ -77,16 +77,6 @@ public class WahlFenster extends JPanel {
 	}
 
 	/**
-	 * Setzt den Namen.
-	 * 
-	 * @param name
-	 *            Name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
 	 * Gibt die GUISteuerung aus.
 	 * 
 	 * @return GUI Steuerung
@@ -96,32 +86,12 @@ public class WahlFenster extends JPanel {
 	}
 
 	/**
-	 * Setzt die GUI Steuerung.
-	 * 
-	 * @param steuerung
-	 *            GUI Steuerung
-	 */
-	public void setSteuerung(GUISteuerung steuerung) {
-		this.steuerung = steuerung;
-	}
-
-	/**
 	 * Gibt die Bundestagswahl aus.
 	 * 
 	 * @return Bundestagswahl
 	 */
 	public Bundestagswahl getBtw() {
 		return btw;
-	}
-
-	/**
-	 * Setzt die Bundestagswahl.
-	 * 
-	 * @param btw
-	 *            Bundestagswahl
-	 */
-	public void setBtw(Bundestagswahl btw) {
-		this.btw = btw;
 	}
 	
 	@Override
