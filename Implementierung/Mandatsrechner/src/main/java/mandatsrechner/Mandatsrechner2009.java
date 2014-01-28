@@ -159,7 +159,7 @@ public class Mandatsrechner2009 {
 		Debug.print("Anzahl der Wahlkreise: " + minSitze);
 		float zuteilungsdivisor = this.runden(bundestagswahl.getDeutschland()
 				.getEinwohneranzahl() / minSitze, false);
-		System.out.println( bundestagswahl.getDeutschland().getEinwohneranzahl()+" Vorläufig ZD: "+zuteilungsdivisor);
+		//System.out.println( bundestagswahl.getDeutschland().getEinwohneranzahl()+" Vorläufig ZD: "+zuteilungsdivisor);
 		int sitzanzahl = 0;
 		while (sitzanzahl != minSitze) {
 			sitzanzahl = 0;
@@ -168,14 +168,10 @@ public class Mandatsrechner2009 {
 				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
 						/ zuteilungsdivisor,false);
 			}
-			Debug.print("Test: ZD:"+zuteilungsdivisor+" " + sitzanzahl + " - " + minSitze);
-			if(sitzanzahl == minSitze){
-				// Falls dieser Beak nicht drin ist, passt die Anzahl nicht!
-				Debug.print("ZTD: "+zuteilungsdivisor);
-				break;
-			} else if (sitzanzahl < minSitze) {
-				zuteilungsdivisor -= 10;
-			} else {
+			//Debug.print("Test: ZD:"+zuteilungsdivisor+" " + sitzanzahl + " - " + minSitze);
+			if (sitzanzahl < minSitze) {
+				zuteilungsdivisor -= 99;
+			} else if (sitzanzahl > minSitze){
 				// sitzanzahl > minSitze
 				zuteilungsdivisor += 100;
 			}
@@ -438,8 +434,8 @@ public class Mandatsrechner2009 {
 								diffKandidat++;
 							}
 						} else {
-							//throw new IllegalArgumentException("Mieeeeep. Kein Listenkandidat gefunden.");
-							// TODO negatives Stimmengewicht
+							// throw new IllegalArgumentException("Mieeeeep. Kein Listenkandidat gefunden.");
+							// Landesliste erschoepft.
 						}
 					}
 				} else {
@@ -450,7 +446,7 @@ public class Mandatsrechner2009 {
 				}
 
 			}
-			if (false && Debug.isAktiv()) {
+			if (Debug.isAktiv()) {
 				
 				Debug.print("\nLandesdivisor " + bundesland.getName() + ": "
 						+ landesdivisor);
@@ -477,6 +473,7 @@ public class Mandatsrechner2009 {
 			summe += partei.getMindestsitzAnzahl();
 		}
 		Debug.print("Summe: " + summe);
+		Debug.print("ENDE BTW 2009");
 		return bundestagswahl;
 	}
 	
