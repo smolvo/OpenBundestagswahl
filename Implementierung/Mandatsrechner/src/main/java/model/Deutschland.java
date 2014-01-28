@@ -159,13 +159,11 @@ public class Deutschland extends Gebiet implements Serializable {
 	 */
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
-		int sum = 0;
-		for (Bundesland bl : this.bundeslaender) {
-			for (Wahlkreis wk : bl.getWahlkreise()) {
-				sum += wk.getZweitstimme(partei).getAnzahl();
-			}
+		int anzahl = 0;
+		for (Bundesland bl : this.getBundeslaender()) {
+			anzahl += bl.getAnzahlZweitstimmen(partei);
 		}
-		return sum;
+		return anzahl;
 	}
 	
 	/**
@@ -176,13 +174,12 @@ public class Deutschland extends Gebiet implements Serializable {
 	 */
 	@Override
 	public int getAnzahlErststimmen(Partei partei) {
-		int sum = 0;
-		for (Bundesland bl : this.bundeslaender) {
-			for (Wahlkreis wk : bl.getWahlkreise()) {
-				sum += wk.getAnzahlErststimmen(partei);
-			}
+		int anzahl = 0;
+		for (Bundesland bl: this.getBundeslaender()) {
+				anzahl += bl.getAnzahlErststimmen(partei);
+		
 		}
-		return sum;
+		return anzahl;
 	}
 	
 	/**

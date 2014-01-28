@@ -298,20 +298,10 @@ public class Bundesland extends Gebiet implements Serializable,
 	 */
 	@Override
 	public int getAnzahlZweitstimmen(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
-		}
-		
 		int anzahl = 0;
-	
-		// durchlaufe alle Zweitstimmen
-		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
-			if (partei.equals(zweitstimme.getPartei())) {
-				// summiere die Zweitstimmen der gesuchten Partei
-				anzahl += zweitstimme.getAnzahl();
-			}
+		for (Wahlkreis wk : this.getWahlkreise()) {
+			anzahl += wk.getAnzahlZweitstimmen(partei);
 		}
-		
 		return anzahl;
 	}
 	
@@ -323,20 +313,10 @@ public class Bundesland extends Gebiet implements Serializable,
 	 */
 	@Override
 	public int getAnzahlErststimmen(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
-		}
-		
 		int anzahl = 0;
-		
-		// durchlaufe alle Erststimmen
-		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			// summiere die Erststimmen der gesuchten Partei
-			if (partei.getName().equals(erststimme.getKandidat().getPartei().getName())) {
-				anzahl += erststimme.getAnzahl();
-			}
+		for (Wahlkreis wk : this.getWahlkreise()) {
+			anzahl += wk.getErststimmenAnzahl(partei);
 		}
-		
 		return anzahl;
 	}
 	
