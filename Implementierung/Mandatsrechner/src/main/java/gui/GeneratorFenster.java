@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -49,6 +50,9 @@ public class GeneratorFenster extends JFrame {
 	/** Stimmenanteile */
 	private JLabel stimmenanteile;
 	
+	/** Label für den neuen Namen */
+	private JLabel neueWahlNameLabel;
+	
 	/** gesamte Erststimmen */
 	private JLabel gesamtErst;
 	
@@ -58,6 +62,9 @@ public class GeneratorFenster extends JFrame {
 	/** Combobox um die Basiswahl auszusuchen */
 	private JComboBox<Bundestagswahl> basiswahlAuswahl;
 
+	/** Textfeld in dem man den neuen Namen eingeben kann */
+	private JTextField neueWahlNameBox;
+	
 	/** panel im ScrollPane */
 	private JPanel hauptPanel;
 
@@ -86,7 +93,7 @@ public class GeneratorFenster extends JFrame {
 		this.setTitle("Wahlgenerierung");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
-		this.setBounds(500, 50, 435, 600);
+		this.setBounds(500, 50, 435, 640);
 		this.setLayout(null);
 		initialisiere(wahlen);
 		this.setVisible(true);
@@ -97,17 +104,15 @@ public class GeneratorFenster extends JFrame {
 	 * Komponenten des Fensters zu initialisieren.
 	 */
 	private void initialisiere(List<Bundestagswahl> wahlen) {
+		// Basis Auswahl
 		Bundestagswahl[] wahlenArray = wahlen.toArray(new Bundestagswahl[wahlen
 				.size()]);
 		this.basiswahl = new JLabel("Basiswahl: ");
-		basiswahl.setBounds(5, 5, 90, 20);
-		this.stimmenanteile = new JLabel(
-				"Stimmenanteile:                                    Erststimmen          Zweitstimmen");
-		stimmenanteile.setBounds(5, 40, 435, 30);
+		this.basiswahl.setBounds(5, 5, 90, 20);
 		this.basiswahlAuswahl = new JComboBox<Bundestagswahl>(wahlenArray);
-		basiswahlAuswahl.setBounds(90, 5, 200, 20);
+		this.basiswahlAuswahl.setBounds(165, 5, 200, 20);
 		
-		basiswahlAuswahl.addActionListener(new ActionListener() {
+		this.basiswahlAuswahl.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,20 +122,30 @@ public class GeneratorFenster extends JFrame {
 			}
 
 		});
-
+		
+		// neuer Name TextField
+		this.neueWahlNameLabel = new JLabel("Name der neuen Wahl: ");
+		this.neueWahlNameLabel.setBounds(5, 40, 150, 20);
+		this.neueWahlNameBox = new JTextField();
+		this.neueWahlNameBox.setBounds(165, 40, 150, 20);
+		
+		// Stimmen Anteile und JScrollPane
+		this.stimmenanteile = new JLabel(
+				"Stimmenanteile:                                    Erststimmen          Zweitstimmen");
+		this.stimmenanteile.setBounds(5, 70, 435, 30);
 		setPane();
 
+		// gesamt Labels
 		this.gesamtErst = new JLabel("Erststimmen gesamt: 0" + "%");
-		this.gesamtErst.setBounds(30, 500, 160, 20);
+		this.gesamtErst.setBounds(30, 530, 160, 20);
 		this.gesamtErst.setForeground(Color.GREEN);
-		
 		this.gesamtZweit = new JLabel("Zweitstimmen gesamt: 0" + "%");
-		this.gesamtZweit.setBounds(220, 500, 170, 20);
+		this.gesamtZweit.setBounds(220, 530, 170, 20);
 		this.gesamtZweit.setForeground(Color.GREEN);
 		
-
+		// Generiere-Button
 		this.generiere = new JButton("Generiere");
-		this.generiere.setBounds(160, 530, 115, 30);
+		this.generiere.setBounds(160, 560, 115, 30);
 		this.generiere.addActionListener(new ActionListener() {
 
 			@Override
@@ -141,7 +156,7 @@ public class GeneratorFenster extends JFrame {
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
 					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
-					String name = "";
+					String name = neueWahlNameBox.getText();
 					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile, name);
 					pf.wahlHinzufuegen(btw);
 					generiere.setEnabled(true);					
@@ -155,12 +170,14 @@ public class GeneratorFenster extends JFrame {
 
 		});
 
-		this.add(basiswahl);
-		this.add(stimmenanteile);
-		this.add(gesamtErst);
-		this.add(gesamtZweit);
-		this.add(basiswahlAuswahl);
-		this.add(generiere);
+		this.add(this.basiswahl);
+		this.add(this.basiswahlAuswahl);
+		this.add(this.neueWahlNameLabel);
+		this.add(this.neueWahlNameBox);
+		this.add(this.stimmenanteile);
+		this.add(this.gesamtErst);
+		this.add(this.gesamtZweit);
+		this.add(this.generiere);
 	}
 
 	/**
@@ -193,7 +210,7 @@ public class GeneratorFenster extends JFrame {
 		hauptPanel.add(subPanel);
 
 		this.pane = new JScrollPane();
-		this.pane.setBounds(5, 80, 420, 400);
+		this.pane.setBounds(5, 110, 420, 400);
 		this.pane.setViewportView(hauptPanel);
 		this.pane.setHorizontalScrollBar(null);
 
@@ -423,6 +440,9 @@ public class GeneratorFenster extends JFrame {
 	 * Zweitstimmen größer als 100 ist.
 	 */
 	private void checkStimmen() {
+		if (this.neueWahlNameBox.getText().equals("")) {
+			generiere.setEnabled(false);
+		}
 		if (gesamtErststimmen <= 100 && gesamtZweitstimmen <= 100) {
 			generiere.setEnabled(true);
 		}
