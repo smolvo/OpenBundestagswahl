@@ -32,6 +32,9 @@ public class Ansicht extends JPanel {
 	/** Eine Ansicht hat ein Diagrammfenster. */
 	private DiagrammFenster diagrammFenster;
 
+	/** das Panel auf dem der Berechne-Knopf sitzt */
+	private JPanel berechnePanel;
+	
 	/** Eine Ansicht hat ein Kartenfenster. */
 	private KartenFenster kartenFenster;
 
@@ -155,8 +158,12 @@ public class Ansicht extends JPanel {
 	 */
 	public void berechnungNotwendig() {
 		this.wurdeVeraendert = true;
+		System.out.println("cool");
 		remove(diagrammFenster);
 		this.diagrammFenster = new DiagrammFenster(this);
+		
+		this.berechnePanel = new JPanel();
+		this.berechnePanel.setSize(new Dimension(100, 100));
 		
 		JButton berechne = new JButton("Berechne");
 		berechne.addActionListener(new ActionListener() {
@@ -164,12 +171,14 @@ public class Ansicht extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Steuerung.getInstance().berechneSitzverteilung();
+				ansichtAendern(fenster.getBtw().getDeutschland());
 				wurdeVeraendert = false;
+				repaint();
 			}
 			
 		});
 		berechne.setSize(new Dimension(150, 50));
-		this.diagrammFenster.add(berechne, BorderLayout.CENTER);
+		this.berechnePanel.add(berechne, BorderLayout.CENTER);
 		
 		
 		gbc.weightx = 0.5;
@@ -177,7 +186,7 @@ public class Ansicht extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(diagrammFenster, gbc);
+		add(berechnePanel, gbc);
 	}
 	
 	/**

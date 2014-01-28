@@ -90,6 +90,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 2) {
+			int alterWert = daten.getErststimmen(rowIndex).getAnzahl();
 			String stringAnzahl = (String) obj;
 			Erststimme erststimme = daten.getErststimmen(rowIndex);
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
@@ -108,7 +109,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						JOptionPane.INFORMATION_MESSAGE, null);
 				
 			}
-			if (anzahl != daten.getErststimmen(rowIndex).getAnzahl()) {
+			if (anzahl != alterWert) {
 				// wenn die Stimme intern geändert wurde auch in der Tabelle ändern
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
@@ -123,6 +124,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				}
 			}
 		} else if (columnIndex == 4) {
+			int alterWert = daten.getZweitstimmen(rowIndex).getAnzahl();
 			String stringAnzahl = (String) obj;
 			Zweitstimme zweitstimme = daten.getZweitstimmen(rowIndex);
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
@@ -141,12 +143,13 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						JOptionPane.INFORMATION_MESSAGE, null);
 				
 			}
-			if (anzahl != daten.getZweitstimmen(rowIndex).getAnzahl()) {
+			if (anzahl != alterWert) {
 				// wenn die Stimme intern geändert wurde auch in der Tabelle ändern
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+					
 				} else {
 					
 					JOptionPane.showMessageDialog(this.tabellenfenster,
