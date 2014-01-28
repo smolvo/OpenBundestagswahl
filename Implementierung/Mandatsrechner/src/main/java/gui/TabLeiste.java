@@ -3,8 +3,6 @@ package main.java.gui;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,13 +25,10 @@ import main.java.steuerung.Steuerung;
  */
 public class TabLeiste extends JTabbedPane {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1890561914275560319L;
-	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
-	private Programmfenster pf;
+	/** repräsentiert das Programmfenster der Tableiste */
+	private final Programmfenster pf;
 	
+	/** repräsentiert den Plus-Knopf der Tableiste */
 	private final JComponent plusButton = new JPanel();
 
 	/**
@@ -43,19 +38,10 @@ public class TabLeiste extends JTabbedPane {
 	 *            Programmfenster
 	 */
 	public TabLeiste(Programmfenster pf) {
-
 		this.pf = pf;
 		// allgemeine Einstellungen der Tab- Leiste
 		this.setTabLayoutPolicy(TOP);
 		this.setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
-
-		// neuen Tab für jede aktuelle Wahl
-		for (int i = 0; i < pf.getWahlen().size(); i++) {
-			WahlFenster w = pf.getWahlen().get(i);
-			wahlen.add(w);
-			neuerTab(w, w.getName());
-
-		}
 		neuerTabButton();
 		setVisible(true);
 	}
@@ -101,6 +87,9 @@ public class TabLeiste extends JTabbedPane {
 		neuerTab.addActionListener(listener);
 	}
 	
+	/**
+	 * Diese private Methode wird vom Plus-Knopf verwendet um eine Wahl zu importieren.
+	 */
 	private void importiere() {
 		if (pf.getiD() == null) {
 			ImportDialog iD = new ImportDialog(pf);
@@ -123,6 +112,9 @@ public class TabLeiste extends JTabbedPane {
 	 */
 
 	public void neuerTab(final WahlFenster c, final String wahlName) {
+		if ((c == null) || (wahlName == null)) {
+			throw new NullPointerException("Einer der zwei Parameter ist null.");
+		}
 		add(c);
 		int pos = indexOfComponent(c);
 
@@ -145,10 +137,8 @@ public class TabLeiste extends JTabbedPane {
 		tab.add(lblTitle);
 		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
-
-//		pf.setWahlen(wahlen);
+		
 		// Erstelle anonymen ActionListener für den "x" Knopf
-
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -180,26 +170,10 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * @return the pf
+	 * Gibt das Programmfenster aus
+	 * @return Programmfenster
 	 */
 	public Programmfenster getPf() {
 		return pf;
 	}
-
-	/**
-	 * @param pf
-	 *            the pf to set
-	 */
-	public void setPf(Programmfenster pf) {
-		this.pf = pf;
-	}
-	
-	/**
-	 * Gibt die Wahlen aus.
-	 * @return Wahlen
-	 */
-	public List<WahlFenster> getWahlfenster() {
-		return this.wahlen;
-	}
-
 }
