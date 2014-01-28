@@ -128,6 +128,17 @@ public class GeneratorFenster extends JFrame {
 		this.neueWahlNameLabel.setBounds(5, 40, 150, 20);
 		this.neueWahlNameBox = new JTextField();
 		this.neueWahlNameBox.setBounds(165, 40, 150, 20);
+		this.neueWahlNameBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!(neueWahlNameBox.getText() == null)) {
+					generiere.setEnabled(true);
+				}
+				check();
+			}
+			
+		});
 		
 		// Stimmen Anteile und JScrollPane
 		this.stimmenanteile = new JLabel(
@@ -146,6 +157,7 @@ public class GeneratorFenster extends JFrame {
 		// Generiere-Button
 		this.generiere = new JButton("Generiere");
 		this.generiere.setBounds(160, 560, 115, 30);
+		this.generiere.setEnabled(false);
 		this.generiere.addActionListener(new ActionListener() {
 
 			@Override
@@ -276,7 +288,7 @@ public class GeneratorFenster extends JFrame {
 				int[] erstStimmen = erstToIntegers();
 				gesamtErststimmen = stimmenGesamt(erstStimmen);
 				gesamtErst.setText("Erststimmen gesamt: " + gesamtErststimmen + "%");
-				checkStimmen();
+				check();
 			}
 			
 		});
@@ -296,7 +308,7 @@ public class GeneratorFenster extends JFrame {
 				int[] zweitStimmen = zweitToIntegers();
 				gesamtZweitstimmen = stimmenGesamt(zweitStimmen);
 				gesamtZweit.setText("Zweitstimmen gesamt: " + gesamtZweitstimmen + "%");
-				checkStimmen();
+				check();
 			}
 			
 		});
@@ -439,7 +451,7 @@ public class GeneratorFenster extends JFrame {
 	 * Diese Methode überprüft, ob die Gesamtanzahl Erst- oder
 	 * Zweitstimmen größer als 100 ist.
 	 */
-	private void checkStimmen() {
+	private void check() {
 		if (this.neueWahlNameBox.getText().equals("")) {
 			generiere.setEnabled(false);
 		}
