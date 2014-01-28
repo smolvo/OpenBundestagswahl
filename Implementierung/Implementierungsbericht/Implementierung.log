@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  28 JAN 2014 00:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  28 JAN 2014 14:52
 entering extended mode
 **Implementierung.tex
 
@@ -614,7 +614,7 @@ plementierung.out)
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.out)
 \@outlinefile=\write4
- <KIT-Logo.png, id=63, 284.5029pt x 132.0132pt>
+ <KIT-Logo.png, id=99, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
 
 <use KIT-Logo.png>
@@ -679,422 +679,136 @@ been already used, duplicate ignored
                    \relax 
 l.68 \newpage
               [1]
-Overfull \hbox (45.12057pt too wide) in paragraph at lines 81--84
+Overfull \hbox (45.12057pt too wide) in paragraph at lines 83--86
 \OT1/pcr/b/n/12 Wahlfenstern\OT1/cmr/m/n/12 . Die-se wer-den mit-hil-fe ei-ner 
 \OT1/pcr/b/n/12 TabLeiste\OT1/cmr/m/n/12 , die eben-falls vom \OT1/pcr/b/n/12 P
 rogrammfenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--84
-
- []
-
-
-Overfull \hbox (19.6013pt too wide) in paragraph at lines 88--103
-\OT1/cmr/m/n/12 (\OT1/pcr/m/sl/12 Initialisieren() \OT1/pcr/m/n/12 und \OT1/pcr
-/m/sl/12 ansichtAendern()\OT1/pcr/m/n/12 ) aufgespalten. Dies war von
- []
-
-
-Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 N[]oten, weil bei der erstmaligen Ansichtserstellung alle drei 
-Fenster
- []
-
-
-Overfull \hbox (43.8319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 erstellt werden m[]ussen, bei einer Ansichts[]anderung aber nur
- \OT1/pcr/b/n/12 Diagramm-
- []
-
-
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 Eine weitere Abweichung vom Entwurf ist die \OT1/pcr/m/sl/12 be
-rechnungNotwendig()\OT1/pcr/m/n/12 ,
- []
-
-
-Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 welche festlegt, dass eine Stimme in einem Wahlkreis ge[]andert
- wurde.
- []
-
-
-Overfull \hbox (36.6319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 Wurde eine Stimme ge[]andert werden keine Diagramme angezeigt, 
-sondern
- []
-
-
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 Der Hauptgrund f[]ur diese []Anderung ist, dass es dadurch m[]o
-glich ist
- []
-
-
-Overfull \hbox (43.8319pt too wide) in paragraph at lines 88--103
-\OT1/pcr/m/n/12 mehrere Stimmen nacheinander zu []andern, ohne dass nach jeder 
-[]Anderung
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--103
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
 
  []
 
 [2]
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 TabellenFenster \OT1/pcr/m/n/12 ist das ers
-te der drei Komponenten der \OT1/pcr/b/n/12 Ansicht\OT1/pcr/m/n/12 . 
+Overfull \hbox (16.72546pt too wide) in paragraph at lines 95--110
+\OT1/cmr/m/n/12 wer-den kei-ne Dia-gram-me an-ge-zeigt, son-dern ein Berechne-K
+nopf an der \OT1/pcr/b/n/12 DiagrammFenster
  []
 
 
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 Nicht wie im Entwurf vorgeschlagen in einer Klasse, haben wir d
-as
- []
-
-
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 dieses in mehrere Klassen unterteilt. Da es drei Arten von Tabe
-llen
- []
-
-
-Overfull \hbox (43.8319pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 gibt (Land, Bundesland, Wahlkreis) gibt es zu jeder Art zwei Kl
-assen,
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 ein Mal die Daten-Klasse und eine TabelModel-Klasse. Dies hat d
-ie
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 im Entwurf vorgeschlagene \OT1/pcr/b/n/12 Tabellenzellen\OT1/pc
-r/m/n/12 -Klasse zur Auslese von
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 ge[]anderten Stimmen abgel[]ost, da man dadurch viel leichte an
- die,
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 in der Tabelle ge[]anderten Stimmen kommt. Das \OT1/pcr/b/n/12 
-TabellenFenster \OT1/pcr/m/n/12 an
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/n/12 sich erstellt die Tabellen wie im Entwurf vorgeschlagen mit der
+Underfull \hbox (badness 10000) in paragraph at lines 95--110
 
  []
 
 
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 105--113
-\OT1/pcr/m/sl/12 tabellenFuellen()\OT1/pcr/m/n/12 -Methode, wobei diese f[]ur d
-ie drei Gebietsarten
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 105--113
-[]\OT1/pcr/m/n/12 uberladen ist. Die Erstellung der Klasse \OT1/pcr/b/n/12 GUIP
-artei \OT1/pcr/m/n/12 war notwendig,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--113
+Underfull \hbox (badness 10000) in paragraph at lines 112--120
 
  []
 
 
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 DiagrammFenster \OT1/pcr/m/n/12 ist das zwe
-ite der drei Komponenten. Die Klasse
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/n/12 an sich wurde fast genauso implementiert wie im Entwurfsdokumen
-t
- []
-
-
-Overfull \hbox (79.83188pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/n/12 festgelegt. Das einzige was noch hinzugef[]ugt wurde waren die 
-verschiedenen
- []
-
-
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/n/12 Diagramm-Klassen, die die Diagramme darstellen sollen. Die Meth
-ode
- []
-
-
-Overfull \hbox (51.03189pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/sl/12 erstelleDiagramm() \OT1/pcr/m/n/12 wurde []uberladen, weil die
- drei Arten von Diagrammen
- []
-
-
-Overfull \hbox (173.43184pt too wide) in paragraph at lines 115--118
-\OT1/pcr/m/n/12 in den vorher genannten Klassen erstellt werden. Die Methode \O
-T1/pcr/m/sl/12 zeigeSitzplatzverteilung()
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--118
+Underfull \hbox (badness 10000) in paragraph at lines 122--125
 
  []
 
 [3]
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 120--122
-\OT1/pcr/m/n/12 Im \OT1/pcr/b/n/12 BerichtsFenster \OT1/pcr/m/n/12 werden Daten
- visualisiert, die veranschaulichen
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 120--122
-\OT1/pcr/m/n/12 sollen, woher Mandate der Abgeordneten kommen. Dieses wurde als
+Underfull \hbox (badness 10000) in paragraph at lines 127--129
 
  []
 
 
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 120--122
-\OT1/pcr/m/n/12 Tabelle implementiert, []ahnlich wie das \OT1/pcr/b/n/12 Tabell
-enFenster\OT1/pcr/m/n/12 , um die hohe
- []
-
-
-Overfull \hbox (58.23189pt too wide) in paragraph at lines 120--122
-\OT1/pcr/m/n/12 Menge an Daten m[]oglichs []ubersichtlich zu halten. Zu dem \OT
-1/pcr/b/n/12 BerichtsFenster
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
 
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 124--126
-\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 KartenFenster \OT1/pcr/m/n/12 ist die letzt
-e Komponente der \OT1/pcr/b/n/12 Ansicht\OT1/pcr/m/n/12 . Wie schon
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 124--126
-\OT1/pcr/m/n/12 im Pflichtenheft festgelegt, ist es als Tabfenster implementier
-t
- []
-
-
-Overfull \hbox (58.23189pt too wide) in paragraph at lines 124--126
-\OT1/pcr/m/n/12 und wie im Entwurf festgelegt gibt es die Methode \OT1/pcr/m/sl
-/12 zeigeInformationen()\OT1/pcr/m/n/12 ,
- []
-
-
-Overfull \hbox (79.83188pt too wide) in paragraph at lines 124--126
-\OT1/pcr/m/n/12 Das einzige was vom Entwurf abweicht ist das Weglassen des Zur[
-]uck-Knopfes,
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 124--126
-\OT1/pcr/m/n/12 welches unn[]otig wurde, da man sich in der Verzeichnisstruktur
- von
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
  []
 
 
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 128--130
-\OT1/pcr/m/n/12 Das \OT1/pcr/b/n/12 Vergleichsfenster \OT1/pcr/m/n/12 wurde wie
- im Pflichtenheft und im Entwurf
+Overfull \hbox (41.59952pt too wide) in paragraph at lines 139--143
+\OT1/cmr/m/n/12 zi-gen Sa-chen die sich ver[]andert ha-ben sind, dass die Me-th
+o-den \OT1/pcr/m/sl/12 aktualisiereWahlfenster()
  []
 
 
-Overfull \hbox (22.2319pt too wide) in paragraph at lines 128--130
-\OT1/pcr/m/n/12 beschrieben implementiert, wobei ein weiteres Diagramm hinzugef
-[]ugt
- []
+Underfull \hbox (badness 10000) in paragraph at lines 139--143
 
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 128--130
-\OT1/pcr/m/n/12 wurde, welches die Sitzdifferenzen der zwei Wahlen anzeigt. Die
-s
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 128--130
-\OT1/pcr/m/n/12 f[]ordert die Verdeutlichung der Unterschiede zwischen zwei Wah
-len. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--130
-
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 Die Klasse \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/pcr/m/n/12 b
-erechnet die Sitzverteilung nach
- []
-
-
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 Sainte-Lagu[]e/Schepers ohne Ausgleichsmandate und \OT1/pcr/b/n
-/12 Mandatsrechner2013
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu[]e/Sche
-per,
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
-\OT1/pcr/b/n/12 Mandatsrechner2013 \OT1/pcr/m/n/12 dadurch den \OT1/pcr/b/n/12 
-Mandatsrechner2009 \OT1/pcr/m/n/12 zur Berechnung
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 nutzt, f[]allt die Notwendigkeit der Oberklasse \OT1/pcr/b/n/12
- Mandatsrechner \OT1/pcr/m/n/12 weg.
- []
-
-
-Overfull \hbox (15.0319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/b/n/12 Mandatsrechner2013 \OT1/pcr/m/n/12 ein Objekt der Klasse \OT1/p
-cr/b/n/12 Mandatsrecher2009\OT1/pcr/m/n/12 . Zudem
- []
-
-
-Overfull \hbox (51.03189pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 wurde noch in \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/pcr/m/n/1
-2 das Verteilungsverfahren nach d'Hondt
- []
-
-
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 implementiert, damit eine alternative Berechnung der Sitzvertei
-lung
- []
-
-
-Overfull \hbox (36.6319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 m[]oglich ist. Die []Uberladung der Methoden \OT1/pcr/m/sl/12 b
-echne(Gebiet gebiet) \OT1/pcr/m/n/12 wurde
- []
-
-
-Overfull \hbox (36.6319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 aufgehoben, da die Berechnung nicht nach Gebieten sondern nach 
-Ober-
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 und Unterverteilung orientiert ist. Damit der \OT1/pcr/b/n/12 M
-andatsrechner2013
- []
-
-
-Overfull \hbox (7.83191pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 m[]oglichst viel wieder verwendet werden kann, wurden Bereiche 
-die
- []
-
-
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 in beiden Berechnungsklassen Verwundung finden ausgelagert. F[]
-ur
- []
-
-
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 die Implementierung des Entwurfsmuster Einzelst[]uck wurden m[]
-oglichst
- []
-
-
-Overfull \hbox (29.4319pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 wenig globale Variablen, die vor jeder Berechnung neu initialis
-iert
- []
-
-
-Overfull \hbox (51.03189pt too wide) in paragraph at lines 138--139
-\OT1/pcr/m/n/12 werden, verwendet, damit in dem Mandatsrechner nicht gewollte Z
-ust[]ande
  []
 
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 160.
+Overfull \hbox (3.46617pt too wide) in paragraph at lines 149--150
+\OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/cmr/m/n/12 
+be-rech-net die Sitz-ver-tei-lung nach Sainte-Lague/Sche-
+ []
 
+
+Overfull \hbox (53.65678pt too wide) in paragraph at lines 149--150
+\OT1/cmr/m/n/12 Ge-bie-ten son-dern nach Ober- und Un-ter-ver-tei-lung ori-en-t
+iert ist. Da-mit der \OT1/pcr/b/n/12 Mandatsrechner2013
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 158.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 158.
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--166
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 167--169
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
  Make it at least 14.87502pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
 
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 160.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
-
-
-Package rerunfilecheck Warning: File `Implementierung.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Implementierung.out':
-(rerunfilecheck)             Before: 8358A4EA131EAD74C98B887305DF8002;927
-(rerunfilecheck)             After:  E4226C418A47D4D9D775E38C72189788;1597.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
- )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 95 ({)
-### bottom level 
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
+Package rerunfilecheck Info: File `Implementierung.out' has not changed.
+(rerunfilecheck)             Checksum: 24844EF9F9859D3D33BE5DA8A296C274;1589.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
+ ) 
 Here is how much of TeX's memory you used:
- 7134 strings out of 493921
- 100881 string characters out of 3147278
- 194163 words of memory out of 3000000
- 10285 multiletter control sequences out of 15000+200000
- 12755 words of font info for 47 fonts, out of 3000000 for 9000
+ 7160 strings out of 493921
+ 101359 string characters out of 3147278
+ 193163 words of memory out of 3000000
+ 10308 multiletter control sequences out of 15000+200000
+ 12456 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,11n,43p,1302b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/u
-crb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (8 pages, 234253 bytes).
+ 29i,11n,43p,1302b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on Implementierung.pdf (9 pages, 236342 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

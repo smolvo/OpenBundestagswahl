@@ -73,40 +73,47 @@ Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 Da die verwendeten Listen im Datenmodell durch die Berechnungen und Zuweisungen recht groß wurden, wurde zusätzliche Funktionalität in das Datenmodell gebracht. Dies erleichterte den Zugriff auf die benötigten Daten für verschiedene Komponente wie zum Beispiel {\myma{Mandatsrechner}}, {\myma{Wahlgenerator}} und {\myma{GUI}}.
 Zudem wurde die Klasse {\myma{BerichtDaten}} für die Klasse {\myma{Sitzverteilung}} erstellt. Dies war notwendig, damit die Berichttabelle in der GUI korrekt befüllt werden kann. Dabei hält die Klasse {\myma{BerichtDaten}} fünf Listen die jeweils die dazugehörigen Spalten befüllen. 
 Kandidaten haben nun einen Namen und einen bestimmten Platz in der Landesliste.
+
 \subsection{Import/Export}	
 Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Mithilfe dieser Wahlbewerber-Datei werden die vorher ausgelesenen Kandidaten befüllt. Die Wahlbewerber-Datei für die Bundestagswahl 2013 wird im Programm mit übergeben und kann im Notfall für Bundestagswahl 2009 genutzt werden. Zudem wurde eine Config-Datei(ebenfalls im .csv-Format) hinzugefügt, die die Einwohnerzahl der Bundesländer und die Farben der Partei beinhaltet. Dadurch müssen diese Werte nicht mehr im Programmcode gespeichert und können durch das Editieren der Datei einfach angepasst werden. 
 
 \subsection{GUI und GUI-Logik}
+
 \subsubsection{Programmfenster}
-Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main- Klasse und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
+Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main-Methode und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
 Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom {\myma{Programmfenster}} gehalten wird, realisiert. \\
 Zusätzlich besitzt es ein {\myma{Menu}}, welches dem Benutzer ermöglicht, den gewünschten Befehl auszuwählen und ausführen zu lassen, ohne genaue Steuerbefehle kennen und anwenden zu müssen. \\
 
 \subsubsection{WahlFenster}
+Im {\myma{WahlFenster}} wurde die Methode {\mymo{bundestagswahlDarstellen()}} nicht implementiert, da der Code dieser
+in dem Konstruktor der Klasse Anwendung fand. Die {\mymo{wechsleAnsicht()}}-Methode aber, wurde implementiert, wobei
+als Parameter anstatt einer {\myma{Ansicht}}, die im Konstruktor erstellt wird und für das ganze {\myma{Wahlfenster}}
+immer das selbe Objekt ist, eine {\myma{Gebiet}}s-Objekt, welches angezeigt werden soll, übergeben wird.\\
+Jedes {\myma{WahlFenster}} hat einen Namen, als String gespeichert, eine zugehörige Bundestagswahl, sowie eine {\myma{Ansicht}} und eigene {\mymo{GUISteuerung}}, was auch leicht vom Entwurf abweicht.
 
 \subsubsection{Ansicht}
-Die {\myma{Ansicht}} die Hauptkomponente des {\myma{WahlFenster}}s. Sie enthält die im Späteren näher erläuterten
+Die {\myma{Ansicht}} ist die Hauptkomponente des {\myma{WahlFenster}}s. Sie enthält die im Späteren näher erläuterten
 {\myma{Tabellen-}}, {\myma{Diagramm-}} und {\myma{Kartenfenster}}. Anders als im Entwurf festgelegt, haben wir uns
 entschieden nur eine Ansicht zu implementieren. Hauptgrund dafür war, dass eine {\myma{Ansicht}} ausreichend ist, da
 bei Ansichtswechsel nur ein neues {\myma{DiagrammFenster}} und ein neues {\myma{TabellenFenster}} erzeugt
-werden müssen, das {\myma{KartenFenster}} bleibt, dank JTree das selbe. Immer wieder das selbe KartenFenster-Objekt
+werden müssen, das {\myma{KartenFenster}} bleibt, dank JTree, das selbe. Immer wieder das selbe {\myma{KartenFenster}}-Objekt
 zwischen den drei verschiedenen Ansichten hin und her zu schieben wäre weit aus aufwendiger als einfach nur eine
-universale Ansicht einzuführen. \\
-Die im Entwurf spezifizierte Methode {\mymo{zeigeKomponenten()}} wurde in zwei Methoden ({\mymo{Initialisieren()} und 
+universale {\myma{Ansicht}} einzuführen. \\
+Die im Entwurf spezifizierte Methode {\mymo{zeigeKomponenten()}} wurde in zwei Methoden ({\mymo{Initialisieren()}} und 
 {\mymo{ansichtAendern()}}) aufgespalten. Dies war von Nöten, weil bei der erstmaligen Ansichtserstellung
-alle drei Fenster erstellt werden müssen, bei einer Ansichtsänderung aber nur {\myma{Diagramm-}} und {\myma{Kartenfenster}} neu erstellt werden müssen. \\
+alle drei Fenster angelegt werden müssen, bei einer Ansichtsänderung aber nur {\myma{Diagramm-}} und {\myma{Kartenfenster}} neu erstellt werden müssen. \\
 Eine weitere Abweichung vom Entwurf ist die {\mymo{berechnungNotwendig()}}, welche festlegt, dass eine Stimme in einem
 Wahlkreis geändert wurde. Wurde eine Stimme geändert werden keine Diagramme angezeigt, sondern ein Berechne-Knopf
-an der {\myma{DiagrammFenster}} Stelle angezeigt.\\
+an der {\myma{DiagrammFenster}} Stelle angezeigt.
 Der Hauptgrund für diese Änderung ist, dass es dadurch möglich ist mehrere Stimmen nacheinander zu ändern, ohne
 dass nach jeder Änderung eine neue Berechnung durchgeführt werden muss.\\
 
 \subsubsection{TabellenFenster}
 Das {\myma{TabellenFenster}} ist das erste der drei Komponenten der {\myma{Ansicht}}. \\
-Nicht wie im Entwurf vorgeschlagen in einer Klasse, haben wir das dieses in mehrere Klassen unterteilt.
-Da es drei Arten von Tabellen gibt (Land, Bundesland, Wahlkreis) gibt es zu jeder Art zwei Klassen, ein Mal
-die Daten-Klasse und eine TabelModel-Klasse. Dies hat die im Entwurf vorgeschlagene {\myma{Tabellenzellen}}-Klasse
-zur Auslese von geänderten Stimmen abgelöst, da man dadurch viel leichte an die, in der Tabelle geänderten 
+Nicht wie im Entwurf vorgeschlagen in einer Klasse, haben wir diese in mehrere Klassen unterteilt.
+Da es drei Arten von Tabellen gibt (Land, Bundesland, Wahlkreis) gibt es zu jeder Art zwei Klassen, eine
+Daten-Klasse und eine TabelModel-Klasse. Dies hat die im Entwurf vorgeschlagene {\myma{Tabellenzellen}}-Klasse
+zur Auslese von geänderten Stimmen abgelöst, da man dadurch viel leichter an die, in der Tabelle geänderten 
 Stimmen kommt. Das {\myma{TabellenFenster}} an sich erstellt die Tabellen wie im Entwurf vorgeschlagen mit der
 {\mymo{tabellenFuellen()}}-Methode, wobei diese für die drei Gebietsarten überladen ist. Die Erstellung der Klasse
 {\myma{GUIPartei}} war notwendig, um Daten wie Sitze, Direktmandate, etc. festzuhalten. \\
@@ -114,23 +121,27 @@ Stimmen kommt. Das {\myma{TabellenFenster}} an sich erstellt die Tabellen wie im
 \subsubsection{DiagrammFenster}
 Das {\myma{DiagrammFenster}} ist das zweite der drei Komponenten. Die Klasse an sich wurde fast genauso implementiert
 wie im Entwurfsdokument festgelegt. Das einzige was noch hinzugefügt wurde waren die verschiedenen Diagramm-Klassen, die die Diagramme darstellen sollen. Die Methode {\mymo{erstelleDiagramm()}} wurde überladen, weil die drei Arten von Diagrammen in den vorher genannten Klassen erstellt werden. Die Methode {\mymo{zeigeSitzplatzverteilung()}} öffnet das
-folgende {\myma{BerichtsFenster}}. \\
-
-\subsubsection{BerichtsFenster}
-Im {\myma{BerichtsFenster}} werden Daten visualisiert, die veranschaulichen sollen, woher Mandate der Abgeordneten kommen. Dieses wurde als Tabelle implementiert, ähnlich wie das {\myma{TabellenFenster}}, um die hohe Menge an Daten
-möglichs übersichtlich zu halten. Zu dem {\myma{BerichtsFenster}} gehören die Klassen {\myma{BerichtTableModel}} und {\myma{BerichtDaten}}.\\
+{\myma{BerichtsFenster}}. \\
 
 \subsubsection{KartenFenster}
 Das {\myma{KartenFenster}} ist die letzte Komponente der {\myma{Ansicht}}. Wie schon im Pflichtenheft festgelegt, ist es als Tabfenster implementiert und wie im Entwurf festgelegt gibt es die Methode {\mymo{zeigeInformationen()}}, die die Karte erstellt und eine Verzeichnisstruktur anlegt.\\
 Das einzige was vom Entwurf abweicht ist das Weglassen des Zurück-Knopfes, welches unnötig wurde, da man sich in der Verzeichnisstruktur von Ansicht zu Ansicht navigieren kann. \\
+
+\subsubsection{BerichtsFenster}
+Im {\myma{BerichtsFenster}} werden Daten visualisiert, die veranschaulichen sollen, woher Mandate der Abgeordneten kommen. Dieses wurde als Tabelle implementiert, ähnlich wie das {\myma{TabellenFenster}}, um die hohe Menge an Daten
+möglichs übersichtlich zu halten. Zu dem {\myma{BerichtsFenster}} gehören die Klassen {\myma{BerichtTableModel}} und {\myma{BerichtDaten}}.\\
 
 \subsubsection{VergleichsFenster}
 Das {\myma{Vergleichsfenster}} wurde wie im Pflichtenheft und im Entwurf beschrieben implementiert, wobei ein weiteres
 Diagramm hinzugefügt wurde, welches die Sitzdifferenzen der zwei Wahlen anzeigt. Dies fördert die Verdeutlichung der Unterschiede zwischen zwei Wahlen.\\
 
 \subsubsection{GUISteuerung}
+Die {\myma{GUISteuerung}} ist dazu da, um das Programmfenster aktuell zu halten, d.h. Ansichten zu ändern, Stimmenänderung einzuleiten und, wenn notwendig, einen Wahlvergleich zu starten.\\
+Die Implementierung wurde fast genauso durchgeführt wie im Entwurf festgelegt. Die einzigen Sachen die sich verändert haben sind, dass die Methoden {\mymo{aktualisiereWahlfenster()}} einen Parameter {\myma{Gebiet}} erhält und {\mymo{vergleichen()}} zwei {\myma{Bundestagswahlen}}, was sich notwendig für deren Funktion ist.\\
+Eine weitere Sache ist, dass die Stimmänderung, anders als im Entwurf spezifiziert, nicht mehr vom {\myma{Tabellenfenster}} direkt zur {\myma{Steuerung}} geht sondern zuerst über die {\myma{GUISteuerung}}, was die Abhängigkeit des Programms von der GUI verringern soll.\\
+Und zuletzt wurden die Parameter {\myma{Steuerung}} und {\myma{Wahlvergleich}} entfernt, da die Klasse Steuerung auch ohne ein Attribut ansprechbar ist und der Wahlvergleich der {\mymo{vergleiche()}}-Methode übergeben wird.\\
 
-\subsubsection{TabellenFenster}
+\subsubsection{Dialoge}
 
 
 
@@ -141,7 +152,22 @@ Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-
 	
 	\subsection{Wahlvergleich}
 	
-	\subsection{Steuerung}
+\subsection{Steuerung}
+Die {\myma{Steuerung}}sklasse bildet die Fassade des gesamten Projektes. In der Implementierungsphase wurden nur die drei folgenden Methoden verändert:
+\begin{itemize}
+\item {\mymo{importiere()}}\\
+In der Methode die den Import einleitet werden, anders als im Entwurf, mehrere .csv-Dateien benötigt, da wir jetzt nicht nur die Werte für eine Bundestagswahl auswerten, sondern auch die Namen und Listenplätze von Parteimitgliedern. 
+Aus diesem Grund ist eine zweite .csv-Datei notwendig.\\
+Zukünftig können dadurch auch Dateien, die andere Daten enthalten auch in das Programm importiert werden.\\
+ 
+\item {\mymo{zufaelligeWahlgenerierung()}}\\
+Der Methode {\mymo{zufaelligeWahlgenerierung()}} werden nach der Implementierung nicht nur ein {\myma{Stimmenanteile}}-Objekt übergeben, sondern ein ganzer Vektor dieser, da man durch die GUI dazu in der Lage ist
+mehreren Parteien Stimmenanteile zu gewähren. Außerdem wird eine Ausgangs{\myma{bundestagswahl}} übergeben, von der die neue generierte Wahl Rohdaten, wie Bundesländer, Parteien, Kandidaten, etc., übernimmt. Auch eine Benennung der neuen Wahl ist möglich, weshalb auch ein String übergeben werden muss.\\
+
+\item {\mymo{negStimmgewichtGenerierung()}}\\
+Im Entwurf wurde festgelegt, dass diese Methode ein {\myma{Stimmenanteile}}-Objekt erhält, in der Implementierung haben wir uns entschieden ein {\myma{Bundestagswahl}}-Objekt zu übergeben. Dieses wird dann darauf überprüft, ob eine verwandte Wahl erstellt werden kann, die das Phänomen des negativen Stimmgewichtes aufweisen kann. \\
+
+\end{itemize}
 	
 	\subsection{Sonstiges}
 
