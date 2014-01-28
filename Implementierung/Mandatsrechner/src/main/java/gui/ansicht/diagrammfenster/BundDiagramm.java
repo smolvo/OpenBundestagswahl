@@ -115,7 +115,7 @@ public class BundDiagramm {
 			}
 		}
 
-		JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung",
+		JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung im Deutschen Bundestag",
 				result, false, true, false);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
 

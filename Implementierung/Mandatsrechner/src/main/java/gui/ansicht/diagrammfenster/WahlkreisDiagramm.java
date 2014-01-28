@@ -103,8 +103,8 @@ public class WahlkreisDiagramm {
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
-		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
-				null, result, PlotOrientation.VERTICAL, false, false, false);
+		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von \n"  + wk.getName() , null,
+				"proz. Erststimmen", result, PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen

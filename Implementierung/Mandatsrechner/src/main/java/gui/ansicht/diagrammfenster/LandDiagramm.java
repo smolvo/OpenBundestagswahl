@@ -102,7 +102,7 @@ public class LandDiagramm {
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
-		JFreeChart chart = ChartFactory.createBarChart("Stimmenanteile", null,
+		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von " + bundLand.getName(), null,
 				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false,
 				false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
