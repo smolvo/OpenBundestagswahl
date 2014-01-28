@@ -36,8 +36,12 @@ public class TabLeiste extends JTabbedPane {
 	 * 
 	 * @param pf
 	 *            Programmfenster
+	 * @throw NullPointerException
 	 */
 	public TabLeiste(Programmfenster pf) {
+		if (pf == null) {
+			throw new NullPointerException("Kein Programmfenster gefunden.");
+		}
 		this.pf = pf;
 		// allgemeine Einstellungen der Tab- Leiste
 		this.setTabLayoutPolicy(TOP);
@@ -47,12 +51,8 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * 
 	 * Diese Methode fügt der Tableiste einen "+"- Button hinzu Wenn man darauf
-	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl
-	 * 
-	 * @param c
-	 *            JComponent
+	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl.
 	 */
 	public void neuerTabButton() {
 		add(plusButton);
@@ -88,7 +88,7 @@ public class TabLeiste extends JTabbedPane {
 	}
 	
 	/**
-	 * Diese private Methode wird vom Plus-Knopf verwendet um eine Wahl zu importieren.
+	 * Diese private Methode wird vom Plus-Knopf verwendet, um eine Wahl zu importieren.
 	 */
 	private void importiere() {
 		if (pf.getiD() == null) {
@@ -109,6 +109,7 @@ public class TabLeiste extends JTabbedPane {
 	 *            Inhalt des Tabs
 	 * @param wahlName
 	 *            Name der im Tab gezeigten Wahl
+	 * @throw NullPointerException
 	 */
 
 	public void neuerTab(final WahlFenster c, final String wahlName) {

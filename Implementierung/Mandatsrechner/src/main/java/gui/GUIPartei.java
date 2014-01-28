@@ -12,16 +12,16 @@ import main.java.model.Stimme;
 public class GUIPartei {
 
 	/** repräsentiert die Sitze der Partei */
-	private int sitze;
+	private final int sitze;
 
 	/** repräsentiert die Direktmandaten der Partei */
-	private int direktmandate;
+	private final int direktmandate;
 
 	/** repräsentiert die Überhangsmandaten der Partei */
-	private int ueberhangsmandate;
+	private final int ueberhangsmandate;
 
 	/** repräsentiert die Ausgleichsmandate der Partei */
-	private int ausgleichsmandate;
+	private final int ausgleichsmandate;
 
 	/**
 	 * Konstruktor
@@ -53,32 +53,12 @@ public class GUIPartei {
 	}
 
 	/**
-	 * Setzt die Anzahl der Sitze.
-	 * 
-	 * @param sitze
-	 *            Anzahl
-	 */
-	public void setSitze(int sitze) {
-		this.sitze = sitze;
-	}
-
-	/**
 	 * Gibt die Direktmandatanzahl aus.
 	 * 
 	 * @return Direktmandatanzahl
 	 */
 	public int getDirektmandate() {
 		return direktmandate;
-	}
-
-	/**
-	 * Setzt die Anzahl an Direktmandaten.
-	 * 
-	 * @param direktmandate
-	 *            Anzahl
-	 */
-	public void setDirektmandate(int direktmandate) {
-		this.direktmandate = direktmandate;
 	}
 
 	/**
@@ -91,31 +71,11 @@ public class GUIPartei {
 	}
 
 	/**
-	 * Setzt die Anzahl an Überhangsmandaten.
-	 * 
-	 * @param ueberhangsmandate
-	 *            Anzahl
-	 */
-	public void setUeberhangsmandate(int ueberhangsmandate) {
-		this.ueberhangsmandate = ueberhangsmandate;
-	}
-
-	/**
 	 * Gibt die Ausgleichsmandatanzahl aus.
 	 * 
 	 * @return Ausgleichsmandatanzahl
 	 */
 	public int getAusgleichsmandate() {
 		return ausgleichsmandate;
-	}
-
-	/**
-	 * Setzt die Anzahl an Ausgleichsmandaten.
-	 * 
-	 * @param ausgleichsmandate
-	 *            Anzahl
-	 */
-	public void setAusgleichsmandate(int ausgleichsmandate) {
-		this.ausgleichsmandate = ausgleichsmandate;
 	}
 }

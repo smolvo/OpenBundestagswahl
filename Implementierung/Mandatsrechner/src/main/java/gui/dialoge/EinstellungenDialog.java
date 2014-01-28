@@ -20,7 +20,8 @@ import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 
 /**
- * 
+ * Diese Klasse repräsentiert den Dialog zum Einstellungen
+ * Tabeintrag.
  * @author Manuel
  *
  * 
@@ -53,7 +54,12 @@ public class EinstellungenDialog extends JDialog {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File("files/Ergebnis2013.csv");
 		csvDateien[1] = new File("files/Wahlbewerber2013.csv");
-		w = i.importieren(csvDateien);
+		try {
+			w = i.importieren(csvDateien);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		EinstellungenListener el = new EinstellungenListener();

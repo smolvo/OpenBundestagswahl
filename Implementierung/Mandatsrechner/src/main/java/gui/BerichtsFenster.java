@@ -19,8 +19,12 @@ public class BerichtsFenster extends JFrame {
 	 * 
 	 * @param tabellenModell
 	 *            die Berichtstabelle
+	 * @throw NullPointerException
 	 */
 	public BerichtsFenster(BerichtTableModel tabellenModell) {
+		if (tabellenModell == null) {
+			throw new NullPointerException("Kein Tabellenmodell gefunden.");
+		}
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(1024, 768);
 		this.setTitle("Mandatsübersicht");
