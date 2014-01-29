@@ -28,8 +28,6 @@ import main.java.model.Zweitstimme;
  * Der Crawler importiert Wahlen (2013) mithilfe einer Ergebnis-datei und einer
  * Bewerber-Datei.
  * 
- * @author 13genesis37
- * 
  */
 public class Crawler2013 extends Crawler {
 
@@ -431,6 +429,10 @@ public class Crawler2013 extends Crawler {
 	}
 
 	private String getBundeslandName(String kuerzel) {
+		
+		/*
+		 * TODO Namen aus Config Datei holen statt hard-coden
+		 */
 		String name = "";
 		switch (kuerzel) {
 		case "BW":
