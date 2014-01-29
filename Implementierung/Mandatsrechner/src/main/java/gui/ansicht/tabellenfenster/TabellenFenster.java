@@ -126,20 +126,16 @@ public class TabellenFenster extends JScrollPane {
 			return new GUIPartei(0, 0, 0, 0);
 		}
 		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
-		int sitze = 0;
+		int sitze = partei.getAnzahlMandate();
 		int direktMan = 0;
 		int ueberMan = partei.getUeberhangMandate();
 		int ausglMan = partei.getAusgleichsMandate();
 		for (Kandidat kan : bundestag.getAbgeordnete()) {
 			if (kan.getPartei().getName().equals(partei.getName())) {
-				if (kan.getMandat().equals(Mandat.LISTENMANDAT)) {
-					sitze++;
-				} else if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
+				if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
 					direktMan++;
-					sitze++;
 				} else if (kan.getMandat().equals(Mandat.AUSGLEICHSMANDAT)) {
 					ausglMan++;
-					sitze++;
 				}
 			}
 		}
