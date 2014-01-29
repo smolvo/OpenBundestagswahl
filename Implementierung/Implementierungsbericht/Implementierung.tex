@@ -77,7 +77,7 @@ Kandidaten haben nun einen Namen und einen bestimmten Platz in der Landesliste.
 Die Kernklasse unseres Programmes wurde mit geringen Änderungen umgesetzt. Die Deep-Copy Funktion wurde hierbei mithilfe von Serialisierung umgesetzt. Eine native Funktion hat den Aufwand hierfür übertroffen, was eigentlich geplant war. Mit diesem Weg, haben wir dies mit einem überschaubaren Aufwand umsetzen können.
 
 \subsubsection{Partei}
-Den Parteien wurden Überhang- und Ausgleichsmandate als Zahlenwerte hinzugefügt. Unser Versuch war es, Überhang- und Ausgleichsmandate als eindeutige Mandate in die Sitzverteilung einzubauen. Jedoch ist uns erst im Laufe der Umsetzung aufgefallen, dass dies nicht möglich ist. \\
+Den Parteien wurden Überhang- und Ausgleichsmandate als Zahlenwerte hinzugefügt. Unser Versuch war es anfangs, Überhang- und Ausgleichsmandate als eindeutige Mandate in die Sitzverteilung einzubauen. Jedoch ist uns erst im Laufe der Umsetzung aufgefallen, dass dies nicht möglich ist. \\
 Die Klasse Partei besitzt Funktionen, die Überhang- und Ausgleichsmandate setzen, zurücksetzen und verändern.
 
 \subsubsection{Kandidat}
@@ -85,7 +85,7 @@ Was für uns in der Pflichten- und Entwurfsphase gegen Ablehnung gestoßen hatte
 Ursprünglich wollten wir Anonyme Kandidaten und Zufällig-gefüllte Landeslisten für unseren Mandatsrechner verwenden. Jedoch ist uns früh aufgefallen, dass für eine genaue Berechnung, die genaue Anzahl der Listenkandidaten benötigt wird.
 
 \subsection{Import/Export}	
-Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Diese Datei ist ebenfalls aus der Bundeswahlleiter-Seite und werden von uns als "Wettbewerber-Datei" bezeichnet. Mithilfe dieser Wahlbewerber-Datei werden die vorher ausgelesenen Kandidaten befüllt. \\
+Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Diese Datei ist ebenfalls aus der Bundeswahlleiter-Seite und werden von uns als "Wettbewerber-Datei" bezeichnet. Mithilfe dieser Wahlbewerber-Datei werden die Landeslisten und die vorher ausgelesenen Kandidaten befüllt. \\
 Die Wahlbewerber-Datei für die Bundestagswahl 2013 wird im Programm mit übergeben und kann im Notfall auch für Bundestagswahl 2009 genutzt werden. Es ist leider keine solche Datei für die Bundestagswahl 2009 verfügbar. Sie wurde von der Bundeswahlleiter-Seite aufgrund von Datenschutzgründen entfernt. \\
 Zudem wurde eine Config-Datei(ebenfalls im .csv-Format) hinzugefügt, die die Einwohnerzahl der Bundesländer und die Farben der Partei beinhaltet. Dadurch müssen diese Werte nicht mehr im Programmcode gespeichert und können durch das Editieren der Datei einfach angepasst werden. Hierzu kommt im nachfolgenden Bericht weiteres.\\
 Der endgültige Crawler erfüllt die Funktionen, die in der Entwurfs- und Pflichtenphase genannt wurden.
@@ -198,6 +198,8 @@ Im Entwurf wurde festgelegt, dass diese Methode ein {\myma{Stimmenanteile}}-Obje
 Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. die gesetzten Zweitstimmen in Deutschland können nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
 Unser erster Gedanke war es, eine ganze Bundestagswahl statt einer Stimme zu speichern. Dies ist jedoch ebenfalls verfallen, da die Chronik für die Deep-Copy Funktion der Bundestagswahl serialisierbar sein muss. In diesem Falle, würde auch die ganze Chronik gespeichert werden, was unvorhersehbare Folgen haben könnte. 
 
+
+
 	\subsection{Sonstiges}
 \subsubsection{Konfiguration}
 Dieses Modul ist im Entwurf überhaupt nicht enthalten, und wurde erst in der Implementierung hinzugefügt. Es hat die Aufgabe, Einstellungen/Informationen ohne festes Coden im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
@@ -207,9 +209,13 @@ Die Konfiguration wurde mit weiteren Funktionen beliefert. So sind die Werte auc
 \subsubsection{Handbuch/About/Lizenz}
 Das Handbuch wurde in Form einer Webview umgesetzt. Dieser beinhaltet zur Zeit ein Tutorial.
 
+\subsubsection{Meldung}
+Die {\myma{Meldung}}-Klasse sollte ursprünglich ausschließlich Fehlermeldungen beinhalten. Jedoch wurde schon Anfang der Implementierung beschlossen, diese Klasse für allerlei Ausgaben an der GUI zu verwenden. Dadurch können später Sprachen sehr leicht ausgetauscht verwenden, falls nötig. \\
+In der letzten Implementierung wurde dies leider nicht ausgiebig verwendet, dies soll sich jedoch in der zukünftigen Entwicklung ändern.
+
 \section{Fazit}
-Die Implementierungsphase verlief im Vergleich zu den bisherigen Phasen sehr belebt und um einiges geplanter. Wir haben die einzelnen Unterphasen die wir vorher festgelegt hatten, mehr oder weniger eingehalten. Gegen Ende haben sich jedoch Mängel angesammelt, weshalb wir in Zeitdruck gerieten. Durch gute Teamarbeit und Durchhaltevermögen unserer Teammitglieder ist es uns jedoch gelungen unser Zeitplan einzuhalten. \\
-Alles in allem, hat uns die Implementierungsphase um einiges mehr Spaß gemacht, als die Entwurfsphase. Unter anderem, weil wir einen Plan hatten, wie wir vorgehen sollten. Jedoch ist uns auch aufgefallen, dass das Wasserfallprojekt nicht immer ganz optimal ist. Unserer Meinung nach, sind Veränderungen am Entwurf unumgänglich.
+Die Implementierungsphase verlief im Vergleich zu den bisherigen Phasen sehr belebt und um einiges koordinierter. Wir haben die einzelnen Unterphasen die wir vorher festgelegt hatten, mehr oder weniger eingehalten. Gegen Ende haben sich jedoch Mängel angesammelt, weshalb wir in Zeitdruck gerieten. Durch gute Teamarbeit und Durchhaltevermögen unserer Teammitglieder ist es uns jedoch gelungen unser Zeitplan einzuhalten. \\
+Alles in allem, hat uns die Implementierungsphase um einiges mehr Spaß gemacht, als die Entwurfsphase. Unter anderem, weil wir einen Plan hatten und wussten wie wir vorgehen sollten. Jedoch ist uns auch aufgefallen, dass das Wasserfallprojekt nicht immer ganz optimal ist. Unserer Meinung nach, sind Veränderungen am Entwurf unumgänglich.
 
 \newpage
 \section{Vorschau auf die nächste Phase}
