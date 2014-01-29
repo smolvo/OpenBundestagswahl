@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 01:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 06:14
 entering extended mode
 **Implementierung.tex
 
@@ -614,7 +614,7 @@ plementierung.out)
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.out)
 \@outlinefile=\write4
- <KIT-Logo.png, id=103, 284.5029pt x 132.0132pt>
+ <KIT-Logo.png, id=135, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
 
 <use KIT-Logo.png>
@@ -679,174 +679,187 @@ been already used, duplicate ignored
                    \relax 
 l.68 \newpage
               [1]
-Overfull \hbox (45.12057pt too wide) in paragraph at lines 83--86
+Overfull \hbox (0.99678pt too wide) in paragraph at lines 88--92
+\OT1/cmr/m/n/12 Zudem wur-de ei-ne Config-Datei(ebenfalls im .csv-Format) hin-z
+u-gef[]ugt, die die Ein-wohner-
+ []
+
+[2]
+Overfull \hbox (45.12057pt too wide) in paragraph at lines 96--99
 \OT1/pcr/b/n/12 Wahlfenstern\OT1/cmr/m/n/12 . Die-se wer-den mit-hil-fe ei-ner 
 \OT1/pcr/b/n/12 TabLeiste\OT1/cmr/m/n/12 , die eben-falls vom \OT1/pcr/b/n/12 P
 rogrammfenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--86
+Underfull \hbox (badness 10000) in paragraph at lines 96--99
 
  []
 
-[2]
-Overfull \hbox (8.49794pt too wide) in paragraph at lines 95--110
+
+Overfull \hbox (8.49794pt too wide) in paragraph at lines 108--123
 \OT1/pcr/b/n/12 KartenFenster \OT1/cmr/m/n/12 bleibt, dank JTree, das sel-be. I
 m-mer wie-der das sel-be \OT1/pcr/b/n/12 KartenFenster\OT1/cmr/m/n/12 -
  []
 
 
-Overfull \hbox (16.72546pt too wide) in paragraph at lines 95--110
+Overfull \hbox (16.72546pt too wide) in paragraph at lines 108--123
 \OT1/cmr/m/n/12 wer-den kei-ne Dia-gram-me an-ge-zeigt, son-dern ein Berechne-K
 nopf an der \OT1/pcr/b/n/12 DiagrammFenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--110
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--125
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 127--129
+Underfull \hbox (badness 10000) in paragraph at lines 125--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 135--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 140--142
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
 
  []
 
 
-Overfull \hbox (41.59952pt too wide) in paragraph at lines 139--143
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
+
+ []
+
+
+Overfull \hbox (41.59952pt too wide) in paragraph at lines 152--156
 \OT1/cmr/m/n/12 zi-gen Sa-chen die sich ver[]andert ha-ben sind, dass die Me-th
 o-den \OT1/pcr/m/sl/12 aktualisiereWahlfenster()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--143
+Underfull \hbox (badness 10000) in paragraph at lines 152--156
 
  []
 
-[4]
-Overfull \hbox (3.46617pt too wide) in paragraph at lines 149--150
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 160.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 160.
+ [5]
+Overfull \hbox (3.46617pt too wide) in paragraph at lines 172--173
 \OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/cmr/m/n/12 
 be-rech-net die Sitz-ver-tei-lung nach Sainte-Lague/Sche-
  []
 
 
-Overfull \hbox (53.65678pt too wide) in paragraph at lines 149--150
+Overfull \hbox (53.65678pt too wide) in paragraph at lines 172--173
 \OT1/cmr/m/n/12 Ge-bie-ten son-dern nach Ober- und Un-ter-ver-tei-lung ori-en-t
 iert ist. Da-mit der \OT1/pcr/b/n/12 Mandatsrechner2013
  []
 
 
-Overfull \hbox (42.42677pt too wide) in paragraph at lines 152--154
+Overfull \hbox (42.42677pt too wide) in paragraph at lines 175--177
 \OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 AbstrakterWahlgenerator \OT1/cmr/m/
 n/12 bil-det die Ober-klas-se f[]ur die Klas-se \OT1/pcr/b/n/12 Wahlgenerator
  []
 
 
-Overfull \hbox (54.24947pt too wide) in paragraph at lines 152--154
+Overfull \hbox (54.24947pt too wide) in paragraph at lines 175--177
 \OT1/cmr/m/n/12 In der Klassse \OT1/pcr/b/n/12 Wahlgenerator \OT1/cmr/m/n/12 wi
 rd die kon-kre-te Im-ple-men-tie-rung der Me-tho-den \OT1/pcr/m/sl/12 erzeugeBT
 W()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 
-Overfull \hbox (53.79588pt too wide) in paragraph at lines 155--157
+Overfull \hbox (53.79588pt too wide) in paragraph at lines 178--180
 \OT1/cmr/m/n/12 wah-len zu ge-ne-rie-ren. Die-se Funk-tio-na-lit[]at ist in der
  pri-va-ten Me-tho-de \OT1/pcr/m/sl/12 verteileRestAnteile()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
  []
 
-[5]
-Overfull \hbox (3.1592pt too wide) in paragraph at lines 163--166
+[6]
+Overfull \hbox (3.1592pt too wide) in paragraph at lines 186--189
 \OT1/pcr/b/n/12 Bundestagswahl\OT1/cmr/m/n/12 2 ge-si-chert. Die hat den Grund,
  dass die-se Klas-se der \OT1/pcr/b/n/12 DiffDiagramm\OT1/cmr/m/n/12 -
  []
 
 
-Overfull \hbox (100.61652pt too wide) in paragraph at lines 163--166
+Overfull \hbox (100.61652pt too wide) in paragraph at lines 186--189
 \OT1/cmr/m/n/12 se \OT1/pcr/b/n/12 VergleichDaten \OT1/cmr/m/n/12 ge-spei-chert
  und dann in Form ei-ner Ta-bel-le durch die \OT1/pcr/b/n/12 WahlvergleichTable
 Model\OT1/cmr/m/n/12 -
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 170.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 170.
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--174
+Underfull \hbox (badness 10000) in paragraph at lines 193--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--178
+Underfull \hbox (badness 10000) in paragraph at lines 198--201
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 179--181
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 202--204
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+[8] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
  Make it at least 14.87502pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
 
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `Implementierung.out' has not changed.
-(rerunfilecheck)             Checksum: 2407E2B5A36B768BF6683961A3A434F9;1678.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
+(rerunfilecheck)             Checksum: F96D5BE2429A7183E71C79213768583B;2220.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 7163 strings out of 493921
- 101395 string characters out of 3147278
+ 7187 strings out of 493921
+ 101775 string characters out of 3147278
  193163 words of memory out of 3000000
- 10309 multiletter control sequences out of 15000+200000
+ 10322 multiletter control sequences out of 15000+200000
  12456 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,11n,43p,1302b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -859,9 +872,9 @@ onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (10 pages, 242924 bytes).
+Output written on Implementierung.pdf (13 pages, 258664 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 270 words of extra memory for PDF output out of 10000 (max. 10000000)
 

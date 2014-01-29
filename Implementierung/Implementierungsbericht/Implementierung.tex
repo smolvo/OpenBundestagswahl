@@ -155,6 +155,16 @@ Eine weitere Sache ist, dass die Stimmänderung, anders als im Entwurf spezifizi
 Und zuletzt wurden die Parameter {\myma{Steuerung}} und {\myma{Wahlvergleich}} entfernt, da die Klasse Steuerung auch ohne ein Attribut ansprechbar ist und der Wahlvergleich der {\mymo{vergleiche()}}-Methode übergeben wird.\\
 
 \subsubsection{Dialoge}
+Im Dialogepaket sind die Dialogeklassen enthalten die wir in unserem Programm verwenden. Diese wurden im Entwurf nicht erwähnt. \\Zu diesen gehören die Klassen: \\
+\begin{itemize}
+\item{\myma{AboutDialog}} startet ein About-Fenster
+\item{\myma{ExportDialog}} visualisiert die Auswahl eines Verzeichnisses, um Wahlen zu exportieren
+\item{\myma{GeneratorDialog}} es können {\myma{Stimmenanteile}} vom Anwender für Parteien hinzugefügt werden \item{\myma{HandbuchDialog}} enthält das Handbuch 
+\item{\myma{ImportDialog}} visualisiert die Suche nach zu importierenden Dateien
+\item{\myma{LizenzDialog}} öffnet ein Lizenz-Fenster
+\item{\myma{VergleichsDialog}} stellt die Auswahl einer Vergleichswahl zur aktuellen dar
+\end{itemize}
+
 
 
 
@@ -202,7 +212,7 @@ Unser erster Gedanke war es, eine ganze Bundestagswahl statt einer Stimme zu spe
 
 	\subsection{Sonstiges}
 \subsubsection{Konfiguration}
-Dieses Modul ist im Entwurf überhaupt nicht enthalten, und wurde erst in der Implementierung hinzugefügt. Es hat die Aufgabe, Einstellungen/Informationen ohne festes Coden im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
+Dieses Modul ist im Entwurf überhaupt nicht enthalten, und wurde erst in der Implementierung hinzugefügt. Es hat die Aufgabe, Einstellungen/Informationen, ohne festes Coden, im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
 Das Modul speichert die Konfiguration in einem Tabulator-getrennten Format. Dies ermöglicht die Datei sehr leicht und lesbar in einem Texteditor oder Excel zu bearbeiten. \\
 Die Konfiguration wurde mit weiteren Funktionen beliefert. So sind die Werte auch programmatisch veränderbar. In der GUI ist die Konfiguration zur Zeit nicht änderbar, jedoch ist dies sehr einfach umsetzbar. In unseren Anforderungen war dies nicht enthalten, und wurde daher weggelassen.
 
@@ -218,7 +228,7 @@ Der Debugger war ebenfalls ungeplant, und wurde als sehr sinnvoll empfunden. Da 
 Die Debugger ist eine statische Klasse und kann mit einem Wert {\mymo{Debug.setActive(true)}} sehr leicht aktiviert werden.
 
 \section{Fazit}
-Die Implementierungsphase verlief im Vergleich zu den bisherigen Phasen sehr belebt und um einiges koordinierter. Wir haben die einzelnen Unterphasen die wir vorher festgelegt hatten, mehr oder weniger eingehalten. Gegen Ende haben sich jedoch Mängel angesammelt, weshalb wir in Zeitdruck gerieten. Durch gute Teamarbeit und Durchhaltevermögen unserer Teammitglieder ist es uns jedoch gelungen unser Zeitplan einzuhalten. \\
+Die Implementierungsphase verlief im Vergleich zu den bisherigen Phasen sehr belebt und um einiges koordinierter. Wir haben die einzelnen Unterphasen, die wir vorher festgelegt hatten, mehr oder weniger eingehalten. Gegen Ende haben sich jedoch Mängel angesammelt, weshalb wir in Zeitdruck gerieten. Durch gute Teamarbeit und Durchhaltevermögen unserer Teammitglieder ist es uns jedoch gelungen unser Zeitplan einzuhalten. \\
 Alles in allem, hat uns die Implementierungsphase um einiges mehr Spaß gemacht, als die Entwurfsphase. Unter anderem, weil wir einen Plan hatten und wussten wie wir vorgehen sollten. Jedoch ist uns auch aufgefallen, dass das Wasserfallprojekt nicht immer ganz optimal ist. Unserer Meinung nach, sind Veränderungen am Entwurf unumgänglich.
 
 \newpage
