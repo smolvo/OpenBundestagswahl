@@ -9,10 +9,17 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Mandat;
 import main.java.model.Partei;
 
+/**
+ * Testklasse fuer den Mandatsrechner 2009.
+ * @author 13genesis37
+ *
+ */
 public class MandatsrechnerTest {
 
 	/**
+	 * Die Hauptklasse.
 	 * @param args
+	 * 			Kommandozeilen Argumente.
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -52,20 +59,19 @@ public class MandatsrechnerTest {
 						System.out.println("\n");
 					}*/
 					
-					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + 
-							partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
-					System.out.println(partei.getName()+": ");
-					System.out.println("Mandate: "+partei.getAnzahlMandate(Mandat.LISTENMANDAT));
+					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
+					System.out.println(partei.getName() + ": ");
+					System.out.println("Mandate: " + partei.getAnzahlMandate(Mandat.LISTENMANDAT));
 			
-					System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
-					System.out.println("Ueberhangsmandate: "+partei.getUeberhangMandate());
-					System.out.println("Summe: "+sum);
+					System.out.println("Direktmandate: " + partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
+					System.out.println("Ueberhangsmandate: " + partei.getUeberhangMandate());
+					System.out.println("Summe: " + sum);
 					System.out.println("\n");
 					
 				//}
-				if(count<5){
+				if (count < 5) {
 					count++;
-				}else {
+				} else {
 					break;
 				}
 			}

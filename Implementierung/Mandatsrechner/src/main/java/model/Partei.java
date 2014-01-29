@@ -669,10 +669,18 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.ueberhangMandate.put(bl, value);
 	}
 
+	/**
+	 * Setzt alle Ueberhangmandate zurueck.
+	 */
 	public void resetUeberhangMandate() {
 		this.ueberhangMandate = new HashMap<Bundesland, Integer>();
 	}
 
+	/**
+	 * Gibt alle Ausgleichsmandate zurueck.
+	 * @return
+	 * 		die Anzahl der Ausgleichmandate.
+	 */
 	public int getAusgleichsMandate() {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ausgleichsMandate.keySet();
@@ -685,6 +693,14 @@ public class Partei implements Serializable, Comparable<Partei> {
 		return anzahl;
 	}
 
+	/**
+	 * Gibt die Anzahl der Ausgleichsmandate
+	 * pro Bundesland zurueck.
+	 * @param bl
+	 * 			das ausgewaehlte Bundesland.
+	 * @return
+	 * 			die Anzahl der Ausgleichsmandate.
+	 */
 	public int getAusgleichsMandate(Bundesland bl) {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ausgleichsMandate.keySet();
@@ -699,6 +715,14 @@ public class Partei implements Serializable, Comparable<Partei> {
 		return anzahl;
 	}
 
+	/**
+	 * Erhoeht die Anzahl der Ausgleichsmandate fuer
+	 * ein bestimmtes Bundesland um eins.
+	 * Der Wert vom key wird 1 gesetzt, falls es
+	 * noch nicht existert.
+	 * @param bl
+	 * 			das ausgewaehlte Bundesland.
+	 */
 	public void incrementAusgleichsMandate(Bundesland bl) {
 		int value = 1;
 		if (this.ausgleichsMandate.containsKey(bl)) {
@@ -708,6 +732,15 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.ausgleichsMandate.put(bl, value);
 	}
 
+	/**
+	 * Erniedrigt die Anzahl der Ausgleichsmandate
+	 * fuer ein bestimmtes Bundesland.
+	 * Der Wert vom key wird -1 gesetzt, falls es
+	 * noch nicht existiert.
+	 * @param bl
+	 * 			das ausgewaehlte Bundesland.
+	 * 			
+	 */
 	public void decrementAusgleichsMandate(Bundesland bl) {
 		int value = -1;
 		if (this.ausgleichsMandate.containsKey(bl)) {
@@ -717,6 +750,10 @@ public class Partei implements Serializable, Comparable<Partei> {
 		this.ausgleichsMandate.put(bl, value);
 	}
 
+	/**
+	 * Setzt die Anzahl der Ausgleichsmandate
+	 * zurueck.
+	 */
 	public void resetAusgleichsMandate() {
 		this.ausgleichsMandate = new HashMap<Bundesland, Integer>();
 	}

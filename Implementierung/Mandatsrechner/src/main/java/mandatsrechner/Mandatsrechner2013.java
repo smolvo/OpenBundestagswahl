@@ -103,6 +103,7 @@ public class Mandatsrechner2013 {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
+				Debug.print("Parteidivisor: " + parteidivisor);
 				if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
