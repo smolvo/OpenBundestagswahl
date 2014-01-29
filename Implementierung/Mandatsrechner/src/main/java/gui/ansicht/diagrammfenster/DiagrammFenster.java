@@ -1,6 +1,5 @@
 package main.java.gui.ansicht.diagrammfenster;
 
-
 import javax.swing.JPanel;
 
 import main.java.gui.BerichtTableModel;
@@ -20,18 +19,20 @@ import main.java.model.Wahlkreis;
 public class DiagrammFenster extends JPanel {
 
 	private static final long serialVersionUID = -523400111719339965L;
-	
+
 	/** repräsentiert die Ansicht des Diagrammfensters */
 	private final Ansicht ansicht;
-	
+
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
-	 * @param ansicht die Ansicht
+	 * 
+	 * @param ansicht
+	 *            die Ansicht
 	 */
 	public DiagrammFenster(Ansicht ansicht) {
 		this.ansicht = ansicht;
 	}
-	
+
 	/**
 	 * Diese Methode identifiziert das Gebiets-Objekt.
 	 * 
@@ -68,20 +69,31 @@ public class DiagrammFenster extends JPanel {
 	/**
 	 * Erstellt das Diagramm der Landesansicht.
 	 * 
-	 * @param land
-	 *            Deutschland
+	 * @param bundLand
+	 *            das Budnesland-Objekt
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland-Objekt null ist.
 	 */
 	public void erstelleDiagramm(Bundesland bundLand) {
+		if (bundLand == null) {
+			throw new IllegalArgumentException("Bundesland ist null.");
+		}
 		new LandDiagramm(bundLand, this);
 	}
 
 	/**
 	 * Erstellt das Diagramm der Wahlkreisansicht.
 	 * 
-	 * @param land
-	 *            Deutschland
+	 * @param wk
+	 *            Wahlkreis-Objekt
+	 * @throws IllegalArgumentException
+	 *             wenn das Wahlkreis-Objekt null ist.
+	 * 
 	 */
 	public void erstelleDiagramm(Wahlkreis wk) {
+		if (wk == null) {
+			throw new IllegalArgumentException("Wahlkreis ist null.");
+		}
 		new WahlkreisDiagramm(wk, this);
 	}
 
@@ -91,18 +103,21 @@ public class DiagrammFenster extends JPanel {
 	 * 
 	 * @param btw
 	 *            Bundestagswahl-Objekt welches visualisiert werden soll
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundestagswahl-Objekt null ist.
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
 		if (btw == null) {
-			throw new NullPointerException("Keine Bundestagswahl gefunden.");
+			throw new IllegalArgumentException("Keine Bundestagswahl gefunden.");
 		}
-		BerichtTableModel tabelle = new BerichtTableModel(btw.getSitzverteilung().getBericht());
-		 new BerichtsFenster(tabelle);
+		BerichtTableModel tabelle = new BerichtTableModel(btw
+				.getSitzverteilung().getBericht());
+		new BerichtsFenster(tabelle);
 	}
-	
+
 	/**
 	 * Gibts die Ansicht aus.
+	 * 
 	 * @return Ansicht
 	 */
 	public Ansicht getAnsicht() {
