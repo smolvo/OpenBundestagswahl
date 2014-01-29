@@ -155,7 +155,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
 					Gebiet gebiet = tabellenfenster.getAnsicht().getAktuellesGebiet();
 					tabellenfenster.getAnsicht().getFenster().getSteuerung().aktualisiereWahlfenster(gebiet);
-					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+					daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
 				} else {
 					
 					JOptionPane.showMessageDialog(this.tabellenfenster,
