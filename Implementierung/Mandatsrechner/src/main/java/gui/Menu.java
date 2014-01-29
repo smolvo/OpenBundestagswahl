@@ -240,8 +240,6 @@ public class Menu extends JMenuBar {
 				new AboutDialog();
 			} else if (e.getSource() == menu.lizenz) {
 				new LizenzDialog();
-			} else if (e.getSource() == menu.einstellungen) {
-				new EinstellungenDialog();
 			}
 		}
 	}
