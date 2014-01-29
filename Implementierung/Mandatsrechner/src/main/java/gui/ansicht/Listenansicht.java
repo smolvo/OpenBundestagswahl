@@ -29,6 +29,7 @@ public class Listenansicht extends JScrollPane implements TreeSelectionListener 
 	 * 
 	 * @param land
 	 *            alle Bundesländer
+	 * @param kartenfenster das Kartenfenster
 	 */
 	public Listenansicht(Deutschland land, KartenFenster kartenfenster) {
 		this.kartenfenster = kartenfenster;

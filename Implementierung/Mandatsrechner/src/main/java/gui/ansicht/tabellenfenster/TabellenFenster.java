@@ -163,7 +163,7 @@ public class TabellenFenster extends JScrollPane {
 					Integer.toString(zw.getPartei().getUeberhangMandate(bl)));
 		}
 
-		LandTableModel tabelle = new LandTableModel(daten, this);
+		LandTableModel tabelle = new LandTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}

@@ -191,6 +191,9 @@ public class Ansicht extends JPanel {
 		add(berechnePanel, gbc);
 	}
 	
+	/**
+	 * Diese Methode entfernt den Berechenknopf.
+	 */
 	public void entferneBerechneKnopf() {
 		this.remove(berechnePanel);
 		this.berechnePanel = null;
@@ -213,7 +216,7 @@ public class Ansicht extends JPanel {
 	 * @throws NullPointerException
 	 */
 	public void setTabellenFenster(TabellenFenster tabellenFenster) {
-		if(tabellenFenster == null){
+		if (tabellenFenster == null) {
 			throw new IllegalArgumentException("Fenster ist leer");
 		}
 		this.tabellenFenster = tabellenFenster;
@@ -236,7 +239,7 @@ public class Ansicht extends JPanel {
 	 * @throws NullPointerException
 	 */
 	public void setDiagrammFenster(DiagrammFenster diagrammFenster) {
-		if(diagrammFenster == null){
+		if (diagrammFenster == null) {
 			throw new IllegalArgumentException("Fenster ist leer");
 		}
 		this.diagrammFenster = diagrammFenster;
@@ -259,7 +262,7 @@ public class Ansicht extends JPanel {
 	 * @throws NullPointerException
 	 */
 	public void setKartenFenster(KartenFenster kartenFenster) {
-		if(kartenFenster == null){
+		if (kartenFenster == null) {
 			throw new IllegalArgumentException("Fenster ist leer");
 		}
 		this.kartenFenster = kartenFenster;
@@ -287,7 +290,7 @@ public class Ansicht extends JPanel {
 	 * @throws NullPointerException
 	 */
 	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
-		if(aktuellesGebiet == null){
+		if (aktuellesGebiet == null) {
 			throw new IllegalArgumentException("Gebiet ist leer");
 		}
 		this.aktuellesGebiet = aktuellesGebiet;

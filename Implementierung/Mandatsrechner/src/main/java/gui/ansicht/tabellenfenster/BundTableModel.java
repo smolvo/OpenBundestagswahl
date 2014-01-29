@@ -22,8 +22,6 @@ public class BundTableModel extends AbstractTableModel {
 	 * 
 	 * @param daten
 	 *            die Daten
-	 * @param tabellenfenster
-	 *            das tabellenfenster
 	 * @throw NullPointerException
 	 */
 	public BundTableModel(BundDaten daten) {
