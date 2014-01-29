@@ -10,8 +10,6 @@ import main.java.wahlvergleich.Wahlvergleich;
  * Diese Klasse repräsentiert die GUI Steuerung. Diese ist die Verbindung
  * zwischen GUI und der Hauptsteuerung.
  * 
- * @author Anton
- * 
  */
 public class GUISteuerung {
 
@@ -28,8 +26,13 @@ public class GUISteuerung {
 	 *            aktuelle Bundestagswahl
 	 * @param wahlfenster
 	 *            dazugehöriges Wahlfenster
+	 * @throws IllegalArgumentException
+	 *             wenn die Eingabeparamter null sind
 	 */
 	public GUISteuerung(Bundestagswahl btw, WahlFenster wahlfenster) {
+		if (btw == null || wahlfenster == null) {
+			throw new IllegalArgumentException("Eingabe-Parameter sind null.");
+		}
 		this.btw = btw;
 		this.wahlfenster = wahlfenster;
 	}
@@ -38,9 +41,14 @@ public class GUISteuerung {
 	 * Diese Methode aktualisiert das Wahlfenster.
 	 * 
 	 * @param gebiet
-	 *            Gebiet, welches angezeigt werden soll
+	 *            Gebiet, welches angezeigt werden soll.
+	 * @throws IllegalArgumentException
+	 *             wenn das Gebiet-Objekt null ist.
 	 */
 	public void aktualisiereWahlfenster(Gebiet gebiet) {
+		if (gebiet == null) {
+			throw new IllegalArgumentException("Gebiet ist null.");
+		}
 		this.wahlfenster.wechsleAnsicht(gebiet);
 	}
 
@@ -68,6 +76,9 @@ public class GUISteuerung {
 	 *            zweite Bundestagswahl
 	 */
 	public void vergleichen(Bundestagswahl btw1, Bundestagswahl btw2) {
+		if (btw1 == null || btw2 == null) {
+			throw new IllegalArgumentException("Bundestagswahlen sind null.");
+		}
 		Wahlvergleich vergleich = new Wahlvergleich(btw1, btw2);
 		new VergleichsFenster(vergleich);
 	}

@@ -96,8 +96,13 @@ public final class Programmfenster extends JFrame {
 	 * 
 	 * @param w
 	 *            Wahl
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundestagswahl-Objekt null ist.
 	 */
 	public void wahlHinzufuegen(Bundestagswahl w) {
+		if (w == null) {
+			throw new IllegalArgumentException("Bundestagswahl ist leer.");
+		}
 		Steuerung.getInstance().setBtw(w);
 		Steuerung.getInstance().berechneSitzverteilung();
 		WahlFenster fenster = new WahlFenster(w);
@@ -128,11 +133,12 @@ public final class Programmfenster extends JFrame {
 	 * 
 	 * @param wahlen
 	 *            Wahlfenster
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das Listenobjekt null ist.
 	 */
 	public void setWahlen(List<WahlFenster> wahlen) {
 		if (wahlen == null) {
-			throw new NullPointerException("Wahlfenster waren null.");
+			throw new IllegalArgumentException("Wahlfenster sind null.");
 		} else {
 			this.wahlen = wahlen;
 		}
@@ -152,6 +158,8 @@ public final class Programmfenster extends JFrame {
 	 * 
 	 * @param tabs
 	 *            die Tableiste
+	 * @throws IllegalArgumentException
+	 *             wenn die TabLeiste null ist.
 	 */
 	public void setTabs(TabLeiste tabs) {
 		if (tabs == null) {
@@ -189,11 +197,12 @@ public final class Programmfenster extends JFrame {
 	 * 
 	 * @param iD
 	 *            ImportDialog
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das ImportDialog-Objekt null ist.
 	 */
 	public void setiD(ImportDialog iD) {
 		if (iD == null) {
-			throw new NullPointerException("Keinen ImportDialog gefunden.");
+			throw new IllegalArgumentException("Keinen ImportDialog gefunden.");
 		}
 		this.iD = iD;
 	}

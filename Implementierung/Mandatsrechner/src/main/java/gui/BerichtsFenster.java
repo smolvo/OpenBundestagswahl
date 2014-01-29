@@ -25,7 +25,7 @@ public class BerichtsFenster extends JDialog {
 	 * 
 	 * @param tabellenModell
 	 *            die Berichtstabelle
-	 * @throw NullPointerException
+	 * @throws IllegalArgumentException wenn das tabellenModell Objekt null ist
 	 */
 	public BerichtsFenster(BerichtTableModel tabellenModell) {
 		if (tabellenModell == null) {

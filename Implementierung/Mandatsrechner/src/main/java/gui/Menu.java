@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.ExportDialog;
-
 import main.java.gui.dialoge.GeneratorDialog;
 import main.java.gui.dialoge.HandbuchDialog;
 import main.java.gui.dialoge.ImportDialog;
@@ -31,64 +30,67 @@ public class Menu extends JMenuBar {
 
 	/** repräsentiert das Programmfenster */
 	private final Programmfenster pf;
-	
+
 	/** repräsentiert den Menüleisteneintrag Datei */
 	private final JMenu datei;
-	
+
 	/** repräsentiert den Menüleisteneintrag Bearbeiten */
 	private final JMenu bearbeiten;
-	
+
 	/** repräsentiert den Menüleisteneintrag Extras */
 	private final JMenu extras;
-	
+
 	/** repräsentiert den Menüleisteneintrag Hilfe */
 	private final JMenu hilfe;
-	
+
 	/** repräsentiert den Menüleisteneintrag Wahldaten Generieren */
 	private final JMenu wahldatenGenerieren;
 
 	/** repräsentiert den Importieren Eintrag */
 	private final JMenuItem importieren;
-	
+
 	/** repräsentiert den Speichern Eintrag */
 	private final JMenuItem speichern;
-	
+
 	/** repräsentiert den Beenden Eintrag */
 	private final JMenuItem beenden;
-	
+
 	/** repräsentiert den Rückgängig Eintrag */
 	private final JMenuItem rueckgaengig;
-	
+
 	/** repräsentiert den Wiederherstellen Eintrag */
 	private final JMenuItem wiederherstellen;
-	
+
 	/** repräsentiert den Vergleichen Eintrag */
 	private final JMenuItem vergleichen;
-	
+
 	/** repräsentiert den negatives Stimmgewicht generieren Eintrag */
 	private final JMenuItem negativesStimmgewicht;
-	
+
 	/** repräsentiert den Zufällige Wahl generieren Eintrag */
 	private final JMenuItem zufaelligeWahl;
-	
+
 	/** repräsentiert den Handbuch Eintrag */
 	private final JMenuItem handbuch;
-	
+
 	/** repräsentiert den About Eintrag */
 	private final JMenuItem about;
-	
+
 	/** repräsentiert den Lizenz Eintrag */
 	private final JMenuItem lizenz;
-	
-	
 
 	/**
 	 * Der Konstruktor des Menüs
 	 * 
 	 * @param pf
 	 *            Programmfenster
+	 * @throws IllegalArgumentException
+	 *             wenn das Programmfenster null ist.
 	 */
 	public Menu(Programmfenster pf) {
+		if (pf == null) {
+			throw new IllegalArgumentException("Eingabe-Parameter sind null.");
+		}
 		this.pf = pf;
 		datei = new JMenu("Datei");
 		bearbeiten = new JMenu("Bearbeiten");
@@ -103,7 +105,8 @@ public class Menu extends JMenuBar {
 		speichern.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/speichern.png"));
 		beenden = new JMenuItem("Beenden");
-		beenden.setIcon(new ImageIcon("src/main/resources/gui/images/beenden.png"));
+		beenden.setIcon(new ImageIcon(
+				"src/main/resources/gui/images/beenden.png"));
 
 		datei.add(importieren);
 		datei.add(speichern);
@@ -139,12 +142,13 @@ public class Menu extends JMenuBar {
 
 		// der Menu-Reiter "Hilfe"
 		handbuch = new JMenuItem("Handbuch");
-		handbuch.setIcon(new ImageIcon("src/main/resources/gui/images/handbuch.png"));
+		handbuch.setIcon(new ImageIcon(
+				"src/main/resources/gui/images/handbuch.png"));
 		about = new JMenuItem("About");
 		about.setIcon(new ImageIcon("src/main/resources/gui/images/about.png"));
 		lizenz = new JMenuItem("Lizenz");
 		lizenz.setIcon(new ImageIcon("src/main/resources/gui/images/gpl.png"));
-		
+
 		hilfe.add(handbuch);
 		hilfe.add(about);
 		hilfe.add(lizenz);
@@ -169,7 +173,7 @@ public class Menu extends JMenuBar {
 		handbuch.addActionListener(m);
 		about.addActionListener(m);
 		lizenz.addActionListener(m);
-		
+
 		setVisible(true);
 	}
 
@@ -184,13 +188,15 @@ public class Menu extends JMenuBar {
 
 		/**
 		 * Der Konstruktor initialisiert den Listener.
-		 * @param menu Menü
+		 * 
+		 * @param menu
+		 *            Menü
 		 */
 		public MenuListener(Menu menu) {
 			super();
 			this.menu = menu;
 		}
-		
+
 		/**
 		 * Diese Methode importiert eine Datei.
 		 */

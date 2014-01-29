@@ -39,11 +39,11 @@ public class TabLeiste extends JTabbedPane {
 	 * 
 	 * @param pf
 	 *            Programmfenster
-	 * @throw NullPointerException
+	 * @throws IllegalArgumentException wenn das Programmfenster-Objekt null ist.
 	 */
 	public TabLeiste(final Programmfenster pf) {
 		if (pf == null) {
-			throw new NullPointerException("Kein Programmfenster gefunden.");
+			throw new IllegalArgumentException("Kein Programmfenster gefunden.");
 		}
 		this.pf = pf;
 		// allgemeine Einstellungen der Tab- Leiste
@@ -69,12 +69,12 @@ public class TabLeiste extends JTabbedPane {
 	 *            Inhalt des Tabs
 	 * @param wahlName
 	 *            Name der im Tab gezeigten Wahl
-	 * @throw NullPointerException
+	 * @throws IllegalArgumentException wenn die Eingabeparameter null sind.
 	 */
 
 	public void neuerTab(final WahlFenster c, final String wahlName) {
 		if ((c == null) || (wahlName == null)) {
-			throw new NullPointerException("Einer der zwei Parameter ist null.");
+			throw new IllegalArgumentException("Einer der zwei Parameter ist null.");
 		}
 		this.add(c);
 		int pos = this.indexOfComponent(c);

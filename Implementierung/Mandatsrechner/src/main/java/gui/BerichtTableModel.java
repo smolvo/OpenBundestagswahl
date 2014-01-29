@@ -5,31 +5,31 @@ import javax.swing.table.AbstractTableModel;
 import main.java.model.BerichtDaten;
 
 /**
- * Diese Klasse repräsentiert das Tabellenmodell der 
- * Berichtsklasse.
- *
+ * Diese Klasse repräsentiert das Tabellenmodell der Berichtsklasse.
+ * 
  */
 public class BerichtTableModel extends AbstractTableModel {
-
 
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = 5458984414665530040L;
 
 	/** repräsentiert die Spaltennamen */
-	private final String[] columns = new String[] { "Abgeordneter", "Partei", "Mandat",
-			"Bundesland", "Wahlkreis" };
-	
+	private final String[] columns = new String[] { "Abgeordneter", "Partei",
+			"Mandat", "Bundesland", "Wahlkreis" };
+
 	/** hält alle relevanten Daten */
 	private final BerichtDaten daten;
-	
+
 	/**
 	 * Der Konstruktor initialisiert die Daten.
-	 * @param daten Daten
+	 * 
+	 * @param daten
+	 *            Daten
 	 */
 	public BerichtTableModel(BerichtDaten daten) {
 		this.daten = daten;
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return daten.size();
@@ -56,7 +56,7 @@ public class BerichtTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
