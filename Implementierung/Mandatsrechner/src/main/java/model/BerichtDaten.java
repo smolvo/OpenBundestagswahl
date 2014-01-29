@@ -3,6 +3,11 @@ package main.java.model;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+/**
+ * Diese Klasse enthälte alle Daten, die zum korrekten Anzeigen
+ * eines Berichtsfensters benötigt werden.
+ *
+ */
 public class BerichtDaten implements Serializable {
 
 	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */

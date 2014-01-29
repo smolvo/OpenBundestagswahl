@@ -24,6 +24,7 @@ public class WahlvergleichTableModel extends AbstractTableModel {
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
+	 * @param daten die Daten
 	 */
 	public WahlvergleichTableModel(WahlvergleichDaten daten) {
 		this.daten = daten;

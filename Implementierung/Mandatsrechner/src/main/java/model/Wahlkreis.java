@@ -85,16 +85,20 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return erststimmeGesamt;
 	}
-	
+
 	/**
-	 * Gibt das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur gegebenen Partei zugehörig ist zurück.
-	 * @param partei die zugehörige Partei zur erwarteten Erststimme
-	 * @return das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur gegebenen Partei zugehörig ist
+	 * Gibt das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur
+	 * gegebenen Partei zugehörig ist zurück.
+	 * 
+	 * @param partei
+	 *            die zugehörige Partei zur erwarteten Erststimme
+	 * @return das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch
+	 *         zur gegebenen Partei zugehörig ist
 	 */
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
-		for (Erststimme erst : this.erststimmen) {			
-			if (erst.getKandidat().getPartei() != null 
+		for (Erststimme erst : this.erststimmen) {
+			if (erst.getKandidat().getPartei() != null
 					&& erst.getKandidat().getPartei().equals(partei)) {
 				ergebnis = erst;
 			}
@@ -183,9 +187,15 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	public int getWahlberechtigte() {
 		return this.wahlberechtigte;
 	}
-	
-	
-	public void setWahlberechtigte(int wahlberechtigte) throws IllegalArgumentException {
+
+	/**
+	 * Diese Methode setzt die Anzahl Wahlberechtigter.
+	 * 
+	 * @param wahlberechtigte
+	 *            Wahlberechtigte
+	 * @throws IllegalArgumentException
+	 */
+	public void setWahlberechtigte(int wahlberechtigte) {
 		if (wahlberechtigte < 0) {
 			throw new IllegalArgumentException(
 					"Der Parameter \"wahlberechtigte\" ist negativ!");
@@ -221,27 +231,29 @@ public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
 	 * Gibt die Gesamtanzahl an Erststimmen für die uebergebene Partei zurueck
-	 * @param partei die partei deren Erststimmen ermittelt werden sollen
+	 * 
+	 * @param partei
+	 *            die partei deren Erststimmen ermittelt werden sollen
 	 * @return die gesamstanzahl der Erststimmen
 	 */
 	public int getErststimmenAnzahl(Partei partei) {
 		int anzahl = 0;
-		for (Erststimme erststimme: this.getErststimmenProPartei()) {
+		for (Erststimme erststimme : this.getErststimmenProPartei()) {
 			if (erststimme.getKandidat().getPartei() == partei) {
 				anzahl = erststimme.getAnzahl();
 			}
 		}
 		return anzahl;
 	}
-	
+
 	/**
 	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
 	 * kein solches Objekt mit der gegebenen Partei existiert.
 	 * 
 	 * @param partei
 	 *            die Partei deren Zweitstimme Objekt gesucht werden soll
-	 * @return das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
-	 *         kein solches Objekt mit der gegebenen Partei existiert.
+	 * @return das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null,
+	 *         wenn kein solches Objekt mit der gegebenen Partei existiert.
 	 * @throws IllegalArgumentException
 	 *             wenn die Partei null ist.
 	 */
@@ -256,11 +268,12 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override
@@ -273,30 +286,33 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		}
 		return anzahl;
 	}
-	
+
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurück.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override
 	public int getAnzahlErststimmen(Partei partei) {
 		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"partei\" ist null!");
 		}
-		
+
 		int anzahl = 0;
-		
+
 		// durchlaufe alle Erststimmen
 		for (Erststimme erststimme : this.getErststimmenProPartei()) {
 			// summiere die Erststimmen der gesuchten Partei
-			if (partei.getName().equals(erststimme.getKandidat().getPartei().getName())) {
+			if (partei.getName().equals(
+					erststimme.getKandidat().getPartei().getName())) {
 				anzahl += erststimme.getAnzahl();
 			}
 		}
-		
+
 		return anzahl;
 	}
-	
+
 }

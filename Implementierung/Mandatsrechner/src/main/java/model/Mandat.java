@@ -30,10 +30,11 @@ public enum Mandat {
 	 * 
 	 * @param mandat
 	 *            die Bezeichnung des Mandats.
-	 * @throws wenn die Bezeichnung leer ist.
+	 * @throws IllegalArgumentException
+	 *             wenn die Bezeichnung leer ist.
 	 */
 	Mandat(String mandat) {
-		if(mandat == null){
+		if (mandat == null) {
 			throw new IllegalArgumentException("Bezeichnung ist leer");
 		}
 		this.mandat = mandat;

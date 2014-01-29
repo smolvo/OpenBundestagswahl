@@ -27,7 +27,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name Der Name.
-	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 */
 	public Deutschland(String name) {
 		this.setName(name);
@@ -36,7 +35,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	/**
 	 * Angepasster Konstruktor.
 	 * @param name Der Name.
-	 * @param wahlberechtigte Die Anzahl der Wahlberechtigten.
 	 * @param zweitstimme Die Liste aller Zweitstimmenobjekte (pro Partei und Gebiet).
 	 */
 	public Deutschland(String name, LinkedList<Zweitstimme> zweitstimme) {

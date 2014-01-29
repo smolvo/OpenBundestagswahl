@@ -17,7 +17,7 @@ public class Sitzverteilung implements Serializable {
 	/** Die Liste aller Abgeordneten in dieser Sitzverteilung. */
 	private LinkedList<Kandidat> abgeordnete;
 
-	/** Enthält Informationen zur Sitzverteilung*/
+	/** Enthält Informationen zur Sitzverteilung */
 	private BerichtDaten bericht;
 
 	/**
@@ -32,7 +32,6 @@ public class Sitzverteilung implements Serializable {
 		this.setAbgeordnete(abgeordnete);
 		this.setBericht(bericht);
 	}
-
 
 	/**
 	 * Gibt die Liste aller Abgeordneten.
@@ -59,28 +58,31 @@ public class Sitzverteilung implements Serializable {
 		}
 		this.abgeordnete = abgeordnete;
 	}
-	
+
 	/**
 	 * Setzt den neuen Bericht
-	 * @param bericht der neue Bericht
-	 * @throws wenn der Bericht null ist
+	 * 
+	 * @param bericht
+	 *            der neue Bericht
+	 * @throws IllegalArgumentException
+	 *             wenn der Bericht null ist
 	 */
 	public void setBericht(BerichtDaten bericht) {
-		if(bericht == null){
+		if (bericht == null) {
 			throw new IllegalArgumentException("Bericht ist null");
 		}
 		this.bericht = bericht;
-		
+
 	}
-	
+
 	/**
 	 * Gibt den Bericht zurück
+	 * 
 	 * @return den Bericht
 	 */
 	public BerichtDaten getBericht() {
 		return this.bericht;
 	}
-
 
 	/**
 	 * Fuegt einen Kandidaten zur Liste hinzu.

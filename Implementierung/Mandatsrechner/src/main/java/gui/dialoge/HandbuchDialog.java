@@ -1,7 +1,5 @@
 package main.java.gui.dialoge;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -14,7 +12,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 /**
