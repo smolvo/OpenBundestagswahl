@@ -2,6 +2,7 @@ package main.java.gui.dialoge;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.io.File;
 import java.net.MalformedURLException;
 
@@ -46,33 +47,35 @@ public class HandbuchDialog extends JDialog {
 		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
-		//GridLayout layout = new GridLayout(1, 4);
-		GridBagLayout layout = new GridBagLayout();
-		GridBagConstraints gbc=new GridBagConstraints();
+		GridLayout layout = new GridLayout();
+		//GridBagLayout layout = new GridBagLayout();
+		//GridBagConstraints gbc=new GridBagConstraints();
 		// Festlegen, dass die GUI-Elemente die Gitterfelder in waagerechter Richtung ausfüllen:
-		gbc.fill=GridBagConstraints.VERTICAL;
+		//bc.fill=GridBagConstraints.VERTICAL;
 		// Als Layout festlegen
+		
+		
 		setLayout(layout);
 		
 		/*
 		 * Erste Spalte (index 0)
 		 */
-		JLabel label = new JLabel("asdasd");
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridwidth = 1;
-		layout.setConstraints(label, gbc);
-		this.add(label, gbc);
+		//JLabel label = new JLabel("asdasd");
+		//gbc.gridx = 0;
+		//gbc.gridy = 0;
+		//gbc.gridwidth = 1;
+		//layout.setConstraints(label, gbc);
+		//this.add(label, gbc);
 		
 		/*
 		 * Zweite (index 1) bis vierte (index 3) Spalte 
 		 */
 		final JFXPanel fxPanel = new JFXPanel();
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		gbc.gridwidth = 3;
-		layout.setConstraints(fxPanel, gbc);
-		this.add(fxPanel, gbc);
+		//gbc.gridx = 1;
+		//gbc.gridy = 0;
+		//gbc.gridwidth = 3;
+		//layout.setConstraints(fxPanel, gbc);
+		this.add(fxPanel);
 		
 		//JScrollPane scrollPane = new JScrollPane();
         //scrollPane.add(fxPanel);
