@@ -41,7 +41,7 @@ public class TabLeiste extends JTabbedPane {
 	 *            Programmfenster
 	 * @throw NullPointerException
 	 */
-	public TabLeiste(Programmfenster pf) {
+	public TabLeiste(final Programmfenster pf) {
 		if (pf == null) {
 			throw new NullPointerException("Kein Programmfenster gefunden.");
 		}
@@ -54,8 +54,8 @@ public class TabLeiste extends JTabbedPane {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				WahlFenster wahlfenster = getWahlfenster();
-				Steuerung.getInstance().setBtw(wahlfenster.getBtw());
+				int i = getSelectedIndex();
+				Steuerung.getInstance().setBtw(pf.getWahlen().get(i).getBtw());
 			}
 			
 		});

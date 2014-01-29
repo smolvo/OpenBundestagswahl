@@ -191,22 +191,20 @@ public class TabellenFenster extends JScrollPane {
 				if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
 					direktManBoolean = true;
 				}
-				if ((korresZweit.getAnzahl() != 0) || (er.getAnzahl() != 0)) {
-					double prozentualeErst = (Math
-							.rint(((double) er.getAnzahl() / (double) wk
-									.getAnzahlErststimmen()) * 1000) / 10);
-					double prozentualeZweit = (Math
-							.rint(((double) korresZweit.getAnzahl() / (double) wk
-									.getAnzahlZweitstimmen()) * 1000) / 10);
-					String direktMan = "nein";
-					if (direktManBoolean) {
-						direktMan = "ja";
-					}
-					daten.addZeile(korresZweit.getPartei().getName(), er
-							.getKandidat().getName(), korresZweit, er, Double
-							.toString(prozentualeZweit), Double
-							.toString(prozentualeErst), direktMan);
+				double prozentualeErst = (Math
+						.rint(((double) er.getAnzahl() / (double) wk
+								.getAnzahlErststimmen()) * 1000) / 10);
+				double prozentualeZweit = (Math
+						.rint(((double) korresZweit.getAnzahl() / (double) wk
+								.getAnzahlZweitstimmen()) * 1000) / 10);
+				String direktMan = "nein";
+				if (direktManBoolean) {
+					direktMan = "ja";
 				}
+				daten.addZeile(korresZweit.getPartei().getName(), er
+						.getKandidat().getName(), korresZweit, er, Double
+						.toString(prozentualeZweit), Double
+						.toString(prozentualeErst), direktMan);	
 			}
 		}
 		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
