@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 06:14
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 06:26
 entering extended mode
 **Implementierung.tex
 
@@ -614,7 +614,7 @@ plementierung.out)
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.out)
 \@outlinefile=\write4
- <KIT-Logo.png, id=135, 284.5029pt x 132.0132pt>
+ <KIT-Logo.png, id=147, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
 
 <use KIT-Logo.png>
@@ -630,19 +630,10 @@ sed, duplicate ignored
                    \relax 
 l.40 ...e\thispagestyle{empty}\hspace{1em}\newpage
                                                    [1]
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
 \tf@toc=\write5
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -835,8 +826,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--204
 
  []
 
-[8] [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--222
+
+ []
+
+[8]
+Overfull \hbox (20.03566pt too wide) in paragraph at lines 228--230
+\OT1/cmr/m/n/12 Die De-bug-ger ist ei-ne sta-ti-sche Klas-se und kann mit ei-ne
+m Wert \OT1/pcr/m/sl/12 Debug.setActive(true)
+ []
+
+[9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
 
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
@@ -845,22 +847,22 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
 
 (C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
 plementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
 Package rerunfilecheck Info: File `Implementierung.out' has not changed.
-(rerunfilecheck)             Checksum: F96D5BE2429A7183E71C79213768583B;2220.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
+(rerunfilecheck)             Checksum: 1CE99266F157E71326F23333A62200B3;2424.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 251.
  ) 
 Here is how much of TeX's memory you used:
- 7187 strings out of 493921
- 101775 string characters out of 3147278
- 193163 words of memory out of 3000000
- 10322 multiletter control sequences out of 15000+200000
- 12456 words of font info for 46 fonts, out of 3000000 for 9000
+ 7152 strings out of 493921
+ 101136 string characters out of 3147278
+ 194059 words of memory out of 3000000
+ 10304 multiletter control sequences out of 15000+200000
+ 8665 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,11n,43p,1302b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
@@ -872,9 +874,9 @@ onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (13 pages, 258664 bytes).
+Output written on Implementierung.pdf (13 pages, 253314 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 294 words of extra memory for PDF output out of 10000 (max. 10000000)
 
