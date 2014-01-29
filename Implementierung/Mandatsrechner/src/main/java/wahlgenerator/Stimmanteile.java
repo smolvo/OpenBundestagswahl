@@ -73,7 +73,7 @@ public class Stimmanteile {
 	
 	/**
 	 * Setzt den Parameter anteilZweitstimmen.
-	 * @param anteilErststimmen Anteil der Zweitstimmen für diese Partei. Muss im Intervall [0,100] liegen.
+	 * @param anteilZweitstimmen Anteil der Zweitstimmen für diese Partei. Muss im Intervall [0,100] liegen.
 	 * @throws IllegalArgumentException Wenn der Wert des Parameters 'anteilZweitstimmen' nicht im Intervall [0,100] liegt.
 	 */
 	public void setAnteilZweitstimmen(int anteilZweitstimmen) {

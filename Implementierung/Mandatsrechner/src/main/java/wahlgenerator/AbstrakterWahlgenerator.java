@@ -39,7 +39,8 @@ public abstract class AbstrakterWahlgenerator {
 	/**
 	 * Erzeugt eine neue Bundestagswahl auf der Grundlage der basisWahl und füllt diese
 	 *
-	 * @return generierte Bundestagswahl
+	 * @param name der Name der Bundestagswahl
+	 * @return die generierte BTW
 	 */
 	public abstract Bundestagswahl erzeugeBTW(String name);
 	

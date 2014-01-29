@@ -52,6 +52,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	
 	/**
 	 * Generiert eine Bundestagswahl auf basis der BTW des basisWahl Attributs und der Liste der Stimmanteile.
+	 * @param name der name der BTW
 	 * @return eine generierte Bundestagswahl
 	 */
 	public Bundestagswahl erzeugeBTW(String name) {
@@ -148,6 +149,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 * Verteilt die Stimmen der Parteien für diejenigen Stimmanteile angegeben sind 
 	 * auf zufällige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien bleiben dabei erhalten.
 	 * Bundesland- und Wahlkreisweit werden die Stimmen zufällig verteilt. 
+	 * @param btw die BTW auf die verteilt werden soll
 	 */
 	@Override
 	public void verteileStimmen(Bundestagswahl btw) {
@@ -198,12 +200,12 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 			
 			
-			int anzahlErststimmen = (int)(this.getAnzahlErststimmen() * (this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
-			int anzahlZweitstimmen = (int)(this.getAnzahlZweitstimmen() * (this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
+			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
+			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * (this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
 			
 			Debug.print(partei.getName() 
 					+ ", anzahlErststimmen: " + anzahlErststimmen + " (" + this.getAnteileVonPartei(partei).getAnteilErststimmen() 
-					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " (" + this.getAnteileVonPartei(partei).getAnteilZweitstimmen() +"%)");
+					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " (" + this.getAnteileVonPartei(partei).getAnteilZweitstimmen() + "%)");
 			
 			Random rand = new Random();
 			
