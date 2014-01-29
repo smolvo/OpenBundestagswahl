@@ -43,8 +43,13 @@ public class WahlFenster extends JPanel {
 	 * 
 	 * @param btw
 	 *            Bundestagswahl
+	 * @throws IllegalArgumentException
+	 *             wenn die Bundestagswahl null ist.
 	 */
 	public WahlFenster(Bundestagswahl btw) {
+		if (btw == null) {
+			throw new IllegalArgumentException("Bundestagswahl ist null.");
+		}
 		this.btw = btw;
 		this.name = btw.getName();
 		this.steuerung = new GUISteuerung(btw, this);
@@ -58,12 +63,17 @@ public class WahlFenster extends JPanel {
 	 * 
 	 * @param gebiet
 	 *            neues Gebiet
+	 * @throws IllegalArgumentException
+	 *             wenn das Gebiet null ist.
 	 */
 	public void wechsleAnsicht(Gebiet gebiet) {
+		if (gebiet == null) {
+			throw new IllegalArgumentException("Gebiet ist null.");
+		}
 		this.aktuelleAnsicht.ansichtAendern(gebiet);
 		this.add(aktuelleAnsicht);
 	}
-	
+
 	/**
 	 * Gibt den Namen aus.
 	 * 
@@ -90,7 +100,7 @@ public class WahlFenster extends JPanel {
 	public Bundestagswahl getBtw() {
 		return btw;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.name;

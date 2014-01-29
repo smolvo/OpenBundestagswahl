@@ -27,7 +27,7 @@ import main.java.wahlvergleich.WahlvergleichTableModel;
 public class VergleichsFenster extends JFrame {
 
 	private static final long serialVersionUID = -5493451520927891697L;
-	
+
 	/** repräsentiert das Layout */
 	private final GridBagConstraints gbc;
 
@@ -36,8 +36,13 @@ public class VergleichsFenster extends JFrame {
 	 * 
 	 * @param vergleich
 	 *            Vergleichsdaten
+	 * @throws IllegalArgumentException
+	 *             wenn der Vergleich null ist.
 	 */
 	public VergleichsFenster(Wahlvergleich vergleich) {
+		if (vergleich == null) {
+			throw new IllegalArgumentException("Wahlvergleich ist null.");
+		}
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new GridBagLayout());
 		this.gbc = new GridBagConstraints();
@@ -54,8 +59,13 @@ public class VergleichsFenster extends JFrame {
 	 * 
 	 * @param vergleich
 	 *            der Vergleich
+	 * @throws IllegalArgumentException
+	 *             wenn der Vergleich null ist.
 	 */
 	private void zeigeVergleich(Wahlvergleich vergleich) {
+		if (vergleich == null) {
+			throw new IllegalArgumentException("Wahlvergleich ist null");
+		}
 		WahlvergleichDaten daten = vergleich.wahlvergleich();
 		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
@@ -73,8 +83,7 @@ public class VergleichsFenster extends JFrame {
 		JLabel zweiteWahlName = new JLabel(vergleich.getBtw2().getName());
 		gbc.gridx = 2;
 		add(zweiteWahlName, gbc);
-		
-		
+
 		// Das Vergleichstabellenfenster
 		gbc.weightx = 1;
 		gbc.weighty = 1;
@@ -86,12 +95,15 @@ public class VergleichsFenster extends JFrame {
 		flaeche.add(skrollFenster);
 		add(skrollFenster, gbc);
 	}
-	
+
 	/**
-	 * Diese Methode wird vom Konstruktor verwendet, um die Diagramme zu erstellen.
+	 * Diese Methode wird vom Konstruktor verwendet, um die Diagramme zu
+	 * erstellen.
 	 */
 	private void erstelleDiagramme(Wahlvergleich vergleich) {
-
+		if (vergleich == null) {
+			throw new IllegalArgumentException("Wahlvergleich ist null.");
+		}
 		// Diagramm der ersten Bundestagswahl
 		DiagrammFenster diagramm1 = new DiagrammFenster(null);
 		diagramm1.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
@@ -115,19 +127,26 @@ public class VergleichsFenster extends JFrame {
 		gbc.gridwidth = 1;
 		gbc.gridx = 2;
 		gbc.gridy = 2;
-		add(diagramm2, gbc);		
+		add(diagramm2, gbc);
 	}
 
 	/**
 	 * Diese private Methode wird von der Methode zeigeVergleich verwendet, um
 	 * die Sitzplatzdifferenzen einer Partei zwischen zwei Wahlen zu holen.
 	 * 
-	 * @param btw1 erste Bundestagswahl
-	 * @param btw2 zweite Bundestagswahl
+	 * @param btw1
+	 *            erste Bundestagswahl
+	 * @param btw2
+	 *            zweite Bundestagswahl
+	 * @throws IllegalArgumentException
+	 *             wenn die Parameter null sind.
 	 * @return die Differenzen
 	 */
 	private ParteiDifferenzen[] holeDifferenzen(Bundestagswahl btw1,
 			Bundestagswahl btw2) {
+		if (btw1 == null || btw2 == null) {
+			throw new IllegalArgumentException("Eingabeparameter sind null.");
+		}
 		int anzahlBalken = 0;
 		LinkedList<Partei> parteien = new LinkedList<Partei>();
 		for (Partei partei : btw1.getParteien()) {

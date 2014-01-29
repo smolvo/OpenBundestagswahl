@@ -30,7 +30,7 @@ public class TabLeiste extends JTabbedPane {
 
 	/** repräsentiert das Programmfenster der Tableiste */
 	private final Programmfenster pf;
-	
+
 	/** repräsentiert den Plus-Knopf der Tableiste */
 	private final JComponent plusButton = new JPanel();
 
@@ -39,7 +39,8 @@ public class TabLeiste extends JTabbedPane {
 	 * 
 	 * @param pf
 	 *            Programmfenster
-	 * @throws IllegalArgumentException wenn das Programmfenster-Objekt null ist.
+	 * @throws IllegalArgumentException
+	 *             wenn das Programmfenster-Objekt null ist.
 	 */
 	public TabLeiste(final Programmfenster pf) {
 		if (pf == null) {
@@ -57,9 +58,9 @@ public class TabLeiste extends JTabbedPane {
 				int i = getSelectedIndex();
 				Steuerung.getInstance().setBtw(pf.getWahlen().get(i).getBtw());
 			}
-			
+
 		});
-	}		
+	}
 
 	/**
 	 * Diese Methode fügt zur Tableiste einen weiteren Tab hinzu. Dabei besitzt
@@ -69,12 +70,14 @@ public class TabLeiste extends JTabbedPane {
 	 *            Inhalt des Tabs
 	 * @param wahlName
 	 *            Name der im Tab gezeigten Wahl
-	 * @throws IllegalArgumentException wenn die Eingabeparameter null sind.
+	 * @throws IllegalArgumentException
+	 *             wenn die Eingabeparameter null sind.
 	 */
 
 	public void neuerTab(final WahlFenster c, final String wahlName) {
 		if ((c == null) || (wahlName == null)) {
-			throw new IllegalArgumentException("Einer der zwei Parameter ist null.");
+			throw new IllegalArgumentException(
+					"Einer der zwei Parameter ist null.");
 		}
 		this.add(c);
 		int pos = this.indexOfComponent(c);
@@ -95,10 +98,10 @@ public class TabLeiste extends JTabbedPane {
 		tab.add(lblTitle);
 		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
-		
+
 		// Erstelle anonymen ActionListener für den "x" Knopf
 		schliessen.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -123,7 +126,7 @@ public class TabLeiste extends JTabbedPane {
 		neuerTabButton();
 		this.setSelectedComponent(c);
 	}
-	
+
 	/**
 	 * Diese Methode fügt der Tableiste einen "+"- Button hinzu Wenn man darauf
 	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl.
@@ -138,7 +141,8 @@ public class TabLeiste extends JTabbedPane {
 
 		JButton neuerTab = new JButton();
 		neuerTab.setOpaque(false);
-		neuerTab.setIcon(new ImageIcon("src/main/resources/gui/images/neuerTab.png"));
+		neuerTab.setIcon(new ImageIcon(
+				"src/main/resources/gui/images/neuerTab.png"));
 
 		neuerTab.setBorder(null);
 		neuerTab.setContentAreaFilled(false);
@@ -160,9 +164,10 @@ public class TabLeiste extends JTabbedPane {
 		};
 		neuerTab.addActionListener(listener);
 	}
-	
+
 	/**
-	 * Diese private Methode wird vom Plus-Knopf verwendet, um eine Wahl zu importieren.
+	 * Diese private Methode wird vom Plus-Knopf verwendet, um eine Wahl zu
+	 * importieren.
 	 */
 	private void importiere() {
 		if (pf.getiD() == null) {
@@ -173,9 +178,10 @@ public class TabLeiste extends JTabbedPane {
 			pf.getiD().importiereWahl();
 		}
 	}
-	
+
 	/**
 	 * Gibt das index-te Wahlfenster aus.
+	 * 
 	 * @return Wahlfenster
 	 */
 	public WahlFenster getWahlfenster() {
@@ -184,6 +190,7 @@ public class TabLeiste extends JTabbedPane {
 
 	/**
 	 * Gibt das Programmfenster aus
+	 * 
 	 * @return Programmfenster
 	 */
 	public Programmfenster getPf() {
