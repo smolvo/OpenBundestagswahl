@@ -11,8 +11,6 @@ import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
-import main.java.model.Landesliste;
-import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;
@@ -20,16 +18,17 @@ import main.java.model.Zweitstimme;
 import test.java.Debug;
 
 /**
- * Diese Klasse soll in der Lage sein zu einer Bundestagswahl durch Simulation
- * eine "verwandte" Bundestagswahl in der Art zu erzeugen, dass zwischen diesen
- * zwei Bundestagswahlen der Effekt des negativen Stimmgewichts auftritt
+ * Diese Klasse soll in der Lage sein zu einer gegebenen Bundestagswahl durch
+ * Simulation den Effekt des negativen Stimmgewichts zu finden. Dafür werden
+ * Sprungstellen, insbesondere negative, gesucht, d.h. Stellen, an denen nach
+ * Zweitstimmenänderung die Mandatsanzahl "springt".
  * 
  */
 
 public class StimmgewichtSimulator {
 
 	/**
-	 * Die Ausgangsbundestagswahl, zu der eine "verwandte" Wahl erzeugt werden
+	 * Die Ausgangsbundestagswahl, zu der negatives Stimmgewicht gefunden werden
 	 * soll
 	 */
 	private Bundestagswahl ausgangsWahl;
@@ -45,11 +44,6 @@ public class StimmgewichtSimulator {
 	private Bundestagswahl kopie2;
 
 	/**
-	 * Parteien, bei denen negatives Stimmgewicht auftreten kann
-	 */
-	private List<Partei> relevanteParteien = new ArrayList<Partei>();
-
-	/**
 	 * Generator für zufällige Zahlen
 	 */
 	private Random rand;
@@ -63,7 +57,10 @@ public class StimmgewichtSimulator {
 	 * Die Partei, für die zuletzt Zweitstimmen geändert wurden
 	 */
 	private Partei letztePartei;
-	
+
+	/**
+	 * Der Wahlkreis, in dem zuletzt Zweitstimmen geändert wurden
+	 */
 	private Bundesland letztesBundesland;
 
 	/**
@@ -90,11 +87,11 @@ public class StimmgewichtSimulator {
 		this.rand = new Random();
 		geaenderteZweitstimmenInWahlkreise = new ArrayList<>();
 
-		// Mandate für Ausgangswahl berechnen
-		//Debug.setAktiv(false);
+		// Sitzverteilung für Ausgangswahl berechnen
+
 		this.setAusgangsWahl(Mandatsrechner2009.getInstance()
 				.berechneSainteLague(ausgangsWahl));
-		//Debug.setAktiv(true);
+
 		// Die erste und zweite Kopie der Ausgangsbundestagswahl erzeugen
 		try {
 			this.setKopie1(ausgangsWahl.deepCopy());
@@ -109,11 +106,16 @@ public class StimmgewichtSimulator {
 	/**
 	 * Es werden die Zweitstimmen einer relevanten Partei in einem geeigneten
 	 * Bundesland schrittweise um einen konstanten Faktor erhöht bzw.
-	 * erniedrigt. Dies geschieht maximal solange bis sie nicht mehr erhöht
-	 * werden können, weil sie größer als die Anzahl der Wahlberechtigten sind,
-	 * bzw. nicht mehr erniedrigt werden können, weil sie kleiner 0 wären. Falls
-	 * ein negatives Stimmgewicht im Vergleich zu der Ausgangsbundestagswahl
-	 * ermittelt wurde, bricht die Suche ebenfalls ab
+	 * erniedrigt.
+	 * 
+	 * Dabei werden sie in beide Richtungen auf Bundeslandebene um maximal 20%
+	 * variiert. Des Weiteren geschieht eine Erhöhung/ Erniedrigung auf
+	 * Wahlkreisebe maximal solange, bis sie nicht mehr erhöht werden können,
+	 * weil sie größer als die Anzahl der Wahlberechtigten sind, bzw. nicht mehr
+	 * erniedrigt werden können, weil sie kleiner als 0 wären.
+	 * 
+	 * Falls ein negatives Stimmgewicht im Vergleich zu der
+	 * Ausgangsbundestagswahl ermittelt wurde, bricht die Suche ebenfalls ab
 	 * 
 	 * @return true wenn negatives Stimmgewicht aufgetreten ist
 	 */
@@ -128,39 +130,22 @@ public class StimmgewichtSimulator {
 		// Iterieren über alle Parteien
 		for (Partei partei : parteienSortiertKopie1) {
 			letztePartei = partei;
-			// if (!partei.getName().equals("SPD")
-			// && !partei.getName().equals("CDU")) {
-			// continue;
-			// }
-
-			if (!partei.getName().equals("CDU")) {
-				continue;
-			}
 
 			List<Bundesland> bundeslaender = this.getKopie1().getDeutschland()
 					.getBundeslaender();
 			// Iterieren über alle Bundesländer
 			for (Bundesland bundesland : bundeslaender) {
 				letztesBundesland = bundesland;
-				// TODO entfernen wenn alles funktioniert
-				if (!bundesland.getName().equals("Hessen")) {
-					continue;
-				}
-
-				// if (!bundesland.getName().equals("Brandenburg") &&
-				// !bundesland.getName().equals("Bayern")) {
-				// continue;
-				// }
 
 				// die Anzahl der Zweitstimmen werden pro Bundesland und Partei
 				// um 20% variiert
 				// setzt die obere Begrenzung für die Simulation
 				int obereBegrenzung = (int) (bundesland
-						.getAnzahlZweitstimmen(partei) * 1.1);
+						.getAnzahlZweitstimmen(partei) * 1.2);
 
 				// setzt die untere Begrenzung für die Simulation
 				int untereBegrenzung = (int) (bundesland
-						.getAnzahlZweitstimmen(partei) * 0.9);
+						.getAnzahlZweitstimmen(partei) * 0.8);
 
 				while (bundesland.getAnzahlZweitstimmen(partei) + stimmanzahl < obereBegrenzung) {
 
@@ -172,8 +157,7 @@ public class StimmgewichtSimulator {
 
 					if (this.vergleicheSitzverteilungen(partei)) {
 
-						System.err
-								.println("NEGATIVES STIMMGEWICHT GEFUNDEN !!!!!!!!!!!! YAYYY");
+						Debug.print("Negatives Stimmgewicht gefunden");
 						return true;
 					}
 
@@ -184,20 +168,7 @@ public class StimmgewichtSimulator {
 				// setzt alle in einem Simulationsschritt vorgenommenen
 				// Änderungen an Zweitstimmen
 				// wieder zurück auf ihre ursprünglichen Werte
-				System.err.println("AUF AUSGANGSWAHL ZURÜCKSETZEN");
 				setzeKopienAufAusgangswahl(true);
-
-				//Debug.print(partei.getName() + " " + bundesland.getName() + " "
-					//	+ bundesland.getAnzahlZweitstimmen(partei));
-
-				//Debug.setAktiv(false);
-				// berechnet Sitzverteilung von kopie1 neu
-				setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
-						kopie1));
-				//Debug.setAktiv(true);
-				this.passeKopie2An();
-
-				System.err.println("ERNIEDRIGUNG BEGINNT");
 
 				while (bundesland.getAnzahlZweitstimmen(partei) - stimmanzahl > untereBegrenzung) {
 
@@ -219,18 +190,7 @@ public class StimmgewichtSimulator {
 				// setzt alle in einem Simulationsschritt vorgenommenen
 				// Änderungen an Zweitstimmen
 				// wieder zurück auf ihre ursprünglichen Werte
-				System.err.println("AUF AUSGANGSWAHL ZURÜCKSETZEN");
 				setzeKopienAufAusgangswahl(false);
-
-				//Debug.print(partei.getName() + " " + bundesland.getName() + " "
-						//+ bundesland.getAnzahlZweitstimmen(partei));
-
-				//Debug.setAktiv(false);
-				// berechnet Sitzverteilung von kopie1 neu
-				setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
-						kopie1));
-				//Debug.setAktiv(true);
-				this.passeKopie2An();
 
 			}
 		}
@@ -244,41 +204,11 @@ public class StimmgewichtSimulator {
 	 */
 	private void passeKopie2An() {
 
-		// Debug-Informationen
-		//Debug.setAktiv(false);
-
-		for (Wahlkreis wk1 : this.kopie1.getDeutschland().getWahlkreise()) {
-			if (wk1.getName().equals(letzterWK.getName())) {
-				//Debug.print("A WK1: " + wk1.getName() + " Stimmen: "
-						//+ wk1.getAnzahlZweitstimmen());
-			}
-		}
-		for (Wahlkreis wk2 : this.kopie2.getDeutschland().getWahlkreise()) {
-			if (wk2.getName().equals(letzterWK.getName())) {
-				//Debug.print("A WK2: " + wk2.getName() + " Stimmen: "
-					//	+ wk2.getAnzahlZweitstimmen());
-			}
-		}
-
 		// eigentlicher Kopiervorgang
 		try {
 			kopie2 = kopie1.deepCopy();
 		} catch (IOException e) { // TODO Auto-generated
 			e.printStackTrace();
-		}
-
-		// Debug-Informationen
-		for (Wahlkreis wk1 : this.kopie1.getDeutschland().getWahlkreise()) {
-			if (wk1.getName().equals(letzterWK.getName())) {
-				//Debug.print("B WK1: " + wk1.getName() + " Stimmen: "
-					//	+ wk1.getAnzahlZweitstimmen());
-			}
-		}
-		for (Wahlkreis wk2 : this.kopie2.getDeutschland().getWahlkreise()) {
-			if (wk2.getName().equals(letzterWK.getName())) {
-				//Debug.print("B WK2: " + wk2.getName() + " Stimmen: "
-					//	+ wk2.getAnzahlZweitstimmen());
-			}
 		}
 
 	}
@@ -291,18 +221,10 @@ public class StimmgewichtSimulator {
 	 * müssen.
 	 * 
 	 * @param variante
-	 *            boolean, der die Variante der genutzten Simulation beschreibt
+	 *            boolean, der die Variante der zuvor genutzten Simulation
+	 *            beschreibt
 	 */
 	private void setzeKopienAufAusgangswahl(boolean variante) {
-		// Ausgabe von Debug-Informationen
-		//Debug.setAktiv(true);
-
-		for (int i = 0; i < geaenderteZweitstimmenInWahlkreise.size(); i++) {
-			Zweitstimme z = geaenderteZweitstimmenInWahlkreise.get(i);
-
-			//Debug.print("Partei vor Zurücksetzung " + z.getPartei().getName()
-				//	+ " " + z.getGebiet().getName() + " " + z.getAnzahl());
-		}
 
 		// vorher erhöhte Zweitstimmen werden jetzt erniedrigt
 		if (variante) {
@@ -324,13 +246,10 @@ public class StimmgewichtSimulator {
 
 		}
 
-		// Ausgabe von Debug-Informationen
-		for (int i = 0; i < geaenderteZweitstimmenInWahlkreise.size(); i++) {
-			Zweitstimme z = geaenderteZweitstimmenInWahlkreise.get(i);
-
-			//Debug.print("Partei nach Zurücksetzung: " + z.getPartei().getName()
-			//		+ " " + z.getGebiet().getName() + " " + z.getAnzahl());
-		}
+		// berechnet Sitzverteilung von kopie1 neu
+		setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(kopie1));
+		// passt kopie2 an kopie1 an
+		this.passeKopie2An();
 
 		geaenderteZweitstimmenInWahlkreise = new ArrayList<>();
 
@@ -347,26 +266,31 @@ public class StimmgewichtSimulator {
 	 */
 	private void erhoeheZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
-		Debug.setAktiv(true);
-
 		Wahlkreis wk;
 
 		do {
-			// wählt einen zufälligen Wahlkreis
+			// wählt einen zufälligen Wahlkreis solange, bis einer gefunden
+			// worden ist,
+			// dessen Zweitstimmen für gegebene Partei nach Addieren des
+			// konstanten Faktors < Wahlberechtigte des Wahlkreises sind
+
 			int i = rand.nextInt(bundesland.getWahlkreise().size());
 			wk = bundesland.getWahlkreise().get(i);
 
-		} while ((wk.getAnzahlZweitstimmen() + stimmanzahl) > wk
+		} while ((wk.getAnzahlZweitstimmen(partei) + stimmanzahl) > wk
 				.getWahlberechtigte());
 
+		// erhöhe in dem zuvor zufällig gewählten Wahlkreis die Zweitstimme um
+		// den konstanten Faktor
 		wk.getZweitstimme(partei).erhoeheAnzahl(stimmanzahl);
 
-		Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
-				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
-				+ wk.getAnzahlZweitstimmen(partei) + " ("
-				+ bundesland.getAnzahlZweitstimmen(partei) + ") erhöht.");
+		/*
+		 * Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName() +
+		 * " (" + bundesland.getName() + ") um " + stimmanzahl + " auf " +
+		 * wk.getAnzahlZweitstimmen(partei) + " (" +
+		 * bundesland.getAnzahlZweitstimmen(partei) + ") erhöht.");
+		 */
 
-		Debug.setAktiv(false);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
 
@@ -376,41 +300,41 @@ public class StimmgewichtSimulator {
 
 	}
 
-	/*
-	 * private void veraendereZweitstimmen(Bundestagswahl bundestagswahl, Partei
-	 * partei, Bundesland bundesland, boolean variante) { //Debug.setAktiv(true);
-	 * Wahlkreis wk; if (variante) { do { // wählt einen zufälligen Wahlkreis
-	 * int i = rand.nextInt(bundesland.getWahlkreise().size()); wk =
-	 * bundesland.getWahlkreise().get(i);
+	/**
+	 * Erniedrigt die Zweitstimmen eines Bundeslands für eine Partei um einen
+	 * konstanten Faktor und speichert die geänderteten Zweitstimmen in eine
+	 * Liste
 	 * 
-	 * } while ((wk.getAnzahlZweitstimmen() + stimmanzahl) > wk
-	 * .getWahlberechtigte());
-	 * 
-	 * wk.getZweitstimme(partei).erhoeheAnzahl(stimmanzahl);
-	 * 
-	 * //Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName() + " ("
-	 * + bundesland.getName() + ") um " + stimmanzahl + " auf " +
-	 * wk.getAnzahlZweitstimmen(partei) + " (" +
-	 * bundesland.getAnzahlZweitstimmen(partei) + ") erhöht."); } else {
+	 * @param bundestagswahl
+	 * @param partei
+	 * @param bundesland
 	 */
+
 	private void erniedrigeZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
-		Debug.setAktiv(true);
 		Wahlkreis wk;
-		do { //
-				// wählt einen zufälligen Wahlkreis
+
+		do {
+			// wählt einen zufälligen Wahlkreis solange, bis einer gefunden
+			// worden ist,
+			// dessen Zweitstimmen für gegebene Partei nach Abzug des konstanten
+			// Faktors > 0 sind
+
 			int i = rand.nextInt(bundesland.getWahlkreise().size());
 			wk = bundesland.getWahlkreise().get(i);
 		} while ((wk.getAnzahlZweitstimmen(partei) - stimmanzahl) < 0);
 
+		// erniedrige in dem zuvor zufällig gewählten Wahlkreis die Zweitstimme
+		// um den konstanten Faktor
 		wk.getZweitstimme(partei).erniedrigeAnzahl(stimmanzahl);
 
-		Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
-				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
-				+ wk.getAnzahlZweitstimmen(partei) + " ("
-				+ bundesland.getAnzahlZweitstimmen(partei) + ") erniedrigt.");
+		/*
+		 * Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName() +
+		 * " (" + bundesland.getName() + ") um " + stimmanzahl + " auf " +
+		 * wk.getAnzahlZweitstimmen(partei) + " (" +
+		 * bundesland.getAnzahlZweitstimmen(partei) + ") erniedrigt.");
+		 */
 
-		Debug.setAktiv(false);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
 
@@ -451,18 +375,20 @@ public class StimmgewichtSimulator {
 				mandatsZahlNeu++;
 			}
 		}
-		System.out.println(p.getName() + " " + letztesBundesland.getName()+ ": Mandatszahl alt: " + mandatsZahlAlt
-				+ " Mandatszahl neu: " + p.getAnzahlMandate());
+		System.out.println(p.getName() + " " + letztesBundesland.getName()
+				+ ": Mandatszahl alt: " + mandatsZahlAlt + " Mandatszahl neu: "
+				+ p.getAnzahlMandate());
 		if (mandatsZahlNeu > mandatsZahlAlt) {
 			System.err.println("Positive Sprungstelle entdeckt: "
-					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName());
-					
+					+ letztePartei.getName() + " " + letzterWK.getName() + " "
+					+ letztesBundesland.getName());
+
 			int ende = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
 			letzterWK.getZweitstimme(letztePartei)
 					.erniedrigeAnzahl(stimmanzahl);
 			int anfang = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
-			System.out.println("Anfang: " + anfang + " Ende: " +ende );
-			 getSprungstelle(anfang, ende);
+			System.out.println("Anfang: " + anfang + " Ende: " + ende);
+			getSprungstelle(anfang, ende);
 		}
 		return (mandatsZahlNeu < mandatsZahlAlt);
 
@@ -490,13 +416,14 @@ public class StimmgewichtSimulator {
 				+ " Mandatszahl neu: " + p.getAnzahlMandate());
 		if (mandatsZahlNeu < mandatsZahlAlt) {
 			System.err.println("Positive Sprungstelle entdeckt: "
-					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName());
-			
+					+ letztePartei.getName() + " " + letzterWK.getName() + " "
+					+ letztesBundesland.getName());
+
 			int ende = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
 			letzterWK.getZweitstimme(letztePartei)
 					.erniedrigeAnzahl(stimmanzahl);
 			int anfang = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
-			System.out.println("Anfang: " + anfang + " Ende: " +ende );
+			System.out.println("Anfang: " + anfang + " Ende: " + ende);
 			// +getSprungstelle(anfang, ende));
 		}
 		return (mandatsZahlNeu > mandatsZahlAlt);
@@ -504,7 +431,7 @@ public class StimmgewichtSimulator {
 	}
 
 	private int getSprungstelle(int anfang, int ende) {
-		//System.out.println("Sprungstelle wird berechnet...");
+		// System.out.println("Sprungstelle wird berechnet...");
 		int aenderung = (anfang + ende) / 2;
 
 		letzterWK.getZweitstimme(letztePartei).setAnzahl(aenderung);
@@ -529,7 +456,8 @@ public class StimmgewichtSimulator {
 			}
 		}
 
-		System.err.println(aenderung +" MandatszahlAlt: " + mandatsZahlAlt + " MandatszahlNeu: " + mandatsZahlNeu);
+		System.err.println(aenderung + " MandatszahlAlt: " + mandatsZahlAlt
+				+ " MandatszahlNeu: " + mandatsZahlNeu);
 		if (mandatsZahlAlt > mandatsZahlNeu) {
 			return getSprungstelle(aenderung, ende);
 
@@ -540,10 +468,6 @@ public class StimmgewichtSimulator {
 		}
 
 	}
-
-
-
-
 
 	/**
 	 * @return the bw
@@ -567,7 +491,6 @@ public class StimmgewichtSimulator {
 		}
 
 	}
-
 
 	/**
 	 * @return the verwandteWahl
