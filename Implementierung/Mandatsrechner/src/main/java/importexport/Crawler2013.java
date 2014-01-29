@@ -555,8 +555,8 @@ public class Crawler2013 extends Crawler {
 		List<String[]> einwohnerzahlen = Config.getInstance().getConfig("einwohnerzahl");
 		boolean found = false;
 		for (String[] blEinwohner : einwohnerzahlen) {
-			if(blEinwohner[0].equals(name)) {
-				try{
+			if (blEinwohner[0].equals(name)) {
+				try {
 					anzahl = Integer.parseInt(blEinwohner[1]);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -566,7 +566,7 @@ public class Crawler2013 extends Crawler {
 				break;
 			}
 		}
-		if(!found){
+		if (!found) {
 			anzahl = 0;
 		}
 		return anzahl;

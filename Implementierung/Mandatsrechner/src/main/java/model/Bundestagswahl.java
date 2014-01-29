@@ -232,6 +232,8 @@ public class Bundestagswahl implements Serializable {
 			 if (wk.equals(stimme.getGebiet())) {
 				 for (Erststimme erststimme : wk.getErststimmenProPartei()) {
 					 if (erststimme.getKandidat().equals(stimme.getKandidat())) {
+						 Debug.print("Aendere Erststimme in: " + stimme.getGebiet().getName() + " " + stimme.getKandidat().getPartei().getName());
+
 						 this.chronik.sichereStimme(erststimme);
 						 erststimme.setAnzahl(erststimme.getAnzahl());
 						 success = true;
@@ -261,6 +263,7 @@ public class Bundestagswahl implements Serializable {
 				 if (wk.equals(stimme.getGebiet())) {
 					 for (Zweitstimme zweitstimme : wk.getZweitstimmenProPartei()) {
 						 if (zweitstimme.getPartei().equals(stimme.getPartei())) {
+							 Debug.print("Aendere Zweitstimme in: " + stimme.getGebiet().getName() + " " + stimme.getPartei());
 							 this.chronik.sichereStimme(zweitstimme);
 							 zweitstimme.setAnzahl(zweitstimme.getAnzahl());
 							 success = true;
