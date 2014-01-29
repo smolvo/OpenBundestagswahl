@@ -22,7 +22,7 @@ public class DiagrammFenster extends JPanel {
 	private static final long serialVersionUID = -523400111719339965L;
 	
 	/** repräsentiert die Ansicht des Diagrammfensters */
-	private Ansicht ansicht;
+	private final Ansicht ansicht;
 	
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
@@ -37,9 +37,12 @@ public class DiagrammFenster extends JPanel {
 	 * 
 	 * @param gebiet
 	 *            Gebiet-Objekt welches visualisiert werden soll
+	 * @throw NullPointerException
 	 */
 	public void erstelleDiagramm(Gebiet gebiet) {
-
+		if (gebiet == null) {
+			throw new NullPointerException("Kein Gebiet gefunden.");
+		}
 		if (gebiet instanceof Deutschland) {
 			Deutschland land = (Deutschland) gebiet;
 			erstelleDiagramm(land);
@@ -88,8 +91,12 @@ public class DiagrammFenster extends JPanel {
 	 * 
 	 * @param btw
 	 *            Bundestagswahl-Objekt welches visualisiert werden soll
+	 * @throws NullPointerException
 	 */
 	public void zeigeSitzverteilung(Bundestagswahl btw) {
+		if (btw == null) {
+			throw new NullPointerException("Keine Bundestagswahl gefunden.");
+		}
 		BerichtTableModel tabelle = new BerichtTableModel(btw.getSitzverteilung().getBericht());
 		 new BerichtsFenster(tabelle);
 	}

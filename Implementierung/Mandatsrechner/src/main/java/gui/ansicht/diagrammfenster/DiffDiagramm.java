@@ -1,5 +1,6 @@
 package main.java.gui.ansicht.diagrammfenster;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Paint;
 import java.awt.event.ComponentAdapter;
@@ -39,6 +40,7 @@ public class DiffDiagramm extends JPanel {
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
+				add(panel, BorderLayout.LINE_START);
 			}
 
 		});
@@ -86,7 +88,8 @@ public class DiffDiagramm extends JPanel {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(), (int) (0.6 * this.getWidth()));
+		return new Dimension(this.getWidth(),
+				(int) (this.getHeight()));
 	}
 	
 	/**
