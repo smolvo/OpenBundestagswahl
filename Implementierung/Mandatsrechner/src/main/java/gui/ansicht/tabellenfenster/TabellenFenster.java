@@ -25,10 +25,10 @@ import main.java.model.Zweitstimme;
  * 
  */
 public class TabellenFenster extends JScrollPane {
-	
+
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -8830377095217386485L;
-	
+
 	/** repräsentiert die Ansicht in der sich die Tabelle befindet */
 	private final Ansicht ansicht;
 
@@ -37,8 +37,13 @@ public class TabellenFenster extends JScrollPane {
 	 * 
 	 * @param ansicht
 	 *            die Ansicht
+	 * @throws IllegalArgumentException
+	 *             wenn das Ansicht-Objekt null ist.
 	 */
 	public TabellenFenster(Ansicht ansicht) {
+		if (ansicht == null) {
+			throw new IllegalArgumentException("Ansicht ist null.");
+		}
 		this.ansicht = ansicht;
 	}
 
@@ -74,8 +79,13 @@ public class TabellenFenster extends JScrollPane {
 	 * 
 	 * @param land
 	 *            Deutschland-Objekt welches visualisiert werden soll
+	 * @throws IllegalArgumentException
+	 *             wenn das Deutschland-Objekt null ist.
 	 */
 	private void tabellenFuellen(Deutschland land) {
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland-Objekt ist null");
+		}
 		Sitzverteilung bundestag = this.ansicht.getFenster().getBtw()
 				.getSitzverteilung();
 		BundDaten daten = new BundDaten();
@@ -143,8 +153,14 @@ public class TabellenFenster extends JScrollPane {
 	 * 
 	 * @param bl
 	 *            Bundesland-Objekt welches visualisiert werden soll
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland-Objekt null ist.
 	 */
 	private void tabellenFuellen(Bundesland bl) {
+		if (bl == null) {
+			throw new IllegalArgumentException(
+					"Das Bundesland-Objekt ist null.");
+		}
 		LandDaten daten = new LandDaten();
 		List<Zweitstimme> stimmen = bl.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
@@ -174,8 +190,13 @@ public class TabellenFenster extends JScrollPane {
 	 * 
 	 * @param wk
 	 *            Wahlkreis-Objekt welcher visualisiert werden soll
+	 * @throws IllegalArgumentException
+	 *             wenn das Wahlkreis-Objekt leer ist.
 	 */
 	private void tabellenFuellen(Wahlkreis wk) {
+		if (wk == null) {
+			throw new IllegalArgumentException("Wahlkreis-Objekt ist null.");
+		}
 		WahlkreisDaten daten = new WahlkreisDaten();
 		for (Erststimme er : wk.getErststimmenProPartei()) {
 			Zweitstimme korresZweit = null;
@@ -211,9 +232,10 @@ public class TabellenFenster extends JScrollPane {
 		JTable jTabelle = new JTable(tabelle);
 		this.setViewportView(jTabelle);
 	}
-	
+
 	/**
 	 * Gibt die Ansicht aus.
+	 * 
 	 * @return Ansicht
 	 */
 	public Ansicht getAnsicht() {

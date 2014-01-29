@@ -18,17 +18,17 @@ public class LandTableModel extends AbstractTableModel {
 	/** hält alle relevanten Daten */
 	private LandDaten daten;
 
-
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
 	 * 
 	 * @param daten
 	 *            Daten
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das LandDaten Objekt null ist.
 	 */
 	public LandTableModel(LandDaten daten) {
 		if (daten == null) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Das LandDaten objekt ist null.");
 		}
 		this.daten = daten;
 	}

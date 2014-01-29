@@ -101,6 +101,8 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index außerhalb der Listengrößen.
 	 * @return Partei
 	 */
 	public String getParteiName(int index) {
@@ -115,6 +117,8 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index außerhalb der Listengroeße ist.
 	 * @return Kandidat
 	 */
 	public String getKandidatName(int index) {
@@ -129,6 +133,8 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index außerhalb der Listengröße ist.
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getZweitstimmen(int index) {
@@ -142,7 +148,8 @@ public class WahlkreisDaten {
 	 * Gibt eine bestimmte Erststimmenanzahl zurück.
 	 * 
 	 * @param index
-	 *            Listenindex
+	 *            Listenindex 
+	 * @throws IllegalArgumentException wenn der Index außerhalb der Listengroeße.
 	 * @return Zweitstimme
 	 */
 	public Erststimme getErststimmen(int index) {
@@ -157,6 +164,7 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException wenn der Index außerhalb der Listengröße.
 	 * @return Prozentanzahl
 	 */
 	public String getZweitprozent(int index) {
@@ -171,6 +179,7 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException wenn der Index außerhalb der Listengröße.
 	 * @return Prozentanzahl
 	 */
 	public String getErstprozent(int index) {
@@ -185,6 +194,7 @@ public class WahlkreisDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException wenn der Index außerhalb der Listengröße.
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {

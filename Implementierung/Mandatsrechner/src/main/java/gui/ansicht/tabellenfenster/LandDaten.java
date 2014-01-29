@@ -49,12 +49,15 @@ public class LandDaten {
 	 *            Anzahl Direktkandidaten
 	 * @param ueberhangsmandat
 	 *            Anzahl ‹berhangsmandate
+	 * @throws IllegalArgumentException
+	 *             wenn das Zweitstimmen-Objekt null ist.
 	 */
 	public void addZeile(String partei, Zweitstimme stimme, String prozent,
 			String direktmandat, String ueberhangsmandat) {
-		if (stimme != null) {
-			this.stimmen.add(stimme);
+		if (stimme == null) {
+			throw new IllegalArgumentException("Zweitstimmen ist null.");
 		}
+		this.stimmen.add(stimme);
 		stringCheck(partei, this.parteien);
 		stringCheck(prozent, this.prozent);
 		stringCheck(direktmandat, this.direktmandate);
@@ -69,8 +72,13 @@ public class LandDaten {
 	 *            String
 	 * @param list
 	 *            Liste
+	 * @throws wenn
+	 *             die Liste null ist.
 	 */
 	private void stringCheck(String string, LinkedList<String> list) {
+		if (list == null) {
+			throw new IllegalArgumentException("Liste ist null.");
+		}
 		if (string != null) {
 			list.add(string);
 		} else {
@@ -83,6 +91,8 @@ public class LandDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Partei
 	 */
 	public String getParteien(int index) {
@@ -97,6 +107,8 @@ public class LandDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getStimmen(int index) {
@@ -111,6 +123,8 @@ public class LandDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Prozentanzahl
 	 */
 	public String getProzent(int index) {
@@ -125,6 +139,8 @@ public class LandDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist. 
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
@@ -139,6 +155,8 @@ public class LandDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return ‹berhangsmandate
 	 */
 	public String getUeberhangsmandate(int index) {

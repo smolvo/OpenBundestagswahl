@@ -22,11 +22,11 @@ public class BundTableModel extends AbstractTableModel {
 	 * 
 	 * @param daten
 	 *            die Daten
-	 * @throw NullPointerException
+	 * @throws IllegalArgumentException wenn das Bunddaten-Objekt null ist.
 	 */
 	public BundTableModel(BundDaten daten) {
 		if (daten == null) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		this.daten = daten;
 	}

@@ -84,8 +84,13 @@ public class BundDaten {
 	 *            String
 	 * @param list
 	 *            Liste
+	 * @throws IllegalArgumentException
+	 *             wenn die Liste null ist.
 	 */
 	private void stringCheck(String string, LinkedList<String> list) {
+		if (list == null) {
+			throw new IllegalArgumentException("Liste ist null");
+		}
 		if (string != null) {
 			list.add(string);
 		} else {
@@ -98,7 +103,9 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
-	 * @return Partei
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
+	 * @return Partei die benoetigte Partei
 	 */
 	public String getParteien(int index) {
 		if (index < 0 || index > parteien.size()) {
@@ -112,6 +119,8 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getStimmen(int index) {
@@ -126,6 +135,8 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Prozentanzahl
 	 */
 	public String getProzent(int index) {
@@ -140,6 +151,8 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Sitzanzahl
 	 */
 	public String getSitze(int index) {
@@ -154,6 +167,8 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
@@ -168,6 +183,8 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
 	 * @return ‹berhangsmandate
 	 */
 	public String getUeberhangsmandate(int index) {
@@ -182,7 +199,9 @@ public class BundDaten {
 	 * 
 	 * @param index
 	 *            Listenindex
-	 * @return Ausgleichsmandate
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auﬂerhalb der Listengroeﬂe ist.
+	 * @return Ausgleichsmandate die benoetigte Ausgleichsmandate
 	 */
 	public String getAusgleichsmandate(int index) {
 		if (index < 0 || index > ausgleichsmandate.size()) {
