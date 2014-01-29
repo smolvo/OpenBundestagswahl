@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
+import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters Jeder Tab
@@ -48,6 +51,15 @@ public class TabLeiste extends JTabbedPane {
 		this.setTabLayoutPolicy(TOP);
 		this.setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
 		neuerTabButton();
+		this.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				WahlFenster wahlfenster = getWahlfenster();
+				Steuerung.getInstance().setBtw(wahlfenster.getBtw());
+			}
+			
+		});
 	}		
 
 	/**
@@ -161,6 +173,15 @@ public class TabLeiste extends JTabbedPane {
 		} else {
 			pf.getiD().importiereWahl();
 		}
+	}
+	
+	/**
+	 * Gibt das index-te Wahlfenster aus.
+	 * @param index index
+	 * @return Wahlfenster
+	 */
+	public WahlFenster getWahlfenster() {
+		return (WahlFenster) this.getSelectedComponent();
 	}
 
 	/**
