@@ -135,8 +135,8 @@ public class Bundesland extends Gebiet implements Serializable,
 	 */
 	public void setParteien(LinkedList<Partei> parteien)
 			throws IllegalArgumentException {
-		if (parteien == null || parteien.isEmpty()) {
-			throw new IllegalArgumentException("Name ist leer");
+		if (parteien == null) {
+			throw new IllegalArgumentException("Der Parameter \"parteien\" ist null!");
 		}
 		this.parteien = parteien;
 	}
