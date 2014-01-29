@@ -23,8 +23,6 @@ import main.java.wahlvergleich.WahlvergleichTableModel;
 /**
  * Diese Klasse repräsentiert das Wahlvergleichsfenster. In diesem werden
  * bestimmmte Daten zweier BTW-Objektes angezeigt.
- * 
- * 
  */
 public class VergleichsFenster extends JFrame {
 
