@@ -1,4 +1,4 @@
-package main.java.wahlgenerator;
+package main.java.stimmgewichtsimulator;
 
 import java.io.IOException;
 import java.util.ArrayList;
