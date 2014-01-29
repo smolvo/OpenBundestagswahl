@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 06:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.11)  29 JAN 2014 07:16
 entering extended mode
 **Implementierung.tex
 
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.tex
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -15,9 +15,9 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,19 +32,19 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -194,7 +194,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -225,7 +225,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -249,19 +249,19 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
 Language: germanb 2008/06/01 v2.6m German support from the babel system
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
@@ -269,24 +269,24 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@austrian = a dialect from \language\l@german 
 Package babel Info: Making " an active character on input line 102.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
@@ -327,44 +327,44 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
@@ -372,18 +372,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count101
@@ -399,16 +399,16 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen122
 \Gm@dimlist=\toks22
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\endnotes\endnotes.sty"
 \c@endnote=\count104
 \endnotesep=\dimen123
 \@enotes=\write3
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip46
 \f@ncyO@elh=\skip47
 \f@ncyO@erh=\skip48
@@ -419,14 +419,14 @@ Package: placeins 2005/04/18  v 2.2
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -465,24 +465,24 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen124
 \Hy@linkcounter=\count105
 \Hy@pagecounter=\count106
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count107
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -494,7 +494,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count108
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
@@ -519,20 +519,20 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 \c@bookmark@seq@number=\count114
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip55
 )
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.aux)
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
@@ -547,7 +547,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count115
 \scratchdimen=\dimen128
@@ -597,10 +598,10 @@ LaTeX Font Info:    ... okay on input line 20.
 
 \AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring OFF on input line 20.
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count121
@@ -609,12 +610,12 @@ LaTeX Info: Redefining \ref on input line 20.
 LaTeX Info: Redefining \pageref on input line 20.
 LaTeX Info: Redefining \nameref on input line 20.
 
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.out)
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.out)
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.out)
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.out)
 \@outlinefile=\write4
- <KIT-Logo.png, id=147, 284.5029pt x 132.0132pt>
+ <KIT-Logo.png, id=143, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
 
 <use KIT-Logo.png>
@@ -622,159 +623,141 @@ Package pdftex.def Info: KIT-Logo.png used on input line 35.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Batman/Desktop/p
-se/pse13-1/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warning
- (ext4): destination with the same identifier (name{page.1}) has been already u
-sed, duplicate ignored
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/N/Dropbox/PSE/SV
+N/pse13-1/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warning 
+(ext4): destination with the same identifier (name{page.1}) has been already us
+ed, duplicate ignored
 <to be read again> 
                    \relax 
 l.40 ...e\thispagestyle{empty}\hspace{1em}\newpage
                                                    [1]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
-\tf@toc=\write5
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[1]
-Overfull \hbox (1.78372pt too wide) in paragraph at lines 56--58
-\OT1/cmr/m/n/12 wei-chen. Hier-bei ist uns je-doch auf-ge-fal-len, dass Ver[]an
-derungen am Ent-wurf un-umg[]anglich
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
+[1])
+\tf@toc=\write5
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 56--59
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--62
-
- []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 65.
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 66.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 63.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.68 \newpage
+l.65 \newpage
               [1]
-Overfull \hbox (0.99678pt too wide) in paragraph at lines 88--92
+Overfull \hbox (0.99678pt too wide) in paragraph at lines 85--89
 \OT1/cmr/m/n/12 Zudem wur-de ei-ne Config-Datei(ebenfalls im .csv-Format) hin-z
 u-gef[]ugt, die die Ein-wohner-
  []
 
 [2]
-Overfull \hbox (45.12057pt too wide) in paragraph at lines 96--99
-\OT1/pcr/b/n/12 Wahlfenstern\OT1/cmr/m/n/12 . Die-se wer-den mit-hil-fe ei-ner 
-\OT1/pcr/b/n/12 TabLeiste\OT1/cmr/m/n/12 , die eben-falls vom \OT1/pcr/b/n/12 P
-rogrammfenster
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--99
+Underfull \hbox (badness 10000) in paragraph at lines 93--96
 
  []
 
 
-Overfull \hbox (8.49794pt too wide) in paragraph at lines 108--123
+Overfull \hbox (8.49794pt too wide) in paragraph at lines 105--120
 \OT1/pcr/b/n/12 KartenFenster \OT1/cmr/m/n/12 bleibt, dank JTree, das sel-be. I
 m-mer wie-der das sel-be \OT1/pcr/b/n/12 KartenFenster\OT1/cmr/m/n/12 -
  []
 
 
-Overfull \hbox (16.72546pt too wide) in paragraph at lines 108--123
+Overfull \hbox (16.72546pt too wide) in paragraph at lines 105--120
 \OT1/cmr/m/n/12 wer-den kei-ne Dia-gram-me an-ge-zeigt, son-dern ein Berechne-K
 nopf an der \OT1/pcr/b/n/12 DiagrammFenster
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--123
+Underfull \hbox (badness 10000) in paragraph at lines 105--120
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 125--133
+Underfull \hbox (badness 10000) in paragraph at lines 122--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--138
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--142
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 141--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--150
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
 
-Overfull \hbox (41.59952pt too wide) in paragraph at lines 152--156
+Overfull \hbox (41.59952pt too wide) in paragraph at lines 149--153
 \OT1/cmr/m/n/12 zi-gen Sa-chen die sich ver[]andert ha-ben sind, dass die Me-th
 o-den \OT1/pcr/m/sl/12 aktualisiereWahlfenster()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--156
+Underfull \hbox (badness 10000) in paragraph at lines 149--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 160.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 157.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 160.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
  [5]
-Overfull \hbox (3.46617pt too wide) in paragraph at lines 172--173
+Overfull \hbox (3.46617pt too wide) in paragraph at lines 169--170
 \OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 Mandatsrechner2009 \OT1/cmr/m/n/12 
 be-rech-net die Sitz-ver-tei-lung nach Sainte-Lague/Sche-
  []
 
 
-Overfull \hbox (53.65678pt too wide) in paragraph at lines 172--173
-\OT1/cmr/m/n/12 Ge-bie-ten son-dern nach Ober- und Un-ter-ver-tei-lung ori-en-t
-iert ist. Da-mit der \OT1/pcr/b/n/12 Mandatsrechner2013
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
+
  []
 
 
-Overfull \hbox (42.42677pt too wide) in paragraph at lines 175--177
-\OT1/cmr/m/n/12 Die Klas-se \OT1/pcr/b/n/12 AbstrakterWahlgenerator \OT1/cmr/m/
-n/12 bil-det die Ober-klas-se f[]ur die Klas-se \OT1/pcr/b/n/12 Wahlgenerator
- []
-
-
-Overfull \hbox (54.24947pt too wide) in paragraph at lines 175--177
-\OT1/cmr/m/n/12 In der Klassse \OT1/pcr/b/n/12 Wahlgenerator \OT1/cmr/m/n/12 wi
-rd die kon-kre-te Im-ple-men-tie-rung der Me-tho-den \OT1/pcr/m/sl/12 erzeugeBT
-W()
+Overfull \hbox (4.61714pt too wide) in paragraph at lines 175--177
+\OT1/pcr/m/sl/12 verteileRestAnteile() \OT1/cmr/m/n/12 im-ple-men-tiert, wel-ch
+e von \OT1/pcr/m/sl/12 erzeugeBTW() \OT1/cmr/m/n/12 ver-wen-det wird. 
  []
 
 
@@ -783,62 +766,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--177
  []
 
 
-Overfull \hbox (53.79588pt too wide) in paragraph at lines 178--180
-\OT1/cmr/m/n/12 wah-len zu ge-ne-rie-ren. Die-se Funk-tio-na-lit[]at ist in der
- pri-va-ten Me-tho-de \OT1/pcr/m/sl/12 verteileRestAnteile()
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 [6]
-Overfull \hbox (3.1592pt too wide) in paragraph at lines 186--189
+Overfull \hbox (3.1592pt too wide) in paragraph at lines 183--186
 \OT1/pcr/b/n/12 Bundestagswahl\OT1/cmr/m/n/12 2 ge-si-chert. Die hat den Grund,
  dass die-se Klas-se der \OT1/pcr/b/n/12 DiffDiagramm\OT1/cmr/m/n/12 -
  []
 
 
-Overfull \hbox (100.61652pt too wide) in paragraph at lines 186--189
-\OT1/cmr/m/n/12 se \OT1/pcr/b/n/12 VergleichDaten \OT1/cmr/m/n/12 ge-spei-chert
- und dann in Form ei-ner Ta-bel-le durch die \OT1/pcr/b/n/12 WahlvergleichTable
-Model\OT1/cmr/m/n/12 -
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--197
+Underfull \hbox (badness 10000) in paragraph at lines 190--194
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--201
+Underfull \hbox (badness 10000) in paragraph at lines 195--198
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
 [8]
-Overfull \hbox (20.03566pt too wide) in paragraph at lines 228--230
+Overfull \hbox (20.03566pt too wide) in paragraph at lines 225--227
 \OT1/cmr/m/n/12 Die De-bug-ger ist ei-ne sta-ti-sche Klas-se und kann mit ei-ne
 m Wert \OT1/pcr/m/sl/12 Debug.setActive(true)
  []
 
 [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
 
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
@@ -847,36 +812,37 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
 
-(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
-plementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
+(C:\Users\N\Dropbox\PSE\SVN\pse13-1\Implementierung\Implementierungsbericht\Imp
+lementierung.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
 Package rerunfilecheck Info: File `Implementierung.out' has not changed.
-(rerunfilecheck)             Checksum: 1CE99266F157E71326F23333A62200B3;2424.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 251.
+(rerunfilecheck)             Checksum: 870D682BFB69A0F7345D04E936F2686B;2359.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 261.
  ) 
 Here is how much of TeX's memory you used:
- 7152 strings out of 493921
- 101136 string characters out of 3147278
- 194059 words of memory out of 3000000
- 10304 multiletter control sequences out of 15000+200000
- 8665 words of font info for 31 fonts, out of 3000000 for 9000
+ 7192 strings out of 493921
+ 102561 string characters out of 3144887
+ 194163 words of memory out of 3000000
+ 10324 multiletter control sequences out of 15000+200000
+ 12456 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,11n,43p,1302b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (13 pages, 253314 bytes).
+ 34i,11n,43p,1304b,534s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/urw/courier/ucrro8a.pfb>
+Output written on Implementierung.pdf (14 pages, 260832 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
+ 292 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
- 294 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -53,9 +53,6 @@
 \pagenumbering{arabic} 
 
 \section{Einleitung}
-Die dritte Phase unseres Projektes - die Implementierung. Unser Ziel in dieser Phase ist es, die bisherigen Errungenschaften in der Pflichten- und Entwurfsphase als ausführbares Programm umzusetzen und dabei möglichst wenig von den bisherigen Entwürfen auszuweichen. Hierbei ist uns jedoch aufgefallen, dass Veränderungen am Entwurf unumgänglich sind. Der Grund hierfür ist, dass bestimmte Sachen einfach nicht beachtet wurden, und somit übersehen worden sind. \\
-Dieses Dokument wird das fertige Programm mit seinen Funktionen erläutern und alle Veränderungen mit den zugehörigen Entwurfsentscheidungen ausführlich erklären. Anschließend werden wir eine Einblick in die nächste Phase geben. \\
-
 Dieses Dokument ist im Zuge der Implementierungsphase entstanden. Ziel dieser Phase, ist die Umsetzung der in der Pflichten- und Entwurfsphase festgelegten Strukturen und Prozessabläufe unter Berücksichtigung gegebener Rahmenbedingungen, Regeln und Zielvorgaben. \\
 Da sich jedoch während der Implementierung Sachverhalte ergeben, die mit dem eigentlichen Entwurf nicht vollständig zu vereinbaren sind, ist es notwendig einige Änderungen bzw. Anpassungen, aber auch Erweiterungen vorzunehmen. Diese, vom eigentlichen Plan abweichenden Entscheidungen, werden im Folgenden erläutert. \\
 Abschließend wird ein kurzer Ausblick auf die nächste Phase gegeben. \\
@@ -71,7 +68,7 @@ Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 
 \subsection{Datenmodell}
 Da die verwendeten Listen im Datenmodell durch die Berechnungen und Zuweisungen recht groß wurden, wurde zusätzliche Funktionalität in das Datenmodell gebracht. Dies erleichterte den Zugriff auf die benötigten Daten für verschiedene Komponente wie zum Beispiel {\myma{Mandatsrechner}}, {\myma{Wahlgenerator}} und {\myma{GUI}}.
-Zudem wurde die Klasse {\myma{BerichtDaten}} für die Klasse {\myma{Sitzverteilung}} erstellt. Dies war notwendig, damit die Berichttabelle in der GUI korrekt befüllt werden kann. Dabei hält die Klasse {\myma{BerichtDaten}} fünf Listen die jeweils die dazugehörigen Spalten befüllen. 
+Zudem wurde die Klasse {\myma{BerichtDaten}} für die Klasse {\myma{Sitzverteilung}} erstellt. Dies war notwendig, damit die Berichttabelle in der GUI korrekt befüllt werden kann. Dabei hält die Klasse {\myma{BerichtDaten}} fünf Listen, die jeweils die dazugehörigen Spalten befüllen. 
 Kandidaten haben nun einen Namen und einen bestimmten Platz in der Landesliste.
 \subsubsection{Bundestagswahl}
 Die Kernklasse unseres Programmes wurde mit geringen Änderungen umgesetzt. Die Deep-Copy Funktion wurde hierbei mithilfe von Serialisierung umgesetzt. Eine native Funktion hat den Aufwand hierfür übertroffen, was eigentlich geplant war. Mit diesem Weg, haben wir dies mit einem überschaubaren Aufwand umsetzen können.
@@ -94,7 +91,7 @@ Der endgültige Crawler erfüllt die Funktionen, die in der Entwurfs- und Pflich
 
 \subsubsection{Programmfenster}
 Das {\myma{Programmfenster}} ist der eigentliche Eintrittspunkt in das Programm, d.h. es enthält die Main-Methode und wird beim Start als Erstes ausgeführt. Dies bietet sich an, da das {\myma{Programmfenster}} das Erste sein soll, was der Benutzer sieht, da er damit ja interagieren muss. \\
-Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom {\myma{Programmfenster}} gehalten wird, realisiert. \\
+Wie bereits im Entwurf festgehalten, enthält das {\myma{Programmfenster}} eine Liste von {\myma{Wahlfenstern}}. Diese werden mithilfe einer {\myma{TabLeiste}}, die ebenfalls vom \\{\myma{Programmfenster}} gehalten wird, realisiert. \\
 Zusätzlich besitzt es ein {\myma{Menu}}, welches dem Benutzer ermöglicht, den gewünschten Befehl auszuwählen und ausführen zu lassen, ohne genaue Steuerbefehle kennen und anwenden zu müssen. \\
 
 \subsubsection{WahlFenster}
@@ -102,7 +99,7 @@ Im {\myma{WahlFenster}} wurde die Methode {\mymo{bundestagswahlDarstellen()}} ni
 in dem Konstruktor der Klasse Anwendung fand. Die {\mymo{wechsleAnsicht()}}-Methode aber, wurde implementiert, wobei
 als Parameter anstatt einer {\myma{Ansicht}}, die im Konstruktor erstellt wird und für das ganze {\myma{Wahlfenster}}
 immer das selbe Objekt ist, eine {\myma{Gebiet}}s-Objekt, welches angezeigt werden soll, übergeben wird.\\
-Jedes {\myma{WahlFenster}} hat einen Namen, als String gespeichert, eine zugehörige Bundestagswahl, sowie eine {\myma{Ansicht}} und eigene {\mymo{GUISteuerung}}, was auch leicht vom Entwurf abweicht.
+Jedes {\myma{WahlFenster}} hat einen Namen, als String gespeichert, eine zugehörige Bundestagswahl, sowie eine {\myma{Ansicht}} und eigene {\myma{GUISteuerung}}, was auch leicht vom Entwurf abweicht.
 
 \subsubsection{Ansicht}
 Die {\myma{Ansicht}} ist die Hauptkomponente des {\myma{WahlFenster}}s. Sie enthält die im Späteren näher erläuterten
@@ -169,14 +166,14 @@ Im Dialogepaket sind die Dialogeklassen enthalten die wir in unserem Programm ve
 
 
 \subsection{Mandatsrechner}
-Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-Lagu\"e/Schepers ohne Ausgleichsmandate und {\myma{Mandatsrechner2013}} berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu\"e/Scheper, aber mit Ausgleichsmandate. Da der \\{\myma{Mandatsrechner2013}} dadurch den {\myma{Mandatsrechner2009}} zur Berechnung nutzt, fällt die Notwendigkeit der Oberklasse {\myma{Mandatsrechner}} weg. Deswegen hält der \\ {\myma{Mandatsrechner2013}} ein Objekt der Klasse {\myma{Mandatsrecher2009}}. Zudem wurde noch in {\myma{Mandatsrechner2009}} das Verteilungsverfahren nach d'Hondt implementiert, damit eine alternative Berechnung der Sitzverteilung möglich ist. Die Überladung der Methoden {\mymo{bechne(Gebiet gebiet)}} wurde aufgehoben, da die Berechnung nicht nach Gebieten sondern nach Ober- und Unterverteilung orientiert ist. Damit der {\myma{Mandatsrechner2013}} möglichst viel wieder verwendet werden kann, wurden Bereiche die in beiden Berechnungsklassen Verwundung finden ausgelagert. Für die Implementierung des Entwurfsmuster Einzelstück wurden möglichst wenig globale Variablen, die vor jeder Berechnung neu initialisiert werden, verwendet, damit in dem Mandatsrechner nicht gewollte Zustände ausgeschlossen werden können.
+Die Klasse {\myma{Mandatsrechner2009}} berechnet die Sitzverteilung nach Sainte-Lagu\"e/Schepers ohne Ausgleichsmandate und {\myma{Mandatsrechner2013}} berechnet die Sitzverteilung ebenfalls nach Sainte-Lagu\"e/Scheper, aber mit Ausgleichsmandate. Da der \\{\myma{Mandatsrechner2013}} dadurch den {\myma{Mandatsrechner2009}} zur Berechnung nutzt, fällt die Notwendigkeit der Oberklasse {\myma{Mandatsrechner}} weg. Deswegen hält der \\ {\myma{Mandatsrechner2013}} ein Objekt der Klasse {\myma{Mandatsrecher2009}}. Zudem wurde noch in {\myma{Mandatsrechner2009}} das Verteilungsverfahren nach d'Hondt implementiert, damit eine alternative Berechnung der Sitzverteilung möglich ist. Die Überladung der Methoden {\mymo{bechne(Gebiet gebiet)}} wurde aufgehoben, da die Berechnung nicht nach Gebieten sondern nach Ober- und Unterverteilung orientiert ist. Damit der \\{\myma{Mandatsrechner2013}} möglichst viel wieder verwendet werden kann, wurden Bereiche die in beiden Berechnungsklassen Verwundung finden ausgelagert. Für die Implementierung des Entwurfsmuster Einzelstück wurden möglichst wenig globale Variablen, die vor jeder Berechnung neu initialisiert werden, verwendet, damit in dem Mandatsrechner nicht gewollte Zustände ausgeschlossen werden können.
 	
 	\subsection{Wahlgenerator}
-Die Klasse {\myma{AbstrakterWahlgenerator}} bildet die Oberklasse für die Klasse {\myma{Wahlgenerator}} und enthält alle Attribute und Methoden, die grundsätzlich für die Generierung von Wahlen wichtig sind.\\
-In der Klassse {\myma{Wahlgenerator}} wird die konkrete Implementierung der Methoden {\mymo{erzeugeBTW()}} und insbesondere von {\mymo{verteileStimmen()}} vorgenommen. Es gibt zusätzlich noch die privaten Methoden {\mymo{getAnteileVonPartei()}}, {\mymo{getParteienOhneAnteile()}}, {\mymo{verteileRestAnteile()}} und {\mymo{hatParteiStimmanteile()}} die intern verwendet werden.\\\
+Die Klasse {\myma{AbstrakterWahlgenerator}} bildet die Oberklasse für die Klasse \\{\myma{Wahlgenerator}} und enthält alle Attribute und Methoden, die grundsätzlich für die Generierung von Wahlen wichtig sind.\\
+In der Klassse {\myma{Wahlgenerator}} wird die konkrete Implementierung der Methoden \\{\mymo{erzeugeBTW()}} und insbesondere von {\mymo{verteileStimmen()}} vorgenommen. Es gibt zusätzlich noch die privaten Methoden {\mymo{getAnteileVonPartei()}}, \\{\mymo{getParteienOhneAnteile()}}, {\mymo{verteileRestAnteile()}} und \\{\mymo{hatParteiStimmanteile()}} die intern verwendet werden.\\\
 
 In der Entwurfsphase wurde die Anforderung festgelegt, vollständige Stimmanteile von Parteien auf Bundesebene zu bestimmen und eine Bundestagswahl auf dieser Grundlage zu erzeugen.\\
-Während der Implementierungsphase gab es darüber hinaus den Wunsch auch unvollständige Stimmanteile anzugeben. Damit ist gemeint, dass man beispielsweise nur festlegt, dass eine Partei keine Stimmen bekommen soll oder dass eine Partei einen bestimmten Anteil von Erst- und/oder Zweitstimmen bekommen soll, unabhängig davon an welche Parteien die restlichen Anteile verteilt werden. Oder auch vollständig zufällige Bundestagswahlen zu generieren. Diese Funktionalität ist in der privaten Methode {\mymo{verteileRestAnteile()}} implementiert, welche von {\mymo{erzeugeBTW()}} verwendet wird.\\\\
+Während der Implementierungsphase gab es darüber hinaus den Wunsch auch unvollständige Stimmanteile anzugeben. Damit ist gemeint, dass man beispielsweise nur festlegt, dass eine Partei keine Stimmen bekommen soll oder dass eine Partei einen bestimmten Anteil von Erst- und/oder Zweitstimmen bekommen soll, unabhängig davon an welche Parteien die restlichen Anteile verteilt werden. Oder auch vollständig zufällige Bundestagswahlen zu generieren. Diese Funktionalität ist in der privaten Methode \\{\mymo{verteileRestAnteile()}} implementiert, welche von {\mymo{erzeugeBTW()}} verwendet wird.\\\\
 
 Der Simulator für das negative Stimmgewicht benötigt außerdem nicht wie ursprünglich gedacht eine eigene Implementierung eines konkreten Wahlgenerators, sondern operiert auf bereits vorhandenen Bundestagswahlen, die bereits in der Anwendung zur Verfügung stehen.
 
@@ -185,7 +182,7 @@ Der Simulator für das negative Stimmgewicht benötigt außerdem nicht wie urspr
 \subsection{Wahlvergleich}
 Das Paket Wahlvergleich besteht nach der Implementierungsphase aus fünf Klassen. Die Hauptklasse ist der {\myma{Wahlvergleich}} der zwei übergebene Wahlen vergleicht. Wie im Entwurf festgelegt enthält die Klasse die Methode {\mymo{vergleiche()}}, die für den Vergleich von zwei {\myma{Bundestagswahlen}} sorgt. Jedoch wurden die Parameter, die übergeben werden musste, lieber als Klassenattribute festgehalt, was die Übergabe der gesamten Klasse an das schon in der GUI beschriebene {\myma{VergleichsFenster}} erleichtern sollte. \\
 Die im Entwurf erwähnte {\myma{Parteidifferenz}}-Klasse wurde komplett überarbeitet. In dieser werden nur noch die Partei und die Differenz der Sitze von {\myma{Bundestagswahl}}1 zu {\myma{Bundestagswahl}}2 gesichert. Die hat den Grund, dass diese Klasse der {\myma{DiffDiagramm}}-Klasse übergeben wird, welche die Sitzdifferenz veranschaulicht und ein weiterer Bestandteil des Vergleichspaketes ist. \\
-Die Daten des die von der {\myma{Wahlvergleich}}s Klasse ermittelt werden werden in der Klasse {\myma{VergleichDaten}} gespeichert und dann in Form einer Tabelle durch die {\myma{WahlvergleichTableModel}}-Klasse dargestellt. 
+Die Daten des die von der {\myma{Wahlvergleich}}s Klasse ermittelt werden werden in der Klasse {\myma{VergleichDaten}} gespeichert und dann in Form einer Tabelle durch die \\{\myma{WahlvergleichTableModel}}-Klasse dargestellt. 
 	
 \subsection{Steuerung}
 Die {\myma{Steuerung}}sklasse bildet die Fassade des gesamten Projektes. In der Implementierungsphase wurden nur die drei folgenden Methoden verändert:
@@ -205,7 +202,7 @@ Im Entwurf wurde festgelegt, dass diese Methode ein {\myma{Stimmenanteile}}-Obje
 \end{itemize}
 	
 	\subsection{Chronik}
-Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. die gesetzten Zweitstimmen in Deutschland können nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
+Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. dass die gesetzten Zweitstimmen in Deutschland können nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
 Unser erster Gedanke war es, eine ganze Bundestagswahl statt einer Stimme zu speichern. Dies ist jedoch ebenfalls verfallen, da die Chronik für die Deep-Copy Funktion der Bundestagswahl serialisierbar sein muss. In diesem Falle, würde auch die ganze Chronik gespeichert werden, was unvorhersehbare Folgen haben könnte. 
 
 
