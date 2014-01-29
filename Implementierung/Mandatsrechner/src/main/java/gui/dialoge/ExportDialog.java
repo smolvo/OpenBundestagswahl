@@ -9,17 +9,30 @@ import main.java.gui.Programmfenster;
 import main.java.gui.TabLeiste;
 import main.java.steuerung.Steuerung;
 
+/**
+ * Diese Klasse repräsentiert den Dialog für den Export,
+ * der ermöglicht Wahlen als .csv-Datei abzuspeichern.
+ * @author Manuel
+ *
+ */
 public class ExportDialog extends JDialog{
 
 	private static final long serialVersionUID = -6257552145843360427L;
-	JFileChooser dateiAuswahl = new JFileChooser();
-	Programmfenster pf;
-	TabLeiste tabLeiste;
 	
-	public ExportDialog(TabLeiste tabs) {
-		
-		 this.tabLeiste = tabs;
-		 this.pf = tabs.getPf();
+	/** repräsentiert den Dateiaussucher */
+	private final JFileChooser dateiAuswahl;
+	
+	/** repräsentiert das Programmfenster */
+	private final Programmfenster pf;
+	
+	/**
+	 * Der Konstruktor erstellt den FileChooser und führt
+	 * den Export durch.
+	 * @param pf Programmfenster
+	 */
+	public ExportDialog(Programmfenster pf) {
+		 this.pf = pf;
+		 dateiAuswahl = new JFileChooser();
 		
 		//allgemeine Anpassungen des Fensters
 		setTitle("Exportieren");
@@ -27,33 +40,16 @@ public class ExportDialog extends JDialog{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
-		//fileChooser
-		//lässt nur csv Dateien zu
-		//FileFilter filter = new FileNameExtensionFilter("Datei, um Wahlergebnis zu speichern", "csv");
-		//dateiAuswahl.setFileFilter(filter);
 	
 		int rueckgabeWert = dateiAuswahl.showSaveDialog(null);
 		
-		
-        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
-        {
-
-        	
-        	
+        if(rueckgabeWert == JFileChooser.APPROVE_OPTION) {
         	String pfad = dateiAuswahl.getSelectedFile().toString();
-
         	Steuerung.getInstance().exportieren(pfad);
         } else {
         	JOptionPane.showMessageDialog(pf,
 					"Speichern abgebrochen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
         }
-	
-        
-        
-        
-
-	
-}
+	}
 }

@@ -11,14 +11,13 @@ import main.java.model.BerichtDaten;
  */
 public class BerichtTableModel extends AbstractTableModel {
 
-	private static final long serialVersionUID = -1704078822201051366L;
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] { "Abgeordneter", "Partei", "Mandat",
+	private final String[] columns = new String[] { "Abgeordneter", "Partei", "Mandat",
 			"Bundesland", "Wahlkreis" };
 	
 	/** hält alle relevanten Daten */
-	private BerichtDaten daten;
+	private final BerichtDaten daten;
 	
 	public BerichtTableModel(BerichtDaten daten) {
 		this.daten = daten;

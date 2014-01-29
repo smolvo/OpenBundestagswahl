@@ -27,7 +27,7 @@ public final class Programmfenster extends JFrame {
 	private static final long serialVersionUID = -7954024258913364304L;
 
 	/** repräsentiert die Menüleiste */
-	private Menu menu;
+	private final Menu menu;
 
 	/** repräsentiert die Liste der aktuellgeladenen Wahlen */
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
@@ -110,21 +110,6 @@ public final class Programmfenster extends JFrame {
 	 */
 	public Menu getMenu() {
 		return menu;
-	}
-
-	/**
-	 * Setzt das Menü
-	 * 
-	 * @param menu
-	 *            das Menü
-	 * @throws NullPointerException
-	 */
-	public void setMenu(Menu menu) {
-		if (menu == null) {
-			throw new NullPointerException("Menü ist null.");
-		} else {
-			this.menu = menu;
-		}
 	}
 
 	/**

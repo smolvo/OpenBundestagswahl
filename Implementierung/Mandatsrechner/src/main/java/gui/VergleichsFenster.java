@@ -31,7 +31,7 @@ public class VergleichsFenster extends JFrame {
 	private static final long serialVersionUID = -5493451520927891697L;
 	
 	/** repräsentiert das Layout */
-	private GridBagConstraints gbc;
+	private final GridBagConstraints gbc;
 
 	/**
 	 * Der Konstruktor erstellt ein Vergleichsfenster.
@@ -42,6 +42,7 @@ public class VergleichsFenster extends JFrame {
 	public VergleichsFenster(Wahlvergleich vergleich) {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new GridBagLayout());
+		this.gbc = new GridBagConstraints();
 		this.setSize(1024, 768);
 		this.setTitle("Vergleich");
 		zeigeVergleich(vergleich);
@@ -61,7 +62,6 @@ public class VergleichsFenster extends JFrame {
 		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
 		JScrollPane skrollFenster = new JScrollPane(jTabelle);
-		this.gbc = new GridBagConstraints();
 		this.gbc.anchor = GridBagConstraints.CENTER;
 		this.gbc.fill = GridBagConstraints.BOTH;
 

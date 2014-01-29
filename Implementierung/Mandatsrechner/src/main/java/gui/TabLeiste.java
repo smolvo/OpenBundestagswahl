@@ -27,8 +27,6 @@ import main.java.steuerung.Steuerung;
  */
 public class TabLeiste extends JTabbedPane {
 
-	private static final long serialVersionUID = 566478766242504311L;
-
 	/** repräsentiert das Programmfenster der Tableiste */
 	private final Programmfenster pf;
 	
@@ -111,7 +109,7 @@ public class TabLeiste extends JTabbedPane {
 						JOptionPane.YES_NO_CANCEL_OPTION);
 
 				if (eingabe == 0) {
-					new ExportDialog(TabLeiste.this);
+					new ExportDialog(pf);
 				} else if (eingabe == 1) {
 					remove(c);
 					pf.getWahlen().remove(c);

@@ -27,6 +27,8 @@ public class EinstellungenDialog extends JDialog {
 
 	
 	private static final long serialVersionUID = -1289904870757728620L;
+	
+	/**  */
 	JPanel buttons = new JPanel();
 	JButton ok = new JButton("OK");
 	JButton abbrechen = new JButton("Abbrechen");

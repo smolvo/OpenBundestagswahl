@@ -22,34 +22,64 @@ import main.java.steuerung.Steuerung;
 
 /**
  * 
- * Diese Klasse repräsentiert die Menü- Leiste des Programmfensters
+ * Diese Klasse repräsentiert die Menü- Leiste des Programmfensters.
  * 
  */
 public class Menu extends JMenuBar {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -40733287939914615L;
-	private Programmfenster pf;
-	private JMenu datei;
-	private JMenu bearbeiten;
-	private JMenu extras;
-	private JMenu hilfe;
-	private JMenu wahldatenGenerieren;
+	/** repräsentiert das Programmfenster */
+	private final Programmfenster pf;
+	
+	/** repräsentiert den Menüleisteneintrag Datei */
+	private final JMenu datei;
+	
+	/** repräsentiert den Menüleisteneintrag Bearbeiten */
+	private final JMenu bearbeiten;
+	
+	/** repräsentiert den Menüleisteneintrag Extras */
+	private final JMenu extras;
+	
+	/** repräsentiert den Menüleisteneintrag Hilfe */
+	private final JMenu hilfe;
+	
+	/** repräsentiert den Menüleisteneintrag Wahldaten Generieren */
+	private final JMenu wahldatenGenerieren;
 
-	private JMenuItem importieren;
-	private JMenuItem speichern;
-	private JMenuItem beenden;
-	private JMenuItem rueckgaengig;
-	private JMenuItem wiederherstellen;
-	private JMenuItem vergleichen;
-	private JMenuItem negativesStimmgewicht;
-	private JMenuItem zufaelligeWahl;
-	private JMenuItem handbuch;
-	private JMenuItem about;
-	private JMenuItem lizenz;
-	private JMenuItem einstellungen;
+	/** repräsentiert den Importieren Eintrag */
+	private final JMenuItem importieren;
+	
+	/** repräsentiert den Speichern Eintrag */
+	private final JMenuItem speichern;
+	
+	/** repräsentiert den Beenden Eintrag */
+	private final JMenuItem beenden;
+	
+	/** repräsentiert den Rückgängig Eintrag */
+	private final JMenuItem rueckgaengig;
+	
+	/** repräsentiert den Wiederherstellen Eintrag */
+	private final JMenuItem wiederherstellen;
+	
+	/** repräsentiert den Vergleichen Eintrag */
+	private final JMenuItem vergleichen;
+	
+	/** repräsentiert den negatives Stimmgewicht generieren Eintrag */
+	private final JMenuItem negativesStimmgewicht;
+	
+	/** repräsentiert den Zufällige Wahl generieren Eintrag */
+	private final JMenuItem zufaelligeWahl;
+	
+	/** repräsentiert den Handbuch Eintrag */
+	private final JMenuItem handbuch;
+	
+	/** repräsentiert den About Eintrag */
+	private final JMenuItem about;
+	
+	/** repräsentiert den Lizenz Eintrag */
+	private final JMenuItem lizenz;
+	
+	/** repräsentiert den Einstellungen Eintrag */
+	private final JMenuItem einstellungen;
 	
 	
 
@@ -154,13 +184,21 @@ public class Menu extends JMenuBar {
 	 */
 	private class MenuListener implements ActionListener {
 
+		/** rerpäsentiert das Menü */
 		private Menu menu;
 
+		/**
+		 * Der Konstruktor initialisiert den Listener.
+		 * @param menu Menü
+		 */
 		public MenuListener(Menu menu) {
 			super();
 			this.menu = menu;
 		}
 		
+		/**
+		 * Diese Methode importiert eine Datei.
+		 */
 		private void importiere() {
 			if (pf.getiD() == null) {
 				ImportDialog iD = new ImportDialog(pf);
@@ -170,27 +208,20 @@ public class Menu extends JMenuBar {
 				pf.getiD().importiereWahl();
 			}
 		}
-			
 
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == menu.importieren) {
 				importiere();
-				
 			} else if (e.getSource() == menu.speichern) {
-				new ExportDialog(pf.getTabs());
+				new ExportDialog(pf);
 			} else if (e.getSource() == menu.beenden) {
-
 				int eingabe = JOptionPane.showConfirmDialog(null,
 						"Soll Programm wirklich beendet werden?",
 						"Einverständnis", JOptionPane.YES_NO_OPTION);
-
 				if (eingabe == 0) {
 					System.exit(0);
 				}
-
-			}
-
-			else if (e.getSource() == menu.rueckgaengig) {
+			} else if (e.getSource() == menu.rueckgaengig) {
 				Steuerung.getInstance().zurueckSetzen();
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
@@ -211,5 +242,4 @@ public class Menu extends JMenuBar {
 			}
 		}
 	}
-	
 }

@@ -16,7 +16,6 @@ import javax.swing.JTable;
  */
 public class BerichtsFenster extends JDialog {
 
-	private static final long serialVersionUID = -6882730327089576613L;
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.
