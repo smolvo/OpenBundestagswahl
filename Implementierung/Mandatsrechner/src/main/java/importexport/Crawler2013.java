@@ -255,10 +255,8 @@ public class Crawler2013 extends Crawler {
 
 		// Erzeugen der Parteien:
 		// int parteiOffset = 4;
-		LinkedList<Partei> parteien = new LinkedList<Partei>(); // new
-																// Partei[columns.size()-parteiOffset];
+		LinkedList<Partei> parteien = new LinkedList<Partei>();
 		for (int i = parteiOffset; i < columns.size(); i++) {
-			// TODO: Kuerzel und Farbe?
 			Partei p = new Partei(columns.get(i), columns.get(i), this.getParteiFarbe(columns.get(i)));
 			parteien.add(p);
 		}
@@ -301,7 +299,6 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		
 		// Erzeuge Bundeslaender.
 		for (int i = 0; i < rows.size() && !error; i++) {
 			if (rows.get(i)[2].equals(nrDeutschland + "")) {
@@ -309,10 +306,8 @@ public class Crawler2013 extends Crawler {
 						this.getEinwohnerzahl(rows.get(i)[1]));
 				tempNummer = rows.get(i)[0];
 				LinkedList<Partei> blParteien = new LinkedList<Partei>();
-				//System.out.println(b.getName()+":");
 				for (int j = 0; j < parteien.size(); j++) {
-					if (values.get(i)[parteiOffset + j][0]!=0 || values.get(i)[parteiOffset + j][1]!=0) {
-						//System.out.println(parteien.get(j).getName());
+					if (values.get(i)[parteiOffset + j][0] != 0 || values.get(i)[parteiOffset + j][1] != 0) {
 						blParteien.add(parteien.get(j));
 					}
 				}
@@ -614,7 +609,7 @@ public class Crawler2013 extends Crawler {
 					int red = Integer.parseInt(farbe[1]);
 					int green = Integer.parseInt(farbe[2]);
 					int blue = Integer.parseInt(farbe[3]);
-					color = new Color(red,green,blue);
+					color = new Color(red, green, blue);
 				} catch (Exception e) {
 					e.printStackTrace();
 					color = Color.GRAY;

@@ -9,6 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import test.java.Debug;
+
 import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.GeneratorDialog;
@@ -226,10 +228,12 @@ public class Menu extends JMenuBar {
 				Steuerung.getInstance().zurueckSetzen();
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
+				Debug.print("TODO: wiederherstellen");
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
+				Debug.print("TODO: negatives Stimmgewicht simulieren");
 			} else if (e.getSource() == menu.zufaelligeWahl) {
 				new GeneratorDialog(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {

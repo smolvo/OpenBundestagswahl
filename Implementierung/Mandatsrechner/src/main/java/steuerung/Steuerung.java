@@ -3,7 +3,6 @@ package main.java.steuerung;
 import java.io.File;
 import java.util.LinkedList;
 
-import com.sun.javafx.collections.annotations.ReturnsUnmodifiableCollection;
 
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
@@ -107,6 +106,11 @@ public class Steuerung {
 		return neueBtw;
 	}
 
+	/**
+	 * Startet eine Simulierung des negativen Stimmgewichts.
+	 * @param anteile
+	 * 			die gewuenschten Anteile.
+	 */
 	public void negStimmgewichtGenerierung(Stimmanteile anteile) {
 		// TODO
 	}
