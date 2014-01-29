@@ -34,6 +34,7 @@ public class DiffDiagramm extends JPanel {
 	public DiffDiagramm(ParteiDifferenzen[] diff) {
 		JFreeChart chart = createChart(diff);
 		ChartPanel chartPanel = new ChartPanel(chart);
+		this.setLayout(new BorderLayout());
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
