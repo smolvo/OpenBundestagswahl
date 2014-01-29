@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,8 +31,10 @@ public class Config {
 	private Map<String, List<String[]>> data;
 
 	private File config;
-	
 
+	/**
+	 * Privater Konstruktor für das Entwurfsmuster Einzelstueck
+	 */
 	private Config() {
 
 		this.config = new File(this.configPath);
@@ -79,6 +82,14 @@ public class Config {
 		return Config.getInstance().data.get(key);
 	}
 
+	/**
+	 * Gibt einzelne Konfigurationsfelder zurueck, die pro Feld nur ein Wert
+	 * gespeichert haben
+	 * 
+	 * @param key
+	 *            der Schlüssel
+	 * @return das Konfiguartionsfeld
+	 */
 	public String getConfigField(String key) {
 		List<String[]> list = this.getConfig(null);
 		String value = "";
@@ -100,6 +111,7 @@ public class Config {
 	 * @param value
 	 *            der zu speichernde wert fuer das key.
 	 * @throws Exception
+	 *             wenn die Datei nicht geschrieben oder gelanden werden kann.
 	 */
 	public void setConfig(String key, List<String[]> value) throws Exception {
 		if (key == null) {
@@ -110,6 +122,16 @@ public class Config {
 		config.exportConfig();
 	}
 
+	/**
+	 * Setzt ein neues Configfield
+	 * 
+	 * @param key
+	 *            die Bezeichnung
+	 * @param value
+	 *            der Werte des Felds
+	 * @throws Exception
+	 *             wenn die Datei nicht geschrieben oder geladen werden kann
+	 */
 	public void setConfigField(String key, String value) throws Exception {
 		Config config = Config.getInstance();
 		List<String[]> list = this.getConfig(null);
@@ -183,7 +205,13 @@ public class Config {
 		}
 	}
 
-	private void exportConfig() throws Exception {
+	/**
+	 * Exportiert die Datei
+	 * 
+	 * @throws IOException
+	 *             wenn die Datei nicht exportiert werden kann
+	 */
+	private void exportConfig() throws IOException {
 		FileWriter f = new FileWriter(new File(this.configPath));
 		BufferedWriter bf = new BufferedWriter(f);
 
@@ -215,7 +243,19 @@ public class Config {
 
 	}
 
+	/**
+	 * Gibt den Kopf der zu importierenden Dateien zurück
+	 * 
+	 * @param field
+	 *            die Einheit mit den Werten
+	 * @return den Kopf der Einheiz
+	 * @throws wenn
+	 *             die Einheit null ist
+	 */
 	private String[] getHead(String field) {
+		if (field == null) {
+			throw new IllegalArgumentException("String ist null.");
+		}
 		String[] head;
 		if (field.equals("einwohnerzahl")) {
 			head = new String[] { "Name", "Anzahl" };
@@ -230,6 +270,8 @@ public class Config {
 
 	/**
 	 * Gibt die gesamte Konfiguration in lesbarer Form aus.
+	 * 
+	 * @return den String mit dem Ergebnis
 	 */
 	@Override
 	public String toString() {

@@ -46,11 +46,12 @@ public class BundDiagramm {
 	 *            Deutschland
 	 * @param flaeche
 	 *            Diagrammfläche
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn die Parameter null sind
 	 */
 	public BundDiagramm(Deutschland land, final DiagrammFenster flaeche) {
-		if (land == null) {
-			throw new NullPointerException("Deutschland nicht gefunden.");
+		if (land == null || flaeche == null) {
+			throw new IllegalArgumentException("Parameter sind null.");
 		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
@@ -93,9 +94,14 @@ public class BundDiagramm {
 	 * 
 	 * @param land
 	 *            Deutschland
+	 * @throws IllegalArgumentException
+	 *             wenn das Deutschland-Objekt ist
 	 * @return Kuchendiagramm
 	 */
 	private JFreeChart createChart(Deutschland land) {
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland-Objekt ist null.");
+		}
 		ArrayList<Integer> daten = new ArrayList<Integer>();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
@@ -115,8 +121,9 @@ public class BundDiagramm {
 			}
 		}
 
-		JFreeChart chart = ChartFactory.createPieChart3D("Sitzverteilung im Deutschen Bundestag",
-				result, true, true, true);
+		JFreeChart chart = ChartFactory.createPieChart3D(
+				"Sitzverteilung im Deutschen Bundestag", result, true, true,
+				true);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
 
 		// färben
