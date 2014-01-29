@@ -13,10 +13,10 @@ import main.java.model.Partei;
 public class Sprungstelle {
 
 	/** Die Partei bei der dieser Sprung aufgetreten ist. */
-	private Partei partei;
+	private final Partei partei;
 	
 	/** Das Bundesland bei dem dieser Sprung aufgetreten ist. */
-	private Bundesland bundesland;
+	private final Bundesland bundesland;
 	
 	/** Die Zweitstimmenanzahl zu dem dieser Sprung aufgetreten ist. */
 	private int zweitstimmzahl;
@@ -34,8 +34,14 @@ public class Sprungstelle {
 	 * @param richtung Die Richtung in die dieser Sprung ging. (positiv oder negativ)
 	 */
 	public Sprungstelle(Partei partei, Bundesland bundesland, int zweitstimmzahl, Richtung richtung) {
-		this.setPartei(partei);
-		this.setBundesland(bundesland);
+		if (partei == null) {
+			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+		}
+		if (bundesland == null) {
+			throw new IllegalArgumentException("Der Parameter \"bundesland\" ist null!");
+		}
+		this.partei = partei;
+		this.bundesland = bundesland;
 		this.setZweitstimmzahl(zweitstimmzahl);
 		this.setRichtung(richtung);
 	}
@@ -49,33 +55,11 @@ public class Sprungstelle {
 	}
 
 	/**
-	 * Setzt die Partei bei der dieser Sprung aufgetreten ist.
-	 * @param partei Die Partei bei der dieser Sprung aufgetreten ist.
-	 */
-	public void setPartei(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
-		}
-		this.partei = partei;
-	}
-
-	/**
 	 * Gibt das Bundesland bei der dieser Sprung aufgetreten ist zurück.
 	 * @return Das Bundesland bei der dieser Sprung aufgetreten ist.
 	 */
 	public Bundesland getBundesland() {
 		return bundesland;
-	}
-
-	/**
-	 * Setzt das Bundesland bei der dieser Sprung aufgetreten ist.
-	 * @param bundesland Das Bundesland bei der dieser Sprung aufgetreten ist.
-	 */
-	public void setBundesland(Bundesland bundesland) {
-		if (bundesland == null) {
-			throw new IllegalArgumentException("Der Parameter \"bundesland\" ist null!");
-		}
-		this.bundesland = bundesland;
 	}
 
 	/**
