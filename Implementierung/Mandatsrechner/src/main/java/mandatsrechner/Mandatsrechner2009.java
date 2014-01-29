@@ -45,7 +45,7 @@ public class Mandatsrechner2009 {
 		for (Partei partei : bundestagswahl.getParteien()) {
 			
 			partei.resetUeberhangMandate();
-			
+			partei.resetAusgleichsMandate();
 			for (Kandidat kandidat : partei.getMitglieder()) {
 				kandidat.setMandat(Mandat.KEINMANDAT);
 			}

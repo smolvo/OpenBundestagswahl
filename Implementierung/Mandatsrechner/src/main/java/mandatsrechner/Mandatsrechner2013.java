@@ -180,18 +180,19 @@ public class Mandatsrechner2013 {
 						diffSitzeBundesland += partei.getUeberhangMandate(bl);
 						System.out.println(partei.getName()+" "+bl.getName()+ " "+diffSitzeBundesland+" = "+sitzeBundesland+" - "+partei.getMindestsitzanzahl(bl)+" UM: "+partei.getUeberhangMandate(bl)+" "+(partei.getAnzahlMandate(Mandat.DIREKTMANDAT, bl)+partei.getAnzahlMandate(Mandat.LISTENMANDAT, bl)));
 						// Suche Kandidaten ohne Mandat und fuege sie als Ausgleichsmandat hinzu.
+
 						if(diffSitzeBundesland < 0){
-							/*
-							 * for(int i = 0; i< Math.abs(diffSitzeBundesland); i++){
+							for(int i = 0; i< Math.abs(diffSitzeBundesland); i++){
 								System.out.println("ABZIEHEN "+partei.getName()+" "+bl.getName());
-								for (int j=(partei.getLandesliste().size()-1); j>=0;i--) {
+								for (int j=(partei.getLandesliste().size()-1); j>=0;j--) {
 									Kandidat mandat = partei.getLandesliste(bl).getListenkandidaten().get(j);
 									if(mandat.getMandat().equals(Mandat.LISTENMANDAT)){
 										mandat.setMandat(Mandat.KEINMANDAT);
+										partei.decrementAusgleichsMandate(bl);
 										break;
 									}
 								}
-							}*/
+							}
 						}else{
 							for (int i = 0; i < diffSitzeBundesland; i++) {
 								if(partei.getLandesliste(bl).getListenkandidaten().size() <= i){
@@ -210,14 +211,15 @@ public class Mandatsrechner2013 {
 									bw.getSitzverteilung().addAbgeordnete(
 											neuerAbgeordneter);
 									neuerAbgeordneter
-											.setMandat(Mandat.AUSGLEICHSMANDAT);
+											.setMandat(Mandat.LISTENMANDAT);
 									bw
 									.getSitzverteilung()
 									.getBericht()
 									.zeileHinzufuegen(neuerAbgeordneter.getName(),
 											neuerAbgeordneter.getPartei().getName(),
-											Mandat.AUSGLEICHSMANDAT.toString(), bl.getName(),
+											Mandat.LISTENMANDAT.toString(), bl.getName(),
 											"");
+									partei.incrementAusgleichsMandate(bl);
 								} else {
 									diffSitzeBundesland++;
 								}

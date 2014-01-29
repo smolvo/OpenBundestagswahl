@@ -57,6 +57,9 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/** Die Anzahl der Überhangmandate pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> ueberhangMandate;
 	
+	/** Die Anzahl der Ausgleichsmandate pro Bundesland dieser Partei. */
+	private HashMap<Bundesland, Integer> ausgleichsMandate;
+	
 	/**
 	 * Comparator zum sortieren von Parteien nach der Anzahl der Überhangsmandate.
 	 */
@@ -652,6 +655,55 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	public void resetUeberhangMandate () {
 		this.ueberhangMandate = new HashMap<Bundesland,Integer>();
+	}
+	
+	public int getAusgleichsMandate() {
+		int anzahl = 0;
+		Set<Bundesland> set = this.ausgleichsMandate.keySet();
+		Iterator<Bundesland> i = set.iterator();
+
+		while (i.hasNext()) {
+			Bundesland key = (Bundesland) i.next();
+			anzahl += this.ausgleichsMandate.get(key);
+		}
+		return anzahl;
+	}
+	
+	public int getAusgleichsMandate(Bundesland bl) {
+		int anzahl = 0;
+		Set<Bundesland> set = this.ausgleichsMandate.keySet();
+		Iterator<Bundesland> i = set.iterator();
+
+		while (i.hasNext()) {
+			Bundesland key = (Bundesland) i.next();
+			if(key.equals(bl)) {
+				anzahl += this.ausgleichsMandate.get(key);
+			}
+		}
+		return anzahl;
+	}
+	
+	public void incrementAusgleichsMandate (Bundesland bl) {
+		int value = 1;
+		if(this.ausgleichsMandate.containsKey(bl)){
+			value = this.ausgleichsMandate.get(bl);
+			value += 1;
+		}
+		this.ausgleichsMandate.put(bl, value);	
+	}
+	
+	public void decrementAusgleichsMandate (Bundesland bl) {
+		int value = -1;
+		if(this.ausgleichsMandate.containsKey(bl)){
+			value = this.ausgleichsMandate.get(bl);
+			value -= 1;
+		}
+		this.ausgleichsMandate.put(bl, value);
+		System.out.println("DEC: "+bl.getName()+" "+value);
+	}
+
+	public void resetAusgleichsMandate () {
+		this.ausgleichsMandate = new HashMap<Bundesland,Integer>();
 	}
 	
 	@Override

@@ -39,7 +39,7 @@ public class Mandatsrechner2013Test {
 			//newW = m.berechneAlles(newW);
 			int count = 0;
 			for (Partei partei : newW.getParteien()) {
-				//if(partei.getName().equals("CDU")){
+				//if(partei.getName().equals("SPD")){
 					/*for (Bundesland bl : newW.getDeutschland().getBundeslaender()) {
 						System.out.println(partei.getName()+" "+bl.getName());
 						int sum = partei.getAnzahlMandate(Mandat.MANDAT,bl) + 
@@ -55,12 +55,11 @@ public class Mandatsrechner2013Test {
 					}*/
 					
 					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + 
-							partei.getAnzahlMandate(Mandat.DIREKTMANDAT) + 
-							partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT);
+							partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
 					System.out.println(partei.getName()+": ");
 					System.out.println("Mandate: "+partei.getAnzahlMandate(Mandat.LISTENMANDAT));
 					System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
-					System.out.println("Ausgleichsmandate: "+partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT));
+					System.out.println("Ausgleichsmandate: "+partei.getAusgleichsMandate());
 					System.out.println("Ueberhangsmandate: "+partei.getUeberhangMandate());
 					System.out.println("Summe: "+sum);
 					System.out.println("\n");
