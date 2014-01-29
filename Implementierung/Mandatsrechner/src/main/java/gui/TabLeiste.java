@@ -176,7 +176,6 @@ public class TabLeiste extends JTabbedPane {
 	
 	/**
 	 * Gibt das index-te Wahlfenster aus.
-	 * @param index index
 	 * @return Wahlfenster
 	 */
 	public WahlFenster getWahlfenster() {

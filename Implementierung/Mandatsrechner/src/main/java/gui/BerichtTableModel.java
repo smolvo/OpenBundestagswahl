@@ -22,6 +22,10 @@ public class BerichtTableModel extends AbstractTableModel {
 	/** hält alle relevanten Daten */
 	private final BerichtDaten daten;
 	
+	/**
+	 * Der Konstruktor initialisiert die Daten.
+	 * @param daten Daten
+	 */
 	public BerichtTableModel(BerichtDaten daten) {
 		this.daten = daten;
 	}

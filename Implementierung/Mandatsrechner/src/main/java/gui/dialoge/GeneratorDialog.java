@@ -90,6 +90,8 @@ public class GeneratorDialog extends JDialog {
 
 	/**
 	 * Der Konstruktor legt das Layout fest und initialisiert das Fenster.
+	 * @param basiswahlen die Liste an Basiswahlen
+	 * @param pf das Programmfenster
 	 */
 	public GeneratorDialog(List<Bundestagswahl> basiswahlen, Programmfenster pf) {
 		this.pf = pf;

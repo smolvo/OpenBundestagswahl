@@ -11,8 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import test.java.Debug;
-
 import main.java.gui.dialoge.ImportDialog;
 import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
@@ -166,7 +164,7 @@ public final class Programmfenster extends JFrame {
 	 * Diese Methode gibt eine Liste an Bundestagswahlen aus, die in das
 	 * Programm geladen wurden.
 	 * 
-	 * @return
+	 * @return Bundestagswahl
 	 */
 	public List<Bundestagswahl> getBundestagswahlen() {
 		List<Bundestagswahl> btws = new LinkedList<Bundestagswahl>();
