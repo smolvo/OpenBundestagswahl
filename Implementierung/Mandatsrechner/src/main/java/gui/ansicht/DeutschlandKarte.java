@@ -172,6 +172,7 @@ public class DeutschlandKarte extends JPanel {
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
 			Color bwfarbe = bundeslaender.get(i).getFarbe();
+			System.out.println(bundeslaender.get(i) + " " + bundeslaender.get(i).getFarbe());
 			try {
 				int hoehe = aktuellesBild.getHeight();
 				int breite = aktuellesBild.getWidth();

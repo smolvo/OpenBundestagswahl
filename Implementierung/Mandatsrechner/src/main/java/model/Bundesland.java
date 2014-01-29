@@ -82,17 +82,12 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Setzt die Farbe des Bundeslandes.
+	 * Setzt die Farbe des Bundeslandes. Akzeptiert null als Argument damit die Farbe im Generator zurueckgesetzt werden kann.
 	 * 
 	 * @param farbe
 	 *            des Bundeslandes.
-	 * @throws IllegalArgumentException
-	 *             wenn die Farbe leer ist.
 	 */
-	public void setFarbe(Color farbe) throws IllegalArgumentException {
-		if (farbe == null) {
-			throw new IllegalArgumentException("Farbe ist leer");
-		}
+	public void setFarbe(Color farbe) {
 		this.farbe = farbe;
 	}
 
@@ -255,16 +250,23 @@ public class Bundesland extends Gebiet implements Serializable,
 		return this.landesliste;
 	}
 	
-	
+	/**
+	 * Ermittelt die Partei mit der hoechsten Anzahl zweitstimmen. Bei zwei Parteien mit gleicher Anzahl zweitstimmen wird die erste in
+	 * der Liste zuruckgegeben
+	 * @return die Partei mit den meisten Zweitstimmen
+	 */
 	public Partei ermittleStaerkstePartei() {
 		Partei staerkstePartei = null;
-		int max = 0;
-		for (Partei partei : parteien ) {
-			if (getAnzahlZweitstimmen(partei) > max) {
-				max = getAnzahlZweitstimmen(partei);
-				staerkstePartei = partei;
+		int maxStimmzahl = 0;
+		for (Partei partei: parteien) {
+			int aktuellerWert = this.getAnzahlZweitstimmen(partei);
+		//	System.out.println(this.getName() + " " + partei.getName() + " " + maxStimmzahl + " " + aktuellerWert);
+			if (aktuellerWert > maxStimmzahl) {
+				maxStimmzahl = aktuellerWert;
+				staerkstePartei = partei; 
 			}
 		}
+		
 		return staerkstePartei;
 		
 	}
