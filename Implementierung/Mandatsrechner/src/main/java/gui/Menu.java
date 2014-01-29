@@ -80,9 +80,6 @@ public class Menu extends JMenuBar {
 	/** repräsentiert den Lizenz Eintrag */
 	private final JMenuItem lizenz;
 	
-	/** repräsentiert den Einstellungen Eintrag */
-	private final JMenuItem einstellungen;
-	
 	
 
 	/**
@@ -133,13 +130,9 @@ public class Menu extends JMenuBar {
 		negativesStimmgewicht = new JMenuItem(
 				"negatives Stimmgewicht generieren");
 		zufaelligeWahl = new JMenuItem("zufällige Wahl generieren");
-		einstellungen = new JMenuItem("Einstellungen");
-		einstellungen.setIcon(new ImageIcon(
-				"src/main/resources/gui/images/einstellungen.png"));
 
 		extras.add(vergleichen);
 		extras.add(wahldatenGenerieren);
-		extras.add(einstellungen);
 
 		wahldatenGenerieren.add(negativesStimmgewicht);
 		wahldatenGenerieren.add(zufaelligeWahl);
