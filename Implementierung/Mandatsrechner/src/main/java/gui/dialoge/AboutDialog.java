@@ -27,7 +27,7 @@ public class AboutDialog extends JDialog {
 	private static final long serialVersionUID = -1091530997927819189L;
 
 	/** Die HTML-Datei die in der Webview angezeigt wird. */
-	private static final File aboutFile = 
+	private static final File ABOUT_FILE = 
 			new File("src/main/resources/hilfe/about.html");
 	
 	/**
@@ -85,7 +85,7 @@ public class AboutDialog extends JDialog {
         
         
         try {
-			webEngine.load(aboutFile.toURI().toURL().toString());
+			webEngine.load(ABOUT_FILE.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

@@ -26,7 +26,7 @@ public class LizenzDialog extends JDialog {
 	private static final long serialVersionUID = 4951470770450608239L;
 	
 	/** Die HTML-Datei die in der Webview angezeigt wird. */
-	private static final File lizenzFile = 
+	private static final File LIZENZ_FILE = 
 			new File("src/main/resources/hilfe/lizenz.html");
 	
 	/**
@@ -84,7 +84,7 @@ public class LizenzDialog extends JDialog {
         
         
         try {
-			webEngine.load(lizenzFile.toURI().toURL().toString());
+			webEngine.load(LIZENZ_FILE.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

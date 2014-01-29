@@ -24,7 +24,7 @@ public class HandbuchDialog extends JDialog {
 
 	
 	/** Die HTML-Datei die in der Webview angezeigt wird. */
-	private static final File handbuchFile = 
+	private static final File HANDBUCH_FILLE = 
 			new File("src/main/resources/hilfe/tutorial1.html");
 	
 	/**
@@ -110,7 +110,7 @@ public class HandbuchDialog extends JDialog {
         
         
         try {
-			webEngine.load(handbuchFile.toURI().toURL().toString());
+			webEngine.load(HANDBUCH_FILLE.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
