@@ -10,7 +10,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import main.java.gui.dialoge.AboutDialog;
-import main.java.gui.dialoge.EinstellungenDialog;
 import main.java.gui.dialoge.ExportDialog;
 
 import main.java.gui.dialoge.GeneratorDialog;
