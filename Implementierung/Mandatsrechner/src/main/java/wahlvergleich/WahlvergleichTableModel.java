@@ -15,8 +15,9 @@ public class WahlvergleichTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Erststimmenanzahl",
-			"%", "Differenz", "Zweitstimmenanzahl", "%", "Differenz",
-			"Erststimmenanzahl", "%", "Zweitstimmenanzahl", "%" };
+			"%-Erststimmen", "Erststimmendifferenz", "Zweitstimmenanzahl",
+			"%-Zweitstimmen", "Zweitstimmendifferenz", "Erststimmenanzahl",
+			"%-Erststimmen", "Zweitstimmenanzahl", "%-Zweitstimmen" };
 
 	/** hält alle relevanten Daten */
 	private WahlvergleichDaten daten;

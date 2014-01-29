@@ -276,6 +276,11 @@ public class Bundestagswahl implements Serializable {
 		return success;
 	}
 
+	/**
+	 * Sobald eine Stimme in der GUI geändert wurde, ist es möglich
+	 * die Stimme wieder zurück zu setzen.
+	 * @return ob erfolgreich oder nicht
+	 */
 	public boolean zurueckSetzen () {
 		Stimme alteStimme = this.chronik.restauriereStimme();
 		return this.setzeStimme(alteStimme);

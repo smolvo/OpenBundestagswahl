@@ -59,7 +59,9 @@ public class DiffDiagramm extends JPanel {
 
 		// y-Achsenabschnitt festlegen
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setRange(new Range(-20, 20));
+        int min = getKleinste(diff) - 5;
+        int max = getGroesstes(diff) + 5;
+        rangeAxis.setRange(new Range(min, max));
         plot.setRangeAxis(rangeAxis);
         
 		// färben der Parteienbalken
@@ -82,5 +84,35 @@ public class DiffDiagramm extends JPanel {
 	 */
 	public Dimension resize() {
 		return new Dimension(this.getWidth(), (int) (0.6 * this.getWidth()));
+	}
+	
+	/**
+	 * Gibt die kleinste Differenz aus.
+	 * @param diff Differenzen-Vektor
+	 * @return kleinstes Element
+	 */
+	private int getKleinste(ParteiDifferenzen[] diff) {
+		int kleinstes = Integer.MAX_VALUE;
+		for (int i = 0; i < diff.length; i++) {
+			if (diff[i].getDiff() < kleinstes) {
+				kleinstes = diff[i].getDiff();
+			}
+		}
+		return kleinstes;
+	}
+	
+	/**
+	 * Gibt die größte Differenz aus.
+	 * @param diff Differenzen-Vektor
+	 * @return größtes Element
+	 */
+	private int getGroesstes(ParteiDifferenzen[] diff) {
+		int groesstes = Integer.MIN_VALUE;
+		for (int i = 0; i < diff.length; i++) {
+			if (diff[i].getDiff() > groesstes) {
+				groesstes = diff[i].getDiff();
+			}
+		}
+		return groesstes;
 	}
 }
