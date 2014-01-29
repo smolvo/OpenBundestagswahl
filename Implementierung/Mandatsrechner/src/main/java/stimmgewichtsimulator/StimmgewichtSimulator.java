@@ -129,14 +129,14 @@ public class StimmgewichtSimulator {
 	 */
 	public boolean berechneNegStimmgewicht() {
 
-		// sortiert die Parteien nach Anzahl ihrer Überhangmandate
-		LinkedList<Partei> parteienSortiertKopie1 = this.getKopie1()
+	
+		LinkedList<Partei> parteien = this.getKopie1()
 				.getParteien();
 
-		Collections.sort(parteienSortiertKopie1, Partei.NACH_UEBERHANGMANDATEN);
+		Collections.sort(parteien, Partei.NACH_UEBERHANGMANDATEN);
 
 		// Iterieren über alle Parteien
-		for (Partei partei : parteienSortiertKopie1) {
+		for (Partei partei : parteien) {
 			letztePartei = partei;
 
 			List<Bundesland> bundeslaender = this.getKopie1().getDeutschland()
@@ -199,8 +199,10 @@ public class StimmgewichtSimulator {
 
 		// eigentlicher Kopiervorgang
 		try {
+			
 			setKopie2(kopie1.deepCopy()); 
 			
+	
 			Debug.print("Anpassung vorgenommen");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -375,7 +377,11 @@ public class StimmgewichtSimulator {
 	 */
 
 	private void vergleicheSitzverteilungen(Partei p, boolean variante) {
-	
+		
+		Debug.setAktiv(false);
+		setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(kopie1));
+		setKopie2(Mandatsrechner2009.getInstance().berechneSainteLague(kopie2));
+	Debug.setAktiv(true);
 		int mandatsZahlAlt = mandatsZahlBerechnen(p, this.kopie2);
 		int mandatsZahlNeu = mandatsZahlBerechnen(p, this.kopie1);
 		
@@ -384,7 +390,9 @@ public class StimmgewichtSimulator {
 		int anfang = letzterWK.getZweitstimme(letztePartei).getAnzahl()
 				- stimmanzahl;
 
-		System.out.println("Mandatszahl alt: " + mandatsZahlAlt + " " + "Mandatszahl neu: " + mandatsZahlNeu);
+		
+		
+		System.out.println(kopie2.hashCode() +" Mandatszahl alt: " + mandatsZahlAlt + " " +kopie1.hashCode() + " Mandatszahl neu: " + mandatsZahlNeu);
 		// Zweitstimmen wurden erhöht
 		if (variante) {
 
@@ -392,13 +400,13 @@ public class StimmgewichtSimulator {
 			if (mandatsZahlNeu > mandatsZahlAlt) {
 				// fügt eine neue positive Sprungstelle hinzu
 				Debug.print("----------> Positive Sprungstelle gefunden");
-				fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
-						Richtung.POSITIV);
+				//fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
+					//	Richtung.POSITIV);
 			} else if (mandatsZahlNeu < mandatsZahlAlt) {
 				// fügt eine neue negative Sprungstelle hinzu
 				Debug.print("----------> Negative Sprungstelle gefunden");
-				fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
-						Richtung.NEGATIV);
+				//fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
+				//		Richtung.NEGATIV);
 			}
 
 			// Zweitstimmen wurden erniedrigt
@@ -407,16 +415,16 @@ public class StimmgewichtSimulator {
 			if (mandatsZahlNeu < mandatsZahlAlt) {
 				// fügt eine neue positive Sprungstelle hinzu
 				Debug.print("----------> Positive Sprungstelle gefunden");
-				fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
-						Richtung.POSITIV);
+				//fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
+					//	Richtung.POSITIV);
 
 			}
 
 			else if (mandatsZahlNeu > mandatsZahlAlt) {
 				// fügt eine neue negative Sprungstelle hinzu
 				Debug.print("----------> Negative Sprungstelle gefunden");
-				fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
-						Richtung.NEGATIV);
+			//	fuegeSprungstelleHinzu(getSprungstelle(anfang, ende),
+				//		Richtung.NEGATIV);
 			}
 		}
 
@@ -432,10 +440,11 @@ public class StimmgewichtSimulator {
 	 *            obere Grenze
 	 * @return int Anzahl an Zweitstimmen, die Sprungstelle ergeben
 	 */
+	//TODO
 	private int getSprungstelle(int anfang, int ende) {
 		int aenderung = (anfang + ende) / 2;
 
-		letzterWK.getZweitstimme(letztePartei).setAnzahl(aenderung);
+		//letzterWK.getZweitstimme(letztePartei).setAnzahl(aenderung);
 
 		Sitzverteilung neu = this.kopie1.getSitzverteilung();
 		Sitzverteilung alt = this.kopie2.getSitzverteilung();
@@ -444,13 +453,7 @@ public class StimmgewichtSimulator {
 				kopie1));
 		Debug.setAktiv(true);
 
-		int mandatsZahlAlt = 0;
-		for (Kandidat kandidatAlt : alt.getAbgeordnete()) {
-			if (kandidatAlt.getPartei().getName()
-					.equals(letztePartei.getName())) {
-				mandatsZahlAlt++;
-			}
-		}
+		int mandatsZahlAlt = mandatsZahlBerechnen(letztePartei, this.kopie2);
 
 		int mandatsZahlNeu = 0;
 		for (Kandidat kandidatNeu : neu.getAbgeordnete()) {
@@ -481,6 +484,7 @@ public class StimmgewichtSimulator {
 	 * @param anzahlZweitstimmen
 	 * @param richtung
 	 */
+	//TODO
 	private void fuegeSprungstelleHinzu(int anzahlZweitstimmen,
 			Richtung richtung) {
 
