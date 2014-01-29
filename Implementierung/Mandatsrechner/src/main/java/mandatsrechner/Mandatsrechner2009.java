@@ -43,9 +43,10 @@ public class Mandatsrechner2009 {
 				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bundestagswahl.getParteien()) {
-			
+			// Setze Ausgleichs- und Ueberhangmandate zurueck.
 			partei.resetUeberhangMandate();
 			partei.resetAusgleichsMandate();
+			// Setze alle Mandate zurueck.
 			for (Kandidat kandidat : partei.getMitglieder()) {
 				kandidat.setMandat(Mandat.KEINMANDAT);
 			}
@@ -72,7 +73,7 @@ public class Mandatsrechner2009 {
 			for (Wahlkreis wahlkreis : bundesland.getWahlkreise()) {
 				int max = 0;
 				Kandidat gewinner = null;
-				
+				// Suche den Kandidaten mit den meisten Erststimmen.
 				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
 					if (max < erst.getAnzahl()) {
 						// Kandidaten Mandat zuweisen und als Wahlkreissieger in
@@ -83,7 +84,8 @@ public class Mandatsrechner2009 {
 				}
 				/*
 				 * bekommt ein Direktmandat und wird als Wahlkreissieger im
-				 * Wahlklreis eingetragen
+				 * Wahlklreis eingetragen. Falls max = 0 ist, gibt es keine
+				 * Erststimmen in diesem Wahlkreis.
 				 */
 				if(max != 0){
 					gewinner.setMandat(Mandat.DIREKTMANDAT);
@@ -125,6 +127,8 @@ public class Mandatsrechner2009 {
 					"Bundestagswahl leer oder die Sperrklauselanzahl ist negativ.");
 		}
 		LinkedList<Partei> relevanteParteien = new LinkedList<Partei>();
+		
+		// 5-Prozent Klausel:
 		int sperrklauselAnzahl = bundestagswahl.getDeutschland()
 				.getAnzahlZweitstimmen() / 20;
 		for (Partei part : bundestagswahl.getParteien()) {
@@ -152,27 +156,35 @@ public class Mandatsrechner2009 {
 	 * 
 	 * @param bundestagswahl
 	 *            die zu berechnende Bundestagswahl mit den Wahlkreisen
-	 * @return einen geeigneten Zuteilungsdivisor
+	 * @return 
+	 * 				einen geeigneten Zuteilungsdivisor
 	 */
 	protected float berechneZuteilungsdivisor(Bundestagswahl bundestagswahl) {
+		// BTW 2013: 598 Mindestsitze.
 		int minSitze = bundestagswahl.getDeutschland().getWahlkreise().size() * 2;
 		Debug.print("Anzahl der Wahlkreise: " + minSitze);
 		float zuteilungsdivisor = this.runden(bundestagswahl.getDeutschland()
 				.getEinwohneranzahl() / minSitze, false);
-		////Systemprintln( bundestagswahl.getDeutschland().getEinwohneranzahl()+" Vorläufig ZD: "+zuteilungsdivisor);
 		int sitzanzahl = 0;
 		while (sitzanzahl != minSitze) {
 			sitzanzahl = 0;
+			/* Summiere die Einwohnerzahl aller Bundeslaender mit dem
+			 * Zuteilungsdivisor.
+			 */
 			for (Bundesland bundesland : bundestagswahl.getDeutschland()
 					.getBundeslaender()) {
 				sitzanzahl += this.runden(bundesland.getEinwohnerzahl()
 						/ zuteilungsdivisor,false);
 			}
-			//Debug.print("Test: ZD:"+zuteilungsdivisor+" " + sitzanzahl + " - " + minSitze);
 			if (sitzanzahl < minSitze) {
+				/* Erniedrige Zuteilungsdivisor falls die Sitzanzahl kleiner
+				 * ist als die minimale Anzahl an Sitzen.
+				 */
 				zuteilungsdivisor -= 99;
 			} else if (sitzanzahl > minSitze){
-				// sitzanzahl > minSitze
+				/*
+				 * Andernfalls erhoehe Zuteilungsdivisor.
+				 */
 				zuteilungsdivisor += 100;
 			}
 		}
@@ -193,8 +205,8 @@ public class Mandatsrechner2009 {
 		if (zahl < 0) {
 			throw new IllegalArgumentException("Zahl ist negativ.");
 		}
+		// Erste nachkommestelle rausfischen.
 		int kommastelle = (int) ((zahl - (int) zahl) * 10);
-		// System.err.println(kommastelle);
 		int gerundet = 0;
 		if (randomize && kommastelle == 5) {
 			int rand = (Math.random() < 0.5) ? 0 : 1;
@@ -208,9 +220,7 @@ public class Mandatsrechner2009 {
 		} else {
 			gerundet = (int) Math.floor(zahl);
 		}
-		//System.err.println("###### "+zahl+" "+gerundet);
 		return gerundet;
-		// return Math.round(zahl);
 	}
 
 	/**
@@ -430,7 +440,6 @@ public class Mandatsrechner2009 {
 								// diffKandidat erhoeht, damit die Schleife den
 								// fehlenden Kandidaten ausgleicht. Der Kandidat
 								// wird sozusagen Uebersprungen.
-								////Systemprintln("Diffkandidat: "+diffKandidat);
 								diffKandidat++;
 							}
 						} else {
@@ -457,12 +466,9 @@ public class Mandatsrechner2009 {
 							+ bundesland.getAnzahlZweitstimmen(part) + " - "
 							+ part.getMindestsitzanzahl(bundesland));
 					sum += part.getMindestsitzanzahl(bundesland);
-					//Debug.print("Anzahl Mandate: "+part.getAnzahlMandate());
 				}
 				Debug.print("Summe: " + sum);
-
 			}
-
 		}
 
 		Debug.print("\nSitzverteilung");
