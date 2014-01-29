@@ -143,7 +143,7 @@ public class StimmgewichtSimulator {
 			for (Bundesland bundesland : bundeslaender) {
 				letztesBundesland = bundesland;
 				// TODO entfernen wenn alles funktioniert
-				if (!bundesland.getName().equals("Sachsen")) {
+				if (!bundesland.getName().equals("Hessen")) {
 					continue;
 				}
 
@@ -347,7 +347,7 @@ public class StimmgewichtSimulator {
 	 */
 	private void erhoeheZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
-		//Debug.setAktiv(true);
+		Debug.setAktiv(true);
 
 		Wahlkreis wk;
 
@@ -361,12 +361,12 @@ public class StimmgewichtSimulator {
 
 		wk.getZweitstimme(partei).erhoeheAnzahl(stimmanzahl);
 
-		//Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
-				//+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
-				//+ wk.getAnzahlZweitstimmen(partei) + " ("
-				//+ bundesland.getAnzahlZweitstimmen(partei) + ") erhöht.");
+		Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
+				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
+				+ wk.getAnzahlZweitstimmen(partei) + " ("
+				+ bundesland.getAnzahlZweitstimmen(partei) + ") erhöht.");
 
-		//Debug.setAktiv(false);
+		Debug.setAktiv(false);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
 
@@ -395,7 +395,7 @@ public class StimmgewichtSimulator {
 	 */
 	private void erniedrigeZweitstimmen(Bundestagswahl bundestagswahl,
 			Partei partei, Bundesland bundesland) {
-		//Debug.setAktiv(true);
+		Debug.setAktiv(true);
 		Wahlkreis wk;
 		do { //
 				// wählt einen zufälligen Wahlkreis
@@ -405,12 +405,12 @@ public class StimmgewichtSimulator {
 
 		wk.getZweitstimme(partei).erniedrigeAnzahl(stimmanzahl);
 
-		//Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
-			//	+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
-				//+ wk.getAnzahlZweitstimmen(partei) + " ("
-				//+ bundesland.getAnzahlZweitstimmen(partei) + ") erniedrigt.");
+		Debug.print(partei.getName() + ": Zweitstimmen in " + wk.getName()
+				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
+				+ wk.getAnzahlZweitstimmen(partei) + " ("
+				+ bundesland.getAnzahlZweitstimmen(partei) + ") erniedrigt.");
 
-		//Debug.setAktiv(false);
+		Debug.setAktiv(false);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
 
@@ -455,14 +455,14 @@ public class StimmgewichtSimulator {
 				+ " Mandatszahl neu: " + p.getAnzahlMandate());
 		if (mandatsZahlNeu > mandatsZahlAlt) {
 			System.err.println("Positive Sprungstelle entdeckt: "
-					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName() + " " + letztesBundesland.getAnzahlZweitstimmen(letztePartei));
+					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName());
 					
-			int ende = letzterWK.getZweitstimme(letztePartei).getAnzahl();
+			int ende = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
 			letzterWK.getZweitstimme(letztePartei)
 					.erniedrigeAnzahl(stimmanzahl);
-			int anfang = letzterWK.getZweitstimme(letztePartei).getAnzahl();
-			System.out.println("Anfange: " + anfang + " Ende: " +ende + " "
-			 +getSprungstelle(anfang, ende));
+			int anfang = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
+			System.out.println("Anfang: " + anfang + " Ende: " +ende );
+			 getSprungstelle(anfang, ende);
 		}
 		return (mandatsZahlNeu < mandatsZahlAlt);
 
@@ -490,14 +490,14 @@ public class StimmgewichtSimulator {
 				+ " Mandatszahl neu: " + p.getAnzahlMandate());
 		if (mandatsZahlNeu < mandatsZahlAlt) {
 			System.err.println("Positive Sprungstelle entdeckt: "
-					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName() + " " + letztesBundesland.getAnzahlZweitstimmen(letztePartei));
+					+ letztePartei.getName() + " " + letzterWK.getName() + " " + letztesBundesland.getName());
 			
-			int ende = letzterWK.getZweitstimme(letztePartei).getAnzahl();
+			int ende = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
 			letzterWK.getZweitstimme(letztePartei)
 					.erniedrigeAnzahl(stimmanzahl);
-			int anfang = letzterWK.getZweitstimme(letztePartei).getAnzahl();
-			System.out.println("Anfange: " + anfang + " Ende: " +ende + " "
-			 +getSprungstelle(anfang, ende));
+			int anfang = letztesBundesland.getAnzahlZweitstimmen(letztePartei);
+			System.out.println("Anfang: " + anfang + " Ende: " +ende );
+			// +getSprungstelle(anfang, ende));
 		}
 		return (mandatsZahlNeu > mandatsZahlAlt);
 
@@ -529,6 +529,7 @@ public class StimmgewichtSimulator {
 			}
 		}
 
+		System.err.println(aenderung +" MandatszahlAlt: " + mandatsZahlAlt + " MandatszahlNeu: " + mandatsZahlNeu);
 		if (mandatsZahlAlt > mandatsZahlNeu) {
 			return getSprungstelle(aenderung, ende);
 
@@ -540,190 +541,9 @@ public class StimmgewichtSimulator {
 
 	}
 
-	/**
-	 * Erhöht für eine Partei in einem Bundesland solange ihre relevanten ZS um
-	 * einen konkreten Wert, bis ihr Anteil an der Gesamtheit größer ist als der
-	 * Anteil an Mandaten
-	 * 
-	 * Relevante ZS sind ZS, die nur auf Landeslisten ohne Überhangmandate
-	 * abgegeben wurden
-	 * 
-	 * @param p
-	 *            die Partei, bei der Zweitstimmen erhöht werden sollen
-	 */
 
-	// TODO vllt muss noch gleichzeitig in einem anderen Wahlkreis des
-	// Bundeslandes für die Partei die Zweitstimmenzahl
-	// erniedrigt werden
 
-	public void erhoeheRelevantenAnteil(Partei p) {
 
-		List<Landesliste> alleLandeslisten = p.getLandesliste();
-		List<Landesliste> ohneUeberhang = new ArrayList<Landesliste>();
-
-		// wählt alle Landeslisten, auf die keine Überhangmandate fallen
-		for (Landesliste land : alleLandeslisten) {
-			if (p.getAnzahlMandate(Mandat.UEBERHANGMADAT, land.getBundesland()) == 0) {
-				ohneUeberhang.add(land);
-			}
-
-			// wählt aus den Landeslisten ohne Überhangmandat eine zufällige
-			// Landesliste aus
-			int i = rand.nextInt(ohneUeberhang.size());
-			Landesliste l = ohneUeberhang.get(i);
-
-			// wählt aus der zufällig erhaltenen Landesliste einen
-			// zufälligen Wahlkreis
-			i = rand.nextInt(l.getBundesland().getWahlkreise().size());
-			Wahlkreis wk = l.getBundesland().getWahlkreise().get(i);
-
-			// in diesem Wahlkreis wird nun die Zweitstimmenanzahl erhöht
-			// TODO //System.out.println entfernen
-			// //System.out.print("ZS im WK " + wk + " von "
-			// + wk.getZweitstimme(p).getAnzahl());
-			wk.getZweitstimme(p).erhoeheAnzahl(1000);
-
-			// Sitzverteilung neu berechnen
-			// //System.out.println(" auf " + wk.getZweitstimme(p).getAnzahl()
-			// + " erhöht");
-			long start = System.currentTimeMillis();
-			// this.setVerwandteWahl(rechner.berechneAlles(this.verwandteWahl));
-			//Debug.print("Laufzeit Mandatsrechner"
-				//	+ (start - System.currentTimeMillis()) + "ms");
-			// //System.out.print("Relevante ZS von "
-			// + p.getRelevanteZweitstimmen().getAnzahl());
-
-			// relevante ZS neu berechnen
-			berechneRelevanteZweitstimmen();
-			// //System.out.print(" auf "
-			// + p.getRelevanteZweitstimmen().getAnzahl());
-
-		}
-	}
-
-	/**
-	 * Diese Methode überprüft, ob bei einer gegebenen Partei ihr Anteil an
-	 * relativen Zweitstimmen größer ist als ihr Anteil an Mandaten. Die Anteile
-	 * werden bundesweit betrachtet
-	 * 
-	 * @param p
-	 *            Partei, bei der die Anteile überprüft werden sollen
-	 * @return true, wenn Anteil rel. ZS > Anteil Mandate
-	 */
-	// TODO private setzen, nur fürs testen public
-	public boolean bedingungErfuellt(Partei p) {
-		List<Partei> alleParteien = this.kopie2.getParteien();
-
-		// berechnet insgesamte Anzahl an relevanten Zweitstimmen, d.h. addiert
-		// die relevanten Zweitstimmen aller Parteien
-
-		int relevanteZweitstimmenGesamt = 0;
-		for (Partei x : alleParteien) {
-			relevanteZweitstimmenGesamt += x.getRelevanteZweitstimmen()
-					.getAnzahl();
-		}
-
-		float anteilRelevanteZweitstimmen = 0;
-		float anteilMandate = 0;
-		// berechnet den Anteil an relevanten Zweitstimmen
-
-		anteilRelevanteZweitstimmen = (float) p.getRelevanteZweitstimmen()
-				.getAnzahl() / (float) relevanteZweitstimmenGesamt;
-
-		// berechnet den Anteil an Mandaten
-
-		anteilMandate = (float) p.getAnzahlMandate()
-				/ (float) this.kopie2.getSitzverteilung().getAbgeordnete()
-						.size();
-
-		//System.out.println(p.getName() + " " + anteilMandate + " "
-			//	+ anteilRelevanteZweitstimmen);
-		if (anteilRelevanteZweitstimmen > anteilMandate) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * In dieser Methode werden die Parteien gewählt, deren prozentualer Anteil
-	 * an relevanten Zweitstimmen größer als der prozentuale Anteil an Mandaten
-	 * ist
-	 * 
-	 * @return Liste an relevanten Parteien, d.h. diejenigen, die das
-	 *         beschriebene Merkmal aufweisen
-	 */
-
-	// TODO private setzten, nur zum testen public
-	public List<Partei> waehleParteien() {
-		List<Partei> alleParteien = this.kopie2.getParteien();
-
-		List<Partei> relevanteParteien = new ArrayList<Partei>();
-		for (Partei p : alleParteien) {
-			if (bedingungErfuellt(p)) {
-				relevanteParteien.add(p);
-			}
-		}
-		return relevanteParteien;
-	}
-
-	/**
-	 * Diese Methode wählt, von den Parteien abhängig, die Bundesländer, für die
-	 * negatives Stimmgewicht auftreten kann
-	 * 
-	 * @param p
-	 *            Partei
-	 * @return Liste an Bundesländern
-	 */
-
-	// TODO private setzten, nur zum testen public
-	public List<Bundesland> waehleBundeslaender(Partei p) {
-		List<Landesliste> landeslisten = p.getLandesliste();
-		List<Bundesland> relevanteBundeslaender = new ArrayList<Bundesland>();
-
-		for (Landesliste l : landeslisten) {
-			// überprüfe, ob die Partei in einem Bundesland Überhandmandate hat
-			// falls ja, kann negatives Stimmgewicht auftreten und sie ist
-			// relevant
-			if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
-				relevanteBundeslaender.add(l.getBundesland());
-			}
-		}
-		return relevanteBundeslaender;
-	}
-
-	/**
-	 * Berechnet für alle Parteien die relevanten Zweitstimmen
-	 * 
-	 * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf
-	 * Landeslisten abgegeben werden, die keine Uberhangmandate erzielen
-	 * 
-	 */
-
-	// TODO private setzten, nur zum testen public
-	public void berechneRelevanteZweitstimmen() {
-
-		for (Partei p : this.kopie2.getParteien()) {
-			List<Landesliste> landeslisten = p.getLandesliste();
-			int anzahl = 0;
-
-			for (Landesliste l : landeslisten) {
-
-				// überprüft, ob Partei Zweitstimmen in einem Bundesland
-				// erhalten
-				// hat, in dem es keine Überhangmandate hält
-				if (l.getKandidaten(Mandat.UEBERHANGMADAT).size() == 0) {
-					anzahl += l.getBundesland().getAnzahlZweitstimmen(p);
-				}
-			}
-
-			p.setRelevanteZweitstimmen(new RelevanteZweitstimmen(anzahl));
-			// //System.out.println(p.getName() + " " +
-			// p.getRelevanteZweitstimmen());
-
-		}
-
-	}
 
 	/**
 	 * @return the bw
@@ -748,26 +568,6 @@ public class StimmgewichtSimulator {
 
 	}
 
-	/**
-	 * @return the relevanteParteien
-	 */
-	public List<Partei> getRelevanteParteien() {
-		return relevanteParteien;
-	}
-
-	/**
-	 * @param relevanteParteien
-	 *            the relevanteParteien to set
-	 */
-	public void setRelevanteParteien(List<Partei> relevanteParteien) {
-		if (relevanteParteien == null) {
-			throw new IllegalArgumentException(
-					"Liste mit relevanten Parteien war null.");
-		} else {
-			this.relevanteParteien = relevanteParteien;
-		}
-
-	}
 
 	/**
 	 * @return the verwandteWahl
