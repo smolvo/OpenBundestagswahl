@@ -321,26 +321,6 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return anzahl;
 	}
-	
-	/*
-	@Override
-	public int getAnzahlZweitstimmen(Partei partei) {
-		if(partei == null){
-			throw new IllegalArgumentException("Partei ist null");
-		}
-		int anzahl = 0;
-		for (Wahlkreis wk : this.getWahlkreise()) {
-			anzahl += wk.getAnzahlZweitstimmen(partei);
-		}
-		return anzahl;
-	}
-	
-	@Override
-	public int getAnzahlErststimmen(Partei partei) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	*/
 
 	/**
 	 * Gibt die Landesliste zur jeweiligen Partei zurueck.
