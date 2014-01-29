@@ -128,17 +128,17 @@ public class StimmgewichtSimulatorTest {
 		System.out.println("4. Gesamtanzahl Sitze : "
 				+ wahl1.getSitzverteilung().getAbgeordnete().size());
 
-		rechner13.berechneAlles(wahl2);
+		rechner13.berechne(wahl2);
 		System.out.println("Mandatsrechner2013 Ergebnisse");
 		System.out.println("1. Gesamtanzahl Sitze : "
 				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(wahl2);
+		rechner13.berechne(wahl2);
 		System.out.println("2. Gesamtanzahl Sitze : "
 				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(wahl2);
+		rechner13.berechne(wahl2);
 		System.out.println("3. Gesamtanzahl Sitze : "
 				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechneAlles(wahl2);
+		rechner13.berechne(wahl2);
 		System.out.println("4. Gesamtanzahl Sitze : "
 				+ wahl2.getSitzverteilung().getAbgeordnete().size());
 	}

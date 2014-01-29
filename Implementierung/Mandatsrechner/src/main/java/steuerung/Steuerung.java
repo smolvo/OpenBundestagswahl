@@ -84,7 +84,7 @@ public class Steuerung {
 		if (this.btw == null) {
 			throw new NullPointerException("Keine Bundestagswahl vorhanden.");
 		}
-		this.btw = Mandatsrechner2013.getInstance().berechneAlles(this.btw);
+		this.btw = Mandatsrechner2013.getInstance().berechne(this.btw);
 	}
 
 	/**

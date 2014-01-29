@@ -27,7 +27,7 @@ public class WahlvergleichTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		w1 = Mandatsrechner2013.getInstance().berechneAlles(w1);
+		w1 = Mandatsrechner2013.getInstance().berechne(w1);
 		Bundestagswahl w2 = w1;
 		
 		

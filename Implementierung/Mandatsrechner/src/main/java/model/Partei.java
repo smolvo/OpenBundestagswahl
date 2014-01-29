@@ -682,7 +682,6 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
-	
 	public void incrementAusgleichsMandate (Bundesland bl) {
 		int value = 1;
 		if(this.ausgleichsMandate.containsKey(bl)){

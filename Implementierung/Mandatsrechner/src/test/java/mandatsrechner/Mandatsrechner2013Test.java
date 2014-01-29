@@ -35,7 +35,7 @@ public class Mandatsrechner2013Test {
 		
 		if (w != null) {
 			//System.out.println("Test");
-			Bundestagswahl newW = m.berechneAlles(w);
+			Bundestagswahl newW = m.berechne(w);
 			//newW = m.berechneAlles(newW);
 			int count = 0;
 			for (Partei partei : newW.getParteien()) {
@@ -54,10 +54,9 @@ public class Mandatsrechner2013Test {
 						System.out.println("\n");
 					}*/
 					
-					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + 
-							partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
-					System.out.println(partei.getName()+": ");
-					System.out.println("Mandate: "+partei.getAnzahlMandate(Mandat.LISTENMANDAT));
+					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
+					System.out.println(partei.getName() + ": ");
+					System.out.println("Mandate: " + partei.getAnzahlMandate(Mandat.LISTENMANDAT));
 					System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
 					System.out.println("Ausgleichsmandate: "+partei.getAusgleichsMandate());
 					System.out.println("Ueberhangsmandate: "+partei.getUeberhangMandate());
@@ -65,9 +64,9 @@ public class Mandatsrechner2013Test {
 					System.out.println("\n");
 					
 				//}
-				if(count<5){
+				if (count<5) {
 					count++;
-				}else {
+				} else {
 					break;
 				}
 			}

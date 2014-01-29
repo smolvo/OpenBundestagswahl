@@ -27,7 +27,7 @@ public class GUITest {
 		}
 
 		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
-		Bundestagswahl newW = m.berechneAlles(w);
+		Bundestagswahl newW = m.berechne(w);
 
 		for (Partei partei : newW.getParteien()) {
 			System.out.println(partei.getName()
