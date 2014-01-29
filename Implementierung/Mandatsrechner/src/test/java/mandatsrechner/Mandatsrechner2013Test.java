@@ -9,10 +9,16 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Mandat;
 import main.java.model.Partei;
 
+/**
+ * Testklasse fuer den Mandatsrechner 2013.
+ * @author 13genesis37
+ *
+ */
 public class Mandatsrechner2013Test {
 
-	/**
+	/**Die Hauptklasse.
 	 * @param args
+	 * 		Kommandozeilenargumente.
 	 */
 	public static void main(String[] args) {
 		
@@ -57,14 +63,14 @@ public class Mandatsrechner2013Test {
 					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
 					System.out.println(partei.getName() + ": ");
 					System.out.println("Mandate: " + partei.getAnzahlMandate(Mandat.LISTENMANDAT));
-					System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
-					System.out.println("Ausgleichsmandate: "+partei.getAusgleichsMandate());
-					System.out.println("Ueberhangsmandate: "+partei.getUeberhangMandate());
-					System.out.println("Summe: "+sum);
+					System.out.println("Direktmandate: " + partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
+					System.out.println("Ausgleichsmandate: " + partei.getAusgleichsMandate());
+					System.out.println("Ueberhangsmandate: " + partei.getUeberhangMandate());
+					System.out.println("Summe: " + sum);
 					System.out.println("\n");
 					
 				//}
-				if (count<5) {
+				if (count < 5) {
 					count++;
 				} else {
 					break;

@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import test.java.Debug;
+
 import main.java.gui.dialoge.ImportDialog;
 import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
@@ -53,6 +55,7 @@ public final class Programmfenster extends JFrame {
 	 * Der Konstruktor des Programmfensters
 	 */
 	public Programmfenster() {
+		//Debug.setAktiv(true);
 		// allgemeine Anpassungen des Programmfensters
 		setTitle("Mandatsverteilung im Deutschen Bundestag");
 		this.setMinimumSize(new Dimension(1024, 768));

@@ -53,33 +53,35 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/** Die Mindestsitzanzahl pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> mindestSitzanzahl;
-	
+
 	/** Die Anzahl der Überhangmandate pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> ueberhangMandate;
-	
+
 	/** Die Anzahl der Ausgleichsmandate pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> ausgleichsMandate;
-	
+
 	/**
-	 * Comparator zum sortieren von Parteien nach der Anzahl der Überhangsmandate.
+	 * Comparator zum sortieren von Parteien nach der Anzahl der
+	 * Überhangsmandate.
 	 */
 	public static final Comparator<Partei> NACH_UEBERHANGMANDATEN = new Comparator<Partei>() {
-		
+
 		@Override
 		public int compare(Partei part1, Partei part2) {
-			
+
 			if (part1 == null || part2 == null) {
-				throw new IllegalArgumentException("Einer der Partei-Parameter ist null!");
+				throw new IllegalArgumentException(
+						"Einer der Partei-Parameter ist null!");
 			}
-			
+
 			int part1UeMand = part1.getAnzahlMandate(Mandat.UEBERHANGMADAT);
 			int part2UeMand = part2.getAnzahlMandate(Mandat.UEBERHANGMADAT);
-			
+
 			Debug.print(part1.getName() + " " + part1UeMand);
 			Debug.print(part2.getName() + " " + part2UeMand);
-			
+
 			int result;
-			
+
 			if (part1UeMand < part2UeMand) {
 				result = 1;
 			} else if (part1UeMand > part2UeMand) {
@@ -87,40 +89,34 @@ public class Partei implements Serializable, Comparable<Partei> {
 			} else {
 				result = 0;
 			}
-			
+
 			return result;
 		}
 	};
-	
-	
+
 	/*
-	public static final Comparator<Bundesland> BLAENDER_NACH_UEBERHANGMANDATEN = new Comparator<Bundesland>() {
-		
-		@Override
-		public int compare(Bundesland land1, Bundesland land2) {
-			
-			if (land1 == null || land2 == null) {
-				throw new IllegalArgumentException("Einer der Bundesland-Parameter ist null!");
-			}
-			
-			int land1UeMand = land1.getLandesliste(Partei.).getKandidaten(Mandat.UEBERHANGMADAT).size();
-			int land2UeMand = land2.getLandesliste(Partei.this).getKandidaten(Mandat.UEBERHANGMADAT).size();
-			
-			int result;
-			
-			if (land1UeMand > land2UeMand) {
-				result = 1;
-			} else if (land1UeMand < land2UeMand) {
-				result = -1;
-			} else {
-				result = 0;
-			}
-			
-			return result;
-		}
-	};
-	*/
-	
+	 * public static final Comparator<Bundesland>
+	 * BLAENDER_NACH_UEBERHANGMANDATEN = new Comparator<Bundesland>() {
+	 * 
+	 * @Override public int compare(Bundesland land1, Bundesland land2) {
+	 * 
+	 * if (land1 == null || land2 == null) { throw new
+	 * IllegalArgumentException("Einer der Bundesland-Parameter ist null!"); }
+	 * 
+	 * int land1UeMand =
+	 * land1.getLandesliste(Partei.).getKandidaten(Mandat.UEBERHANGMADAT
+	 * ).size(); int land2UeMand =
+	 * land2.getLandesliste(Partei.this).getKandidaten
+	 * (Mandat.UEBERHANGMADAT).size();
+	 * 
+	 * int result;
+	 * 
+	 * if (land1UeMand > land2UeMand) { result = 1; } else if (land1UeMand <
+	 * land2UeMand) { result = -1; } else { result = 0; }
+	 * 
+	 * return result; } };
+	 */
+
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
 	 * hier erzeugt aber nicht befï¿½llt.
@@ -422,10 +418,10 @@ public class Partei implements Serializable, Comparable<Partei> {
 		return zweitstimmeGesamt;
 	}
 
-	
 	@Override
 	public int compareTo(Partei andere) {
-		return Integer.compare(this.getZweitstimmeGesamt(), andere.getZweitstimmeGesamt());
+		return Integer.compare(this.getZweitstimmeGesamt(),
+				andere.getZweitstimmeGesamt());
 	}
 
 	/**
@@ -441,7 +437,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * Setzt die relevanten Zweitstimmen.
 	 * 
 	 * @param relevanteZweitstimmen
-	 * 			relevante Zweitstimmen
+	 *            relevante Zweitstimmen
 	 * @throws IllegalArgumentException
 	 *             wenn die relevanten Zweitstimmen null sind.
 	 * 
@@ -496,19 +492,20 @@ public class Partei implements Serializable, Comparable<Partei> {
 					"Mandat oder Bundesland waren null.");
 		}
 		int anzahlMandate = 0;
-		/* Kandidaten (Direktmandate) muessen nicht in der Landesliste sein!!!
+		/*
+		 * Kandidaten (Direktmandate) muessen nicht in der Landesliste sein!!!
 		 * Wichtig!!! Bitte beachten.
-		 * 
 		 */
 		if (m.equals(Mandat.DIREKTMANDAT)) {
 			for (Wahlkreis wk : b.getWahlkreise()) {
-				if (wk.getWahlkreisSieger() != null && wk.getWahlkreisSieger().getPartei().equals(this)) {
+				if (wk.getWahlkreisSieger() != null
+						&& wk.getWahlkreisSieger().getPartei().equals(this)) {
 					anzahlMandate++;
 				}
 			}
 		} else {
 			for (Kandidat kandidat : this.getMitglieder()) {
-				Landesliste landesliste = kandidat.getLandesliste(); 
+				Landesliste landesliste = kandidat.getLandesliste();
 				if (landesliste != null && kandidat.getMandat().equals(m)
 						&& landesliste.getBundesland().equals(b)) {
 					anzahlMandate++;
@@ -554,14 +551,13 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		this.mindestSitzanzahl.put(bl, mindestSitzanzahl);
 	}
-	
+
 	/**
-	 * Gibt die mindestsitzanzahl dieser Partei für ein Bundesland 
-	 * zurück.
+	 * Gibt die mindestsitzanzahl dieser Partei für ein Bundesland zurück.
+	 * 
 	 * @param bl
-	 * 			das gesuchte Bundesland.
-	 * @return
-	 * 			gibt 0 zurück falls key nicht gefunden wurde.
+	 *            das gesuchte Bundesland.
+	 * @return gibt 0 zurück falls key nicht gefunden wurde.
 	 */
 	public int getMindestsitzanzahl(Bundesland bl) {
 		int anzahl = this.mindestSitzanzahl.get(bl);
@@ -583,11 +579,12 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahlMandate;
 	}
-	
+
 	/**
 	 * Gibt an, wie viel Mandate eine Partei insgesamt besitzt
+	 * 
 	 * @param mandat
-	 * 				bestimmter Mandat
+	 *            bestimmter Mandat
 	 * @return die Anzahl an Mandate
 	 */
 	public int getAnzahlMandate(Mandat mandat) {
@@ -599,7 +596,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahlMandate;
 	}
-	
+
 	/**
 	 * Gibt die Summe der Mindestsitze aller Bundeslaender von einer Partei
 	 * zurueck.
@@ -617,7 +614,12 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
-	
+
+	/**
+	 * Gibt alle Ueberhangsmandate dieser Partei zurueck.
+	 * @return
+	 * 		die Anzahl der Ueberhangsmandate.
+	 */
 	public int getUeberhangMandate() {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ueberhangMandate.keySet();
@@ -629,7 +631,15 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
-	
+
+	/**
+	 * Gibt die Anzahl der Ueberhangsmandate fuer einen
+	 * bestimmten Bundesland zurueck.
+	 * @param bl
+	 * 		ausgewaehltes Bundesland.
+	 * @return
+	 * 		die anzahl der Ueberhangsmandate.
+	 */
 	public int getUeberhangMandate(Bundesland bl) {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ueberhangMandate.keySet();
@@ -637,26 +647,32 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 		while (i.hasNext()) {
 			Bundesland key = (Bundesland) i.next();
-			if(key.equals(bl)) {
+			if (key.equals(bl)) {
 				anzahl += this.ueberhangMandate.get(key);
 			}
 		}
 		return anzahl;
 	}
-	
-	public void incrementUeberhangMandate (Bundesland bl) {
+
+	/**
+	 * Erhoeht die Anzahl der Ueberhangsmandate fuer ein bestimmtes
+	 * Bundesland um eins.
+	 * @param bl
+	 * 			das ausgewaehlte
+	 */
+	public void incrementUeberhangMandate(Bundesland bl) {
 		int value = 1;
-		if(this.ueberhangMandate.containsKey(bl)){
+		if (this.ueberhangMandate.containsKey(bl)) {
 			value = this.ueberhangMandate.get(bl);
 			value += 1;
 		}
-		this.ueberhangMandate.put(bl, value);	
+		this.ueberhangMandate.put(bl, value);
 	}
 
-	public void resetUeberhangMandate () {
-		this.ueberhangMandate = new HashMap<Bundesland,Integer>();
+	public void resetUeberhangMandate() {
+		this.ueberhangMandate = new HashMap<Bundesland, Integer>();
 	}
-	
+
 	public int getAusgleichsMandate() {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ausgleichsMandate.keySet();
@@ -668,7 +684,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		return anzahl;
 	}
-	
+
 	public int getAusgleichsMandate(Bundesland bl) {
 		int anzahl = 0;
 		Set<Bundesland> set = this.ausgleichsMandate.keySet();
@@ -676,35 +692,35 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 		while (i.hasNext()) {
 			Bundesland key = (Bundesland) i.next();
-			if(key.equals(bl)) {
+			if (key.equals(bl)) {
 				anzahl += this.ausgleichsMandate.get(key);
 			}
 		}
 		return anzahl;
 	}
-	public void incrementAusgleichsMandate (Bundesland bl) {
+
+	public void incrementAusgleichsMandate(Bundesland bl) {
 		int value = 1;
-		if(this.ausgleichsMandate.containsKey(bl)){
+		if (this.ausgleichsMandate.containsKey(bl)) {
 			value = this.ausgleichsMandate.get(bl);
 			value += 1;
 		}
-		this.ausgleichsMandate.put(bl, value);	
+		this.ausgleichsMandate.put(bl, value);
 	}
-	
-	public void decrementAusgleichsMandate (Bundesland bl) {
+
+	public void decrementAusgleichsMandate(Bundesland bl) {
 		int value = -1;
-		if(this.ausgleichsMandate.containsKey(bl)){
+		if (this.ausgleichsMandate.containsKey(bl)) {
 			value = this.ausgleichsMandate.get(bl);
 			value -= 1;
 		}
 		this.ausgleichsMandate.put(bl, value);
-		System.out.println("DEC: "+bl.getName()+" "+value);
 	}
 
-	public void resetAusgleichsMandate () {
-		this.ausgleichsMandate = new HashMap<Bundesland,Integer>();
+	public void resetAusgleichsMandate() {
+		this.ausgleichsMandate = new HashMap<Bundesland, Integer>();
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.name;

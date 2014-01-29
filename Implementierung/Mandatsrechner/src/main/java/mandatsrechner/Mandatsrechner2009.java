@@ -449,10 +449,11 @@ public class Mandatsrechner2009 {
 								// wird sozusagen Uebersprungen.
 								diffKandidat++;
 							}
-						} else {
-							System.err.println("Notice: Kein Listenkandidat gefunden.");
-							// Landesliste erschoepft.
 						}
+						/* else {
+							//System.err.println("Notice: Kein Listenkandidat gefunden.");
+							// Landesliste erschoepft.
+						}*/
 					}
 				} else {
 					for (int i = 0; i < Math.abs(diffKandidat); i++) {

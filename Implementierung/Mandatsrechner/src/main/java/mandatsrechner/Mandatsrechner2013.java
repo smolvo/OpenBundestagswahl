@@ -147,7 +147,7 @@ public class Mandatsrechner2013 {
 				float divisor = 0f;
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
-
+				Debug.print("Berechne Divisor");
 				int insgesamt = 0;
 				while (insgesamt != neueSitzanzahl) {
 					insgesamt = 0;
@@ -165,12 +165,12 @@ public class Mandatsrechner2013 {
 					if (insgesamt == neueSitzanzahl) {
 						break;
 					} else if (insgesamt > neueSitzanzahl) {
-						divisor += 1;
+						divisor += 5;
 					} else {
 						divisor -= 1;
 					}
 				}
-
+				Debug.print("Berechneter Divisor: " + divisor);
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 					sitzeBundesland = this.rechner2009.runden(
 							bl.getAnzahlZweitstimmen(partei) / divisor, false);
@@ -186,7 +186,7 @@ public class Mandatsrechner2013 {
 						 * partei.getAnzahlMandate(Mandat.DIREKTMANDAT, bl));
 						 */
 						diffSitzeBundesland += partei.getUeberhangMandate(bl);
-						System.out.println(partei.getName()
+						Debug.print(partei.getName()
 								+ " "
 								+ bl.getName()
 								+ " "
@@ -201,6 +201,7 @@ public class Mandatsrechner2013 {
 								+ (partei.getAnzahlMandate(Mandat.DIREKTMANDAT,
 										bl) + partei.getAnzahlMandate(
 										Mandat.LISTENMANDAT, bl)));
+						
 						// Suche Kandidaten ohne Mandat und fuege sie als
 						// Ausgleichsmandat hinzu.
 
@@ -230,8 +231,7 @@ public class Mandatsrechner2013 {
 										.getListenkandidaten().size() <= i) {
 									// Wahlgenerator verursacht Wahlen ohne
 									// Landeslisten.
-									System.err
-											.println("Keine Listenplaetze mehr :(");
+									//System.err.println("Keine Listenplaetze mehr :(");
 									break;
 								}
 								Kandidat neuerAbgeordneter = partei
