@@ -149,6 +149,7 @@ public class Steuerung {
 		}
 		Wahlvergleich vergleich = new Wahlvergleich(this.btw, vergleichsWahl);
 		VergleichsFenster fenster = new VergleichsFenster(vergleich);
+		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 	}
 
