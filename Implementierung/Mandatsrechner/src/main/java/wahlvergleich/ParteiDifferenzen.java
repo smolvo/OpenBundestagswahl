@@ -5,7 +5,6 @@ import main.java.model.Partei;
 /**
  * Diese Klasse realisiert die Sitzdifferenz einer Partei
  * von einer Wahl zur anderen.
- * @author Anton
  *
  */
 public class ParteiDifferenzen {
@@ -15,6 +14,7 @@ public class ParteiDifferenzen {
 	
 	/** repräsentiert die Differenz */
 	private final int diff;
+	
 	
 	/**
 	 * Der Konstruktor erstellt eine neue Differenz.

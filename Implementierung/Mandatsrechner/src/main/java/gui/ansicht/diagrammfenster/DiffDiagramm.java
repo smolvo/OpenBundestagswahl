@@ -1,4 +1,4 @@
-package main.java.wahlvergleich;
+package main.java.gui.ansicht.diagrammfenster;
 
 import java.awt.Dimension;
 import java.awt.Paint;
@@ -7,7 +7,7 @@ import java.awt.event.ComponentEvent;
 
 import javax.swing.JPanel;
 
-import main.java.gui.ansicht.diagrammfenster.BalkenRenderer;
+import main.java.wahlvergleich.ParteiDifferenzen;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -19,6 +19,9 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.Range;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+/**
+ * 
+ */
 public class DiffDiagramm extends JPanel {
 	
 	private static final long serialVersionUID = -2433019298048096112L;

@@ -11,10 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
+import main.java.gui.ansicht.diagrammfenster.DiffDiagramm;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
 import main.java.model.Partei;
-import main.java.wahlvergleich.DiffDiagramm;
 import main.java.wahlvergleich.ParteiDifferenzen;
 import main.java.wahlvergleich.Wahlvergleich;
 import main.java.wahlvergleich.WahlvergleichDaten;
