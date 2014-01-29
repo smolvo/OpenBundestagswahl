@@ -146,7 +146,7 @@ public class StimmgewichtSimulatorTest {
 	
 	@Test
 	public void berechneNegStimmgewichtTest() {
-		Debug.setAktiv(false);
+		Debug.setAktiv(true);
 		
 		assertTrue(simu.berechneNegStimmgewicht());
 	}
