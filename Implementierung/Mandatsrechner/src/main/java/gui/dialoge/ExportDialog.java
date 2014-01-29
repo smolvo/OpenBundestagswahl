@@ -6,17 +6,16 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import main.java.gui.Programmfenster;
-import main.java.gui.TabLeiste;
 import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert den Dialog für den Export,
  * der ermöglicht Wahlen als .csv-Datei abzuspeichern.
- * @author Manuel
  *
  */
 public class ExportDialog extends JDialog{
 
+	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -6257552145843360427L;
 	
 	/** repräsentiert den Dateiaussucher */
@@ -51,5 +50,13 @@ public class ExportDialog extends JDialog{
 					"Speichern abgebrochen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
         }
+	}
+
+	/**
+	 * Gibt das Programmfenster zurück.
+	 * @return das Programmfenster zurück.
+	 */
+	public Programmfenster getPf() {
+		return pf;
 	}
 }

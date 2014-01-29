@@ -27,6 +27,9 @@ import main.java.steuerung.Steuerung;
  */
 public class Menu extends JMenuBar {
 
+	/** Automatisch generierte serialVersionUID */
+	private static final long serialVersionUID = -2922572375430998442L;
+
 	/** repräsentiert das Programmfenster */
 	private final Programmfenster pf;
 	

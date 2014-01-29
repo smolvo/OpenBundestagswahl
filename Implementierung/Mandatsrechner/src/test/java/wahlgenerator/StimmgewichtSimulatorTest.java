@@ -12,13 +12,10 @@ import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
-import main.java.model.Landesliste;
-import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.wahlgenerator.StimmgewichtSimulator;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import test.java.Debug;

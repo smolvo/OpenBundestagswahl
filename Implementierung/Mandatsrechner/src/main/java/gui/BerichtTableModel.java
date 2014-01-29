@@ -12,6 +12,9 @@ import main.java.model.BerichtDaten;
 public class BerichtTableModel extends AbstractTableModel {
 
 
+	/** Automatisch generierte serialVersionUID */
+	private static final long serialVersionUID = 5458984414665530040L;
+
 	/** repräsentiert die Spaltennamen */
 	private final String[] columns = new String[] { "Abgeordneter", "Partei", "Mandat",
 			"Bundesland", "Wahlkreis" };

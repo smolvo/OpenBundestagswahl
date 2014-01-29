@@ -207,10 +207,10 @@ public class WahlgeneratorTest {
 		
 		for (int i = 0; i < 20; i++) {
 			LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
-			int anzahlParteien = this.wahl1.getParteien().size();
+			int anzahlParteien = wahl1.getParteien().size();
 			
 			for (int j = 0; j < 2; j++) {
-				stimmAnt.add(new Stimmanteile(this.wahl1.getParteien().get(rand.nextInt(anzahlParteien)), 50, 50));
+				stimmAnt.add(new Stimmanteile(wahl1.getParteien().get(rand.nextInt(anzahlParteien)), 50, 50));
 			}
 			
 			Wahlgenerator wg = new Wahlgenerator(wahl1, stimmAnt);

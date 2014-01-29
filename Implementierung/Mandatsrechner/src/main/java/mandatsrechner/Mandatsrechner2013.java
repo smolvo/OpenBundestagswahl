@@ -1,6 +1,5 @@
 package main.java.mandatsrechner;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import test.java.Debug;

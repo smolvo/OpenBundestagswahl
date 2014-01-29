@@ -22,10 +22,11 @@ import main.java.steuerung.Steuerung;
  * Diese Klasse repräsentiert die Tab- Leiste des Programmfensters Jeder Tab
  * steht für eine im Programm geöffnete Bundestagswahl
  * 
- * @author Manuel
- * 
  */
 public class TabLeiste extends JTabbedPane {
+
+	/** Automatisch generierte serialVersionUID */
+	private static final long serialVersionUID = -2584456939802031910L;
 
 	/** repräsentiert das Programmfenster der Tableiste */
 	private final Programmfenster pf;

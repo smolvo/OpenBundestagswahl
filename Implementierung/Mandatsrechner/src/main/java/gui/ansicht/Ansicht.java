@@ -24,6 +24,7 @@ import main.java.steuerung.Steuerung;
  */
 public class Ansicht extends JPanel {
 
+	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = 7008080710664890075L;
 
 	/** Eine Ansicht hat ein Tabellenfenster. */
