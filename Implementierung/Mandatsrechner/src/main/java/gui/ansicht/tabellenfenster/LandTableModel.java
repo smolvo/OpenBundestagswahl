@@ -34,7 +34,7 @@ public class LandTableModel extends AbstractTableModel {
 			throw new NullPointerException("Einer der Parameter ist null.");
 		}
 		this.daten = daten;
-		this.tabellenfenster = tabellenfenster;
+		this.setTabellenfenster(tabellenfenster);
 	}
 
 	@Override
@@ -73,4 +73,24 @@ public class LandTableModel extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return columns[columnIndex];
 	}
+
+	/**
+	 * Gibt das Tabellenfenster zurück.
+	 * @return das Tabellenfenster
+	 */
+	public TabellenFenster getTabellenfenster() {
+		return tabellenfenster;
+	}
+
+	/**
+	 * Setzt das Tabellenfenster
+	 * @param tabellenfenster das Tabellenfenster das gesetzt werden soll.
+	 */
+	public void setTabellenfenster(TabellenFenster tabellenfenster) {
+		if (tabellenfenster == null) {
+			throw new IllegalArgumentException("Der Parameter 'Tabellenfenster ist null!'");
+		}
+		this.tabellenfenster = tabellenfenster;
+	}
+	
 }

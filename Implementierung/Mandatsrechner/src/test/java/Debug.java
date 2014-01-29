@@ -12,11 +12,13 @@ public class Debug {
 	/**
 	 * Der Konstruktor ist privat, da alle Attribute und Methoden statisch sind.
 	 */
-	private Debug() {}
+	private Debug() {
+		
+	}
 	
 	/**
 	 * Gibt die gegebene Meldung aus, wenn der Debug Modus aktiv ist.
-	 * @param nachricht
+	 * @param meldung die Meldung die ausgegeben werden soll
 	 */
 	public static void print(String meldung) {
 		if (aktiv) {
