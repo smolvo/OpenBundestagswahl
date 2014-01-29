@@ -45,8 +45,8 @@ public class Menu extends JMenuBar {
 	/** repräsentiert den Menüleisteneintrag Hilfe */
 	private final JMenu hilfe;
 
-	/** repräsentiert den Menüleisteneintrag Wahldaten Generieren */
-	private final JMenu wahldatenGenerieren;
+	///** repräsentiert den Menüleisteneintrag Wahldaten Generieren */
+	//private final JMenu wahldatenGenerieren;
 
 	/** repräsentiert den Importieren Eintrag */
 	private final JMenuItem importieren;
@@ -131,16 +131,15 @@ public class Menu extends JMenuBar {
 		vergleichen = new JMenuItem("Vergleichen");
 		vergleichen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/vergleichen.png"));
-		wahldatenGenerieren = new JMenu("Wahldaten generieren");
+		//wahldatenGenerieren = new JMenu("Wahldaten generieren");
 		negativesStimmgewicht = new JMenuItem(
-				"negatives Stimmgewicht generieren");
-		zufaelligeWahl = new JMenuItem("zufällige Wahl generieren");
+				"negatives Stimmgewicht simulieren");
+		zufaelligeWahl = new JMenuItem("Wahl generieren");
 
 		extras.add(vergleichen);
-		extras.add(wahldatenGenerieren);
-
-		wahldatenGenerieren.add(negativesStimmgewicht);
-		wahldatenGenerieren.add(zufaelligeWahl);
+		//extras.add(wahldatenGenerieren);
+		extras.add(negativesStimmgewicht);
+		extras.add(zufaelligeWahl);
 
 		// der Menu-Reiter "Hilfe"
 		handbuch = new JMenuItem("Handbuch");
