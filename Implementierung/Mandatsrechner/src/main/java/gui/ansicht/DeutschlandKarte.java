@@ -86,8 +86,13 @@ public class DeutschlandKarte extends JPanel {
 	 * 
 	 * @param land
 	 *            das gesamte Land
+	 * @throws IllegalArgumentException
+	 *             wenn das Deutschland-objekt leer ist.
 	 */
 	public DeutschlandKarte(Deutschland land) {
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland-Objekt ist null.");
+		}
 		this.land = land;
 		if (!bilderImportiert) {
 			importieren();
@@ -104,9 +109,16 @@ public class DeutschlandKarte extends JPanel {
 
 	/**
 	 * Zeichnet
-	 * @param g grafik
+	 * 
+	 * @param g
+	 *            grafik
+	 * @throws IllegalArgumentException
+	 *             wenn das Graphics-Objekt ist null.
 	 */
 	public void paintComponent(Graphics g) {
+		if (g == null) {
+			throw new IllegalArgumentException("Graphics-Objekt ist null.");
+		}
 		if (!skaliert) {
 			skaliere();
 		}
@@ -115,7 +127,7 @@ public class DeutschlandKarte extends JPanel {
 
 	/**
 	 * skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefügt wurden
-	 * entsprechend der aktuellen größe des JPanels
+	 * entsprechend der aktuellen Größe des JPanels
 	 */
 	private void skaliere() {
 		skalierteKarte = grossVersion.getScaledInstance(

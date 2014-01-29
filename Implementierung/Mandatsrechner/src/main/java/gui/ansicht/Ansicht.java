@@ -18,8 +18,8 @@ import main.java.model.Gebiet;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repräsentiert die Ansicht, auf der sicht
- * das Tabellen-, Karten- und Diagrammfenster befinden.
+ * Diese Klasse repräsentiert die Ansicht, auf der sicht das Tabellen-, Karten-
+ * und Diagrammfenster befinden.
  * 
  */
 public class Ansicht extends JPanel {
@@ -35,7 +35,7 @@ public class Ansicht extends JPanel {
 
 	/** das Panel auf dem der Berechne-Knopf sitzt */
 	private JPanel berechnePanel;
-	
+
 	/** Eine Ansicht hat ein Kartenfenster. */
 	private KartenFenster kartenFenster;
 
@@ -47,7 +47,7 @@ public class Ansicht extends JPanel {
 
 	/** Das im Moment angezeigte Gebiet */
 	private Gebiet aktuellesGebiet;
-	
+
 	/** zeigt an ob eine Stimme geändert wurde */
 	private boolean wurdeVeraendert;
 
@@ -58,11 +58,12 @@ public class Ansicht extends JPanel {
 	 *            Deutschland
 	 * @param fenster
 	 *            das Wahlfenster der Ansicht
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn die Parameter null sind.
 	 */
 	public Ansicht(Deutschland land, WahlFenster fenster) {
 		if (land == null || fenster == null) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		this.wurdeVeraendert = false;
 		this.fenster = fenster;
@@ -85,7 +86,7 @@ public class Ansicht extends JPanel {
 	private void initialisieren() {
 		gbc.ipadx = 50;
 		gbc.ipady = 50;
-		
+
 		gbc.weightx = 0.75;
 		gbc.weighty = 1;
 		gbc.gridx = 0;
@@ -108,7 +109,7 @@ public class Ansicht extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		add(tabellenFenster, gbc);
 	}
-	
+
 	/**
 	 * Diese Methode ändert die aktuelle Ansicht in eine neue.
 	 * 
@@ -116,26 +117,26 @@ public class Ansicht extends JPanel {
 	 *            Gebiet, welches angezeigt werden soll
 	 */
 	public void ansichtAendern(Gebiet gebiet) {
-		if (gebiet == null) {
-			return;
+		if (gebiet != null) {
+			this.aktuellesGebiet = gebiet;
+			remove(tabellenFenster);
+			remove(diagrammFenster);
+			this.tabellenFenster = new TabellenFenster(this);
+			this.tabellenFenster.tabellenFuellen(gebiet);
+			this.diagrammFenster = new DiagrammFenster(this);
+			this.diagrammFenster.erstelleDiagramm(gebiet);
+			layoutSetzen();
 		}
-		this.aktuellesGebiet = gebiet;
-		remove(tabellenFenster);
-		remove(diagrammFenster);
-		this.tabellenFenster = new TabellenFenster(this);
-		this.tabellenFenster.tabellenFuellen(gebiet);
-		this.diagrammFenster = new DiagrammFenster(this);
-		this.diagrammFenster.erstelleDiagramm(gebiet);
-		layoutSetzen();
 	}
 
 	/**
-	 * Durch diese private Methode wird das Diagramm- und das Tabellenfenster gesetzt.
+	 * Durch diese private Methode wird das Diagramm- und das Tabellenfenster
+	 * gesetzt.
 	 */
 	private void layoutSetzen() {
 		gbc.ipadx = 50;
 		gbc.ipady = 50;
-		
+
 		if (!this.wurdeVeraendert) {
 			gbc.weightx = 0.5;
 			gbc.weighty = 0.5;
@@ -155,17 +156,17 @@ public class Ansicht extends JPanel {
 	}
 
 	/**
-	 * Diese Methode wird aufgerufen, wenn eine Stimme geändert wurde
-	 * und eine neue Berechnung notwendig ist.
+	 * Diese Methode wird aufgerufen, wenn eine Stimme geändert wurde und eine
+	 * neue Berechnung notwendig ist.
 	 */
 	public void berechnungNotwendig() {
 		this.wurdeVeraendert = true;
 		remove(diagrammFenster);
 		this.diagrammFenster = new DiagrammFenster(this);
-		
+
 		this.berechnePanel = new JPanel();
 		this.berechnePanel.setSize(new Dimension(100, 100));
-		
+
 		JButton berechne = new JButton("Berechne");
 		berechne.addActionListener(new ActionListener() {
 
@@ -177,12 +178,11 @@ public class Ansicht extends JPanel {
 				Steuerung.getInstance().berechneSitzverteilung();
 				fenster.getSteuerung().aktualisiereWahlfenster(aktuellesGebiet);
 			}
-			
+
 		});
 		berechne.setSize(new Dimension(150, 50));
 		this.berechnePanel.add(berechne, BorderLayout.CENTER);
-		
-		
+
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.gridx = 0;
@@ -190,7 +190,7 @@ public class Ansicht extends JPanel {
 		gbc.fill = GridBagConstraints.BOTH;
 		add(berechnePanel, gbc);
 	}
-	
+
 	/**
 	 * Diese Methode entfernt den Berechenknopf.
 	 */
@@ -198,7 +198,7 @@ public class Ansicht extends JPanel {
 		this.remove(berechnePanel);
 		this.berechnePanel = null;
 	}
-	
+
 	/**
 	 * Holt das Tabellenfenster der Ansicht.
 	 * 
@@ -259,11 +259,12 @@ public class Ansicht extends JPanel {
 	 * 
 	 * @param kartenFenster
 	 *            neues Kartenfenster
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das Kartenfenster-objekt null ist.
 	 */
 	public void setKartenFenster(KartenFenster kartenFenster) {
 		if (kartenFenster == null) {
-			throw new IllegalArgumentException("Fenster ist leer");
+			throw new IllegalArgumentException("Fenster ist null");
 		}
 		this.kartenFenster = kartenFenster;
 	}
@@ -287,11 +288,12 @@ public class Ansicht extends JPanel {
 	/**
 	 * @param aktuellesGebiet
 	 *            the aktuellesGebiet to set
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn das Gebiet-Objekt null ist.
 	 */
 	public void setAktuellesGebiet(Gebiet aktuellesGebiet) {
 		if (aktuellesGebiet == null) {
-			throw new IllegalArgumentException("Gebiet ist leer");
+			throw new IllegalArgumentException("Gebiet ist null");
 		}
 		this.aktuellesGebiet = aktuellesGebiet;
 	}
