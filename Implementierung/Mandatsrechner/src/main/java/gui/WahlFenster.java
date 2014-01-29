@@ -32,6 +32,9 @@ public class WahlFenster extends JPanel {
 	/** repräsentiert die aktuelle Steuerung des Wahlfensters */
 	private final GUISteuerung steuerung;
 
+	/** repräsentiert das aktuelle Programmfenster */
+	private final Programmfenster pf;
+
 	/**
 	 * repräsentiert das zuletzt gezeigte Gebiet, so dass zurück gesprungen
 	 * werden kann
@@ -41,15 +44,17 @@ public class WahlFenster extends JPanel {
 	/**
 	 * der Konstruktor der Klase
 	 * 
+	 * @param pf Programmfenster
 	 * @param btw
 	 *            Bundestagswahl
 	 * @throws IllegalArgumentException
 	 *             wenn die Bundestagswahl null ist.
 	 */
-	public WahlFenster(Bundestagswahl btw) {
+	public WahlFenster(Bundestagswahl btw, Programmfenster pf) {
 		if (btw == null) {
 			throw new IllegalArgumentException("Bundestagswahl ist null.");
 		}
+		this.pf = pf;
 		this.btw = btw;
 		this.name = btw.getName();
 		this.steuerung = new GUISteuerung(btw, this);
@@ -105,4 +110,14 @@ public class WahlFenster extends JPanel {
 	public String toString() {
 		return this.name;
 	}
+
+	/**
+	 * Gibt das Programmfenster
+	 * 
+	 * @return the pf
+	 */
+	public Programmfenster getPf() {
+		return pf;
+	}
+
 }

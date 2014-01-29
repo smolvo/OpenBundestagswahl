@@ -105,7 +105,7 @@ public final class Programmfenster extends JFrame {
 		}
 		Steuerung.getInstance().setBtw(w);
 		Steuerung.getInstance().berechneSitzverteilung();
-		WahlFenster fenster = new WahlFenster(w);
+		WahlFenster fenster = new WahlFenster(w, this);
 		this.wahlen.add(fenster);
 		this.tabs.neuerTab(fenster, w.getName());
 	}

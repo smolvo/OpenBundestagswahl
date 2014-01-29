@@ -119,7 +119,7 @@ public class Menu extends JMenuBar {
 		rueckgaengig = new JMenuItem("Rückgängig");
 		rueckgaengig.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/rueckgaengig.png"));
-		rueckgaengig.setEnabled(true);
+		
 		wiederherstellen = new JMenuItem("Wiederherstellen");
 		wiederherstellen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/wiederherstellen.png"));
@@ -243,5 +243,14 @@ public class Menu extends JMenuBar {
 				new LizenzDialog();
 			}
 		}
+	}
+	
+	/**
+	 * Setzt die Sichtbarkeit des Rueckgaengig JMenu Items
+	 * 
+	 * @param verfuegbarkeit Boolean
+	 */
+	public void setzeRueckgaengig(boolean verfuegbarkeit) {
+		this.rueckgaengig.setEnabled(verfuegbarkeit);
 	}
 }

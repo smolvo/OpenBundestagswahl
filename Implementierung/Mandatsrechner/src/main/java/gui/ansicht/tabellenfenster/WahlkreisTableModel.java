@@ -163,6 +163,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					tabellenfenster.getAnsicht().getFenster().getSteuerung()
 							.aktualisiereWahlfenster(gebiet);
 					daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
+					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
+							.setzeRueckgaengig(true);
 				} else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
