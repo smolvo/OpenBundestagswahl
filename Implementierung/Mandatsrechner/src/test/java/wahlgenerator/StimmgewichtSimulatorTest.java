@@ -3,7 +3,8 @@
  */
 package test.java.wahlgenerator;
 
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.List;
@@ -21,8 +22,7 @@ import org.junit.Test;
 import test.java.Debug;
 
 /**
- * @author Manuel
- * 
+ * Tests für den Stimmgewichtsimulator
  */
 public class StimmgewichtSimulatorTest {
 
@@ -143,21 +143,9 @@ public class StimmgewichtSimulatorTest {
 				+ wahl2.getSitzverteilung().getAbgeordnete().size());
 	}
 
-	//@Test
-	public void simonTest() {
-		Debug.setAktiv(true);
-		//Partei p = simu.getVerwandteWahl().getParteien().get(0);
-		// Anteil wird solange erhöht bis die Anteilsverhältnisse passen, also
-		// Anteil relev. Zs > Mandate
-		//while (!simu.bedingungErfuellt(p)) {
-//
-	//		simu.erhoeheRelevantenAnteil(p);
-		//}
-	}
-
 	
 	@Test
-	public void simonTest2() {
+	public void berechneNegStimmgewichtTest() {
 		Debug.setAktiv(false);
 		
 		assertTrue(simu.berechneNegStimmgewicht());

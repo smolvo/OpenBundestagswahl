@@ -2,16 +2,15 @@ package test.java.wahlvergleich;
 
 import java.io.File;
 
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.wahlvergleich.Wahlvergleich;
 
+/**
+ * Tests für den Wahlvergleich
+ */
 public class WahlvergleichTest {
 
 	

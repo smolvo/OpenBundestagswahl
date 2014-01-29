@@ -1,20 +1,22 @@
 package test.java.config;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import main.java.config.Config;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Tests für die Config Klasse
+ *
+ */
 public class ConfigTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
+	/**
+	 * Testet die getInstance() Methode bzw den Konstruktor von Config
+	 */
 	@Test
 	public void testGetInstance() {
 		Config config = Config.getInstance();
