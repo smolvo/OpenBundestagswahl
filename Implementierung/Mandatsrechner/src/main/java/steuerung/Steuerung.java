@@ -3,6 +3,8 @@ package main.java.steuerung;
 import java.io.File;
 import java.util.LinkedList;
 
+import com.sun.javafx.collections.annotations.ReturnsUnmodifiableCollection;
+
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
@@ -76,8 +78,6 @@ public class Steuerung {
 	 * Diese Methode startet eine neue Berechnung der Sitzverteilung der
 	 * aktuellen Bundestagswahl.
 	 * 
-	 * @param btw
-	 *            aktuelle Bundestagswahl
 	 * @throws NullPointerException
 	 */
 	public void berechneSitzverteilung() {
@@ -91,8 +91,10 @@ public class Steuerung {
 	 * Diese Methode generiert eine zufällige Wahl auf Grund bestimmter
 	 * Stimmenanteile.
 	 * 
-	 * @param anteile
-	 *            die Stimmenanteile
+	 * @param btw Die BasisWahl
+	 * @param anteile die Stimmenanteile
+	 * @param name Der Name der BTW
+	 * @return gibt die generierte Wahl zurück
 	 * @throws NullPointerException
 	 */
 	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw,

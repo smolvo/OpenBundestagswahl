@@ -69,6 +69,13 @@ public class Mandatsrechner2009 {
 				kandidat.setMandat(Mandat.KEINMANDAT);
 			}
 		}
+		
+		/*
+		 * Setzt alle Farben auf NULL
+		 */
+		for (Bundesland bundesland : bundestagswahl.getDeutschland().getBundeslaender()) {
+			bundesland.setFarbe(null);
+		}
 	}
 
 	/**

@@ -2,11 +2,13 @@ package main.java.wahlgenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import test.java.Debug;
 import main.java.mandatsrechner.Mandatsrechner2009;
+import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
 import main.java.model.Kandidat;
@@ -280,6 +282,18 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				
 			}
 			
+		}
+		
+		/*
+		 * korrigiere die Parteilisten der Bundesländer
+		 */
+		for (Bundesland bundesland : btw.getDeutschland().getBundeslaender()) {
+			bundesland.setParteien(new LinkedList<Partei>());
+			for (Partei partei : btw.getParteien()) {
+				if (bundesland.getAnzahlZweitstimmen(partei) > 0) {
+					bundesland.getParteien().add(partei);
+				}
+			}
 		}
 		
 	}
