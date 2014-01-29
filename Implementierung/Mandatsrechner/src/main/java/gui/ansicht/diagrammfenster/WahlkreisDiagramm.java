@@ -27,8 +27,6 @@ import main.java.model.Wahlkreis;
 /**
  * Diese Klasse repräsentiert das Diagramm der Wahlkreisansicht.
  * 
- * @author Anton
- * 
  */
 public class WahlkreisDiagramm {
 
@@ -43,11 +41,12 @@ public class WahlkreisDiagramm {
 	 *            Wahlkreis
 	 * @param flaeche
 	 *            Diagrammfläche
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             wenn die Parameter null sind
 	 */
 	public WahlkreisDiagramm(Wahlkreis wk, final DiagrammFenster flaeche) {
 		if (wk == null || flaeche == null) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
@@ -74,9 +73,14 @@ public class WahlkreisDiagramm {
 	 * 
 	 * @param wk
 	 *            der Wahlkreis
-	 * @return JFreeChart
+	 * @throws IllegalArgumentException
+	 *             wenn das Wahlkreis-Objekt null ist.
+	 * @return JFreeChart die neue Chart
 	 */
 	private JFreeChart createChart(Wahlkreis wk) {
+		if (wk == null) {
+			throw new IllegalArgumentException("Wahlkreis ist leer");
+		}
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Erststimme> er = wk.getErststimmenProPartei();
@@ -103,8 +107,9 @@ public class WahlkreisDiagramm {
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
-		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von \n"  + wk.getName() , null,
-				"proz. Erststimmen", result, PlotOrientation.VERTICAL, false, false, false);
+		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von \n"
+				+ wk.getName(), null, "proz. Erststimmen", result,
+				PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen

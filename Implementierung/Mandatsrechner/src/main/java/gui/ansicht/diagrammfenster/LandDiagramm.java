@@ -27,8 +27,6 @@ import main.java.model.Zweitstimme;
 /**
  * Diese Klasse stellt das Diagramm der Landesansicht dar.
  * 
- * @author Anton
- * 
  */
 public class LandDiagramm {
 
@@ -43,11 +41,12 @@ public class LandDiagramm {
 	 *            Bundesland
 	 * @param flaeche
 	 *            die Fläche auf dem sich das Diagramm befindet
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 *             Eingabeparameter sind null.
 	 */
 	public LandDiagramm(Bundesland bundLand, final DiagrammFenster flaeche) {
 		if (bundLand == null || flaeche == null) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		this.flaeche = flaeche;
 		flaeche.setLayout(new BorderLayout());
@@ -73,10 +72,15 @@ public class LandDiagramm {
 	 * Diagramm.
 	 * 
 	 * @param bundLand
-	 *            Bundesland
-	 * @return Diagramm
+	 *            Bundesland fuer die das ein Diagramm erstellt werden
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland-Objekt null ist.
+	 * @return Diagramm das erstellte Diagramm
 	 */
 	private JFreeChart createChart(Bundesland bundLand) {
+		if (bundLand == null) {
+			throw new IllegalArgumentException("Bundesland ist null.");
+		}
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
 		List<Zweitstimme> zw = bundLand.getZweitstimmenProPartei();
@@ -102,9 +106,9 @@ public class LandDiagramm {
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
-		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von " + bundLand.getName(), null,
-				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false,
-				false, false);
+		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von "
+				+ bundLand.getName(), null, "proz. Zweitstimmen", result,
+				PlotOrientation.VERTICAL, false, false, false);
 		CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
