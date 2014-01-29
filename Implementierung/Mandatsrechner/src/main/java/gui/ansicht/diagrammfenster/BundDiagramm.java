@@ -15,8 +15,6 @@ import javax.swing.JOptionPane;
 
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
-import main.java.model.Kandidat;
-import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Zweitstimme;
 
@@ -108,12 +106,7 @@ public class BundDiagramm {
 		Collections.sort(stimmen);
 		DefaultPieDataset result = new DefaultPieDataset();
 		for (Zweitstimme zw : stimmen) {
-			int sitze = 0;
-			for (Kandidat kan : zw.getPartei().getMitglieder()) {
-				if (!(kan.getMandat().equals(Mandat.KEINMANDAT))) {
-					sitze++;
-				}
-			}
+			int sitze = zw.getPartei().getAnzahlMandate();
 			if (sitze > 0) {
 				daten.add(sitze);
 				parteien.add(zw.getPartei());
