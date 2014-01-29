@@ -202,14 +202,14 @@ Im Entwurf wurde festgelegt, dass diese Methode ein {\myma{Stimmenanteile}}-Obje
 \end{itemize}
 	
 	\subsection{Chronik}
-Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. dass die gesetzten Zweitstimmen in Deutschland können nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
+Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. dass die gesetzten Zweitstimmen in Deutschland nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden können, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
 Unser erster Gedanke war es, eine ganze Bundestagswahl statt einer Stimme zu speichern. Dies ist jedoch ebenfalls verfallen, da die Chronik für die Deep-Copy Funktion der Bundestagswahl serialisierbar sein muss. In diesem Falle, würde auch die ganze Chronik gespeichert werden, was unvorhersehbare Folgen haben könnte. 
 
 
 
 	\subsection{Sonstiges}
 \subsubsection{Konfiguration}
-Dieses Modul ist im Entwurf überhaupt nicht enthalten, und wurde erst in der Implementierung hinzugefügt. Es hat die Aufgabe, Einstellungen/Informationen, ohne festes Coden, im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
+Die Notwendigkeit wurde uns in der Implementierung bekannt, weshalb dieses Modul im Entwurf überhaupt nicht enthalten ist, und wurde erst in der Implementierung hinzugefügt worden ist. Es hat die Aufgabe, Einstellungen/Informationen, ohne festes Coden, im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
 Das Modul speichert die Konfiguration in einem Tabulator-getrennten Format. Dies ermöglicht die Datei sehr leicht und lesbar in einem Texteditor oder Excel zu bearbeiten. \\
 Die Konfiguration wurde mit weiteren Funktionen beliefert. So sind die Werte auch programmatisch veränderbar. In der GUI ist die Konfiguration zur Zeit nicht änderbar, jedoch ist dies sehr einfach umsetzbar. In unseren Anforderungen war dies nicht enthalten, und wurde daher weggelassen.
 
