@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import main.config.Config;
+import main.java.config.Config;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

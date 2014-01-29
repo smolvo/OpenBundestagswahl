@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import test.java.Debug;
-
-import main.config.Config;
+import main.java.config.Config;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
