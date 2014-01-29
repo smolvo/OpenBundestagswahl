@@ -159,7 +159,10 @@ Der Simulator für das negative Stimmgewicht benötigt außerdem nicht wie urspr
 
 	\subsection{Simulation des negativen Stimmgewichts}
 		
-	\subsection{Wahlvergleich}
+\subsection{Wahlvergleich}
+Das Paket Wahlvergleich besteht nach der Implementierungsphase aus fünf Klassen. Die Hauptklasse ist der {\myma{Wahlvergleich}} der zwei übergebene Wahlen vergleicht. Wie im Entwurf festgelegt enthält die Klasse die Methode {\mymo{vergleiche()}}, die für den Vergleich von zwei {\myma{Bundestagswahlen}} sorgt. Jedoch wurden die Parameter, die übergeben werden musste, lieber als Klassenattribute festgehalt, was die Übergabe der gesamten Klasse an das schon in der GUI beschriebene {\myma{VergleichsFenster}} erleichtern sollte. \\
+Die im Entwurf erwähnte {\myma{Parteidifferenz}}-Klasse wurde komplett überarbeitet. In dieser werden nur noch die Partei und die Differenz der Sitze von {\myma{Bundestagswahl}}1 zu {\myma{Bundestagswahl}}2 gesichert. Die hat den Grund, dass diese Klasse der {\myma{DiffDiagramm}}-Klasse übergeben wird, welche die Sitzdifferenz veranschaulicht und ein weiterer Bestandteil des Vergleichspaketes ist. \\
+Die Daten des die von der {\myma{Wahlvergleich}}s Klasse ermittelt werden werden in der Klasse {\myma{VergleichDaten}} gespeichert und dann in Form einer Tabelle durch die {\myma{WahlvergleichTableModel}}-Klasse dargestellt. 
 	
 \subsection{Steuerung}
 Die {\myma{Steuerung}}sklasse bildet die Fassade des gesamten Projektes. In der Implementierungsphase wurden nur die drei folgenden Methoden verändert:

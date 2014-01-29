@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  28 JAN 2014 22:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  29 JAN 2014 01:15
 entering extended mode
 **Implementierung.tex
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.tex
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -531,8 +531,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip55
 )
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.aux)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
@@ -547,8 +547,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count115
 \scratchdimen=\dimen128
@@ -610,10 +609,10 @@ LaTeX Info: Redefining \ref on input line 20.
 LaTeX Info: Redefining \pageref on input line 20.
 LaTeX Info: Redefining \nameref on input line 20.
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.out)
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.out)
 \@outlinefile=\write4
  <KIT-Logo.png, id=103, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
@@ -623,21 +622,22 @@ Package pdftex.def Info: KIT-Logo.png used on input line 35.
 (pdftex.def)             Requested size: 170.70305pt x 79.20851pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Simon/Documents/
-pse13-1/trunk/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warn
-ing (ext4): destination with the same identifier (name{page.1}) has been alread
-y used, duplicate ignored
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Batman/Desktop/p
+se/pse13-1/Implementierung/Implementierungsbericht/KIT-Logo.png>]pdfTeX warning
+ (ext4): destination with the same identifier (name{page.1}) has been already u
+sed, duplicate ignored
 <to be read again> 
                    \relax 
 l.40 ...e\thispagestyle{empty}\hspace{1em}\newpage
                                                    [1]
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.toc
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
@@ -790,30 +790,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--157
  []
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 167.
+Overfull \hbox (3.1592pt too wide) in paragraph at lines 163--166
+\OT1/pcr/b/n/12 Bundestagswahl\OT1/cmr/m/n/12 2 ge-si-chert. Die hat den Grund,
+ dass die-se Klas-se der \OT1/pcr/b/n/12 DiffDiagramm\OT1/cmr/m/n/12 -
+ []
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+Overfull \hbox (100.61652pt too wide) in paragraph at lines 163--166
+\OT1/cmr/m/n/12 se \OT1/pcr/b/n/12 VergleichDaten \OT1/cmr/m/n/12 ge-spei-chert
+ und dann in Form ei-ner Ta-bel-le durch die \OT1/pcr/b/n/12 WahlvergleichTable
+Model\OT1/cmr/m/n/12 -
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 170.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 167.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 170.
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--171
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
 [6]
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
  Make it at least 14.87502pt.
@@ -821,24 +832,24 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Implementierung\Implementierungsbericht
-\Implementierung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
+(C:\Users\Batman\Desktop\pse\pse13-1\Implementierung\Implementierungsbericht\Im
+plementierung.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `Implementierung.out' has not changed.
 (rerunfilecheck)             Checksum: 2407E2B5A36B768BF6683961A3A434F9;1678.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
  7163 strings out of 493921
- 101434 string characters out of 3147281
+ 101395 string characters out of 3147278
  193163 words of memory out of 3000000
  10309 multiletter control sequences out of 15000+200000
  12456 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,11n,43p,1302b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,11n,43p,1302b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
@@ -848,7 +859,7 @@ onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Implementierung.pdf (10 pages, 241656 bytes).
+Output written on Implementierung.pdf (10 pages, 242924 bytes).
 PDF statistics:
  220 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)
