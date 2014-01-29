@@ -53,7 +53,7 @@ public final class Programmfenster extends JFrame {
 	 * Der Konstruktor des Programmfensters
 	 */
 	public Programmfenster() {
-		//Debug.setAktiv(true);
+		Debug.setAktiv(true);
 		// allgemeine Anpassungen des Programmfensters
 		setTitle("Mandatsverteilung im Deutschen Bundestag");
 		this.setMinimumSize(new Dimension(1024, 768));

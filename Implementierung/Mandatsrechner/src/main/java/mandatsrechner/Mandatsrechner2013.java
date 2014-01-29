@@ -93,7 +93,7 @@ public class Mandatsrechner2013 {
 						.getMindestsitzAnzahl() - 0.5)));
 			}
 		}
-
+		Debug.print("Berechne Parteidivisor.");
 		/**
 		 * Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre
 		 * Anzahl an Mindestsitze erfuellen. TODO: Ordentliche Schleife
@@ -112,7 +112,7 @@ public class Mandatsrechner2013 {
 				parteidivisor -= 1;
 			}
 		}
-
+		Debug.print("Berechneter Parteidivisor: " + parteidivisor);
 		if (Debug.isAktiv()) {
 			Debug.print("\nNeu Parteidivisor: " + parteidivisor);
 			int summe = 0;
@@ -231,7 +231,7 @@ public class Mandatsrechner2013 {
 										.getListenkandidaten().size() <= i) {
 									// Wahlgenerator verursacht Wahlen ohne
 									// Landeslisten.
-									//System.err.println("Keine Listenplaetze mehr :(");
+									Debug.print("Notice: Keine Listenplaetze mehr :(");
 									break;
 								}
 								Kandidat neuerAbgeordneter = partei
