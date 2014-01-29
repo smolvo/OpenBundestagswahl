@@ -80,6 +80,10 @@ Die Kernklasse unseres Programmes wurde mit geringen Änderungen umgesetzt. Die 
 Den Parteien wurden Überhang- und Ausgleichsmandate als "Zahlenwerte" hinzugefügt. Unser Versuch war es, Überhang- und Ausgleichsmandate als eindeutige Mandate in die Sitzverteilung einzubauen. Jedoch ist uns erst im Laufe der Umsetzung aufgefallen, dass dies nicht möglich ist. \\
 Die Klasse Partei besitzt Funktionen, die Überhang- und Ausgleichsmandate setzen, zurücksetzen und verändern.
 
+\subsubsection{Kandidat}
+Was für uns in der Pflichten- und Entwurfsphase gegen Ablehnung gestoßen hatte, wir es jedoch dennoch Umgesetzt haben, sind Namen, Vornamen und das Geburtsjahr der Kandidaten. \\
+Ursprünglich wollten wir Anonyme Kandidaten und Zufällig-gefüllte Landeslisten für unseren Mandatsrechner verwenden. Jedoch ist uns früh aufgefallen, dass für eine genaue Berechnung, die genaue Anzahl der Listenkandidaten benötigt wird.
+
 \subsection{Import/Export}	
 Die Import-Export-Komponente wurde im Laufe der Implementierung stark angepasst. Anders als im Entwurf, haben wir das Exportieren vom Importieren getrennt. Da die Namen und der feste Platz in der Ladenliste mitgespeichert werden, muss eine zusätzliche .csv-Datei importiert werden. Diese Datei ist ebenfalls aus der Bundeswahlleiter-Seite und werden von uns als "Wettbewerber-Datei" bezeichnet. Mithilfe dieser Wahlbewerber-Datei werden die vorher ausgelesenen Kandidaten befüllt. \\
 Die Wahlbewerber-Datei für die Bundestagswahl 2013 wird im Programm mit übergeben und kann im Notfall auch für Bundestagswahl 2009 genutzt werden. Es ist leider keine solche Datei für die Bundestagswahl 2009 verfügbar. Sie wurde von der Bundeswahlleiter-Seite aufgrund von Datenschutzgründen entfernt. \\
@@ -190,12 +194,22 @@ Im Entwurf wurde festgelegt, dass diese Methode ein {\myma{Stimmenanteile}}-Obje
 
 \end{itemize}
 	
+	\subsection{Chronik}
+Die Chronik ist der Grund, weshalb wir beschlossen haben, dass Erst- und Zweitstimmen nur noch im Wahlkreis veränderbar sind. Hier hat sich das Problem in den Weg gestellt, z.B. die gesetzten Zweitstimmen in Deutschland können nicht ordnungsgemäß auf die Bundesländer und Wahlkreise verteilt werden, falls die neue Zweitstimmenanzahl die Anzahl der Wahlberechtigten übersteigt. In diesem Falle kann keine Stimme rückgängig gemacht werden. \\
+Unser erster Gedanke war es, eine ganze Bundestagswahl statt einer Stimme zu speichern. Dies ist jedoch ebenfalls verfallen, da die Chronik für die Deep-Copy Funktion der Bundestagswahl serialisierbar sein muss. In diesem Falle, würde auch die ganze Chronik gespeichert werden, was unvorhersehbare Folgen haben könnte. 
+
 	\subsection{Sonstiges}
 \subsubsection{Konfiguration}
 Dieses Modul ist im Entwurf überhaupt nicht enthalten, und wurde erst in der Implementierung hinzugefügt. Es hat die Aufgabe, Einstellungen/Informationen ohne festes Coden im Programm zu benutzen. Ein Anwendungsbeispiel ist die Einwohnerzahl der Bundesländer, die essentiell für das Berechnen der Mandatsverteilung. Außerdem beispielsweise die Farben der Parteien im RGB. \\
 Das Modul speichert die Konfiguration in einem Tabulator-getrennten Format. Dies ermöglicht die Datei sehr leicht und lesbar in einem Texteditor oder Excel zu bearbeiten. \\
 Die Konfiguration wurde mit weiteren Funktionen beliefert. So sind die Werte auch programmatisch veränderbar. In der GUI ist die Konfiguration zur Zeit nicht änderbar, jedoch ist dies sehr einfach umsetzbar. In unseren Anforderungen war dies nicht enthalten, und wurde daher weggelassen.
 
+\subsubsection{Handbuch/About/Lizenz}
+Das Handbuch wurde in Form einer Webview umgesetzt. Dieser beinhaltet zur Zeit ein Tutorial.
+
+\section{Fazit}
+
+\newpage
 \section{Vorschau auf die nächste Phase}
 Die nächste Phase ist die Qualitätssicherung. In dieser Phase werden wir unser Programm ordentlichen Tests unterziehen und einige Performance-Probleme beheben.
 	\subsection{Ideen und Ziele}
