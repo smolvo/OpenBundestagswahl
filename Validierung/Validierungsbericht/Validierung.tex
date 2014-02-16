@@ -62,7 +62,104 @@ Dieses Dokument ist im Zuge der Validierungsphase entstanden.
 Außerdem wird Bundestagswahl im gesamten Entwurfsdokument durch BTW abgekürzt.
 \newpage
 
+\section{Globale Testfälle und Szenarien}
+Im folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt und analysiert.
 
+\begin{description}
+	\item[\textbf{/T0010/}] Zwei Wahlen miteinander vergleichen: \\
+	Das Vergleichsfenster öffnet wie vorgesehen, aber es gibt noch einige Ungereimtheiten.
+	
+	\begin{itemize}
+	\item Wahl kann mit sich selbst verglichen werden, was keinen Sinn macht, wenn man in der Vergleichsansicht keine Stimmen ändern kann
+	\item Wahlfenster öffnet sich im Hintergrund
+	\item Berichtsfenster können nicht angezeigt werden
+	\end{itemize}
+	
+	\item[\textbf{/T0020/}] Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
+	Exception wird geworfen, aber noch keine Fehlermeldung ausgegeben.
+	\item[\textbf{/T0030/}] Manuell einen Buchstaben als Stimmenanzahl eintragen: \
+	Folgende Meldungen werden ausgegeben.
+	\begin{itemize}
+	\item Nur positive ganze Zahlen erlaubt.
+	\item Stimme konnte nicht geändert werden.
+	\end{itemize}
+	Daraufhin wird die Stimme wieder zurückgesetzt
+	\item[\textbf{/T0040/}] Eine Fließkommazahl als Stimmenanzahl eintragen: \\
+	siehe \textbf{/T0030/}
+	\item[\textbf{/T0050/}] Erststimme in der Wahlkreisansicht verändern: \\
+	funktioniert.
+	\item[\textbf{/T0060/}] Die Funktion ``Diagramm wechseln'' testen:\\
+	Funktion nicht in aktuellem Programm realisiert.
+	\item[\textbf{/T0070/}] Die Funktion ``Rückgängig machen'' testen: \\
+	Zurücksetzen funktioniert noch nicht.
+	\item[\textbf{/T0080/}] Die Funktion ```Wiederherstellen'' testen: \\
+Da rückgängig machen noch nicht funktioniert, kann wiederherstellen nicht angewählt werden.
+\end{description}
+\subsubsection{Import-/Exportverhalten}
+Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgesetzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
+\begin{description}
+	\item[\textbf{/T0110/}] Struktur einer Importdatei verändern: \newline
+	Test: Gebiet gelöscht \newline
+	Exception in Crawler ("Kein geeigneter Crawler gefunden") wurde geworfen, aber keine Fehlermeldung an Benutzer ausgegeben
+	\item[\textbf{/T0120/}] 
+	?? 
+	\item[\textbf{/T0130/}] 
+	Test: SPD zu CDU \\
+	Keine Exception und keine Fehlermeldung. Programm funktioniert wie gewöhnlich
+	\item[\textbf{/T0140/}] Nur eine Partei befindet sich in der Importdatei:\\
+	Test: Alle Parteien außer CDU entfernt, Bundesländer und Wahlkreise für die Übersichtlichkeit entfernt, Stimmzahlen angepasst(z.B. Gesamtzweitstimmenanzahl in D) \\
+	Endlosschleife 
+	 \newline
+
+	\item[\textbf{/T0150/}] Importdatei mit fehlerhaften Bundesländernamen:
+	Test: Hamburg -> Hambe\\
+	Exception im Mandatsrechner
+	\item[\textbf{/T0160/}] Eigenen Wahlausgang erstellen: \\
+	funktioniert.
+\end{description}
+\subsubsection{Korrekte Berechnung der Sitzverteilung}
+Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine Importdatei geladen wurde.
+\begin{description}
+	\item[\textbf{/T0210/}] Ein Direktmandat fehlt: \newline
+	\begin{itemize}
+	\item Es kann immer nur eine Erststimmenanzahl geändert werden, dann muss berechnet werden
+	\item Es können alle Erststimmenanzahlen auf 0 gesetzt werden, aber Direktmandat im Bundesland wird immer noch angezeigt
+	\item Berechne- Knopf erscheint immer über Diagramm
+	\item Exception: java.lang.OutOfMemoryError: Java heap space
+	\end{itemize}
+	
+	\item[\textbf{/T0220/}] Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \newline
+	\begin{itemize}
+	\item Es wird kein Hinweis hinsichtlich einer Auslosung ausgegeben
+	\item bleibt zu testen, ob überhaupt gelost wird
+	\end{itemize}
+	\item[\textbf{/T0230/}] Ein negatives Stimmgewicht in einer Wahl provozieren:
+	fällt im Moment weg.
+	\item[\textbf{/T0240/}] Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \newline
+	\begin{itemize}
+	\item Bei 3 Direktmandaten passiert nichts
+	\item Wahlgenerierung und Partei 3 Prozent der Zweitstimmen gegeben, sie war aber nicht im Bundestag vertreten
+	\end{itemize}
+	
+	\item[\textbf{/T0250/}] Überhangmandat testen: \newline
+\begin{itemize}
+\item Überhangmandate werden in Landesansicht nicht angezeigt
+\item Hinweis meiner Meinung nach überflüssig
+\end{itemize}
+	\item[\textbf{/T0260/}] Ausgleichsmandat testen: \newline
+\begin{itemize}
+\item Hinweis meiner Meinung nach nicht wichtig
+
+	
+\end{itemize}
+
+\item[\textbf {weitere}]:
+\begin{itemize}
+\item leere Bewerberliste 
+NullPointer in Mandatsrechner
+\end{itemize}
+
+\end{description}
 	
 \section{Vorschau auf die nächste Phase}
 
