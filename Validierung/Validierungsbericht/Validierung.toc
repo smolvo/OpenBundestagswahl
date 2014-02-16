@@ -1,0 +1,4 @@
+\select@language {german}
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Notationshinweise}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Vorschau auf die n\IeC {\"a}chste Phase}{2}{section.2}
