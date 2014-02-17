@@ -257,7 +257,7 @@ public class Crawler2013 extends Crawler {
 		// int parteiOffset = 4;
 		LinkedList<Partei> parteien = new LinkedList<Partei>();
 		for (int i = parteiOffset; i < columns.size(); i++) {
-			Partei p = new Partei(columns.get(i), columns.get(i), this.getParteiFarbe(columns.get(i)));
+			Partei p = new Partei(columns.get(i), this.getParteiFarbe(columns.get(i)));
 			parteien.add(p);
 		}
 

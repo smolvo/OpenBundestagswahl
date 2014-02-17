@@ -33,9 +33,6 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/** Der Name dieser Partei. */
 	private String name;
 
-	/** Das Krzel dieser Partei. */
-	private String kuerzel;
-
 	/** Die Farbe dieser Partei. */
 	private Color farbe;
 
@@ -123,14 +120,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * 
 	 * @param name
 	 *            Der Name dieser Partei.
-	 * @param kuerzel
-	 *            Das K�rzel dieser Partei.
 	 * @param farbe
 	 *            Farbe dieser Partei
 	 */
-	public Partei(String name, String kuerzel, Color farbe) {
+	public Partei(String name, Color farbe) {
 		this.setName(name);
-		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
 		this.mitglieder = new LinkedList<Kandidat>();
 		this.landesliste = new ArrayList<Landesliste>();
@@ -147,16 +141,13 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 *            Die Liste aller Landeslisten dieser Partei.
 	 * @param name
 	 *            Der Name dieser Partei.
-	 * @param kuerzel
-	 *            Das K�rzel dieser Partei.
 	 * @param farbe
 	 *            Die Farbe dieser Partei.
 	 */
-	public Partei(List<Landesliste> landesliste, String name, String kuerzel,
+	public Partei(List<Landesliste> landesliste, String name,
 			Color farbe) {
 		this.setLandesliste(landesliste);
 		this.setName(name);
-		this.setKuerzel(kuerzel);
 		this.setFarbe(farbe);
 		this.zweitstimme = new LinkedList<>();
 		this.mitglieder = new LinkedList<Kandidat>();
@@ -279,31 +270,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		this.name = name;
 	}
-
-	/**
-	 * Gibt das Kuerzel der Partei zurueck.
-	 * 
-	 * @return das Kuerzel der Partei.
-	 */
-	public String getKuerzel() {
-		return this.kuerzel;
-	}
-
-	/**
-	 * Setzt das Kuerzel der Partei.
-	 * 
-	 * @param kuerzel
-	 *            der Partei.
-	 * @throws IllegalArgumentException
-	 *             wenn der Parameter kuerzel null ist.
-	 */
-	public void setKuerzel(String kuerzel) throws IllegalArgumentException {
-		if (kuerzel == null || kuerzel.isEmpty()) {
-			throw new IllegalArgumentException("Name ist leer");
-		}
-		this.kuerzel = kuerzel;
-	}
-
+	
 	/**
 	 * Gibt die Farbe der Partei zurueck.
 	 * 
