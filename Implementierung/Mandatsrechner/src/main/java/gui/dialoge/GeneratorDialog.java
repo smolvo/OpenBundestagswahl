@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -137,13 +139,23 @@ public class GeneratorDialog extends JDialog {
 		this.neueWahlNameLabel.setBounds(5, 40, 150, 20);
 		this.neueWahlNameBox = new JTextField();
 		this.neueWahlNameBox.setBounds(165, 40, 150, 20);
-		this.neueWahlNameBox.addActionListener(new ActionListener() {
+	
+		this.neueWahlNameBox.addKeyListener(new KeyListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!(neueWahlNameBox.getText() == null)) {
-					generiere.setEnabled(true);
-				}
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
 				check();
 			}
 			
@@ -221,7 +233,7 @@ public class GeneratorDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				generiere.setEnabled(false);
+				check();
 				zeileHinzufuegen();
 			}
 
@@ -464,6 +476,7 @@ public class GeneratorDialog extends JDialog {
 	private void check() {
 		if (this.neueWahlNameBox.getText().equals("")) {
 			generiere.setEnabled(false);
+			return;
 		}
 		if (gesamtErststimmen <= 100 && gesamtZweitstimmen <= 100) {
 			generiere.setEnabled(true);
