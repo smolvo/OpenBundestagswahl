@@ -160,6 +160,17 @@ NullPointer in Mandatsrechner
 \end{itemize}
 
 \end{description}
+
+\subsubsection{Fehler der GUI}
+\begin{itemize}
+\item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte 
+Das Problem bei diesem Fehler war, dass ein ActionListener verwendtet wurden. Aus diesem Grund wurde die
+Abfrage, ob der aktuelle Name gesetzt ist, nur abgefragt, sobald der Benutzer den Enter-Knopf betätigte.
+Durch den neuen KeyListener wird bei kleinster Änderung abgefragt, ob sich noch Text in dem JTextField befindet. \\
+
+\item
+
+\end{itemize}
 	
 \section{Vorschau auf die nächste Phase}
 
