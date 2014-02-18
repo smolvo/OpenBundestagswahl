@@ -208,8 +208,7 @@ public class Mandatsrechner2013 {
 
 						if (diffSitzeBundesland < 0) {
 							for (int i = 0; i < Math.abs(diffSitzeBundesland); i++) {
-								System.out
-										.println("ABZIEHEN " + partei.getName()
+								Debug.print("ABZIEHEN " + partei.getName()
 												+ " " + bl.getName());
 								for (int j = (partei.getLandesliste().size() - 1); j >= 0; j--) {
 									if (partei.getLandesliste(bl)
