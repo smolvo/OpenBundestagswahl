@@ -105,6 +105,9 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			// versuche Integer umzuwandeln
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
+				if (anzahl < 0) {
+					throw new NumberFormatException();
+				}
 				aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
 			} catch (NumberFormatException e) {
 
@@ -144,6 +147,9 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			// versuche Integer umzuwandeln
 			try {
 				anzahl = Integer.parseInt(stringAnzahl);
+				if (anzahl < 0) {
+					throw new NumberFormatException();
+				}
 				aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
 			} catch (NumberFormatException e) {
 
