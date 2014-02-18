@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -28,10 +30,7 @@ import main.java.model.Zweitstimme;
  * Diese Klasse stellt das Diagramm der Landesansicht dar.
  * 
  */
-public class LandDiagramm {
-
-	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final DiagrammFenster flaeche;
+public class LandDiagramm extends JPanel {
 
 	/**
 	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
@@ -39,32 +38,28 @@ public class LandDiagramm {
 	 * 
 	 * @param bundLand
 	 *            Bundesland
-	 * @param flaeche
-	 *            die Fläche auf dem sich das Diagramm befindet
 	 * @throws IllegalArgumentException
 	 *             Eingabeparameter sind null.
 	 */
-	public LandDiagramm(Bundesland bundLand, final DiagrammFenster flaeche) {
-		if (bundLand == null || flaeche == null) {
-			throw new IllegalArgumentException("Einer der Parameter ist null.");
+	public LandDiagramm(Bundesland bundLand) {
+		if (bundLand == null) {
+			throw new IllegalArgumentException("Bundesland ist null.");
 		}
-		this.flaeche = flaeche;
-		flaeche.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(bundLand);
 		final ChartPanel chartPanel = new ChartPanel(chart);
-
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
-				panel.setSize(resize());
-				flaeche.add(chartPanel, BorderLayout.LINE_START);
+				panel.setPreferredSize(resize());
+				add(chartPanel, BorderLayout.LINE_START);
 			}
 
 		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
-		flaeche.add(chartPanel, BorderLayout.LINE_START);
+		this.add(chartPanel, BorderLayout.LINE_START);
 	}
 
 	/**
@@ -136,7 +131,7 @@ public class LandDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(),
-				(int) (this.flaeche.getHeight()));
+		return new Dimension(this.getWidth(),
+				(int) (this.getHeight()));
 	}
 }

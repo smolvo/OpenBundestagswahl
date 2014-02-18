@@ -1,5 +1,11 @@
 package main.java.gui.ansicht.diagrammfenster;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.gui.BerichtTableModel;
@@ -10,6 +16,7 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 import main.java.model.Wahlkreis;
+import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht. In diesem
@@ -22,6 +29,12 @@ public class DiagrammFenster extends JPanel {
 
 	/** repräsentiert die Ansicht des Diagrammfensters */
 	private final Ansicht ansicht;
+	
+	/** repräsentiert den Berichtsknopf */
+	private final JButton bericht;
+	
+	/** repräsentiert die LayoutConstraints */
+	private final GridBagConstraints gbc;
 
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
@@ -31,6 +44,17 @@ public class DiagrammFenster extends JPanel {
 	 */
 	public DiagrammFenster(Ansicht ansicht) {
 		this.ansicht = ansicht;
+		this.bericht = new JButton("Bericht anzeigen");
+		this.bericht.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				zeigeSitzverteilung(Steuerung.getInstance().getBtw());
+			}
+			
+		});
+		this.gbc = new GridBagConstraints();
+		this.setLayout(new GridBagLayout());
 	}
 
 	/**
@@ -44,6 +68,11 @@ public class DiagrammFenster extends JPanel {
 		if (gebiet == null) {
 			throw new NullPointerException("Kein Gebiet gefunden.");
 		}
+		this.gbc.weightx = 1;
+		this.gbc.weighty = 1;
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 0;
+		this.gbc.fill = GridBagConstraints.BOTH;
 		if (gebiet instanceof Deutschland) {
 			Deutschland land = (Deutschland) gebiet;
 			erstelleDiagramm(land);
@@ -63,7 +92,15 @@ public class DiagrammFenster extends JPanel {
 	 *            Deutschland
 	 */
 	public void erstelleDiagramm(Deutschland land) {
-		new BundDiagramm(land, this);
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland ist null.");
+		}
+		this.add(new BundDiagramm(land), gbc);
+		this.gbc.weighty = 0.1;
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 1;
+		this.gbc.fill = GridBagConstraints.BOTH;
+		this.add(bericht, gbc);
 	}
 
 	/**
@@ -78,7 +115,7 @@ public class DiagrammFenster extends JPanel {
 		if (bundLand == null) {
 			throw new IllegalArgumentException("Bundesland ist null.");
 		}
-		new LandDiagramm(bundLand, this);
+		this.add(new LandDiagramm(bundLand), gbc);
 	}
 
 	/**
@@ -94,7 +131,7 @@ public class DiagrammFenster extends JPanel {
 		if (wk == null) {
 			throw new IllegalArgumentException("Wahlkreis ist null.");
 		}
-		new WahlkreisDiagramm(wk, this);
+		this.add(new WahlkreisDiagramm(wk), gbc);
 	}
 
 	/**

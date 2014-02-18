@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -28,10 +30,7 @@ import main.java.model.Wahlkreis;
  * Diese Klasse repräsentiert das Diagramm der Wahlkreisansicht.
  * 
  */
-public class WahlkreisDiagramm {
-
-	/** reptäsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final DiagrammFenster flaeche;
+public class WahlkreisDiagramm extends JPanel {
 
 	/**
 	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
@@ -39,17 +38,14 @@ public class WahlkreisDiagramm {
 	 * 
 	 * @param wk
 	 *            Wahlkreis
-	 * @param flaeche
-	 *            Diagrammfläche
 	 * @throws IllegalArgumentException
 	 *             wenn die Parameter null sind
 	 */
-	public WahlkreisDiagramm(Wahlkreis wk, final DiagrammFenster flaeche) {
-		if (wk == null || flaeche == null) {
+	public WahlkreisDiagramm(Wahlkreis wk) {
+		if (wk == null) {
 			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
-		this.flaeche = flaeche;
-		flaeche.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(wk);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 
@@ -59,12 +55,12 @@ public class WahlkreisDiagramm {
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
-				flaeche.add(chartPanel, BorderLayout.LINE_START);
+				add(chartPanel, BorderLayout.LINE_START);
 			}
 
 		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
-		flaeche.add(chartPanel, BorderLayout.LINE_START);
+		this.add(chartPanel, BorderLayout.LINE_START);
 	}
 
 	/**
@@ -137,7 +133,7 @@ public class WahlkreisDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(),
-				(int) (this.flaeche.getHeight()));
+		return new Dimension(this.getWidth(),
+				(int) (this.getHeight()));
 	}
 }

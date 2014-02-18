@@ -5,15 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Partei;
 import main.java.model.Zweitstimme;
@@ -31,10 +28,7 @@ import org.jfree.util.Rotation;
  * @author Anton
  * 
  */
-public class BundDiagramm {
-
-	/** repräsentiert den Bereich auf dem das Diagramm angezeigt wird. */
-	private final DiagrammFenster flaeche;
+public class BundDiagramm extends JPanel {
 
 	/**
 	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
@@ -42,17 +36,14 @@ public class BundDiagramm {
 	 * 
 	 * @param land
 	 *            Deutschland
-	 * @param flaeche
-	 *            Diagrammfläche
 	 * @throws IllegalArgumentException
 	 *             wenn die Parameter null sind
 	 */
-	public BundDiagramm(Deutschland land, final DiagrammFenster flaeche) {
-		if (land == null || flaeche == null) {
-			throw new IllegalArgumentException("Parameter sind null.");
+	public BundDiagramm(Deutschland land) {
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland ist null.");
 		}
-		this.flaeche = flaeche;
-		flaeche.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		JFreeChart chart = createChart(land);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.addComponentListener(new ComponentAdapter() {
@@ -60,30 +51,14 @@ public class BundDiagramm {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
-				panel.setSize(resize());
-				flaeche.add(chartPanel, BorderLayout.LINE_START);
+				panel.setPreferredSize(resize());
+				add(chartPanel, BorderLayout.LINE_START);
 			}
 
 		});
-		chartPanel.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try {
-					Bundestagswahl btw = flaeche.getAnsicht().getFenster()
-							.getBtw();
-					flaeche.zeigeSitzverteilung(btw);
-				} catch (NullPointerException npe) {
-					JOptionPane.showMessageDialog(e.getComponent(),
-							"Berichstanzeige momentan nicht möglich.",
-							"Meldung", JOptionPane.INFORMATION_MESSAGE, null);
-				}
-
-			}
-		});
-		// listenerSetzen(chartPanel, flaeche);
 		chartPanel.setPreferredSize(new Dimension(450, 250));
-		flaeche.add(chartPanel, BorderLayout.LINE_START);
+		
+		this.add(chartPanel, BorderLayout.LINE_START);
 	}
 
 	/**
@@ -139,7 +114,7 @@ public class BundDiagramm {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.flaeche.getWidth(),
-				(int) (this.flaeche.getHeight()));
+		return new Dimension(this.getWidth(),
+				(int) (this.getHeight()));
 	}
 }
