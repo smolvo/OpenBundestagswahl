@@ -163,12 +163,19 @@ NullPointer in Mandatsrechner
 
 \subsubsection{Fehler der GUI}
 \begin{itemize}
-\item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte 
+\item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte \\
 Das Problem bei diesem Fehler war, dass ein ActionListener verwendtet wurden. Aus diesem Grund wurde die
 Abfrage, ob der aktuelle Name gesetzt ist, nur abgefragt, sobald der Benutzer den Enter-Knopf betätigte.
 Durch den neuen KeyListener wird bei kleinster Änderung abgefragt, ob sich noch Text in dem JTextField befindet. \\
 
-\item
+\item Berichtsknopf \\
+Bei der Präsentation der Implementierungsphase ergab sich, dass die Einführung eines Knopfes der den Bericht erscheinen
+lässt handlicher wäre. Vorher musste man auf das Diagramm klicken, was nicht gerade intuitiv war. \\
+Wegen dem neuen Button waren Änderungen am Layout von Nöten. Die Klasse DiagrammFenster enthält jetzt das GridBagLayout,
+wobei unter dem Diagramm der Knopf angezeigt wird. \\
+
+\item Änderungen von Erst- und Zweitstimmen \\
+Nach der Implementierung war es noch möglich negative Stimmwerte einzutragen. Dies wurde behoben, indem eine einfache Abfrage eingeführt wurde, sobald der Wert unter 0 ist wird eine NumberFormatException geworfen. \\
 
 \end{itemize}
 	
