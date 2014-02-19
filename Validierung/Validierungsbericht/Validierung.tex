@@ -161,6 +161,23 @@ NullPointer in Mandatsrechner
 
 \end{description}
 
+\subsection{GUI-Test-Plan}
+Folgender Ablauf sollte alles testen, was ein Benutzer mit unserem Programm machen kann:\\
+Als aller erstes sollten alle kleinen Dinge getestet werden, dies sind:\\
+ - Handbuch \\
+ - About \\
+ - Lizenz \\ 
+Als nächstes sollte man die Bundestagswahl 2013 schließen und eine neue Wahl importieren. In dieser neuen Wahl kann man durch verschiedene Bundesländer und Wahlkreise hin und her wechseln. Anschließend sollte man in einem der Wahlkreise
+jeweils eine Erst- und eine Zweitstimme ändern. Nun sollte der 'Berechne' Knopf betätigt werden. \\
+Änderung einer weiteren Stimme und betätigen der 'Rückgängig'-Funktion erprobt die Funktion, eine Eingabe zu ändern. Hier kann auch als Eingabe ein Buchstabe, eine negative Zahl oder eine Zahl, die über die Anzahl der Wahlberechtigten geht, probiert werden. \\
+Als nächstes kann man den 'Bericht' aufrufen und wieder schließen. \\
+Zum Schluss sollte man die veränderte Wahl exportieren und wiederum importieren, um zu testen, ob der Import veränderter Wahlen funktioniert.\\
+Nun kann man sich eine zufällige Wahl generieren lassen, deren Auswertung überprüft werden sollte. \\
+Diese kann man dann mit der vorher importierten Wahl vergleichen. \\
+Nachdem das Vergleichsfenster wieder geschlossen wurde, sollte man sich eine Wahl simulieren lassen, die das negative Stimmgewicht aufweist. \\
+Zum Schluss sollte das Programm durch 'Schließen' beendet werden. \\
+Dieser Plan umfasst alle Funktionen des Programmes. \\
+
 \subsubsection{Fehler der GUI}
 \begin{itemize}
 \item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte \\
