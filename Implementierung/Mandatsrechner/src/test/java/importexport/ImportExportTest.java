@@ -17,7 +17,7 @@ public class ImportExportTest {
 		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
+		csvDateien[0] = new File("src/main/resources/importexport/Exported.csv");
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w = null;
 		try {
@@ -28,15 +28,17 @@ public class ImportExportTest {
 			System.out.println("Leine gültige CSV-Datei :/");
 		}
 		
-		i.exportieren("src/main/resources/importexport/Exported.csv", w);
+		i.exportieren("src/main/resources/importexport/Exported2.csv", w);
+		
+		
 		//System.out.println(csvDatei.getName());
 		//int integer = Integer.parseInt("");
 		
-		System.out.println(w.getDeutschland().getWahlkreise().get(0).getAnzahlZweitstimmen());
-		System.out.println(w.getDeutschland().getWahlkreise().get(0).hashCode());
+		//System.out.println(w.getDeutschland().getWahlkreise().get(0).getAnzahlZweitstimmen());
+		//System.out.println(w.getDeutschland().getWahlkreise().get(0).hashCode());
 		
 		// clone durch Serialisierung
-		System.out.println("\n\n------------  clone  ------------");
+		/*System.out.println("\n\n------------  clone  ------------");
 		try {
 			// clone
 			Bundestagswahl w2 = w.deepCopy();
@@ -60,7 +62,7 @@ public class ImportExportTest {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 	

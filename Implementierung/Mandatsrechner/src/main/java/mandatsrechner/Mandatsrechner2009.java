@@ -145,8 +145,8 @@ public class Mandatsrechner2009 {
 									Mandat.DIREKTMANDAT.toString(),
 									bundesland.getName(), wahlkreis.getName());
 				} else {
-					throw new IllegalArgumentException(
-							"Wahlkreis hat keine Erststimmen!");
+					Debug.print("Wahlkreis hat keine Erststimmen!");
+					//throw new IllegalArgumentException("Wahlkreis hat keine Erststimmen!");
 				}
 
 			}

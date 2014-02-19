@@ -111,6 +111,9 @@ public class Mandatsrechner2013 {
 			}
 			if (!isCorrect) {
 				parteidivisor -= 1;
+				if (parteidivisor < 0) {
+					throw new IllegalArgumentException("Ungueltige Eingabewerte (Zweitstimmen).");
+				}
 			}
 		}
 		Debug.print("Berechneter Parteidivisor: " + parteidivisor);
