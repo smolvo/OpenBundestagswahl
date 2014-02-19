@@ -7,6 +7,7 @@ import main.java.gui.GUISteuerung;
 import main.java.model.Erststimme;
 import main.java.model.Gebiet;
 import main.java.model.Zweitstimme;
+import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
@@ -100,6 +101,10 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
+			int gesamtErst = Steuerung.getInstance().getBtw().getDeutschland()
+					.getGesamtErststimmen();
+			int wahlberechtigte = Steuerung.getInstance().getBtw()
+					.getDeutschland().getWahlberechtigte();
 			// zeigt an ob eine Änderung möglich war
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
@@ -108,7 +113,19 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				if (anzahl < 0) {
 					throw new NumberFormatException();
 				}
-				aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
+				int diffStimme = anzahl - alterWert;
+				if ((gesamtErst + diffStimme) <= wahlberechtigte) {
+					aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
+				} else {
+					int restStimmen = wahlberechtigte - gesamtErst;
+					JOptionPane
+							.showMessageDialog(
+									this.tabellenfenster,
+									"Die Gesamtanzahl Erststimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
+											+ restStimmen + " Wahlberechtigte.",
+									"Meldung", JOptionPane.INFORMATION_MESSAGE,
+									null);
+				}
 			} catch (NumberFormatException e) {
 
 				JOptionPane.showMessageDialog(this.tabellenfenster,
@@ -143,6 +160,10 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					.getFenster().getSteuerung();
 			// zeigt an ob eine Änderung möglich war
 			int anzahl = -1;
+			int gesamtZweit = Steuerung.getInstance().getBtw().getDeutschland()
+					.getGesamtZweitstimmen();
+			int wahlberechtigte = Steuerung.getInstance().getBtw()
+					.getDeutschland().getWahlberechtigte();
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
 			try {
@@ -150,7 +171,19 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				if (anzahl < 0) {
 					throw new NumberFormatException();
 				}
-				aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
+				int diffStimme = anzahl - alterWert;
+				if ((gesamtZweit + diffStimme) <= wahlberechtigte) {
+					aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
+				} else {
+					int restStimmen = wahlberechtigte - gesamtZweit;
+					JOptionPane
+							.showMessageDialog(
+									this.tabellenfenster,
+									"Die Gesamtanzahl Zweitstimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
+											+ restStimmen + " Wahlberechtigte.",
+									"Meldung", JOptionPane.INFORMATION_MESSAGE,
+									null);
+				}
 			} catch (NumberFormatException e) {
 
 				JOptionPane.showMessageDialog(this.tabellenfenster,
