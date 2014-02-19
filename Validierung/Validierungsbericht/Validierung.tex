@@ -176,6 +176,7 @@ wobei unter dem Diagramm der Knopf angezeigt wird. \\
 
 \item Änderungen von Erst- und Zweitstimmen \\
 Nach der Implementierung war es noch möglich negative Stimmwerte einzutragen. Dies wurde behoben, indem eine einfache Abfrage eingeführt wurde, sobald der Wert unter 0 ist wird eine NumberFormatException geworfen. \\
+Außerdem war es möglich mehr Stimmen abzugeben als es Wahlberechtigte im Land gab. Auch dies wurde durch eine Extra-Abfrage behoben. \\
 
 \end{itemize}
 	
