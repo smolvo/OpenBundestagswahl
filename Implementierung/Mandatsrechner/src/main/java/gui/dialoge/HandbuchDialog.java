@@ -40,42 +40,13 @@ public class HandbuchDialog extends JDialog {
 
 		// wird benötigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
-
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
 		GridLayout layout = new GridLayout();
-		// GridBagLayout layout = new GridBagLayout();
-		// GridBagConstraints gbc=new GridBagConstraints();
-		// Festlegen, dass die GUI-Elemente die Gitterfelder in waagerechter
-		// Richtung ausfüllen:
-		// bc.fill=GridBagConstraints.VERTICAL;
+		
 		// Als Layout festlegen
-
 		setLayout(layout);
-
-		/*
-		 * Erste Spalte (index 0)
-		 */
-		// JLabel label = new JLabel("asdasd");
-		// gbc.gridx = 0;
-		// gbc.gridy = 0;
-		// gbc.gridwidth = 1;
-		// layout.setConstraints(label, gbc);
-		// this.add(label, gbc);
-
-		/*
-		 * Zweite (index 1) bis vierte (index 3) Spalte
-		 */
 		final JFXPanel fxPanel = new JFXPanel();
-		// gbc.gridx = 1;
-		// gbc.gridy = 0;
-		// gbc.gridwidth = 3;
-		// layout.setConstraints(fxPanel, gbc);
 		this.add(fxPanel);
-
-		// JScrollPane scrollPane = new JScrollPane();
-		// scrollPane.add(fxPanel);
-		// fxPanel.add(scrollPane);
 
 		Platform.runLater(new Runnable() {
 			// fxPanel als JavaFX-Thread starten
@@ -96,16 +67,16 @@ public class HandbuchDialog extends JDialog {
 	 *            das Panel in dem die Webview gestartet wird
 	 */
 	private static void initFX(final JFXPanel fxPanel) {
+		Scene scene = createScene();
+		fxPanel.setScene(scene);
+	}
+	private static Scene createScene() {
 		Group group = new Group();
 		Scene scene = new Scene(group);
-		fxPanel.setScene(scene);
-
 		WebView webView = new WebView();
-
+		webView.setMaxWidth(585);
+		webView.setMaxHeight(565);
 		group.getChildren().add(webView);
-		// webView.setMinSize(300, 300);
-		// webView.setMaxSize(300, 300);
-
 		WebEngine webEngine = webView.getEngine();
 
 		try {
@@ -114,6 +85,6 @@ public class HandbuchDialog extends JDialog {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+		return (scene);
 	}
-
 }

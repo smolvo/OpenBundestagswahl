@@ -34,24 +34,21 @@ public class LizenzDialog extends JDialog {
 
 		// allgemeine Anpassungen des Fensters
 		setTitle("Lizenz");
-		setSize(600, 600);
+		setSize(650, 639);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setAlwaysOnTop(true);
-
+		
 		// wird benötigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
-
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
 		GridLayout layout = new GridLayout(1, 1);
-		// layout.setHgap(3);
-		// layout.setVgap(3);
+		
+		// Als Layout festlegen
 		setLayout(layout);
-
 		final JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
-
+		
 		Platform.runLater(new Runnable() {
 			// fxPanel als JavaFX-Thread starten
 			@Override
@@ -70,16 +67,17 @@ public class LizenzDialog extends JDialog {
 	 *            das Panel in dem die Webview gestartet wird
 	 */
 	private static void initFX(final JFXPanel fxPanel) {
+		Scene scene = createScene();
+		fxPanel.setScene(scene);
+	}
+	
+	private static Scene createScene() {
 		Group group = new Group();
 		Scene scene = new Scene(group);
-		fxPanel.setScene(scene);
-
 		WebView webView = new WebView();
-
+		webView.setMaxWidth(635);
+		webView.setMaxHeight(605);
 		group.getChildren().add(webView);
-		// webView.setMinSize(300, 300);
-		// webView.setMaxSize(300, 300);
-
 		WebEngine webEngine = webView.getEngine();
 
 		try {
@@ -87,6 +85,7 @@ public class LizenzDialog extends JDialog {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+		return (scene);
 	}
 
 }

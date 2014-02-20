@@ -44,14 +44,11 @@ public class AboutDialog extends JDialog {
 		
 		// wird benötigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
-		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
 		GridLayout layout = new GridLayout(1, 1);
-		//layout.setHgap(3);
-		//layout.setVgap(3);
-		setLayout(layout);
 		
+		// Als Layout festlegen
+		setLayout(layout);
 		final JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
@@ -71,24 +68,24 @@ public class AboutDialog extends JDialog {
 	 * @param fxPanel das Panel in dem die Webview gestartet wird
 	 */
     private static void initFX(final JFXPanel fxPanel) {
-        Group group = new Group();
-        Scene scene = new Scene(group);
+        Scene scene = createScene();
         fxPanel.setScene(scene);
+  
+    }
+    private static Scene createScene() {
+		Group group = new Group();
+		Scene scene = new Scene(group);
+		WebView webView = new WebView();
+		webView.setMaxWidth(585);
+		webView.setMaxHeight(565);
+		group.getChildren().add(webView);
+		WebEngine webEngine = webView.getEngine();
 
-        WebView webView = new WebView();
-
-        group.getChildren().add(webView);
-        //webView.setMinSize(300, 300);
-        //webView.setMaxSize(300, 300);
-        
-        WebEngine webEngine = webView.getEngine();
-        
-        
-        try {
+		try {
 			webEngine.load(ABOUT_FILE.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-    }
-
+		return (scene);
+	}
 }
