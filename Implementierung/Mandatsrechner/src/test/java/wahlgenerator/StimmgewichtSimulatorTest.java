@@ -43,14 +43,14 @@ public class StimmgewichtSimulatorTest {
 		
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
+		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2009.csv");
 		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
 		wahl1 = null;
 		try {
 			wahl1 = i.importieren(csvDateien);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println("Leine gültige CSV-Datei :/");
+			System.out.println("Keine gültige CSV-Datei :/");
 		}
 
 		this.rechner09 = Mandatsrechner2009.getInstance();
@@ -81,67 +81,7 @@ public class StimmgewichtSimulatorTest {
 
 	}
 
-	public void testTest() {
 
-		List<Partei> relevanteParteien = simu.waehleParteien();
-
-		for (Partei p : relevanteParteien) {
-			System.out.println(p.getName());
-		}
-		System.out.println(relevanteParteien.size());
-/*
-		for (Partei x : simu.getVerwandteWahl().getParteien()) {
-			if (x.getName().equals("CDU")) {
-				simu.erhoeheRelevantenAnteil(x);
-
-			}
-		}
-		relevanteParteien = simu.waehleParteien();
-		for (Partei y : relevanteParteien) {
-			System.out.println(y.getName());
-		}
-		*/
-	}
-
-	public void testWaehleParteien() {
-		List<Partei> relevanteParteien = simu.waehleParteien();
-
-		for (Partei p : relevanteParteien) {
-			System.out.println(p.getName());
-		}
-		System.out.println(relevanteParteien.size());
-	}
-
-	public void rechnerTest() {
-
-		rechner09.berechneSainteLague(wahl1);
-		System.out.println("Mandatsrechner2009 Ergebnisse");
-		System.out.println("1. Gesamtanzahl Sitze : "
-				+ wahl1.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneSainteLague(wahl1);
-		System.out.println("2. Gesamtanzahl Sitze : "
-				+ wahl1.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneSainteLague(wahl1);
-		System.out.println("3. Gesamtanzahl Sitze : "
-				+ wahl1.getSitzverteilung().getAbgeordnete().size());
-		rechner09.berechneSainteLague(wahl1);
-		System.out.println("4. Gesamtanzahl Sitze : "
-				+ wahl1.getSitzverteilung().getAbgeordnete().size());
-
-		rechner13.berechne(wahl2);
-		System.out.println("Mandatsrechner2013 Ergebnisse");
-		System.out.println("1. Gesamtanzahl Sitze : "
-				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechne(wahl2);
-		System.out.println("2. Gesamtanzahl Sitze : "
-				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechne(wahl2);
-		System.out.println("3. Gesamtanzahl Sitze : "
-				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-		rechner13.berechne(wahl2);
-		System.out.println("4. Gesamtanzahl Sitze : "
-				+ wahl2.getSitzverteilung().getAbgeordnete().size());
-	}
 
 	
 	@Test
