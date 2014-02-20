@@ -103,8 +103,10 @@ public class Mandatsrechner2013 {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
-				Debug.print("Parteidivisor: " + parteidivisor);
-				if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
+				//Debug.print("Parteidivisor: " + parteidivisor);
+				if (partei.getZweitstimmeGesamt() == 0) {
+					continue;
+				} else if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -269,8 +271,8 @@ public class Mandatsrechner2013 {
 				}
 			} else {
 				if (diffSitze != 0) {
-					throw new IllegalArgumentException(
-							"Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
+					Debug.print("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
+					//throw new IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}
 			}
 		}
