@@ -45,6 +45,7 @@ public enum Mandat {
 	 * 
 	 * @return die Bezeichnung des Mandats.
 	 */
+	@Override
 	public String toString() {
 		return this.mandat;
 	}

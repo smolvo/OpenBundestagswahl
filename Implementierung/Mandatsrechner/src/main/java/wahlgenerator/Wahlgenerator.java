@@ -68,6 +68,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 *            der name der BTW
 	 * @return eine generierte Bundestagswahl
 	 */
+	@Override
 	public Bundestagswahl erzeugeBTW(String name) {
 
 		if (name == null) {

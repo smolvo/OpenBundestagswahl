@@ -218,7 +218,7 @@ public class Config {
 		Set<String> set = this.data.keySet();
 		Iterator<String> i = set.iterator();
 		while (i.hasNext()) {
-			String key = (String) i.next();
+			String key = i.next();
 			List<String[]> dataContent = this.data.get(key);
 			bf.write(key + "\n");
 			String[] head = this.getHead(key);
@@ -279,7 +279,7 @@ public class Config {
 		Iterator<String> i = set.iterator();
 		String result = "";
 		while (i.hasNext()) {
-			String key = (String) i.next();
+			String key = i.next();
 			List<String[]> dataContent = this.data.get(key);
 			result += "# " + key + "\n";
 			for (String[] line : dataContent) {

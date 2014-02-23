@@ -20,18 +20,18 @@ import main.java.model.Deutschland;
 import main.java.model.Partei;
 
 /**
- * Diese Klasse reprï¿½sentiert die kartographische Ansicht im Kartenfenster.
+ * Diese Klasse repräsentiert die kartographische Ansicht im Kartenfenster.
  * 
  */
 public class DeutschlandKarte extends JPanel {
 
 	/**
-	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die für das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -3499619191276735615L;
 
-	/** alle Bundeslaender, nï¿½tig fï¿½r Fï¿½rbung */
+	/** alle Bundeslaender, nötig für Färbung */
 	private Deutschland land;
 
 	/**
@@ -115,6 +115,7 @@ public class DeutschlandKarte extends JPanel {
 	 * @throws IllegalArgumentException
 	 *             wenn das Graphics-Objekt ist null.
 	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		if (g == null) {
 			throw new IllegalArgumentException("Graphics-Objekt ist null.");
@@ -126,8 +127,8 @@ public class DeutschlandKarte extends JPanel {
 	}
 
 	/**
-	 * skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefï¿½gt wurden
-	 * entsprechend der aktuellen Grï¿½ï¿½e des JPanels
+	 * skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefügt wurden
+	 * entsprechend der aktuellen Größe des JPanels
 	 */
 	private void skaliere() {
 		skalierteKarte = grossVersion.getScaledInstance(

@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.WindowConstants;
 
 /**
  * Diese Klasse repräsentiert das Berichtsfenster. In diesem werden Daten
@@ -31,7 +32,7 @@ public class BerichtsFenster extends JDialog {
 		if (tabellenModell == null) {
 			throw new NullPointerException("Kein Tabellenmodell gefunden.");
 		}
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setModal(true);
 		this.setSize(new Dimension(1024, 768));
 		this.setLocationRelativeTo(null);

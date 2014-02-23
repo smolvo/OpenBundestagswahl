@@ -330,10 +330,10 @@ public class Mandatsrechner2009 {
 				Iterator<Partei> iterator = set.iterator();
 
 				while (iterator.hasNext()) {
-					Partei key = (Partei) iterator.next();
+					Partei key = iterator.next();
 					parteiStimme.get(key).add(
-							(double) bundesland.getAnzahlZweitstimmen(key)
-									/ (Math.pow(2, (double) i)));
+							bundesland.getAnzahlZweitstimmen(key)
+									/ (Math.pow(2, i)));
 					// Systemprint("");
 				}
 			}
@@ -349,7 +349,7 @@ public class Mandatsrechner2009 {
 				Iterator<Partei> iterator = set.iterator();
 
 				while (iterator.hasNext()) {
-					Partei key = (Partei) iterator.next();
+					Partei key = iterator.next();
 
 					mom = parteiStimme.get(key).get(1);
 
@@ -370,7 +370,7 @@ public class Mandatsrechner2009 {
 			Iterator<Partei> iterator = set.iterator();
 
 			while (iterator.hasNext()) {
-				Partei key = (Partei) iterator.next();
+				Partei key = iterator.next();
 				sitzanzahl += bundesland.getDirektMandate(key).size(); // Math.max(parteiSitze.get(key),bundesland.getDirektMandate(key).size());
 
 				// Systemprintln("B: (" + sitzeBundesland + ") " + bundesland

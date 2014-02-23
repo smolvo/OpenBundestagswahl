@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.WindowConstants;
 
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 import main.java.gui.ansicht.diagrammfenster.DiffDiagramm;
@@ -43,7 +44,7 @@ public class VergleichsFenster extends JFrame {
 		if (vergleich == null) {
 			throw new IllegalArgumentException("Wahlvergleich ist null.");
 		}
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setLayout(new GridBagLayout());
 		this.gbc = new GridBagConstraints();
 		this.setSize(1024, 768);

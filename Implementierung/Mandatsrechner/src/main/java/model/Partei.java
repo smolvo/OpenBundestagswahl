@@ -575,7 +575,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			Bundesland key = (Bundesland) i.next();
+			Bundesland key = i.next();
 			anzahl += this.mindestSitzanzahl.get(key);
 		}
 		return anzahl;
@@ -592,7 +592,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			Bundesland key = (Bundesland) i.next();
+			Bundesland key = i.next();
 			anzahl += this.ueberhangMandate.get(key);
 		}
 		return anzahl;
@@ -612,7 +612,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			Bundesland key = (Bundesland) i.next();
+			Bundesland key = i.next();
 			if (key.equals(bl)) {
 				anzahl += this.ueberhangMandate.get(key);
 			}
@@ -654,7 +654,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			Bundesland key = (Bundesland) i.next();
+			Bundesland key = i.next();
 			anzahl += this.ausgleichsMandate.get(key);
 		}
 		return anzahl;
@@ -673,7 +673,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		Iterator<Bundesland> i = set.iterator();
 
 		while (i.hasNext()) {
-			Bundesland key = (Bundesland) i.next();
+			Bundesland key = i.next();
 			if (key.equals(bl)) {
 				anzahl += this.ausgleichsMandate.get(key);
 			}

@@ -6,13 +6,10 @@ package test.java.wahlgenerator;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.util.List;
-
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
-import main.java.model.Partei;
 import main.java.stimmgewichtsimulator.StimmgewichtSimulator;
 
 import org.junit.Before;

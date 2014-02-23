@@ -12,7 +12,6 @@ import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
-import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Sitzverteilung;
 import main.java.model.Wahlkreis;

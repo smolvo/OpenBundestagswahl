@@ -9,8 +9,8 @@ import main.java.model.Bundesland;
 import main.java.model.Deutschland;
 
 /**
- * Diese Klasse reprï¿½sentiert das Kartenfenster einer Ansicht. Es werden die
- * Bundeslï¿½nder aufgelistet, und wenn mï¿½glich eine kartographische Ansicht des
+ * Diese Klasse repräsentiert das Kartenfenster einer Ansicht. Es werden die
+ * Bundesländer aufgelistet, und wenn möglich eine kartographische Ansicht des
  * Landes.
  * 
  */
@@ -41,7 +41,7 @@ public class KartenFenster extends JTabbedPane {
 			"Schleswig-Holstein", "Thüringen" };
 
 	/**
-	 * Diese Methode listet die Bundeslï¿½nder auf und erstellt, wenn mï¿½glich,
+	 * Diese Methode listet die Bundeslï¿½nder auf und erstellt, wenn möglich,
 	 * eine kartographische Ansicht.
 	 * 
 	 * @param land
@@ -63,11 +63,11 @@ public class KartenFenster extends JTabbedPane {
 	}
 
 	/**
-	 * Diese private Methode ï¿½berprï¿½ft ob die Liste von Bundeslï¿½ndern den
+	 * Diese private Methode überprüft ob die Liste von Bundesländern den
 	 * reellen entspricht.
 	 * 
 	 * @param land
-	 *            enthï¿½lt alle Bundeslï¿½nder
+	 *            enthält alle Bundesländer
 	 * @return wahr oder falsch
 	 */
 	private boolean pruefeLaender(Deutschland land) {

@@ -85,6 +85,7 @@ public class WahlFenster extends JPanel {
 	 * 
 	 * @return Name
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}

@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -29,7 +30,7 @@ import main.java.steuerung.Steuerung;
 import main.java.wahlgenerator.Stimmanteile;
 
 /**
- * Diese Klasse repräsentiert das GeneratorFenster. In ihr kï¿½nnen Erst- und
+ * Diese Klasse repräsentiert das GeneratorFenster. In ihr können Erst- und
  * Zweitstimmenanteile für vorgegebene Parteien einer zuvor ausgesuchten
  * Bundestagswahl festegelegt werden.
  * 
@@ -288,7 +289,7 @@ public class GeneratorDialog extends JDialog {
 		JComboBox<Partei> box = new JComboBox<Partei>(parteiArray);
 		box.setBounds(20, 5, 40, 20);
 		box.setPreferredSize(new Dimension(140, 20));
-		JSlider erst = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
+		JSlider erst = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 0);
 		erst.setBounds(70, 5, 50, 20);
 		erst.setPreferredSize(new Dimension(100, 50));
 		erst.setMajorTickSpacing(50);
@@ -309,7 +310,7 @@ public class GeneratorDialog extends JDialog {
 
 		});
 
-		JSlider zweit = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
+		JSlider zweit = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 0);
 		zweit.setBounds(130, 5, 50, 20);
 		zweit.setPreferredSize(new Dimension(100, 50));
 		zweit.setMajorTickSpacing(50);

@@ -133,6 +133,6 @@ public class LandDiagramm extends JPanel {
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(), (int) (this.getHeight()));
+		return new Dimension(this.getWidth(), (this.getHeight()));
 	}
 }

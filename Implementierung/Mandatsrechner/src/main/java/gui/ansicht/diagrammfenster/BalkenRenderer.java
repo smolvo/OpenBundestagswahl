@@ -43,6 +43,7 @@ public class BalkenRenderer extends BarRenderer {
 	 * 
 	 * @return Farbe
 	 */
+	@Override
 	public Paint getItemPaint(final int zeile, final int spalte) {
 		if (zeile < 0 || spalte < 0) {
 			throw new IllegalArgumentException(

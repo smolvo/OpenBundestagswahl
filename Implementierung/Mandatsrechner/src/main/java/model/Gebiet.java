@@ -119,6 +119,7 @@ public abstract class Gebiet implements Serializable {
 	 * 
 	 * @return einen String der dieses Gebiet beschreibt.
 	 */
+	@Override
 	public String toString() {
 		return this.name;
 	}

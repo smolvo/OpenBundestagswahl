@@ -1,7 +1,7 @@
 package main.java.stimmgewichtsimulator;
 
 /**
- * Enum fï¿½r die Richtung einer Sprungstelle.
+ * Enum f�r die Richtung einer Sprungstelle.
  */
 public enum Richtung {
 
