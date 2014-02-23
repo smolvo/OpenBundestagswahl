@@ -1,6 +1,6 @@
 einwohnerzahl			
 Name	Anzahl		
-Baden-Württemberg	9482902		
+Baden-WÃ¼rttemberg	9482902		
 Bayern	11353264		
 Berlin	3025288		
 Brandenburg	2418267		
@@ -15,21 +15,21 @@ Saarland	919402
 Sachsen	4005278		
 Sachsen-Anhalt	2247673		
 Schleswig-Holstein	2686085		
-Thüringen	2154202		
+ThÃ¼ringen	2154202		
 			
 farben_parteien			
-Name	Rot	Grün	Blau
+Name	Rot	GrÃ¼n	Blau
 SPD	226	0	25
 CDU	0	0	0
 CSU	0	0	0
 FDP	255	255	0
 DIE LINKE	220	0	0
-GRÜNE	70	187	0
+GRÃœNE	70	187	0
 PIRATEN	255	128	0
 NPD	139	90	43
 Tierschutzpartei	255	255	255
 REP	0	100	169
-ÖDP	240	110	0
+Ã–DP	240	110	0
 FAMILIE	243	119	45
 AfD	0	158	224
 RENTNER	243	119	45

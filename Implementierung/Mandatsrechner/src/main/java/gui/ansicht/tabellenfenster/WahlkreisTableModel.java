@@ -18,11 +18,11 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6901614554989527176L;
 
-	/** repräsentiert die Spaltennamen */
+	/** reprÃ¤sentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Kandidat",
 			"Erststimmen", "%", "Zweitstimmen", "%", "Direktmandate" };
 
-	/** hält alle relevanten Daten */
+	/** hÃ¤lt alle relevanten Daten */
 	private WahlkreisDaten daten;
 
 	/** das Tabellenfenster */
@@ -105,7 +105,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					.getGesamtErststimmen();
 			int wahlberechtigte = Steuerung.getInstance().getBtw()
 					.getDeutschland().getWahlberechtigte();
-			// zeigt an ob eine Änderung möglich war
+			// zeigt an ob eine Ã„nderung mÃ¶glich war
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
 			try {
@@ -121,7 +121,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
-									"Die Gesamtanzahl Erststimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
+									"Die Gesamtanzahl Erststimmen darf nicht die Anzahl Wahlberechtigter Ã¼berschreiten. \n Noch "
 											+ restStimmen + " Wahlberechtigte.",
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
@@ -134,8 +134,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 			}
 			if (anzahl != alterWert) {
-				// wenn die Stimme intern geändert wurde auch in der Tabelle
-				// ändern
+				// wenn die Stimme intern geÃ¤ndert wurde auch in der Tabelle
+				// Ã¤ndern
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
@@ -147,7 +147,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				} else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
-							"Stimme konnte nicht geändert werden.", "Meldung",
+							"Stimme konnte nicht geÃ¤ndert werden.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
 
 				}
@@ -158,7 +158,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			Zweitstimme zweitstimme = daten.getZweitstimmen(rowIndex);
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
-			// zeigt an ob eine Änderung möglich war
+			// zeigt an ob eine Ã„nderung mÃ¶glich war
 			int anzahl = -1;
 			int gesamtZweit = Steuerung.getInstance().getBtw().getDeutschland()
 					.getGesamtZweitstimmen();
@@ -179,7 +179,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
-									"Die Gesamtanzahl Zweitstimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
+									"Die Gesamtanzahl Zweitstimmen darf nicht die Anzahl Wahlberechtigter Ã¼berschreiten. \n Noch "
 											+ restStimmen + " Wahlberechtigte.",
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
@@ -192,8 +192,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 			}
 			if (anzahl != alterWert) {
-				// wenn die Stimme intern geändert wurde auch in der Tabelle
-				// ändern
+				// wenn die Stimme intern geÃ¤ndert wurde auch in der Tabelle
+				// Ã¤ndern
 				// und berechne-Knopf aufrufen
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
@@ -207,7 +207,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				} else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
-							"Stimme konnte nicht geändert werden.", "Meldung",
+							"Stimme konnte nicht geÃ¤ndert werden.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
 
 				}

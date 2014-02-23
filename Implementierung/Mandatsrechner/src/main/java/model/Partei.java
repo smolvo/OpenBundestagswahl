@@ -19,7 +19,7 @@ import main.java.wahlgenerator.RelevanteZweitstimmen;
 public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -6711521521647518265L;
@@ -51,7 +51,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/** Die Mindestsitzanzahl pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> mindestSitzanzahl;
 
-	/** Die Anzahl der �berhangmandate pro Bundesland dieser Partei. */
+	/** Die Anzahl der ï¿½berhangmandate pro Bundesland dieser Partei. */
 	private HashMap<Bundesland, Integer> ueberhangMandate;
 
 	/** Die Anzahl der Ausgleichsmandate pro Bundesland dieser Partei. */
@@ -59,7 +59,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Comparator zum sortieren von Parteien nach der Anzahl der
-	 * �berhangsmandate.
+	 * ï¿½berhangsmandate.
 	 */
 	public static final Comparator<Partei> NACH_UEBERHANGMANDATEN = new Comparator<Partei>() {
 
@@ -116,7 +116,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste und Landesliste wird
-	 * hier erzeugt aber nicht bef�llt.
+	 * hier erzeugt aber nicht befï¿½llt.
 	 * 
 	 * @param name
 	 *            Der Name dieser Partei.
@@ -135,7 +135,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste wird hier nur erzeugt
-	 * aber nicht bef�llt.
+	 * aber nicht befï¿½llt.
 	 * 
 	 * @param landesliste
 	 *            Die Liste aller Landeslisten dieser Partei.
@@ -144,8 +144,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @param farbe
 	 *            Die Farbe dieser Partei.
 	 */
-	public Partei(List<Landesliste> landesliste, String name,
-			Color farbe) {
+	public Partei(List<Landesliste> landesliste, String name, Color farbe) {
 		this.setLandesliste(landesliste);
 		this.setName(name);
 		this.setFarbe(farbe);
@@ -156,7 +155,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt das Landesliste-Objekt zur�ck
+	 * Gibt das Landesliste-Objekt zurï¿½ck
 	 * 
 	 * @return das Landesliste-Objekt
 	 */
@@ -181,7 +180,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * F�gt eine Landesliste zur Liste aller Landeslisten dieser Partei hinzu.
+	 * Fï¿½gt eine Landesliste zur Liste aller Landeslisten dieser Partei hinzu.
 	 * 
 	 * @param landesliste
 	 *            Die Liste aller Landeslisten dieser Partei.
@@ -191,7 +190,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Liste der Mitglieder zur�ck
+	 * Gibt die Liste der Mitglieder zurï¿½ck
 	 * 
 	 * @return Liste der Mitglieder
 	 */
@@ -216,7 +215,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * F�gt ein neues Mitglied zur Liste hinzu
+	 * Fï¿½gt ein neues Mitglied zur Liste hinzu
 	 * 
 	 * @param mitglied
 	 *            das neue Mitglied
@@ -231,7 +230,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt alle Mitglieder mit dem gew�nschten Mandat zurueck.
+	 * Gibt alle Mitglieder mit dem gewï¿½nschten Mandat zurueck.
 	 * 
 	 * @param mandat
 	 *            das gewuenschte Mandat.
@@ -270,7 +269,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		}
 		this.name = name;
 	}
-	
+
 	/**
 	 * Gibt die Farbe der Partei zurueck.
 	 * 
@@ -520,11 +519,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die mindestsitzanzahl dieser Partei f�r ein Bundesland zur�ck.
+	 * Gibt die mindestsitzanzahl dieser Partei fï¿½r ein Bundesland zurï¿½ck.
 	 * 
 	 * @param bl
 	 *            das gesuchte Bundesland.
-	 * @return gibt 0 zur�ck falls key nicht gefunden wurde.
+	 * @return gibt 0 zurï¿½ck falls key nicht gefunden wurde.
 	 */
 	public int getMindestsitzanzahl(Bundesland bl) {
 		int anzahl = this.mindestSitzanzahl.get(bl);
@@ -584,8 +583,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Gibt alle Ueberhangsmandate dieser Partei zurueck.
-	 * @return
-	 * 		die Anzahl der Ueberhangsmandate.
+	 * 
+	 * @return die Anzahl der Ueberhangsmandate.
 	 */
 	public int getUeberhangMandate() {
 		int anzahl = 0;
@@ -600,12 +599,12 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Anzahl der Ueberhangsmandate fuer einen
-	 * bestimmten Bundesland zurueck.
+	 * Gibt die Anzahl der Ueberhangsmandate fuer einen bestimmten Bundesland
+	 * zurueck.
+	 * 
 	 * @param bl
-	 * 		ausgewaehltes Bundesland.
-	 * @return
-	 * 		die anzahl der Ueberhangsmandate.
+	 *            ausgewaehltes Bundesland.
+	 * @return die anzahl der Ueberhangsmandate.
 	 */
 	public int getUeberhangMandate(Bundesland bl) {
 		int anzahl = 0;
@@ -622,10 +621,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Erhoeht die Anzahl der Ueberhangsmandate fuer ein bestimmtes
-	 * Bundesland um eins.
+	 * Erhoeht die Anzahl der Ueberhangsmandate fuer ein bestimmtes Bundesland
+	 * um eins.
+	 * 
 	 * @param bl
-	 * 			das ausgewaehlte
+	 *            das ausgewaehlte
 	 */
 	public void incrementUeberhangMandate(Bundesland bl) {
 		int value = 1;
@@ -645,8 +645,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Gibt alle Ausgleichsmandate zurueck.
-	 * @return
-	 * 		die Anzahl der Ausgleichmandate.
+	 * 
+	 * @return die Anzahl der Ausgleichmandate.
 	 */
 	public int getAusgleichsMandate() {
 		int anzahl = 0;
@@ -661,12 +661,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Gibt die Anzahl der Ausgleichsmandate
-	 * pro Bundesland zurueck.
+	 * Gibt die Anzahl der Ausgleichsmandate pro Bundesland zurueck.
+	 * 
 	 * @param bl
-	 * 			das ausgewaehlte Bundesland.
-	 * @return
-	 * 			die Anzahl der Ausgleichsmandate.
+	 *            das ausgewaehlte Bundesland.
+	 * @return die Anzahl der Ausgleichsmandate.
 	 */
 	public int getAusgleichsMandate(Bundesland bl) {
 		int anzahl = 0;
@@ -683,12 +682,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Erhoeht die Anzahl der Ausgleichsmandate fuer
-	 * ein bestimmtes Bundesland um eins.
-	 * Der Wert vom key wird 1 gesetzt, falls es
-	 * noch nicht existert.
+	 * Erhoeht die Anzahl der Ausgleichsmandate fuer ein bestimmtes Bundesland
+	 * um eins. Der Wert vom key wird 1 gesetzt, falls es noch nicht existert.
+	 * 
 	 * @param bl
-	 * 			das ausgewaehlte Bundesland.
+	 *            das ausgewaehlte Bundesland.
 	 */
 	public void incrementAusgleichsMandate(Bundesland bl) {
 		int value = 1;
@@ -700,13 +698,13 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Erniedrigt die Anzahl der Ausgleichsmandate
-	 * fuer ein bestimmtes Bundesland.
-	 * Der Wert vom key wird -1 gesetzt, falls es
-	 * noch nicht existiert.
+	 * Erniedrigt die Anzahl der Ausgleichsmandate fuer ein bestimmtes
+	 * Bundesland. Der Wert vom key wird -1 gesetzt, falls es noch nicht
+	 * existiert.
+	 * 
 	 * @param bl
-	 * 			das ausgewaehlte Bundesland.
-	 * 			
+	 *            das ausgewaehlte Bundesland.
+	 * 
 	 */
 	public void decrementAusgleichsMandate(Bundesland bl) {
 		int value = -1;
@@ -718,8 +716,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	}
 
 	/**
-	 * Setzt die Anzahl der Ausgleichsmandate
-	 * zurueck.
+	 * Setzt die Anzahl der Ausgleichsmandate zurueck.
 	 */
 	public void resetAusgleichsMandate() {
 		this.ausgleichsMandate = new HashMap<Bundesland, Integer>();

@@ -11,7 +11,7 @@ import main.java.model.Deutschland;
 import main.java.model.Wahlkreis;
 
 /**
- * Diese Klasse repr‰sentiert die Vorlage der Baumstruktur der Bundes- und
+ * Diese Klasse repr√§sentiert die Vorlage der Baumstruktur der Bundes- und
  * Wahlkreisanzeige in der Liste des Kartenfensters.
  * 
  * @author Anton
@@ -19,10 +19,10 @@ import main.java.model.Wahlkreis;
  */
 public class DeutschlandModel implements TreeModel {
 
-	/** repr‰sentiert die Wurzel des Baumes */
+	/** repr√§sentiert die Wurzel des Baumes */
 	private Deutschland wurzel;
 
-	/** repr‰sentiert die Liste von Listenern */
+	/** repr√§sentiert die Liste von Listenern */
 	private Vector<TreeModelListener> treeModelListeners = new Vector<TreeModelListener>();
 
 	/**

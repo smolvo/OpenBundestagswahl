@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import main.java.model.BerichtDaten;
 
 /**
- * Diese Klasse repr‰sentiert das Tabellenmodell der Berichtsklasse.
+ * Diese Klasse repr√§sentiert das Tabellenmodell der Berichtsklasse.
  * 
  */
 public class BerichtTableModel extends AbstractTableModel {
@@ -13,11 +13,11 @@ public class BerichtTableModel extends AbstractTableModel {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = 5458984414665530040L;
 
-	/** repr‰sentiert die Spaltennamen */
+	/** repr√§sentiert die Spaltennamen */
 	private final String[] columns = new String[] { "Abgeordneter", "Partei",
 			"Mandat", "Bundesland", "Wahlkreis" };
 
-	/** h‰lt alle relevanten Daten */
+	/** h√§lt alle relevanten Daten */
 	private final BerichtDaten daten;
 
 	/**

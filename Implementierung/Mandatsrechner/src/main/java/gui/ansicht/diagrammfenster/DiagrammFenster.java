@@ -19,7 +19,7 @@ import main.java.model.Wahlkreis;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repr�sentiert das Diagrammfenster einer Ansicht. In diesem
+ * Diese Klasse reprï¿½sentiert das Diagrammfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
  */
@@ -27,13 +27,13 @@ public class DiagrammFenster extends JPanel {
 
 	private static final long serialVersionUID = -523400111719339965L;
 
-	/** repr�sentiert die Ansicht des Diagrammfensters */
+	/** reprï¿½sentiert die Ansicht des Diagrammfensters */
 	private final Ansicht ansicht;
-	
-	/** repr�sentiert den Berichtsknopf */
+
+	/** reprï¿½sentiert den Berichtsknopf */
 	private final JButton bericht;
-	
-	/** repr�sentiert die LayoutConstraints */
+
+	/** reprï¿½sentiert die LayoutConstraints */
 	private final GridBagConstraints gbc;
 
 	/**
@@ -51,7 +51,7 @@ public class DiagrammFenster extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				zeigeSitzverteilung(Steuerung.getInstance().getBtw());
 			}
-			
+
 		});
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
@@ -135,8 +135,8 @@ public class DiagrammFenster extends JPanel {
 	}
 
 	/**
-	 * Diese Methode �ffnet ein BerichtsFenster, in dem die Sitze der Verteilung
-	 * n�her erl�utert werden.
+	 * Diese Methode ï¿½ffnet ein BerichtsFenster, in dem die Sitze der Verteilung
+	 * nï¿½her erlï¿½utert werden.
 	 * 
 	 * @param btw
 	 *            Bundestagswahl-Objekt welches visualisiert werden soll

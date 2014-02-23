@@ -69,7 +69,7 @@ public class Crawler2013 extends Crawler {
 		List<int[][]> values = new ArrayList<int[][]>();
 
 		/*
-		 * Enth�lt eine Rohe Liste mit allen Bewerbern.
+		 * Enthï¿½lt eine Rohe Liste mit allen Bewerbern.
 		 */
 		List<String[]> bewerber = new ArrayList<String[]>();
 
@@ -88,7 +88,7 @@ public class Crawler2013 extends Crawler {
 				parts = line.split(Pattern.quote(";"));
 				switch (lineNumber) {
 				case 0:
-					/* Enth�lt den Namen der Wahl. */
+					/* Enthï¿½lt den Namen der Wahl. */
 					if (parts.length == 1) {
 						bwName = line;
 					} else {
@@ -195,7 +195,7 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zur�ck.
+	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zurï¿½ck.
 	 * 
 	 * @param csvDatei
 	 *            die Wahlbewerber CSV-Datei
@@ -257,7 +257,8 @@ public class Crawler2013 extends Crawler {
 		// int parteiOffset = 4;
 		LinkedList<Partei> parteien = new LinkedList<Partei>();
 		for (int i = parteiOffset; i < columns.size(); i++) {
-			Partei p = new Partei(columns.get(i), this.getParteiFarbe(columns.get(i)));
+			Partei p = new Partei(columns.get(i), this.getParteiFarbe(columns
+					.get(i)));
 			parteien.add(p);
 		}
 
@@ -307,7 +308,8 @@ public class Crawler2013 extends Crawler {
 				tempNummer = rows.get(i)[0];
 				LinkedList<Partei> blParteien = new LinkedList<Partei>();
 				for (int j = 0; j < parteien.size(); j++) {
-					if (values.get(i)[parteiOffset + j][0] != 0 || values.get(i)[parteiOffset + j][1] != 0) {
+					if (values.get(i)[parteiOffset + j][0] != 0
+							|| values.get(i)[parteiOffset + j][1] != 0) {
 						blParteien.add(parteien.get(j));
 					}
 				}
@@ -334,9 +336,12 @@ public class Crawler2013 extends Crawler {
 								}
 							}
 							if (kandidat == null) {
-								// unbekannte Kandidaten haben jetzt auch Parteizugeh�rigkeiten
-								//kandidat = ImportExportManager.unbekannterKandidat;
-								kandidat = new Kandidat("-", "-", 0, Mandat.KEINMANDAT, parteien.get(k));
+								// unbekannte Kandidaten haben jetzt auch
+								// Parteizugehï¿½rigkeiten
+								// kandidat =
+								// ImportExportManager.unbekannterKandidat;
+								kandidat = new Kandidat("-", "-", 0,
+										Mandat.KEINMANDAT, parteien.get(k));
 							}
 							erststimme.add(new Erststimme(
 									values.get(j)[parteiOffset + k][0], w,
@@ -359,7 +364,7 @@ public class Crawler2013 extends Crawler {
 
 		if (kandidaten.size() > 0) {
 
-			// Erzeuge eigentliche Landesliste f�r jede Partei.
+			// Erzeuge eigentliche Landesliste fï¿½r jede Partei.
 			LinkedList<Bundesland> bundeslaender = deutschland
 					.getBundeslaender();
 
@@ -424,14 +429,14 @@ public class Crawler2013 extends Crawler {
 	}
 
 	private String getBundeslandName(String kuerzel) {
-		
+
 		/*
 		 * TODO Namen aus Config Datei holen statt hard-coden
 		 */
 		String name = "";
 		switch (kuerzel) {
 		case "BW":
-			name = "Baden-W�rttemberg";
+			name = "Baden-Wï¿½rttemberg";
 			break;
 		case "BY":
 			name = "Bayern";
@@ -476,7 +481,7 @@ public class Crawler2013 extends Crawler {
 			name = "Schleswig-Holstein";
 			break;
 		case "TH":
-			name = "Th�ringen";
+			name = "Thï¿½ringen";
 			break;
 		default:
 			name = "-";
@@ -485,8 +490,8 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Gibt die Einwohnerzahl aller Bundesl�nder zur�ck. Falls ein Bundesland
-	 * nicht gefunden wird, wird der default-Wert zur�ckgegeben. Dies betr�gt 0.
+	 * Gibt die Einwohnerzahl aller Bundeslï¿½nder zurï¿½ck. Falls ein Bundesland
+	 * nicht gefunden wird, wird der default-Wert zurï¿½ckgegeben. Dies betrï¿½gt 0.
 	 * 
 	 * @param name
 	 *            Name des Bundeslandes
@@ -494,60 +499,26 @@ public class Crawler2013 extends Crawler {
 	 */
 	private int getEinwohnerzahl(String name) {
 		int anzahl = 0;
-		
-		/*switch (name) {
-		case "Baden-W�rttemberg":
-			anzahl = 9482902;//9483500;
-			break;
-		case "Bayern":
-			anzahl = 11353264;//11352000;
-			break;
-		case "Berlin":
-			anzahl = 3025288; //3019900;
-			break;
-		case "Brandenburg":
-			anzahl = 2418267; //2420700;
-			break;
-		case "Bremen":
-			anzahl = 575805;//575300;
-			break;
-		case "Hamburg":
-			anzahl = 1559655; //1558300;
-			break;
-		case "Hessen":
-			anzahl = 5388350; //5390000;
-			break;
-		case "Mecklenburg-Vorpommern":
-			anzahl = 1585032;//1587000;
-			break;
-		case "Niedersachsen":
-			anzahl = 7354892; //7354900;
-			break;
-		case "Nordrhein-Westfalen":
-			anzahl = 15895182; //15906800;
-			break;
-		case "Rheinland-Pfalz":
-			anzahl = 3672888; //3675300;
-			break;
-		case "Saarland":
-			anzahl = 919402; //919600;
-			break;
-		case "Sachsen":
-			anzahl = 4005278; //4007100;
-			break;
-		case "Sachsen-Anhalt":
-			anzahl = 2247673; //2252200;
-			break;
-		case "Schleswig-Holstein":
-			anzahl = 2686085; //2687200;
-			break;
-		case "Th�ringen":
-			anzahl = 2154202; //2157700;
-			break;
-		default:
-			anzahl = 0;
-		}*/
-		List<String[]> einwohnerzahlen = Config.getInstance().getConfig("einwohnerzahl");
+
+		/*
+		 * switch (name) { case "Baden-Wï¿½rttemberg": anzahl = 9482902;//9483500;
+		 * break; case "Bayern": anzahl = 11353264;//11352000; break; case
+		 * "Berlin": anzahl = 3025288; //3019900; break; case "Brandenburg":
+		 * anzahl = 2418267; //2420700; break; case "Bremen": anzahl =
+		 * 575805;//575300; break; case "Hamburg": anzahl = 1559655; //1558300;
+		 * break; case "Hessen": anzahl = 5388350; //5390000; break; case
+		 * "Mecklenburg-Vorpommern": anzahl = 1585032;//1587000; break; case
+		 * "Niedersachsen": anzahl = 7354892; //7354900; break; case
+		 * "Nordrhein-Westfalen": anzahl = 15895182; //15906800; break; case
+		 * "Rheinland-Pfalz": anzahl = 3672888; //3675300; break; case
+		 * "Saarland": anzahl = 919402; //919600; break; case "Sachsen": anzahl
+		 * = 4005278; //4007100; break; case "Sachsen-Anhalt": anzahl = 2247673;
+		 * //2252200; break; case "Schleswig-Holstein": anzahl = 2686085;
+		 * //2687200; break; case "Thï¿½ringen": anzahl = 2154202; //2157700;
+		 * break; default: anzahl = 0; }
+		 */
+		List<String[]> einwohnerzahlen = Config.getInstance().getConfig(
+				"einwohnerzahl");
 		boolean found = false;
 		for (String[] blEinwohner : einwohnerzahlen) {
 			if (blEinwohner[0].equals(name)) {
@@ -568,41 +539,26 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Gibt die Farbe einer Partei zur�ck.
+	 * Gibt die Farbe einer Partei zurï¿½ck.
 	 * 
 	 * @param parteiName
-	 * 			Der Name der gew�nschten Partei.
-	 * @return
-	 * 			Gibt ein Farben-Objekt zur�ck.
+	 *            Der Name der gewï¿½nschten Partei.
+	 * @return Gibt ein Farben-Objekt zurï¿½ck.
 	 */
 	private Color getParteiFarbe(String parteiName) {
 		Color color = Color.GRAY;
-		//String parteiname = partei.getName();
-		/*switch (parteiName) {
-		case "SPD":
-			color = color.RED;
-			break;
-		case "CDU":
-		case "CSU":
-			color = color.BLACK;
-			break;
-		case "FDP":
-			color = color.YELLOW;
-			break;
-		case "DIE LINKE":
-			color = color.RED.darker();
-			break;
-		case "GR�NE":
-			color = color.GREEN.darker();
-			break;
-		case "PIRATEN":
-			color = color.ORANGE;
-			break;
-		default:
-			color = color.GRAY;
-
-		}*/
-		List<String[]> farben = Config.getInstance().getConfig("farben_parteien");
+		// String parteiname = partei.getName();
+		/*
+		 * switch (parteiName) { case "SPD": color = color.RED; break; case
+		 * "CDU": case "CSU": color = color.BLACK; break; case "FDP": color =
+		 * color.YELLOW; break; case "DIE LINKE": color = color.RED.darker();
+		 * break; case "GRï¿½NE": color = color.GREEN.darker(); break; case
+		 * "PIRATEN": color = color.ORANGE; break; default: color = color.GRAY;
+		 * 
+		 * }
+		 */
+		List<String[]> farben = Config.getInstance().getConfig(
+				"farben_parteien");
 		for (String[] farbe : farben) {
 			if (farbe[0].equals(parteiName)) {
 				try {

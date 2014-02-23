@@ -20,7 +20,7 @@ import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
 /**
- * Diese Klasse repr�sentiert das Tabellenfenster einer Ansicht. In diesem
+ * Diese Klasse reprï¿½sentiert das Tabellenfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
  */
@@ -29,7 +29,7 @@ public class TabellenFenster extends JScrollPane {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -8830377095217386485L;
 
-	/** repr�sentiert die Ansicht in der sich die Tabelle befindet */
+	/** reprï¿½sentiert die Ansicht in der sich die Tabelle befindet */
 	private final Ansicht ansicht;
 
 	/**
@@ -54,7 +54,7 @@ public class TabellenFenster extends JScrollPane {
 	 *            Gebiet
 	 */
 	public void tabellenFuellen(Gebiet gebiet) {
-		// wenn kein Gebiet �bergeben wird wird eine leere Tabelle erstellt
+		// wenn kein Gebiet ï¿½bergeben wird wird eine leere Tabelle erstellt
 		if (gebiet == null) {
 			BundDaten daten = new BundDaten();
 			BundTableModel tabelle = new BundTableModel(daten);
@@ -74,7 +74,7 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Bef�llt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
+	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
 	 * relevanten Daten.
 	 * 
 	 * @param land
@@ -109,9 +109,9 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Diese private Methode wird von tabellenFuellen f�r Deutschland verwendet
+	 * Diese private Methode wird von tabellenFuellen fï¿½r Deutschland verwendet
 	 * und erstellt aus einer Sitzverteilung und einer Partei ein
-	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden m�ssen
+	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden mï¿½ssen
 	 * beinhaltet.
 	 * 
 	 * @param partei
@@ -125,7 +125,7 @@ public class TabellenFenster extends JScrollPane {
 		if (partei == null || bundestag.getAbgeordnete() == null) {
 			return new GUIPartei(0, 0, 0, 0);
 		}
-		// Anzahl Direkt-, �berhangs-, und Ausgleichsmandate
+		// Anzahl Direkt-, ï¿½berhangs-, und Ausgleichsmandate
 		int sitze = partei.getAnzahlMandate();
 		int direktMan = 0;
 		int ueberMan = partei.getUeberhangMandate();
@@ -144,7 +144,7 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Bef�llt die Zeilen und Spalten der Tabelle in der Landesansicht mit den
+	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Landesansicht mit den
 	 * relevanten Daten.
 	 * 
 	 * @param bl
@@ -181,7 +181,7 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Bef�llt die Zeilen und Spalten der Tabelle in der Wahlkreisansicht mit
+	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Wahlkreisansicht mit
 	 * den relevanten Daten.
 	 * 
 	 * @param wk
@@ -221,7 +221,7 @@ public class TabellenFenster extends JScrollPane {
 				daten.addZeile(korresZweit.getPartei().getName(), er
 						.getKandidat().getName(), korresZweit, er, Double
 						.toString(prozentualeZweit), Double
-						.toString(prozentualeErst), direktMan);	
+						.toString(prozentualeErst), direktMan);
 			}
 		}
 		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);

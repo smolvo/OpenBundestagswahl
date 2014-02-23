@@ -30,9 +30,11 @@ import org.jfree.util.Rotation;
  */
 public class BundDiagramm extends JPanel {
 
+	private static final long serialVersionUID = 5890986355952177696L;
+
 	/**
 	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
-	 * createChart(Deutschland) und f�gt es hinzu.
+	 * createChart(Deutschland) und fï¿½gt es hinzu.
 	 * 
 	 * @param land
 	 *            Deutschland
@@ -57,7 +59,7 @@ public class BundDiagramm extends JPanel {
 
 		});
 		chartPanel.setPreferredSize(new Dimension(450, 250));
-		
+
 		this.add(chartPanel, BorderLayout.LINE_START);
 	}
 
@@ -94,7 +96,7 @@ public class BundDiagramm extends JPanel {
 				true);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
 
-		// f�rben
+		// fï¿½rben
 		for (int i = 0; i < daten.size(); i++) {
 			plot.setSectionPaint(result.getKey(i), parteien.get(i).getFarbe());
 		}
@@ -108,13 +110,12 @@ public class BundDiagramm extends JPanel {
 	}
 
 	/**
-	 * Diese Methode gibt eine Dimension, abh�ngig von der Fl�che auf der sich
+	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der sich
 	 * das Diagramm befindet, aus.
 	 * 
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(),
-				(int) (this.getHeight()));
+		return new Dimension(this.getWidth(), (int) (this.getHeight()));
 	}
 }

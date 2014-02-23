@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import main.java.model.Zweitstimme;
 
 /**
- * Diese Klasse repräsentiert die Daten der Bundesansichtstabelle.
+ * Diese Klasse reprÃ¤sentiert die Daten der Bundesansichtstabelle.
  * 
  */
 public class BundDaten {
@@ -25,7 +25,7 @@ public class BundDaten {
 	/** Liste der Direktmandate */
 	private LinkedList<String> direktmandate;
 
-	/** Liste der Überhangsmandate */
+	/** Liste der Ãœberhangsmandate */
 	private LinkedList<String> ueberhangsmandate;
 
 	/** Liste der Ausgleichsmandate */
@@ -45,7 +45,7 @@ public class BundDaten {
 	}
 
 	/**
-	 * Diese Methode fügt eine gesamte Zeile der Tabelle hinzu.
+	 * Diese Methode fÃ¼gt eine gesamte Zeile der Tabelle hinzu.
 	 * 
 	 * @param partei
 	 *            die Parte
@@ -58,7 +58,7 @@ public class BundDaten {
 	 * @param direktmandat
 	 *            Anzahl Direktkandidaten
 	 * @param ueberhangsmandat
-	 *            Anzahl Überhangsmandate
+	 *            Anzahl Ãœberhangsmandate
 	 * @param ausgleichsmandat
 	 *            Anzahl Ausgleichsmandate
 	 */
@@ -77,7 +77,7 @@ public class BundDaten {
 	}
 
 	/**
-	 * Diese Methode überprüft, ob ein String null ist, wenn nicht wird er der
+	 * Diese Methode Ã¼berprÃ¼ft, ob ein String null ist, wenn nicht wird er der
 	 * Liste angehangen,
 	 * 
 	 * @param string
@@ -99,113 +99,113 @@ public class BundDaten {
 	}
 
 	/**
-	 * Gibt eine bestimmte Partei zurück.
+	 * Gibt eine bestimmte Partei zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Partei die benoetigte Partei
 	 */
 	public String getParteien(int index) {
 		if (index < 0 || index > parteien.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return parteien.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Zweitstimmenanzahl zurück.
+	 * Gibt eine bestimmte Zweitstimmenanzahl zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Zweitstimme
 	 */
 	public Zweitstimme getStimmen(int index) {
 		if (index < 0 || index > stimmen.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return stimmen.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Prozentanzahl zurück.
+	 * Gibt eine bestimmte Prozentanzahl zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Prozentanzahl
 	 */
 	public String getProzent(int index) {
 		if (index < 0 || index > prozent.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return prozent.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Sitzanzahl zurück.
+	 * Gibt eine bestimmte Sitzanzahl zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Sitzanzahl
 	 */
 	public String getSitze(int index) {
 		if (index < 0 || index > sitze.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return sitze.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Anzahl Direktmandate zurück.
+	 * Gibt eine bestimmte Anzahl Direktmandate zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Direktmandate
 	 */
 	public String getDirektmandate(int index) {
 		if (index < 0 || index > direktmandate.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return direktmandate.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Überhangsmandate zurück.
+	 * Gibt eine bestimmte Ãœberhangsmandate zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
-	 * @return Überhangsmandate
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
+	 * @return Ãœberhangsmandate
 	 */
 	public String getUeberhangsmandate(int index) {
 		if (index < 0 || index > ueberhangsmandate.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return ueberhangsmandate.get(index);
 	}
 
 	/**
-	 * Gibt eine bestimmte Ausgleichsmandate zurück.
+	 * Gibt eine bestimmte Ausgleichsmandate zurÃ¼ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
-	 *             wenn der Index außerhalb der Listengroeße ist.
+	 *             wenn der Index auÃŸerhalb der ListengroeÃŸe ist.
 	 * @return Ausgleichsmandate die benoetigte Ausgleichsmandate
 	 */
 	public String getAusgleichsmandate(int index) {
 		if (index < 0 || index > ausgleichsmandate.size()) {
-			throw new IllegalArgumentException("Index außerhalb Listengröße.");
+			throw new IllegalArgumentException("Index auÃŸerhalb ListengrÃ¶ÃŸe.");
 		}
 		return ausgleichsmandate.get(index);
 	}

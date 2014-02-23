@@ -1,6 +1,5 @@
 package main.java.model;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,6 +10,7 @@ import java.util.LinkedList;
 
 import main.java.chronik.Chronik;
 import test.java.Debug;
+
 /**
  * Diese Klasse repraesentiert eine Bundestagswahl.
  */
@@ -36,7 +36,7 @@ public class Bundestagswahl implements Serializable {
 
 	/** Die berechnete Sitzverteilung dieser Bundestagswahl. */
 	private Sitzverteilung sitzverteilung;
-	
+
 	/** Chronik-Container */
 	private Chronik chronik;
 
@@ -46,7 +46,7 @@ public class Bundestagswahl implements Serializable {
 	 * @param name
 	 *            Der Name dieser Bundestagswahl.
 	 * @param deutschland
-	 *            Das Deutschland-Objekt, welches alle Bundesl�nder und
+	 *            Das Deutschland-Objekt, welches alle Bundeslï¿½nder und
 	 *            Wahlkreise enthaelt.
 	 * @param parteien
 	 *            Eine Liste aller Parteien die an dieser Bundestagswahl
@@ -59,7 +59,7 @@ public class Bundestagswahl implements Serializable {
 		this.setParteien(parteien);
 		// Sitzverteilung wird hier nicht gesetzt sondern muss vom
 		// Mandatsrechner berechnet werden.
-		
+
 		this.chronik = new Chronik();
 	}
 
@@ -172,14 +172,14 @@ public class Bundestagswahl implements Serializable {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			oos = new ObjectOutputStream(bos);
 
-			// serialisiere und �bergebe das Objekt
+			// serialisiere und ï¿½bergebe das Objekt
 			oos.writeObject(this);
 			oos.flush();
 			ByteArrayInputStream bin = new ByteArrayInputStream(
 					bos.toByteArray());
 			ois = new ObjectInputStream(bin);
 
-			// gib das geklonte Objekt zur�ck
+			// gib das geklonte Objekt zurï¿½ck
 			result = (Bundestagswahl) ois.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -190,19 +190,19 @@ public class Bundestagswahl implements Serializable {
 
 		return result;
 	}
-	
+
 	/**
-	 * Ver�ndere die Stimmen in einer Bundestagswahl.
-	 * Speichert vorher die aktuelle Bundestagswahl in der Chronik.
+	 * Verï¿½ndere die Stimmen in einer Bundestagswahl. Speichert vorher die
+	 * aktuelle Bundestagswahl in der Chronik.
+	 * 
 	 * @param stimme
-	 * 		die zu ver�ndernde stimme.
-	 * @return 
-	 * 		true wenn erfolgreich.
+	 *            die zu verï¿½ndernde stimme.
+	 * @return true wenn erfolgreich.
 	 */
 	public boolean setzeStimme(Stimme stimme) {
 		// TODO
 		boolean success = true;
-		
+
 		if (stimme instanceof Erststimme) {
 			success = this.setzeStimmenAnzahl((Erststimme) stimme);
 		} else if (stimme instanceof Zweitstimme) {
@@ -210,68 +210,77 @@ public class Bundestagswahl implements Serializable {
 		} else {
 			success = false;
 		}
-		
-		if (!success /*&& !this.pruefeDaten*/) {
+
+		if (!success /* && !this.pruefeDaten */) {
 			throw new IllegalArgumentException("Stimme nicht gefunden.");
-			//boolean secondSuccess = this.setzeStimme(chronik.restauriereStimme());
+			// boolean secondSuccess =
+			// this.setzeStimme(chronik.restauriereStimme());
 		}
 		return success;
 	}
-	
+
 	/**
-	 * Erststimme kann/darf nur in Wahlkreisen veraendert
-	 * werden.
+	 * Erststimme kann/darf nur in Wahlkreisen veraendert werden.
+	 * 
 	 * @param stimme
-	 * 				
+	 * 
 	 * @return
 	 */
 	private boolean setzeStimmenAnzahl(Erststimme stimme) {
 		System.out.println("Setze erststimme");
 		boolean success = false;
 		for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
-			 if (wk.equals(stimme.getGebiet())) {
-				 for (Erststimme erststimme : wk.getErststimmenProPartei()) {
-					 if (erststimme.getKandidat().equals(stimme.getKandidat())) {
-						 Debug.print("Aendere Erststimme in: " + stimme.getGebiet().getName() + " " + stimme.getKandidat().getPartei().getName());
+			if (wk.equals(stimme.getGebiet())) {
+				for (Erststimme erststimme : wk.getErststimmenProPartei()) {
+					if (erststimme.getKandidat().equals(stimme.getKandidat())) {
+						Debug.print("Aendere Erststimme in: "
+								+ stimme.getGebiet().getName() + " "
+								+ stimme.getKandidat().getPartei().getName());
 
-						 this.chronik.sichereStimme(erststimme);
-						 erststimme.setAnzahl(erststimme.getAnzahl());
-						 success = true;
-						 break;
-					 }
-				 }
-				 break;
-			 }
+						this.chronik.sichereStimme(erststimme);
+						erststimme.setAnzahl(erststimme.getAnzahl());
+						success = true;
+						break;
+					}
+				}
+				break;
+			}
 		}
 		return success;
 	}
-	
+
 	/**
 	 * Setzt die ZweitstimmenAnzahl
-	 * @param stimme 
+	 * 
+	 * @param stimme
 	 * @return
 	 **/
-	private boolean setzeStimmenAnzahl (Zweitstimme stimme) {
+	private boolean setzeStimmenAnzahl(Zweitstimme stimme) {
 		Debug.print("Setze zweitstimme");
 		boolean success = false;
 		if (stimme.getGebiet() instanceof Deutschland) {
-			throw new  IllegalArgumentException("Zweitstimmen k�nnen in Deutschland nicht ver�ndert werden.");
+			throw new IllegalArgumentException(
+					"Zweitstimmen kï¿½nnen in Deutschland nicht verï¿½ndert werden.");
 		} else if (stimme.getGebiet() instanceof Bundesland) {
-			throw new  IllegalArgumentException("Zweitstimmen k�nnen in Bundesl�ndern nicht ver�ndert werden.");
+			throw new IllegalArgumentException(
+					"Zweitstimmen kï¿½nnen in Bundeslï¿½ndern nicht verï¿½ndert werden.");
 		} else if (stimme.getGebiet() instanceof Wahlkreis) {
 			for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
-				 if (wk.equals(stimme.getGebiet())) {
-					 for (Zweitstimme zweitstimme : wk.getZweitstimmenProPartei()) {
-						 if (zweitstimme.getPartei().equals(stimme.getPartei())) {
-							 Debug.print("Aendere Zweitstimme in: " + stimme.getGebiet().getName() + " " + stimme.getPartei());
-							 this.chronik.sichereStimme(zweitstimme);
-							 zweitstimme.setAnzahl(zweitstimme.getAnzahl());
-							 success = true;
-							 break;
-						 }
-					 }
-					 break;
-				 }
+				if (wk.equals(stimme.getGebiet())) {
+					for (Zweitstimme zweitstimme : wk
+							.getZweitstimmenProPartei()) {
+						if (zweitstimme.getPartei().equals(stimme.getPartei())) {
+							Debug.print("Aendere Zweitstimme in: "
+									+ stimme.getGebiet().getName() + " "
+									+ stimme.getPartei());
+							this.chronik.sichereStimme(zweitstimme);
+							zweitstimme.setAnzahl(zweitstimme.getAnzahl());
+							success = true;
+							break;
+						}
+					}
+					break;
+				}
 			}
 		} else {
 			success = false;
@@ -280,14 +289,16 @@ public class Bundestagswahl implements Serializable {
 	}
 
 	/**
-	 * Sobald eine Stimme in der GUI ge�ndert wurde, ist es m�glich
-	 * die Stimme wieder zur�ck zu setzen.
+	 * Sobald eine Stimme in der GUI geï¿½ndert wurde, ist es mï¿½glich die Stimme
+	 * wieder zurï¿½ck zu setzen.
+	 * 
 	 * @return ob erfolgreich oder nicht
 	 */
-	public boolean zurueckSetzen () {
+	public boolean zurueckSetzen() {
 		Stimme alteStimme = this.chronik.restauriereStimme();
 		return this.setzeStimme(alteStimme);
 	}
+
 	@Override
 	public String toString() {
 		return this.name;

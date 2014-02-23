@@ -22,7 +22,7 @@ public abstract class Stimme implements Serializable {
 	/**
 	 * Gibt das zugehoerige Gebiet zurueck.
 	 * 
-	 * @return das zugeh�rige Gebiet.
+	 * @return das zugehï¿½rige Gebiet.
 	 */
 	public Gebiet getGebiet() {
 		return this.gebiet;
@@ -34,7 +34,7 @@ public abstract class Stimme implements Serializable {
 	 * @param gebiet
 	 *            Das zugehoerige Gebiet.
 	 * @throws IllegalArgumentException
-	 *             wenn das �bergebende Gebiet leer ist.
+	 *             wenn das ï¿½bergebende Gebiet leer ist.
 	 */
 	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
 		if (gebiet.equals(null)) {
@@ -68,7 +68,7 @@ public abstract class Stimme implements Serializable {
 	 * Erhoeht das anzahl Attribut um die gegebene Anzahl.
 	 * 
 	 * @param anzahl
-	 *            die gegebene Anzahl um die erh�ht werden soll.
+	 *            die gegebene Anzahl um die erhï¿½ht werden soll.
 	 * @throws IllegalArgumentException
 	 *             Wenn die neue Anzahl eine Ueberschreitung der Anzahl der
 	 *             Wahlberechtigten in dem Gebiet zur Folge hat. Oder die neue
@@ -76,9 +76,10 @@ public abstract class Stimme implements Serializable {
 	 */
 	public abstract void erhoeheAnzahl(int anzahl)
 			throws IllegalArgumentException;
-	
+
 	/**
 	 * Erzeugt eine Deep-Copy einer Stimme.
+	 * 
 	 * @return ein neues Stimmen-Objekt.
 	 */
 	public abstract Stimme deepCopy();

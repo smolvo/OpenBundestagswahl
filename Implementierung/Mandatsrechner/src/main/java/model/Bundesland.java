@@ -5,14 +5,16 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-
 /**
  * Klasse die die Bundeslaender repraesentiert. Unterklasse von Gebiet.
  */
 public class Bundesland extends Gebiet implements Serializable,
 		Comparable<Bundesland> {
 
-	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */
+	/**
+	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
+	 * verwendet wird.
+	 */
 	private static final long serialVersionUID = 1614716230171638779L;
 
 	/** Einwohnerzahl des Bundeslandes. */
@@ -30,9 +32,6 @@ public class Bundesland extends Gebiet implements Serializable,
 	/** Liste mit den Landeslisten des Bundeslandes. */
 	private List<Landesliste> landesliste = new LinkedList<Landesliste>();
 
-
-	
-	
 	/**
 	 * Parametrisierter Konstruktor fuer Bundeslaender. Listen werden seperat
 	 * hinzugefuegt.
@@ -82,7 +81,8 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	/**
-	 * Setzt die Farbe des Bundeslandes. Akzeptiert null als Argument damit die Farbe im Generator zurueckgesetzt werden kann.
+	 * Setzt die Farbe des Bundeslandes. Akzeptiert null als Argument damit die
+	 * Farbe im Generator zurueckgesetzt werden kann.
 	 * 
 	 * @param farbe
 	 *            des Bundeslandes.
@@ -136,7 +136,8 @@ public class Bundesland extends Gebiet implements Serializable,
 	public void setParteien(LinkedList<Partei> parteien)
 			throws IllegalArgumentException {
 		if (parteien == null) {
-			throw new IllegalArgumentException("Der Parameter \"parteien\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"parteien\" ist null!");
 		}
 		this.parteien = parteien;
 	}
@@ -160,7 +161,7 @@ public class Bundesland extends Gebiet implements Serializable,
 	 * Fuegt einen neuen Wahlkreis hinzu.
 	 * 
 	 * @param wahlkreis
-	 *            Der Wahlkreis der hinzugef�gt wird
+	 *            Der Wahlkreis der hinzugefï¿½gt wird
 	 * @throws IllegalArgumentException
 	 *             wenn der Wahlkreis null ist.
 	 */
@@ -173,14 +174,17 @@ public class Bundesland extends Gebiet implements Serializable,
 
 	@Override
 	public List<Erststimme> getErststimmenProPartei() {
-		
+
 		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
-		
-		int[] tempStimmen = new int[this.wahlkreise.get(0).getErststimmenProPartei().size()];
+
+		int[] tempStimmen = new int[this.wahlkreise.get(0)
+				.getErststimmenProPartei().size()];
 		for (int i = 0; i < this.wahlkreise.size(); i++) {
-			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i).getErststimmenProPartei();
+			List<Erststimme> wahlkreisErststimme = wahlkreise.get(i)
+					.getErststimmenProPartei();
 			for (int j = 0; j < wahlkreisErststimme.size(); j++) {
-				//System.out.println("wahlkreisersttimmen: " + wahlkreisErststimme.size());
+				// System.out.println("wahlkreisersttimmen: " +
+				// wahlkreisErststimme.size());
 				if (wahlkreisErststimme.get(j) != null) {
 					tempStimmen[j] += wahlkreisErststimme.get(j).getAnzahl();
 				}
@@ -190,7 +194,7 @@ public class Bundesland extends Gebiet implements Serializable,
 			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat(
 					"Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
 		}
-		
+
 		return erststimmen;
 	}
 
@@ -207,10 +211,9 @@ public class Bundesland extends Gebiet implements Serializable,
 			}
 		}
 		for (int i = 0; i < tempZweitstimmen.length; i++) {
-			zweitstimmen
-					.add(new Zweitstimme(tempZweitstimmen[i], this,
-							this.wahlkreise.get(0).getZweitstimmenProPartei().get(i)
-									.getPartei()));
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this,
+					this.wahlkreise.get(0).getZweitstimmenProPartei().get(i)
+							.getPartei()));
 		}
 
 		return zweitstimmen;
@@ -249,28 +252,31 @@ public class Bundesland extends Gebiet implements Serializable,
 	public List<Landesliste> getLandesliste() {
 		return this.landesliste;
 	}
-	
+
 	/**
-	 * Ermittelt die Partei mit der hoechsten Anzahl zweitstimmen. Bei zwei Parteien mit gleicher Anzahl zweitstimmen wird die erste in
-	 * der Liste zuruckgegeben
+	 * Ermittelt die Partei mit der hoechsten Anzahl zweitstimmen. Bei zwei
+	 * Parteien mit gleicher Anzahl zweitstimmen wird die erste in der Liste
+	 * zuruckgegeben
+	 * 
 	 * @return die Partei mit den meisten Zweitstimmen
 	 */
 	public Partei ermittleStaerkstePartei() {
 		Partei staerkstePartei = null;
 		int maxStimmzahl = 0;
-		for (Partei partei: parteien) {
+		for (Partei partei : parteien) {
 			int aktuellerWert = this.getAnzahlZweitstimmen(partei);
-		//	System.out.println(this.getName() + " " + partei.getName() + " " + maxStimmzahl + " " + aktuellerWert);
+			// System.out.println(this.getName() + " " + partei.getName() + " "
+			// + maxStimmzahl + " " + aktuellerWert);
 			if (aktuellerWert > maxStimmzahl) {
 				maxStimmzahl = aktuellerWert;
-				staerkstePartei = partei; 
+				staerkstePartei = partei;
 			}
 		}
-		
+
 		return staerkstePartei;
-		
+
 	}
-	
+
 	/**
 	 * Fuegt eine neue Landesliste zum Bundeslandes hinzu.
 	 * 
@@ -291,11 +297,11 @@ public class Bundesland extends Gebiet implements Serializable,
 		return this.getName().compareTo(andere.getName());
 	}
 
-	
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override
@@ -306,11 +312,12 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return anzahl;
 	}
-	
+
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override

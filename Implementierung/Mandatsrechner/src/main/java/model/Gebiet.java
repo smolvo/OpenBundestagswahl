@@ -79,35 +79,37 @@ public abstract class Gebiet implements Serializable {
 	abstract public int getWahlberechtigte();
 
 	/**
-	 * Gibt Pro Partei ein Erststimmen-Objekt als Liste zur�ck.
-	 * Jedes Objekt hat als Anzahl die Summe aller Stimmen dem
-	 * jeweiligen Gebiet bzw. in den Untergebieten.
+	 * Gibt Pro Partei ein Erststimmen-Objekt als Liste zurï¿½ck. Jedes Objekt hat
+	 * als Anzahl die Summe aller Stimmen dem jeweiligen Gebiet bzw. in den
+	 * Untergebieten.
 	 * 
 	 * @return die Erststimmen in einem Gebiet.
 	 */
 	abstract public List<Erststimme> getErststimmenProPartei();
 
 	/**
-	 * Gibt Pro Partei ein Zweitstimmen-Objekt als Liste zur�ck.
-	 * Jedes Objekt hat als Anzahl die Summe aller Stimmen dem
-	 * jeweiligen Gebiet bzw. in den Untergebieten.
+	 * Gibt Pro Partei ein Zweitstimmen-Objekt als Liste zurï¿½ck. Jedes Objekt
+	 * hat als Anzahl die Summe aller Stimmen dem jeweiligen Gebiet bzw. in den
+	 * Untergebieten.
 	 * 
 	 * @return die Zweitstimmen in einem Gebiet.
 	 */
 	abstract public List<Zweitstimme> getZweitstimmenProPartei();
 
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	abstract public int getAnzahlZweitstimmen(Partei partei);
-	
+
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
-	 * @param partei Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	abstract public int getAnzahlErststimmen(Partei partei);

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = 8492979454628956125L;
@@ -88,12 +88,12 @@ public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
 	 * Gibt das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur
-	 * gegebenen Partei zugeh�rig ist zur�ck.
+	 * gegebenen Partei zugehï¿½rig ist zurï¿½ck.
 	 * 
 	 * @param partei
-	 *            die zugeh�rige Partei zur erwarteten Erststimme
+	 *            die zugehï¿½rige Partei zur erwarteten Erststimme
 	 * @return das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch
-	 *         zur gegebenen Partei zugeh�rig ist
+	 *         zur gegebenen Partei zugehï¿½rig ist
 	 */
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
@@ -230,7 +230,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die Gesamtanzahl an Erststimmen f�r die uebergebene Partei zurueck
+	 * Gibt die Gesamtanzahl an Erststimmen fï¿½r die uebergebene Partei zurueck
 	 * 
 	 * @param partei
 	 *            die partei deren Erststimmen ermittelt werden sollen
@@ -247,13 +247,13 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zur�ck und null, wenn
+	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
 	 * kein solches Objekt mit der gegebenen Partei existiert.
 	 * 
 	 * @param partei
 	 *            die Partei deren Zweitstimme Objekt gesucht werden soll
-	 * @return das Zweitstimme-Objekt der gegebenen Partei zur�ck und null,
-	 *         wenn kein solches Objekt mit der gegebenen Partei existiert.
+	 * @return das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
+	 *         kein solches Objekt mit der gegebenen Partei existiert.
 	 * @throws IllegalArgumentException
 	 *             wenn die Partei null ist.
 	 */
@@ -270,7 +270,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
 	 * @param partei
 	 *            Die Partei zu der die Stimmen gegeben werden sollen.
@@ -288,7 +288,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zur�ck.
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
 	 * 
 	 * @param partei
 	 *            Die Partei zu der die Stimmen gegeben werden sollen.

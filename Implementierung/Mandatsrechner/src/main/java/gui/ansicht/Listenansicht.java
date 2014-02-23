@@ -10,26 +10,27 @@ import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 
 /**
- * Diese Klasse repr�sentiert die Listenansicht des Kartenfensters. In ihr wird
- * eine Verzeichnisstruktur angelegt die Deutschland, alle Bundesl�nder und alle
- * Wahlkreise enth�lt.
+ * Diese Klasse reprï¿½sentiert die Listenansicht des Kartenfensters. In ihr wird
+ * eine Verzeichnisstruktur angelegt die Deutschland, alle Bundeslï¿½nder und alle
+ * Wahlkreise enthï¿½lt.
  * 
  */
 public class Listenansicht extends JScrollPane implements TreeSelectionListener {
 
 	private static final long serialVersionUID = 3812495274375926111L;
-	
-	/** repr�sentiert das dazugeh�rige Kartenfenster */
+
+	/** reprï¿½sentiert das dazugehï¿½rige Kartenfenster */
 	private KartenFenster kartenfenster;
 
 	/**
 	 * Im Konstruktor der Klasse wird eine Baumstruktur angelegt. Die erste
-	 * Stufe bildet Deutschland, die zweite alle Bundesl�nder und die dritte die
-	 * Wahlkreise der Bundesl�nder.
+	 * Stufe bildet Deutschland, die zweite alle Bundeslï¿½nder und die dritte die
+	 * Wahlkreise der Bundeslï¿½nder.
 	 * 
 	 * @param land
-	 *            alle Bundesl�nder
-	 * @param kartenfenster das Kartenfenster
+	 *            alle Bundeslï¿½nder
+	 * @param kartenfenster
+	 *            das Kartenfenster
 	 */
 	public Listenansicht(Deutschland land, KartenFenster kartenfenster) {
 		this.kartenfenster = kartenfenster;

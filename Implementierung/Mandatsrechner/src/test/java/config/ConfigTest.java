@@ -9,8 +9,8 @@ import main.java.config.Config;
 import org.junit.Test;
 
 /**
- * Tests f�r die Config Klasse
- *
+ * Tests fï¿½r die Config Klasse
+ * 
  */
 public class ConfigTest {
 
@@ -27,13 +27,13 @@ public class ConfigTest {
 	public void testGetConfig() {
 		Config config = Config.getInstance();
 		List<String[]> list = config.getConfig("einwohnerzahl");
-		
+
 		// erstmal Ergebnis auf NULL checken
 		assertTrue("list ist NULL!", list != null);
-		
-		// es gibt 16 Bundesl�nder
+
+		// es gibt 16 Bundeslï¿½nder
 		assertTrue("Einwohnerzahlen der BL != 16", list.size() == 16);
-		
+
 	}
 
 	@Test
@@ -58,7 +58,7 @@ public class ConfigTest {
 
 		// erstmal Ergebnis auf NULL checken
 		assertTrue("list ist NULL!", alles != null);
-		
+
 		System.out.println(alles);
 	}
 

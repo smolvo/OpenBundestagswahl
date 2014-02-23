@@ -17,7 +17,7 @@ import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 /**
- * Die Klasse Programmfenster repräsentiert die allgemeine Ansicht des Programms
+ * Die Klasse Programmfenster reprÃ¤sentiert die allgemeine Ansicht des Programms
  * 
  * @author Manuel
  * 
@@ -27,16 +27,16 @@ public final class Programmfenster extends JFrame {
 
 	private static final long serialVersionUID = -7954024258913364304L;
 
-	/** repräsentiert die Menüleiste */
+	/** reprÃ¤sentiert die MenÃ¼leiste */
 	private final Menu menu;
 
-	/** repräsentiert die Liste der aktuellgeladenen Wahlen */
+	/** reprÃ¤sentiert die Liste der aktuellgeladenen Wahlen */
 	private List<WahlFenster> wahlen = new ArrayList<WahlFenster>();
 
-	/** repräsentiert die Tableiste */
+	/** reprÃ¤sentiert die Tableiste */
 	private TabLeiste tabs;
 
-	/** repräsentiert den ImportDialog des Programms */
+	/** reprÃ¤sentiert den ImportDialog des Programms */
 	private ImportDialog iD;
 
 	/**
@@ -69,7 +69,7 @@ public final class Programmfenster extends JFrame {
 		// Steuerung initialisieren
 		Steuerung.getInstance();
 
-		// Menü- Leiste erstellen
+		// MenÃ¼- Leiste erstellen
 		menu = new Menu(this);
 		setJMenuBar(menu);
 
@@ -92,7 +92,7 @@ public final class Programmfenster extends JFrame {
 	}
 
 	/**
-	 * Fügt eine Wahl hinzu.
+	 * FÃ¼gt eine Wahl hinzu.
 	 * 
 	 * @param w
 	 *            Wahl
@@ -111,16 +111,16 @@ public final class Programmfenster extends JFrame {
 	}
 
 	/**
-	 * Gibt das Menü zurück.
+	 * Gibt das MenÃ¼ zurÃ¼ck.
 	 * 
-	 * @return Menü
+	 * @return MenÃ¼
 	 */
 	public Menu getMenu() {
 		return menu;
 	}
 
 	/**
-	 * Gibt die Liste an Wahlfenstern zurück
+	 * Gibt die Liste an Wahlfenstern zurÃ¼ck
 	 * 
 	 * @return Wahlfenster
 	 */
@@ -145,7 +145,7 @@ public final class Programmfenster extends JFrame {
 	}
 
 	/**
-	 * Gibt die Tableiste zurück.
+	 * Gibt die Tableiste zurÃ¼ck.
 	 * 
 	 * @return Tableiste
 	 */

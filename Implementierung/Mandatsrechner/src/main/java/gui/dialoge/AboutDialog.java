@@ -1,6 +1,5 @@
 package main.java.gui.dialoge;
 
-
 import java.awt.GridLayout;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,11 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-
 /**
- * Diese Klasse repräsentiert die "About" View in der GUI.
- * Es werden Informationen zu diesem Programm und den Entwicklern angezeigt.
- * Es wird eine Webview erzeugt die, die genannten Informationen anzeigt.
+ * Diese Klasse reprÃ¤sentiert die "About" View in der GUI. Es werden
+ * Informationen zu diesem Programm und den Entwicklern angezeigt. Es wird eine
+ * Webview erzeugt die, die genannten Informationen anzeigt.
  */
 public class AboutDialog extends JDialog {
 
@@ -27,52 +25,55 @@ public class AboutDialog extends JDialog {
 	private static final long serialVersionUID = -1091530997927819189L;
 
 	/** Die HTML-Datei die in der Webview angezeigt wird. */
-	private static final File ABOUT_FILE = 
-			new File("src/main/resources/hilfe/about.html");
-	
+	private static final File ABOUT_FILE = new File(
+			"src/main/resources/hilfe/about.html");
+
 	/**
-	 * Das Diallogfenster, dass die Webview enthält
+	 * Das Diallogfenster, dass die Webview enthÃ¯Â¿Â½lt
 	 */
 	public AboutDialog() {
 
 		// allgemeine Anpassungen des Fensters
-		setTitle("Über diese Anwendung");
+		setTitle("Ãœber diese Anwendung");
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setAlwaysOnTop(true);
-		
-		// wird benötigt um JavaFX Panel zu DISPOSEN
+
+		// wird benÃ¯Â¿Â½tigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		GridLayout layout = new GridLayout(1, 1);
-		
+
 		// Als Layout festlegen
 		setLayout(layout);
 		final JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
-		
+
 		Platform.runLater(new Runnable() {
 			// fxPanel als JavaFX-Thread starten
-            @Override
-            public void run() {
-                initFX(fxPanel);
-            }
-        });
-		
+			@Override
+			public void run() {
+				initFX(fxPanel);
+			}
+		});
+
 		setVisible(true);
 	}
-	
+
 	/**
-	 * Erzeugt eine Webview und läd about.html
-	 * @param fxPanel das Panel in dem die Webview gestartet wird
+	 * Erzeugt eine Webview und lÃ¤d about.html
+	 * 
+	 * @param fxPanel
+	 *            das Panel in dem die Webview gestartet wird
 	 */
-    private static void initFX(final JFXPanel fxPanel) {
-        Scene scene = createScene();
-        fxPanel.setScene(scene);
-  
-    }
-    private static Scene createScene() {
+	private static void initFX(final JFXPanel fxPanel) {
+		Scene scene = createScene();
+		fxPanel.setScene(scene);
+
+	}
+
+	private static Scene createScene() {
 		Group group = new Group();
 		Scene scene = new Scene(group);
 		WebView webView = new WebView();

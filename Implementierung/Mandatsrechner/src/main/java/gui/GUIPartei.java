@@ -1,22 +1,22 @@
 package main.java.gui;
 
 /**
- * Diese Klasse hält alle Dateien die eine Partei betreffen, um diese im
+ * Diese Klasse hÃ¤lt alle Dateien die eine Partei betreffen, um diese im
  * Tabellenfenster anzeigen zu lassen.
  * 
  */
 public class GUIPartei {
 
-	/** repräsentiert die Sitze der Partei */
+	/** reprÃ¤sentiert die Sitze der Partei */
 	private final int sitze;
 
-	/** repräsentiert die Direktmandaten der Partei */
+	/** reprÃ¤sentiert die Direktmandaten der Partei */
 	private final int direktmandate;
 
-	/** repräsentiert die Überhangsmandaten der Partei */
+	/** reprÃ¤sentiert die Ãœberhangsmandaten der Partei */
 	private final int ueberhangsmandate;
 
-	/** repräsentiert die Ausgleichsmandate der Partei */
+	/** reprÃ¤sentiert die Ausgleichsmandate der Partei */
 	private final int ausgleichsmandate;
 
 	/**
@@ -27,7 +27,7 @@ public class GUIPartei {
 	 * @param direktmandate
 	 *            Anzahl Direktmandate
 	 * @param ueberhangsmandate
-	 *            Anzahl Überhangsmandate
+	 *            Anzahl Ãœberhangsmandate
 	 * @param ausgleichsmandate
 	 *            Anzahl Ausgleichsmandate
 	 */
@@ -58,9 +58,9 @@ public class GUIPartei {
 	}
 
 	/**
-	 * Gibt die Überhangsmandatanzahl aus.
+	 * Gibt die Ãœberhangsmandatanzahl aus.
 	 * 
-	 * @return Überhangsmandatanzahl
+	 * @return Ãœberhangsmandatanzahl
 	 */
 	public int getUeberhangsmandate() {
 		return ueberhangsmandate;

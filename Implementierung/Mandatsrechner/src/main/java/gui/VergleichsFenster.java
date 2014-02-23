@@ -21,14 +21,14 @@ import main.java.wahlvergleich.WahlvergleichDaten;
 import main.java.wahlvergleich.WahlvergleichTableModel;
 
 /**
- * Diese Klasse repr‰sentiert das Wahlvergleichsfenster. In diesem werden
+ * Diese Klasse repr√§sentiert das Wahlvergleichsfenster. In diesem werden
  * bestimmmte Daten zweier BTW-Objektes angezeigt.
  */
 public class VergleichsFenster extends JFrame {
 
 	private static final long serialVersionUID = -5493451520927891697L;
 
-	/** repr‰sentiert das Layout */
+	/** repr√§sentiert das Layout */
 	private final GridBagConstraints gbc;
 
 	/**
@@ -54,7 +54,7 @@ public class VergleichsFenster extends JFrame {
 	}
 
 	/**
-	 * Diese Methode f¸llt das Fenster mit der Tabelle, den zwei
+	 * Diese Methode f√ºllt das Fenster mit der Tabelle, den zwei
 	 * Sitzverteilungsdiagrammen und dem Differenzendiagramm.
 	 * 
 	 * @param vergleich
@@ -73,7 +73,7 @@ public class VergleichsFenster extends JFrame {
 		this.gbc.anchor = GridBagConstraints.CENTER;
 		this.gbc.fill = GridBagConstraints.BOTH;
 
-		// ‹berschriften der Wahlen
+		// √úberschriften der Wahlen
 		JLabel ersteWahlName = new JLabel(vergleich.getBtw1().getName());
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.025;

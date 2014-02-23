@@ -7,7 +7,8 @@ import java.io.Serializable;
  * Klassen Gebiet und Kandidat zusammen arbeitet. Ausserdem erbt diese von der
  * Klasse Stimme.
  */
-public class Erststimme extends Stimme implements Serializable, Comparable<Erststimme> {
+public class Erststimme extends Stimme implements Serializable,
+		Comparable<Erststimme> {
 
 	/**
 	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
@@ -19,14 +20,14 @@ public class Erststimme extends Stimme implements Serializable, Comparable<Ersts
 	private Kandidat kandidat;
 
 	/**
-	 * Mit diesem Konsruktor ist es m�glich alle Attribute auf einmal zu setzen
+	 * Mit diesem Konsruktor ist es mï¿½glich alle Attribute auf einmal zu setzen
 	 * 
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen
 	 * @param gebiet
-	 *            Das zugeh�rige Gebiet.
+	 *            Das zugehï¿½rige Gebiet.
 	 * @param kandidat
-	 *            Der zugeh�rige Kanditat.
+	 *            Der zugehï¿½rige Kanditat.
 	 */
 	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
 		this.setGebiet(gebiet);

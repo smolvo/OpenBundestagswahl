@@ -103,10 +103,11 @@ public class Mandatsrechner2013 {
 			isCorrect = true;
 			for (Partei partei : relevanteParteien) {
 				int mindestSitze = partei.getMindestsitzAnzahl();
-				//Debug.print("Parteidivisor: " + parteidivisor);
+				// Debug.print("Parteidivisor: " + parteidivisor);
 				if (partei.getZweitstimmeGesamt() == 0) {
 					continue;
-				} else if (Math.round(partei.getZweitstimmeGesamt() / parteidivisor) < mindestSitze) {
+				} else if (Math.round(partei.getZweitstimmeGesamt()
+						/ parteidivisor) < mindestSitze) {
 					isCorrect = false;
 					break;
 				}
@@ -114,7 +115,8 @@ public class Mandatsrechner2013 {
 			if (!isCorrect) {
 				parteidivisor -= 1;
 				if (parteidivisor < 0) {
-					throw new IllegalArgumentException("Ungueltige Eingabewerte (Zweitstimmen).");
+					throw new IllegalArgumentException(
+							"Ungueltige Eingabewerte (Zweitstimmen).");
 				}
 			}
 		}
@@ -141,7 +143,7 @@ public class Mandatsrechner2013 {
 		 * Die Zweitstimmen einer Partei dividiert durch den parteidivisor
 		 * ergeben nun die neue Mindestanzahl an Sitzen. Nun wird ein
 		 * Multiplikator bestimmt, der die Ausgleichsmandate einer Parei auf die
-		 * Landeslisten dieser Partei im Verh�ltnis der Zweitstimmen verteilt.
+		 * Landeslisten dieser Partei im Verhï¿½ltnis der Zweitstimmen verteilt.
 		 */
 		float parteidivisor = this.berechneParteidivisor(relevanteParteien);
 		for (Partei partei : relevanteParteien) {
@@ -207,14 +209,14 @@ public class Mandatsrechner2013 {
 								+ (partei.getAnzahlMandate(Mandat.DIREKTMANDAT,
 										bl) + partei.getAnzahlMandate(
 										Mandat.LISTENMANDAT, bl)));
-						
+
 						// Suche Kandidaten ohne Mandat und fuege sie als
 						// Ausgleichsmandat hinzu.
 
 						if (diffSitzeBundesland < 0) {
 							for (int i = 0; i < Math.abs(diffSitzeBundesland); i++) {
 								Debug.print("ABZIEHEN " + partei.getName()
-												+ " " + bl.getName());
+										+ " " + bl.getName());
 								for (int j = (partei.getLandesliste().size() - 1); j >= 0; j--) {
 									if (partei.getLandesliste(bl)
 											.getListenkandidaten().size() > j) {
@@ -272,7 +274,8 @@ public class Mandatsrechner2013 {
 			} else {
 				if (diffSitze != 0) {
 					Debug.print("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
-					//throw new IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
+					// throw new
+					// IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}
 			}
 		}

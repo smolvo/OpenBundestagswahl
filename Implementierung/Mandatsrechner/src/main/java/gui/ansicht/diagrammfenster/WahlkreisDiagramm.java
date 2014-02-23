@@ -27,14 +27,16 @@ import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 
 /**
- * Diese Klasse repr�sentiert das Diagramm der Wahlkreisansicht.
+ * Diese Klasse reprï¿½sentiert das Diagramm der Wahlkreisansicht.
  * 
  */
 public class WahlkreisDiagramm extends JPanel {
 
+	private static final long serialVersionUID = 8859046341751767496L;
+
 	/**
 	 * Konstruktor erstellt ein Diagramm unter Verwendung der privaten Methode
-	 * createChart(Wahlkreis) und f�gt es hinzu.
+	 * createChart(Wahlkreis) und fï¿½gt es hinzu.
 	 * 
 	 * @param wk
 	 *            Wahlkreis
@@ -83,8 +85,8 @@ public class WahlkreisDiagramm extends JPanel {
 		Collections.sort(er);
 		int count = 0;
 		int sonstige = 100;
-		// solange sonstige �ber 5% der Gesamtstimmen haben soll ein weiterer
-		// Balken hinzugef�gt werden
+		// solange sonstige ï¿½ber 5% der Gesamtstimmen haben soll ein weiterer
+		// Balken hinzugefï¿½gt werden
 		while (sonstige > 5) {
 			sonstige = 0;
 			double proZweit = (Math
@@ -113,7 +115,7 @@ public class WahlkreisDiagramm extends JPanel {
 		rangeAxis.setRange(new Range(0, 60));
 		plot.setRangeAxis(rangeAxis);
 
-		// f�rben der Parteienbalken
+		// fï¿½rben der Parteienbalken
 		Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
 			farben[i] = parteien.get(i).getFarbe();
@@ -127,13 +129,12 @@ public class WahlkreisDiagramm extends JPanel {
 	}
 
 	/**
-	 * Diese Methode gibt eine Dimension, abh�ngig von der Fl�che auf der sich
+	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der sich
 	 * das Diagramm befindet, aus.
 	 * 
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(),
-				(int) (this.getHeight()));
+		return new Dimension(this.getWidth(), (int) (this.getHeight()));
 	}
 }

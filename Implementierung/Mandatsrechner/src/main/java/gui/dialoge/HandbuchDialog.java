@@ -38,11 +38,11 @@ public class HandbuchDialog extends JDialog {
 		setResizable(true);
 		setAlwaysOnTop(true);
 
-		// wird ben�tigt um JavaFX Panel zu DISPOSEN
+		// wird benï¿½tigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		GridLayout layout = new GridLayout();
-		
+
 		// Als Layout festlegen
 		setLayout(layout);
 		final JFXPanel fxPanel = new JFXPanel();
@@ -61,7 +61,7 @@ public class HandbuchDialog extends JDialog {
 	}
 
 	/**
-	 * Erzeugt eine Webview und l�d hilfeFile
+	 * Erzeugt eine Webview und läd hilfeFile
 	 * 
 	 * @param fxPanel
 	 *            das Panel in dem die Webview gestartet wird
@@ -70,6 +70,7 @@ public class HandbuchDialog extends JDialog {
 		Scene scene = createScene();
 		fxPanel.setScene(scene);
 	}
+
 	private static Scene createScene() {
 		Group group = new Group();
 		Scene scene = new Scene(group);
@@ -80,8 +81,7 @@ public class HandbuchDialog extends JDialog {
 		WebEngine webEngine = webView.getEngine();
 
 		try {
-			webEngine.load(
-					HANDBUCH_FILE.toURI().toURL().toString());
+			webEngine.load(HANDBUCH_FILE.toURI().toURL().toString());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

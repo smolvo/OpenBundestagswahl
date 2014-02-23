@@ -31,7 +31,7 @@ public class Mandatsrechner2009 {
 	/** Konstante die bei der Ueberpruefung der Sperrklausel benoetigt wird **/
 	private final static int MINDIREKTMANDATE = 3;
 
-	/** Entwurfsmuster: Einzelst�ck */
+	/** Entwurfsmuster: Einzelstï¿½ck */
 	private static Mandatsrechner2009 instanz;
 
 	private Mandatsrechner2009() {
@@ -99,7 +99,7 @@ public class Mandatsrechner2009 {
 			for (Wahlkreis wahlkreis : bundesland.getWahlkreise()) {
 				int max = 0;
 				Kandidat gewinner = null;
-				// Liste mit Kandidaten die die höchste Erststimmenanzahl haben
+				// Liste mit Kandidaten die die hÃ¶chste Erststimmenanzahl haben
 				// Der Gweinner wird ausgelost;
 				LinkedList<Kandidat> moeglicheKandidaten = new LinkedList<Kandidat>();
 
@@ -107,9 +107,9 @@ public class Mandatsrechner2009 {
 				for (Erststimme erst : wahlkreis.getErststimmenProPartei()) {
 					if (max < erst.getAnzahl()) {
 
-						// vorherige Liste löschen
+						// vorherige Liste lÃ¶schen
 						moeglicheKandidaten = new LinkedList<Kandidat>();
-						// pot. Kandidaten in die Liste einfügen
+						// pot. Kandidaten in die Liste einfÃ¼gen
 						moeglicheKandidaten.add(erst.getKandidat());
 						max = erst.getAnzahl();
 					} else if (max == erst.getAnzahl()) {
@@ -123,7 +123,7 @@ public class Mandatsrechner2009 {
 					gewinner = moeglicheKandidaten.get(0);
 				} else {
 					Random genrandom = new Random();
-					// Bestimme zufälligen Kandidaten
+					// Bestimme zufÃ¤lligen Kandidaten
 					gewinner = moeglicheKandidaten.get(genrandom
 							.nextInt(moeglicheKandidaten.size()));
 				}
@@ -146,7 +146,8 @@ public class Mandatsrechner2009 {
 									bundesland.getName(), wahlkreis.getName());
 				} else {
 					Debug.print("Wahlkreis hat keine Erststimmen!");
-					//throw new IllegalArgumentException("Wahlkreis hat keine Erststimmen!");
+					// throw new
+					// IllegalArgumentException("Wahlkreis hat keine Erststimmen!");
 				}
 
 			}
@@ -155,7 +156,7 @@ public class Mandatsrechner2009 {
 	}
 
 	/**
-	 * Berechnet die relevanten Parteien für die Berechnung. Als Bedingung wird
+	 * Berechnet die relevanten Parteien fÃ¼r die Berechnung. Als Bedingung wird
 	 * die Sperrklausel gesetzt, wird diese erfuellt, wird dies in der Partei
 	 * vermerkt. Die Methode ist oeffentlich da diese Methode auch von
 	 * Mandatsrechner2013 genutzt wird.
@@ -179,7 +180,7 @@ public class Mandatsrechner2009 {
 				.getAnzahlZweitstimmen() / 20;
 		for (Partei part : bundestagswahl.getParteien()) {
 			if (part.getZweitstimmeGesamt() >= sperrklauselAnzahl
-					|| part.getAnzahlDirektmandate() >= this.MINDIREKTMANDATE) {
+					|| part.getAnzahlDirektmandate() >= Mandatsrechner2009.MINDIREKTMANDATE) {
 				// Partei im Bundestag falls Anforderungen erfuellt sind.
 				part.setImBundestag(true);
 				// Partei in die Liste hinzufuegen
@@ -316,14 +317,14 @@ public class Mandatsrechner2009 {
 			for (Partei partei : relevanteParteien) {
 
 				parteiSitze.put(partei, 0);
-				// Queue für die Berechnung der Zweitstimmen
+				// Queue fÃ¼r die Berechnung der Zweitstimmen
 				LinkedList<Double> berechneteZweitstimmen = new LinkedList<Double>();
 				berechneteZweitstimmen.add((double) bundesland
 						.getAnzahlZweitstimmen(partei));
 				parteiStimme.put(partei, berechneteZweitstimmen);
 
 			}
-			// Restliche Stimmen für die Partei bestimmen
+			// Restliche Stimmen fÃ¼r die Partei bestimmen
 			for (int i = 1; i < sitzeBundesland; i++) {
 				Set<Partei> set = parteiStimme.keySet();
 				Iterator<Partei> iterator = set.iterator();
@@ -340,7 +341,7 @@ public class Mandatsrechner2009 {
 			for (int i = 0; i < sitzeBundesland; i++) {
 				Partei sieger = null;
 				LinkedList<Double> siegerliste = null;
-				// Speichert den größten Wert
+				// Speichert den grÃ¶ÃŸten Wert
 				double maximum = 0;
 				// Speichert den aktuellen Wert der Partei
 				double mom = 0;
@@ -359,7 +360,7 @@ public class Mandatsrechner2009 {
 					}
 				}
 				// Der Gewinner wurde gefunden. Jetzt wird die Sitzanzahl der
-				// Partei erhöht und der Eintrag aus der Liste gelöscht
+				// Partei erhÃ¶ht und der Eintrag aus der Liste gelÃ¶scht
 				siegerliste.removeFirst();
 				parteiSitze.put(sieger, parteiSitze.get(sieger) + 1);
 
@@ -419,7 +420,7 @@ public class Mandatsrechner2009 {
 				.getBundeslaender()) {
 
 			/*
-			 * if(!bundesland.getName().equals("Th�ringen")){ continue; }
+			 * if(!bundesland.getName().equals("Thï¿½ringen")){ continue; }
 			 */
 			int sitzeBundesland = this.runden(bundesland.getEinwohnerzahl()
 					/ zuteilungsdivisor, false);

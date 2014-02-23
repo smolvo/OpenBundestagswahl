@@ -12,7 +12,7 @@ public class BalkenRenderer extends BarRenderer {
 
 	private static final long serialVersionUID = 3223840021896221244L;
 
-	/** repräsentiert die Farben */
+	/** reprÃ¤sentiert die Farben */
 	private Paint[] farben;
 
 	/**
@@ -31,7 +31,7 @@ public class BalkenRenderer extends BarRenderer {
 	}
 
 	/**
-	 * Diese Methode legt die Farben der Farben fest. Überschreibt das Verhalten
+	 * Diese Methode legt die Farben der Farben fest. Ãœberschreibt das Verhalten
 	 * des AbstractSeriesRenderer.
 	 * 
 	 * @param zeile
@@ -39,14 +39,14 @@ public class BalkenRenderer extends BarRenderer {
 	 * @param spalte
 	 *            Balken
 	 * @throws IllegalArgumentException
-	 *             wenn negative Werte übergeben werden.
+	 *             wenn negative Werte Ã¼bergeben werden.
 	 * 
 	 * @return Farbe
 	 */
 	public Paint getItemPaint(final int zeile, final int spalte) {
 		if (zeile < 0 || spalte < 0) {
 			throw new IllegalArgumentException(
-					"Negative Werte für Zeilen und/oder Spalte.");
+					"Negative Werte fÃ¼r Zeilen und/oder Spalte.");
 		}
 		return this.farben[spalte % this.farben.length];
 	}

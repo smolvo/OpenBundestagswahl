@@ -11,74 +11,91 @@ import main.java.model.Partei;
 
 /**
  * Testklasse fuer den Mandatsrechner 2013.
+ * 
  * @author 13genesis37
- *
+ * 
  */
 public class Mandatsrechner2013Test {
 
-	/**Die Hauptklasse.
+	/**
+	 * Die Hauptklasse.
+	 * 
 	 * @param args
-	 * 		Kommandozeilenargumente.
+	 *            Kommandozeilenargumente.
 	 */
 	public static void main(String[] args) {
-		
-		
+
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
-		csvDateien[0] = new File("src/main/resources/importexport/Ergebnis2013.csv");
-		csvDateien[1] = new File("src/main/resources/importexport/Wahlbewerber2013.csv");
+		csvDateien[0] = new File(
+				"src/main/resources/importexport/Ergebnis2013.csv");
+		csvDateien[1] = new File(
+				"src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w = null;
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block	
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}
 		Debug.setAktiv(true);
-		
+
 		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
-		
+
 		if (w != null) {
-			//System.out.println("Test");
+			// System.out.println("Test");
 			Bundestagswahl newW = m.berechne(w);
-			//newW = m.berechneAlles(newW);
+			// newW = m.berechneAlles(newW);
 			int count = 0;
 			for (Partei partei : newW.getParteien()) {
-				//if(partei.getName().equals("SPD")){
-					/*for (Bundesland bl : newW.getDeutschland().getBundeslaender()) {
-						System.out.println(partei.getName()+" "+bl.getName());
-						int sum = partei.getAnzahlMandate(Mandat.MANDAT,bl) + 
-								partei.getAnzahlMandate(Mandat.DIREKTMANDAT,bl) + 
-								partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT,bl) + 
-								partei.getAnzahlMandate(Mandat.UEBERHANGMADAT,bl);
-						System.out.println("Mandate: "+partei.getAnzahlMandate(Mandat.MANDAT,bl));
-						System.out.println("Direktmandate: "+partei.getAnzahlMandate(Mandat.DIREKTMANDAT,bl));
-						System.out.println("Ausgleichsmandate: "+partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT,bl));
-						System.out.println("Ueberhangsmandate: "+partei.getAnzahlMandate(Mandat.UEBERHANGMADAT,bl));
-						System.out.println("Summe: "+sum);
-						System.out.println("\n");
-					}*/
-					
-					int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT) + partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
-					System.out.println(partei.getName() + ": ");
-					System.out.println("Mandate: " + partei.getAnzahlMandate(Mandat.LISTENMANDAT));
-					System.out.println("Direktmandate: " + partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
-					System.out.println("Ausgleichsmandate: " + partei.getAusgleichsMandate());
-					System.out.println("Ueberhangsmandate: " + partei.getUeberhangMandate());
-					System.out.println("Summe: " + sum);
-					System.out.println("\n");
-					
-				//}
+				// if(partei.getName().equals("SPD")){
+				/*
+				 * for (Bundesland bl :
+				 * newW.getDeutschland().getBundeslaender()) {
+				 * System.out.println(partei.getName()+" "+bl.getName()); int
+				 * sum = partei.getAnzahlMandate(Mandat.MANDAT,bl) +
+				 * partei.getAnzahlMandate(Mandat.DIREKTMANDAT,bl) +
+				 * partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT,bl) +
+				 * partei.getAnzahlMandate(Mandat.UEBERHANGMADAT,bl);
+				 * System.out.
+				 * println("Mandate: "+partei.getAnzahlMandate(Mandat.
+				 * MANDAT,bl));
+				 * System.out.println("Direktmandate: "+partei.getAnzahlMandate
+				 * (Mandat.DIREKTMANDAT,bl));
+				 * System.out.println("Ausgleichsmandate: "
+				 * +partei.getAnzahlMandate(Mandat.AUSGLEICHSMANDAT,bl));
+				 * System.
+				 * out.println("Ueberhangsmandate: "+partei.getAnzahlMandate
+				 * (Mandat.UEBERHANGMADAT,bl));
+				 * System.out.println("Summe: "+sum); System.out.println("\n");
+				 * }
+				 */
+
+				int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT)
+						+ partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
+				System.out.println(partei.getName() + ": ");
+				System.out.println("Mandate: "
+						+ partei.getAnzahlMandate(Mandat.LISTENMANDAT));
+				System.out.println("Direktmandate: "
+						+ partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
+				System.out.println("Ausgleichsmandate: "
+						+ partei.getAusgleichsMandate());
+				System.out.println("Ueberhangsmandate: "
+						+ partei.getUeberhangMandate());
+				System.out.println("Summe: " + sum);
+				System.out.println("\n");
+
+				// }
 				if (count < 5) {
 					count++;
 				} else {
 					break;
 				}
 			}
-			
-			//Debug.print(w.getSitzverteilung().getBericht().toString());
-			//System.out.println(w.getSitzverteilung().getAbgeordnete().size());
+
+			// Debug.print(w.getSitzverteilung().getBericht().toString());
+			// System.out.println(w.getSitzverteilung().getAbgeordnete().size());
 		}
 	}
 

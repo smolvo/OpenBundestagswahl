@@ -9,7 +9,7 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Gebiet;
 
 /**
- * Diese Klasse repr�sentiert die allgemeine Darstellung einer Wahl Sie setzt
+ * Diese Klasse reprï¿½sentiert die allgemeine Darstellung einer Wahl Sie setzt
  * sich aus den drei Ansichten Bundesansicht, Landesansicht, Wahlkreisansicht
  * zusammen
  * 
@@ -20,23 +20,23 @@ public class WahlFenster extends JPanel {
 
 	private static final long serialVersionUID = -6169514140570698059L;
 
-	/** repr�sentiert den Namen des Tabs */
+	/** reprï¿½sentiert den Namen des Tabs */
 	private final String name;
 
-	/** repr�sentiert die geladene Bundestagswahl */
+	/** reprï¿½sentiert die geladene Bundestagswahl */
 	private final Bundestagswahl btw;
 
-	/** repr�sentiert die aktuelle Ansicht */
+	/** reprï¿½sentiert die aktuelle Ansicht */
 	private Ansicht aktuelleAnsicht;
 
-	/** repr�sentiert die aktuelle Steuerung des Wahlfensters */
+	/** reprï¿½sentiert die aktuelle Steuerung des Wahlfensters */
 	private final GUISteuerung steuerung;
 
-	/** repr�sentiert das aktuelle Programmfenster */
+	/** reprï¿½sentiert das aktuelle Programmfenster */
 	private final Programmfenster pf;
 
 	/**
-	 * repr�sentiert das zuletzt gezeigte Gebiet, so dass zur�ck gesprungen
+	 * reprï¿½sentiert das zuletzt gezeigte Gebiet, so dass zurï¿½ck gesprungen
 	 * werden kann
 	 */
 	// private Ansicht letzteAnsicht;
@@ -44,7 +44,8 @@ public class WahlFenster extends JPanel {
 	/**
 	 * der Konstruktor der Klase
 	 * 
-	 * @param pf Programmfenster
+	 * @param pf
+	 *            Programmfenster
 	 * @param btw
 	 *            Bundestagswahl
 	 * @throws IllegalArgumentException

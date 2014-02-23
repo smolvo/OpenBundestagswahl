@@ -3,42 +3,51 @@ package main.java.stimmgewichtsimulator;
 import main.java.model.Bundesland;
 import main.java.model.Partei;
 
-
 /**
- * Diese Klasse repr�sentiert eine Sprungstelle in der Simulation des negativen Stimmgewichts.
+ * Diese Klasse reprï¿½sentiert eine Sprungstelle in der Simulation des negativen
+ * Stimmgewichts.
  * 
- * Eine Sprungstelle ist eine Ver�nderung der Anzahl der Mandate 
- * f�r eine bestimmte Partei in einem bestimmten Bundesland 
+ * Eine Sprungstelle ist eine Verï¿½nderung der Anzahl der Mandate fï¿½r eine
+ * bestimmte Partei in einem bestimmten Bundesland
  */
 public class Sprungstelle {
 
 	/** Die Partei bei der dieser Sprung aufgetreten ist. */
 	private final Partei partei;
-	
+
 	/** Das Bundesland bei dem dieser Sprung aufgetreten ist. */
 	private final Bundesland bundesland;
-	
+
 	/** Die Zweitstimmenanzahl zu dem dieser Sprung aufgetreten ist. */
 	private int zweitstimmzahl;
-	
-	/** Die Richtung in die dieser Sprung (Mandatszahl) ging. (positiv oder negativ) */
+
+	/**
+	 * Die Richtung in die dieser Sprung (Mandatszahl) ging. (positiv oder
+	 * negativ)
+	 */
 	private Richtung richtung;
 
-	
 	/**
 	 * Erzeugt Sprungstellen und setzt alle Attribute.
 	 * 
-	 * @param partei Die Partei bei der dieser Sprung aufgetreten ist.
-	 * @param bundesland Das Bundesland bei dem dieser Sprung aufgetreten ist.
-	 * @param zweitstimmzahl Die Zweitstimmenanzahl zu dem dieser Sprung aufgetreten ist.
-	 * @param richtung Die Richtung in die dieser Sprung ging. (positiv oder negativ)
+	 * @param partei
+	 *            Die Partei bei der dieser Sprung aufgetreten ist.
+	 * @param bundesland
+	 *            Das Bundesland bei dem dieser Sprung aufgetreten ist.
+	 * @param zweitstimmzahl
+	 *            Die Zweitstimmenanzahl zu dem dieser Sprung aufgetreten ist.
+	 * @param richtung
+	 *            Die Richtung in die dieser Sprung ging. (positiv oder negativ)
 	 */
-	public Sprungstelle(Partei partei, Bundesland bundesland, int zweitstimmzahl, Richtung richtung) {
+	public Sprungstelle(Partei partei, Bundesland bundesland,
+			int zweitstimmzahl, Richtung richtung) {
 		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"partei\" ist null!");
 		}
 		if (bundesland == null) {
-			throw new IllegalArgumentException("Der Parameter \"bundesland\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"bundesland\" ist null!");
 		}
 		this.partei = partei;
 		this.bundesland = bundesland;
@@ -47,7 +56,8 @@ public class Sprungstelle {
 	}
 
 	/**
-	 * Gibt die Partei bei der dieser Sprung aufgetreten ist zur�ck.
+	 * Gibt die Partei bei der dieser Sprung aufgetreten ist zurï¿½ck.
+	 * 
 	 * @return Die Partei bei der dieser Sprung aufgetreten ist.
 	 */
 	public Partei getPartei() {
@@ -55,7 +65,8 @@ public class Sprungstelle {
 	}
 
 	/**
-	 * Gibt das Bundesland bei der dieser Sprung aufgetreten ist zur�ck.
+	 * Gibt das Bundesland bei der dieser Sprung aufgetreten ist zurï¿½ck.
+	 * 
 	 * @return Das Bundesland bei der dieser Sprung aufgetreten ist.
 	 */
 	public Bundesland getBundesland() {
@@ -63,7 +74,8 @@ public class Sprungstelle {
 	}
 
 	/**
-	 * Gibt die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist zur�ck.
+	 * Gibt die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist zurï¿½ck.
+	 * 
 	 * @return Die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist.
 	 */
 	public int getZweitstimmzahl() {
@@ -72,17 +84,22 @@ public class Sprungstelle {
 
 	/**
 	 * Setzt die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist.
-	 * @param zweitstimmzahl die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist.
+	 * 
+	 * @param zweitstimmzahl
+	 *            die Zweitstimmzahl zu dem dieser Sprung aufgetreten ist.
 	 */
 	public void setZweitstimmzahl(int zweitstimmzahl) {
 		if (zweitstimmzahl < 0) {
-			throw new IllegalArgumentException("Der Parameter \"zweitstimmzahl\" ist negativ!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"zweitstimmzahl\" ist negativ!");
 		}
 		this.zweitstimmzahl = zweitstimmzahl;
 	}
 
 	/**
-	 * Gibt die Richtung in die dieser Sprung ging (positiv oder negativ) zur�ck.
+	 * Gibt die Richtung in die dieser Sprung ging (positiv oder negativ)
+	 * zurï¿½ck.
+	 * 
 	 * @return Die Richtung in die dieser Sprung ging. (positiv oder negativ)
 	 */
 	public Richtung getRichtung() {
@@ -91,13 +108,16 @@ public class Sprungstelle {
 
 	/**
 	 * Setzt die Richtung in die dieser Sprung ging. (positiv oder negativ).
-	 * @param richtung Die Richtung in die dieser Sprung ging. (positiv oder negativ)
+	 * 
+	 * @param richtung
+	 *            Die Richtung in die dieser Sprung ging. (positiv oder negativ)
 	 */
 	public void setRichtung(Richtung richtung) {
 		if (richtung == null) {
-			throw new IllegalArgumentException("Der Parameter \"richtung\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"richtung\" ist null!");
 		}
 		this.richtung = richtung;
 	}
-	
+
 }

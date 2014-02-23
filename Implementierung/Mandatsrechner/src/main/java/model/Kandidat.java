@@ -31,10 +31,9 @@ public class Kandidat implements Serializable {
 
 	/** Das Erststimme-Objekt des Kandidaten. */
 	private Erststimme erststimme;
-	
+
 	/** Zugehoerige Landesliste. */
 	private Landesliste landesliste;
-
 
 	/**
 	 * Parametrisierter Konstruktor mit dem alle Attribute gesetzt werden
@@ -223,8 +222,8 @@ public class Kandidat implements Serializable {
 
 	/**
 	 * Gibt die Landesliste dieses Kandidaten zurueck.
-	 * @return
-	 * 		Zugehoerige LAndesliste.
+	 * 
+	 * @return Zugehoerige LAndesliste.
 	 */
 	public Landesliste getLandesliste() {
 		return landesliste;
@@ -232,8 +231,9 @@ public class Kandidat implements Serializable {
 
 	/**
 	 * Setzt die Landesliste dieses Kandidaten.
+	 * 
 	 * @param landestliste
-	 * 			Betroffene Landesliste.
+	 *            Betroffene Landesliste.
 	 */
 	public void setLandesliste(Landesliste landestliste) {
 		this.landesliste = landestliste;

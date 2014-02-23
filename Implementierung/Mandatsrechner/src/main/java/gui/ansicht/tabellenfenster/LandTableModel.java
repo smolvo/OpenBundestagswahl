@@ -11,11 +11,11 @@ public class LandTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6973781659566829816L;
 
-	/** repr‰sentiert die Spaltennamen */
+	/** repr√§sentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
-			"Direktmandate", "‹berhangsmandate" };
+			"Direktmandate", "√úberhangsmandate" };
 
-	/** h‰lt alle relevanten Daten */
+	/** h√§lt alle relevanten Daten */
 	private LandDaten daten;
 
 	/**

@@ -16,7 +16,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 */
 	private static final long serialVersionUID = -2753165575954824955L;
 
-	/** Die zugeh�rige Partei. */
+	/** Die zugehï¿½rige Partei. */
 	private Partei partei;
 
 	/**
@@ -25,9 +25,9 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen.
 	 * @param gebiet
-	 *            Das zugeh�rige Gebiet.
+	 *            Das zugehï¿½rige Gebiet.
 	 * @param partei
-	 *            Die zugeh�rige Partei.
+	 *            Die zugehï¿½rige Partei.
 	 */
 	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei) {
 		this.setAnzahl(anzahl);
@@ -36,7 +36,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 	}
 
 	/**
-	 * Gibt die zugehoerige Partei zur�ck.
+	 * Gibt die zugehoerige Partei zurï¿½ck.
 	 * 
 	 * @return die zugehoerige Partei
 	 */
@@ -109,7 +109,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		if ((anzahl - stimmanzahl) < 0) {
-			throw new IllegalArgumentException("Stimmzahlen w�ren kleiner 0!");
+			throw new IllegalArgumentException("Stimmzahlen wären kleiner 0!");
 		}
 		this.anzahl -= stimmanzahl;
 	}

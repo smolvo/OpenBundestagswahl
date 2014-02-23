@@ -3,7 +3,7 @@ package main.java.wahlvergleich;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Diese Klasse repr�sentiert das Tabellenmodell des Wahlvergleiches. In ihr
+ * Diese Klasse reprï¿½sentiert das Tabellenmodell des Wahlvergleiches. In ihr
  * werden Spaltennamen und die Daten gehalten.
  * 
  * @author Anton
@@ -13,18 +13,20 @@ public class WahlvergleichTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 7170688736458797979L;
 
-	/** repr�sentiert die Spaltennamen */
+	/** reprï¿½sentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Erststimmenanzahl",
 			"%-Erststimmen", "Erststimmendifferenz", "Zweitstimmenanzahl",
 			"%-Zweitstimmen", "Zweitstimmendifferenz", "Erststimmenanzahl",
 			"%-Erststimmen", "Zweitstimmenanzahl", "%-Zweitstimmen" };
 
-	/** h�lt alle relevanten Daten */
+	/** hï¿½lt alle relevanten Daten */
 	private WahlvergleichDaten daten;
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
-	 * @param daten die Daten
+	 * 
+	 * @param daten
+	 *            die Daten
 	 */
 	public WahlvergleichTableModel(WahlvergleichDaten daten) {
 		this.daten = daten;

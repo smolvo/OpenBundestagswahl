@@ -18,7 +18,7 @@ import main.java.model.Gebiet;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repr‰sentiert die Ansicht, auf der sicht das Tabellen-, Karten-
+ * Diese Klasse repr√§sentiert die Ansicht, auf der sicht das Tabellen-, Karten-
  * und Diagrammfenster befinden.
  * 
  */
@@ -39,16 +39,16 @@ public class Ansicht extends JPanel {
 	/** Eine Ansicht hat ein Kartenfenster. */
 	private KartenFenster kartenFenster;
 
-	/** repr‰sentiert das Wahlfenster in welchem sich die Ansicht befindet */
+	/** repr√§sentiert das Wahlfenster in welchem sich die Ansicht befindet */
 	private final WahlFenster fenster;
 
-	/** repr‰sentiert das Layout */
+	/** repr√§sentiert das Layout */
 	private GridBagConstraints gbc;
 
 	/** Das im Moment angezeigte Gebiet */
 	private Gebiet aktuellesGebiet;
 
-	/** zeigt an ob eine Stimme ge‰ndert wurde */
+	/** zeigt an ob eine Stimme ge√§ndert wurde */
 	private boolean wurdeVeraendert;
 
 	/**
@@ -111,7 +111,7 @@ public class Ansicht extends JPanel {
 	}
 
 	/**
-	 * Diese Methode ‰ndert die aktuelle Ansicht in eine neue.
+	 * Diese Methode √§ndert die aktuelle Ansicht in eine neue.
 	 * 
 	 * @param gebiet
 	 *            Gebiet, welches angezeigt werden soll
@@ -156,7 +156,7 @@ public class Ansicht extends JPanel {
 	}
 
 	/**
-	 * Diese Methode wird aufgerufen, wenn eine Stimme ge‰ndert wurde und eine
+	 * Diese Methode wird aufgerufen, wenn eine Stimme ge√§ndert wurde und eine
 	 * neue Berechnung notwendig ist.
 	 */
 	public void berechnungNotwendig() {

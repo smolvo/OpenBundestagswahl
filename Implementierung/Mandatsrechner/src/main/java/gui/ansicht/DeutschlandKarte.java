@@ -20,18 +20,18 @@ import main.java.model.Deutschland;
 import main.java.model.Partei;
 
 /**
- * Diese Klasse repr�sentiert die kartographische Ansicht im Kartenfenster.
+ * Diese Klasse reprï¿½sentiert die kartographische Ansicht im Kartenfenster.
  * 
  */
 public class DeutschlandKarte extends JPanel {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -3499619191276735615L;
 
-	/** alle Bundeslaender, n�tig f�r F�rbung */
+	/** alle Bundeslaender, nï¿½tig fï¿½r Fï¿½rbung */
 	private Deutschland land;
 
 	/**
@@ -51,7 +51,7 @@ public class DeutschlandKarte extends JPanel {
 
 	/**
 	 * in diesem Array werden die Bilder der Bundeslaender nachdem sie
-	 * eingef�rbt wurden gespeichert
+	 * eingefï¿½rbt wurden gespeichert
 	 */
 	private BufferedImage[] bundeslandBilderGefaerbt = new BufferedImage[16];
 
@@ -74,7 +74,7 @@ public class DeutschlandKarte extends JPanel {
 	/** Dieser String gibt den Pfad des Speicherortes der Bundesland-Bilder an */
 	private final String pfad = "src/main/resources/gui/bundeslaender/";
 
-	/** erstellt ein BufferedImage in der gr��e 900 * 1024 */
+	/** erstellt ein BufferedImage in der grï¿½ï¿½e 900 * 1024 */
 	private BufferedImage grossVersion = new BufferedImage(900, 1024,
 			BufferedImage.TYPE_INT_ARGB);
 
@@ -126,8 +126,8 @@ public class DeutschlandKarte extends JPanel {
 	}
 
 	/**
-	 * skaliert das Bild nachdem die Bilder der Bundeslaender hinzugef�gt wurden
-	 * entsprechend der aktuellen Gr��e des JPanels
+	 * skaliert das Bild nachdem die Bilder der Bundeslaender hinzugefï¿½gt wurden
+	 * entsprechend der aktuellen Grï¿½ï¿½e des JPanels
 	 */
 	private void skaliere() {
 		skalierteKarte = grossVersion.getScaledInstance(
@@ -169,7 +169,7 @@ public class DeutschlandKarte extends JPanel {
 
 	/**
 	 * faerbt die Bilder der Bundeslaender entsprechend der Farbe der Partei die
-	 * in diesem Bundesland den h�chsten Zweitstimmenanteil hat. Das gefaerbte
+	 * in diesem Bundesland den hï¿½chsten Zweitstimmenanteil hat. Das gefaerbte
 	 * Bild wird in dem Array bundeslandBilderGefaerbt abgelegt.
 	 */
 	private void faerbeLand() {
@@ -184,7 +184,8 @@ public class DeutschlandKarte extends JPanel {
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
 			Color bwfarbe = bundeslaender.get(i).getFarbe();
-			System.out.println(bundeslaender.get(i) + " " + bundeslaender.get(i).getFarbe());
+			System.out.println(bundeslaender.get(i) + " "
+					+ bundeslaender.get(i).getFarbe());
 			try {
 				int hoehe = aktuellesBild.getHeight();
 				int breite = aktuellesBild.getWidth();

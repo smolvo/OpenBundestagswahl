@@ -6,19 +6,19 @@ import main.java.model.Stimme;
 
 /*
  * Bei mindestens einer Partei muss der prozentuale Anteil ihrer relevanten
- * Zweitstimmen gr��er als der prozentuale Anteil ihrer Mandate sein.
+ * Zweitstimmen grï¿½ï¿½er als der prozentuale Anteil ihrer Mandate sein.
  * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf
- * Landeslisten abgegeben werden, die keine �berhangmandate erzielen
- */ 
+ * Landeslisten abgegeben werden, die keine ï¿½berhangmandate erzielen
+ */
 
 /**
  * Relevante Zweitstimmen sind all diejenigen Zweitstimmen, die auf Landeslisten
- * abgegeben werden, die keine �berhangmandate erzielen.
+ * abgegeben werden, die keine ï¿½berhangmandate erzielen.
  */
-public class RelevanteZweitstimmen extends  Stimme implements Serializable {
+public class RelevanteZweitstimmen extends Stimme implements Serializable {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -2753165575954824955L;
@@ -41,7 +41,7 @@ public class RelevanteZweitstimmen extends  Stimme implements Serializable {
 		}
 
 		this.anzahl = anzahl;
-		
+
 	}
 
 	@Override
@@ -49,9 +49,9 @@ public class RelevanteZweitstimmen extends  Stimme implements Serializable {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
-		
+
 		this.setAnzahl(this.anzahl + anzahl);
-		
+
 	}
 
 	@Override

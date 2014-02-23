@@ -23,7 +23,7 @@ public class GUITest {
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			System.out.println("Leine g�ltige CSV-Datei :/");
+			System.out.println("Leine gï¿½ltige CSV-Datei :/");
 		}
 
 		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();

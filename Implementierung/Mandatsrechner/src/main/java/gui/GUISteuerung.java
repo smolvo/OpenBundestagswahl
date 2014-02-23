@@ -7,16 +7,16 @@ import main.java.steuerung.Steuerung;
 import main.java.wahlvergleich.Wahlvergleich;
 
 /**
- * Diese Klasse repräsentiert die GUI Steuerung. Diese ist die Verbindung
+ * Diese Klasse reprÃ¤sentiert die GUI Steuerung. Diese ist die Verbindung
  * zwischen GUI und der Hauptsteuerung.
  * 
  */
 public class GUISteuerung {
 
-	/** repräsentiert die aktuell angezeigte Bundestagswahl der GUI */
+	/** reprÃ¤sentiert die aktuell angezeigte Bundestagswahl der GUI */
 	private final Bundestagswahl btw;
 
-	/** repräsentiert das Wahlfenster in dem die BTW angezeigt wird */
+	/** reprÃ¤sentiert das Wahlfenster in dem die BTW angezeigt wird */
 	private final WahlFenster wahlfenster;
 
 	/**
@@ -25,7 +25,7 @@ public class GUISteuerung {
 	 * @param btw
 	 *            aktuelle Bundestagswahl
 	 * @param wahlfenster
-	 *            dazugehöriges Wahlfenster
+	 *            dazugehÃ¶riges Wahlfenster
 	 * @throws IllegalArgumentException
 	 *             wenn die Eingabeparamter null sind
 	 */
@@ -53,14 +53,14 @@ public class GUISteuerung {
 	}
 
 	/**
-	 * Diese Methode übergibt an die Steuerung die Wertänderung im
+	 * Diese Methode Ã¼bergibt an die Steuerung die WertÃ¤nderung im
 	 * Tabellenfenster.
 	 * 
 	 * @param stimme
 	 *            die betroffene Stimmenanzahl
 	 * @param anzahl
 	 *            der neue Wert
-	 * @return ob der Wert geändert werden konnte
+	 * @return ob der Wert geÃ¤ndert werden konnte
 	 */
 	public boolean wertAenderung(Stimme stimme, int anzahl) {
 		return Steuerung.getInstance().aktualisiereDaten(stimme, anzahl);

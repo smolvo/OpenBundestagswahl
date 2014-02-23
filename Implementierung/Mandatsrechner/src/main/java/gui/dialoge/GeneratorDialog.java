@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,8 +29,8 @@ import main.java.steuerung.Steuerung;
 import main.java.wahlgenerator.Stimmanteile;
 
 /**
- * Diese Klasse repr�sentiert das GeneratorFenster. In ihr k�nnen Erst- und
- * Zweitstimmenanteile f�r vorgegebene Parteien einer zuvor ausgesuchten
+ * Diese Klasse repräsentiert das GeneratorFenster. In ihr kï¿½nnen Erst- und
+ * Zweitstimmenanteile für vorgegebene Parteien einer zuvor ausgesuchten
  * Bundestagswahl festegelegt werden.
  * 
  * @author Anton
@@ -41,15 +40,15 @@ public class GeneratorDialog extends JDialog {
 
 	private static final long serialVersionUID = 3558472603505570667L;
 
-	/** repr�sentiert die Liste der Basiswahlen */
+	/** repräsentiert die Liste der Basiswahlen */
 	private List<Bundestagswahl> wahlen;
 
 	/**
-	 * repr�sentiert die Wahl die gerade vom Benutzer als Standardwahl
+	 * repräsentiert die Wahl die gerade vom Benutzer als Standardwahl
 	 * festgelegt wurde
 	 */
 	private Bundestagswahl ausgesuchteWahl;
-	
+
 	private JDialog generatorDialog;
 
 	/** Basiswahl */
@@ -57,13 +56,13 @@ public class GeneratorDialog extends JDialog {
 
 	/** Stimmenanteile */
 	private JLabel stimmenanteile;
-	
-	/** Label f�r den neuen Namen */
+
+	/** Label für den neuen Namen */
 	private JLabel neueWahlNameLabel;
-	
+
 	/** gesamte Erststimmen */
 	private JLabel gesamtErst;
-	
+
 	/** gesamte Zweitstimmen */
 	private JLabel gesamtZweit;
 
@@ -72,7 +71,7 @@ public class GeneratorDialog extends JDialog {
 
 	/** Textfeld in dem man den neuen Namen eingeben kann */
 	private JTextField neueWahlNameBox;
-	
+
 	/** panel im ScrollPane */
 	private JPanel hauptPanel;
 
@@ -81,20 +80,23 @@ public class GeneratorDialog extends JDialog {
 
 	/** Generiere Knopf */
 	private JButton generiere;
-	
+
 	/** die aktuelle Anzahl der Erststimmen, die der Nutzer eingegeben hat */
 	private int gesamtErststimmen = 0;
 
 	/** die aktuelle Anzahl der Zweitstimmen, die der Nutzer eingegeben hat */
 	private int gesamtZweitstimmen = 0;
-	
-	/** repr�sentiert das Programmfenster */
+
+	/** reprï¿½sentiert das Programmfenster */
 	private Programmfenster pf;
 
 	/**
 	 * Der Konstruktor legt das Layout fest und initialisiert das Fenster.
-	 * @param basiswahlen die Liste an Basiswahlen
-	 * @param pf das Programmfenster
+	 * 
+	 * @param basiswahlen
+	 *            die Liste an Basiswahlen
+	 * @param pf
+	 *            das Programmfenster
 	 */
 	public GeneratorDialog(List<Bundestagswahl> basiswahlen, Programmfenster pf) {
 		this.pf = pf;
@@ -123,7 +125,7 @@ public class GeneratorDialog extends JDialog {
 		this.basiswahl.setBounds(5, 5, 90, 20);
 		this.basiswahlAuswahl = new JComboBox<Bundestagswahl>(wahlenArray);
 		this.basiswahlAuswahl.setBounds(165, 5, 200, 20);
-		
+
 		this.basiswahlAuswahl.addActionListener(new ActionListener() {
 
 			@Override
@@ -134,21 +136,21 @@ public class GeneratorDialog extends JDialog {
 			}
 
 		});
-		
+
 		// neuer Name TextField
 		this.neueWahlNameLabel = new JLabel("Name der neuen Wahl: ");
 		this.neueWahlNameLabel.setBounds(5, 40, 150, 20);
 		this.neueWahlNameBox = new JTextField();
 		this.neueWahlNameBox.setBounds(165, 40, 150, 20);
-	
+
 		this.neueWahlNameBox.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				check();
 			}
-			
+
 		});
-		
+
 		// Stimmen Anteile und JScrollPane
 		this.stimmenanteile = new JLabel(
 				"Stimmenanteile:                                    Erststimmen          Zweitstimmen");
@@ -162,7 +164,7 @@ public class GeneratorDialog extends JDialog {
 		this.gesamtZweit = new JLabel("Zweitstimmen gesamt: 0" + "%");
 		this.gesamtZweit.setBounds(220, 530, 170, 20);
 		this.gesamtZweit.setForeground(Color.GREEN.darker());
-		
+
 		// Generiere-Button
 		this.generiere = new JButton("Generiere");
 		this.generiere.setBounds(160, 560, 115, 30);
@@ -176,15 +178,18 @@ public class GeneratorDialog extends JDialog {
 					Partei[] parteien = panesToParteien();
 					int[] erst = erstToIntegers();
 					int[] zweit = zweitToIntegers();
-					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(parteien, erst, zweit);
+					LinkedList<Stimmanteile> anteile = erstelleStimmanteile(
+							parteien, erst, zweit);
 					String name = neueWahlNameBox.getText();
-					Bundestagswahl btw = Steuerung.getInstance().zufaelligeWahlgenerierung(ausgesuchteWahl, anteile, name);
+					Bundestagswahl btw = Steuerung.getInstance()
+							.zufaelligeWahlgenerierung(ausgesuchteWahl,
+									anteile, name);
 					pf.wahlHinzufuegen(btw);
 					generiere.setEnabled(true);
 					generatorDialog.dispose();
 				} else {
 					JOptionPane.showMessageDialog((JButton) e.getSource(),
-							"Es d�rfen keine Parteien doppelt vorkommen.",
+							"Es dï¿½rfen keine Parteien doppelt vorkommen.",
 							"Meldung", JOptionPane.INFORMATION_MESSAGE, null);
 				}
 
@@ -203,7 +208,7 @@ public class GeneratorDialog extends JDialog {
 	}
 
 	/**
-	 * Diese Methode setzt das ScrollPane zur�ck, im Falle der Benutzer will
+	 * Diese Methode setzt das ScrollPane zurï¿½ck, im Falle der Benutzer will
 	 * eine andere Wahl als Ausgangswahl festlegen.
 	 */
 	private void setPane() {
@@ -239,7 +244,7 @@ public class GeneratorDialog extends JDialog {
 		generatorDialog.add(pane);
 		this.pane.repaint();
 	}
-	
+
 	/**
 	 * Setzt ein neues Pane.
 	 */
@@ -249,8 +254,8 @@ public class GeneratorDialog extends JDialog {
 	}
 
 	/**
-	 * Diese Methode wird ausgef�hrt sobald der Benutzer weitere Stimmenanteile
-	 * f�r eine Partei angeben will.
+	 * Diese Methode wird ausgefï¿½hrt sobald der Benutzer weitere Stimmenanteile
+	 * fï¿½r eine Partei angeben will.
 	 */
 	private void zeileHinzufuegen() {
 		this.hauptPanel.setPreferredSize(new Dimension(this.hauptPanel
@@ -267,7 +272,7 @@ public class GeneratorDialog extends JDialog {
 
 		JButton minus = new JButton();
 		minus.setIcon(new ImageIcon(
-				"src/main/resources/gui/images/tabSchlie�en.png"));
+				"src/main/resources/gui/images/tabSchlieï¿½en.png"));
 		minus.setBounds(5, 5, 10, 10);
 		minus.setPreferredSize(new Dimension(11, 11));
 		minus.addActionListener(new ActionListener() {
@@ -297,12 +302,13 @@ public class GeneratorDialog extends JDialog {
 				generiere.setEnabled(false);
 				int[] erstStimmen = erstToIntegers();
 				gesamtErststimmen = stimmenGesamt(erstStimmen);
-				gesamtErst.setText("Erststimmen gesamt: " + gesamtErststimmen + "%");
+				gesamtErst.setText("Erststimmen gesamt: " + gesamtErststimmen
+						+ "%");
 				check();
 			}
-			
+
 		});
-		
+
 		JSlider zweit = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		zweit.setBounds(130, 5, 50, 20);
 		zweit.setPreferredSize(new Dimension(100, 50));
@@ -317,12 +323,12 @@ public class GeneratorDialog extends JDialog {
 				generiere.setEnabled(false);
 				int[] zweitStimmen = zweitToIntegers();
 				gesamtZweitstimmen = stimmenGesamt(zweitStimmen);
-				gesamtZweit.setText("Zweitstimmen gesamt: " + gesamtZweitstimmen + "%");
+				gesamtZweit.setText("Zweitstimmen gesamt: "
+						+ gesamtZweitstimmen + "%");
 				check();
 			}
-			
-		});
 
+		});
 
 		subPanel.add(minus);
 		subPanel.add(box);
@@ -336,10 +342,10 @@ public class GeneratorDialog extends JDialog {
 
 	/**
 	 * Diese Methode wird aufgerufen, wenn der Benutzer eine Stimmanteilangabe
-	 * l�schen m�chte.
+	 * lï¿½schen mï¿½chte.
 	 * 
 	 * @param panel
-	 *            Panel das gel�scht werden soll
+	 *            Panel das gelï¿½scht werden soll
 	 */
 	private void zeileEntfernen(JPanel panel) {
 		this.hauptPanel.setPreferredSize(new Dimension(this.hauptPanel
@@ -372,7 +378,7 @@ public class GeneratorDialog extends JDialog {
 	}
 
 	/**
-	 * Diese Methode �berpr�ft, ob der Benutzer f�r eine Partei mehrere Anteile
+	 * Diese Methode ï¿½berprï¿½ft, ob der Benutzer fï¿½r eine Partei mehrere Anteile
 	 * angegeben hat.
 	 * 
 	 * @return true, false
@@ -392,7 +398,7 @@ public class GeneratorDialog extends JDialog {
 	}
 
 	/**
-	 * Diese Methode gibt die Liste der ausgew�hlten Parteien in einem String
+	 * Diese Methode gibt die Liste der ausgewï¿½hlten Parteien in einem String
 	 * Array aus.
 	 * 
 	 * @return Liste der Parteien
@@ -441,12 +447,13 @@ public class GeneratorDialog extends JDialog {
 		}
 		return zweitstimmenAnteile;
 	}
-	
+
 	/**
-	 * Diese Methode wird verwendet, um ein Array aufzusummieren.
-	 * Wird verwendet, um die gesamte Anzahl Erst- und Zweitstimmen
-	 * aufzusummieren.
-	 * @param stimmen Stimmenanzahl Vektor
+	 * Diese Methode wird verwendet, um ein Array aufzusummieren. Wird
+	 * verwendet, um die gesamte Anzahl Erst- und Zweitstimmen aufzusummieren.
+	 * 
+	 * @param stimmen
+	 *            Stimmenanzahl Vektor
 	 * @return insgesamt
 	 */
 	private int stimmenGesamt(int[] stimmen) {
@@ -456,10 +463,10 @@ public class GeneratorDialog extends JDialog {
 		}
 		return summe;
 	}
-	
+
 	/**
-	 * Diese Methode �berpr�ft, ob die Gesamtanzahl Erst- oder
-	 * Zweitstimmen gr��er als 100 ist.
+	 * Diese Methode ï¿½berprï¿½ft, ob die Gesamtanzahl Erst- oder Zweitstimmen
+	 * grï¿½ï¿½er als 100 ist.
 	 */
 	private void check() {
 		if (this.neueWahlNameBox.getText().equals("")) {
@@ -482,19 +489,25 @@ public class GeneratorDialog extends JDialog {
 			gesamtZweit.setForeground(Color.GREEN.darker());
 		}
 	}
-	
+
 	/**
 	 * Erstellt eine Liste mit Stimmanteilen aus einem Vektor von Parteien,
 	 * einem Vektor von Erst- und einem Vektor vo Zweitstimmen.
-	 * @param parteien Parteien
-	 * @param erst Erststimmen
-	 * @param zweit Zweitstimmen
+	 * 
+	 * @param parteien
+	 *            Parteien
+	 * @param erst
+	 *            Erststimmen
+	 * @param zweit
+	 *            Zweitstimmen
 	 * @return Liste Anteile
 	 */
-	private LinkedList<Stimmanteile> erstelleStimmanteile(Partei[] parteien, int[] erst, int[] zweit) {
+	private LinkedList<Stimmanteile> erstelleStimmanteile(Partei[] parteien,
+			int[] erst, int[] zweit) {
 		LinkedList<Stimmanteile> anteile = new LinkedList<Stimmanteile>();
 		for (int i = 0; i < parteien.length; i++) {
-			Stimmanteile anteil = new Stimmanteile(parteien[i], erst[i], zweit[i]);
+			Stimmanteile anteil = new Stimmanteile(parteien[i], erst[i],
+					zweit[i]);
 			anteile.add(anteil);
 		}
 		return anteile;

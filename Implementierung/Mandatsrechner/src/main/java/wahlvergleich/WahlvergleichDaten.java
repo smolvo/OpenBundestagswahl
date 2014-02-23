@@ -3,45 +3,45 @@ package main.java.wahlvergleich;
 import java.util.LinkedList;
 
 /**
- * Diese Klasse h‰lt alle relevanten Daten, die zum erstellen der Tabelle im
- * Vergleichsfenster benˆtigt werden.
+ * Diese Klasse h√§lt alle relevanten Daten, die zum erstellen der Tabelle im
+ * Vergleichsfenster ben√∂tigt werden.
  * 
  * @author Anton
  * 
  */
 public class WahlvergleichDaten {
 
-	/** repr‰sentiert die Liste der Parteien */
+	/** repr√§sentiert die Liste der Parteien */
 	private LinkedList<String> parteien;
 
-	/** repr‰sentiert die Anzahl Erststimmen der ersten Wahl */
+	/** repr√§sentiert die Anzahl Erststimmen der ersten Wahl */
 	private LinkedList<String> anzahlEinsErst;
 
-	/** repr‰sentiert die prozentuale Anzahl Erststimmen der ersten Wahl */
+	/** repr√§sentiert die prozentuale Anzahl Erststimmen der ersten Wahl */
 	private LinkedList<String> prozentEinsErst;
 
-	/** repr‰sentiert die Differenz der Erststimmen */
+	/** repr√§sentiert die Differenz der Erststimmen */
 	private LinkedList<String> diffErst;
 
-	/** repr‰sentiert die Anzahl Zweitstimmen der ersten Wahl */
+	/** repr√§sentiert die Anzahl Zweitstimmen der ersten Wahl */
 	private LinkedList<String> anzahlEinsZweit;
 
-	/** repr‰sentiert die prozentuale Anzahl Zweitstimmen der ersten Wahl */
+	/** repr√§sentiert die prozentuale Anzahl Zweitstimmen der ersten Wahl */
 	private LinkedList<String> prozentEinsZweit;
 
-	/** repr‰sentiert die Differenz der Zweitstimmen */
+	/** repr√§sentiert die Differenz der Zweitstimmen */
 	private LinkedList<String> diffZweit;
 
-	/** repr‰sentiert die Anzahl der Erststimmen der zweiten Wahl */
+	/** repr√§sentiert die Anzahl der Erststimmen der zweiten Wahl */
 	private LinkedList<String> anzahlZweiErst;
 
-	/** repr‰sentiert die prozentuale Anzahl der Erststimmen der zweiten Wahl */
+	/** repr√§sentiert die prozentuale Anzahl der Erststimmen der zweiten Wahl */
 	private LinkedList<String> prozentZweiErst;
 
-	/** repr‰sentiert die Anzahl der Zweitstimmen der zweiten Wahl */
+	/** repr√§sentiert die Anzahl der Zweitstimmen der zweiten Wahl */
 	private LinkedList<String> anzahlZweiZweit;
 
-	/** repr‰sentiert die prozentuale Anzahl der Zweitstimmen der zweiten Wahl */
+	/** repr√§sentiert die prozentuale Anzahl der Zweitstimmen der zweiten Wahl */
 	private LinkedList<String> prozentZweiZweit;
 
 	/**
@@ -62,7 +62,7 @@ public class WahlvergleichDaten {
 	}
 
 	/**
-	 * Diese Methode f¸gt der Tabelle eine weitere Zeile hinzu.
+	 * Diese Methode f√ºgt der Tabelle eine weitere Zeile hinzu.
 	 * 
 	 * @param partei
 	 *            der Parteiname
@@ -106,7 +106,7 @@ public class WahlvergleichDaten {
 	}
 
 	/**
-	 * Diese Methode ¸berpr¸ft, ob ein String null ist, wenn nicht wird es der
+	 * Diese Methode √ºberpr√ºft, ob ein String null ist, wenn nicht wird es der
 	 * Liste angehangen,
 	 * 
 	 * @param string
@@ -132,7 +132,7 @@ public class WahlvergleichDaten {
 	}
 
 	/**
-	 * Gibt eine Partei zur¸ck.
+	 * Gibt eine Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -140,13 +140,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getParteien(int index) {
 		if (index < 0 || index > parteien.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return parteien.get(index);
 	}
 
 	/**
-	 * Gibt die Anzahl der Erststimmen der ersten Wahl einer Partei zur¸ck.
+	 * Gibt die Anzahl der Erststimmen der ersten Wahl einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -154,14 +154,14 @@ public class WahlvergleichDaten {
 	 */
 	public String getAnzahlEinsErst(int index) {
 		if (index < 0 || index > anzahlEinsErst.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return anzahlEinsErst.get(index);
 	}
 
 	/**
 	 * Gibt die prozentuale Anzahl der Erststimmen der ersten Wahl einer Partei
-	 * zur¸ck.
+	 * zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -169,13 +169,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getProzentEinsErst(int index) {
 		if (index < 0 || index > prozentEinsErst.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return prozentEinsErst.get(index);
 	}
 
 	/**
-	 * Gibt die Differenz der Erststimmen einer Partei zur¸ck.
+	 * Gibt die Differenz der Erststimmen einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -183,13 +183,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getDiffErst(int index) {
 		if (index < 0 || index > diffErst.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return diffErst.get(index);
 	}
 
 	/**
-	 * Gibt die Anzahl der Zweitstimmen der ersten Wahl einer Partei zur¸ck.
+	 * Gibt die Anzahl der Zweitstimmen der ersten Wahl einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -197,14 +197,14 @@ public class WahlvergleichDaten {
 	 */
 	public String getAnzahlEinsZweit(int index) {
 		if (index < 0 || index > anzahlEinsZweit.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return anzahlEinsZweit.get(index);
 	}
 
 	/**
 	 * Gibt die prozentuale Anzahl der Zweitstimmen der ersten Wahl einer Partei
-	 * zur¸ck.
+	 * zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -212,13 +212,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getProzentEinsZweit(int index) {
 		if (index < 0 || index > prozentZweiZweit.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return prozentEinsZweit.get(index);
 	}
 
 	/**
-	 * Gibt die Differenz der Zweitstimmen einer Partei zur¸ck.
+	 * Gibt die Differenz der Zweitstimmen einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -226,13 +226,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getDiffZweit(int index) {
 		if (index < 0 || index > diffZweit.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return diffZweit.get(index);
 	}
 
 	/**
-	 * Gibt die Anzahl der Erststimmen der zweiten Wahl einer Partei zur¸ck.
+	 * Gibt die Anzahl der Erststimmen der zweiten Wahl einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -240,14 +240,14 @@ public class WahlvergleichDaten {
 	 */
 	public String getAnzahlZweiErst(int index) {
 		if (index < 0 || index > anzahlZweiErst.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return anzahlZweiErst.get(index);
 	}
 
 	/**
 	 * Gibt die prozentuale Anzahl der Erststimmen der zweiten Wahl einer Partei
-	 * zur¸ck.
+	 * zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -255,13 +255,13 @@ public class WahlvergleichDaten {
 	 */
 	public String getProzentZweiErst(int index) {
 		if (index < 0 || index > prozentZweiErst.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return prozentZweiErst.get(index);
 	}
 
 	/**
-	 * Gibt die Anzahl der Zweitstimmen der zweiten Wahl einer Partei zur¸ck.
+	 * Gibt die Anzahl der Zweitstimmen der zweiten Wahl einer Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -269,14 +269,14 @@ public class WahlvergleichDaten {
 	 */
 	public String getAnzahlZweiZweit(int index) {
 		if (index < 0 || index > anzahlZweiZweit.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return anzahlZweiZweit.get(index);
 	}
 
 	/**
 	 * Gibt die prozentuale Anzahl der Zweitstimmen der zweiten Wahl einer
-	 * Partei zur¸ck.
+	 * Partei zur√ºck.
 	 * 
 	 * @param index
 	 *            Index
@@ -284,7 +284,7 @@ public class WahlvergleichDaten {
 	 */
 	public String getProzentZweiZweit(int index) {
 		if (index < 0 || index > prozentZweiZweit.size()) {
-			throw new IllegalArgumentException("Index auﬂerhalb Listengrˆﬂe.");
+			throw new IllegalArgumentException("Index au√üerhalb Listengr√∂√üe.");
 		}
 		return prozentZweiZweit.get(index);
 	}

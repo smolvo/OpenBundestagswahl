@@ -19,8 +19,8 @@ import main.java.gui.dialoge.ImportDialog;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repr‰sentiert die Tab- Leiste des Programmfensters Jeder Tab
- * steht f¸r eine im Programm geˆffnete Bundestagswahl
+ * Diese Klasse repr√§sentiert die Tab- Leiste des Programmfensters Jeder Tab
+ * steht f√ºr eine im Programm ge√∂ffnete Bundestagswahl
  * 
  */
 public class TabLeiste extends JTabbedPane {
@@ -28,10 +28,10 @@ public class TabLeiste extends JTabbedPane {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -2584456939802031910L;
 
-	/** repr‰sentiert das Programmfenster der Tableiste */
+	/** repr√§sentiert das Programmfenster der Tableiste */
 	private final Programmfenster pf;
 
-	/** repr‰sentiert den Plus-Knopf der Tableiste */
+	/** repr√§sentiert den Plus-Knopf der Tableiste */
 	private final JComponent plusButton = new JPanel();
 
 	/**
@@ -63,8 +63,8 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * Diese Methode f¸gt zur Tableiste einen weiteren Tab hinzu. Dabei besitzt
-	 * der Tab einen Schlieﬂen- Button
+	 * Diese Methode f√ºgt zur Tableiste einen weiteren Tab hinzu. Dabei besitzt
+	 * der Tab einen Schlie√üen- Button
 	 * 
 	 * @param c
 	 *            Inhalt des Tabs
@@ -91,7 +91,7 @@ public class TabLeiste extends JTabbedPane {
 		JButton schliessen = new JButton();
 		schliessen.setOpaque(false);
 		schliessen.setIcon(new ImageIcon(
-				"src/main/resources/gui/images/tabSchlieﬂen.png"));
+				"src/main/resources/gui/images/tabSchlie√üen.png"));
 		schliessen.setBorder(null);
 		schliessen.setFocusable(false);
 
@@ -99,17 +99,17 @@ public class TabLeiste extends JTabbedPane {
 		tab.add(schliessen);
 		setTabComponentAt(pos, tab);
 
-		// Erstelle anonymen ActionListener f¸r den "x" Knopf
+		// Erstelle anonymen ActionListener f√ºr den "x" Knopf
 		schliessen.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Wird versucht, einen Tab zu schlieﬂen, wird zuerst gefragt,
+				 * Wird versucht, einen Tab zu schlie√üen, wird zuerst gefragt,
 				 * ob dieser Tab gespeichert werden soll
 				 */
 				int eingabe = JOptionPane.showConfirmDialog(null,
-						"Soll Datei gespeichert werden?", "Einverst‰ndnis",
+						"Soll Datei gespeichert werden?", "Einverst√§ndnis",
 						JOptionPane.YES_NO_CANCEL_OPTION);
 
 				if (eingabe == 0) {
@@ -128,8 +128,8 @@ public class TabLeiste extends JTabbedPane {
 	}
 
 	/**
-	 * Diese Methode f¸gt der Tableiste einen "+"- Button hinzu Wenn man darauf
-	 * klickt, ˆffnet sich der Dialog zum Importieren einer neuern Wahl.
+	 * Diese Methode f√ºgt der Tableiste einen "+"- Button hinzu Wenn man darauf
+	 * klickt, √∂ffnet sich der Dialog zum Importieren einer neuern Wahl.
 	 */
 	public void neuerTabButton() {
 		this.add(plusButton);
@@ -153,7 +153,7 @@ public class TabLeiste extends JTabbedPane {
 		this.setTabComponentAt(pos, pnlTab);
 
 		this.setEnabledAt(pos, false);
-		// Erstelle anonymen ActionListener f¸r den "+" Knopf
+		// Erstelle anonymen ActionListener f√ºr den "+" Knopf
 		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

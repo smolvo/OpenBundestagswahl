@@ -6,8 +6,8 @@ import java.util.Stack;
 import main.java.model.Stimme;
 
 /**
- * Die Chronik setzt Stimmen, die in der GUI verändert wurden zurück. Es können
- * höchstens so viele Stimmen zurückgesetzt werden, wie in maxStimmen.
+ * Die Chronik setzt Stimmen, die in der GUI verÃ¤ndert wurden zurÃ¼ck. Es kÃ¶nnen
+ * hÃ¶chstens so viele Stimmen zurÃ¼ckgesetzt werden, wie in maxStimmen.
  * 
  */
 public class Chronik implements Serializable {
@@ -19,7 +19,7 @@ public class Chronik implements Serializable {
 	private static final long serialVersionUID = -9220795187148958406L;
 
 	/**
-	 * Anzahl der maximalen Stimmen, die zurückgesetzt werden können.
+	 * Anzahl der maximalen Stimmen, die zurÃ¼ckgesetzt werden kÃ¶nnen.
 	 */
 	private final int maxStimmen = 5;
 
@@ -29,11 +29,11 @@ public class Chronik implements Serializable {
 	Stack<Stimme> stimmen = new Stack<Stimme>();
 
 	/**
-	 * Sichert eine Stimme. Wird bei jeder Veränderung einer Stimme aufgerufen.
+	 * Sichert eine Stimme. Wird bei jeder VerÃ¤nderung einer Stimme aufgerufen.
 	 * Die Operation entspricht dem push Befehl eines Stacks.
 	 * 
 	 * @param s
-	 *            die Veränderte Stimme.
+	 *            die VerÃ¤nderte Stimme.
 	 * @throws IllegalArgumentException
 	 *             wenn die Stimme null ist
 	 */
@@ -50,10 +50,10 @@ public class Chronik implements Serializable {
 	}
 
 	/**
-	 * Restauriert die zuletzt hinzugefügte Stimme. Entspricht dem pull Befehl
+	 * Restauriert die zuletzt hinzugefÃ¼gte Stimme. Entspricht dem pull Befehl
 	 * eines Stacks.
 	 * 
-	 * @return die zuletzt hinzugefügte Stimme.
+	 * @return die zuletzt hinzugefÃ¼gte Stimme.
 	 */
 	public Stimme restauriereStimme() {
 		Stimme stimme = null;

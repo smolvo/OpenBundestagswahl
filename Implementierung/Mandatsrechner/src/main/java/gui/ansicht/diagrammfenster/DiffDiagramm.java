@@ -85,7 +85,7 @@ public class DiffDiagramm extends JPanel {
 		rangeAxis.setRange(new Range(min, max));
 		plot.setRangeAxis(rangeAxis);
 
-		// f‰rben der Parteienbalken
+		// f√§rben der Parteienbalken
 		Paint[] farben = new Paint[diff.length];
 		for (int i = 0; i < diff.length; i++) {
 			farben[i] = diff[i].getPartei().getFarbe();
@@ -98,7 +98,7 @@ public class DiffDiagramm extends JPanel {
 	}
 
 	/**
-	 * Diese Methode gibt eine Dimension, abh‰ngig von der Fl‰che auf der sich
+	 * Diese Methode gibt eine Dimension, abh√§ngig von der Fl√§che auf der sich
 	 * das Diagramm befindet, aus.
 	 * 
 	 * @return Dimension
@@ -130,13 +130,13 @@ public class DiffDiagramm extends JPanel {
 	}
 
 	/**
-	 * Gibt die grˆﬂte Differenz aus.
+	 * Gibt die gr√∂√üte Differenz aus.
 	 * 
 	 * @param diff
 	 *            Differenzen-Vektor
 	 * @throws IllegalArgumentException
 	 *             wenn die Parteidifferenzen null sind.
-	 * @return grˆﬂtes Element
+	 * @return gr√∂√ütes Element
 	 */
 	private int getGroesstes(ParteiDifferenzen[] diff) {
 		if (diff == null) {

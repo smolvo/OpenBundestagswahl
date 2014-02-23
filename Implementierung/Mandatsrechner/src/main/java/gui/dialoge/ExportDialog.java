@@ -9,7 +9,7 @@ import main.java.gui.Programmfenster;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repräsentiert den Dialog für den Export, der ermöglicht Wahlen
+ * Diese Klasse reprÃ¤sentiert den Dialog fÃ¼r den Export, der ermÃ¶glicht Wahlen
  * als .csv-Datei abzuspeichern.
  * 
  */
@@ -18,14 +18,14 @@ public class ExportDialog extends JDialog {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -6257552145843360427L;
 
-	/** repräsentiert den Dateiaussucher */
+	/** reprÃ¤sentiert den Dateiaussucher */
 	private final JFileChooser dateiAuswahl;
 
-	/** repräsentiert das Programmfenster */
+	/** reprÃ¤sentiert das Programmfenster */
 	private final Programmfenster pf;
 
 	/**
-	 * Der Konstruktor erstellt den FileChooser und führt den Export durch.
+	 * Der Konstruktor erstellt den FileChooser und fÃ¼hrt den Export durch.
 	 * 
 	 * @param pf
 	 *            Programmfenster
@@ -53,9 +53,9 @@ public class ExportDialog extends JDialog {
 	}
 
 	/**
-	 * Gibt das Programmfenster zurück.
+	 * Gibt das Programmfenster zurÃ¼ck.
 	 * 
-	 * @return das Programmfenster zurück.
+	 * @return das Programmfenster zurÃ¼ck.
 	 */
 	public Programmfenster getPf() {
 		return pf;

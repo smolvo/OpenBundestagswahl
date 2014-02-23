@@ -15,7 +15,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 /**
- * Diese Klasse repr�sentiert die "Lizenz" View in der GUI. Es werden
+ * Diese Klasse reprï¿½sentiert die "Lizenz" View in der GUI. Es werden
  * Informationen zur verwendeten Lizenz in einer Webview angezeigt.
  */
 public class LizenzDialog extends JDialog {
@@ -28,7 +28,7 @@ public class LizenzDialog extends JDialog {
 			"src/main/resources/hilfe/lizenz.html");
 
 	/**
-	 * Das Diallogfenster, dass die Webview enth�lt
+	 * Das Diallogfenster, dass die Webview enthï¿½lt
 	 */
 	public LizenzDialog() {
 
@@ -38,17 +38,17 @@ public class LizenzDialog extends JDialog {
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setAlwaysOnTop(true);
-		
-		// wird ben�tigt um JavaFX Panel zu DISPOSEN
+
+		// wird benï¿½tigt um JavaFX Panel zu DISPOSEN
 		Platform.setImplicitExit(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		GridLayout layout = new GridLayout(1, 1);
-		
+
 		// Als Layout festlegen
 		setLayout(layout);
 		final JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
-		
+
 		Platform.runLater(new Runnable() {
 			// fxPanel als JavaFX-Thread starten
 			@Override
@@ -61,7 +61,7 @@ public class LizenzDialog extends JDialog {
 	}
 
 	/**
-	 * Erzeugt eine Webview und l�d about.html
+	 * Erzeugt eine Webview und lï¿½d about.html
 	 * 
 	 * @param fxPanel
 	 *            das Panel in dem die Webview gestartet wird
@@ -70,7 +70,7 @@ public class LizenzDialog extends JDialog {
 		Scene scene = createScene();
 		fxPanel.setScene(scene);
 	}
-	
+
 	private static Scene createScene() {
 		Group group = new Group();
 		Scene scene = new Scene(group);

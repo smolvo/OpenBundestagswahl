@@ -12,7 +12,7 @@ import java.util.List;
 public class Landesliste implements Serializable {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -6647931864369484778L;
@@ -143,7 +143,7 @@ public class Landesliste implements Serializable {
 	}
 
 	/**
-	 * Gibt alle Kandidaten der Liste mit dem gew�nschten Mandat zurueck.
+	 * Gibt alle Kandidaten der Liste mit dem gewï¿½nschten Mandat zurueck.
 	 * 
 	 * @param mandat
 	 *            das gewuenschte Mandat.

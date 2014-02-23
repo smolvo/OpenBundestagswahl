@@ -1,11 +1,11 @@
 farben_parteien
-Name	Rot	Grün	Blau
+Name	Rot	GrÃ¼n	Blau
 SPD	226	0	25
 CDU	0	0	0
 CSU	0	0	0
 FDP	255	255	0
 DIE LINKE	220	0	0
-GRÜNE	70	187	0
+GRÃœNE	70	187	0
 PIRATEN	255	128	0
 default	192	192	192
 
@@ -15,7 +15,7 @@ test	123
 
 einwohnerzahl
 Name	Anzahl
-Baden-Württemberg	9482902
+Baden-WÃ¼rttemberg	9482902
 Bayern	11353264
 Berlin	3025288
 Brandenburg	2418267
@@ -30,4 +30,4 @@ Saarland	919402
 Sachsen	4005278
 Sachsen-Anhalt	2247673
 Schleswig-Holstein	2686085
-Thüringen	2154202
+ThÃ¼ringen	2154202

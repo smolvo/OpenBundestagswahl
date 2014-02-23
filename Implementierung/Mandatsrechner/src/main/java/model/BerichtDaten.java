@@ -4,30 +4,33 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * Diese Klasse enth�lte alle Daten, die zum korrekten Anzeigen
- * eines Berichtsfensters ben�tigt werden.
- *
+ * Diese Klasse enthï¿½lte alle Daten, die zum korrekten Anzeigen eines
+ * Berichtsfensters benï¿½tigt werden.
+ * 
  */
 public class BerichtDaten implements Serializable {
 
-	/** Automatisch generierte serialVersionUID die fuer das De-/Serialisieren verwendet wird. */
+	/**
+	 * Automatisch generierte serialVersionUID die fuer das De-/Serialisieren
+	 * verwendet wird.
+	 */
 	private static final long serialVersionUID = -8855434025330264096L;
 
-	/** repr�sentiert den Namen des Politikers */
+	/** reprï¿½sentiert den Namen des Politikers */
 	private LinkedList<String> name;
-	
-	/** repr�sentiert die Partei des Politikers */
+
+	/** reprï¿½sentiert die Partei des Politikers */
 	private LinkedList<String> partei;
-	
-	/** repr�sentiert das Mandat des Politikers */
+
+	/** reprï¿½sentiert das Mandat des Politikers */
 	private LinkedList<String> mandat;
-	
-	/** repr�sentiert das Bundesland, in dem das Mandat geholt wurde*/
+
+	/** reprï¿½sentiert das Bundesland, in dem das Mandat geholt wurde */
 	private LinkedList<String> bundesland;
-	
-	/** repr�sentiert den Wahlkreis, in dem ein Direktmandat geholt wurde */
+
+	/** reprï¿½sentiert den Wahlkreis, in dem ein Direktmandat geholt wurde */
 	private LinkedList<String> wahlkreis;
-	
+
 	/**
 	 * Der Konstruktor initialisiert alle Listen.
 	 */
@@ -38,25 +41,32 @@ public class BerichtDaten implements Serializable {
 		this.bundesland = new LinkedList<String>();
 		this.wahlkreis = new LinkedList<String>();
 	}
-	
+
 	/**
-	 * F�gt eine Zeile in die Tabelle hinzu.
-	 * @param name Name 
-	 * @param partei Partei
-	 * @param mandat Mandat
-	 * @param bundesland Bundesland
-	 * @param wahlkreis Wahlkreis
+	 * Fï¿½gt eine Zeile in die Tabelle hinzu.
+	 * 
+	 * @param name
+	 *            Name
+	 * @param partei
+	 *            Partei
+	 * @param mandat
+	 *            Mandat
+	 * @param bundesland
+	 *            Bundesland
+	 * @param wahlkreis
+	 *            Wahlkreis
 	 */
-	public void zeileHinzufuegen(String name, String partei, String mandat, String bundesland, String wahlkreis) {
+	public void zeileHinzufuegen(String name, String partei, String mandat,
+			String bundesland, String wahlkreis) {
 		stringCheck(name, this.name);
 		stringCheck(partei, this.partei);
 		stringCheck(mandat, this.mandat);
 		stringCheck(bundesland, this.bundesland);
 		stringCheck(wahlkreis, this.wahlkreis);
 	}
-	
+
 	/**
-	 * Diese Methode �berpr�ft, ob ein String null ist, wenn nicht wird es der
+	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es der
 	 * Liste angehangen,
 	 * 
 	 * @param string
@@ -74,7 +84,9 @@ public class BerichtDaten implements Serializable {
 
 	/**
 	 * Gibt einen Namen aus.
-	 * @param index Index
+	 * 
+	 * @param index
+	 *            Index
 	 * @return Name
 	 */
 	public String getName(int index) {
@@ -83,7 +95,9 @@ public class BerichtDaten implements Serializable {
 
 	/**
 	 * Gibt eine Partei aus.
-	 * @param index Index
+	 * 
+	 * @param index
+	 *            Index
 	 * @return Partei
 	 */
 	public String getPartei(int index) {
@@ -92,7 +106,9 @@ public class BerichtDaten implements Serializable {
 
 	/**
 	 * Gibt das Mandat aus.
-	 * @param index Index
+	 * 
+	 * @param index
+	 *            Index
 	 * @return Mandat
 	 */
 	public String getMandat(int index) {
@@ -101,16 +117,19 @@ public class BerichtDaten implements Serializable {
 
 	/**
 	 * Gibt das Bundesland aus.
-	 * @param index Index
+	 * 
+	 * @param index
+	 *            Index
 	 * @return Bundesland
 	 */
 	public String getBundesland(int index) {
 		return bundesland.get(index);
 	}
-	
+
 	/**
-	 * gibt alle Bundesl�nder aus.
-	 * @return Liste der Bundesl�nder
+	 * gibt alle Bundeslï¿½nder aus.
+	 * 
+	 * @return Liste der Bundeslï¿½nder
 	 */
 	public LinkedList<String> getBundeslaender() {
 		return this.bundesland;
@@ -118,15 +137,18 @@ public class BerichtDaten implements Serializable {
 
 	/**
 	 * Gibt den Wahlkreis aus.
-	 * @param index Index
+	 * 
+	 * @param index
+	 *            Index
 	 * @return Wahlkreis
 	 */
 	public String getWahlkreis(int index) {
 		return wahlkreis.get(index);
 	}
-	
+
 	/**
 	 * Gibt die Zweilenanzahl aus.
+	 * 
 	 * @return Zweilenanzahl
 	 */
 	public int size() {

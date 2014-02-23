@@ -11,30 +11,30 @@ import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repräsentiert den Dialog, der sich öffnet, wenn man im Menü
+ * Diese Klasse reprÃ¤sentiert den Dialog, der sich Ã¶ffnet, wenn man im MenÃ¼
  * "Importieren" oder in der Tab- Leiste den "+"- Button klickt
  * 
- * Der Benutzer wird aufgefordert die zwei für die Berechnung der Sitzverteilung
- * notwendigen Dateien zu übergeben.
+ * Der Benutzer wird aufgefordert die zwei fÃ¼r die Berechnung der Sitzverteilung
+ * notwendigen Dateien zu Ã¼bergeben.
  * 
  */
 public class ImportDialog extends JDialog {
 
 	private static final long serialVersionUID = -1969759039710597635L;
 
-	/** zeigt an ob es sich um die erste Ausführung handelt */
+	/** zeigt an ob es sich um die erste AusfÃ¼hrung handelt */
 	boolean ersteAusfuehrung = true;
 
-	/** repräsentiert den FileChooser für die Ergebnisse einer Bundestagswahl */
+	/** reprÃ¤sentiert den FileChooser fÃ¼r die Ergebnisse einer Bundestagswahl */
 	JFileChooser ergebnisseAuswahl = null;
 
-	/** repräsentiert den FileChooser für die Bewerber */
+	/** reprÃ¤sentiert den FileChooser fÃ¼r die Bewerber */
 	JFileChooser bewerberAuswahl = null;
 
-	/** repräsentiert den Vektor mit den eingelesenen Daten */
+	/** reprÃ¤sentiert den Vektor mit den eingelesenen Daten */
 	private File[] eingeleseneDateien = new File[2];
 
-	/** repräsentiert das Programmfenster */
+	/** reprÃ¤sentiert das Programmfenster */
 	private Programmfenster pf;
 
 	/**
@@ -55,7 +55,7 @@ public class ImportDialog extends JDialog {
 	 * Diese Methode importiert eine Wahl in das Programmfenster.
 	 */
 	public void importiereWahl() {
-		// bei der ersten Ausführung wird der FileChooser gesichert
+		// bei der ersten AusfÃ¼hrung wird der FileChooser gesichert
 		if (ersteAusfuehrung) {
 			ergebnisseAuswahl = new JFileChooser();
 			ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
@@ -79,12 +79,12 @@ public class ImportDialog extends JDialog {
 
 			} else {
 				JOptionPane.showMessageDialog(pf,
-						"Keine Datei mit Wahlbewerber ausgewählt.", "Meldung",
+						"Keine Datei mit Wahlbewerber ausgewÃ¤hlt.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 			}
 		} else {
 			JOptionPane.showMessageDialog(pf,
-					"Keine Datei mit Wahlergebnisse ausgewählt.", "Meldung",
+					"Keine Datei mit Wahlergebnisse ausgewÃ¤hlt.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
 		}
 	}

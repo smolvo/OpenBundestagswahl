@@ -1,4 +1,3 @@
-
 package main.java.gui.dialoge;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +15,7 @@ import main.java.gui.WahlFenster;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse repr�sentiert den Vergleichsdialog. Er wird aufgerufen wenn ein
+ * Diese Klasse reprï¿½sentiert den Vergleichsdialog. Er wird aufgerufen wenn ein
  * Vergleich geschehen soll.
  * 
  * @author Anton
@@ -29,7 +28,8 @@ public class VergleichDialog extends JDialog {
 	/**
 	 * Der Konstruktor erstellt einen Vergleichsdialog.
 	 * 
-	 * @param pf das Programmfenster
+	 * @param pf
+	 *            das Programmfenster
 	 * 
 	 * @throws NullPointerException
 	 */
@@ -58,8 +58,10 @@ public class VergleichDialog extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					WahlFenster wahlfenster = (WahlFenster) box.getSelectedItem();
-					Steuerung.getInstance().vergleicheWahlen(wahlfenster.getBtw());
+					WahlFenster wahlfenster = (WahlFenster) box
+							.getSelectedItem();
+					Steuerung.getInstance().vergleicheWahlen(
+							wahlfenster.getBtw());
 					wahlAuswahl.dispose();
 				}
 

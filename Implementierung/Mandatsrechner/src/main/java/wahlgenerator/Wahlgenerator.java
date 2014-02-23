@@ -24,271 +24,314 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 
 	/**
 	 * Erzeugt einen neuen Wahlgenerator.
-	 * @param basisWahl Bundestagswahl mit Basisdaten (Gebiete, Kandidaten, usw...)
-	 * @param stimmanteile Eine Liste von Stimmanteilen auf Basis derer die Stimmen verteilt werden.
+	 * 
+	 * @param basisWahl
+	 *            Bundestagswahl mit Basisdaten (Gebiete, Kandidaten, usw...)
+	 * @param stimmanteile
+	 *            Eine Liste von Stimmanteilen auf Basis derer die Stimmen
+	 *            verteilt werden.
 	 */
-	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
-		
+	public Wahlgenerator(Bundestagswahl basisWahl,
+			List<Stimmanteile> stimmanteile) {
+
 		super(basisWahl, stimmanteile);
-		
-		//this.getBasisWahl().setSitzverteilung(new Sitzverteilung(new LinkedList<Kandidat>(), new BerichtDaten()));
-		
+
+		// this.getBasisWahl().setSitzverteilung(new Sitzverteilung(new
+		// LinkedList<Kandidat>(), new BerichtDaten()));
+
 		int summeErst = 0;
 		int summeZweit = 0;
 		for (Stimmanteile sa : stimmanteile) {
 			if (!basisWahl.getParteien().contains(sa.getPartei())) {
-				throw new IllegalArgumentException("Partei \"" + sa.getPartei().getName() + "\" existiert in der BasisWahl nicht!");
+				throw new IllegalArgumentException("Partei \""
+						+ sa.getPartei().getName()
+						+ "\" existiert in der BasisWahl nicht!");
 			}
 			summeErst += sa.getAnteilErststimmen();
 			summeZweit += sa.getAnteilZweitstimmen();
 		}
-		
+
 		if (summeErst > 100 || summeZweit > 100) {
-			throw new IllegalArgumentException("Die Summe der Erst- und/oder Zweitstimmenanteile sind gr��er als 100!");
+			throw new IllegalArgumentException(
+					"Die Summe der Erst- und/oder Zweitstimmenanteile sind grï¿½ï¿½er als 100!");
 		} else if (summeZweit < 0 || summeZweit < 0) {
-			throw new IllegalArgumentException("Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
+			throw new IllegalArgumentException(
+					"Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
 		}
 	}
-	
+
 	/**
-	 * Generiert eine Bundestagswahl auf basis der BTW des basisWahl Attributs und der Liste der Stimmanteile.
-	 * @param name der name der BTW
+	 * Generiert eine Bundestagswahl auf basis der BTW des basisWahl Attributs
+	 * und der Liste der Stimmanteile.
+	 * 
+	 * @param name
+	 *            der name der BTW
 	 * @return eine generierte Bundestagswahl
 	 */
 	public Bundestagswahl erzeugeBTW(String name) {
-		
-		if (name == null) {			
-			throw new IllegalArgumentException("Der Parameter \"name\" ist null!");
+
+		if (name == null) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"name\" ist null!");
 		}
-		
+
 		this.verteileRestAnteile();
-		
+
 		Bundestagswahl clone = null;
-		
+
 		// erstelle tiefe Kopie
 		try {
-			clone = this.getBasisWahl().deepCopy();			
+			clone = this.getBasisWahl().deepCopy();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		// Setze die komplette Auswertung auf NULL
 		Mandatsrechner2009.getInstance().initialisiere(clone);
-		
+
 		// Name der neuen Wahl setzen
 		clone.setName(name);
-		
+
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
-		
+
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			sumErstAnteil += sa.getAnteilErststimmen();
 			sumZweitAnteil += sa.getAnteilZweitstimmen();
-			Debug.print("Partei: " + sa.getPartei().getName() + ", ErstAnteil: " + sa.getAnteilErststimmen() + "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%");
+			Debug.print("Partei: " + sa.getPartei().getName()
+					+ ", ErstAnteil: " + sa.getAnteilErststimmen()
+					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%");
 		}
-		Debug.print("===> sumErstAnteil: " + sumErstAnteil + "%, sumZweitAnteil: " + sumZweitAnteil + "%");
-		
-		
-		// verteile Stimmen zuf�llig auf die Gebiete, Parteien und Kandidaten
+		Debug.print("===> sumErstAnteil: " + sumErstAnteil
+				+ "%, sumZweitAnteil: " + sumZweitAnteil + "%");
+
+		// verteile Stimmen zufï¿½llig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
-		
+
 		return clone;
 	}
-	
+
 	/**
-	 * Verteilt die �brigen Anteile der Erst- und Zweitstimmen auf zuf�llige Parteien.
+	 * Verteilt die ï¿½brigen Anteile der Erst- und Zweitstimmen auf zufï¿½llige
+	 * Parteien.
 	 */
 	private void verteileRestAnteile() {
-		
+
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
-		
+
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			sumErstAnteil += sa.getAnteilErststimmen();
 			sumZweitAnteil += sa.getAnteilZweitstimmen();
 		}
-		
+
 		int restErstAnteil = 100 - sumErstAnteil;
 		int restZweitAnteil = 100 - sumZweitAnteil;
-		Debug.print("restErstAnteil: " + restErstAnteil + "%, restZweitAnteil: " + restZweitAnteil + "%\n");
-		
+		Debug.print("restErstAnteil: " + restErstAnteil
+				+ "%, restZweitAnteil: " + restZweitAnteil + "%\n");
+
 		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
 		Random rand = new Random();
-		
+
 		while (restErstAnteil > 0 || restZweitAnteil > 0) {
-			// w�hle zuf�llige Partei aus der Liste der Parteien ohne Anteile
-			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
-			
-			// Pr�fe ob f�r diese Partei in dieser Schleife schonmal Anteile erzeugt wurden und w�hle diese aus
+			// wï¿½hle zufï¿½llige Partei aus der Liste der Parteien ohne Anteile
+			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile
+					.size()));
+
+			// Prï¿½fe ob fï¿½r diese Partei in dieser Schleife schonmal Anteile
+			// erzeugt wurden und wï¿½hle diese aus
 			Stimmanteile anteil = this.getAnteileVonPartei(partei);
 			if (anteil == null) {
 				anteil = new Stimmanteile(partei, 0, 0);
 				this.getStimmanteile().add(anteil);
 			}
-			
-			// f�ge eine zuf�llige Anzahl von Erst- und Zweit-Anteilen hinzu
-			//Debug.print("�brig: restErstAnteil: " + restErstAnteil + ", restZweitAnteil: " + restZweitAnteil);
-			
+
+			// fï¿½ge eine zufï¿½llige Anzahl von Erst- und Zweit-Anteilen hinzu
+			// Debug.print("ï¿½brig: restErstAnteil: " + restErstAnteil +
+			// ", restZweitAnteil: " + restZweitAnteil);
+
 			if (restErstAnteil > 0) {
 				int anteilErst = rand.nextInt(restErstAnteil) + 1;
-				anteil.setAnteilErststimmen(anteil.getAnteilErststimmen() + anteilErst);
+				anteil.setAnteilErststimmen(anteil.getAnteilErststimmen()
+						+ anteilErst);
 				restErstAnteil -= anteilErst;
 			}
-			
+
 			if (restZweitAnteil > 0) {
 				int anteilZweit = rand.nextInt(restZweitAnteil) + 1;
-				anteil.setAnteilZweitstimmen(anteil.getAnteilZweitstimmen() + anteilZweit);
+				anteil.setAnteilZweitstimmen(anteil.getAnteilZweitstimmen()
+						+ anteilZweit);
 				restZweitAnteil -= anteilZweit;
 			}
-			
+
 		}
 		Debug.print("fertig...");
 	}
-	
+
 	/**
-	 * Verteilt die Stimmen der Parteien f�r diejenigen Stimmanteile angegeben sind 
-	 * auf zuf�llige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien bleiben dabei erhalten.
-	 * Bundesland- und Wahlkreisweit werden die Stimmen zuf�llig verteilt. 
-	 * @param btw die BTW auf die verteilt werden soll
+	 * Verteilt die Stimmen der Parteien fï¿½r diejenigen Stimmanteile angegeben
+	 * sind auf zufï¿½llige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien
+	 * bleiben dabei erhalten. Bundesland- und Wahlkreisweit werden die Stimmen
+	 * zufï¿½llig verteilt.
+	 * 
+	 * @param btw
+	 *            die BTW auf die verteilt werden soll
 	 */
 	@Override
 	public void verteileStimmen(Bundestagswahl btw) {
-		
-		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
+
+		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland()
+				.getWahlkreise();
 		int anzahlWahlkreise = alleWahlkreise.size();
-		
+
 		// durchlaufe alle Wahlkreise
 		for (Wahlkreis wk : alleWahlkreise) {
 			// durchlaufe alle Erststimmen
 			for (Erststimme erst : wk.getErststimmenProPartei()) {
 				// Anzahl auf 0 setzen
 				erst.setAnzahl(0);
-				
+
 				if (erst.getKandidat().getPartei() == null) {
-					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: " + erst.getKandidat().getName() + ", Partei: NULL");
+					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: "
+							+ erst.getKandidat().getName() + ", Partei: NULL");
 				}
-				
-				//if (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat)) {
-				//	erst = null;
-				//}
-				//erst = null;
+
+				// if
+				// (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat))
+				// {
+				// erst = null;
+				// }
+				// erst = null;
 			}
 			// durchlaufe alle Zweitstimmen
 			for (Zweitstimme zweit : wk.getZweitstimmenProPartei()) {
 				// Anzahl auf 0 setzen
 				zweit.setAnzahl(0);
-				//zweit = null;
+				// zweit = null;
 			}
 		}
-		
-		
-		// durchlaufe Parteien f�r die Stimmen verteilt werden sollen
+
+		// durchlaufe Parteien fï¿½r die Stimmen verteilt werden sollen
 		for (Stimmanteile sa : this.getStimmanteile()) {
-			
+
 			Partei saPartei = sa.getPartei();
 			Partei partei = null;
-			
+
 			// die aktuelle Partei
 			for (Partei part : btw.getParteien()) {
 				if (part.getName().equals(saPartei.getName())) {
 					partei = part;
 				}
 			}
-			
+
 			if (partei == null) {
-				throw new NullPointerException("Partei ist null! Das sollte eigentlich nicht vorkommen ;-)!");
+				throw new NullPointerException(
+						"Partei ist null! Das sollte eigentlich nicht vorkommen ;-)!");
 			}
-			
-			
-			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
-			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * (this.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
-			
-			Debug.print(partei.getName() 
-					+ ", anzahlErststimmen: " + anzahlErststimmen + " (" + this.getAnteileVonPartei(partei).getAnteilErststimmen() 
-					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " (" + this.getAnteileVonPartei(partei).getAnteilZweitstimmen() + "%)");
-			
+
+			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this
+					.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
+			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * (this
+					.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
+
+			Debug.print(partei.getName() + ", anzahlErststimmen: "
+					+ anzahlErststimmen + " ("
+					+ this.getAnteileVonPartei(partei).getAnteilErststimmen()
+					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " ("
+					+ this.getAnteileVonPartei(partei).getAnteilZweitstimmen()
+					+ "%)");
+
 			Random rand = new Random();
-			
-			
+
 			Wahlkreis wk = null;
 			int vergebeneErst = 0;
 			int vergebeneZweit = 0;
 			int stimmzahl;
-			
-			while (vergebeneErst < anzahlErststimmen || vergebeneZweit < anzahlZweitstimmen) {
-				
+
+			while (vergebeneErst < anzahlErststimmen
+					|| vergebeneZweit < anzahlZweitstimmen) {
+
 				if (vergebeneErst < anzahlErststimmen) {
-					// Wahlkreis zuf�llig w�hlen
+					// Wahlkreis zufï¿½llig wï¿½hlen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
-					
-					
+
 					if (wk.getErststimmenProPartei().size() != 35) {
-						System.out.println("Anzahl Erstimmen: " + wk.getErststimmenProPartei().size());
+						System.out.println("Anzahl Erstimmen: "
+								+ wk.getErststimmenProPartei().size());
 					}
-					
+
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst), (wk.getWahlberechtigte() - wk.getAnzahlErststimmen()));
-					
-					// Wenn maximal m�gliche Stimmzahl positiv, dann w�hle eine
-					// zuf�llig eine in dem Intervall [1,max]
+					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst),
+							(wk.getWahlberechtigte() - wk
+									.getAnzahlErststimmen()));
+
+					// Wenn maximal mï¿½gliche Stimmzahl positiv, dann wï¿½hle eine
+					// zufï¿½llig eine in dem Intervall [1,max]
 					if (stimmzahl != 0) {
 						stimmzahl = rand.nextInt(stimmzahl) + 1;
 					}
-					
-					// zugeh�riges Erststimmenobjekt finden
+
+					// zugehï¿½riges Erststimmenobjekt finden
 					Erststimme erst = wk.getErststimme(partei);
-					
-					// Stimmzahl erh�hen, falls Erststimmen-Objekt gefunden
+
+					// Stimmzahl erhï¿½hen, falls Erststimmen-Objekt gefunden
 					if (erst != null) {
 						erst.erhoeheAnzahl(stimmzahl);
 						vergebeneErst += stimmzahl;
 					} else {
-						//System.out.println("Erststimme ist null!, " + partei.getName() + " : " + wk.getName());
-						//Kandidat kan = new Kandidat(Mandat.KEINMANDAT, partei, erst);
-						Kandidat kan = new Kandidat("unbekannt", "-", 0, Mandat.KEINMANDAT, partei);
-						
+						// System.out.println("Erststimme ist null!, " +
+						// partei.getName() + " : " + wk.getName());
+						// Kandidat kan = new Kandidat(Mandat.KEINMANDAT,
+						// partei, erst);
+						Kandidat kan = new Kandidat("unbekannt", "-", 0,
+								Mandat.KEINMANDAT, partei);
+
 						erst = new Erststimme(stimmzahl, wk, kan);
-						//erst.setKandidat(kan);
-						
+						// erst.setKandidat(kan);
+
 						wk.getErststimmenProPartei().add(erst);
 						partei.addMitglied(kan);
 						vergebeneErst += stimmzahl;
 					}
 				}
-				
+
 				if (vergebeneZweit < anzahlZweitstimmen) {
-					// Wahlkreis zuf�llig w�hlen
+					// Wahlkreis zufï¿½llig wï¿½hlen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
-					
+
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
-					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit), (wk.getWahlberechtigte() - wk.getAnzahlZweitstimmen()));
-					
-					// Wenn maximal m�gliche Stimmzahl positiv, dann w�hle eine
-					// zuf�llig eine in dem Intervall [1,max]
+					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit),
+							(wk.getWahlberechtigte() - wk
+									.getAnzahlZweitstimmen()));
+
+					// Wenn maximal mï¿½gliche Stimmzahl positiv, dann wï¿½hle eine
+					// zufï¿½llig eine in dem Intervall [1,max]
 					if (stimmzahl != 0) {
 						stimmzahl = rand.nextInt(stimmzahl) + 1;
 					}
-					
-					// zugeh�riges Erststimmenobjekt finden
+
+					// zugehï¿½riges Erststimmenobjekt finden
 					Zweitstimme zweit = wk.getZweitstimme(partei);
-					
-					// Stimmzahl erh�hen, falls Erststimmen-Objekt gefunden
+
+					// Stimmzahl erhï¿½hen, falls Erststimmen-Objekt gefunden
 					if (zweit != null) {
 						zweit.erhoeheAnzahl(stimmzahl);
 						vergebeneZweit += stimmzahl;
 					} else {
-						System.out.println("Zweitstimme ist null!, " + partei.getName() + " : " + wk.getName());
-						//wk.getZweitstimmen().add(new Zweitstimme(stimmzahl, wk, partei));
+						System.out.println("Zweitstimme ist null!, "
+								+ partei.getName() + " : " + wk.getName());
+						// wk.getZweitstimmen().add(new Zweitstimme(stimmzahl,
+						// wk, partei));
 					}
-					//vergebeneZweit += stimmzahl;
+					// vergebeneZweit += stimmzahl;
 				}
-				
+
 			}
-			
+
 		}
-		
+
 		/*
-		 * korrigiere die Parteilisten der Bundesl�nder
+		 * korrigiere die Parteilisten der Bundeslï¿½nder
 		 */
 		for (Bundesland bundesland : btw.getDeutschland().getBundeslaender()) {
 			bundesland.setParteien(new LinkedList<Partei>());
@@ -298,17 +341,21 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	/**
-	 * Pr�ft ob f�r die gegebene Partei Stimmanteile gegeben sind.
-	 * @param partei Die Partei f�r diejenige gepr�ft werden soll ob Stimmanteile gegeben sind.
-	 * @return Ob f�r die gegebene Partei Stimmanteile gegeben sind.
+	 * Prï¿½ft ob fï¿½r die gegebene Partei Stimmanteile gegeben sind.
+	 * 
+	 * @param partei
+	 *            Die Partei fï¿½r diejenige geprï¿½ft werden soll ob Stimmanteile
+	 *            gegeben sind.
+	 * @return Ob fï¿½r die gegebene Partei Stimmanteile gegeben sind.
 	 */
 	private boolean hatParteiStimmanteile(Partei partei) {
 		if (partei == null) {
-			throw new IllegalArgumentException("Der Parameter \"partei\" ist null!");
+			throw new IllegalArgumentException(
+					"Der Parameter \"partei\" ist null!");
 		}
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			if (sa.getPartei().equals(partei)) {
@@ -317,9 +364,10 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Gibt eine Liste aller Parteien zur�ck, f�r diejenigen keine
+	 * Gibt eine Liste aller Parteien zurï¿½ck, fï¿½r diejenigen keine
+	 * 
 	 * @return
 	 */
 	private ArrayList<Partei> getParteienOhneAnteile() {
@@ -331,7 +379,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		}
 		return parteien;
 	}
-	
+
 	/**
 	 * 
 	 * @param partei
@@ -345,5 +393,5 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		}
 		return null;
 	}
-	
+
 }

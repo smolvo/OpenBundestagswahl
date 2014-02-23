@@ -3,7 +3,6 @@ package main.java.steuerung;
 import java.io.File;
 import java.util.LinkedList;
 
-
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
@@ -14,7 +13,7 @@ import main.java.wahlgenerator.Wahlgenerator;
 import main.java.wahlvergleich.Wahlvergleich;
 
 /**
- * Diese Klasse repr�sentiert die Hauptsteuerung des Programmes.
+ * Diese Klasse reprï¿½sentiert die Hauptsteuerung des Programmes.
  * 
  * @author Anton
  * 
@@ -24,7 +23,7 @@ public class Steuerung {
 	/** zeigt an ob ein Steuerungs-Objekt bereits existiert */
 	private static Steuerung instance;
 
-	/** repr�sentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
+	/** reprï¿½sentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
 	private Bundestagswahl btw;
 
 	/**
@@ -35,7 +34,7 @@ public class Steuerung {
 
 	/**
 	 * Diese Methode importiert eine neue Bundestagswahl in das Programm mit
-	 * einem Vektor, der gef�llt ist mit den dazu relevanten Daten.
+	 * einem Vektor, der gefï¿½llt ist mit den dazu relevanten Daten.
 	 * 
 	 * @param csvDateien
 	 *            relevante Daten
@@ -87,13 +86,16 @@ public class Steuerung {
 	}
 
 	/**
-	 * Diese Methode generiert eine zuf�llige Wahl auf Grund bestimmter
+	 * Diese Methode generiert eine zufï¿½llige Wahl auf Grund bestimmter
 	 * Stimmenanteile.
 	 * 
-	 * @param btw Die BasisWahl
-	 * @param anteile die Stimmenanteile
-	 * @param name Der Name der BTW
-	 * @return gibt die generierte Wahl zur�ck
+	 * @param btw
+	 *            Die BasisWahl
+	 * @param anteile
+	 *            die Stimmenanteile
+	 * @param name
+	 *            Der Name der BTW
+	 * @return gibt die generierte Wahl zurï¿½ck
 	 * @throws NullPointerException
 	 */
 	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw,
@@ -108,8 +110,9 @@ public class Steuerung {
 
 	/**
 	 * Startet eine Simulierung des negativen Stimmgewichts.
+	 * 
 	 * @param anteile
-	 * 			die gewuenschten Anteile.
+	 *            die gewuenschten Anteile.
 	 */
 	public void negStimmgewichtGenerierung(Stimmanteile anteile) {
 		// TODO
@@ -117,7 +120,7 @@ public class Steuerung {
 
 	/**
 	 * Diese Methode aktualisiert den Datensatz, sobald eine bestimmte Anzahl an
-	 * Erst- oder Zweitstimmen ge�ndert wurde.
+	 * Erst- oder Zweitstimmen geï¿½ndert wurde.
 	 * 
 	 * @param stimme
 	 *            die betroffene Stimme
@@ -132,7 +135,7 @@ public class Steuerung {
 			throw new NullPointerException("Keine Stimme gefunden.");
 		}
 		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl muss gr��er Null sein.");
+			throw new IllegalArgumentException("Anzahl muss grï¿½ï¿½er Null sein.");
 		}
 		stimme.setAnzahl(anzahl);
 		boolean erfolg = this.btw.setzeStimme(stimme);
@@ -141,7 +144,7 @@ public class Steuerung {
 
 	/**
 	 * Durch diese Methode wird die aktuelle Bundestagswahl mit einer
-	 * ausgew�hlten Bundestagswahl verglichen.
+	 * ausgewï¿½hlten Bundestagswahl verglichen.
 	 * 
 	 * @param vergleichsWahl
 	 *            andere Wahl
@@ -158,7 +161,7 @@ public class Steuerung {
 	}
 
 	/**
-	 * Mit dieser Methode wird das Programm eine Stimmen�nderung zur�ck gesetzt.
+	 * Mit dieser Methode wird das Programm eine Stimmenï¿½nderung zurï¿½ck gesetzt.
 	 * Es wird ausgegeben, ob dies erfolgreich war.
 	 * 
 	 * @return true false
@@ -197,7 +200,7 @@ public class Steuerung {
 	 */
 	public void setBtw(Bundestagswahl btw) {
 		if (btw == null) {
-			throw new NullPointerException("�bergebene Bundestagswahl ist null");
+			throw new NullPointerException("ï¿½bergebene Bundestagswahl ist null");
 		}
 		this.btw = btw;
 	}

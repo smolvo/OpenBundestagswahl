@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class Sitzverteilung implements Serializable {
 
 	/**
-	 * Automatisch generierte serialVersionUID die f�r das De-/Serialisieren
+	 * Automatisch generierte serialVersionUID die fï¿½r das De-/Serialisieren
 	 * verwendet wird.
 	 */
 	private static final long serialVersionUID = -6027948741318694048L;
@@ -17,7 +17,7 @@ public class Sitzverteilung implements Serializable {
 	/** Die Liste aller Abgeordneten in dieser Sitzverteilung. */
 	private LinkedList<Kandidat> abgeordnete;
 
-	/** Enth�lt Informationen zur Sitzverteilung */
+	/** Enthält Informationen zur Sitzverteilung */
 	private BerichtDaten bericht;
 
 	/**
@@ -76,7 +76,7 @@ public class Sitzverteilung implements Serializable {
 	}
 
 	/**
-	 * Gibt den Bericht zur�ck
+	 * Gibt den Bericht zurück
 	 * 
 	 * @return den Bericht
 	 */

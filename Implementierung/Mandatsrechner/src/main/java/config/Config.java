@@ -33,7 +33,7 @@ public class Config {
 	private File config;
 
 	/**
-	 * Privater Konstruktor für das Entwurfsmuster Einzelstueck
+	 * Privater Konstruktor fÃ¼r das Entwurfsmuster Einzelstueck
 	 */
 	private Config() {
 
@@ -87,7 +87,7 @@ public class Config {
 	 * gespeichert haben
 	 * 
 	 * @param key
-	 *            der Schlüssel
+	 *            der SchlÃ¼ssel
 	 * @return das Konfiguartionsfeld
 	 */
 	public String getConfigField(String key) {
@@ -161,7 +161,7 @@ public class Config {
 		while ((line = read.readLine()) != null) {
 			lines.add(line.split(Pattern.quote("\t")));
 		}
-		// Buffer schließen
+		// Buffer schlieÃŸen
 		read.close();
 		// int headSize = 0;
 		// String curHead = "";
@@ -178,7 +178,7 @@ public class Config {
 					List<String[]> dataContent = new ArrayList<String[]>();
 					// int headSize = lines.get(++i).length;
 					int j = i;
-					j++; // Überspringe die Kopfzeile (Namen der Zellen);
+					j++; // Ãœberspringe die Kopfzeile (Namen der Zellen);
 					while (lines.get(j)[0] != "") {
 						j++;
 						// System.out.println(j);
@@ -244,7 +244,7 @@ public class Config {
 	}
 
 	/**
-	 * Gibt den Kopf der zu importierenden Dateien zurück
+	 * Gibt den Kopf der zu importierenden Dateien zurÃ¼ck
 	 * 
 	 * @param field
 	 *            die Einheit mit den Werten
@@ -260,7 +260,7 @@ public class Config {
 		if (field.equals("einwohnerzahl")) {
 			head = new String[] { "Name", "Anzahl" };
 		} else if (field.equals("farben_parteien")) {
-			head = new String[] { "Name", "Rot", "Grün", "Blau" };
+			head = new String[] { "Name", "Rot", "GrÃ¼n", "Blau" };
 		} else {
 			head = new String[] { "Feld", "Inhalt" };
 		}

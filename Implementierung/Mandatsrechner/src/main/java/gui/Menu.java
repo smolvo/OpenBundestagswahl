@@ -22,7 +22,7 @@ import main.java.steuerung.Steuerung;
 
 /**
  * 
- * Diese Klasse repräsentiert die Menü- Leiste des Programmfensters.
+ * Diese Klasse reprÃ¤sentiert die MenÃ¤- Leiste des Programmfensters.
  * 
  */
 public class Menu extends JMenuBar {
@@ -30,59 +30,59 @@ public class Menu extends JMenuBar {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -2922572375430998442L;
 
-	/** repräsentiert das Programmfenster */
+	/** reprÃ¤sentiert das Programmfenster */
 	private final Programmfenster pf;
 
-	/** repräsentiert den Menüleisteneintrag Datei */
+	/** reprÃ¤sentiert den MenÃ¤leisteneintrag Datei */
 	private final JMenu datei;
 
-	/** repräsentiert den Menüleisteneintrag Bearbeiten */
+	/** reprÃ¤sentiert den MenÃ¤leisteneintrag Bearbeiten */
 	private final JMenu bearbeiten;
 
-	/** repräsentiert den Menüleisteneintrag Extras */
+	/** reprÃ¤sentiert den MenÃ¤leisteneintrag Extras */
 	private final JMenu extras;
 
-	/** repräsentiert den Menüleisteneintrag Hilfe */
+	/** reprÃ¤sentiert den MenÃ¤leisteneintrag Hilfe */
 	private final JMenu hilfe;
 
-	///** repräsentiert den Menüleisteneintrag Wahldaten Generieren */
-	//private final JMenu wahldatenGenerieren;
+	// /** reprÃ¤sentiert den MenÃ¤leisteneintrag Wahldaten Generieren */
+	// private final JMenu wahldatenGenerieren;
 
-	/** repräsentiert den Importieren Eintrag */
+	/** reprÃ¤sentiert den Importieren Eintrag */
 	private final JMenuItem importieren;
 
-	/** repräsentiert den Speichern Eintrag */
+	/** reprÃ¤sentiert den Speichern Eintrag */
 	private final JMenuItem speichern;
 
-	/** repräsentiert den Beenden Eintrag */
+	/** reprÃ¤sentiert den Beenden Eintrag */
 	private final JMenuItem beenden;
 
-	/** repräsentiert den Rückgängig Eintrag */
+	/** reprÃ¤sentiert den RÃ¤ckgÃ¤ngig Eintrag */
 	private final JMenuItem rueckgaengig;
 
-	/** repräsentiert den Wiederherstellen Eintrag */
+	/** reprÃ¤sentiert den Wiederherstellen Eintrag */
 	private final JMenuItem wiederherstellen;
 
-	/** repräsentiert den Vergleichen Eintrag */
+	/** reprÃ¤sentiert den Vergleichen Eintrag */
 	private final JMenuItem vergleichen;
 
-	/** repräsentiert den negatives Stimmgewicht generieren Eintrag */
+	/** reprÃ¤sentiert den negatives Stimmgewicht generieren Eintrag */
 	private final JMenuItem negativesStimmgewicht;
 
-	/** repräsentiert den Zufällige Wahl generieren Eintrag */
+	/** reprÃ¤sentiert den ZufÃ¤llige Wahl generieren Eintrag */
 	private final JMenuItem zufaelligeWahl;
 
-	/** repräsentiert den Handbuch Eintrag */
+	/** reprÃ¤sentiert den Handbuch Eintrag */
 	private final JMenuItem handbuch;
 
-	/** repräsentiert den About Eintrag */
+	/** reprÃ¤sentiert den About Eintrag */
 	private final JMenuItem about;
 
-	/** repräsentiert den Lizenz Eintrag */
+	/** reprÃ¤sentiert den Lizenz Eintrag */
 	private final JMenuItem lizenz;
 
 	/**
-	 * Der Konstruktor des Menüs
+	 * Der Konstruktor des MenÃ¤s
 	 * 
 	 * @param pf
 	 *            Programmfenster
@@ -116,10 +116,10 @@ public class Menu extends JMenuBar {
 		datei.add(beenden);
 
 		// der Menu-Reiter "Bearbeiten"
-		rueckgaengig = new JMenuItem("Rückgängig");
+		rueckgaengig = new JMenuItem("RÃ¼ckgÃ¤ngig");
 		rueckgaengig.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/rueckgaengig.png"));
-		
+
 		wiederherstellen = new JMenuItem("Wiederherstellen");
 		wiederherstellen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/wiederherstellen.png"));
@@ -131,13 +131,13 @@ public class Menu extends JMenuBar {
 		vergleichen = new JMenuItem("Vergleichen");
 		vergleichen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/vergleichen.png"));
-		//wahldatenGenerieren = new JMenu("Wahldaten generieren");
+		// wahldatenGenerieren = new JMenu("Wahldaten generieren");
 		negativesStimmgewicht = new JMenuItem(
 				"negatives Stimmgewicht simulieren");
 		zufaelligeWahl = new JMenuItem("Wahl generieren");
 
 		extras.add(vergleichen);
-		//extras.add(wahldatenGenerieren);
+		// extras.add(wahldatenGenerieren);
 		extras.add(negativesStimmgewicht);
 		extras.add(zufaelligeWahl);
 
@@ -184,14 +184,14 @@ public class Menu extends JMenuBar {
 	 */
 	private class MenuListener implements ActionListener {
 
-		/** rerpäsentiert das Menü */
+		/** rerpÃ¤sentiert das MenÃ¤ */
 		private Menu menu;
 
 		/**
 		 * Der Konstruktor initialisiert den Listener.
 		 * 
 		 * @param menu
-		 *            Menü
+		 *            MenÃ¼
 		 */
 		public MenuListener(Menu menu) {
 			super();
@@ -219,7 +219,7 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.beenden) {
 				int eingabe = JOptionPane.showConfirmDialog(null,
 						"Soll Programm wirklich beendet werden?",
-						"Einverständnis", JOptionPane.YES_NO_OPTION);
+						"EinverstÃ¤ndnis", JOptionPane.YES_NO_OPTION);
 				if (eingabe == 0) {
 					System.exit(0);
 				}
@@ -244,11 +244,12 @@ public class Menu extends JMenuBar {
 			}
 		}
 	}
-	
+
 	/**
 	 * Setzt die Sichtbarkeit des Rueckgaengig JMenu Items
 	 * 
-	 * @param verfuegbarkeit Boolean
+	 * @param verfuegbarkeit
+	 *            Boolean
 	 */
 	public void setzeRueckgaengig(boolean verfuegbarkeit) {
 		this.rueckgaengig.setEnabled(verfuegbarkeit);

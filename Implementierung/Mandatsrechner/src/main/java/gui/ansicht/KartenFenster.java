@@ -9,42 +9,46 @@ import main.java.model.Bundesland;
 import main.java.model.Deutschland;
 
 /**
- * Diese Klasse repr�sentiert das Kartenfenster einer Ansicht.
- * Es werden die Bundesl�nder aufgelistet, und wenn m�glich
- * eine kartographische Ansicht des Landes.
- *
+ * Diese Klasse reprï¿½sentiert das Kartenfenster einer Ansicht. Es werden die
+ * Bundeslï¿½nder aufgelistet, und wenn mï¿½glich eine kartographische Ansicht des
+ * Landes.
+ * 
  */
 public class KartenFenster extends JTabbedPane {
 
 	private static final long serialVersionUID = 6496086485300101407L;
-	
-	/** repr�sentiert die Ansicht in der sich das Kartenfenster befindet */
+
+	/** reprï¿½sentiert die Ansicht in der sich das Kartenfenster befindet */
 	private Ansicht ansicht;
-	
+
 	/**
 	 * Der Konstruktor erstellt ein neues Kartenfenster.
-	 * @param ansicht Ansicht
+	 * 
+	 * @param ansicht
+	 *            Ansicht
 	 */
 	public KartenFenster(Ansicht ansicht) {
 		this.ansicht = ansicht;
 	}
-	
+
 	/**
-	 *  Array mit den Namen aller Bundesl�nder
+	 * Array mit den Namen aller Bundeslï¿½nder
 	 */
-	String[] alleLaender = new String[] {"Baden-W�rttemberg", "Bayern", "Berlin", "Brandenburg", 
-			 "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
-			 "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
-			 "Saarland", "Sachsen", "Sachsen-Anhalt", 
-			 "Schleswig-Holstein", "Th�ringen"};
-	
+	String[] alleLaender = new String[] { "Baden-Württemberg", "Bayern",
+			"Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
+			"Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
+			"Rheinland-Pfalz", "Saarland", "Sachsen", "Sachsen-Anhalt",
+			"Schleswig-Holstein", "Thüringen" };
+
 	/**
-	 * Diese Methode listet die Bundesl�nder auf und erstellt,
-	 * wenn m�glich, eine kartographische Ansicht.
-	 * @param land Deutschland-Objekt welches visualisiert werden soll
+	 * Diese Methode listet die Bundeslï¿½nder auf und erstellt, wenn mï¿½glich,
+	 * eine kartographische Ansicht.
+	 * 
+	 * @param land
+	 *            Deutschland-Objekt welches visualisiert werden soll
 	 */
 	public void zeigeInformationen(Deutschland land) {
-		
+
 		DeutschlandKarte d = new DeutschlandKarte(land);
 		Listenansicht liste = new Listenansicht(land, this);
 		if (pruefeLaender(land)) {
@@ -59,9 +63,11 @@ public class KartenFenster extends JTabbedPane {
 	}
 
 	/**
-	 * Diese private Methode �berpr�ft ob die Liste von Bundesl�ndern den
+	 * Diese private Methode ï¿½berprï¿½ft ob die Liste von Bundeslï¿½ndern den
 	 * reellen entspricht.
-	 * @param land enth�lt alle Bundesl�nder
+	 * 
+	 * @param land
+	 *            enthï¿½lt alle Bundeslï¿½nder
 	 * @return wahr oder falsch
 	 */
 	private boolean pruefeLaender(Deutschland land) {
@@ -73,11 +79,12 @@ public class KartenFenster extends JTabbedPane {
 				gleich = false;
 			}
 		}
-		return gleich;	
+		return gleich;
 	}
 
 	/**
 	 * Gibt die Ansicht aus.
+	 * 
 	 * @return Ansicht
 	 */
 	public Ansicht getAnsicht() {
