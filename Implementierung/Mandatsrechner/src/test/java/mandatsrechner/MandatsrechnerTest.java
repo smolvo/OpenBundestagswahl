@@ -26,7 +26,6 @@ public class MandatsrechnerTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Debug.setAktiv(true);
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(

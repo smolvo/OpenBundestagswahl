@@ -74,8 +74,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 			int part1UeMand = part1.getAnzahlMandate(Mandat.UEBERHANGMADAT);
 			int part2UeMand = part2.getAnzahlMandate(Mandat.UEBERHANGMADAT);
 
-			Debug.print(part1.getName() + " " + part1UeMand);
-			Debug.print(part2.getName() + " " + part2UeMand);
+			Debug.print(part1.getName() + " " + part1UeMand, 5);
+			Debug.print(part2.getName() + " " + part2UeMand, 5);
 
 			int result;
 

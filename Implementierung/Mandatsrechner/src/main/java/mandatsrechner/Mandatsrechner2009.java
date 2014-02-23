@@ -145,7 +145,7 @@ public class Mandatsrechner2009 {
 									Mandat.DIREKTMANDAT.toString(),
 									bundesland.getName(), wahlkreis.getName());
 				} else {
-					Debug.print("Wahlkreis hat keine Erststimmen!");
+					Debug.print("Wahlkreis hat keine Erststimmen!", 3);
 					// throw new
 					// IllegalArgumentException("Wahlkreis hat keine Erststimmen!");
 				}
@@ -208,7 +208,7 @@ public class Mandatsrechner2009 {
 	protected float berechneZuteilungsdivisor(Bundestagswahl bundestagswahl) {
 		// BTW 2013: 598 Mindestsitze.
 		int minSitze = bundestagswahl.getDeutschland().getWahlkreise().size() * 2;
-		Debug.print("Anzahl der Wahlkreise: " + minSitze);
+		Debug.print("Anzahl der Wahlkreise: " + minSitze, 4);
 		float zuteilungsdivisor = this.runden(bundestagswahl.getDeutschland()
 				.getEinwohneranzahl() / minSitze, false);
 		int sitzanzahl = 0;
@@ -498,7 +498,7 @@ public class Mandatsrechner2009 {
 								diffKandidat++;
 							}
 						} else {
-							Debug.print("Notice: Kein Listenkandidat gefunden.");
+							Debug.print("Notice: Kein Listenkandidat gefunden.", 4);
 							// Landesliste erschoepft.
 						}
 					}
@@ -510,30 +510,29 @@ public class Mandatsrechner2009 {
 				}
 
 			}
-			if (Debug.isAktiv()) {
 
-				Debug.print("\nLandesdivisor " + bundesland.getName() + ": "
-						+ landesdivisor);
-				int sum = 0;
-				for (Partei part : relevanteParteien) {
 
-					Debug.print("" + part.getName() + ": "
-							+ bundesland.getAnzahlZweitstimmen(part) + " - "
-							+ part.getMindestsitzanzahl(bundesland));
-					sum += part.getMindestsitzanzahl(bundesland);
-				}
-				Debug.print("Summe: " + sum);
+			Debug.print("\nLandesdivisor " + bundesland.getName() + ": " + landesdivisor, 5);
+			int sum = 0;
+			for (Partei part : relevanteParteien) {
+
+				Debug.print("" + part.getName() + ": "
+						+ bundesland.getAnzahlZweitstimmen(part) + " - "
+						+ part.getMindestsitzanzahl(bundesland), 5);
+				sum += part.getMindestsitzanzahl(bundesland);
 			}
+			Debug.print("Summe: " + sum, 5);
+				
 		}
 
-		Debug.print("\nSitzverteilung");
+		Debug.print("\nSitzverteilung", 5);
 		int summe = 0;
 		for (Partei partei : relevanteParteien) {
-			Debug.print(partei.getName() + ": " + partei.getMindestsitzAnzahl());
+			Debug.print(partei.getName() + ": " + partei.getMindestsitzAnzahl(), 5);
 			summe += partei.getMindestsitzAnzahl();
 		}
-		Debug.print("Summe: " + summe);
-		Debug.print("ENDE BTW 2009");
+		Debug.print("Summe: " + summe, 5);
+		Debug.print("ENDE BTW 2009", 5);
 		return bundestagswahl;
 	}
 

@@ -228,12 +228,12 @@ public class Menu extends JMenuBar {
 				Steuerung.getInstance().zurueckSetzen();
 			} else if (e.getSource() == menu.wiederherstellen) {
 				// TODO wiederherstellen
-				Debug.print("TODO: wiederherstellen");
+				Debug.print("TODO: wiederherstellen", 3);
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.negativesStimmgewicht) {
 				// TODO negatives Stimmgewicht simulieren
-				Debug.print("TODO: negatives Stimmgewicht simulieren");
+				Debug.print("TODO: negatives Stimmgewicht simulieren", 3);
 			} else if (e.getSource() == menu.zufaelligeWahl) {
 				new GeneratorDialog(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {

@@ -101,10 +101,10 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			sumZweitAnteil += sa.getAnteilZweitstimmen();
 			Debug.print("Partei: " + sa.getPartei().getName()
 					+ ", ErstAnteil: " + sa.getAnteilErststimmen()
-					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%");
+					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%", 4);
 		}
 		Debug.print("===> sumErstAnteil: " + sumErstAnteil
-				+ "%, sumZweitAnteil: " + sumZweitAnteil + "%");
+				+ "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
 
 		// verteile Stimmen zufï¿½llig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
@@ -129,7 +129,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		int restErstAnteil = 100 - sumErstAnteil;
 		int restZweitAnteil = 100 - sumZweitAnteil;
 		Debug.print("restErstAnteil: " + restErstAnteil
-				+ "%, restZweitAnteil: " + restZweitAnteil + "%\n");
+				+ "%, restZweitAnteil: " + restZweitAnteil + "%\n", 4);
 
 		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
 		Random rand = new Random();
@@ -166,7 +166,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 
 		}
-		Debug.print("fertig...");
+		Debug.print("fertig...", 6);
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 
 				if (erst.getKandidat().getPartei() == null) {
 					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: "
-							+ erst.getKandidat().getName() + ", Partei: NULL");
+							+ erst.getKandidat().getName() + ", Partei: NULL", 5);
 				}
 
 				// if
@@ -240,7 +240,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					+ this.getAnteileVonPartei(partei).getAnteilErststimmen()
 					+ "%), anzahlZweitstimmen: " + anzahlZweitstimmen + " ("
 					+ this.getAnteileVonPartei(partei).getAnteilZweitstimmen()
-					+ "%)");
+					+ "%)", 5);
 
 			Random rand = new Random();
 

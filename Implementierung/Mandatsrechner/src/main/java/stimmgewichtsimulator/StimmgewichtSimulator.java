@@ -95,10 +95,10 @@ public class StimmgewichtSimulator {
 
 		// Sitzverteilung fï¿½r Ausgangswahl berechnen
 
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		this.setAusgangsWahl(Mandatsrechner2009.getInstance()
 				.berechneSainteLague(ausgangsWahl));
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 		// Die erste und zweite Kopie der Ausgangsbundestagswahl erzeugen
 		try {
 			this.setKopie1(ausgangsWahl.deepCopy());
@@ -172,7 +172,7 @@ public class StimmgewichtSimulator {
 					this.passeKopie2An();
 
 					if (bundesland.getAnzahlZweitstimmen(partei) + stimmanzahl > obereBegrenzung) {
-						Debug.print("Obere Grenze erreicht!");
+						Debug.print("Obere Grenze erreicht!", 5);
 					}
 				}
 
@@ -191,7 +191,7 @@ public class StimmgewichtSimulator {
 					this.passeKopie2An();
 
 					if (bundesland.getAnzahlZweitstimmen(partei) - stimmanzahl < untereBegrenzung) {
-						Debug.print("Untere Grenze erreicht!");
+						Debug.print("Untere Grenze erreicht!", 5);
 					}
 				}
 
@@ -256,9 +256,9 @@ public class StimmgewichtSimulator {
 		}
 
 		// berechnet Sitzverteilung von kopie1 neu
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(kopie1));
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 		// passt kopie2 an kopie1 an
 		this.passeKopie2An();
 
@@ -299,12 +299,12 @@ public class StimmgewichtSimulator {
 				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
 				+ wk.getAnzahlZweitstimmen(partei) + " ("
 				+ bundesland.getAnzahlZweitstimmen(partei) + ") erhï¿½ht."
-				+ " Sitze: " + partei.getAnzahlMandate());
+				+ " Sitze: " + partei.getAnzahlMandate(), 5);
 
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 		letzterWK = wk;
 
 		geaenderteZweitstimmenInWahlkreise.add(wk.getZweitstimme(partei));
@@ -343,12 +343,12 @@ public class StimmgewichtSimulator {
 				+ " (" + bundesland.getName() + ") um " + stimmanzahl + " auf "
 				+ wk.getAnzahlZweitstimmen(partei) + " ("
 				+ bundesland.getAnzahlZweitstimmen(partei) + ") erniedrigt."
-				+ " Sitze: " + partei.getAnzahlMandate());
+				+ " Sitze: " + partei.getAnzahlMandate(), 5);
 
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		this.setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(
 				this.kopie1));
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 
 		letzterWK = wk;
 
@@ -392,10 +392,10 @@ public class StimmgewichtSimulator {
 
 	private void vergleicheSitzverteilungen(Partei p, boolean variante) {
 
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		setKopie1(Mandatsrechner2009.getInstance().berechneSainteLague(kopie1));
 		setKopie2(Mandatsrechner2009.getInstance().berechneSainteLague(kopie2));
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 
 		int mandatsZahlAlt = mandatsZahlBerechnen(p, this.kopie2);
 		int mandatsZahlNeu = mandatsZahlBerechnen(p, this.kopie1);
@@ -482,9 +482,9 @@ public class StimmgewichtSimulator {
 			}
 		}
 
-		Debug.setAktiv(false);
+		Debug.setLevel(0);
 		kopie3 = Mandatsrechner2009.getInstance().berechneSainteLague(kopie3);
-		Debug.setAktiv(true);
+		Debug.setLevel(6);
 
 		int mandatsZahlAlt = mandatsZahlBerechnen(this.letztePartei,
 				this.kopie2);

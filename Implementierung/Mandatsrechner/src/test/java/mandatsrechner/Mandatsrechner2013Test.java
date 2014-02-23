@@ -39,7 +39,6 @@ public class Mandatsrechner2013Test {
 			e1.printStackTrace();
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}
-		Debug.setAktiv(true);
 
 		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
 

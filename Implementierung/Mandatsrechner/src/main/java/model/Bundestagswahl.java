@@ -235,7 +235,7 @@ public class Bundestagswahl implements Serializable {
 					if (erststimme.getKandidat().equals(stimme.getKandidat())) {
 						Debug.print("Aendere Erststimme in: "
 								+ stimme.getGebiet().getName() + " "
-								+ stimme.getKandidat().getPartei().getName());
+								+ stimme.getKandidat().getPartei().getName(), 4);
 
 						this.chronik.sichereStimme(erststimme);
 						erststimme.setAnzahl(erststimme.getAnzahl());
@@ -256,7 +256,7 @@ public class Bundestagswahl implements Serializable {
 	 * @return
 	 **/
 	private boolean setzeStimmenAnzahl(Zweitstimme stimme) {
-		Debug.print("Setze zweitstimme");
+		Debug.print("Setze zweitstimme", 4);
 		boolean success = false;
 		if (stimme.getGebiet() instanceof Deutschland) {
 			throw new IllegalArgumentException(
@@ -272,7 +272,7 @@ public class Bundestagswahl implements Serializable {
 						if (zweitstimme.getPartei().equals(stimme.getPartei())) {
 							Debug.print("Aendere Zweitstimme in: "
 									+ stimme.getGebiet().getName() + " "
-									+ stimme.getPartei());
+									+ stimme.getPartei(), 4);
 							this.chronik.sichereStimme(zweitstimme);
 							zweitstimme.setAnzahl(zweitstimme.getAnzahl());
 							success = true;

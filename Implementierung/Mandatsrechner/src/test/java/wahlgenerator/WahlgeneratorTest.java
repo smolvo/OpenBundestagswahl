@@ -41,7 +41,7 @@ public class WahlgeneratorTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 
-		Debug.setAktiv(true);
+		Debug.setLevel(5);
 
 		i = new ImportExportManager();
 		File[] csvDateien = new File[2];

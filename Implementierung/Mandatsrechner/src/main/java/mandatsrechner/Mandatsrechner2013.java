@@ -61,13 +61,13 @@ public class Mandatsrechner2013 {
 		List<Partei> relevanteParteien = this.rechner2009
 				.berechneRelevanteParteien(bw);
 
-		Debug.print("\nSitzverteilung");
+		Debug.print("\nSitzverteilung", 6);
 		int summe = 0;
 		for (Partei partei : relevanteParteien) {
-			Debug.print(partei.getName() + ": " + partei.getMindestsitzAnzahl());
+			Debug.print(partei.getName() + ": " + partei.getMindestsitzAnzahl(), 6);
 			summe += partei.getMindestsitzAnzahl();
 		}
-		Debug.print("Summe: " + summe);
+		Debug.print("Summe: " + summe, 6);
 
 		// Ausgleichsmandate (Schritt 3 - Oberverteilung)
 		this.berechneSitzeZweitstimmenverhaeltnis(bw, relevanteParteien);
@@ -93,7 +93,7 @@ public class Mandatsrechner2013 {
 						.getMindestsitzAnzahl() - 0.5)));
 			}
 		}
-		Debug.print("Berechne Parteidivisor.");
+		Debug.print("Berechne Parteidivisor.", 6);
 		/**
 		 * Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre
 		 * Anzahl an Mindestsitze erfuellen. TODO: Ordentliche Schleife
@@ -120,20 +120,21 @@ public class Mandatsrechner2013 {
 				}
 			}
 		}
-		Debug.print("Berechneter Parteidivisor: " + parteidivisor);
-		if (Debug.isAktiv()) {
-			Debug.print("\nNeu Parteidivisor: " + parteidivisor);
-			int summe = 0;
-			for (Partei partei : relevanteParteien) {
-				Debug.print(partei.getName()
-						+ ": "
-						+ (Math.round(partei.getZweitstimmeGesamt()
-								/ parteidivisor)));
-				summe += (Math.round(partei.getZweitstimmeGesamt()
-						/ parteidivisor));
-			}
-			Debug.print("Summe: " + summe);
+		
+		Debug.print("Berechneter Parteidivisor: " + parteidivisor, 5);
+		Debug.print("\nNeu Parteidivisor: " + parteidivisor, 5);
+		int summe = 0;
+		for (Partei partei : relevanteParteien) {
+			Debug.print(partei.getName()
+					+ ": "
+					+ (Math.round(partei.getZweitstimmeGesamt()
+							/ parteidivisor)), 5);
+			summe += (Math.round(partei.getZweitstimmeGesamt()
+					/ parteidivisor));
 		}
+		Debug.print("Summe: " + summe, 5);
+
+		
 		return parteidivisor;
 	}
 
@@ -155,7 +156,7 @@ public class Mandatsrechner2013 {
 				float divisor = 0f;
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
-				Debug.print("Berechne Divisor");
+				Debug.print("Berechne Divisor", 5);
 				int insgesamt = 0;
 				while (insgesamt != neueSitzanzahl) {
 					insgesamt = 0;
@@ -178,7 +179,7 @@ public class Mandatsrechner2013 {
 						divisor -= 1;
 					}
 				}
-				Debug.print("Berechneter Divisor: " + divisor);
+				Debug.print("Berechneter Divisor: " + divisor, 5);
 				for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 					sitzeBundesland = this.rechner2009.runden(
 							bl.getAnzahlZweitstimmen(partei) / divisor, false);
@@ -208,7 +209,7 @@ public class Mandatsrechner2013 {
 								+ " "
 								+ (partei.getAnzahlMandate(Mandat.DIREKTMANDAT,
 										bl) + partei.getAnzahlMandate(
-										Mandat.LISTENMANDAT, bl)));
+										Mandat.LISTENMANDAT, bl)), 5);
 
 						// Suche Kandidaten ohne Mandat und fuege sie als
 						// Ausgleichsmandat hinzu.
@@ -216,7 +217,7 @@ public class Mandatsrechner2013 {
 						if (diffSitzeBundesland < 0) {
 							for (int i = 0; i < Math.abs(diffSitzeBundesland); i++) {
 								Debug.print("ABZIEHEN " + partei.getName()
-										+ " " + bl.getName());
+										+ " " + bl.getName(), 5);
 								for (int j = (partei.getLandesliste().size() - 1); j >= 0; j--) {
 									if (partei.getLandesliste(bl)
 											.getListenkandidaten().size() > j) {
@@ -238,7 +239,7 @@ public class Mandatsrechner2013 {
 										.getListenkandidaten().size() <= i) {
 									// Wahlgenerator verursacht Wahlen ohne
 									// Landeslisten.
-									Debug.print("Notice: Keine Listenplaetze mehr :(");
+									Debug.print("Notice: Keine Listenplaetze mehr :(", 4);
 									break;
 								}
 								Kandidat neuerAbgeordneter = partei
@@ -273,7 +274,7 @@ public class Mandatsrechner2013 {
 				}
 			} else {
 				if (diffSitze != 0) {
-					Debug.print("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
+					Debug.print("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.", 2);
 					// throw new
 					// IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}

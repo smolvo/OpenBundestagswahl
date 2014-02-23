@@ -393,9 +393,11 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		if (Debug.isAktiv()) {
-			this.debugDeutschland(deutschland);
-		}
+		
+		// TODO: Debug Klasse anschauen und richtig verwenden!
+		//if (Debug.isAktiv()) {
+		//	this.debugDeutschland(deutschland);
+		//}
 
 		if (!error) {
 			created = new Bundestagswahl(name, deutschland, parteien);
