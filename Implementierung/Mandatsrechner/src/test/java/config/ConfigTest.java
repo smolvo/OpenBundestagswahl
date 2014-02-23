@@ -1,6 +1,6 @@
 package test.java.config;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
