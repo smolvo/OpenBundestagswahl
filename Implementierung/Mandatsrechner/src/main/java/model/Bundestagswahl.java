@@ -184,7 +184,7 @@ public class Bundestagswahl implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (oos != null ) {
+			if (oos != null) {
 				oos.close();
 			}
 			if (ois != null) {
@@ -195,30 +195,34 @@ public class Bundestagswahl implements Serializable {
 		return result;
 	}
 
+
 	/**
-	 * Verï¿½ndere die Stimmen in einer Bundestagswahl. Speichert vorher die
+	 * Veraendere die Stimmen in einer Bundestagswahl. Speichert vorher die
 	 * aktuelle Bundestagswahl in der Chronik.
 	 * 
 	 * @param stimme
 	 *            die zu verï¿½ndernde stimme.
+	 * @param chronik
+	 * 				bei true wird die veraenderte Stimme in der Chronik
+	 * 				aufgezeichnet.
 	 * @return true wenn erfolgreich.
 	 */
-	public boolean setzeStimme(Stimme stimme) {
+	public boolean setzeStimme(Stimme stimme, boolean chronik) {
 		// TODO
-		boolean success = true;
-
+		boolean success = false;
+		Stimme alteStimme = null;
 		if (stimme instanceof Erststimme) {
-			success = this.setzeStimmenAnzahl((Erststimme) stimme);
+			alteStimme = this.setzeStimmenAnzahl((Erststimme) stimme);
+			success = true;
 		} else if (stimme instanceof Zweitstimme) {
-			success = this.setzeStimmenAnzahl((Zweitstimme) stimme);
-		} else {
-			success = false;
+			alteStimme = this.setzeStimmenAnzahl((Zweitstimme) stimme);
+			success = true;
 		}
 
-		if (!success /* && !this.pruefeDaten */) {
+		if (alteStimme == null) {
 			throw new IllegalArgumentException("Stimme nicht gefunden.");
-			// boolean secondSuccess =
-			// this.setzeStimme(chronik.restauriereStimme());
+		} else if (chronik) {
+			this.chronik.sichereStimme(alteStimme, stimme);
 		}
 		return success;
 	}
@@ -230,9 +234,9 @@ public class Bundestagswahl implements Serializable {
 	 * 
 	 * @return
 	 */
-	private boolean setzeStimmenAnzahl(Erststimme stimme) {
-		System.out.println("Setze erststimme");
-		boolean success = false;
+	private Erststimme setzeStimmenAnzahl(Erststimme stimme) {
+		Debug.print("Setze erststimme", 5);
+		Erststimme alteErststimme = null;
 		for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
 			if (wk.equals(stimme.getGebiet())) {
 				for (Erststimme erststimme : wk.getErststimmenProPartei()) {
@@ -241,16 +245,17 @@ public class Bundestagswahl implements Serializable {
 								+ stimme.getGebiet().getName() + " "
 								+ stimme.getKandidat().getPartei().getName(), 4);
 
-						this.chronik.sichereStimme(erststimme);
+						//this.chronik.sichereStimme(erststimme);
+						alteErststimme = (Erststimme) erststimme.deepCopy();
 						erststimme.setAnzahl(erststimme.getAnzahl());
-						success = true;
+						
 						break;
 					}
 				}
 				break;
 			}
 		}
-		return success;
+		return alteErststimme;
 	}
 
 	/**
@@ -258,16 +263,17 @@ public class Bundestagswahl implements Serializable {
 	 * 
 	 * @param stimme
 	 * @return
+	 * 		die bisherige Zweitstimme.
 	 **/
-	private boolean setzeStimmenAnzahl(Zweitstimme stimme) {
+	private Zweitstimme setzeStimmenAnzahl(Zweitstimme stimme) {
 		Debug.print("Setze zweitstimme", 4);
-		boolean success = false;
+		Zweitstimme alteZweitstimme = null;
 		if (stimme.getGebiet() instanceof Deutschland) {
 			throw new IllegalArgumentException(
-					"Zweitstimmen kï¿½nnen in Deutschland nicht verï¿½ndert werden.");
+					"Zweitstimmen koennen in Deutschland nicht veraendert werden.");
 		} else if (stimme.getGebiet() instanceof Bundesland) {
 			throw new IllegalArgumentException(
-					"Zweitstimmen kï¿½nnen in Bundeslï¿½ndern nicht verï¿½ndert werden.");
+					"Zweitstimmen koennen in Bundeslaendern nicht veraendert werden.");
 		} else if (stimme.getGebiet() instanceof Wahlkreis) {
 			for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
 				if (wk.equals(stimme.getGebiet())) {
@@ -277,34 +283,62 @@ public class Bundestagswahl implements Serializable {
 							Debug.print("Aendere Zweitstimme in: "
 									+ stimme.getGebiet().getName() + " "
 									+ stimme.getPartei(), 4);
-							this.chronik.sichereStimme(zweitstimme);
+							alteZweitstimme = (Zweitstimme) zweitstimme.deepCopy();
 							zweitstimme.setAnzahl(zweitstimme.getAnzahl());
-							success = true;
 							break;
 						}
 					}
 					break;
 				}
 			}
-		} else {
-			success = false;
 		}
-		return success;
+		return alteZweitstimme;
 	}
 
 	/**
-	 * Sobald eine Stimme in der GUI geï¿½ndert wurde, ist es mï¿½glich die Stimme
-	 * wieder zurï¿½ck zu setzen.
+	 * Sobald eine Stimme in der GUI geandert wurde, ist es moeglich die Stimme
+	 * wieder zurueck zu setzen.
 	 * 
 	 * @return ob erfolgreich oder nicht
 	 */
 	public boolean zurueckSetzen() {
-		Stimme alteStimme = this.chronik.restauriereStimme();
-		return this.setzeStimme(alteStimme);
+		Stimme alteStimme = this.chronik.zuruecksetzenStimme();
+		return this.setzeStimme(alteStimme, false);
+	}
+	
+	/**
+	 * Falls man eine Stimme bereits zurueckgesetzt hat, kann man dies
+	 * auch wieder herstellen.
+	 * @return
+	 * 		true wenn erfolgreich
+	 */
+	public boolean wiederherstellen() {
+		Stimme alteStimme = this.chronik.wiederherstellenStimme();
+		return this.setzeStimme(alteStimme, false);
 	}
 
 	@Override
 	public String toString() {
 		return this.name;
+	}
+	
+	/**
+	 * Prueft, ob eine Stimme zum zuruecksetzen vorhanden
+	 * ist.
+	 * @return
+	 * 		true wenn es vorhanden ist.
+	 */
+	public boolean hatStimmenZumZuruecksetzen() {
+		return this.chronik.hatStimmenZumZuruecksetzen();
+	}
+	
+	/**
+	 * Prueft, ob eine Stimme zum wiederherstellen vorhanden
+	 * ist.
+	 * @return
+	 * 		true wenn es vorhanden ist.
+	 */
+	public boolean hatStimmenZumWiederherstellen() {
+		return this.chronik.hatStimmenZumWiederherstellen();
 	}
 }

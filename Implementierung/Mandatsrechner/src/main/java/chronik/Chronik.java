@@ -1,7 +1,10 @@
 package main.java.chronik;
 
 import java.io.Serializable;
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
+
+import test.java.Debug;
 
 import main.java.model.Stimme;
 
@@ -26,40 +29,91 @@ public class Chronik implements Serializable {
 	/**
 	 * Ein Stack mit den letzten Stimmen
 	 */
-	Stack<Stimme> stimmen = new Stack<Stimme>();
-
+	List<Stimme> stimmen = new ArrayList<Stimme>();
+	
+	/**
+	 * Ein Pointer auf das aktuelle Element in der Liste.
+	 */
+	private int aktuellesElement = 0;
+	
 	/**
 	 * Sichert eine Stimme. Wird bei jeder Veränderung einer Stimme aufgerufen.
 	 * Die Operation entspricht dem push Befehl eines Stacks.
 	 * 
-	 * @param s
-	 *            die Veränderte Stimme.
+	 * @param alteStimme
+	 *           	die Veränderte Stimme.
+	 * @param aktuelleStimme
+	 * 				die aktuelle Stimme.
 	 * @throws IllegalArgumentException
 	 *             wenn die Stimme null ist
 	 */
-	public void sichereStimme(Stimme s) {
-		if (s == null) {
+	public void sichereStimme(Stimme alteStimme, Stimme aktuelleStimme) {
+		if (alteStimme == null || aktuelleStimme == null) {
 			throw new IllegalArgumentException("Stimme ist null");
 		}
-
-		if (this.stimmen.size() > maxStimmen) {
+		
+		/*if (this.stimmen.size() > maxStimmen) {
 			this.stimmen.remove(0);
+		}*/
+		Debug.print("Chronik - Aktuelles Element: " + this.aktuellesElement, 4);
+		
+		this.stimmen.add(this.aktuellesElement, alteStimme.deepCopy());
+		this.aktuellesElement++;
+		this.stimmen.add(this.aktuellesElement, aktuelleStimme.deepCopy());
+		if (this.stimmen.size() > (this.aktuellesElement + 1)) {
+			for (int i = this.aktuellesElement + 1; i < this.stimmen.size(); i++) {
+				Debug.print("Chronik - Loesche Element an Stelle " + i, 5);
+				this.stimmen.remove(this.aktuellesElement + 1);
+			}
 		}
-
-		this.stimmen.push(s.deepCopy());
 	}
 
 	/**
-	 * Restauriert die zuletzt hinzugefügte Stimme. Entspricht dem pull Befehl
-	 * eines Stacks.
-	 * 
-	 * @return die zuletzt hinzugefügte Stimme.
+	 * Setzt eine Stimme zurueck.
+	 * @return
+	 * 		die alte Stimme
 	 */
-	public Stimme restauriereStimme() {
-		Stimme stimme = null;
-		if (this.stimmen.size() > 0) {
-			stimme = this.stimmen.pop();
+	public Stimme zuruecksetzenStimme() {
+		Stimme alteStimme = null;
+		if (this.hatStimmenZumZuruecksetzen()) {
+			this.aktuellesElement--;
+			alteStimme = this.stimmen.get(this.aktuellesElement);
 		}
-		return stimme;
+		return alteStimme;
 	}
+	
+	/**
+	 * Stellt eine bereits zurueckgesetzte Stimme
+	 * wieder her.
+	 * @return
+	 * 		die alte Stimme
+	 */
+	public Stimme wiederherstellenStimme() {
+		Stimme alteStimme = null;
+		if (this.hatStimmenZumWiederherstellen()) {
+			this.aktuellesElement++;
+			return this.stimmen.get(this.aktuellesElement);
+		}
+		return alteStimme;
+	}
+	
+	/**
+	 * Prueft, ob eine Stimme zum zuruecksetzen vorhanden
+	 * ist.
+	 * @return
+	 * 		true wenn es zuruecksetzbar ist.
+	 */
+	public boolean hatStimmenZumZuruecksetzen() {
+		return this.aktuellesElement > 0;
+	}
+	
+	/**
+	 * Prueft, ob eine Stimme wiederherstellbar ist.
+	 * @return
+	 * 		true, wenn es wiederherstellbar ist.
+	 */
+	public boolean hatStimmenZumWiederherstellen () {
+		return this.stimmen.size() - 1 > this.aktuellesElement;
+	}
+	
 }

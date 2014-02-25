@@ -46,7 +46,7 @@ public final class Programmfenster extends JFrame {
 	 *            Startargumente
 	 */
 	public static void main(String[] args) {
-
+		Debug.setLevel(6);
 		new Programmfenster();
 	}
 
