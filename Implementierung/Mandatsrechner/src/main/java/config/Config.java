@@ -168,7 +168,7 @@ public class Config {
 		for (int i = 0; i < lines.size(); i++) {
 			// System.err.println("Line "+i);
 			if (lines.get(i).length == 1) {
-				if (lines.get(i)[0] == "") {
+				if (lines.get(i)[0].isEmpty()) {
 					continue;
 				} else {
 					// this.data.put(this.getField(lines.get(i)[0]), null);
@@ -179,7 +179,7 @@ public class Config {
 					// int headSize = lines.get(++i).length;
 					int j = i;
 					j++; // Überspringe die Kopfzeile (Namen der Zellen);
-					while (lines.get(j)[0] != "") {
+					while (!lines.get(j)[0].isEmpty()) {
 						j++;
 						// System.out.println(j);
 						if (lines.size() <= j) {

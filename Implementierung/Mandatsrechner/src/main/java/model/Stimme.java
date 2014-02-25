@@ -37,8 +37,8 @@ public abstract class Stimme implements Serializable {
 	 *             wenn das ï¿½bergebende Gebiet leer ist.
 	 */
 	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
-		if (gebiet.equals(null)) {
-			throw new IllegalArgumentException("Gebiet ist null!");
+		if (gebiet == null) {
+			throw new IllegalArgumentException("Der Parameter \"gebiet\" ist null!");
 		}
 		this.gebiet = gebiet;
 	}

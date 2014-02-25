@@ -349,8 +349,8 @@ public class GeneratorDialog extends JDialog {
 	 *            Panel das gelï¿½scht werden soll
 	 */
 	private void zeileEntfernen(JPanel panel) {
-		this.hauptPanel.setPreferredSize(new Dimension(this.hauptPanel
-				.getWidth(), this.hauptPanel.getHeight() - 70));
+		this.hauptPanel.setPreferredSize(
+				new Dimension(this.hauptPanel.getWidth(), this.hauptPanel.getHeight() - 70));
 
 		int index = -1;
 		// finde panel

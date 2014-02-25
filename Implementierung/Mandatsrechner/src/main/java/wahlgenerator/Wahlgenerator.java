@@ -53,8 +53,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 
 		if (summeErst > 100 || summeZweit > 100) {
 			throw new IllegalArgumentException(
-					"Die Summe der Erst- und/oder Zweitstimmenanteile sind grï¿½ï¿½er als 100!");
-		} else if (summeZweit < 0 || summeZweit < 0) {
+					"Die Summe der Erst- und/oder Zweitstimmenanteile sind größer als 100!");
+		}
+		if (summeErst < 0 || summeZweit < 0) {
 			throw new IllegalArgumentException(
 					"Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
 		}
@@ -89,10 +90,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 
 		// Setze die komplette Auswertung auf NULL
 		Mandatsrechner2009.getInstance().initialisiere(clone);
-
 		// Name der neuen Wahl setzen
 		clone.setName(name);
-
+		
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
 
@@ -106,7 +106,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		Debug.print("===> sumErstAnteil: " + sumErstAnteil
 				+ "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
 
-		// verteile Stimmen zufï¿½llig auf die Gebiete, Parteien und Kandidaten
+		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
 
 		return clone;

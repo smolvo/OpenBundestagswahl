@@ -467,7 +467,6 @@ public class StimmgewichtSimulator {
 		try {
 			kopie3 = kopie1.deepCopy();
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 

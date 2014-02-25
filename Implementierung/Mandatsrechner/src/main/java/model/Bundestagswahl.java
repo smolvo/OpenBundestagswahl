@@ -184,8 +184,12 @@ public class Bundestagswahl implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			oos.close();
-			ois.close();
+			if (oos != null ) {
+				oos.close();
+			}
+			if (ois != null) {
+				ois.close();
+			}
 		}
 
 		return result;

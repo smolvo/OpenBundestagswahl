@@ -208,8 +208,8 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 */
 	public void setMitglieder(LinkedList<Kandidat> mitglieder)
 			throws IllegalArgumentException {
-		if (mitglieder.equals(null)) {
-			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
+		if (mitglieder == null) {
+			throw new IllegalArgumentException("Der Parameter \"mitglieder\" ist null!");
 		}
 		this.mitglieder = mitglieder;
 	}

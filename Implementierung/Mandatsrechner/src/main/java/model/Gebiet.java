@@ -65,8 +65,8 @@ public abstract class Gebiet implements Serializable {
 	 *             wenn der Name leer ist.
 	 */
 	public void setName(String name) throws IllegalArgumentException {
-		if (name.equals(null) || name.equals("")) {
-			throw new IllegalArgumentException("Wahlkreis ist leer!");
+		if (name == null || name.isEmpty()) {
+			throw new IllegalArgumentException("Der Parameter \"name\" ist null oder ein leerer String!");
 		}
 		this.name = name;
 	}

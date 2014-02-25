@@ -1,5 +1,6 @@
 package main.java.wahlgenerator;
 
+import java.io.IOException;
 import java.util.List;
 
 import main.java.model.Bundestagswahl;
@@ -45,8 +46,9 @@ public abstract class AbstrakterWahlgenerator {
 	 * @param name
 	 *            der Name der Bundestagswahl
 	 * @return die generierte BTW
+	 * @throws IOException 
 	 */
-	public abstract Bundestagswahl erzeugeBTW(String name);
+	public abstract Bundestagswahl erzeugeBTW(String name) throws IOException;
 
 	/**
 	 * Bestimmt anzahlZweitstimmen und anzahlErststimmen

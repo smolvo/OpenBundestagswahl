@@ -43,7 +43,7 @@ public class StimmgewichtSimulatorTest {
 				"src/main/resources/importexport/Ergebnis2009.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		wahl1 = null;
+		
 		try {
 			wahl1 = i.importieren(csvDateien);
 		} catch (Exception e1) {

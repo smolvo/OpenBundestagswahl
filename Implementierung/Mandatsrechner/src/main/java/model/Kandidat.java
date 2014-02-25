@@ -149,8 +149,8 @@ public class Kandidat implements Serializable {
 	 */
 	public void setInfo(String name, String vorname, int geburtsjahr)
 			throws IllegalArgumentException {
-		if (vorname.equals(null) || name.equals(null)) {
-			throw new IllegalArgumentException("Kandidat hat keine Namen.");
+		if (vorname == null || name == null || vorname.isEmpty() || name.isEmpty()) {
+			throw new IllegalArgumentException("Der Parameter \"vorname\" und/oder \"name\" ist null oder ein leerer String!");
 		}
 		this.name = name;
 		this.vorname = vorname;
@@ -214,8 +214,8 @@ public class Kandidat implements Serializable {
 	 *             wenn das Erstimme-Objekt leer ist.
 	 */
 	public void setErststimme(Erststimme erststimme) {
-		if (erststimme.equals(null)) {
-			throw new IllegalArgumentException("Erststimme ist leer!");
+		if (erststimme == null) {
+			throw new IllegalArgumentException("Der Parameter \"erststimme\" ist null!");
 		}
 		this.erststimme = erststimme;
 	}
