@@ -55,19 +55,18 @@ public class Mandatsrechner2009 {
 	 * 
 	 * @param bundestagswahl
 	 *            die zu zuruecksetzende Bundestagswahl.
+	 * @throws IllegalArgumentException wenn die Bundestagswahl null ist
 	 */
 	public void initialisiere(Bundestagswahl bundestagswahl) {
+		if(bundestagswahl == null){
+			throw new IllegalArgumentException("Bundestagswahl ist null");
+		}
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
 				new LinkedList<Kandidat>(), new BerichtDaten()));
 		// Setze alle Kandidaten auf wieder zurueck
 		for (Partei partei : bundestagswahl.getParteien()) {
-			// Setze Ausgleichs- und Ueberhangmandate zurueck.
-			partei.resetUeberhangMandate();
-			partei.resetAusgleichsMandate();
 			// Setze alle Mandate zurueck.
-			for (Kandidat kandidat : partei.getMitglieder()) {
-				kandidat.setMandat(Mandat.KEINMANDAT);
-			}
+			partei.resetPartei();
 		}
 
 		/*
