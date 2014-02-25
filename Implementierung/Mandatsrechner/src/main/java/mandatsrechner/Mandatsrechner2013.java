@@ -74,9 +74,26 @@ public class Mandatsrechner2013 {
 		return bw;
 
 	}
-
-	private float berechneParteidivisor(List<Partei> relevanteParteien) {
-
+	
+	/**
+	 * Öffentliche Methode zum Testen der Methode berechneParteidivisor(...).
+	 * @param relevanteParteien die Liste mit den zu testenden PArteien.
+	 * @return den berechneten PArteidivisor.
+	 */
+	public float testBerechneParteidivisor(List<Partei> relevanteParteien){
+		return this.berechneParteidivisor(relevanteParteien);
+	}
+	
+	/**
+	 * Berechnet den Parteidivisor für die relevanten Parteien.
+	 * @param relevanteParteien die Parteien, die beachtet werden sollen. 
+	 * @return den berechneten Parteidivisor.
+	 * @throws IllegalArgumentException wenn die Liste null ist.
+	 */
+	private float berechneParteidivisor(List<Partei> relevanteParteien) throws IllegalArgumentException{
+		if(relevanteParteien == null){
+			throw new IllegalArgumentException("Liste ist null!");
+		}
 		/*
 		 * Finden eines geeigneten minimalen Parteidivisors um die anzahl der
 		 * neuen Mindestsitze zu bestimmen. Der Parteidivisor ist

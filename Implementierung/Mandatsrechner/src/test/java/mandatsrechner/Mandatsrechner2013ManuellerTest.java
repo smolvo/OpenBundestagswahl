@@ -4,27 +4,26 @@ import java.io.File;
 
 import test.java.Debug;
 import main.java.importexport.ImportExportManager;
-import main.java.mandatsrechner.Mandatsrechner2009;
+import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.model.Mandat;
 import main.java.model.Partei;
 
 /**
- * Testklasse fuer den Mandatsrechner 2009.
+ * Testklasse fuer den Mandatsrechner 2013.
  * 
  * @author 13genesis37
  * 
  */
-public class MandatsrechnerTest {
+public class Mandatsrechner2013ManuellerTest {
 
 	/**
 	 * Die Hauptklasse.
 	 * 
 	 * @param args
-	 *            Kommandozeilen Argumente.
+	 *            Kommandozeilenargumente.
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -41,13 +40,15 @@ public class MandatsrechnerTest {
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}
 
-		Mandatsrechner2009 rechner = Mandatsrechner2009.getInstance();
+		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
 
 		if (w != null) {
-			Bundestagswahl newW = rechner.berechneSainteLague(w);
+			// System.out.println("Test");
+			Bundestagswahl newW = m.berechne(w);
+			// newW = m.berechneAlles(newW);
 			int count = 0;
 			for (Partei partei : newW.getParteien()) {
-				// if(partei.getName().equals("CDU")){
+				// if(partei.getName().equals("SPD")){
 				/*
 				 * for (Bundesland bl :
 				 * newW.getDeutschland().getBundeslaender()) {
@@ -75,9 +76,10 @@ public class MandatsrechnerTest {
 				System.out.println(partei.getName() + ": ");
 				System.out.println("Mandate: "
 						+ partei.getAnzahlMandate(Mandat.LISTENMANDAT));
-
 				System.out.println("Direktmandate: "
 						+ partei.getAnzahlMandate(Mandat.DIREKTMANDAT));
+				System.out.println("Ausgleichsmandate: "
+						+ partei.getAusgleichsMandate());
 				System.out.println("Ueberhangsmandate: "
 						+ partei.getUeberhangMandate());
 				System.out.println("Summe: " + sum);
@@ -91,6 +93,9 @@ public class MandatsrechnerTest {
 				}
 			}
 
+			// Debug.print(w.getSitzverteilung().getBericht().toString());
+			// System.out.println(w.getSitzverteilung().getAbgeordnete().size());
 		}
 	}
+
 }
