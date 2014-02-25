@@ -58,7 +58,7 @@ public class Mandatsrechner2009 {
 	 * @throws IllegalArgumentException wenn die Bundestagswahl null ist
 	 */
 	public void initialisiere(Bundestagswahl bundestagswahl) {
-		if(bundestagswahl == null){
+		if (bundestagswahl == null) {
 			throw new IllegalArgumentException("Bundestagswahl ist null");
 		}
 		bundestagswahl.setSitzverteilung(new Sitzverteilung(
