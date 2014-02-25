@@ -209,20 +209,22 @@ public class Bundestagswahl implements Serializable {
 	 */
 	public boolean setzeStimme(Stimme stimme, boolean chronik) {
 		// TODO
-		boolean success = false;
 		Stimme alteStimme = null;
+		boolean success = false;
 		if (stimme instanceof Erststimme) {
 			alteStimme = this.setzeStimmenAnzahl((Erststimme) stimme);
-			success = true;
 		} else if (stimme instanceof Zweitstimme) {
 			alteStimme = this.setzeStimmenAnzahl((Zweitstimme) stimme);
-			success = true;
 		}
 
 		if (alteStimme == null) {
-			throw new IllegalArgumentException("Stimme nicht gefunden.");
-		} else if (chronik) {
-			this.chronik.sichereStimme(alteStimme, stimme);
+			//throw new IllegalArgumentException("Stimme nicht gefunden.");
+			success = false;
+		} else {
+			if (chronik) {
+				this.chronik.sichereStimme(alteStimme, stimme);
+			}
+			success = true;
 		}
 		return success;
 	}
@@ -292,6 +294,7 @@ public class Bundestagswahl implements Serializable {
 				}
 			}
 		}
+		System.out.println(alteZweitstimme == null);
 		return alteZweitstimme;
 	}
 
