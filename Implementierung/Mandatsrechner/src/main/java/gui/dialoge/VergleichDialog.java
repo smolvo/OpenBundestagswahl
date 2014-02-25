@@ -15,8 +15,8 @@ import main.java.gui.WahlFenster;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse reprï¿½sentiert den Vergleichsdialog. Er wird aufgerufen wenn ein
- * Vergleich geschehen soll.
+ * Diese Klasse reprï¿½sentiert den Vergleichsdialog. Er wird aufgerufen wenn
+ * ein Vergleich geschehen soll.
  * 
  * @author Anton
  * 
@@ -37,7 +37,7 @@ public class VergleichDialog extends JDialog {
 		if (pf == null) {
 			throw new NullPointerException("Geben Sie ein Programmfenster an.");
 		}
-		if (pf.getWahlen().size() < 1) {
+		if (pf.getWahlen().size() <= 1) {
 			JOptionPane.showMessageDialog(pf,
 					"Bitte importieren Sie mindestens zwei Wahlen.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
@@ -86,9 +86,19 @@ public class VergleichDialog extends JDialog {
 		if (list == null) {
 			throw new NullPointerException();
 		}
-		WahlFenster[] namen = new WahlFenster[list.size()];
-		for (int i = 0; i < namen.length; i++) {
-			namen[i] = list.get(i);
+
+		int listenIndex = 0;
+		int arrayIndex = 0;
+		WahlFenster[] namen = new WahlFenster[list.size() - 1];
+
+		while (listenIndex < list.size()) {
+			if (!list.get(listenIndex).getBtw()
+					.equals(Steuerung.getInstance().getBtw())) {
+				namen[arrayIndex] = list.get(listenIndex);
+				arrayIndex++;
+			}
+
+			listenIndex++;
 		}
 		JComboBox<WahlFenster> box = new JComboBox<WahlFenster>(namen);
 		return box;
