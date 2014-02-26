@@ -730,10 +730,10 @@ public class Partei implements Serializable, Comparable<Partei> {
 	/**
 	 * Setzt die Mandate der Partei zurück.
 	 */
-	public void resetPartei(){
+	public void resetPartei() {
 		this.ueberhangMandate = new HashMap<Bundesland, Integer>();
 		this.ausgleichsMandate = new HashMap<Bundesland, Integer>();
-		for(Kandidat kandidat : this.mitglieder){
+		for (Kandidat kandidat : this.mitglieder) {
 			kandidat.setMandat(Mandat.KEINMANDAT);
 		}
 	}
