@@ -265,8 +265,6 @@ public class Bundesland extends Gebiet implements Serializable,
 		int maxStimmzahl = 0;
 		for (Partei partei : parteien) {
 			int aktuellerWert = this.getAnzahlZweitstimmen(partei);
-			// System.out.println(this.getName() + " " + partei.getName() + " "
-			// + maxStimmzahl + " " + aktuellerWert);
 			if (aktuellerWert > maxStimmzahl) {
 				maxStimmzahl = aktuellerWert;
 				staerkstePartei = partei;
