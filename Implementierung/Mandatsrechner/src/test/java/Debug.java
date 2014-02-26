@@ -24,7 +24,7 @@ public class Debug {
 	/**
 	 * Der Konstruktor ist privat, da alle Attribute und Methoden statisch sind.
 	 */
-	private Debug() {}
+	private Debug() { }
 	
 	
 	/**
@@ -32,12 +32,12 @@ public class Debug {
 	 * wenn der aktuell gesetzte Debug mode >= dem dieser Nachricht ist.</p>
 	 * 
 	 * Hier eine Auflistung wie die einzelnen Debug Level verwendet werden sollten:<br />
-	 *    <b>1</b> - sehr wichtige Debug Meldung oder sehr kritischer Fehler<br />
-	 *    <b>2</b> - wichtige Debug Meldunge oder kritischer Fehler<br />
-	 *    <b>3</b> - allgemeine Warnung oder ein wichtiger Hinweis<br />
-	 *    <b>4</b> - Meldung die von allgemeinem Interesse ist<br />
-	 *    <b>5</b> - relativ unwichtige Meldung die nicht ständig ausgegeben werden soll<br />
-	 *    <b>6</b> - Sehr spezielle Meldung die nur in wenigen Fällen von Interesse ist<br />
+	 *    <b>1</b> - <i>sehr wichtige Debug Meldung oder sehr kritischer Fehler</i><br />
+	 *    <b>2</b> - <i>wichtige Debug Meldunge oder kritischer Fehler</i><br />
+	 *    <b>3</b> - <i>allgemeine Warnung oder ein wichtiger Hinweis</i><br />
+	 *    <b>4</b> - <i>Meldung die von allgemeinem Interesse ist</i><br />
+	 *    <b>5</b> - <i>relativ unwichtige Meldung die nicht ständig ausgegeben werden soll</i><br />
+	 *    <b>6</b> - <i>Sehr spezielle Meldung die nur in wenigen Fällen von Interesse ist</i><br />
 	 * 
 	 * @param meldung Nachricht die ausgegeben werden soll
 	 * @param level Der Debug Level dieser Nachricht
@@ -64,6 +64,7 @@ public class Debug {
 	 *    <b>4</b> - <i>Nützliche Debug Meldungen aller Art werden ausgegeben</i><br />
 	 *    <b>5</b> - <i>Sehr gesprächig, jede Kleinigkeit wird ausgegeben</i><br />
 	 *    <b>6</b> - <i>Noch mehr Spam braucht wirklich niemand ;-)</i><br />
+	 * @return Den aktuellen Debug Level
 	 */
 	public static int getLevel() {
 		return level;
