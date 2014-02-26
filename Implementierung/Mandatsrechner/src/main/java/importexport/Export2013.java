@@ -30,6 +30,7 @@ public class Export2013 extends Export {
 	@Override
 	public boolean exportieren(String pfad, Bundestagswahl bw) {
 		// TODO Auto-generated method stub
+		boolean success = false;
 		try {
 			FileWriter f = new FileWriter(new File(pfad));
 			BufferedWriter bf = new BufferedWriter(f);
@@ -137,12 +138,13 @@ public class Export2013 extends Export {
 
 			bf.flush();
 			f.close();
+			success = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return false;
+		return success;
 	}
 
 }

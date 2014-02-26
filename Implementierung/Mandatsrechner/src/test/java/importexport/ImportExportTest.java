@@ -81,7 +81,6 @@ public class ImportExportTest {
 		assertNotNull(w);
 		
 		boolean result = i.exportieren(filePaths[2], w);
-		
 		assertTrue(result);
 	}
 	
