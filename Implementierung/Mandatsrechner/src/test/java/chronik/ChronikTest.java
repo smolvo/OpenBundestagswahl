@@ -1,12 +1,15 @@
 package test.java.chronik;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.chronik.Chronik;
 import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
@@ -33,7 +36,7 @@ import java.awt.color.*;
 public class ChronikTest {
 	private static Bundestagswahl btw = null, btwOrig = null;
 	private static List<Zweitstimme> zweitstimmen;
-	
+	private static Chronik chronik = null;
 	/**
 	 * 
 	 * @throws java.lang.Exception
@@ -58,6 +61,8 @@ public class ChronikTest {
 		}
 		
 		zweitstimmen = new ArrayList<Zweitstimme>();
+		
+		chronik = new Chronik();
 	}
 	
 	/**
@@ -73,12 +78,14 @@ public class ChronikTest {
 	@Before
 	public void setUp() throws Exception {
 		btw = btwOrig.deepCopy();
+		int count = 0;
 		for (Wahlkreis wahlkreis : btw.getDeutschland().getWahlkreise()) {
 			if (wahlkreis.getName().equals("Karlsruhe-Stadt")) {
 				for (Partei partei : btw.getParteien()) {
 					Zweitstimme s = wahlkreis.getZweitstimme(partei);
 					if (s.getAnzahl() > 1000) {
-						Debug.print("Partei: " + partei.getName(), 5);
+						//Debug.print("Partei: " + partei.getName(), 5);
+						s.setAnzahl(count++);
 						zweitstimmen.add(s);
 					}
 				}
@@ -102,7 +109,7 @@ public class ChronikTest {
 	public void basisTest() {
 		int counter = 0;
 		int neueAnzahl = 1000;
-		Zweitstimme s = zweitstimmen.get(0);
+		Zweitstimme s = (Zweitstimme) zweitstimmen.get(0).deepCopy();
 		Debug.print(s.getPartei().getName() + " Anzahl: " + s.getAnzahl() + " NeueAnzahl: " + neueAnzahl, 5);
 		
 		s.setAnzahl(neueAnzahl);
@@ -130,5 +137,31 @@ public class ChronikTest {
 		assertFalse(btw.setzeStimme(s, true));
 		assertFalse(btw.hatStimmenZumZuruecksetzen());
 		
+	}
+	
+	/**
+	 * Simuliert eine Reihe von Stimmenänderungen und prueft
+	 * ob die erwarteten Werte zuruekgegeben wird.
+	 */
+	@Test
+	public void sichereStimmeTest() {
+		
+		assertFalse(chronik.hatStimmenZumZuruecksetzen());
+		assertFalse(chronik.hatStimmenZumWiederherstellen());
+		
+		Zweitstimme s0 = (Zweitstimme) zweitstimmen.get(0).deepCopy();
+		s0.setAnzahl(10);
+		
+		chronik.sichereStimme(zweitstimmen.get(0), s0);
+		
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		assertFalse(chronik.hatStimmenZumWiederherstellen());
+		
+		Zweitstimme oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
+		//System.out.println("sichereStimmeTest: "+zweitstimmen.get(0).getPartei().getName()+"-"+oldS.getPartei().getName()+ " "+zweitstimmen.get(0).getAnzahl()+"-"+ oldS.getAnzahl());
+		assertEquals(zweitstimmen.get(0).getAnzahl(), oldS.getAnzahl());
+		
+		assertFalse(chronik.hatStimmenZumZuruecksetzen());
+		assertTrue(chronik.hatStimmenZumWiederherstellen());
 	}
 }
