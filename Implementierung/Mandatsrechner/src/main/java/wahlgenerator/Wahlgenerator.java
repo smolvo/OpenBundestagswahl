@@ -113,7 +113,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	}
 
 	/**
-	 * Verteilt die ï¿½brigen Anteile der Erst- und Zweitstimmen auf zufï¿½llige
+	 * Verteilt die übrigen Anteile der Erst- und Zweitstimmen auf zufällige
 	 * Parteien.
 	 */
 	private void verteileRestAnteile() {
@@ -135,20 +135,20 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		Random rand = new Random();
 
 		while (restErstAnteil > 0 || restZweitAnteil > 0) {
-			// wï¿½hle zufï¿½llige Partei aus der Liste der Parteien ohne Anteile
+			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
 			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile
 					.size()));
 
-			// Prï¿½fe ob fï¿½r diese Partei in dieser Schleife schonmal Anteile
-			// erzeugt wurden und wï¿½hle diese aus
+			// Prüfe ob für diese Partei in dieser Schleife schonmal Anteile
+			// erzeugt wurden und wähle diese aus
 			Stimmanteile anteil = this.getAnteileVonPartei(partei);
 			if (anteil == null) {
 				anteil = new Stimmanteile(partei, 0, 0);
 				this.getStimmanteile().add(anteil);
 			}
 
-			// fï¿½ge eine zufï¿½llige Anzahl von Erst- und Zweit-Anteilen hinzu
-			// Debug.print("ï¿½brig: restErstAnteil: " + restErstAnteil +
+			// füge eine zufällige Anzahl von Erst- und Zweit-Anteilen hinzu
+			// Debug.print("übrig: restErstAnteil: " + restErstAnteil +
 			// ", restZweitAnteil: " + restZweitAnteil);
 
 			if (restErstAnteil > 0) {
@@ -166,7 +166,6 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 
 		}
-		Debug.print("fertig...", 6);
 	}
 
 	/**

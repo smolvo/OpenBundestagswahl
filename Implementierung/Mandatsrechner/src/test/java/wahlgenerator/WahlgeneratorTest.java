@@ -1,9 +1,6 @@
-/**
- * 
- */
 package test.java.wahlgenerator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -17,16 +14,14 @@ import main.java.model.Partei;
 import main.java.wahlgenerator.Stimmanteile;
 import main.java.wahlgenerator.Wahlgenerator;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import test.java.Debug;
 
+
 /**
- * @author Simon
+ * Testklasse mit Unit Tests für den Wahlgenerator.
  * 
  */
 public class WahlgeneratorTest {
@@ -39,7 +34,7 @@ public class WahlgeneratorTest {
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() {
 
 		Debug.setLevel(5);
 
@@ -54,29 +49,8 @@ public class WahlgeneratorTest {
 			wahl1 = i.importieren(csvDateien);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println("Leine gï¿½ltige CSV-Datei :/");
+			System.out.println("Leine gültige CSV-Datei :/");
 		}
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	/**
@@ -166,6 +140,13 @@ public class WahlgeneratorTest {
 				+ " und nicht 100%!", sumZweitAnteile == 100);
 	}
 
+	
+	@Test
+	public final void verteileRestAnteile_100ProzentVergebenTest() {
+		LinkedList<Stimmanteile> stimmAnt = new LinkedList<>();
+		
+	}
+	
 	@Test
 	public final void afdTest() {
 

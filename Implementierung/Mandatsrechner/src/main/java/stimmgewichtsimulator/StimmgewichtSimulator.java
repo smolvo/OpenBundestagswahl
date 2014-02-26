@@ -510,7 +510,6 @@ public class StimmgewichtSimulator {
 	 * @param anzahlZweitstimmen
 	 * @param richtung
 	 */
-
 	private void fuegeSprungstelleHinzu(int anzahlZweitstimmen,
 			Richtung richtung) {
 

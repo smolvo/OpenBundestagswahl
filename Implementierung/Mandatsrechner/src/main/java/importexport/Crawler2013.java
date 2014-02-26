@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import test.java.Debug;
 import main.java.config.Config;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
@@ -196,7 +195,7 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zurï¿½ck.
+	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zurück.
 	 * 
 	 * @param csvDatei
 	 *            die Wahlbewerber CSV-Datei
@@ -439,7 +438,7 @@ public class Crawler2013 extends Crawler {
 		String name = "";
 		switch (kuerzel) {
 		case "BW":
-			name = "Baden-Wï¿½rttemberg";
+			name = "Baden-Württemberg";
 			break;
 		case "BY":
 			name = "Bayern";
@@ -484,7 +483,7 @@ public class Crawler2013 extends Crawler {
 			name = "Schleswig-Holstein";
 			break;
 		case "TH":
-			name = "Thï¿½ringen";
+			name = "Thüringen";
 			break;
 		default:
 			name = "-";
@@ -493,8 +492,8 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Gibt die Einwohnerzahl aller Bundeslï¿½nder zurï¿½ck. Falls ein Bundesland
-	 * nicht gefunden wird, wird der default-Wert zurï¿½ckgegeben. Dies betrï¿½gt 0.
+	 * Gibt die Einwohnerzahl aller Bundesländer zurück. Falls ein Bundesland
+	 * nicht gefunden wird, wird der default-Wert zurückgegeben. Dies betrï¿½gt 0.
 	 * 
 	 * @param name
 	 *            Name des Bundeslandes
@@ -542,11 +541,11 @@ public class Crawler2013 extends Crawler {
 	}
 
 	/**
-	 * Gibt die Farbe einer Partei zurï¿½ck.
+	 * Gibt die Farbe einer Partei zurück.
 	 * 
 	 * @param parteiName
-	 *            Der Name der gewï¿½nschten Partei.
-	 * @return Gibt ein Farben-Objekt zurï¿½ck.
+	 *            Der Name der gewünschten Partei.
+	 * @return Gibt ein Farben-Objekt zurück.
 	 */
 	private Color getParteiFarbe(String parteiName) {
 		Color color = Color.GRAY;
