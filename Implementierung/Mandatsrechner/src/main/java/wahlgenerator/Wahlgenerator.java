@@ -31,8 +31,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 *            Eine Liste von Stimmanteilen auf Basis derer die Stimmen
 	 *            verteilt werden.
 	 */
-	public Wahlgenerator(Bundestagswahl basisWahl,
-			List<Stimmanteile> stimmanteile) {
+	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
 
 		super(basisWahl, stimmanteile);
 

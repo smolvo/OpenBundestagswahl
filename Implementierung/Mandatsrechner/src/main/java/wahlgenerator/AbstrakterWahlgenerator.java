@@ -6,7 +6,7 @@ import java.util.List;
 import main.java.model.Bundestagswahl;
 
 /**
- * Mit dieser Klasse kï¿½nnen Bundestagswahl- Objekte anhand gegebener
+ * Mit dieser Klasse können Bundestagswahlen anhand gegebener
  * Stimmanteile auf Bundesebene generiert werden.
  */
 public abstract class AbstrakterWahlgenerator {
@@ -31,8 +31,7 @@ public abstract class AbstrakterWahlgenerator {
 	 * @param stimmanteile
 	 *            Die Liste der Stimmanteile pro Partei.
 	 */
-	public AbstrakterWahlgenerator(Bundestagswahl basisWahl,
-			List<Stimmanteile> stimmanteile) {
+	public AbstrakterWahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
 		this.basisWahl = basisWahl;
 		this.stimmanteile = stimmanteile;
 
@@ -41,7 +40,7 @@ public abstract class AbstrakterWahlgenerator {
 
 	/**
 	 * Erzeugt eine neue Bundestagswahl auf der Grundlage der basisWahl und
-	 * fï¿½llt diese
+	 * füllt diese
 	 * 
 	 * @param name
 	 *            der Name der Bundestagswahl
@@ -55,10 +54,8 @@ public abstract class AbstrakterWahlgenerator {
 	 */
 	private void berechneGesamtanzahlStimmen() {
 
-		this.setAnzahlErststimmen(this.basisWahl.getDeutschland()
-				.getAnzahlErststimmen());
-		this.setAnzahlZweitstimmen(this.basisWahl.getDeutschland()
-				.getAnzahlZweitstimmen());
+		this.setAnzahlErststimmen(this.basisWahl.getDeutschland().getAnzahlErststimmen());
+		this.setAnzahlZweitstimmen(this.basisWahl.getDeutschland().getAnzahlZweitstimmen());
 
 		// Debug.print("AnzahlErststimmen Gesamt DEUTSCHLAND: " +
 		// this.getAnzahlErststimmen());
@@ -77,7 +74,7 @@ public abstract class AbstrakterWahlgenerator {
 	public abstract void verteileStimmen(Bundestagswahl btw);
 
 	/**
-	 * Gibt die Basiswahl mit relevanten Strukturdaten zurï¿½ck.
+	 * Gibt die Basiswahl mit relevanten Strukturdaten zurück.
 	 * 
 	 * @return Die Basiswahl mit relevanten Strukturdaten.
 	 */
@@ -103,7 +100,7 @@ public abstract class AbstrakterWahlgenerator {
 	}
 
 	/**
-	 * Gibt die Liste der Stimmanteile pro Partei zurï¿½ck.
+	 * Gibt die Liste der Stimmanteile pro Partei zurück.
 	 * 
 	 * @return die Liste der Stimmanteile pro Partei.
 	 */
@@ -129,7 +126,7 @@ public abstract class AbstrakterWahlgenerator {
 	}
 
 	/**
-	 * Gibt die Gesamtanzahl der Erststimmen zurï¿½ck.
+	 * Gibt die Gesamtanzahl der Erststimmen zurück.
 	 * 
 	 * @return die Gesamtzahl der Erststimmen
 	 */
@@ -155,7 +152,7 @@ public abstract class AbstrakterWahlgenerator {
 	}
 
 	/**
-	 * Gibt die Gesamtanzahl der Zweitstimmen zurï¿½ck.
+	 * Gibt die Gesamtanzahl der Zweitstimmen zurück.
 	 * 
 	 * @return die Gesamtzahl der Zweitstimmen
 	 */
