@@ -152,13 +152,6 @@ public class Mandatsrechner2009Test {
 		
 		this.rechner.initialisiere(this.cloneWahl);
 		this.rechner.testBerechneDirektmandat(this.cloneWahl);
-
-		System.out.println(sa.getWahlkreise().get(2).getWahlkreisSieger().getPartei().getName());
-		System.out.println(sa.getWahlkreise().get(3).getWahlkreisSieger().getPartei().getName());
-		System.out.println(rlp.getWahlkreise().get(10).getWahlkreisSieger().getPartei().getName());
-		System.out.println(rlp.getWahlkreise().get(13).getWahlkreisSieger().getPartei().getName());
-		System.out.println(rlp.getWahlkreise().get(14).getWahlkreisSieger().getPartei().getName());
-		System.out.println();
 		
 		LinkedList<Partei> relevante = this.rechner.testBerechneRelevanteParteien(this.cloneWahl);
 		
@@ -173,7 +166,6 @@ public class Mandatsrechner2009Test {
 			} else if (par.equals(rep)) {
 				enthaeltREP = true;
 			}
-			System.out.println(par.getName());
 		}
 		assertEquals(tierschutz, sa.getWahlkreise().get(2).getWahlkreisSieger().getPartei());
 		assertEquals(tierschutz, sa.getWahlkreise().get(3).getWahlkreisSieger().getPartei());
@@ -183,5 +175,38 @@ public class Mandatsrechner2009Test {
 		assertTrue(enthaeltCDU);
 		assertFalse(enthaeltTS);
 		assertTrue(enthaeltREP);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void rundenTest1() {
+		this.rechner.testRunden(-1, false);
+	}
+	
+	@Test(timeout = 10)
+	public void rundenTest2() {
+		assertEquals(0, this.rechner.testRunden((float) 0.4, false));
+		assertEquals(1, this.rechner.testRunden((float) 0.6, false));
+		boolean auf = false;
+		boolean ab = false;
+		while (!auf || !ab) {
+			if (rechner.testRunden((float) 0.5, true) == 0) {
+				ab = true;
+			} else if (rechner.testRunden((float) 0.5, true) == 1) {
+				auf = true;
+			}
+		}
+	}
+	
+	@Test
+	public void getRelevanteZweitstimmenSummeTest() {
+		LinkedList<Partei> parteien1 = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getParteien();
+		LinkedList<Partei> parteien2 = this.cloneWahl.getDeutschland().getBundeslaender().get(2).getParteien();
+		Bundesland land1 = this.cloneWahl.getDeutschland().getBundeslaender().get(0);
+		Bundesland land2 = this.cloneWahl.getDeutschland().getBundeslaender().get(1);
+		
+		assertEquals(1628290, this.rechner.getRelevanteZweitstimmenSumme(parteien1, land1));
+		assertEquals(883223, this.rechner.getRelevanteZweitstimmenSumme(parteien1, land2));
+		assertEquals(1621447, this.rechner.getRelevanteZweitstimmenSumme(parteien2, land1));
+		assertEquals(879404, this.rechner.getRelevanteZweitstimmenSumme(parteien2, land2));
 	}
 }
