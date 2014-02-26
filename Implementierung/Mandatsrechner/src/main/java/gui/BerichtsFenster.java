@@ -3,7 +3,6 @@ package main.java.gui;
 import java.awt.Dimension;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
