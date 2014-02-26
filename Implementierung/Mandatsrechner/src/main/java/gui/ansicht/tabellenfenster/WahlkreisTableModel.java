@@ -144,6 +144,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					tabellenfenster.getAnsicht().getFenster().getSteuerung()
 							.aktualisiereWahlfenster(gebiet);
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
+					.setzeRueckgaengig(true);
 				} else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
@@ -195,6 +197,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				// wenn die Stimme intern geändert wurde auch in der Tabelle
 				// ändern
 				// und berechne-Knopf aufrufen
+				
 				if (aenderung) {
 					this.tabellenfenster.getAnsicht().berechnungNotwendig();
 					Gebiet gebiet = tabellenfenster.getAnsicht()
@@ -202,6 +205,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					tabellenfenster.getAnsicht().getFenster().getSteuerung()
 							.aktualisiereWahlfenster(gebiet);
 					daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
+					
 					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
 							.setzeRueckgaengig(true);
 				} else {
