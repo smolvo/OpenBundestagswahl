@@ -180,4 +180,18 @@ public class Landesliste implements Serializable {
 		}
 		this.mindestSitzanzahl = mindestSitzanzahl;
 	}
+	
+	/**
+	 * Vergleicht zwei Landeslisten.
+	 * @param liste zu vergleichende Liste
+	 * @return true false
+	 */
+	public boolean equals(Landesliste liste) {
+		if (liste.getPartei().equals(this.partei) && liste.getBundesland().equals(this.bundesland) 
+				&& liste.getListenkandidaten().equals(this.listenkandidaten) 
+				&& (liste.getMindestSitzanzahl() == this.mindestSitzanzahl)) {
+			return true;
+		}
+		return false;
+	}
 }
