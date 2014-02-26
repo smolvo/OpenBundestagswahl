@@ -215,7 +215,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die gesamte Anzahl Erststimmen fï¿½r Deutschland aus.
+	 * Gibt die gesamte Anzahl an gültigen Erststimmen für Deutschland aus.
 	 * 
 	 * @return alle Erststimmen
 	 */
@@ -232,7 +232,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die gesamte Anzahl Zweitstimmen fï¿½r Deutschland aus.
+	 * Gibt die gesamte Anzahl an gültigen Zweitstimmen für Deutschland aus.
 	 * 
 	 * @return alle Zweitstimmen
 	 */

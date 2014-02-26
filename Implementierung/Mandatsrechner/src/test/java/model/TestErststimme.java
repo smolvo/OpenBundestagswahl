@@ -16,6 +16,7 @@ import main.java.importexport.ImportExportManager;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
+import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
 import main.java.model.Partei;
@@ -38,7 +39,7 @@ import test.java.Debug;
  * Die Einwohnerzahlen stammen aus der im Programm bereitgestellten config-
  * Datei
  */
-public class DeutschlandTest {
+public class TestErststimme {
 
 	private static Bundestagswahl ausgangsWahl;
 	private static Bundestagswahl testWahl;
@@ -46,10 +47,13 @@ public class DeutschlandTest {
 	private static Bundesland testBundesland;
 	private static List<Bundesland> testBundeslaender;
 	private static List<Wahlkreis> testWahlkreise;
+	private static Erststimme testErststimme;
+	
+	
 
 	private int parameter;
 
-	public DeutschlandTest() {
+	public TestErststimme() {
 
 	}
 
@@ -88,72 +92,19 @@ public class DeutschlandTest {
 		// Testbundesland ist Schleswig-Holstein
 		testBundesland = testBundeslaender.get(0);
 		testWahlkreise = testBundesland.getWahlkreise();
-	}
-
-	@Test
-	public void testGetErststimmenProPartei() {
-		// TODO
-	}
-
-	@Test
-	public void testGetZweitstimmenProPartei() {
-		// TODO
-	}
-
-	@Test
-	// aus der csv-Datei: Wahlberechtigte - Deutschland - 61946900
-	public void testGetWahlberechtigte() {
-		assertEquals(61946900, testDeutschland.getWahlberechtigte());
-	}
-	
-	@Test
-	// aus der csv-Datei: Wahlberechtigte - Deutschland - 61946900
-	public void testGetEinwohnerzahl() {
-		//TODO
-		assertEquals(0, testDeutschland.getEinwohneranzahl());
-	}
-
-	@Test
-	// aus der csv-Datei: Zweitstimmen - CDU - Deutschland: 14921877
-	// aus der csv-Datei: Zweitstimmen - SPD - Deutschland: 11252215
-	public void testGetAnzahlZweitstimmen() {
-		// CDU
-		assertEquals(14921877,
-				testDeutschland.getAnzahlZweitstimmen(testBundesland
-						.getParteien().get(0)));
-		// SPD
-		assertEquals(11252215,
-				testDeutschland.getAnzahlZweitstimmen(testBundesland
-						.getParteien().get(1)));
-	}
-
-	@Test
-	// aus der csv-Datei: Erststimmen - CDU - Deutschland: 16233642
-	// aus der csv-Datei: Erststimmen - SPD - Deutschland: 12843458
-	public void testGetAnzahlErststimmen() {
-		// CDU
-		assertEquals(16233642, testDeutschland.getAnzahlErststimmen(testBundesland
-				.getParteien().get(0)));
-		// SPD
-		assertEquals(12843458, testDeutschland.getAnzahlErststimmen(testBundesland
-				.getParteien().get(1)));
+		testErststimme = testBundesland.getErststimmenProPartei().get(0);
 	}
 
 	
-	@Test
-	public void testGetWahlkreise() {
-		//TODO
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetAnzahl() {
+		testErststimme.setAnzahl(-1000);
+
 	}
 	
-	@Test
-	// aus der csv-Datei: Erststimmen - Gesamt - Deutschland: 43625042
-	public void testGetGesamtErststimmen() {
-		assertEquals(43625042, testDeutschland.getGesamtErststimmen());
-	}
-	
-	@Test
-	// aus der csv-Datei: Zweitstimmen - Gesamt - Deutschland: 43726856
-	public void testGetGesamtZweitstimmen() {
-		assertEquals(43726856, testDeutschland.getGesamtZweitstimmen());
+	@Test(expected = IllegalArgumentException.class) 
+	public void testErhoeheAnzahl() {
+		
 	}
 }
