@@ -41,6 +41,7 @@ public class ImportExportManager {
 	 *            Datei die importiert werden soll.
 	 * @return das Ergebnis-Objekt.
 	 * @throws Exception
+	 * 	eine Exception
 	 */
 	public Bundestagswahl importieren(File[] csvDateien) throws Exception {
 
@@ -104,7 +105,7 @@ public class ImportExportManager {
 	private Bundestagswahl leseCSVDatei(File[] csvDateien) throws Exception {
 		Bundestagswahl imported = null;
 		for (int i = 0; i < this.crawler.length; i++) {
-			System.out.println(crawler[i].getCrawlerInformation());
+			crawler[i].getCrawlerInformation();
 			imported = crawler[i].erstelleBundestagswahl(csvDateien);
 			if (imported != null) {
 				break;

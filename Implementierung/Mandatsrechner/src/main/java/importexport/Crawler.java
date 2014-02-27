@@ -16,9 +16,8 @@ public abstract class Crawler {
 	/**
 	 * Informationen zum Crawler (z.B. die Quelle)
 	 * 
-	 * @return ein String zur Identifikation des Crawlers.
 	 */
-	public abstract String getCrawlerInformation();
+	public abstract void getCrawlerInformation();
 
 	/**
 	 * Erzeugt aus einer Menge an CSV-Dateien ein Bundestagswahl objekt.

@@ -266,8 +266,7 @@ public class Crawler2013 extends Crawler {
 		String nrDeutschland = "0";
 		for (int i = rows.size() - 1; i >= 0; i--) {
 			if (rows.get(i)[2].equals("")) {
-				// deutschland = new
-				// Deutschland(rows.get(i)[1],values.get(i)[0][0]);
+
 				deutschland = new Deutschland("Deutschland");
 				nrDeutschland = (rows.get(i)[0]);
 
@@ -338,8 +337,6 @@ public class Crawler2013 extends Crawler {
 							if (kandidat == null) {
 								// unbekannte Kandidaten haben jetzt auch
 								// Parteizugehï¿½rigkeiten
-								// kandidat =
-								// ImportExportManager.unbekannterKandidat;
 								kandidat = new Kandidat("-", "-", 0,
 										Mandat.KEINMANDAT, parteien.get(k));
 							}
@@ -392,12 +389,6 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 
-		
-		// TODO: Debug Klasse anschauen und richtig verwenden!
-		//if (Debug.isAktiv()) {
-		//	this.debugDeutschland(deutschland);
-		//}
-
 		if (!error) {
 			created = new Bundestagswahl(name, deutschland, parteien);
 		}
@@ -405,9 +396,9 @@ public class Crawler2013 extends Crawler {
 	}
 
 	@Override
-	public String getCrawlerInformation() {
+	public void getCrawlerInformation() {
 		// TODO Auto-generated method stub
-		return "Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv";
+		Debug.print("Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv", 4);
 	}
 
 	/**
