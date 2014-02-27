@@ -4,7 +4,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.LinkedList;
 
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,7 +25,7 @@ import main.java.wahlvergleich.WahlvergleichTableModel;
  * Diese Klasse repräsentiert das Wahlvergleichsfenster. In diesem werden
  * bestimmmte Daten zweier BTW-Objektes angezeigt.
  */
-public class VergleichsFenster extends JFrame {
+public class VergleichsFenster extends JDialog {
 
 	private static final long serialVersionUID = -5493451520927891697L;
 
@@ -49,9 +49,11 @@ public class VergleichsFenster extends JFrame {
 		this.gbc = new GridBagConstraints();
 		this.setSize(1024, 768);
 		this.setTitle("Vergleich");
+		this.setModal(true);
 		zeigeVergleich(vergleich);
 		erstelleDiagramme(vergleich);
 		this.pack();
+		
 	}
 
 	/**
