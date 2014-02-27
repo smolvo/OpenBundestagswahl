@@ -56,9 +56,14 @@ public class Chronik implements Serializable {
 			this.stimmen.remove(0);
 		}*/
 		Debug.print("Chronik - Aktuelles Element: " + this.aktuellesElement, 4);
-		
+		/*if (this.aktuellesElement >= this.stimmen.size()) {
+			this.stimmen.remove(this.aktuellesElement);
+		}*/
 		this.stimmen.add(this.aktuellesElement, alteStimme.deepCopy());
 		this.aktuellesElement++;
+		/*if (this.aktuellesElement >= this.stimmen.size()) {
+			this.stimmen.remove(this.aktuellesElement);
+		}*/
 		this.stimmen.add(this.aktuellesElement, aktuelleStimme.deepCopy());
 		if (this.stimmen.size() > (this.aktuellesElement + 1)) {
 			for (int i = this.aktuellesElement + 1; i < this.stimmen.size(); i++) {

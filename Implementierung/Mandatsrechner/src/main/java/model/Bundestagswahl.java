@@ -294,7 +294,6 @@ public class Bundestagswahl implements Serializable {
 				}
 			}
 		}
-		System.out.println(alteZweitstimme == null);
 		return alteZweitstimme;
 	}
 

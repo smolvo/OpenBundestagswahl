@@ -44,7 +44,7 @@ public class ChronikTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 
-		Debug.setLevel(5);
+		Debug.setLevel(0);
 
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -92,6 +92,7 @@ public class ChronikTest {
 				break;
 			}
 		}
+		chronik = new Chronik();
 	}
 
 	/**
@@ -163,5 +164,60 @@ public class ChronikTest {
 		
 		assertFalse(chronik.hatStimmenZumZuruecksetzen());
 		assertTrue(chronik.hatStimmenZumWiederherstellen());
+	}
+	
+	/**
+	 * Testet das zuruecksetzen einer Stimme.
+	 */
+	@Test
+	public void zurueckSetzenUndWiederherstellenTest() {
+		Zweitstimme s0 = (Zweitstimme) zweitstimmen.get(0).deepCopy();
+		s0.setAnzahl(10);
+		
+		Zweitstimme s1 = (Zweitstimme) zweitstimmen.get(1).deepCopy();
+		s1.setAnzahl(11);
+		
+		Zweitstimme s2 = (Zweitstimme) zweitstimmen.get(2).deepCopy();
+		s2.setAnzahl(12);
+		testStimme(zweitstimmen.get(0));
+		testStimme(s0);
+		chronik.sichereStimme(zweitstimmen.get(0), s0);
+		testStimme(zweitstimmen.get(1));
+		testStimme(s1);
+		chronik.sichereStimme(zweitstimmen.get(1), s1);
+		testStimme(zweitstimmen.get(2));
+		testStimme(s2);
+		chronik.sichereStimme(zweitstimmen.get(2), s2);
+		
+		Zweitstimme oldS;
+		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
+		testStimme(oldS);
+		assertEquals(zweitstimmen.get(2).getAnzahl(), oldS.getAnzahl());
+		
+		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
+		testStimme(oldS);
+		assertEquals(zweitstimmen.get(1).getAnzahl(), oldS.getAnzahl());
+		
+		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
+		testStimme(oldS);
+		assertEquals(zweitstimmen.get(0).getAnzahl(), oldS.getAnzahl());
+		
+		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
+		testStimme(oldS);
+		assertEquals(zweitstimmen.get(1).getAnzahl(), oldS.getAnzahl());
+		
+		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
+		testStimme(oldS);
+		assertEquals(zweitstimmen.get(2).getAnzahl(), oldS.getAnzahl());
+	}
+	
+	/**
+	 * Gibt den Inhalt einer Stimme testweise aus.
+	 * @param stimme
+	 * 		eine Zweitstimme
+	 */
+	@Ignore
+	public static void testStimme(Zweitstimme stimme) {
+		System.out.println("STIMME - " + stimme.getPartei().getName() + ": " + stimme.getAnzahl());
 	}
 }
