@@ -2,7 +2,6 @@ package test.java.mandatsrechner;
 
 import java.io.File;
 
-import test.java.Debug;
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.model.Bundestagswahl;

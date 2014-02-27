@@ -3,7 +3,6 @@ package test.java.model;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
 
 import main.java.model.Bundestagswahl;

@@ -9,7 +9,7 @@ import main.java.config.Config;
 import org.junit.Test;
 
 /**
- * Tests fï¿½r die Config Klasse
+ * Tests für die Config Klasse
  * 
  */
 public class ConfigTest {

@@ -5,10 +5,7 @@ package test.java.model;
 
 import static org.junit.Assert.*;
 
-import java.awt.Color;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +14,6 @@ import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
-import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
@@ -25,8 +21,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runners.Parameterized.Parameters;
-
 import test.java.Debug;
 
 /**

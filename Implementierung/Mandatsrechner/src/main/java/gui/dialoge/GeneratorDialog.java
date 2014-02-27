@@ -343,7 +343,7 @@ public class GeneratorDialog extends JDialog {
 
 	/**
 	 * Diese Methode wird aufgerufen, wenn der Benutzer eine Stimmanteilangabe
-	 * lï¿½schen mï¿½chte.
+	 * löschen möchte.
 	 * 
 	 * @param panel
 	 *            Panel das gelï¿½scht werden soll

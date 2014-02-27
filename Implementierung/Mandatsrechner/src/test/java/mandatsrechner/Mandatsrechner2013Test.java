@@ -6,39 +6,14 @@ package test.java.mandatsrechner;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.util.LinkedList;
-
-import main.java.mandatsrechner.Mandatsrechner2009;
 import main.java.mandatsrechner.Mandatsrechner2013;
-import main.java.model.BerichtDaten;
-import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
-import main.java.model.Kandidat;
-import main.java.model.Mandat;
-import main.java.model.Partei;
-import main.java.model.Wahlkreis;
 import main.java.steuerung.Steuerung;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
-
-
-
-
-
-
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import test.java.Debug;
 
 /**
  * 
