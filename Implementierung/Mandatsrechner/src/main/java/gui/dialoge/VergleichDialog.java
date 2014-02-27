@@ -39,7 +39,7 @@ public class VergleichDialog extends JDialog {
 		}
 		if (pf.getWahlen().size() <= 1) {
 			JOptionPane.showMessageDialog(pf,
-					"Bitte importieren Sie mindestens zwei Wahlen.", "Meldung",
+					"Es müssen mindestens zwei Wahlen zum Vergleich vorhanden sein.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
 		} else {
 			final JDialog wahlAuswahl = new JDialog();
