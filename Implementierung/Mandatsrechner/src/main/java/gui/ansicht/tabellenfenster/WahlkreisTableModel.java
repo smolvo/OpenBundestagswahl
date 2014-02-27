@@ -129,7 +129,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			} catch (NumberFormatException e) {
 
 				JOptionPane.showMessageDialog(this.tabellenfenster,
-						"Nur positive ganze Zahlen erlaubt.", "Meldung",
+						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 
 			}
@@ -146,13 +146,13 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
 					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
 					.setzeRueckgaengig(true);
-				} else {
+			} /** else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
 							"Stimme konnte nicht geändert werden.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
 
-				}
+				} */
 			}
 		} else if (columnIndex == 4) {
 			int alterWert = daten.getZweitstimmen(rowIndex).getAnzahl();
@@ -189,7 +189,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			} catch (NumberFormatException e) {
 
 				JOptionPane.showMessageDialog(this.tabellenfenster,
-						"Nur positive ganze Zahlen erlaubt.", "Meldung",
+						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 
 			}
@@ -208,13 +208,13 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					
 					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
 							.setzeRueckgaengig(true);
-				} else {
+				} /**else {
 
 					JOptionPane.showMessageDialog(this.tabellenfenster,
 							"Stimme konnte nicht geändert werden.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
 
-				}
+				} */
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
