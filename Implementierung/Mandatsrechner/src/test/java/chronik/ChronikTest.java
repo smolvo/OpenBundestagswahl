@@ -41,7 +41,7 @@ public class ChronikTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 
-		Debug.setLevel(0);
+		Debug.setLevel(6);
 
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -90,6 +90,7 @@ public class ChronikTest {
 			}
 		}
 		chronik = new Chronik();
+		System.out.println("\n\nSTART");
 	}
 
 	/**
@@ -98,6 +99,8 @@ public class ChronikTest {
 	@After
 	public void tearDown() throws Exception {
 		zweitstimmen.clear();
+		System.out.println("END");
+		
 	}
 
 	/**
@@ -108,7 +111,6 @@ public class ChronikTest {
 		int counter = 0;
 		int neueAnzahl = 1000;
 		Zweitstimme s = (Zweitstimme) zweitstimmen.get(0).deepCopy();
-		Debug.print(s.getPartei().getName() + " Anzahl: " + s.getAnzahl() + " NeueAnzahl: " + neueAnzahl, 5);
 		
 		s.setAnzahl(neueAnzahl);
 		
@@ -147,10 +149,13 @@ public class ChronikTest {
 		assertFalse(chronik.hatStimmenZumZuruecksetzen());
 		assertFalse(chronik.hatStimmenZumWiederherstellen());
 		
+		chronik.debug();
+		
 		Zweitstimme s0 = (Zweitstimme) zweitstimmen.get(0).deepCopy();
 		s0.setAnzahl(10);
 		
 		chronik.sichereStimme(zweitstimmen.get(0), s0);
+		chronik.debug();
 		
 		assertTrue(chronik.hatStimmenZumZuruecksetzen());
 		assertFalse(chronik.hatStimmenZumWiederherstellen());
@@ -158,7 +163,7 @@ public class ChronikTest {
 		Zweitstimme oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
 		//System.out.println("sichereStimmeTest: "+zweitstimmen.get(0).getPartei().getName()+"-"+oldS.getPartei().getName()+ " "+zweitstimmen.get(0).getAnzahl()+"-"+ oldS.getAnzahl());
 		assertEquals(zweitstimmen.get(0).getAnzahl(), oldS.getAnzahl());
-		
+		chronik.debug();
 		assertFalse(chronik.hatStimmenZumZuruecksetzen());
 		assertTrue(chronik.hatStimmenZumWiederherstellen());
 	}
@@ -176,45 +181,82 @@ public class ChronikTest {
 		
 		Zweitstimme s2 = (Zweitstimme) zweitstimmen.get(2).deepCopy();
 		s2.setAnzahl(12);
-		testStimme(zweitstimmen.get(0));
-		testStimme(s0);
+
+		chronik.debug();
 		chronik.sichereStimme(zweitstimmen.get(0), s0);
-		testStimme(zweitstimmen.get(1));
-		testStimme(s1);
+		
+		chronik.debug();
 		chronik.sichereStimme(zweitstimmen.get(1), s1);
-		testStimme(zweitstimmen.get(2));
-		testStimme(s2);
+
+		chronik.debug();
 		chronik.sichereStimme(zweitstimmen.get(2), s2);
 		
 		Zweitstimme oldS;
+		chronik.debug();
 		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
-		testStimme(oldS);
 		assertEquals(zweitstimmen.get(2).getAnzahl(), oldS.getAnzahl());
-		
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
 		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
-		testStimme(oldS);
 		assertEquals(zweitstimmen.get(1).getAnzahl(), oldS.getAnzahl());
-		
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
 		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
-		testStimme(oldS);
 		assertEquals(zweitstimmen.get(0).getAnzahl(), oldS.getAnzahl());
-		
+		assertFalse(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
 		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
-		testStimme(oldS);
 		assertEquals(zweitstimmen.get(1).getAnzahl(), oldS.getAnzahl());
-		
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
 		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
-		testStimme(oldS);
 		assertEquals(zweitstimmen.get(2).getAnzahl(), oldS.getAnzahl());
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
 	}
 	
 	/**
-	 * Gibt den Inhalt einer Stimme testweise aus.
-	 * @param stimme
-	 * 		eine Zweitstimme
+	 * Setzt Stimmen zurueck und macht danne eine veränderung an 
+	 * den Stimmen.
 	 */
-	@Ignore
-	public static void testStimme(Zweitstimme stimme) {
-		System.out.println("STIMME - " + stimme.getPartei().getName() + ": " + stimme.getAnzahl());
+	@Test
+	public void zurueckSetzenUndStimmeSichernTest() {
+		Zweitstimme s0 = (Zweitstimme) zweitstimmen.get(0).deepCopy();
+		s0.setAnzahl(10);
+		
+		Zweitstimme s1 = (Zweitstimme) zweitstimmen.get(1).deepCopy();
+		s1.setAnzahl(11);
+		
+		Zweitstimme s2 = (Zweitstimme) zweitstimmen.get(2).deepCopy();
+		s2.setAnzahl(12);
+		
+		Zweitstimme s3 = (Zweitstimme) zweitstimmen.get(3).deepCopy();
+		s3.setAnzahl(13);
+		
+		chronik.debug();
+		
+		chronik.sichereStimme(zweitstimmen.get(0), s0);
+		chronik.debug();
+		
+		chronik.sichereStimme(zweitstimmen.get(1), s1);
+		chronik.debug();
+		
+		chronik.sichereStimme(zweitstimmen.get(2), s2);
+		chronik.debug();
+		
+		Zweitstimme oldS;
+		oldS = (Zweitstimme) chronik.zuruecksetzenStimme();
+		chronik.debug();
+		
+		assertTrue(chronik.hatStimmenZumWiederherstellen());
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		
+		chronik.sichereStimme(zweitstimmen.get(3), s3);
+		chronik.debug();
+		assertFalse(chronik.hatStimmenZumWiederherstellen());
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		
 	}
+	
+
 }

@@ -137,7 +137,7 @@ public class ImportExportTest {
 		w = i.importieren(csvDateien);
 	
 		
-		//assertNotNull(w);
+		assertNull(w);
 		
 		//boolean result = i.exportieren(filePaths[2], w);
 		//assertTrue(result);

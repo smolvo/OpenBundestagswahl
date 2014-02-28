@@ -6,7 +6,9 @@ import java.util.List;
 
 import test.java.Debug;
 
+import main.java.model.Erststimme;
 import main.java.model.Stimme;
+import main.java.model.Zweitstimme;
 
 /**
  * Die Chronik setzt Stimmen, die in der GUI verändert wurden zurück. Es können
@@ -55,18 +57,19 @@ public class Chronik implements Serializable {
 		/*if (this.stimmen.size() > maxStimmen) {
 			this.stimmen.remove(0);
 		}*/
-		Debug.print("Chronik - Aktuelles Element: " + this.aktuellesElement, 4);
+		//Debug.print("Chronik - Aktuelles Element: " + this.aktuellesElement, 4);
 		/*if (this.aktuellesElement >= this.stimmen.size()) {
 			this.stimmen.remove(this.aktuellesElement);
 		}*/
+
 		this.stimmen.add(this.aktuellesElement, alteStimme.deepCopy());
 		this.aktuellesElement++;
-		/*if (this.aktuellesElement >= this.stimmen.size()) {
-			this.stimmen.remove(this.aktuellesElement);
-		}*/
+
 		this.stimmen.add(this.aktuellesElement, aktuelleStimme.deepCopy());
+		//System.out.println("#### " + this.currentSize() +  " " + this.aktuellesElement);
+
 		if (this.stimmen.size() > (this.aktuellesElement + 1)) {
-			for (int i = this.aktuellesElement + 1; i < this.stimmen.size(); i++) {
+			for (int i = this.aktuellesElement + 1; i <= this.stimmen.size(); i++) {
 				Debug.print("Chronik - Loesche Element an Stelle " + i, 5);
 				this.stimmen.remove(this.aktuellesElement + 1);
 			}
@@ -120,5 +123,24 @@ public class Chronik implements Serializable {
 	public boolean hatStimmenZumWiederherstellen () {
 		return this.stimmen.size() - 1 > this.aktuellesElement;
 	}
+	
+	/**
+	 * 
+	 */
+	public void debug() {
+		Debug.print("Chronik Debug. Current Element: " + this.aktuellesElement + " / " + (this.stimmen.size() - 1), 5);
+		for (int i = 0; i < this.stimmen.size(); i++) {
+			if (this.stimmen.get(i) instanceof Erststimme) {
+				Erststimme erststimme = (Erststimme) this.stimmen.get(i);
+				Debug.print(i + " Erststimme:\t\t" + erststimme.getGebiet().getName() + "\t" + erststimme.getAnzahl(), 5);
+			} else if (this.stimmen.get(i) instanceof Zweitstimme) {
+				Zweitstimme zweitstimme = (Zweitstimme) this.stimmen.get(i);
+				Debug.print(i + " Zweitstimme:\t" + zweitstimme.getGebiet().getName() + "\t" + zweitstimme.getAnzahl(), 5);
+			} else {
+				Debug.print(i + "Unkown", 5);
+			}
+		}
+	}
+	
 	
 }
