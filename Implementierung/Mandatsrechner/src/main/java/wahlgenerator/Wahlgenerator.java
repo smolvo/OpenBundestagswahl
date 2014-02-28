@@ -1,6 +1,5 @@
 package main.java.wahlgenerator;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,10 +17,24 @@ import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
 /**
- * Diese Klasse dient zum gernerieren von Bundestagswahlen.
+ * Mit dieser Klasse können Bundestagswahlen anhand gegebener
+ * Stimmanteile auf Bundesebene generiert werden.
  */
-public class Wahlgenerator extends AbstrakterWahlgenerator {
+public class Wahlgenerator {
+	
+	/** Die Basiswahl mit relevanten Strukturdaten. */
+	private Bundestagswahl basisWahl;
 
+	/** Die Liste der Stimmanteile pro Partei. */
+	private List<Stimmanteile> stimmanteile;
+
+	/** Die Anzahl der Erststimmen aller Wahlberechtigten. */
+	private Integer anzahlErststimmen;
+
+	/** Die Anzahl der Zweitstimmen aller Wahlberechtigten. */
+	private Integer anzahlZweitstimmen;
+
+	
 	/**
 	 * Erzeugt einen neuen Wahlgenerator.
 	 * 
@@ -33,11 +46,16 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 */
 	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
 
-		super(basisWahl, stimmanteile);
+		Debug.setLevel(5);
+		
+		this.setBasisWahl(basisWahl);
+		this.setStimmanteile(stimmanteile);
+		
+		berechneGesamtanzahlStimmen();
 
-		// this.getBasisWahl().setSitzverteilung(new Sitzverteilung(new
-		// LinkedList<Kandidat>(), new BerichtDaten()));
-
+		/*
+		 * Prüft ob die gegebenen Stimmanteile korrekt sind.
+		 */
 		int summeErst = 0;
 		int summeZweit = 0;
 		for (Stimmanteile sa : stimmanteile) {
@@ -49,7 +67,6 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			summeErst += sa.getAnteilErststimmen();
 			summeZweit += sa.getAnteilZweitstimmen();
 		}
-
 		if (summeErst > 100 || summeZweit > 100) {
 			throw new IllegalArgumentException(
 					"Die Summe der Erst- und/oder Zweitstimmenanteile sind größer als 100!");
@@ -58,6 +75,14 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			throw new IllegalArgumentException(
 					"Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
 		}
+	}
+	
+	/**
+	 * Bestimmt anzahlZweitstimmen und anzahlErststimmen
+	 */
+	private void berechneGesamtanzahlStimmen() {
+		this.setAnzahlErststimmen(this.basisWahl.getDeutschland().getAnzahlErststimmen());
+		this.setAnzahlZweitstimmen(this.basisWahl.getDeutschland().getAnzahlZweitstimmen());
 	}
 
 	/**
@@ -68,33 +93,28 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 *            der name der BTW
 	 * @return eine generierte Bundestagswahl
 	 */
-	@Override
 	public Bundestagswahl erzeugeBTW(String name) {
 
-		if (name == null) {
+		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException(
-					"Der Parameter \"name\" ist null!");
+					"Der Parameter \"name\" ist null oder ein leerer String!");
 		}
 
+		// verteile restliche Anteile sofern nicht jeweils 100% Erst- und Zweitstimmen vergeben sind
 		this.verteileRestAnteile();
 
-		Bundestagswahl clone = null;
-
-		// erstelle tiefe Kopie
-		try {
-			clone = this.getBasisWahl().deepCopy();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// erstelle eine tiefe Kopie der Basiswahl als Grundlage
+		Bundestagswahl clone = this.getBasisWahl().deepCopy();
 
 		// Setze die komplette Auswertung auf NULL
 		Mandatsrechner2009.getInstance().initialisiere(clone);
+		
 		// Name der neuen Wahl setzen
 		clone.setName(name);
 		
+		// Debug Ausgabe der kompletten Anteile pro Partei
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
-
 		for (Stimmanteile sa : this.getStimmanteile()) {
 			sumErstAnteil += sa.getAnteilErststimmen();
 			sumZweitAnteil += sa.getAnteilZweitstimmen();
@@ -102,12 +122,14 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					+ ", ErstAnteil: " + sa.getAnteilErststimmen()
 					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%", 4);
 		}
-		Debug.print("===> sumErstAnteil: " + sumErstAnteil
-				+ "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
+		Debug.print("===> sumErstAnteil: " + sumErstAnteil + "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
 
 		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
 
+		Debug.setLevel(0);
+		
+		// Gebe die generierte Wahl zurück
 		return clone;
 	}
 
@@ -117,6 +139,9 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	 */
 	private void verteileRestAnteile() {
 
+		/*
+		 * berechne die restlichen Anteile, die Parteien zugewiesen werden sollen
+		 */
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
 
@@ -130,13 +155,16 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 		Debug.print("restErstAnteil: " + restErstAnteil
 				+ "%, restZweitAnteil: " + restZweitAnteil + "%\n", 4);
 
+		
+		/*
+		 * Verteile die restlichen Anteile auf zufällige Parteien
+		 */
 		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
 		Random rand = new Random();
 
 		while (restErstAnteil > 0 || restZweitAnteil > 0) {
 			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
-			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile
-					.size()));
+			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
 
 			// Prüfe ob für diese Partei in dieser Schleife schonmal Anteile
 			// erzeugt wurden und wähle diese aus
@@ -152,15 +180,13 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 
 			if (restErstAnteil > 0) {
 				int anteilErst = rand.nextInt(restErstAnteil) + 1;
-				anteil.setAnteilErststimmen(anteil.getAnteilErststimmen()
-						+ anteilErst);
+				anteil.setAnteilErststimmen(anteil.getAnteilErststimmen() + anteilErst);
 				restErstAnteil -= anteilErst;
 			}
 
 			if (restZweitAnteil > 0) {
 				int anteilZweit = rand.nextInt(restZweitAnteil) + 1;
-				anteil.setAnteilZweitstimmen(anteil.getAnteilZweitstimmen()
-						+ anteilZweit);
+				anteil.setAnteilZweitstimmen(anteil.getAnteilZweitstimmen() + anteilZweit);
 				restZweitAnteil -= anteilZweit;
 			}
 
@@ -168,19 +194,17 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 	}
 
 	/**
-	 * Verteilt die Stimmen der Parteien fï¿½r diejenigen Stimmanteile angegeben
-	 * sind auf zufï¿½llige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien
+	 * Verteilt die Stimmen der Parteien für diejenigen Stimmanteile angegeben
+	 * sind auf zufufällige Wahlkreise. Die Bundesweiten Stimmanteile der Parteien
 	 * bleiben dabei erhalten. Bundesland- und Wahlkreisweit werden die Stimmen
-	 * zufï¿½llig verteilt.
+	 * zufällig verteilt.
 	 * 
 	 * @param btw
 	 *            die BTW auf die verteilt werden soll
 	 */
-	@Override
 	public void verteileStimmen(Bundestagswahl btw) {
 
-		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland()
-				.getWahlkreise();
+		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
 		int anzahlWahlkreise = alleWahlkreise.size();
 
 		// durchlaufe alle Wahlkreise
@@ -191,16 +215,8 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				erst.setAnzahl(0);
 
 				if (erst.getKandidat().getPartei() == null) {
-					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: "
-							+ erst.getKandidat().getName() + ", Partei: NULL", 5);
+					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: " + erst.getKandidat().getName() + ", Partei: NULL", 4);
 				}
-
-				// if
-				// (erst.getKandidat().equals(ImportExportManager.unbekannterKandidat))
-				// {
-				// erst = null;
-				// }
-				// erst = null;
 			}
 			// durchlaufe alle Zweitstimmen
 			for (Zweitstimme zweit : wk.getZweitstimmenProPartei()) {
@@ -210,7 +226,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 		}
 
-		// durchlaufe Parteien fï¿½r die Stimmen verteilt werden sollen
+		// durchlaufe Parteien für die Stimmen verteilt werden sollen
 		for (Stimmanteile sa : this.getStimmanteile()) {
 
 			Partei saPartei = sa.getPartei();
@@ -224,8 +240,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 
 			if (partei == null) {
-				throw new NullPointerException(
-						"Partei ist null! Das sollte eigentlich nicht vorkommen ;-)!");
+				throw new NullPointerException("Partei ist null! Das sollte eigentlich nicht vorkommen ;-)!");
 			}
 
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this
@@ -251,7 +266,7 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 					|| vergebeneZweit < anzahlZweitstimmen) {
 
 				if (vergebeneErst < anzahlErststimmen) {
-					// Wahlkreis zufï¿½llig wï¿½hlen
+					// Wahlkreis zufällig wählen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 
 					if (wk.getErststimmenProPartei().size() != 35) {
@@ -264,29 +279,26 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 							(wk.getWahlberechtigte() - wk
 									.getAnzahlErststimmen()));
 
-					// Wenn maximal mï¿½gliche Stimmzahl positiv, dann wï¿½hle eine
-					// zufï¿½llig eine in dem Intervall [1,max]
+					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
+					// zufällig eine in dem Intervall [1,max]
 					if (stimmzahl != 0) {
 						stimmzahl = rand.nextInt(stimmzahl) + 1;
 					}
 
-					// zugehï¿½riges Erststimmenobjekt finden
+					// zugehöriges Erststimmenobjekt finden
 					Erststimme erst = wk.getErststimme(partei);
 
-					// Stimmzahl erhï¿½hen, falls Erststimmen-Objekt gefunden
+					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
 					if (erst != null) {
 						erst.erhoeheAnzahl(stimmzahl);
 						vergebeneErst += stimmzahl;
 					} else {
-						// System.out.println("Erststimme ist null!, " +
-						// partei.getName() + " : " + wk.getName());
-						// Kandidat kan = new Kandidat(Mandat.KEINMANDAT,
-						// partei, erst);
-						Kandidat kan = new Kandidat("unbekannt", "-", 0,
-								Mandat.KEINMANDAT, partei);
+						Debug.print("ACHTUNG!!!! : Erststimme ist null!, " + partei.getName() + " : " + wk.getName(), 2);
+						
+						//Kandidat kan = new Kandidat(Mandat.KEINMANDAT, partei, erst);
+						Kandidat kan = new Kandidat("unbekannt", "-", 0, Mandat.KEINMANDAT, partei);
 
 						erst = new Erststimme(stimmzahl, wk, kan);
-						// erst.setKandidat(kan);
 
 						wk.getErststimmenProPartei().add(erst);
 						partei.addMitglied(kan);
@@ -295,34 +307,30 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 				}
 
 				if (vergebeneZweit < anzahlZweitstimmen) {
-					// Wahlkreis zufï¿½llig wï¿½hlen
+					// Wahlkreis zufällig wählen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
 
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
 					stimmzahl = Math.min((anzahlZweitstimmen - vergebeneZweit),
-							(wk.getWahlberechtigte() - wk
-									.getAnzahlZweitstimmen()));
+							(wk.getWahlberechtigte() - wk.getAnzahlZweitstimmen()));
 
-					// Wenn maximal mï¿½gliche Stimmzahl positiv, dann wï¿½hle eine
-					// zufï¿½llig eine in dem Intervall [1,max]
+					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
+					// zufällig eine in dem Intervall [1,max]
 					if (stimmzahl != 0) {
 						stimmzahl = rand.nextInt(stimmzahl) + 1;
 					}
 
-					// zugehï¿½riges Erststimmenobjekt finden
+					// zugehöriges Erststimmenobjekt finden
 					Zweitstimme zweit = wk.getZweitstimme(partei);
 
-					// Stimmzahl erhï¿½hen, falls Erststimmen-Objekt gefunden
+					// Stimmzahl erhöhen, falls Erststimmen-Objekt gefunden
 					if (zweit != null) {
 						zweit.erhoeheAnzahl(stimmzahl);
 						vergebeneZweit += stimmzahl;
 					} else {
-						System.out.println("Zweitstimme ist null!, "
-								+ partei.getName() + " : " + wk.getName());
-						// wk.getZweitstimmen().add(new Zweitstimme(stimmzahl,
-						// wk, partei));
+						Debug.print("ACHTUNG!!!! : Zweitstimme ist null!, " + partei.getName() + " : " + wk.getName(), 2);
+						// wk.getZweitstimmen().add(new Zweitstimme(stimmzahl, wk, partei));
 					}
-					// vergebeneZweit += stimmzahl;
 				}
 
 			}
@@ -391,6 +399,110 @@ public class Wahlgenerator extends AbstrakterWahlgenerator {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Gibt die Basiswahl mit relevanten Strukturdaten zurück.
+	 * 
+	 * @return Die Basiswahl mit relevanten Strukturdaten.
+	 */
+	public Bundestagswahl getBasisWahl() {
+		return basisWahl;
+	}
+
+	/**
+	 * Setzt die Basiswahl mit relevanten Strukturdaten.
+	 * 
+	 * @param basisWahl
+	 *            Die Basiswahl mit relevanten Strukturdaten.
+	 * @throws IllegalArgumentException
+	 *             wenn der Parameter basisWahl null ist.
+	 */
+	public void setBasisWahl(Bundestagswahl basisWahl)
+			throws IllegalArgumentException {
+		if (basisWahl == null) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"basisWahl\" ist null!");
+		}
+		this.basisWahl = basisWahl;
+	}
+
+	/**
+	 * Gibt die Liste der Stimmanteile pro Partei zurück.
+	 * 
+	 * @return die Liste der Stimmanteile pro Partei.
+	 */
+	public List<Stimmanteile> getStimmanteile() {
+		return stimmanteile;
+	}
+
+	/**
+	 * Setzt die Liste der Stimmanteile pro Partei.
+	 * 
+	 * @param stimmanteile
+	 *            Die Liste der Stimmanteile pro Partei.
+	 * @throws IllegalArgumentException
+	 *             Wenn der Parameter stimmanteile leer oder null ist.
+	 */
+	public void setStimmanteile(List<Stimmanteile> stimmanteile)
+			throws IllegalArgumentException {
+		if (stimmanteile == null) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"stimmanteile\" ist null!");
+		}
+		this.stimmanteile = stimmanteile;
+	}
+
+	/**
+	 * Gibt die Gesamtanzahl der Erststimmen zurück.
+	 * 
+	 * @return die Gesamtzahl der Erststimmen
+	 */
+	public Integer getAnzahlErststimmen() {
+		return anzahlErststimmen;
+	}
+
+	/**
+	 * Setzt die Gesamtzahl der Erststimmen.
+	 * 
+	 * @param anzahlErststimmen
+	 *            Die Gesamtzahl der Erststimmen.
+	 * @throws IllegalArgumentException
+	 *             Wenn der Parameter anzahlErststimmen ist negativ ist.
+	 */
+	public void setAnzahlErststimmen(Integer anzahlErststimmen)
+			throws IllegalArgumentException {
+		if (anzahlErststimmen < 0) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"anzahlErststimmen\" ist negativ!");
+		}
+		this.anzahlErststimmen = anzahlErststimmen;
+	}
+
+	/**
+	 * Gibt die Gesamtanzahl der Zweitstimmen zurück.
+	 * 
+	 * @return die Gesamtzahl der Zweitstimmen
+	 */
+	public Integer getAnzahlZweitstimmen() {
+		return anzahlZweitstimmen;
+	}
+
+	/**
+	 * Setzt die Gesamtzahl der Zweitstimmen.
+	 * 
+	 * @param anzahlZweitstimmen
+	 *            Die Gesamtzahl der Zweitstimmen.
+	 * @throws IllegalArgumentException
+	 *             Wenn der Parameter anzahlZweitstimmen ist negativ ist.
+	 */
+	public void setAnzahlZweitstimmen(Integer anzahlZweitstimmen)
+			throws IllegalArgumentException {
+		if (anzahlZweitstimmen < 0) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"anzahlErststimmen\" ist negativ!");
+		}
+		this.anzahlZweitstimmen = anzahlZweitstimmen;
 	}
 
 }

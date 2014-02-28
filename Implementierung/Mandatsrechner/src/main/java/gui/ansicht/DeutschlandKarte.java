@@ -15,6 +15,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import test.java.Debug;
 import main.java.model.Bundesland;
 import main.java.model.Deutschland;
 import main.java.model.Partei;
@@ -185,8 +186,8 @@ public class DeutschlandKarte extends JPanel {
 		for (int i = 0; i < 16; i++) {
 			BufferedImage aktuellesBild = bundeslandBilder[i];
 			Color bwfarbe = bundeslaender.get(i).getFarbe();
-			System.out.println(bundeslaender.get(i) + " "
-					+ bundeslaender.get(i).getFarbe());
+			Debug.print(bundeslaender.get(i) + " "
+					+ bundeslaender.get(i).getFarbe(), 5);
 			try {
 				int hoehe = aktuellesBild.getHeight();
 				int breite = aktuellesBild.getWidth();

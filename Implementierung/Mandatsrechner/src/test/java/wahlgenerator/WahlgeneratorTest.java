@@ -53,7 +53,7 @@ public class WahlgeneratorTest {
 			WahlgeneratorTest.wahl2009 = iem.importieren(csvDateien);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.err.println("Die zu importierenden csv Dateien sind ungültig!");
+			fail("Die zu importierenden csv Dateien sind ungültig!");
 		}
 		
 	}

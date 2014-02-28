@@ -159,10 +159,8 @@ public class Bundestagswahl implements Serializable {
 	 * diese zurueck.
 	 * 
 	 * @return eine tiefe Kopie dieses Objekts.
-	 * @throws IOException
-	 *             Beim Serialisieren oder Deserialisieren.
 	 */
-	public Bundestagswahl deepCopy() throws IOException {
+	public Bundestagswahl deepCopy() {
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 
@@ -172,23 +170,31 @@ public class Bundestagswahl implements Serializable {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			oos = new ObjectOutputStream(bos);
 
-			// serialisiere und ï¿½bergebe das Objekt
+			// serialisiere und übergebe das Objekt
 			oos.writeObject(this);
 			oos.flush();
 			ByteArrayInputStream bin = new ByteArrayInputStream(
 					bos.toByteArray());
 			ois = new ObjectInputStream(bin);
 
-			// gib das geklonte Objekt zurï¿½ck
+			// gib das geklonte Objekt zurück
 			result = (Bundestagswahl) ois.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (oos != null) {
-				oos.close();
+				try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			if (ois != null) {
-				ois.close();
+				try {
+					ois.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
