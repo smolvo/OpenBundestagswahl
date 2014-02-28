@@ -14,6 +14,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import test.java.Debug;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.steuerung.Steuerung;
@@ -56,7 +57,10 @@ public class TabLeiste extends JTabbedPane {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				int i = getSelectedIndex();
-				Steuerung.getInstance().setBtw(pf.getWahlen().get(i).getBtw());
+				if (i > 0) {
+					Steuerung.getInstance().setBtw(pf.getWahlen().get(i).getBtw());
+				}
+		
 			}
 
 		});

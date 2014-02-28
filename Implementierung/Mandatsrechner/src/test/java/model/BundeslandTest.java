@@ -10,8 +10,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
+import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
 import main.java.model.Wahlkreis;
@@ -21,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import test.java.Debug;
 
 /**
@@ -65,6 +68,7 @@ public class BundeslandTest {
 			System.out.println("Keine gï¿½ltige CSV-Datei :/");
 		}
 
+		Mandatsrechner2013.getInstance().berechne(ausgangsWahl);
 		Debug.setLevel(6);
 	}
 
@@ -97,9 +101,34 @@ public class BundeslandTest {
 
 	}
 
+	
+	// aus der csv-Datei: SPD - Erststimmen - 596882
+	// aus der csv-Datei: CDU - Erststimmen - 708702
+	// aus der csv-Datei: FDP - Erststimmen - 37526
+	
+//erststimmen.get(1).getKandidat() liefert Kandidat zurück, der nur mit "nulls" initialisiert ist 
+	//-> Bundesland.getErststimmenProPartei() macht nicht viel Sinn
 	@Test
 	public void testGetErststimmenProPartei() {
-		// TODO
+		List<Erststimme> erststimmen = testBundesland
+				.getErststimmenProPartei();
+
+		assertEquals(35, erststimmen.size());
+		
+		assertEquals("SPD", erststimmen.get(1).getKandidat().getPartei().getName());
+		assertEquals("Schleswig-Holstein", erststimmen.get(0).getGebiet()
+				.getName());
+		assertEquals(596882, erststimmen.get(1).getAnzahl());
+		
+		assertEquals("CDU", erststimmen.get(0).getKandidat().getPartei().getName());
+		assertEquals("Schleswig-Holstein", erststimmen.get(1).getGebiet()
+				.getName());
+		assertEquals(708702, erststimmen.get(0).getAnzahl());
+		
+		assertEquals("FDP", erststimmen.get(2).getKandidat().getPartei().getName());
+		assertEquals("Schleswig-Holstein", erststimmen.get(2).getGebiet()
+				.getName());
+		assertEquals(37526, erststimmen.get(2).getAnzahl());
 	}
 
 	@Test
@@ -108,10 +137,10 @@ public class BundeslandTest {
 				.getZweitstimmenProPartei();
 
 		assertEquals(35, zweitstimmen.size());
-		assertEquals("SPD", zweitstimmen.get(0).getPartei().getName());
+		assertEquals("SPD", zweitstimmen.get(1).getPartei().getName());
 		assertEquals("Schleswig-Holstein", zweitstimmen.get(0).getGebiet()
 				.getName());
-		assertEquals("CDU", zweitstimmen.get(1).getPartei().getName());
+		assertEquals("CDU", zweitstimmen.get(0).getPartei().getName());
 		assertEquals("Schleswig-Holstein", zweitstimmen.get(1).getGebiet()
 				.getName());
 		assertEquals("FDP", zweitstimmen.get(2).getPartei().getName());
