@@ -43,10 +43,11 @@ public class Crawler2013 extends Crawler {
 	 * 
 	 * @param csvDateien
 	 *            Die eingabedateien.
+	 * @throws IllegalArgumentException
+	 * 			eingabeFehler
 	 * @return die importierte Bundestagswahl
 	 */
-	@Override
-	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) {
+	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) throws IllegalArgumentException {
 
 		Bundestagswahl imported = null;
 		boolean error = false;
@@ -90,7 +91,7 @@ public class Crawler2013 extends Crawler {
 				parts = line.split(Pattern.quote(";"));
 				switch (lineNumber) {
 				case 0:
-					/* Enthï¿½lt den Namen der Wahl. */
+					/* Enthaelt den Namen der Wahl. */
 					if (parts.length == 1) {
 						bwName = line;
 					} else {
@@ -108,7 +109,6 @@ public class Crawler2013 extends Crawler {
 
 						for (int i = (parteiOffset - 1); i < parts.length
 								&& !error; i += 4) {
-							// System.out.println(i+": "+parts[i]);
 							if (!parts[i].equals("")) {
 								columns.add(parts[i]);
 							} else {
@@ -174,7 +174,11 @@ public class Crawler2013 extends Crawler {
 			 * Jetzt kommt die Bewerber-Datei.
 			 */
 			if (csvDateien.length > 1) {
-				bewerber = this.getBewerber(csvDateien[1]);
+				try {
+					bewerber = this.getBewerber(csvDateien[1]);
+				} catch (IOException e) {
+					error = true;
+				}
 			} else {
 				error = true;
 			}
@@ -189,8 +193,6 @@ public class Crawler2013 extends Crawler {
 		if (!error) {
 			imported = this.erstelleBundestagwahl(bwName, columns, rows,
 					values, bewerber);
-		} else {
-			System.err.println("Error.");
 		}
 
 		return imported;
@@ -204,7 +206,7 @@ public class Crawler2013 extends Crawler {
 	 * @return rohdaten mit bewerbern.
 	 * @throws IOException
 	 */
-	private List<String[]> getBewerber(File csvDatei) throws IOException {
+	private List<String[]> getBewerber(File csvDatei) throws IOException, IllegalArgumentException {
 		List<String[]> bewerber = new ArrayList<String[]>();
 		BufferedReader read = new BufferedReader(new FileReader(csvDatei));
 		int lineNumber = -1;
@@ -218,6 +220,7 @@ public class Crawler2013 extends Crawler {
 			} else {
 
 				String[] names = parts[0].split(Pattern.quote(", "));
+
 				/*
 				 * if(lineNumber<100){
 				 * System.out.println(names[0]+"|"+names[1]+"|"
@@ -226,9 +229,11 @@ public class Crawler2013 extends Crawler {
 				if (parts.length == 4) {
 					bewerber.add(new String[] { names[0], names[1], parts[1],
 							parts[2], parts[3], "", "" });
-				} else {
+				} else if (parts.length == 6) {
 					bewerber.add(new String[] { names[0], names[1], parts[1],
 							parts[2], parts[3], parts[4], parts[5] });
+				} else {
+					throw new IllegalArgumentException("Keine gueltige Wahlbewerber-Datei.");
 				}
 
 			}

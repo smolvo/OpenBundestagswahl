@@ -1,6 +1,7 @@
 package test.java.importexport;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -24,20 +25,23 @@ public class ImportExportTest {
 	
 	/**
 	 * @throws java.lang.Exception
+	 * 		Eine Ausnahme.
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		 i = new ImportExportManager();
-		 filePaths = new String[5];
+		 filePaths = new String[6];
 		 filePaths[0] = "src/main/resources/importexport/Ergebnis2013.csv";
 		 filePaths[1] = "src/main/resources/importexport/Wahlbewerber2013.csv";
 		 filePaths[2] = "src/main/resources/importexport/Exported.csv";
 		 filePaths[3] = "src/main/resources/importexport/Exported2.csv";
 		 filePaths[4] = "src/main/resources/importexport/random.csv";
+		 filePaths[5] = "src/main/resources/config.csv";
 	}
 	
 	/**
 	 * @throws java.lang.Exception
+	 * 		exception
 	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -45,6 +49,7 @@ public class ImportExportTest {
 	
 	/**
 	 * @throws java.lang.Exception
+	 * 	exception
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -53,6 +58,7 @@ public class ImportExportTest {
 	
 	/**
 	 * @throws java.lang.Exception
+	 * 	exception
 	 */
 	@After
 	public void tearDown() throws Exception {
@@ -71,13 +77,8 @@ public class ImportExportTest {
 		
 		Bundestagswahl w = null;
 
-		try {
-			w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		w = i.importieren(csvDateien);
+
 		assertNotNull(w);
 		
 		boolean result = i.exportieren(filePaths[2], w);
@@ -97,13 +98,8 @@ public class ImportExportTest {
 		
 		Bundestagswahl w = null;
 
-		try {
-			w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		w = i.importieren(csvDateien);
+
 		assertNotNull(w);
 		
 		boolean result = i.exportieren(filePaths[2], w);
@@ -116,13 +112,8 @@ public class ImportExportTest {
 		
 		w = null;
 
-		try {
-			w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		w = i.importieren(csvDateien);
+
 		assertNotNull(w);
 		
 		result = i.exportieren(filePaths[3], w);
@@ -131,4 +122,52 @@ public class ImportExportTest {
 		
 	}
 
+	/**
+	 * 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void ungueltigeWahlbewerberDateiTest() {
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(filePaths[0]);
+		csvDateien[1] = new File(filePaths[0]);
+		
+		Bundestagswahl w = null;
+
+
+		w = i.importieren(csvDateien);
+	
+		
+		//assertNotNull(w);
+		
+		//boolean result = i.exportieren(filePaths[2], w);
+		//assertTrue(result);
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void ungueltigeWahlDateiTest() {
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(filePaths[5]);
+		csvDateien[1] = new File(filePaths[1]);
+		Bundestagswahl w = null;
+		w = i.importieren(csvDateien);
+		assertNull(w);
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void ungueltigeWahlUndWahlbewerberDateiTest() {
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(filePaths[5]);
+		csvDateien[1] = new File(filePaths[0]);
+		
+		Bundestagswahl w = null;
+		w = i.importieren(csvDateien);
+		
+		assertNull(w);
+	}
 }

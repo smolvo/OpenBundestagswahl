@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -256,11 +257,16 @@ public class Config {
 		if (field == null) {
 			throw new IllegalArgumentException("String ist null.");
 		}
-		String[] head;
+		String[] head = null;
 		if (field.equals("einwohnerzahl")) {
 			head = new String[] { "Name", "Anzahl" };
 		} else if (field.equals("farben_parteien")) {
-			head = new String[] { "Name", "Rot", "Grün", "Blau" };
+			try {
+				head = new String[] { "Name", "Rot", ("Grün").getBytes("ISO-8859-1").toString(), "Blau" };
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			head = new String[] { "Feld", "Inhalt" };
 		}

@@ -40,10 +40,8 @@ public class ImportExportManager {
 	 * @param csvDateien
 	 *            Datei die importiert werden soll.
 	 * @return das Ergebnis-Objekt.
-	 * @throws Exception
-	 * 	eine Exception
 	 */
-	public Bundestagswahl importieren(File[] csvDateien) throws Exception {
+	public Bundestagswahl importieren(File[] csvDateien) {
 
 		Bundestagswahl imported = null;
 		if (this.pruefeDateityp(csvDateien)) {
@@ -100,9 +98,8 @@ public class ImportExportManager {
 	 * @param csvDateien
 	 *            Dateien die zu importieren sind.
 	 * @return gibt die importierte Bundestgswahl zurï¿½ck.
-	 * @throws Exception
 	 */
-	private Bundestagswahl leseCSVDatei(File[] csvDateien) throws Exception {
+	private Bundestagswahl leseCSVDatei(File[] csvDateien) {
 		Bundestagswahl imported = null;
 		for (int i = 0; i < this.crawler.length; i++) {
 			crawler[i].getCrawlerInformation();
@@ -113,9 +110,7 @@ public class ImportExportManager {
 		}
 
 		// if imported==null > Keine gï¿½ltige Datei.
-		if (imported == null) {
-			throw new Exception("Keinen geeigneten Crawler gefunden : (");
-		}
+
 		return imported;
 
 	}
