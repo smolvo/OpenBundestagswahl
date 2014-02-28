@@ -349,4 +349,26 @@ public class Bundestagswahl implements Serializable {
 	public boolean hatStimmenZumWiederherstellen() {
 		return this.chronik.hatStimmenZumWiederherstellen();
 	}
+	
+	/**
+	 * Sucht nach einer Partei mit dem gegebenen Namen
+	 * in dieser Bundestagswahl und gibt diese zurück.
+	 * 
+	 * Gibt null zurück wenn keine Partei mit exakt diesem Namen gefunden wurde.
+	 * 
+	 * @param name der Name der Partei die gesucht wird
+	 * @return eine Partei mit dem gegebenen Namen
+	 */
+	public Partei getParteiByName(String name) {
+		Partei result = null;
+		
+		for (Partei partei : this.getParteien()) {
+			if (partei.getName().equals(name)) {
+				result = partei;
+				break;
+			}
+		}
+		
+		return result;
+	}
 }

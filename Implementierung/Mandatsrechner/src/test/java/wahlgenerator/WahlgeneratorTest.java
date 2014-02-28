@@ -84,7 +84,20 @@ public class WahlgeneratorTest {
 	 */
 	@Test
 	public void testErzeugeBTW() {
-		fail("Not yet implemented");
+		LinkedList<Stimmanteile> anteile = new LinkedList<>();
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("CDU"), 40, 40));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("SPD"), 30, 30));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("GRÜNE"), 20, 20));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("FDP"), 10, 10));
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
+		
+		Bundestagswahl w = wg.erzeugeBTW("Test");
+		
+		System.out.println(w.getDeutschland().getAnzahlErststimmen() + " / " + w.getDeutschland().getAnzahlErststimmen(w.getParteiByName("CDU")) + " = " + 
+				(double) w.getDeutschland().getAnzahlErststimmen() / w.getDeutschland().getAnzahlErststimmen(w.getParteiByName("CDU")) + 
+				" => " + 100 / ((double) w.getDeutschland().getAnzahlErststimmen() / w.getDeutschland().getAnzahlErststimmen(w.getParteiByName("CDU"))) + "%");
+		
 	}
 
 	/**
@@ -208,70 +221,6 @@ public class WahlgeneratorTest {
 		
 		// IllegalArgumentException sollte geworfen werden, weil Stimmanteile für eine Partei doppelt vergeben sind.
 		new Wahlgenerator(wahl2013, anteile);
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#getBasisWahl()}.
-	 */
-	@Test
-	public void testGetBasisWahl() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#setBasisWahl(main.java.model.Bundestagswahl)}.
-	 */
-	@Test
-	public void testSetBasisWahl() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#getStimmanteile()}.
-	 */
-	@Test
-	public void testGetStimmanteile() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#setStimmanteile(java.util.List)}.
-	 */
-	@Test
-	public void testSetStimmanteile() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#getAnzahlErststimmen()}.
-	 */
-	@Test
-	public void testGetAnzahlErststimmen() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#setAnzahlErststimmen(java.lang.Integer)}.
-	 */
-	@Test
-	public void testSetAnzahlErststimmen() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#getAnzahlZweitstimmen()}.
-	 */
-	@Test
-	public void testGetAnzahlZweitstimmen() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link main.java.wahlgenerator.AbstrakterWahlgenerator#setAnzahlZweitstimmen(java.lang.Integer)}.
-	 */
-	@Test
-	public void testSetAnzahlZweitstimmen() {
-		fail("Not yet implemented");
 	}
 
 }
