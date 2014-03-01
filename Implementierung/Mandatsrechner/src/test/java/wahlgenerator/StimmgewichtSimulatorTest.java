@@ -3,7 +3,7 @@
  */
 package test.java.wahlgenerator;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import main.java.importexport.ImportExportManager;
@@ -48,7 +48,7 @@ public class StimmgewichtSimulatorTest {
 			wahl1 = i.importieren(csvDateien);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println("Keine gï¿½ltige CSV-Datei :/");
+			fail("Keine gültige CSV-Datei :/");
 		}
 
 		this.rechner09 = Mandatsrechner2009.getInstance();

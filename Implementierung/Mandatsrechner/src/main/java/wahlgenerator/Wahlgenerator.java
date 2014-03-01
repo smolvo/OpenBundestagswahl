@@ -54,7 +54,7 @@ public class Wahlgenerator {
 		berechneGesamtanzahlStimmen();
 
 		/*
-		 * Prüft ob die gegebenen Stimmanteile korrekt sind.
+		 * Prüft ob die gegebenen Stimmanteile gültig sind.
 		 */
 		int summeErst = 0;
 		int summeZweit = 0;
@@ -74,6 +74,22 @@ public class Wahlgenerator {
 		if (summeErst < 0 || summeZweit < 0) {
 			throw new IllegalArgumentException(
 					"Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
+		}
+		
+		/*
+		 * Prüft, ob eine Partei in den Stimmanteilen mehr als einmal vorkommt
+		 */
+		for (Stimmanteile sa1 : stimmanteile) {
+			int count = 0;
+			for (Stimmanteile sa2 : stimmanteile) {
+				if (sa1.getPartei().getName().equals(sa2.getPartei().getName())) {
+					count++;
+				}
+			}
+			if (count != 1) {
+				throw new IllegalArgumentException("Die Partei " + sa1.getPartei().getName()
+						+ " kommt " + count + " mal in der Liste der Stimmanteile vor!");
+			}
 		}
 	}
 	
@@ -202,7 +218,7 @@ public class Wahlgenerator {
 	 * @param btw
 	 *            die BTW auf die verteilt werden soll
 	 */
-	public void verteileStimmen(Bundestagswahl btw) {
+	private void verteileStimmen(Bundestagswahl btw) {
 
 		ArrayList<Wahlkreis> alleWahlkreise = btw.getDeutschland().getWahlkreise();
 		int anzahlWahlkreise = alleWahlkreise.size();
