@@ -14,7 +14,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import test.java.Debug;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.steuerung.Steuerung;

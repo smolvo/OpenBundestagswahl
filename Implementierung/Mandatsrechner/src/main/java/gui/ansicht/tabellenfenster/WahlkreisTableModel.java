@@ -7,7 +7,6 @@ import main.java.gui.GUISteuerung;
 import main.java.model.Erststimme;
 import main.java.model.Gebiet;
 import main.java.model.Zweitstimme;
-import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse erweitert die AbstractTableModel Klasse und soll die Tabelle im
@@ -101,10 +100,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
-			int gesamtErst = Steuerung.getInstance().getBtw().getDeutschland()
-					.getGesamtErststimmen();
-			int wahlberechtigte = Steuerung.getInstance().getBtw()
-					.getDeutschland().getWahlberechtigte();
+			int gesamtErst = erststimme.getGebiet().getAnzahlErststimmen();
+			int wahlberechtigte = erststimme.getGebiet().getWahlberechtigte();
 			// zeigt an ob eine Änderung möglich war
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
@@ -162,10 +159,8 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					.getFenster().getSteuerung();
 			// zeigt an ob eine Änderung möglich war
 			int anzahl = -1;
-			int gesamtZweit = Steuerung.getInstance().getBtw().getDeutschland()
-					.getGesamtZweitstimmen();
-			int wahlberechtigte = Steuerung.getInstance().getBtw()
-					.getDeutschland().getWahlberechtigte();
+			int gesamtZweit = zweitstimme.getGebiet().getAnzahlZweitstimmen();
+			int wahlberechtigte = zweitstimme.getGebiet().getWahlberechtigte();
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
 			try {
