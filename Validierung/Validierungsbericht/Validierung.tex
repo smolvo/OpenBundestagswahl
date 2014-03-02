@@ -194,6 +194,10 @@ wobei unter dem Diagramm der Knopf angezeigt wird. \\
 \item Änderungen von Erst- und Zweitstimmen \\
 Nach der Implementierung war es noch möglich negative Stimmwerte einzutragen. Dies wurde behoben, indem eine einfache Abfrage eingeführt wurde, sobald der Wert unter 0 ist wird eine NumberFormatException geworfen. \\
 Außerdem war es möglich mehr Stimmen abzugeben als es Wahlberechtigte im Land gab. Auch dies wurde durch eine Extra-Abfrage behoben. \\
+Folgender Test wurde ausgeführt, um die Korrektheit der Stimmenänderung zu testen:\\
+- Nach .csv-Datei sind im Wahlkreis Karlsruhe-Stadt noch 57624 Wahlberechtigte übrig. Nun ändern wir die Erststimmen einer Partei, die 0 bekommen hat, auf 57625. Wie erwartet, wird angezeigt, dass nur noch 57624 Wahlberechtigte übrig sind. \\
+- Eine Änderung um den Wert 57624 ist ohne Probleme möglich.\\
+- Ein ähnlicher Test wurde auch für die Zweitstimmen erprobt.\\
 
 \end{itemize}
 	
