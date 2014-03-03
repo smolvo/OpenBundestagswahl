@@ -61,7 +61,7 @@ public class Chronik implements Serializable {
 		if (this.stimmen.size() > (this.aktuellesElement)) {
 			for (int i = this.aktuellesElement; i < this.stimmen.size(); i++) {
 				Debug.print("Chronik - Loesche Element an Stelle " + i, 5);
-				this.stimmen.remove(this.aktuellesElement + 1);
+				this.stimmen.remove(this.aktuellesElement);
 			}
 		}
 	}
