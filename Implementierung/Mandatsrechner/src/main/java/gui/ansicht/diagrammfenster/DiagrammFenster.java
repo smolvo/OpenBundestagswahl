@@ -99,7 +99,6 @@ public class DiagrammFenster extends JPanel {
 		this.gbc.weighty = 0.1;
 		this.gbc.gridx = 0;
 		this.gbc.gridy = 1;
-		this.gbc.fill = GridBagConstraints.BOTH;
 		this.add(bericht, gbc);
 	}
 
