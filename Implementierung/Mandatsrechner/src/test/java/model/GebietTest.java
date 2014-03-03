@@ -110,7 +110,7 @@ public class GebietTest {
 	// 44309925 - 684883 = 43625042
 	@Test
 	public void testGetAnzahlErststimmen() {
-		assertEquals(1645750, testDeutschland.getAnzahlErststimmen());
+		assertEquals(43625042, testDeutschland.getAnzahlErststimmen());
 	}
 
 	// Schleswig-Holstein
@@ -137,15 +137,15 @@ public class GebietTest {
 		// 44309925 - 583069 = 43726856
 	@Test
 	public void testGetAnzahlZweitstimmen() {
-		assertEquals(43726856, testDeutschland.getAnzahlErststimmen());
+		assertEquals(43726856, testDeutschland.getAnzahlZweitstimmen());
 	}
 	
-	// Flensburg-Schleswig
+	// Schleswig-Holstein
 		// Wähler - ungültige Zweitstimmen
-		// 162749 - 17460 = 145289
+		// 1645750 - 17460 = 1628290
 	@Test
 	public void testGetAnzahlZweitstimmen1() {
-		assertEquals(145289, testBundesland.getAnzahlErststimmen());
+		assertEquals(1628290, testBundesland.getAnzahlZweitstimmen());
 	}
 	
 	// Flensburg-Schleswig
@@ -153,7 +153,7 @@ public class GebietTest {
 		// 162749 - 2113 = 160636
 	@Test
 	public void testGetAnzahlZweitstimmen2() {
-		assertEquals(160636, testWahlkreis.getAnzahlErststimmen());
+		assertEquals(160636, testWahlkreis.getAnzahlZweitstimmen());
 	}
 
 }
