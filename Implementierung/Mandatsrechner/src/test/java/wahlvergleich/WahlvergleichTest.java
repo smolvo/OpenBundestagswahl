@@ -9,7 +9,7 @@ import main.java.model.Bundestagswahl;
 import main.java.wahlvergleich.Wahlvergleich;
 
 /**
- * Tests fï¿½r den Wahlvergleich
+ * Tests für den Wahlvergleich
  */
 public class WahlvergleichTest {
 
@@ -21,12 +21,8 @@ public class WahlvergleichTest {
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
 		Bundestagswahl w1 = null;
-		try {
-			w1 = i.importieren(csvDateien);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		w1 = i.importieren(csvDateien);
 		w1 = Mandatsrechner2013.getInstance().berechne(w1);
 		Bundestagswahl w2 = w1;
 

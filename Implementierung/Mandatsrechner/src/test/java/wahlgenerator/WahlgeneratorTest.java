@@ -144,7 +144,7 @@ public class WahlgeneratorTest {
 	/**
 	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testErzeugeBTWAlleStimmanteileNull() {
 		LinkedList<Stimmanteile> anteile = new LinkedList<>();
 		for (Partei partei : wahl2013.getParteien()) {

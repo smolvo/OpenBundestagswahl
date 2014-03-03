@@ -75,6 +75,12 @@ public class Wahlgenerator {
 			throw new IllegalArgumentException(
 					"Die Summe der Erst- und/oder Zweitstimmenanteile sind negativ!");
 		}
+		if ((summeErst == 0 || summeZweit == 0) && this.getParteienOhneAnteile().size() == 0) {
+			throw new IllegalArgumentException(
+					"Es existieren keine Parteien ohne Stimmanteile"
+					+ " auf die zufällig Stimmanteile verteilt werden können"
+					+ " und insgesamt sind Erst- und/oder Zweitstimmenanteile 0!");
+		}
 		
 		/*
 		 * Prüft, ob eine Partei in den Stimmanteilen mehr als einmal vorkommt
@@ -181,14 +187,24 @@ public class Wahlgenerator {
 
 		while ((restErstAnteil > 0 || restZweitAnteil > 0) && partOhneAnteile.size() != 0) {
 			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
-			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
-
+			//Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
+			Partei partei = this.getParteienOhneAnteile().get(rand.nextInt(this.getParteienOhneAnteile().size()));
+			
 			// Prüfe ob für diese Partei in dieser Schleife schonmal Anteile
 			// erzeugt wurden und wähle diese aus
 			Stimmanteile anteil = this.getAnteileVonPartei(partei);
 			if (anteil == null) {
+				// Für diese Partei existieren noch keine Stimmanteile
 				anteil = new Stimmanteile(partei, 0, 0);
 				this.getStimmanteile().add(anteil);
+			} else if (this.getParteienOhneAnteile().size() == 0) {
+				/*
+				 * Es existieren bereits für alle Parteien Stimmanteile,
+				 * aber es müssen noch Stimmanteile vergeben werden.
+				 * 
+				 * => Vergebe für eine Partei deren Stimmanteile zuvor zufällig anteile vergeben wurden noch mehr
+				 */
+				anteil = this.getAnteileVonPartei(partOhneAnteile.get(rand.nextInt(partOhneAnteile.size())));
 			}
 
 			// füge eine zufällige Anzahl von Erst- und Zweit-Anteilen hinzu
