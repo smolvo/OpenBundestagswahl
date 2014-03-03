@@ -66,9 +66,6 @@ public class Menu extends JMenuBar {
 	/** repräsentiert den Vergleichen Eintrag */
 	private final JMenuItem vergleichen;
 
-	/** repräsentiert den negatives Stimmgewicht generieren Eintrag */
-	private final JMenuItem negativesStimmgewicht;
-
 	/** repräsentiert den Zufällige Wahl generieren Eintrag */
 	private final JMenuItem zufaelligeWahl;
 
@@ -131,14 +128,9 @@ public class Menu extends JMenuBar {
 		vergleichen = new JMenuItem("Vergleichen");
 		vergleichen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/vergleichen.png"));
-		// wahldatenGenerieren = new JMenu("Wahldaten generieren");
-		negativesStimmgewicht = new JMenuItem(
-				"negatives Stimmgewicht simulieren");
 		zufaelligeWahl = new JMenuItem("Wahl generieren");
 
 		extras.add(vergleichen);
-		// extras.add(wahldatenGenerieren);
-		extras.add(negativesStimmgewicht);
 		extras.add(zufaelligeWahl);
 
 		// der Menu-Reiter "Hilfe"
@@ -169,7 +161,6 @@ public class Menu extends JMenuBar {
 		rueckgaengig.addActionListener(m);
 		wiederherstellen.addActionListener(m);
 		vergleichen.addActionListener(m);
-		negativesStimmgewicht.addActionListener(m);
 		zufaelligeWahl.addActionListener(m);
 		handbuch.addActionListener(m);
 		about.addActionListener(m);
@@ -231,9 +222,6 @@ public class Menu extends JMenuBar {
 				Debug.print("TODO: wiederherstellen", 3);
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
-			} else if (e.getSource() == menu.negativesStimmgewicht) {
-				// TODO negatives Stimmgewicht simulieren
-				Debug.print("TODO: negatives Stimmgewicht simulieren", 3);
 			} else if (e.getSource() == menu.zufaelligeWahl) {
 				new GeneratorDialog(pf.getBundestagswahlen(), pf);
 			} else if (e.getSource() == menu.handbuch) {
