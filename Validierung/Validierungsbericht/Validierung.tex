@@ -199,9 +199,12 @@ Folgender Test wurde ausgeführt, um die Korrektheit der Stimmenänderung zu tes
 - Eine Änderung um den Wert 57624 ist ohne Probleme möglich.\\
 - Ein ähnlicher Test wurde auch für die Zweitstimmen erprobt.\\
 
-\item Tabwechsel
+\item Tabwechsel\\
 Das Wechseln der Tabs enthielt den Fehler, dass die Bundestagswahl, die die Steuerung hält, nicht zu der geändert wurde, die zum neuen Tab gehört.\\
 Dies wurde korrigiert, indem der TabLeiste zu jedem Tab ein MouseListener hinzugefügt wurde.\\
+
+\item Letzten Tab schließen\\
+Wurde der letzte Tab geschlossen, war es nicht mehr möglich, eine neue Wahl zu importieren, das Programm wurde unbenutzbar. Durch eine neue if-Abfrage im Listener des 'x'-Buttons ist es jetzt nur noch möglich einen Tab zu schließen, wenn noch mindestens zwei Tabs offen sind. \\
 
 \end{itemize}
 	
