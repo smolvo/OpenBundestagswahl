@@ -2,6 +2,7 @@ package main.java.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 import javax.swing.JDialog;
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 import main.java.gui.ansicht.diagrammfenster.DiffDiagramm;
@@ -69,8 +72,82 @@ public class VergleichsFenster extends JDialog {
 			throw new IllegalArgumentException("Wahlvergleich ist null");
 		}
 		WahlvergleichDaten daten = vergleich.wahlvergleich();
+		TableRowSorter<TableModel> sorterVergleich = new TableRowSorter<TableModel>();
 		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterVergleich);
+		sorterVergleich.setModel(jTabelle.getModel());
+		sorterVergleich.setComparator(1, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(3, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(4, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(6, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(7, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(9, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterVergleich.setComparator(2, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterVergleich.setComparator(5, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterVergleich.setComparator(8, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterVergleich.setComparator(10, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		
 		JScrollPane skrollFenster = new JScrollPane(jTabelle);
 		this.gbc.anchor = GridBagConstraints.CENTER;
 		this.gbc.fill = GridBagConstraints.BOTH;
