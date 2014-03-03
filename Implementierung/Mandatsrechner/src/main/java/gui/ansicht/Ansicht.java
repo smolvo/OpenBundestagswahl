@@ -150,7 +150,6 @@ public class Ansicht extends JPanel {
 		gbc.weighty = 1.5;
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.gridheight = gbc.gridheight * 2;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(tabellenFenster, gbc);
 	}
