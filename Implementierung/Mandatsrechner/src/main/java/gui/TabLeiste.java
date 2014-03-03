@@ -3,6 +3,8 @@ package main.java.gui;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -87,6 +89,16 @@ public class TabLeiste extends JTabbedPane {
 
 		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
 		JPanel tab = new JPanel(f);
+		tab.addMouseListener(new MouseAdapter() {
+
+			// bei Tabwechsel wird die Bundestagswahl des Tabs in die Steuerung geladen
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Steuerung.getInstance().setBtw(c.getBtw());
+				setSelectedComponent(c);
+			}
+			
+		});
 		tab.setOpaque(false);
 
 		JLabel lblTitle = new JLabel(wahlName);
