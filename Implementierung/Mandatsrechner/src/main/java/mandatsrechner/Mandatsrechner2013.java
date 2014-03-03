@@ -1,5 +1,6 @@
 package main.java.mandatsrechner;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import test.java.Debug;
@@ -174,6 +175,8 @@ public class Mandatsrechner2013 {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
 			int diffSitze = neueSitzanzahl - partei.getAnzahlMandate(); // partei.getMindestsitzAnzahl();
+			
+			
 			if (diffSitze > 0) {
 				int sitzeBundesland = 0;
 				float divisor = 0f;
@@ -260,6 +263,15 @@ public class Mandatsrechner2013 {
 										if (mandat.getMandat().equals(
 												Mandat.LISTENMANDAT)) {
 											mandat.setMandat(Mandat.KEINMANDAT);
+											Debug.print("****"+mandat.getName()+" "+mandat.getPartei().getName()+" wurde Entfernt", 6);
+											//Da nun der Kandidat aus der Liste entfernt werden muss, muss auch sein Eintrag im Berichtsfenster gelöscht werden, dafür ermitteln wir den index des Kandidaten der mit den Index im Bericht übereinstimmt
+											for(int k = 0; k < bw.getSitzverteilung().getAbgeordnete().size();k++){
+												if(mandat.equals(bw.getSitzverteilung().getAbgeordnete().get(k))){
+													bw.getSitzverteilung().getAbgeordnete().remove(k);
+													bw.getSitzverteilung().getBericht().zeileEntfernen(k);
+												}
+											}
+											
 											partei.decrementAusgleichsMandate(bl);
 											break;
 										}
@@ -282,13 +294,13 @@ public class Mandatsrechner2013 {
 										.getListenkandidaten().get(i);
 								if (neuerAbgeordneter == null) {
 									// Negatives Stimmgewicht.
-									System.err
-											.println("Kein Abgeordneter gefunden.");
+									Debug.print("Kein Abgeordneter gefunden.",5);
 								} else if (neuerAbgeordneter.getMandat() == Mandat.KEINMANDAT) {
 									bw.getSitzverteilung().addAbgeordnete(
 											neuerAbgeordneter);
 									neuerAbgeordneter
 											.setMandat(Mandat.LISTENMANDAT);
+									
 									bw.getSitzverteilung()
 											.getBericht()
 											.zeileHinzufuegen(
@@ -299,6 +311,7 @@ public class Mandatsrechner2013 {
 													Mandat.LISTENMANDAT
 															.toString(),
 													bl.getName(), "");
+									
 									partei.incrementAusgleichsMandate(bl);
 								} else {
 									diffSitzeBundesland++;
@@ -316,6 +329,10 @@ public class Mandatsrechner2013 {
 					// IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}
 			}
+		
+			
+			
 		}
+		
 	}
 }

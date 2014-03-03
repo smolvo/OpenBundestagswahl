@@ -6,8 +6,11 @@ package test.java.mandatsrechner;
 import static org.junit.Assert.*;
 
 import java.io.File;
+
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
+import main.java.model.Kandidat;
+import main.java.model.Mandat;
 import main.java.steuerung.Steuerung;
 
 import org.junit.After;
@@ -48,40 +51,34 @@ public class Mandatsrechner2013Test {
 	public void tearDown() throws Exception {
 		this.cloneWahl = null;
 	}
-
-	@Test(expected = IllegalArgumentException.class)
+	
+	@Test
 	public void initialisiereTest1() {
 		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, sonst = 0;
 		this.rechner.berechne(this.cloneWahl);
-		for (int i = 0; i < this.cloneWahl.getSitzverteilung().getAbgeordnete().size(); i++) {
-			switch (this.cloneWahl.getSitzverteilung().getAbgeordnete().get(i).getPartei().getName()) {
-			case "CDU":
-				cdu++;
-				break;
-			case "SPD":
-				spd++;
-				break;
-			case "CSU":
-				csu++;
-				break;
-			case "GRÜNE":
-				gruene++;
-				break;
-			case "DIE LINKE":
-				linke++;
-				break;
-			default:
-				sonst++;
-				break;
+		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
+//			if(kandidat.getMandat() != Mandat.KEINMANDAT){
+				switch (kandidat.getPartei().getName()) {
+					case "CDU":
+						cdu++;
+						break;
+					case "SPD":
+						spd++;
+						break;
+					case "CSU":
+						csu++;
+						break;
+					case "GRÜNE":
+						gruene++;
+						break;
+					case "DIE LINKE":
+						linke++;
+						break;
+					default:
+						fail("Ungültige Partei");
+//				}
 			}
-		}
-
-		assertNotEquals(0, spd);
-		assertNotEquals(0, gruene);
-		assertNotEquals(0, linke);
-		assertNotEquals(0, csu);
-		assertNotEquals(0, cdu);
-		
+		}	
 		assertEquals(193, spd);
 		assertEquals(63, gruene);
 		assertEquals(64, linke);

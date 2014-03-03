@@ -236,42 +236,4 @@ public class Mandatsrechner2009Test {
 		assertEquals(879404,
 				this.rechner.getRelevanteZweitstimmenSumme(parteien2, land2));
 	}
-
-	@Test
-	public void berechneSainteLagueTest() {
-		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, sonst = 0;
-
-		this.rechner.berechneSainteLague(this.cloneWahl);
-
-		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung()
-				.getAbgeordnete()) {
-			switch (kandidat.getPartei().getName()) {
-			case "CDU":
-				cdu++;
-				break;
-			case "SPD":
-				spd++;
-				break;
-			case "CSU":
-				csu++;
-				break;
-			case "GRÜNE":
-				gruene++;
-				break;
-			case "DIE LINKE":
-				linke++;
-				break;
-			default:
-				sonst++;
-				break;
-			}
-		}
-
-		
-		assertEquals(182, spd);
-		assertEquals(60, gruene);
-		assertEquals(61, linke);
-		assertEquals(53, csu);
-		assertEquals(246, cdu);
-	}
 }

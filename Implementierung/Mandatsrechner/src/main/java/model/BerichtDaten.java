@@ -16,19 +16,19 @@ public class BerichtDaten implements Serializable {
 	 */
 	private static final long serialVersionUID = -8855434025330264096L;
 
-	/** reprï¿½sentiert den Namen des Politikers */
+	/** repräsentiert den Namen des Politikers */
 	private LinkedList<String> name;
 
-	/** reprï¿½sentiert die Partei des Politikers */
+	/** repräsentiert die Partei des Politikers */
 	private LinkedList<String> partei;
 
-	/** reprï¿½sentiert das Mandat des Politikers */
+	/** repräsentiert das Mandat des Politikers */
 	private LinkedList<String> mandat;
 
-	/** reprï¿½sentiert das Bundesland, in dem das Mandat geholt wurde */
+	/** repräsentiert das Bundesland, in dem das Mandat geholt wurde */
 	private LinkedList<String> bundesland;
 
-	/** reprï¿½sentiert den Wahlkreis, in dem ein Direktmandat geholt wurde */
+	/** repräsentiert den Wahlkreis, in dem ein Direktmandat geholt wurde */
 	private LinkedList<String> wahlkreis;
 
 	/**
@@ -43,7 +43,7 @@ public class BerichtDaten implements Serializable {
 	}
 
 	/**
-	 * Fï¿½gt eine Zeile in die Tabelle hinzu.
+	 * Fügt eine Zeile in die Tabelle hinzu.
 	 * 
 	 * @param name
 	 *            Name
@@ -66,7 +66,24 @@ public class BerichtDaten implements Serializable {
 	}
 
 	/**
-	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es der
+	 * Entfernt eine Zeile mit allen Beiträgen aus dem Bericht
+	 * @param zeile die zu entfernende Zeile
+	 * @throws IllegalArgumentException wenn die Zeile außerhalb des Wertebereichs liegt.
+	 */
+	public void zeileEntfernen(int zeile) {
+		if (zeile < 0 || zeile >= name.size()) {
+			throw new IllegalArgumentException(
+					"Zeile ist außerhalb des gültigen Wertebereichs.");
+		}
+		name.remove(zeile);
+		partei.remove(zeile);
+		mandat.remove(zeile);
+		bundesland.remove(zeile);
+		wahlkreis.remove(zeile);
+	}
+
+	/**
+	 * Diese Methode überprüft, ob ein String null ist, wenn nicht wird es der
 	 * Liste angehangen,
 	 * 
 	 * @param string
