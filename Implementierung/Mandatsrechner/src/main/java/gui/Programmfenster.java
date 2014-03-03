@@ -55,7 +55,7 @@ public final class Programmfenster extends JFrame {
 	 */
 	public Programmfenster() {
 		// allgemeine Anpassungen des Programmfensters
-		setTitle("Mandatsverteilung im Deutschen Bundestag");
+		setTitle("OpenBundestagswahl");
 		this.setMinimumSize(new Dimension(1024, 768));
 		setLocationRelativeTo(null);
 		setResizable(true);
