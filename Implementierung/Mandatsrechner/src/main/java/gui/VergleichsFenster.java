@@ -49,7 +49,6 @@ public class VergleichsFenster extends JDialog {
 		this.gbc = new GridBagConstraints();
 		this.setSize(1024, 768);
 		this.setTitle("Vergleich");
-		this.setModal(true);
 		zeigeVergleich(vergleich);
 		erstelleDiagramme(vergleich);
 		this.pack();
@@ -108,8 +107,8 @@ public class VergleichsFenster extends JDialog {
 			throw new IllegalArgumentException("Wahlvergleich ist null.");
 		}
 		// Diagramm der ersten Bundestagswahl
-		DiagrammFenster diagramm1 = new DiagrammFenster(null);
-		diagramm1.erstelleDiagramm(vergleich.getBtw1().getDeutschland());
+		DiagrammFenster diagramm1 = new DiagrammFenster(null, vergleich.getBtw1());
+		diagramm1.erstelleDiagramm(vergleich.getBtw1());
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
 		gbc.gridx = 0;
@@ -124,8 +123,8 @@ public class VergleichsFenster extends JDialog {
 		add(diagramm3, gbc);
 
 		// Diagramm der zweiten Bundestagswahl
-		DiagrammFenster diagramm2 = new DiagrammFenster(null);
-		diagramm2.erstelleDiagramm(vergleich.getBtw2().getDeutschland());
+		DiagrammFenster diagramm2 = new DiagrammFenster(null, vergleich.getBtw2());
+		diagramm2.erstelleDiagramm(vergleich.getBtw2());
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
 		gbc.gridx = 2;

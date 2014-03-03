@@ -44,6 +44,8 @@ public class DiagrammFenster extends JPanel {
 	 * 
 	 * @param ansicht
 	 *            die Ansicht
+	 * @param btw
+	 * 			Bundestagswahl, die visualisiert werden soll
 	 */
 	public DiagrammFenster(Ansicht ansicht, Bundestagswahl btw) {
 		this.ansicht = ansicht;
@@ -53,7 +55,7 @@ public class DiagrammFenster extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				zeigeSitzverteilung(Steuerung.getInstance().getBtw());
+				zeigeSitzverteilung();
 			}
 
 		});
@@ -141,16 +143,14 @@ public class DiagrammFenster extends JPanel {
 	 * Diese Methode ï¿½ffnet ein BerichtsFenster, in dem die Sitze der Verteilung
 	 * nï¿½her erlï¿½utert werden.
 	 * 
-	 * @param btw
-	 *            Bundestagswahl-Objekt welches visualisiert werden soll
 	 * @throws IllegalArgumentException
 	 *             wenn das Bundestagswahl-Objekt null ist.
 	 */
-	public void zeigeSitzverteilung(Bundestagswahl btw) {
+	public void zeigeSitzverteilung() {
 		if (btw == null) {
 			throw new IllegalArgumentException("Keine Bundestagswahl gefunden.");
 		}
-		BerichtTableModel tabelle = new BerichtTableModel(btw
+		BerichtTableModel tabelle = new BerichtTableModel(this.btw
 				.getSitzverteilung().getBericht());
 		new BerichtsFenster(tabelle);
 	}
