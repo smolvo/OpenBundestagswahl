@@ -179,7 +179,7 @@ public class Wahlgenerator {
 		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
 		Random rand = new Random();
 
-		while (restErstAnteil > 0 || restZweitAnteil > 0) {
+		while ((restErstAnteil > 0 || restZweitAnteil > 0) && partOhneAnteile.size() != 0) {
 			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
 			Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
 
@@ -277,9 +277,11 @@ public class Wahlgenerator {
 			}
 
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this
-					.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
+					.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0))
+					- this.getBasisWahl().getDeutschland().getWahlkreise().size();
 			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * (this
-					.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
+					.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0))
+					- this.getBasisWahl().getDeutschland().getWahlkreise().size();
 
 			Debug.print(partei.getName() + ", anzahlErststimmen: "
 					+ anzahlErststimmen + " ("

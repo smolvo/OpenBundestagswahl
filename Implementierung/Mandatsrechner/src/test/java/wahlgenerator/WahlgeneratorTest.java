@@ -142,6 +142,37 @@ public class WahlgeneratorTest {
 	}
 
 	/**
+	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
+	 */
+	@Test
+	public void testErzeugeBTWAlleStimmanteileNull() {
+		LinkedList<Stimmanteile> anteile = new LinkedList<>();
+		for (Partei partei : wahl2013.getParteien()) {
+			anteile.add(new Stimmanteile(partei, 0, 0));
+		}
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
+		
+		Bundestagswahl w = wg.erzeugeBTW("Test");
+		
+		for (Stimmanteile sa : anteile) {
+			/*
+			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
+			 * ob sie die korrekte Anzahl tatsächlich erhalten hat
+			 */
+			
+			int erwartetErst = (int) (sa.getAnteilErststimmen() / 100.0 * wg.getAnzahlErststimmen());
+			int faktischErst = w.getDeutschland().getAnzahlErststimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Erststimmen von " + sa.getPartei().getName(), erwartetErst, faktischErst);
+			
+			int erwartetZweit = (int) (sa.getAnteilZweitstimmen() / 100.0 * wg.getAnzahlZweitstimmen());
+			int faktischZweit = w.getDeutschland().getAnzahlZweitstimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Zweitstimmen von " + sa.getPartei().getName(), erwartetZweit, faktischZweit);
+		}
+		
+	}
+	
+	/**
 	 * Testet das erzeugen eines Wahlgenerators mit gültiger Basiswahl und gültigen Stimmanteilen.
 	 * 
 	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#Wahlgenerator(main.java.model.Bundestagswahl, java.util.List)}.
