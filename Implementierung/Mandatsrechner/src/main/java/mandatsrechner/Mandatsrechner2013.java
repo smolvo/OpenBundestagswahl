@@ -64,7 +64,8 @@ public class Mandatsrechner2013 {
 		Debug.print("\nSitzverteilung", 6);
 		int summe = 0;
 		for (Partei partei : relevanteParteien) {
-			Debug.print(partei.getName() + ": " + partei.getMindestsitzAnzahl(), 6);
+			Debug.print(
+					partei.getName() + ": " + partei.getMindestsitzAnzahl(), 6);
 			summe += partei.getMindestsitzAnzahl();
 		}
 		Debug.print("Summe: " + summe, 6);
@@ -74,24 +75,30 @@ public class Mandatsrechner2013 {
 		return bw;
 
 	}
-	
+
 	/**
 	 * Öffentliche Methode zum Testen der Methode berechneParteidivisor(...).
-	 * @param relevanteParteien die Liste mit den zu testenden PArteien.
+	 * 
+	 * @param relevanteParteien
+	 *            die Liste mit den zu testenden PArteien.
 	 * @return den berechneten PArteidivisor.
 	 */
-	public float testBerechneParteidivisor(List<Partei> relevanteParteien){
+	public float testBerechneParteidivisor(List<Partei> relevanteParteien) {
 		return this.berechneParteidivisor(relevanteParteien);
 	}
-	
+
 	/**
 	 * Berechnet den Parteidivisor für die relevanten Parteien.
-	 * @param relevanteParteien die Parteien, die beachtet werden sollen. 
+	 * 
+	 * @param relevanteParteien
+	 *            die Parteien, die beachtet werden sollen.
 	 * @return den berechneten Parteidivisor.
-	 * @throws IllegalArgumentException wenn die Liste null ist.
+	 * @throws IllegalArgumentException
+	 *             wenn die Liste null ist.
 	 */
-	private float berechneParteidivisor(List<Partei> relevanteParteien) throws IllegalArgumentException{
-		if(relevanteParteien == null){
+	private float berechneParteidivisor(List<Partei> relevanteParteien)
+			throws IllegalArgumentException {
+		if (relevanteParteien == null) {
 			throw new IllegalArgumentException("Liste ist null!");
 		}
 		/*
@@ -137,21 +144,20 @@ public class Mandatsrechner2013 {
 				}
 			}
 		}
-		
+
 		Debug.print("Berechneter Parteidivisor: " + parteidivisor, 5);
 		Debug.print("\nNeu Parteidivisor: " + parteidivisor, 5);
 		int summe = 0;
 		for (Partei partei : relevanteParteien) {
-			Debug.print(partei.getName()
-					+ ": "
-					+ (Math.round(partei.getZweitstimmeGesamt()
-							/ parteidivisor)), 5);
-			summe += (Math.round(partei.getZweitstimmeGesamt()
-					/ parteidivisor));
+			Debug.print(
+					partei.getName()
+							+ ": "
+							+ (Math.round(partei.getZweitstimmeGesamt()
+									/ parteidivisor)), 5);
+			summe += (Math.round(partei.getZweitstimmeGesamt() / parteidivisor));
 		}
 		Debug.print("Summe: " + summe, 5);
 
-		
 		return parteidivisor;
 	}
 
@@ -212,21 +218,24 @@ public class Mandatsrechner2013 {
 						 * partei.getAnzahlMandate(Mandat.DIREKTMANDAT, bl));
 						 */
 						diffSitzeBundesland += partei.getUeberhangMandate(bl);
-						Debug.print(partei.getName()
-								+ " "
-								+ bl.getName()
-								+ " "
-								+ diffSitzeBundesland
-								+ " = "
-								+ sitzeBundesland
-								+ " - "
-								+ partei.getMindestsitzanzahl(bl)
-								+ " UM: "
-								+ partei.getUeberhangMandate(bl)
-								+ " "
-								+ (partei.getAnzahlMandate(Mandat.DIREKTMANDAT,
-										bl) + partei.getAnzahlMandate(
-										Mandat.LISTENMANDAT, bl)), 5);
+						Debug.print(
+								partei.getName()
+										+ " "
+										+ bl.getName()
+										+ " "
+										+ diffSitzeBundesland
+										+ " = "
+										+ sitzeBundesland
+										+ " - "
+										+ partei.getMindestsitzanzahl(bl)
+										+ " UM: "
+										+ partei.getUeberhangMandate(bl)
+										+ " "
+										+ (partei.getAnzahlMandate(
+												Mandat.DIREKTMANDAT, bl) + partei
+												.getAnzahlMandate(
+														Mandat.LISTENMANDAT, bl)),
+								5);
 
 						// Suche Kandidaten ohne Mandat und fuege sie als
 						// Ausgleichsmandat hinzu.
@@ -256,7 +265,9 @@ public class Mandatsrechner2013 {
 										.getListenkandidaten().size() <= i) {
 									// Wahlgenerator verursacht Wahlen ohne
 									// Landeslisten.
-									Debug.print("Notice: Keine Listenplaetze mehr :(", 4);
+									Debug.print(
+											"Notice: Keine Listenplaetze mehr :(",
+											4);
 									break;
 								}
 								Kandidat neuerAbgeordneter = partei
@@ -291,7 +302,9 @@ public class Mandatsrechner2013 {
 				}
 			} else {
 				if (diffSitze != 0) {
-					Debug.print("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.", 2);
+					Debug.print(
+							"Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.",
+							2);
 					// throw new
 					// IllegalArgumentException("Fehler bei den Ausgleichsmandaten. Mindestsitzanzahl nicht erfuellt.");
 				}

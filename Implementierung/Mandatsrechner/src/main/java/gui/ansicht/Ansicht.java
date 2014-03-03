@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import main.java.gui.WahlFenster;
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 import main.java.gui.ansicht.tabellenfenster.TabellenFenster;
+import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 import main.java.steuerung.Steuerung;
@@ -50,7 +51,9 @@ public class Ansicht extends JPanel {
 
 	/** zeigt an ob eine Stimme geändert wurde */
 	private boolean wurdeVeraendert;
-
+	
+	private Bundestagswahl btw;
+	
 	/**
 	 * Der Konstruktor setzt eine neue Ansicht.
 	 * 
@@ -61,18 +64,20 @@ public class Ansicht extends JPanel {
 	 * @throws IllegalArgumentException
 	 *             wenn die Parameter null sind.
 	 */
-	public Ansicht(Deutschland land, WahlFenster fenster) {
-		if (land == null || fenster == null) {
+	public Ansicht(Bundestagswahl btw, WahlFenster fenster) {
+		if (btw == null || fenster == null) {
 			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
+		
+		this.btw = btw;
 		this.wurdeVeraendert = false;
 		this.fenster = fenster;
 		this.tabellenFenster = new TabellenFenster(this);
-		this.tabellenFenster.tabellenFuellen(land);
-		this.diagrammFenster = new DiagrammFenster(this);
-		this.diagrammFenster.erstelleDiagramm(land);
+		this.tabellenFenster.tabellenFuellen(btw.getDeutschland());
+		this.diagrammFenster = new DiagrammFenster(this, btw);
+		this.diagrammFenster.erstelleDiagramm(btw.getDeutschland(), btw);
 		this.kartenFenster = new KartenFenster(this);
-		this.kartenFenster.zeigeInformationen(land);
+		this.kartenFenster.zeigeInformationen(btw.getDeutschland());
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		initialisieren();
@@ -123,8 +128,8 @@ public class Ansicht extends JPanel {
 			remove(diagrammFenster);
 			this.tabellenFenster = new TabellenFenster(this);
 			this.tabellenFenster.tabellenFuellen(gebiet);
-			this.diagrammFenster = new DiagrammFenster(this);
-			this.diagrammFenster.erstelleDiagramm(gebiet);
+			this.diagrammFenster = new DiagrammFenster(this, this.btw);
+			this.diagrammFenster.erstelleDiagramm(gebiet, this.btw);
 			layoutSetzen();
 		}
 	}
@@ -161,7 +166,7 @@ public class Ansicht extends JPanel {
 	public void berechnungNotwendig() {
 		this.wurdeVeraendert = true;
 		remove(diagrammFenster);
-		this.diagrammFenster = new DiagrammFenster(this);
+		this.diagrammFenster = new DiagrammFenster(this, this.btw);
 
 		this.berechnePanel = new JPanel();
 		this.berechnePanel.setSize(new Dimension(100, 100));

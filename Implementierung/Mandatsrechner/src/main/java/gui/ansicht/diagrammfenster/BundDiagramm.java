@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Partei;
 import main.java.model.Zweitstimme;
@@ -41,12 +42,12 @@ public class BundDiagramm extends JPanel {
 	 * @throws IllegalArgumentException
 	 *             wenn die Parameter null sind
 	 */
-	public BundDiagramm(Deutschland land) {
-		if (land == null) {
+	public BundDiagramm(Bundestagswahl btw) {
+		if (btw == null) {
 			throw new IllegalArgumentException("Deutschland ist null.");
 		}
 		this.setLayout(new BorderLayout());
-		JFreeChart chart = createChart(land);
+		JFreeChart chart = createChart(btw);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
@@ -73,17 +74,18 @@ public class BundDiagramm extends JPanel {
 	 *             wenn das Deutschland-Objekt ist
 	 * @return Kuchendiagramm
 	 */
-	private JFreeChart createChart(Deutschland land) {
-		if (land == null) {
-			throw new IllegalArgumentException("Deutschland-Objekt ist null.");
+	private JFreeChart createChart(Bundestagswahl btw) {
+		if (btw == null) {
+			throw new IllegalArgumentException("Bundestagswahl Objekt ist null.");
 		}
 		ArrayList<Integer> daten = new ArrayList<Integer>();
 		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
+		List<Zweitstimme> stimmen = btw.getDeutschland().getZweitstimmenProPartei();
 		Collections.sort(stimmen);
 		DefaultPieDataset result = new DefaultPieDataset();
 		for (Zweitstimme zw : stimmen) {
-			int sitze = zw.getPartei().getAnzahlMandate();
+			//int sitze = zw.getPartei().getAnzahlMandate();
+			int sitze = btw.getSitzverteilung().getAnzahlSitze(zw.getPartei());
 			if (sitze > 0) {
 				daten.add(sitze);
 				parteien.add(zw.getPartei());

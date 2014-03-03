@@ -93,5 +93,20 @@ public class Sitzverteilung implements Serializable {
 	public void addAbgeordnete(Kandidat kandidat) {
 		this.getAbgeordnete().add(kandidat);
 	}
+	
+	/**
+	 * Gibt die Anzahl der Sitze einer gegebenen Partei zurück.
+	 * @param partei Die Partei zu der die Sitzanzahl gesucht ist.
+	 * @return Die Anzahl der Sitze einer gegebenen Partei. 
+	 */
+	public int getAnzahlSitze(Partei partei) {
+		int sitze = 0;
+		for (Kandidat abgeordneter : abgeordnete) {
+			if (abgeordneter.getPartei().getName().equals(partei.getName())) {
+				sitze++;
+			}
+		}
+		return sitze;
+	}
 
 }

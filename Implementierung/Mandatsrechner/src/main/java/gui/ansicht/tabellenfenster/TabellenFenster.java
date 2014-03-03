@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import test.java.Debug;
 import main.java.gui.GUIPartei;
 import main.java.gui.ansicht.Ansicht;
 import main.java.model.Bundesland;
@@ -125,8 +126,9 @@ public class TabellenFenster extends JScrollPane {
 		if (partei == null || bundestag.getAbgeordnete() == null) {
 			return new GUIPartei(0, 0, 0, 0);
 		}
-		// Anzahl Direkt-, ï¿½berhangs-, und Ausgleichsmandate
-		int sitze = partei.getAnzahlMandate();
+		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
+		//int sitze = partei.getAnzahlMandate();
+		int sitze = bundestag.getAnzahlSitze(partei);
 		int direktMan = 0;
 		int ueberMan = partei.getUeberhangMandate();
 		int ausglMan = partei.getAusgleichsMandate();
@@ -198,8 +200,7 @@ public class TabellenFenster extends JScrollPane {
 			Zweitstimme korresZweit = null;
 			for (Zweitstimme zw : wk.getZweitstimmenProPartei()) {
 				if ((er.getKandidat().getPartei() != null)
-						&& (zw.getPartei().getName().equals(er.getKandidat()
-								.getPartei().getName()))) {
+						&& (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName()))) {
 					korresZweit = zw;
 				}
 			}

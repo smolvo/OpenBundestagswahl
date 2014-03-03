@@ -19,7 +19,7 @@ import main.java.model.Wahlkreis;
 import main.java.steuerung.Steuerung;
 
 /**
- * Diese Klasse reprï¿½sentiert das Diagrammfenster einer Ansicht. In diesem
+ * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
  */
@@ -27,14 +27,17 @@ public class DiagrammFenster extends JPanel {
 
 	private static final long serialVersionUID = -523400111719339965L;
 
-	/** reprï¿½sentiert die Ansicht des Diagrammfensters */
+	/** repräsentiert die Ansicht des Diagrammfensters */
 	private final Ansicht ansicht;
 
-	/** reprï¿½sentiert den Berichtsknopf */
+	/** repräsentiert den Berichtsknopf */
 	private final JButton bericht;
 
-	/** reprï¿½sentiert die LayoutConstraints */
+	/** repräsentiert die LayoutConstraints */
 	private final GridBagConstraints gbc;
+	
+	/** zugehörige Bundestagswahl */
+	private final Bundestagswahl btw;
 
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
@@ -42,9 +45,10 @@ public class DiagrammFenster extends JPanel {
 	 * @param ansicht
 	 *            die Ansicht
 	 */
-	public DiagrammFenster(Ansicht ansicht) {
+	public DiagrammFenster(Ansicht ansicht, Bundestagswahl btw) {
 		this.ansicht = ansicht;
 		this.bericht = new JButton("Bericht anzeigen");
+		this.btw = btw;
 		this.bericht.addActionListener(new ActionListener() {
 
 			@Override
@@ -64,7 +68,7 @@ public class DiagrammFenster extends JPanel {
 	 *            Gebiet-Objekt welches visualisiert werden soll
 	 * @throw NullPointerException
 	 */
-	public void erstelleDiagramm(Gebiet gebiet) {
+	public void erstelleDiagramm(Gebiet gebiet, Bundestagswahl btw) {
 		if (gebiet == null) {
 			throw new NullPointerException("Kein Gebiet gefunden.");
 		}
@@ -74,8 +78,8 @@ public class DiagrammFenster extends JPanel {
 		this.gbc.gridy = 0;
 		this.gbc.fill = GridBagConstraints.BOTH;
 		if (gebiet instanceof Deutschland) {
-			Deutschland land = (Deutschland) gebiet;
-			erstelleDiagramm(land);
+			//Deutschland land = (Deutschland) gebiet;
+			erstelleDiagramm(btw);
 		} else if (gebiet instanceof Bundesland) {
 			Bundesland bundLand = (Bundesland) gebiet;
 			erstelleDiagramm(bundLand);
@@ -91,11 +95,11 @@ public class DiagrammFenster extends JPanel {
 	 * @param land
 	 *            Deutschland
 	 */
-	public void erstelleDiagramm(Deutschland land) {
-		if (land == null) {
-			throw new IllegalArgumentException("Deutschland ist null.");
+	public void erstelleDiagramm(Bundestagswahl btw) {
+		if (btw == null) {
+			throw new IllegalArgumentException("Bundestagswahl ist null.");
 		}
-		this.add(new BundDiagramm(land), gbc);
+		this.add(new BundDiagramm(btw), gbc);
 		this.gbc.weighty = 0.1;
 		this.gbc.gridx = 0;
 		this.gbc.gridy = 1;
