@@ -6,7 +6,9 @@ import java.util.List;
 
 import test.java.Debug;
 
+import main.java.model.Erststimme;
 import main.java.model.Stimme;
+import main.java.model.Zweitstimme;
 
 /**
  * Die Chronik setzt Stimmen, die in der GUI verändert wurden zurück. Es können
@@ -117,20 +119,23 @@ public class Chronik implements Serializable {
 	/**
 	 * 
 	 */
-	/*public void debug() {
+	public void debug() {
 		Debug.print("Chronik Debug. Current Element: " + this.aktuellesElement + " / " + (this.stimmen.size() - 1), 5);
 		for (int i = 0; i < this.stimmen.size(); i++) {
-			if (this.stimmen.get(i) instanceof Erststimme) {
-				Erststimme erststimme = (Erststimme) this.stimmen.get(i);
-				Debug.print(i + " Erststimme:\t\t" + erststimme.getGebiet().getName() + "\t" + erststimme.getAnzahl(), 5);
-			} else if (this.stimmen.get(i) instanceof Zweitstimme) {
-				Zweitstimme zweitstimme = (Zweitstimme) this.stimmen.get(i);
-				Debug.print(i + " Zweitstimme:\t" + zweitstimme.getGebiet().getName() + "\t" + zweitstimme.getAnzahl(), 5);
+			Stimme[] stimmenArray = this.stimmen.get(i);
+			
+			if (stimmenArray[0] instanceof Erststimme) {
+				Erststimme erststimmeAlt = (Erststimme) stimmenArray[0], erststimmeNeu = (Erststimme) stimmenArray[1];
+				Debug.print(i + " Erststimme:\t\t" + erststimmeAlt.getGebiet().getName() + "\tAlt:" + erststimmeAlt.getAnzahl() + "\tNeu:" + erststimmeNeu.getAnzahl(), 5);
+			} else if (stimmenArray[0] instanceof Zweitstimme) {
+				Zweitstimme zweitstimmeAlt = (Zweitstimme) stimmenArray[0], zweitstimmeNeu = (Zweitstimme) stimmenArray[1];
+
+				Debug.print(i + " Zweitstimme:\t" + zweitstimmeAlt.getGebiet().getName() + "\tAlt:" + zweitstimmeAlt.getAnzahl() + "\tNeu:" + zweitstimmeNeu.getAnzahl(), 5);
 			} else {
 				Debug.print(i + "Unkown", 5);
 			}
 		}
-	}*/
+	}
 	
 	
 }

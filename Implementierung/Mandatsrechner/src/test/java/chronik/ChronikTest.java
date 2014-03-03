@@ -34,9 +34,11 @@ public class ChronikTest {
 	private static Bundestagswahl btw = null, btwOrig = null;
 	private static List<Zweitstimme> zweitstimmen;
 	private static Chronik chronik = null;
+	
 	/**
 	 * 
 	 * @throws java.lang.Exception
+	 * 		exception.
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -70,7 +72,8 @@ public class ChronikTest {
 	}
 	
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
+	 * 		exception.
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -94,7 +97,8 @@ public class ChronikTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws Exception
+	 * 		exception
 	 */
 	@After
 	public void tearDown() throws Exception {
@@ -206,11 +210,15 @@ public class ChronikTest {
 		assertFalse(chronik.hatStimmenZumZuruecksetzen());
 		chronik.debug();
 		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
-		assertEquals(zweitstimmen.get(1).getAnzahl(), oldS.getAnzahl());
+		assertEquals(s0.getAnzahl(), oldS.getAnzahl());
 		assertTrue(chronik.hatStimmenZumZuruecksetzen());
 		chronik.debug();
 		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
-		assertEquals(zweitstimmen.get(2).getAnzahl(), oldS.getAnzahl());
+		assertEquals(s1.getAnzahl(), oldS.getAnzahl());
+		assertTrue(chronik.hatStimmenZumZuruecksetzen());
+		chronik.debug();
+		oldS = (Zweitstimme) chronik.wiederherstellenStimme();
+		assertEquals(s2.getAnzahl(), oldS.getAnzahl());
 		assertTrue(chronik.hatStimmenZumZuruecksetzen());
 		chronik.debug();
 	}
