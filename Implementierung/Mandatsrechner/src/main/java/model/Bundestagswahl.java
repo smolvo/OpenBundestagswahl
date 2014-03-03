@@ -251,7 +251,7 @@ public class Bundestagswahl implements Serializable {
 					if (erststimme.getKandidat().equals(stimme.getKandidat())) {
 						Debug.print("Aendere Erststimme in: "
 								+ stimme.getGebiet().getName() + " "
-								+ stimme.getKandidat().getPartei().getName(), 4);
+								+ stimme.getKandidat().getPartei().getName() + " " + stimme.getAnzahl(), 4);
 
 						//this.chronik.sichereStimme(erststimme);
 						alteErststimme = (Erststimme) erststimme.deepCopy();
@@ -290,7 +290,7 @@ public class Bundestagswahl implements Serializable {
 						if (zweitstimme.getPartei().equals(stimme.getPartei())) {
 							Debug.print("Aendere Zweitstimme in: "
 									+ stimme.getGebiet().getName() + " "
-									+ stimme.getPartei(), 4);
+									+ stimme.getPartei() + " " + stimme.getAnzahl(), 4);
 							alteZweitstimme = (Zweitstimme) zweitstimme.deepCopy();
 							zweitstimme.setAnzahl(zweitstimme.getAnzahl());
 							break;

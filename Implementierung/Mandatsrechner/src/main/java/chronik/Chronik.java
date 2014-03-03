@@ -6,9 +6,7 @@ import java.util.List;
 
 import test.java.Debug;
 
-import main.java.model.Erststimme;
 import main.java.model.Stimme;
-import main.java.model.Zweitstimme;
 
 /**
  * Die Chronik setzt Stimmen, die in der GUI verändert wurden zurück. Es können
@@ -31,7 +29,7 @@ public class Chronik implements Serializable {
 	/**
 	 * Ein Stack mit den letzten Stimmen
 	 */
-	List<Stimme> stimmen = new ArrayList<Stimme>();
+	List<Stimme[]> stimmen = new ArrayList<Stimme[]>();
 	
 	/**
 	 * Ein Pointer auf das aktuelle Element in der Liste.
@@ -54,22 +52,14 @@ public class Chronik implements Serializable {
 			throw new IllegalArgumentException("Stimme ist null");
 		}
 		
-		/*if (this.stimmen.size() > maxStimmen) {
-			this.stimmen.remove(0);
-		}*/
-		//Debug.print("Chronik - Aktuelles Element: " + this.aktuellesElement, 4);
-		/*if (this.aktuellesElement >= this.stimmen.size()) {
-			this.stimmen.remove(this.aktuellesElement);
-		}*/
-
-		this.stimmen.add(this.aktuellesElement, alteStimme.deepCopy());
+		Stimme[] stimmenArray = new Stimme[2];
+		stimmenArray[0] = alteStimme.deepCopy();
+		stimmenArray[1] = aktuelleStimme.deepCopy();
+		this.stimmen.add(this.aktuellesElement, stimmenArray);
 		this.aktuellesElement++;
 
-		this.stimmen.add(this.aktuellesElement, aktuelleStimme.deepCopy());
-		//System.out.println("#### " + this.currentSize() +  " " + this.aktuellesElement);
-
-		if (this.stimmen.size() > (this.aktuellesElement + 1)) {
-			for (int i = this.aktuellesElement + 1; i <= this.stimmen.size(); i++) {
+		if (this.stimmen.size() > (this.aktuellesElement)) {
+			for (int i = this.aktuellesElement; i < this.stimmen.size(); i++) {
 				Debug.print("Chronik - Loesche Element an Stelle " + i, 5);
 				this.stimmen.remove(this.aktuellesElement + 1);
 			}
@@ -85,7 +75,7 @@ public class Chronik implements Serializable {
 		Stimme alteStimme = null;
 		if (this.hatStimmenZumZuruecksetzen()) {
 			this.aktuellesElement--;
-			alteStimme = this.stimmen.get(this.aktuellesElement);
+			alteStimme = this.stimmen.get(this.aktuellesElement)[0];
 		}
 		return alteStimme;
 	}
@@ -99,8 +89,8 @@ public class Chronik implements Serializable {
 	public Stimme wiederherstellenStimme() {
 		Stimme alteStimme = null;
 		if (this.hatStimmenZumWiederherstellen()) {
+			alteStimme = this.stimmen.get(this.aktuellesElement)[1];
 			this.aktuellesElement++;
-			return this.stimmen.get(this.aktuellesElement);
 		}
 		return alteStimme;
 	}
@@ -127,7 +117,7 @@ public class Chronik implements Serializable {
 	/**
 	 * 
 	 */
-	public void debug() {
+	/*public void debug() {
 		Debug.print("Chronik Debug. Current Element: " + this.aktuellesElement + " / " + (this.stimmen.size() - 1), 5);
 		for (int i = 0; i < this.stimmen.size(); i++) {
 			if (this.stimmen.get(i) instanceof Erststimme) {
@@ -140,7 +130,7 @@ public class Chronik implements Serializable {
 				Debug.print(i + "Unkown", 5);
 			}
 		}
-	}
+	}*/
 	
 	
 }
