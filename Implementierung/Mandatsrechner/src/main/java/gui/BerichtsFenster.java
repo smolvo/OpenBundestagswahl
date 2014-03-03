@@ -6,6 +6,8 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  * Diese Klasse repräsentiert das Berichtsfenster. In diesem werden Daten
@@ -35,8 +37,11 @@ public class BerichtsFenster extends JDialog {
 		this.setSize(new Dimension(1024, 768));
 		this.setLocationRelativeTo(null);
 		this.setTitle("Mandatsübersicht");
+		TableRowSorter<TableModel> sorterBericht = new TableRowSorter<TableModel>();
 		JTable jTabelle = new JTable(tabellenModell);
 		JScrollPane pane = new JScrollPane(jTabelle);
+		jTabelle.setRowSorter(sorterBericht);
+		sorterBericht.setModel(jTabelle.getModel());
 		this.add(pane);
 		this.setVisible(true);
 	}
