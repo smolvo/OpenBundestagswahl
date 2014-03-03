@@ -20,7 +20,8 @@ public class Erststimme extends Stimme implements Serializable,
 	private Kandidat kandidat;
 
 	/**
-	 * Mit diesem Konsruktor ist es mï¿½glich alle Attribute auf einmal zu setzen
+	 * Mit diesem Konsruktor ist es mï¿½glich alle Attribute auf einmal zu
+	 * setzen
 	 * 
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen
@@ -64,24 +65,30 @@ public class Erststimme extends Stimme implements Serializable,
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
-		/*
-		 * if (this.getGebiet().getWahlberechtigte() <
-		 * (this.getGebiet().getErststimmeGesamt() - this.getAnzahl() + anzahl))
-		 * { throw new IllegalArgumentException(
-		 * "Anzahl der Erststimmen > Anzahl der Wahlberechtigten!"); }
-		 */
+
+		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
+				.getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
+			throw new IllegalArgumentException(
+					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
+							+ ((this.getGebiet().getAnzahlErststimmen()
+									- this.getAnzahl() + anzahl) - this
+									.getGebiet().getWahlberechtigte()) + "!");
+		}
+
 		this.anzahl = anzahl;
 	}
 
 	@Override
 	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
+		if (anzahl <= 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ oder null!");
 		}
 		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
 				.getAnzahlErststimmen() + anzahl)) {
 			throw new IllegalArgumentException(
-					"Anzahl der Erststimmen > Anzahl der Wahlberechtigten!");
+					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
+							+ ((this.getGebiet().getAnzahlErststimmen() + anzahl) - this
+									.getGebiet().getWahlberechtigte()) + "!");
 		}
 		this.anzahl += anzahl;
 	}
