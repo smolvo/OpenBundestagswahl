@@ -227,21 +227,35 @@ public class Wahlgenerator {
 		for (Wahlkreis wk : alleWahlkreise) {
 			// durchlaufe alle Erststimmen
 			for (Erststimme erst : wk.getErststimmenProPartei()) {
-				// Anzahl auf 0 setzen
-				erst.setAnzahl(0);
-
 				if (erst.getKandidat().getPartei() == null) {
 					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: " + erst.getKandidat().getName() + ", Partei: NULL", 4);
+				}
+				if (this.hatParteiStimmanteile(erst.getKandidat().getPartei())) {
+					erst.setAnzahl(1);
+				} else {
+					erst.setAnzahl(0);
 				}
 			}
 			// durchlaufe alle Zweitstimmen
 			for (Zweitstimme zweit : wk.getZweitstimmenProPartei()) {
-				// Anzahl auf 0 setzen
-				zweit.setAnzahl(0);
-				// zweit = null;
+				if (this.hatParteiStimmanteile(zweit.getPartei())) {
+					zweit.setAnzahl(1);
+				} else {
+					zweit.setAnzahl(0);
+				}
+			}
+		}
+		
+		for (Wahlkreis wahlkreis : alleWahlkreise) {
+			if (wahlkreis.getAnzahlErststimmen() < 1) {
+				Debug.print(wahlkreis.getName() + " hat keine Erststimmen!", 1);
+			}
+			if (wahlkreis.getAnzahlErststimmen() < 1) {
+				Debug.print(wahlkreis.getName() + " hat keine Zweitstimmen!", 1);
 			}
 		}
 
+		
 		// durchlaufe Parteien für die Stimmen verteilt werden sollen
 		for (Stimmanteile sa : this.getStimmanteile()) {
 
@@ -381,7 +395,7 @@ public class Wahlgenerator {
 					"Der Parameter \"partei\" ist null!");
 		}
 		for (Stimmanteile sa : this.getStimmanteile()) {
-			if (sa.getPartei().equals(partei)) {
+			if (sa.getPartei().getName().equals(partei.getName())) {
 				return true;
 			}
 		}
