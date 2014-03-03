@@ -123,16 +123,18 @@ public class TabLeiste extends JTabbedPane {
 				 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt,
 				 * ob dieser Tab gespeichert werden soll
 				 */
-				int eingabe = JOptionPane.showConfirmDialog(null,
-						"Soll Datei gespeichert werden?", "Einverständnis",
-						JOptionPane.YES_NO_CANCEL_OPTION);
+				if (pf.getWahlen().size() > 1) {
+					int eingabe = JOptionPane.showConfirmDialog(null,
+							"Soll Datei gespeichert werden?", "Einverständnis",
+							JOptionPane.YES_NO_CANCEL_OPTION);
 
-				if (eingabe == 0) {
-					new ExportDialog(pf);
-				} else if (eingabe == 1) {
-					remove(c);
-					pf.getWahlen().remove(c);
-					setSelectedComponent(TabLeiste.this.getComponentAt(0));
+					if (eingabe == 0) {
+						new ExportDialog(pf);
+					} else if (eingabe == 1) {
+						remove(c);
+						pf.getWahlen().remove(c);
+						setSelectedComponent(TabLeiste.this.getComponentAt(0));
+					}
 				}
 			}
 		});
