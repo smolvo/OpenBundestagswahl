@@ -112,7 +112,22 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				}
 				int diffStimme = anzahl - alterWert;
 				if ((gesamtErst + diffStimme) <= wahlberechtigte) {
-					aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
+					if (anzahl != alterWert) {
+						aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
+						// wenn die Stimme intern geändert wurde auch in der Tabelle
+						// ändern
+						// und berechne-Knopf aufrufen
+						if (aenderung) {
+							this.tabellenfenster.getAnsicht().berechnungNotwendig();
+							Gebiet gebiet = tabellenfenster.getAnsicht()
+									.getAktuellesGebiet();
+							tabellenfenster.getAnsicht().getFenster().getSteuerung()
+									.aktualisiereWahlfenster(gebiet);
+							daten.getErststimmen(rowIndex).setAnzahl(anzahl);
+							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
+							.setzeRueckgaengig(true);
+						}
+					}
 				} else {
 					int restStimmen = wahlberechtigte - gesamtErst;
 					JOptionPane
@@ -129,21 +144,6 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 
-			}
-			if (anzahl != alterWert) {
-				// wenn die Stimme intern geändert wurde auch in der Tabelle
-				// ändern
-				// und berechne-Knopf aufrufen
-				if (aenderung) {
-					this.tabellenfenster.getAnsicht().berechnungNotwendig();
-					Gebiet gebiet = tabellenfenster.getAnsicht()
-							.getAktuellesGebiet();
-					tabellenfenster.getAnsicht().getFenster().getSteuerung()
-							.aktualisiereWahlfenster(gebiet);
-					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
-					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-					.setzeRueckgaengig(true);
-				}
 			}
 		} else if (columnIndex == 4) {
 			int alterWert = daten.getZweitstimmen(rowIndex).getAnzahl();
@@ -164,7 +164,23 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				}
 				int diffStimme = anzahl - alterWert;
 				if ((gesamtZweit + diffStimme) <= wahlberechtigte) {
-					aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
+					if (anzahl != alterWert) {
+						aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
+						// wenn die Stimme intern geändert wurde auch in der Tabelle
+						// ändern
+						// und berechne-Knopf aufrufen
+						if (aenderung) {
+							this.tabellenfenster.getAnsicht().berechnungNotwendig();
+							Gebiet gebiet = tabellenfenster.getAnsicht()
+									.getAktuellesGebiet();
+							tabellenfenster.getAnsicht().getFenster().getSteuerung()
+									.aktualisiereWahlfenster(gebiet);
+							daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
+							
+							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
+									.setzeRueckgaengig(true);
+						}
+					}
 				} else {
 					int restStimmen = wahlberechtigte - gesamtZweit;
 					JOptionPane
@@ -181,29 +197,6 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 
-			}
-			if (anzahl != alterWert) {
-				// wenn die Stimme intern geändert wurde auch in der Tabelle
-				// ändern
-				// und berechne-Knopf aufrufen
-				
-				if (aenderung) {
-					this.tabellenfenster.getAnsicht().berechnungNotwendig();
-					Gebiet gebiet = tabellenfenster.getAnsicht()
-							.getAktuellesGebiet();
-					tabellenfenster.getAnsicht().getFenster().getSteuerung()
-							.aktualisiereWahlfenster(gebiet);
-					daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
-					
-					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-							.setzeRueckgaengig(true);
-				} /**else {
-
-					JOptionPane.showMessageDialog(this.tabellenfenster,
-							"Stimme konnte nicht geändert werden.", "Meldung",
-							JOptionPane.INFORMATION_MESSAGE, null);
-
-				} */
 			}
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
