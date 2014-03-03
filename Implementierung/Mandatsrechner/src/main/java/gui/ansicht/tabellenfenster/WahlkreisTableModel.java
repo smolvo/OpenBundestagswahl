@@ -125,7 +125,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 									.aktualisiereWahlfenster(gebiet);
 							daten.getErststimmen(rowIndex).setAnzahl(anzahl);
 							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-							.setzeRueckgaengig(true);
+							.setzeSichtbarkeit();
 						}
 					}
 				} else {
@@ -178,7 +178,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 							daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
 							
 							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-									.setzeRueckgaengig(true);
+									.setzeSichtbarkeit();
 						}
 					}
 				} else {

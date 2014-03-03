@@ -216,19 +216,10 @@ public class Menu extends JMenuBar {
 				}
 			} else if (e.getSource() == menu.rueckgaengig) {
 				Steuerung.getInstance().zurueckSetzen();
-				if (Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
-					wiederherstellen.setEnabled(true);
-				}
-				if (!Steuerung.getInstance().getBtw().hatStimmenZumZuruecksetzen()) {
-					setzeRueckgaengig(false);
-				}
-				Bundestagswahl btw = pf.getBundestagswahlen().get(0); // TODO
-				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
+				setzeSichtbarkeit();
 			} else if (e.getSource() == menu.wiederherstellen) {
 				Steuerung.getInstance().wiederherrstellen();
-				if (!Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
-					wiederherstellen.setEnabled(false);
-				}
+				setzeSichtbarkeit();
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.zufaelligeWahl) {
@@ -249,7 +240,19 @@ public class Menu extends JMenuBar {
 	 * @param verfuegbarkeit
 	 *            Boolean
 	 */
-	public void setzeRueckgaengig(boolean verfuegbarkeit) {
-		this.rueckgaengig.setEnabled(verfuegbarkeit);
+	public void setzeSichtbarkeit() {
+		if (Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
+			wiederherstellen.setEnabled(true);
+		} else {
+			wiederherstellen.setEnabled(false);
+		}
+		if (!Steuerung.getInstance().getBtw().hatStimmenZumZuruecksetzen()) {
+			rueckgaengig.setEnabled(false);
+		}else {
+			rueckgaengig.setEnabled(true);
+		}
+		Bundestagswahl btw = pf.getBundestagswahlen().get(0); // TODO
+		pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
+
 	}
 }
