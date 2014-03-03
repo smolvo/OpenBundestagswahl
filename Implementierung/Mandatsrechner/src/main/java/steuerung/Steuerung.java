@@ -137,7 +137,6 @@ public class Steuerung {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl muss grï¿½ï¿½er Null sein.");
 		}
-		stimme.setAnzahl(anzahl);
 		boolean erfolg = this.btw.setzeStimme(stimme, true);
 		return erfolg;
 	}
