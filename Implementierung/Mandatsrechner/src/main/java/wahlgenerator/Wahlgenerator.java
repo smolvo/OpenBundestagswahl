@@ -143,7 +143,8 @@ public class Wahlgenerator {
 		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
 
-		Debug.setLevel(0);
+		Debug.print("Wahlgenerierung fertig!", 3);
+		Debug.setLevel(6);
 		
 		// Gebe die generierte Wahl zurück
 		return clone;
@@ -230,7 +231,8 @@ public class Wahlgenerator {
 				if (erst.getKandidat().getPartei() == null) {
 					Debug.print("Wahlkreis: " + wk.getName() + ", Kandidat: " + erst.getKandidat().getName() + ", Partei: NULL", 4);
 				}
-				if (this.hatParteiStimmanteile(erst.getKandidat().getPartei())) {
+				if (this.hatParteiStimmanteile(erst.getKandidat().getPartei())
+						&& this.getAnteileVonPartei(erst.getKandidat().getPartei()).getAnteilErststimmen() > 0) {
 					erst.setAnzahl(1);
 				} else {
 					erst.setAnzahl(0);
@@ -238,7 +240,8 @@ public class Wahlgenerator {
 			}
 			// durchlaufe alle Zweitstimmen
 			for (Zweitstimme zweit : wk.getZweitstimmenProPartei()) {
-				if (this.hatParteiStimmanteile(zweit.getPartei())) {
+				if (this.hatParteiStimmanteile(zweit.getPartei())
+						&& this.getAnteileVonPartei(zweit.getPartei()).getAnteilZweitstimmen() > 0) {
 					zweit.setAnzahl(1);
 				} else {
 					zweit.setAnzahl(0);
@@ -382,12 +385,12 @@ public class Wahlgenerator {
 	}
 
 	/**
-	 * Prï¿½ft ob fï¿½r die gegebene Partei Stimmanteile gegeben sind.
+	 * Prüft ob für die gegebene Partei Stimmanteile gegeben sind.
 	 * 
 	 * @param partei
-	 *            Die Partei fï¿½r diejenige geprï¿½ft werden soll ob Stimmanteile
+	 *            Die Partei für diejenige geprüft werden soll ob Stimmanteile
 	 *            gegeben sind.
-	 * @return Ob fï¿½r die gegebene Partei Stimmanteile gegeben sind.
+	 * @return Ob für die gegebene Partei Stimmanteile gegeben sind.
 	 */
 	private boolean hatParteiStimmanteile(Partei partei) {
 		if (partei == null) {

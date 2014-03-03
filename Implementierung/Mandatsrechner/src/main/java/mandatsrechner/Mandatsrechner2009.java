@@ -451,6 +451,9 @@ public class Mandatsrechner2009 {
 	 */
 	public Bundestagswahl berechneSainteLague(Bundestagswahl bundestagswahl)
 			throws IllegalArgumentException {
+		
+		Debug.print("Mandatsrechnung gestartet!", 4);
+		
 		if (bundestagswahl == null) {
 			throw new IllegalArgumentException(
 					"Bundestagswahl-Objekt ist leer!");

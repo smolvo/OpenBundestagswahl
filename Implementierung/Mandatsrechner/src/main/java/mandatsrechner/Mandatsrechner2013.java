@@ -179,6 +179,13 @@ public class Mandatsrechner2013 {
 				float divisor = 0f;
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
+				
+				if (Debug.getLevel() > 0) {
+					for (Partei relPartei : relevanteParteien) {
+						Debug.print(relPartei.getName(), 5);
+					}
+				}
+				
 				Debug.print("Berechne Divisor", 5);
 				int insgesamt = 0;
 				while (insgesamt != neueSitzanzahl) {
