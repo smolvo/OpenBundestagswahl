@@ -20,15 +20,15 @@ public class Erststimme extends Stimme implements Serializable,
 	private Kandidat kandidat;
 
 	/**
-	 * Mit diesem Konsruktor ist es mï¿½glich alle Attribute auf einmal zu
+	 * Mit diesem Konsruktor ist es möglich alle Attribute auf einmal zu
 	 * setzen
 	 * 
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen
 	 * @param gebiet
-	 *            Das zugehï¿½rige Gebiet.
+	 *            Das zugehörige Gebiet.
 	 * @param kandidat
-	 *            Der zugehï¿½rige Kanditat.
+	 *            Der zugehörige Kanditat.
 	 */
 	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
 		this.setGebiet(gebiet);
@@ -65,24 +65,28 @@ public class Erststimme extends Stimme implements Serializable,
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
-
-		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
-				.getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
+		
+		/*
+		 * Der kommentierte Code unten löst eine StackOverflowException aus!
+		 */
+		//if (this.getGebiet().getWahlberechtigte()
+		//		< (this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
+		if (this.getGebiet().getWahlberechtigte() < anzahl) {
 			throw new IllegalArgumentException(
 					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
-							+ ((this.getGebiet().getAnzahlErststimmen()
-									- this.getAnzahl() + anzahl) - this
-									.getGebiet().getWahlberechtigte()) + "!");
+					+ (anzahl - this.getGebiet().getWahlberechtigte()) + "!"
+			);
 		}
-
+		
 		this.anzahl = anzahl;
 	}
 
 	@Override
 	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl <= 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ oder null!");
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
+		
 		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
 				.getAnzahlErststimmen() + anzahl)) {
 			throw new IllegalArgumentException(
@@ -90,6 +94,7 @@ public class Erststimme extends Stimme implements Serializable,
 							+ ((this.getGebiet().getAnzahlErststimmen() + anzahl) - this
 									.getGebiet().getWahlberechtigte()) + "!");
 		}
+		
 		this.anzahl += anzahl;
 	}
 
