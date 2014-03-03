@@ -143,13 +143,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					daten.getErststimmen(rowIndex).setAnzahl(anzahl);
 					tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
 					.setzeRueckgaengig(true);
-			} /** else {
-
-					JOptionPane.showMessageDialog(this.tabellenfenster,
-							"Stimme konnte nicht geändert werden.", "Meldung",
-							JOptionPane.INFORMATION_MESSAGE, null);
-
-				} */
+				}
 			}
 		} else if (columnIndex == 4) {
 			int alterWert = daten.getZweitstimmen(rowIndex).getAnzahl();

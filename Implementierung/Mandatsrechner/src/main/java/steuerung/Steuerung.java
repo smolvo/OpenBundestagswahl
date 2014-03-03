@@ -169,7 +169,15 @@ public class Steuerung {
 	public boolean zurueckSetzen() {
 		return this.btw.zurueckSetzen();
 	}
-
+	
+	/**
+	 * Mit dieser Methode wird das Programm eine Stimmenï¿½nderung wiederhergestellt.
+	 * @return true false
+	 */
+	public boolean wiederherrstellen() {
+		return this.btw.wiederherstellen();
+	}
+	
 	/**
 	 * Gibt die aktuelle Steuerung aus.
 	 * 

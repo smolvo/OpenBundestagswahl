@@ -9,8 +9,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import test.java.Debug;
-
 import main.java.gui.dialoge.AboutDialog;
 import main.java.gui.dialoge.ExportDialog;
 import main.java.gui.dialoge.GeneratorDialog;
@@ -18,6 +16,7 @@ import main.java.gui.dialoge.HandbuchDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.gui.dialoge.LizenzDialog;
 import main.java.gui.dialoge.VergleichDialog;
+import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 /**
@@ -217,9 +216,19 @@ public class Menu extends JMenuBar {
 				}
 			} else if (e.getSource() == menu.rueckgaengig) {
 				Steuerung.getInstance().zurueckSetzen();
+				if (Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
+					wiederherstellen.setEnabled(true);
+				}
+				if (!Steuerung.getInstance().getBtw().hatStimmenZumZuruecksetzen()) {
+					setzeRueckgaengig(false);
+				}
+				Bundestagswahl btw = pf.getBundestagswahlen().get(0); // TODO
+				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
 			} else if (e.getSource() == menu.wiederherstellen) {
-				// TODO wiederherstellen
-				Debug.print("TODO: wiederherstellen", 3);
+				Steuerung.getInstance().wiederherrstellen();
+				if (!Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
+					wiederherstellen.setEnabled(false);
+				}
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.zufaelligeWahl) {
