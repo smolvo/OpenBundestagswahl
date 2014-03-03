@@ -104,6 +104,13 @@ public class GebietTest {
 	public void testSetName1() {
 		testBundesland.setName("");
 	}
+	
+	@Test
+	public void testSetName2() {
+		testBundesland.setName("Test");
+		
+		assertEquals("Test", testBundesland.getName());
+	}
 
 	// Deutschland
 	// Wähler - ungültige Erststimmen

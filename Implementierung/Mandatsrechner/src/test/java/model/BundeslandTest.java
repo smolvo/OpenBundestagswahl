@@ -151,7 +151,6 @@ public class BundeslandTest {
 	@Test
 	// aus der csv-Datei Wahlberechtigte Schleswig-Holstein: 2251796
 	public void testGetWahlberechtigte() {
-		// Es werden die Wahlberechtigten aus der Vorperiode angegeben
 		assertEquals(2251796, testBundesland.getWahlberechtigte());
 	}
 

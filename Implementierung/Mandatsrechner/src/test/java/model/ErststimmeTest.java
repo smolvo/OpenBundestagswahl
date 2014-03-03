@@ -103,16 +103,22 @@ public class ErststimmeTest {
 	@Test
 	public void testSetAnzahl1() {
 		testErststimme.setAnzahl(0);
+		
+		assertEquals(0, testErststimme.getAnzahl());
 	}
 
 	// Flensburg-Schleswig - Wahlberechtigte - 226944
 	// Flensburg-Schleswig - Wähler - 162749
 	// Wahlberechtigte - (Wähler - ungültige Erststimmen) = 66418
 	// Flensburg-Schleswig - CDU - Wähler - 68235
+	// Erststimmen die noch gesetzt werden dürfen - 134653
 	@Test
 	public void testSetAnzahl2() {
 		testErststimme.setAnzahl(134653);
+		
+		assertEquals(134653, testErststimme.getAnzahl());
 	}
+	
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetAnzahl3() {
@@ -122,6 +128,8 @@ public class ErststimmeTest {
 	@Test
 	public void testSetAnzahl4() {
 		testErststimme.setAnzahl(10);
+		
+		assertEquals(10, testErststimme.getAnzahl());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -154,9 +162,14 @@ public class ErststimmeTest {
 	// Flensburg-Schleswig - Wahlberechtigte - 226944
 	// Flensburg-Schleswig - Wähler - 162749
 	// Wahlberechtigte - (Wähler - ungültige Erststimmen) = 66418
+	// CDU - Anzahl Erststimmen - 68235
+	// CDU - neue Anzahl Erststimmen - 134653
 	@Test
 	public void testErhoeheAnzahl4() {
 		testErststimme.erhoeheAnzahl(66418);
+		
+		
+		assertEquals(134653, testErststimme.getAnzahl());
 	}
 
 }
