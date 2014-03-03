@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,6 +15,8 @@ import org.junit.Test;
 
 import main.java.importexport.ImportExportManager;
 import main.java.model.Bundestagswahl;
+import main.java.wahlgenerator.Stimmanteile;
+import main.java.wahlgenerator.Wahlgenerator;
 
 /**
  * 
@@ -30,13 +33,15 @@ public class ImportExportTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		 i = new ImportExportManager();
-		 filePaths = new String[6];
+		 filePaths = new String[7];
 		 filePaths[0] = "src/main/resources/importexport/Ergebnis2013.csv";
 		 filePaths[1] = "src/main/resources/importexport/Wahlbewerber2013.csv";
 		 filePaths[2] = "src/main/resources/importexport/Exported.csv";
 		 filePaths[3] = "src/main/resources/importexport/Exported2.csv";
 		 filePaths[4] = "src/main/resources/importexport/random.csv";
 		 filePaths[5] = "src/main/resources/config.csv";
+		 
+		 filePaths[6] = "src/main/resources/importexport/generierteWahl.csv";
 	}
 	
 	/**
@@ -45,6 +50,11 @@ public class ImportExportTest {
 	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		// nur für export Test benötigte Dateien wieder löschen
+		new File(filePaths[2]).delete();
+		new File(filePaths[3]).delete();
+		new File(filePaths[4]).delete();
+		new File(filePaths[6]).delete();
 	}
 	
 	/**
@@ -131,12 +141,7 @@ public class ImportExportTest {
 		csvDateien[0] = new File(filePaths[0]);
 		csvDateien[1] = new File(filePaths[0]);
 		
-		Bundestagswahl w = null;
-
-
-		w = i.importieren(csvDateien);
-	
-		
+		Bundestagswahl w = i.importieren(csvDateien);
 		assertNull(w);
 		
 		//boolean result = i.exportieren(filePaths[2], w);
@@ -170,4 +175,40 @@ public class ImportExportTest {
 		
 		assertNull(w);
 	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void exportGenerierteWahlTest() {
+		
+		/*
+		 * Importiere Wahl 2013 wie im BasisTest
+		 */
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(filePaths[0]);
+		csvDateien[1] = new File(filePaths[1]);
+		Bundestagswahl wahl2013 = null;
+		wahl2013 = i.importieren(csvDateien);
+		
+		/*
+		 * Generiere eine neue Wahl basierend auf dieser
+		 * Dieser Code wird bereits im WahlgeneratorTest getestet
+		 */
+		LinkedList<Stimmanteile> anteile = new LinkedList<>();
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("CDU"), 40, 40));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("SPD"), 30, 30));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("GRÜNE"), 20, 20));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("FDP"), 10, 10));
+		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
+		Bundestagswahl generierteWahl = wg.erzeugeBTW("Test");
+		
+		i.exportieren(filePaths[6], generierteWahl);
+		csvDateien[0] = new File(filePaths[6]);
+		Bundestagswahl importierteGenerierteWahl = i.importieren(csvDateien);
+		
+		assertNotNull("Importierte Wahl ist Null!", importierteGenerierteWahl);
+	}
+	
+	
 }
