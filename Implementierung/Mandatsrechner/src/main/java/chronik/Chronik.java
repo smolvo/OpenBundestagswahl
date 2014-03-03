@@ -111,7 +111,7 @@ public class Chronik implements Serializable {
 	 * 		true, wenn es wiederherstellbar ist.
 	 */
 	public boolean hatStimmenZumWiederherstellen () {
-		return this.stimmen.size() > this.aktuellesElement;
+		return this.stimmen.size() >= this.aktuellesElement;
 	}
 	
 	/**

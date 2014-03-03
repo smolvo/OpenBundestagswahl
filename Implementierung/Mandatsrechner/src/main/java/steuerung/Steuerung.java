@@ -139,7 +139,7 @@ public class Steuerung {
 		}
 		Stimme neueStimme = stimme.deepCopy();
 		neueStimme.setAnzahl(anzahl);
-		boolean erfolg = this.btw.setzeStimme(stimme, true);
+		boolean erfolg = this.btw.setzeStimme(neueStimme, true);
 		return erfolg;
 	}
 

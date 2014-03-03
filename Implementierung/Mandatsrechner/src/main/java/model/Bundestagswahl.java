@@ -207,7 +207,7 @@ public class Bundestagswahl implements Serializable {
 	 * aktuelle Bundestagswahl in der Chronik.
 	 * 
 	 * @param stimme
-	 *            die zu verï¿½ndernde stimme.
+	 *            die zu veraendernde stimme.
 	 * @param chronik
 	 * 				bei true wird die veraenderte Stimme in der Chronik
 	 * 				aufgezeichnet.
@@ -215,6 +215,7 @@ public class Bundestagswahl implements Serializable {
 	 */
 	public boolean setzeStimme(Stimme stimme, boolean chronik) {
 		// TODO
+		System.out.println(stimme.getAnzahl());
 		Stimme alteStimme = null;
 		boolean success = false;
 		if (stimme instanceof Erststimme) {
