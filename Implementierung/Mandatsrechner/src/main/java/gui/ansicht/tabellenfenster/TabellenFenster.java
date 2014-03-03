@@ -1,10 +1,13 @@
 package main.java.gui.ansicht.tabellenfenster;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import test.java.Debug;
 import main.java.gui.GUIPartei;
@@ -21,7 +24,7 @@ import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
 /**
- * Diese Klasse reprï¿½sentiert das Tabellenfenster einer Ansicht. In diesem
+ * Diese Klasse repräsentiert das Tabellenfenster einer Ansicht. In diesem
  * werden bestimmmte Daten eines BTW-Objektes angezeigt.
  * 
  */
@@ -30,7 +33,7 @@ public class TabellenFenster extends JScrollPane {
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -8830377095217386485L;
 
-	/** reprï¿½sentiert die Ansicht in der sich die Tabelle befindet */
+	/** repräsentiert die Ansicht in der sich die Tabelle befindet */
 	private final Ansicht ansicht;
 
 	/**
@@ -74,8 +77,12 @@ public class TabellenFenster extends JScrollPane {
 		}
 	}
 
+	
+	
+	
+	
 	/**
-	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
+	 * Befüllt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
 	 * relevanten Daten.
 	 * 
 	 * @param land
@@ -103,16 +110,62 @@ public class TabellenFenster extends JScrollPane {
 					Integer.toString(gp.getUeberhangsmandate()),
 					Integer.toString(gp.getAusgleichsmandate()));
 		}
-
+		
+		TableRowSorter<TableModel> sorterBund = new TableRowSorter<TableModel>();
 		BundTableModel tabelle = new BundTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterBund);
+		sorterBund.setModel(jTabelle.getModel());
+		sorterBund.setComparator(3, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterBund.setComparator(4, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterBund.setComparator(5, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterBund.setComparator(6, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterBund.setComparator(2, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterBund.setComparator(1, new Comparator<Integer>() {
+			 @Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+		
+		
 		this.setViewportView(jTabelle);
 	}
 
 	/**
-	 * Diese private Methode wird von tabellenFuellen fï¿½r Deutschland verwendet
+	 * Diese private Methode wird von tabellenFuellen für Deutschland verwendet
 	 * und erstellt aus einer Sitzverteilung und einer Partei ein
-	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden mï¿½ssen
+	 * GUIPartei-Objekt, welches alle Daten, die angezeigt werden müssen
 	 * beinhaltet.
 	 * 
 	 * @param partei
@@ -146,7 +199,7 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Landesansicht mit den
+	 * Befüllt die Zeilen und Spalten der Tabelle in der Landesansicht mit den
 	 * relevanten Daten.
 	 * 
 	 * @param bl
@@ -176,14 +229,46 @@ public class TabellenFenster extends JScrollPane {
 					Double.toString(proZweit), Integer.toString(direktMan),
 					Integer.toString(zw.getPartei().getUeberhangMandate(bl)));
 		}
-
+		
+		TableRowSorter<TableModel> sorterLand = new TableRowSorter<TableModel>();
 		LandTableModel tabelle = new LandTableModel(daten);
 		JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterLand);
+		sorterLand.setModel(jTabelle.getModel());
+		sorterLand.setComparator(3, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterLand.setComparator(4, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
+			    return Integer.compare(i1, i2);
+			  }
+			} );
+		sorterLand.setComparator(2, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterLand.setComparator(1, new Comparator<Integer>() {
+			 @Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+		
 		this.setViewportView(jTabelle);
+		
 	}
 
 	/**
-	 * Befï¿½llt die Zeilen und Spalten der Tabelle in der Wahlkreisansicht mit
+	 * Befüllt die Zeilen und Spalten der Tabelle in der Wahlkreisansicht mit
 	 * den relevanten Daten.
 	 * 
 	 * @param wk
@@ -225,9 +310,41 @@ public class TabellenFenster extends JScrollPane {
 						.toString(prozentualeErst), direktMan);
 			}
 		}
+		
+		TableRowSorter<TableModel> sorterWk = new TableRowSorter<TableModel>();
 		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
 		JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterWk);
+		sorterWk.setModel(jTabelle.getModel());
+		sorterWk.setComparator(3, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterWk.setComparator(5, new Comparator<String>() {
+			  @Override public int compare( String s1, String s2 )
+			  {
+			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
+			    return Double.compare(d1, d2);
+			  }
+			} );
+		sorterWk.setComparator(2, new Comparator<Integer>() {
+			 @Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+		sorterWk.setComparator(4, new Comparator<Integer>() {
+			 @Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+		
 		this.setViewportView(jTabelle);
+	
 	}
 
 	/**
