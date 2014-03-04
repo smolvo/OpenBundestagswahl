@@ -53,8 +53,14 @@ public class ZweitstimmeTest {
 		stimme.erniedrigeAnzahl(-200);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void erniedrigeAnzahlTest2() {
+		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(0);
+		stimme.erniedrigeAnzahl(1000000);
+	}
+	
+	@Test
+	public void erniedrigeAnzahlTest3() {
 		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(0);
 		assertEquals(61347, stimme.getAnzahl());
 		stimme.erniedrigeAnzahl(200);
@@ -66,12 +72,39 @@ public class ZweitstimmeTest {
 		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(1);
 		stimme.erhoeheAnzahl(-200);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void erhoeheAnzahlTest2() {
+		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(0);
+		stimme.erhoeheAnzahl(1000000);
+	}
 
 	@Test
-	public void erhoeheAnzahlTest2() {
+	public void erhoeheAnzahlTest3() {
 		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(1);
 		assertEquals(52396, stimme.getAnzahl());
 		stimme.erhoeheAnzahl(200);
 		assertEquals(52596, stimme.getAnzahl());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void setParteiFail() {
+		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(1);
+		stimme.setPartei(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void setAnzahlFail() {
+		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(1);
+		stimme.setAnzahl(-1);
+	}
+	
+	@Test
+	public void deepCopyTest() {
+		Zweitstimme stimme = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0).getZweitstimmenProPartei().get(1);
+		Zweitstimme copyCat = (Zweitstimme) stimme.deepCopy();
+		assertEquals(stimme.getAnzahl(), copyCat.getAnzahl());
+		assertEquals(stimme.getGebiet(), copyCat.getGebiet());
+		assertEquals(stimme.getPartei(), copyCat.getPartei());
 	}
 }
