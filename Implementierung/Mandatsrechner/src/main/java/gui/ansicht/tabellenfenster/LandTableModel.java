@@ -13,7 +13,7 @@ public class LandTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
-			"Direktmandate", "Überhangsmandate" };
+			"Direktmandate", "Überhangmandate" };
 
 	/** hält alle relevanten Daten */
 	private LandDaten daten;

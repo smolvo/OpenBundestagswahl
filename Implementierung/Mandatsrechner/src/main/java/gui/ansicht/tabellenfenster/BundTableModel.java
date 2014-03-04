@@ -15,7 +15,7 @@ public class BundTableModel extends AbstractTableModel {
 
 	/** repräsentiert die Spaltennamen */
 	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
-			"Sitze", "Direktmandate", "Überhangsmandate", "Ausgleichsmandate" };
+			"Sitze", "Direktmandate", "Überhangmandate", "Ausgleichsmandate" };
 
 	/** hï¿½lt alle relevanten Daten */
 	private BundDaten daten;
