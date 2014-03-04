@@ -5,6 +5,8 @@ import java.io.File;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.java.gui.Programmfenster;
 import main.java.model.Bundestagswahl;
@@ -33,6 +35,8 @@ public class ImportDialog extends JDialog {
 
 	/** repräsentiert den Vektor mit den eingelesenen Daten */
 	private File[] eingeleseneDateien = new File[2];
+	
+	private FileFilter filter = new FileNameExtensionFilter("CSV File","csv");
 
 	/** repräsentiert das Programmfenster */
 	private Programmfenster pf;
@@ -58,8 +62,12 @@ public class ImportDialog extends JDialog {
 		// bei der ersten Ausführung wird der FileChooser gesichert
 		if (ersteAusfuehrung) {
 			ergebnisseAuswahl = new JFileChooser();
+			ergebnisseAuswahl.setFileFilter(filter);
+			ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
 			ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
 			bewerberAuswahl = new JFileChooser();
+			bewerberAuswahl.setFileFilter(filter);
+			ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
 			bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
 			ersteAusfuehrung = false;
 		}
