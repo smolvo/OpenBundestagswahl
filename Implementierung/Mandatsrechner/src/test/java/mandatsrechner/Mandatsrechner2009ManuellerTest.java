@@ -23,7 +23,6 @@ public class Mandatsrechner2009ManuellerTest {
 	 *            Kommandozeilen Argumente.
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -35,7 +34,6 @@ public class Mandatsrechner2009ManuellerTest {
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}

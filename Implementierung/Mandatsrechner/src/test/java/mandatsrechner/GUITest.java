@@ -21,7 +21,7 @@ public class GUITest {
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 			System.out.println("Leine gï¿½ltige CSV-Datei :/");
 		}

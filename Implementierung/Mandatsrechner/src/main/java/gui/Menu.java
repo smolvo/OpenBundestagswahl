@@ -251,7 +251,7 @@ public class Menu extends JMenuBar {
 		}else {
 			rueckgaengig.setEnabled(true);
 		}
-		Bundestagswahl btw = pf.getBundestagswahlen().get(0); // TODO
+		Bundestagswahl btw = pf.getBundestagswahlen().get(0);
 		pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
 
 	}

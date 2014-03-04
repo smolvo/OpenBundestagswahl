@@ -261,7 +261,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
-	 * TODO
 	 * @param partei
 	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.

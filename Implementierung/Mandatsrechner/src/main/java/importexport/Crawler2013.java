@@ -404,7 +404,7 @@ public class Crawler2013 extends Crawler {
 
 	@Override
 	public void getCrawlerInformation() {
-		// TODO Auto-generated method stub
+		
 		Debug.print("Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv", 4);
 	}
 
@@ -430,9 +430,6 @@ public class Crawler2013 extends Crawler {
 
 	private String getBundeslandName(String kuerzel) {
 
-		/*
-		 * TODO Namen aus Config Datei holen statt hard-coden
-		 */
 		String name = "";
 		switch (kuerzel) {
 		case "BW":

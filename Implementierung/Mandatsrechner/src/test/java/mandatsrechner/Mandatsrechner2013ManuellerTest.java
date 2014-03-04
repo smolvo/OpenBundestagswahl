@@ -34,7 +34,7 @@ public class Mandatsrechner2013ManuellerTest {
 		try {
 			w = i.importieren(csvDateien);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}

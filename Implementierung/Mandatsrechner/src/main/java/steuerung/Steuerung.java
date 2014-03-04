@@ -109,16 +109,6 @@ public class Steuerung {
 	}
 
 	/**
-	 * Startet eine Simulierung des negativen Stimmgewichts.
-	 * 
-	 * @param anteile
-	 *            die gewuenschten Anteile.
-	 */
-	public void negStimmgewichtGenerierung(Stimmanteile anteile) {
-		// TODO
-	}
-
-	/**
 	 * Diese Methode aktualisiert den Datensatz, sobald eine bestimmte Anzahl an
 	 * Erst- oder Zweitstimmen geï¿½ndert wurde.
 	 * 

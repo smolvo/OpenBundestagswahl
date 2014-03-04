@@ -45,7 +45,6 @@ public class Config {
 			try {
 				this.importConfig();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
