@@ -92,7 +92,7 @@ public class Ansicht extends JPanel {
 		gbc.ipadx = 50;
 		gbc.ipady = 50;
 
-		gbc.weightx = 0.75;
+		gbc.weightx = 1;
 		gbc.weighty = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -100,7 +100,7 @@ public class Ansicht extends JPanel {
 		gbc.gridheight = 1;
 		add(kartenFenster, gbc);
 
-		gbc.weightx = 0.75;
+		gbc.weightx = 1;
 		gbc.weighty = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -108,7 +108,7 @@ public class Ansicht extends JPanel {
 		gbc.gridheight = 1;
 		add(diagrammFenster, gbc);
 
-		gbc.weightx = 1.25;
+		gbc.weightx = 2;
 		gbc.weighty = 1;
 		gbc.gridx = 1;
 		gbc.gridy = 0;
@@ -145,7 +145,7 @@ public class Ansicht extends JPanel {
 		gbc.ipady = 50;
 
 		if (!this.wurdeVeraendert) {
-			gbc.weightx = 0.65;
+			gbc.weightx = 1;
 			gbc.weighty = 1;
 			gbc.gridx = 0;
 			gbc.gridy = 1;
@@ -154,7 +154,7 @@ public class Ansicht extends JPanel {
 			add(diagrammFenster, gbc);
 		}
 
-		gbc.weightx = 1.35;
+		gbc.weightx = 2;
 		gbc.weighty = 1;
 		gbc.gridx = 1;
 		gbc.gridy = 0;

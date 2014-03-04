@@ -1,6 +1,7 @@
 package main.java.gui;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
@@ -56,17 +57,13 @@ public final class Programmfenster extends JFrame {
 	public Programmfenster() {
 		// allgemeine Anpassungen des Programmfensters
 		setTitle("OpenBundestagswahl");
-		this.setMinimumSize(new Dimension(1024, 768));
-		setLocationRelativeTo(null);
-		setResizable(true);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setResizable(true);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		Image icon = new ImageIcon("src/main/resources/gui/images/wahl2.png")
 				.getImage();
-		setIconImage(icon);
-
-		// Steuerung initialisieren
-		Steuerung.getInstance();
+		this.setIconImage(icon);
 
 		// Menü- Leiste erstellen
 		menu = new Menu(this);
@@ -86,8 +83,9 @@ public final class Programmfenster extends JFrame {
 
 		wahlHinzufuegen(w);
 
-		setVisible(true);
+		this.setVisible(true);
 		pack();
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	/**
