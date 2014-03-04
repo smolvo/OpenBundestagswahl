@@ -14,7 +14,6 @@ import main.java.gui.WahlFenster;
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 import main.java.gui.ansicht.tabellenfenster.TabellenFenster;
 import main.java.model.Bundestagswahl;
-import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 import main.java.steuerung.Steuerung;
 

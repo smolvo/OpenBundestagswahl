@@ -12,7 +12,6 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import main.java.model.Bundestagswahl;
-import main.java.model.Deutschland;
 import main.java.model.Partei;
 import main.java.model.Zweitstimme;
 

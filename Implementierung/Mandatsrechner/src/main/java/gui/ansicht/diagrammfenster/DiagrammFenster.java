@@ -16,7 +16,6 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Gebiet;
 import main.java.model.Wahlkreis;
-import main.java.steuerung.Steuerung;
 
 /**
  * Diese Klasse repräsentiert das Diagrammfenster einer Ansicht. In diesem

@@ -9,7 +9,6 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import test.java.Debug;
 import main.java.gui.GUIPartei;
 import main.java.gui.ansicht.Ansicht;
 import main.java.model.Bundesland;
