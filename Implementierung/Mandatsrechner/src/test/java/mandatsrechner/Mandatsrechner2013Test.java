@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.io.File;
 
 import main.java.mandatsrechner.Mandatsrechner2013;
+import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
@@ -17,6 +18,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import test.java.Debug;
 
 /**
  * 
@@ -52,9 +55,9 @@ public class Mandatsrechner2013Test {
 		this.cloneWahl = null;
 	}
 	
-	@Test
+	@Test (timeout = 10000)
 	public void berechneTest1() {
-		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, sonst = 0;
+		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0;
 		this.rechner.berechne(this.cloneWahl);
 		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
 				switch (kandidat.getPartei().getName()) {
@@ -84,4 +87,105 @@ public class Mandatsrechner2013Test {
 		assertEquals(255, cdu);
 	}
 	
+	@Test (timeout = 10000)
+	public void berechneTest2() {
+		Debug.setLevel(6);
+		//Importieren der Wahl 2009
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(
+				"src/main/resources/importexport/Ergebnis2009.csv");
+		csvDateien[1] = new File(
+				"src/main/resources/importexport/Wahlbewerber2013.csv");
+		Bundestagswahl alteWahl = Steuerung.getInstance().importieren(csvDateien);
+		
+		for (Bundesland bundesland : alteWahl.getDeutschland().getBundeslaender()) {
+			switch(bundesland.getName()){
+			case "Baden-Württemberg":
+				bundesland.setEinwohnerzahl(9483476);
+				break;
+			case "Bayern":
+				bundesland.setEinwohnerzahl(11344794);
+				break;
+			case "Berlin":
+				bundesland.setEinwohnerzahl(2951272);
+				break;
+			case "Brandenburg":
+				bundesland.setEinwohnerzahl(2457703);
+				break;
+			case "Bremen":
+				bundesland.setEinwohnerzahl(578369);
+				break;
+			case "Hamburg":
+				bundesland.setEinwohnerzahl(1526860);
+				break;
+			case "Hessen":
+				bundesland.setEinwohnerzahl(5390683);
+				break;
+			case "Mecklenburg-Vorpommern":
+				bundesland.setEinwohnerzahl(1625022);
+				break;
+			case "Niedersachsen":
+				bundesland.setEinwohnerzahl(7423245);
+				break;
+			case "Nordrhein-Westfalen":
+				bundesland.setEinwohnerzahl(16046200);
+				break;
+			case "Rheinland-Pfalz":
+				bundesland.setEinwohnerzahl(3720049);
+				break;
+			case "Saarland":
+				bundesland.setEinwohnerzahl(944527);
+				break;
+			case "Sachsen":
+				bundesland.setEinwohnerzahl(4077550);
+				break;
+			case "Sachsen-Anhalt":
+				bundesland.setEinwohnerzahl(2339042);
+				break;
+			case "Schleswig-Holstein":
+				bundesland.setEinwohnerzahl(2687035);
+				break;
+			case "Thüringen":
+				bundesland.setEinwohnerzahl(2220669);
+				break;
+			default:
+				fail("Unbekanntes Bundesland!");
+			}
+			
+		}
+		
+		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, fdp = 0;
+		this.rechner.berechne(alteWahl);
+		Debug.print("*** "+alteWahl.getSitzverteilung().getAbgeordnete().size(), 6);
+		for (Kandidat kandidat : alteWahl.getSitzverteilung().getAbgeordnete()) {
+				switch (kandidat.getPartei().getName()) {
+					case "CDU":
+						cdu++;
+						break;
+					case "SPD":
+						spd++;
+						break;
+					case "CSU":
+						break;
+					case "GRÜNE":
+						gruene++;
+						break;
+					case "DIE LINKE":
+						linke++;
+						break;
+					case "FDP":
+						fdp++;
+						break;
+					default:
+						fail("Ungültige Partei");
+			}
+		}
+		
+		assertEquals(164, spd);
+		assertEquals(76, gruene);
+		assertEquals(85, linke);
+		assertEquals(195, cdu);
+		assertEquals(104, fdp);
+		
+	}
 }
