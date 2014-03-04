@@ -139,7 +139,7 @@ public class ErststimmeTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testErhoeheAnzahl2() {
-		// TODO nicht sicher, ob das schön ist
+		
 		while (true) {
 			testErststimme.erhoeheAnzahl(1);
 		}

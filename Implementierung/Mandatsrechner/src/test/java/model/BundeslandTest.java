@@ -127,9 +127,11 @@ public class BundeslandTest {
 	}
 
 	@Test
-	// aus der csv-Datei: CDU - Zweitstimmen - 638756
+	// aus der csv-Datei:
+	//CDU - Schleswig-Holstein - Zweitstimmen - 638756
+	//SPD - Schleswig-Holstein - Zweitstimmen - 513725
 	public void testErmittleStaerkstePartei() {
-		// TODO Text schreiben
+		
 		assertEquals("CDU", testBundesland.ermittleStaerkstePartei().getName());
 
 		List<Zweitstimme> zweitstimmmen = testWahlkreise.get(0)
@@ -204,9 +206,6 @@ public class BundeslandTest {
 	@Test
 	public void testGetDirektmandate() {
 
-		// TODO
-		// getWahlkreisSieger gibt null zurück
-		// wahrscheinlich wurde Sieger nicht richtig gesetzt
 
 		for (int i = 0; i < testBundesland.getParteien().size(); i++) {
 			LinkedList<Kandidat> kandidaten = testBundesland

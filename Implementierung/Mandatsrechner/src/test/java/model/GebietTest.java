@@ -128,9 +128,7 @@ public class GebietTest {
 		assertEquals(1626998, testBundesland.getAnzahlErststimmen());
 	}
 	
-	//TODO testGetAnzahlErststimmen liefert bei deutschland und bundesland stackoverflow 
-	//TODO getAnzahlZweitstimmen ebenso
-	
+
 	// Flensburg-Schleswig
 	// Wähler - ungültige Erststimmen
 	// 162749 - 2223 = 160526
