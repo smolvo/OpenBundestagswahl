@@ -53,7 +53,7 @@ public class BundDiagramm extends JPanel {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				ChartPanel panel = (ChartPanel) e.getComponent();
-				panel.setPreferredSize(resize());
+				panel.setSize(resize());
 				add(chartPanel, BorderLayout.LINE_START);
 			}
 
