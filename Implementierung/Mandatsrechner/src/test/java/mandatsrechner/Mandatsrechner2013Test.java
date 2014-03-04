@@ -192,4 +192,13 @@ public class Mandatsrechner2013Test {
 	public void berechneLaufzeit(){
 		this.rechner.berechne(cloneWahl);
 	}
+	@Test
+	public void kandidatenTest(){
+		this.rechner.berechne(cloneWahl);
+		for(Kandidat kandidat : cloneWahl.getSitzverteilung().getAbgeordnete()){
+			if(kandidat.getMandat().equals(Mandat.KEINMANDAT)){
+				fail("Abgeordneter ohne Mandat in der Sitzverteilung");
+			}
+		}
+	}
 }
