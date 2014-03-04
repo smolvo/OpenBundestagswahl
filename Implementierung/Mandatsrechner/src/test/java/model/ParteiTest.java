@@ -3,9 +3,11 @@ package test.java.model;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 import main.java.model.Bundestagswahl;
+import main.java.model.Kandidat;
 import main.java.model.Landesliste;
 import main.java.model.Partei;
 import main.java.steuerung.Steuerung;
@@ -69,5 +71,16 @@ public class ParteiTest {
 			}
 		}
 		assertTrue(enthalten);
+	}
+	
+	@Test
+	public void setLandesListetest() {
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		List<Landesliste> liste = new LinkedList<Landesliste>();
+		Landesliste landesliste = cdu.getLandesliste().get(0);
+		liste.add(landesliste);
+		cdu.setLandesliste(liste);
+		assertEquals(1, cdu.getLandesliste().size());
+		assertEquals(landesliste, cdu.getLandesliste());
 	}
 }

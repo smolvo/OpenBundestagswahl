@@ -370,4 +370,19 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return direktmandate;
 	}
+	
+	/**
+	 * Equals Methode der Bundesland-Klasse
+	 * @param land vergleichsland
+	 * @return true false
+	 */
+	public boolean equals(Bundesland land) {
+		if ((land.getEinwohnerzahl() == this.einwohnerzahl)
+				&& (land.getWahlkreise().equals(this.wahlkreise))
+				&& (land.getParteien().equals(this.parteien) && (land
+						.getLandesliste().equals(this.landesliste)))) {
+			return true;
+		}
+		return false;
+	}
 }
