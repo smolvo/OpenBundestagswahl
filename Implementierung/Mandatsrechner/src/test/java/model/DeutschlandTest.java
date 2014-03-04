@@ -17,6 +17,7 @@ import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Wahlkreis;
+import main.java.model.Zweitstimme;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -86,16 +87,32 @@ public class DeutschlandTest {
 		testWahlkreise = testBundesland.getWahlkreise();
 	}
 
-	@Test
-	public void testGetErststimmenProPartei() {
-		// TODO
-		fail();
-	}
 
+	
+	//aus der csv-Datei
+	//SPD - Deutschland - 11252215
+	//CDU - Deutschland - 14921877
+	//FDP - Deutschland - 2083533
 	@Test
 	public void testGetZweitstimmenProPartei() {
-		// TODO
-		fail();
+		List<Zweitstimme> zweitstimmen = testDeutschland.getZweitstimmenProPartei();
+		
+		assertEquals(35, zweitstimmen.size());
+		
+		assertEquals("CDU", zweitstimmen.get(0).getPartei().getName());
+		assertEquals("Deutschland", zweitstimmen.get(0).getGebiet()
+				.getName());
+		assertEquals(14921877, zweitstimmen.get(0).getAnzahl());
+		
+		assertEquals("SPD", zweitstimmen.get(1).getPartei().getName());
+		assertEquals("Deutschland", zweitstimmen.get(1).getGebiet()
+				.getName());
+		assertEquals(11252215, zweitstimmen.get(1).getAnzahl());
+			
+		assertEquals("FDP", zweitstimmen.get(2).getPartei().getName());
+		assertEquals("Deutschland", zweitstimmen.get(2).getGebiet()
+				.getName());
+		assertEquals(2083533, zweitstimmen.get(2).getAnzahl());
 	}
 
 	@Test
