@@ -172,9 +172,9 @@ public class Bundesland extends Gebiet implements Serializable,
 		this.wahlkreise.add(wahlkreis);
 	}
 
-	/*
+	
 	@Override
-	public List<Erststimme> getErtstimmenProPartei() {
+	public List<Erststimme> getErststimmenProPartei(){
 
 		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
 
@@ -198,7 +198,7 @@ public class Bundesland extends Gebiet implements Serializable,
 
 		return erststimmen;
 	}
-	*/
+	
 	@Override
 	public List<Zweitstimme> getZweitstimmenProPartei() {
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();

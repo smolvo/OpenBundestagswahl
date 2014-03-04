@@ -57,7 +57,6 @@ public class Mandatsrechner2013Test {
 		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, sonst = 0;
 		this.rechner.berechne(this.cloneWahl);
 		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
-//			if(kandidat.getMandat() != Mandat.KEINMANDAT){
 				switch (kandidat.getPartei().getName()) {
 					case "CDU":
 						cdu++;
@@ -76,7 +75,6 @@ public class Mandatsrechner2013Test {
 						break;
 					default:
 						fail("Ungültige Partei");
-//				}
 			}
 		}	
 		assertEquals(193, spd);
@@ -86,5 +84,4 @@ public class Mandatsrechner2013Test {
 		assertEquals(255, cdu);
 	}
 	
-
 }
