@@ -189,9 +189,7 @@ public class Kandidat implements Serializable {
 	 */
 	public void setPartei(Partei partei) {
 		/*
-		 * Kandidat kann auch keiner Partei zugeordnet sein! if
-		 * (partei.equals(null)) { throw new
-		 * IllegalArgumentException("Partei ist leer!"); }
+		 * Kandidat kann auch keiner Partei zugeordnet sein!
 		 */
 		this.partei = partei;
 	}

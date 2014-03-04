@@ -53,7 +53,7 @@ public class Mandatsrechner2013Test {
 	}
 	
 	@Test
-	public void initialisiereTest1() {
+	public void berechneTest1() {
 		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, sonst = 0;
 		this.rechner.berechne(this.cloneWahl);
 		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
@@ -85,5 +85,6 @@ public class Mandatsrechner2013Test {
 		assertEquals(56, csu);
 		assertEquals(255, cdu);
 	}
+	
 
 }
