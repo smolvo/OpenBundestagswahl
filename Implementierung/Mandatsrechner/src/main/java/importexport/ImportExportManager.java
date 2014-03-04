@@ -110,7 +110,9 @@ public class ImportExportManager {
 		}
 
 		// if imported==null > Keine gï¿½ltige Datei.
-
+		if (imported == null) {
+			throw new IllegalArgumentException ("Keine gültige Ergebnis-Datei.");
+		}
 		return imported;
 
 	}

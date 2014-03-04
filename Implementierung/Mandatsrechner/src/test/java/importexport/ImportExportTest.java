@@ -151,7 +151,7 @@ public class ImportExportTest {
 	/**
 	 * 
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void ungueltigeWahlDateiTest() {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(filePaths[5]);
@@ -164,7 +164,7 @@ public class ImportExportTest {
 	/**
 	 * 
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void ungueltigeWahlUndWahlbewerberDateiTest() {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(filePaths[5]);
