@@ -133,11 +133,6 @@ public class ErststimmeTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testErhoeheAnzahl() {
-		testErststimme.erhoeheAnzahl(0);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
 	public void testErhoeheAnzahl1() {
 		testErststimme.erhoeheAnzahl(-10);
 	}
