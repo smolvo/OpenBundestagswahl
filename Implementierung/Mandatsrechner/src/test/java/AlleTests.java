@@ -16,13 +16,20 @@ import test.java.wahlvergleich.WahlvergleichTest2;
 
 @RunWith(Suite.class)
 @SuiteClasses({
+	
 	ChronikTest.class,
+	
 	ConfigTest.class,
+	
 	ImportExportTest.class,
+	
 	Mandatsrechner2009Test.class,
 	Mandatsrechner2013Test.class,
+	
 	AlleModelTests.class,
+	
 	WahlgeneratorTest.class,
+	
 	WahlvergleichTest1.class,
 	WahlvergleichTest2.class,
 	

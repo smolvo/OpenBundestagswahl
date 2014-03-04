@@ -74,20 +74,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die Erststimmenanzahl aller Parteien im Wahlkreis.
-	 * 
-	 * @return die Erststimmenanzahl aller Partein.
-	 */
-	@Override
-	public int getAnzahlErststimmen() {
-		int erststimmeGesamt = 0;
-		for (Erststimme erst : getErststimmenProPartei()) {
-			erststimmeGesamt += erst.getAnzahl();
-		}
-		return erststimmeGesamt;
-	}
-
-	/**
 	 * Gibt das Erststimme-Objekt das sowohl zu diesem Wahlkreis, als auch zur
 	 * gegebenen Partei zugehï¿½rig ist zurï¿½ck.
 	 * 
@@ -266,7 +252,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	public int getAnzahlZweitstimmen(Partei partei) {
 		int anzahl = 0;
 		for (Zweitstimme zweitStimme : this.zweitstimmen) {
-			if (zweitStimme.getPartei() == partei) {
+			if (zweitStimme.getPartei().getName().equals(partei.getName())) {
 				anzahl = zweitStimme.getAnzahl();
 			}
 		}
@@ -288,6 +274,34 @@ public class Wahlkreis extends Gebiet implements Serializable {
 					erststimme.getKandidat().getPartei().getName())) {
 				anzahl = erststimme.getAnzahl();
 			}
+		}
+		return anzahl;
+	}
+
+	/**
+	 * Gibt die Erststimmenanzahl aller Parteien im Wahlkreis.
+	 * 
+	 * @return die Erststimmenanzahl aller Partein.
+	 */
+	@Override
+	public int getAnzahlErststimmen() {
+		int erststimmeGesamt = 0;
+		for (Erststimme erst : getErststimmenProPartei()) {
+			erststimmeGesamt += erst.getAnzahl();
+		}
+		return erststimmeGesamt;
+	}
+	
+	/**
+	 * Gibt die Zweitstimmenanzahl aller Parteien im Wahlkreis.
+	 * 
+	 * @return die Zweitstimmenanzahl aller Partein.
+	 */
+	@Override
+	public int getAnzahlZweitstimmen() {
+		int anzahl = 0;
+		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
+			anzahl += zweitstimme.getAnzahl();
 		}
 		return anzahl;
 	}

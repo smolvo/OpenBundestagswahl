@@ -214,37 +214,21 @@ public class Deutschland extends Gebiet implements Serializable {
 		return alleWk;
 	}
 
-	/**
-	 * Gibt die gesamte Anzahl an gültigen Erststimmen für Deutschland aus.
-	 * 
-	 * @return alle Erststimmen
-	 */
-	public int getGesamtErststimmen() {
-		int sum = 0;
-		for (Bundesland bl : this.bundeslaender) {
-			for (Wahlkreis wk : bl.getWahlkreise()) {
-				for (Erststimme er : wk.getErststimmenProPartei()) {
-					sum += er.getAnzahl();
-				}
-			}
+	@Override
+	public int getAnzahlErststimmen() {
+		int anzahl = 0;
+		for (Bundesland bundesland : this.getBundeslaender()) {
+			anzahl += bundesland.getAnzahlErststimmen();
 		}
-		return sum;
+		return anzahl;
 	}
 
-	/**
-	 * Gibt die gesamte Anzahl an gültigen Zweitstimmen für Deutschland aus.
-	 * 
-	 * @return alle Zweitstimmen
-	 */
-	public int getGesamtZweitstimmen() {
-		int sum = 0;
-		for (Bundesland bl : this.bundeslaender) {
-			for (Wahlkreis wk : bl.getWahlkreise()) {
-				for (Zweitstimme zw : wk.getZweitstimmenProPartei()) {
-					sum += zw.getAnzahl();
-				}
-			}
+	@Override
+	public int getAnzahlZweitstimmen() {
+		int anzahl = 0;
+		for (Bundesland bundesland : this.getBundeslaender()) {
+			anzahl += bundesland.getAnzahlZweitstimmen();
 		}
-		return sum;
+		return anzahl;
 	}
 }

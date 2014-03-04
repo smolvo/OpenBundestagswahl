@@ -26,26 +26,30 @@ public abstract class Gebiet implements Serializable {
 	 * 
 	 * @return die Zweistimmenanzahl aller Partein.
 	 */
-	public int getAnzahlZweitstimmen() {
+	public abstract int getAnzahlZweitstimmen();
+	/*{
 		zweitstimmeGesamt = 0;
 		for (Zweitstimme zweit : this.getZweitstimmenProPartei()) {
 			zweitstimmeGesamt += zweit.getAnzahl();
 		}
 		return zweitstimmeGesamt;
-	}
+	}*/
 
 	/**
 	 * Gibt die Erststimmenanzahl aller Kandidaten im Gebiet.
 	 * 
 	 * @return die Erststimmenanzahl aller Kandidaten.
 	 */
-	public int getAnzahlErststimmen() {
+	public abstract int getAnzahlErststimmen();
+	/*{
 		int erststimmeGesamt = 0;
-		for (Erststimme erst : this.getErststimmenProPartei()) {
+//		for (Erststimme erst : this.getErststimmenProPartei()) {
+		for (Erststimme erst : this.ge) {
 			erststimmeGesamt += erst.getAnzahl();
 		}
 		return erststimmeGesamt;
 	}
+	*/
 
 	/**
 	 * Gibt den Namen des Gebietes zurueck.

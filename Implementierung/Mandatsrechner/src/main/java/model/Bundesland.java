@@ -385,4 +385,22 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return false;
 	}
+
+	@Override
+	public int getAnzahlErststimmen() {
+		int anzahl = 0;
+		for (Wahlkreis wahlkreis : this.getWahlkreise()) {
+			anzahl += wahlkreis.getAnzahlErststimmen();
+		}
+		return anzahl;
+	}
+
+	@Override
+	public int getAnzahlZweitstimmen() {
+		int anzahl = 0;
+		for (Wahlkreis wahlkreis : this.getWahlkreise()) {
+			anzahl += wahlkreis.getAnzahlZweitstimmen();
+		}
+		return anzahl;
+	}
 }

@@ -71,7 +71,8 @@ public class Erststimme extends Stimme implements Serializable,
 		 */
 		//if (this.getGebiet().getWahlberechtigte()
 		//		< (this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
-		if (this.getGebiet().getWahlberechtigte() < anzahl) {
+		
+		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
 			throw new IllegalArgumentException(
 					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
 					+ (anzahl - this.getGebiet().getWahlberechtigte()) + "!"

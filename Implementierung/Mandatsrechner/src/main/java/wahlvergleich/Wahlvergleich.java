@@ -74,11 +74,11 @@ public class Wahlvergleich {
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 1
 					double prozentEinsErst = (Math
 							.rint(((double) anzahlEinsErst / (double) btw1
-									.getDeutschland().getGesamtErststimmen()) * 1000) / 10);
+									.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
 					// errechnet die prozentuale Anzahl Erststimmen von Partei 2
 					double prozentZweiErst = (Math
 							.rint(((double) anzahlZweiErst / (double) btw2
-									.getDeutschland().getGesamtErststimmen()) * 1000) / 10);
+									.getDeutschland().getAnzahlErststimmen()) * 1000) / 10);
 					// errechnet die Differenz der Erststimmen
 					int diffErst = anzahlEinsErst - anzahlZweiErst;
 					// Anzahl Zweitstimmen der ersten Partei
@@ -89,12 +89,12 @@ public class Wahlvergleich {
 					// 1
 					double prozentEinsZweit = (Math
 							.rint(((double) anzahlEinsZweit / (double) btw1
-									.getDeutschland().getGesamtZweitstimmen()) * 1000) / 10);
+									.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
 					// errechnet den prozentualen Anteil Zweitstimmen von Partei
 					// 2
 					double prozentZweiZweit = (Math
 							.rint(((double) anzahlZweiZweit / (double) btw2
-									.getDeutschland().getGesamtZweitstimmen()) * 1000) / 10);
+									.getDeutschland().getAnzahlZweitstimmen()) * 1000) / 10);
 					// errechnet die Differenz der Zweitstimmen
 					int diffZweit = anzahlEinsZweit - anzahlZweiZweit;
 					daten.addZeile(partei, Integer.toString(anzahlEinsErst),
