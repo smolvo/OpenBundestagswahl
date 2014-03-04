@@ -236,4 +236,19 @@ public class Kandidat implements Serializable {
 	public void setLandesliste(Landesliste landestliste) {
 		this.landesliste = landestliste;
 	}
+	
+	/**
+	 * Equals-Methode der Klasse.
+	 * @param kan vergleichskandidat
+	 * @return true false
+	 */
+	public boolean equals(Kandidat kan) {
+		if ((kan.getName().equals(this.name))
+				&& (kan.getVorname().equals(this.vorname))
+				&& (kan.getGeburtsjahr() == this.geburtsjahr)
+				&& (kan.getPartei().equals(this.partei))) {
+			return true;
+		}
+		return false;
+	}
 }
