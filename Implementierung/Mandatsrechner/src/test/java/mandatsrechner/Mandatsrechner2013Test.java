@@ -55,8 +55,8 @@ public class Mandatsrechner2013Test {
 		this.cloneWahl = null;
 	}
 	
-	@Test (timeout = 10000)
-	public void berechneTest1() {
+	@Test 
+	public void berechneHauptWahl() {
 		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0;
 		this.rechner.berechne(this.cloneWahl);
 		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
@@ -88,7 +88,7 @@ public class Mandatsrechner2013Test {
 	}
 	
 	@Test (timeout = 10000)
-	public void berechneTest2() {
+	public void berechneAlteWahl(){
 		Debug.setLevel(6);
 		//Importieren der Wahl 2009
 		File[] csvDateien = new File[2];
@@ -156,7 +156,6 @@ public class Mandatsrechner2013Test {
 		
 		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, fdp = 0;
 		this.rechner.berechne(alteWahl);
-		Debug.print("*** "+alteWahl.getSitzverteilung().getAbgeordnete().size(), 6);
 		for (Kandidat kandidat : alteWahl.getSitzverteilung().getAbgeordnete()) {
 				switch (kandidat.getPartei().getName()) {
 					case "CDU":
@@ -187,5 +186,10 @@ public class Mandatsrechner2013Test {
 		assertEquals(195, cdu);
 		assertEquals(104, fdp);
 		
+	}
+	
+	@Test (timeout = 10000)
+	public void berechneLaufzeit(){
+		this.rechner.berechne(cloneWahl);
 	}
 }
