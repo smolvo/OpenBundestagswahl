@@ -39,16 +39,6 @@ public final class Programmfenster extends JFrame {
 	/** repräsentiert den ImportDialog des Programms */
 	private ImportDialog iD;
 
-	/**
-	 * Die Main- Klasse des Programms. Hier startet das Programm.
-	 * 
-	 * @param args
-	 *            Startargumente
-	 */
-	public static void main(String[] args) {
-		Debug.setLevel(6);
-		new Programmfenster();
-	}
 
 	/**
 	 * Der Konstruktor des Programmfensters
