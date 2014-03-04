@@ -1,7 +1,6 @@
 package main.java.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Abstrakte Oberklasse die den Namen und die Anzahl der Wahlberechtigten eines

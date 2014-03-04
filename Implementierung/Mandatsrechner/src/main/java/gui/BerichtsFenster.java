@@ -2,7 +2,6 @@ package main.java.gui;
 
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
-import java.awt.event.WindowListener;
 
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
@@ -10,8 +9,6 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
-import com.sun.glass.events.WindowEvent;
 
 import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 
@@ -26,7 +23,6 @@ public class BerichtsFenster extends JDialog {
 
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -6882730327089576613L;
-	private DiagrammFenster diagrammFenster;
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.
@@ -50,7 +46,6 @@ public class BerichtsFenster extends JDialog {
 				dispose();
 			}
 		});
-		this.diagrammFenster = diagrammFenster;
 		this.setSize(new Dimension(1024, 600));
 		this.setLocationRelativeTo(null);
 		this.setTitle("Mandatsübersicht");

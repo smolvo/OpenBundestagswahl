@@ -1,7 +1,5 @@
 package main.java.mandatsrechner;
 
-import java.io.NotActiveException;
-import java.util.LinkedList;
 import java.util.List;
 
 import test.java.Debug;

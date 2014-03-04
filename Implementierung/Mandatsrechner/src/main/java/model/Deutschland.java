@@ -24,12 +24,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	private int einwohneranzahl;
 
 	/**
-	 * Ist die Anzahl an Zweitstimmen mit der eine Partei sicher in Bundestag
-	 * ist
-	 */
-	private int sperrklauselAnzahl;
-
-	/**
 	 * Angepasster Konstruktor.
 	 * 
 	 * @param name

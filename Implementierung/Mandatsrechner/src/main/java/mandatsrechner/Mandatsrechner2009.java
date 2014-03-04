@@ -358,9 +358,6 @@ public class Mandatsrechner2009 {
 
 		float zuteilungsdivisor = berechneZuteilungsdivisor(bundestagswahl);
 
-		int sitzanzahl = 0;
-		int sitzebl = 0;
-
 		for (Bundesland bundesland : bundestagswahl.getDeutschland()
 				.getBundeslaender()) {
 
@@ -371,14 +368,14 @@ public class Mandatsrechner2009 {
 			for (Partei partei : relevanteParteien) {
 
 				parteiSitze.put(partei, 0);
-				// Queue fÃ¼r die Berechnung der Zweitstimmen
+				// Queue für die Berechnung der Zweitstimmen
 				LinkedList<Double> berechneteZweitstimmen = new LinkedList<Double>();
 				berechneteZweitstimmen.add((double) bundesland
 						.getAnzahlZweitstimmen(partei));
 				parteiStimme.put(partei, berechneteZweitstimmen);
 
 			}
-			// Restliche Stimmen fÃ¼r die Partei bestimmen
+			// Restliche Stimmen für die Partei bestimmen
 			for (int i = 1; i < sitzeBundesland; i++) {
 				Set<Partei> set = parteiStimme.keySet();
 				Iterator<Partei> iterator = set.iterator();
@@ -388,14 +385,13 @@ public class Mandatsrechner2009 {
 					parteiStimme.get(key).add(
 							bundesland.getAnzahlZweitstimmen(key)
 									/ (Math.pow(2, i)));
-					// Systemprint("");
 				}
 			}
 
 			for (int i = 0; i < sitzeBundesland; i++) {
 				Partei sieger = null;
 				LinkedList<Double> siegerliste = null;
-				// Speichert den grÃ¶ÃŸten Wert
+				// Speichert den größten Wert
 				double maximum = 0;
 				// Speichert den aktuellen Wert der Partei
 				double mom = 0;
@@ -414,28 +410,13 @@ public class Mandatsrechner2009 {
 					}
 				}
 				// Der Gewinner wurde gefunden. Jetzt wird die Sitzanzahl der
-				// Partei erhÃ¶ht und der Eintrag aus der Liste gelÃ¶scht
+				// Partei erhöht und der Eintrag aus der Liste gelöscht
 				siegerliste.removeFirst();
 				parteiSitze.put(sieger, parteiSitze.get(sieger) + 1);
 
 			}
 
-			Set<Partei> set = parteiSitze.keySet();
-			Iterator<Partei> iterator = set.iterator();
-
-			while (iterator.hasNext()) {
-				Partei key = iterator.next();
-				sitzanzahl += bundesland.getDirektMandate(key).size(); // Math.max(parteiSitze.get(key),bundesland.getDirektMandate(key).size());
-
-				// Systemprintln("B: (" + sitzeBundesland + ") " + bundesland
-				// + " P:" + key.getName() + " : " + parteiSitze.get(key));
-			}
-			sitzebl += sitzeBundesland;
-
 		}
-		// Systemprintln(sitzanzahl);
-		// Systemprintln(sitzebl);
-
 		return bundestagswahl;
 	}
 
@@ -477,9 +458,6 @@ public class Mandatsrechner2009 {
 		for (Bundesland bundesland : bundestagswahl.getDeutschland()
 				.getBundeslaender()) {
 
-			/*
-			 * if(!bundesland.getName().equals("Thï¿½ringen")){ continue; }
-			 */
 			int sitzeBundesland = this.runden(bundesland.getEinwohnerzahl()
 					/ zuteilungsdivisor, false);
 
