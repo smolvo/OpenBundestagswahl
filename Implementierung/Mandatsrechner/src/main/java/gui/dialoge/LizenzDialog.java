@@ -6,8 +6,10 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileReader;
 
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -23,11 +25,7 @@ public class LizenzDialog {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-					
-				}
+			
 				
 				FileReader fr = null;
 				
@@ -41,6 +39,10 @@ public class LizenzDialog {
 					frame.setPreferredSize(new Dimension(500, 500));
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
+					ImageIcon icon = new ImageIcon("src/main/resources/hilfe/License-GPL3.png");
+					JLabel label = new JLabel();
+					label.setIcon(icon);
+					frame.add(label);
 					frame.add(new JScrollPane(editor));
 					frame.pack();
 					frame.setLocationRelativeTo(null);
@@ -52,7 +54,7 @@ public class LizenzDialog {
 					try {
 						fr.close();
 					} catch (Exception e) {
-						
+						e.printStackTrace();
 					}
 				}
 			}

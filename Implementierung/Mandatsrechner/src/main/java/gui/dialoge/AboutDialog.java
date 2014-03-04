@@ -23,11 +23,6 @@ public class AboutDialog {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-					
-				}
 				
 				FileReader fr = null;
 				
@@ -52,7 +47,7 @@ public class AboutDialog {
 					try {
 						fr.close();
 					} catch (Exception e) {
-						
+						e.printStackTrace();
 					}
 				}
 			}
