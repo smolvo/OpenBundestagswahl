@@ -233,23 +233,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt die Gesamtanzahl an Erststimmen fï¿½r die uebergebene Partei zurueck
-	 * 
-	 * @param partei
-	 *            die partei deren Erststimmen ermittelt werden sollen
-	 * @return die gesamstanzahl der Erststimmen
-	 */
-	public int getErststimmenAnzahl(Partei partei) {
-		int anzahl = 0;
-		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			if (erststimme.getKandidat().getPartei() == partei) {
-				anzahl = erststimme.getAnzahl();
-			}
-		}
-		return anzahl;
-	}
-
-	/**
 	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
 	 * kein solches Objekt mit der gegebenen Partei existiert.
 	 * 
@@ -292,29 +275,20 @@ public class Wahlkreis extends Gebiet implements Serializable {
 
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
-	 * 
+	 * TODO
 	 * @param partei
 	 *            Die Partei zu der die Stimmen gegeben werden sollen.
 	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
 	 */
 	@Override
 	public int getAnzahlErststimmen(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException(
-					"Der Parameter \"partei\" ist null!");
-		}
-
 		int anzahl = 0;
-
-		// durchlaufe alle Erststimmen
 		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			// summiere die Erststimmen der gesuchten Partei
 			if (partei.getName().equals(
 					erststimme.getKandidat().getPartei().getName())) {
-				anzahl += erststimme.getAnzahl();
+				anzahl = erststimme.getAnzahl();
 			}
 		}
-
 		return anzahl;
 	}
 
