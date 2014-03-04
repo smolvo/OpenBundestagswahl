@@ -115,14 +115,13 @@ public class TabLeiste extends JTabbedPane {
 		setTabComponentAt(pos, tab);
 
 		// Erstelle anonymen ActionListener für den "x" Knopf
-		schliessen.addActionListener(new ActionListener() {
-
+		schliessen.addMouseListener(new MouseAdapter() {
+			/*
+			 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt,
+			 * ob dieser Tab gespeichert werden soll
+			 */
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt,
-				 * ob dieser Tab gespeichert werden soll
-				 */
+			public void mouseClicked(MouseEvent e) {
 				if (pf.getWahlen().size() > 1) {
 					int eingabe = JOptionPane.showConfirmDialog(null,
 							"Soll Datei gespeichert werden?", "Einverständnis",
@@ -171,15 +170,14 @@ public class TabLeiste extends JTabbedPane {
 
 		this.setEnabledAt(pos, false);
 		// Erstelle anonymen ActionListener für den "+" Knopf
-		ActionListener listener = new ActionListener() {
+		neuerTab.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void mouseClicked(MouseEvent e) {
 				remove(plusButton);
 				importiere();
 				neuerTabButton();
 			}
-		};
-		neuerTab.addActionListener(listener);
+		});
 	}
 
 	/**

@@ -34,7 +34,7 @@ public class BerichtsFenster extends JDialog {
 			throw new NullPointerException("Kein Tabellenmodell gefunden.");
 		}
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		this.setSize(new Dimension(1024, 768));
+		this.setSize(new Dimension(1024, 600));
 		this.setLocationRelativeTo(null);
 		this.setTitle("Mandatsübersicht");
 		TableRowSorter<TableModel> sorterBericht = new TableRowSorter<TableModel>();
