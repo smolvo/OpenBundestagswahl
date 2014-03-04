@@ -87,7 +87,7 @@ public class Mandatsrechner2013Test {
 		assertEquals(255, cdu);
 	}
 	
-	@Test (timeout = 10000)
+	@Test
 	public void berechneAlteWahl(){
 		Debug.setLevel(6);
 		//Importieren der Wahl 2009
