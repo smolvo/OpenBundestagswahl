@@ -45,8 +45,6 @@ public class Wahlgenerator {
 	 *            verteilt werden.
 	 */
 	public Wahlgenerator(Bundestagswahl basisWahl, List<Stimmanteile> stimmanteile) {
-
-		Debug.setLevel(5);
 		
 		this.setBasisWahl(basisWahl);
 		this.setStimmanteile(stimmanteile);
@@ -134,6 +132,7 @@ public class Wahlgenerator {
 		// Name der neuen Wahl setzen
 		clone.setName(name);
 		
+		/*
 		// Debug Ausgabe der kompletten Anteile pro Partei
 		int sumErstAnteil = 0;
 		int sumZweitAnteil = 0;
@@ -145,6 +144,7 @@ public class Wahlgenerator {
 					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%", 4);
 		}
 		Debug.print("===> sumErstAnteil: " + sumErstAnteil + "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
+		*/
 
 		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
@@ -175,36 +175,43 @@ public class Wahlgenerator {
 
 		int restErstAnteil = 100 - sumErstAnteil;
 		int restZweitAnteil = 100 - sumZweitAnteil;
-		Debug.print("restErstAnteil: " + restErstAnteil
-				+ "%, restZweitAnteil: " + restZweitAnteil + "%\n", 4);
+		Debug.print("\nrestErstAnteil: " + restErstAnteil	+ "%, restZweitAnteil: " + restZweitAnteil + "%", 4);
 
 		
 		/*
 		 * Verteile die restlichen Anteile auf zufällige Parteien
 		 */
-		ArrayList<Partei> partOhneAnteile = this.getParteienOhneAnteile();
+		ArrayList<Partei> partOhneAnteileVonBenutzer = this.getParteienOhneAnteile();
 		Random rand = new Random();
 
-		while ((restErstAnteil > 0 || restZweitAnteil > 0) && partOhneAnteile.size() != 0) {
-			// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
-			//Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
-			Partei partei = this.getParteienOhneAnteile().get(rand.nextInt(this.getParteienOhneAnteile().size()));
+		while ((restErstAnteil > 0 || restZweitAnteil > 0) && partOhneAnteileVonBenutzer.size() != 0) {
 			
-			// Prüfe ob für diese Partei in dieser Schleife schonmal Anteile
-			// erzeugt wurden und wähle diese aus
-			Stimmanteile anteil = this.getAnteileVonPartei(partei);
-			if (anteil == null) {
-				// Für diese Partei existieren noch keine Stimmanteile
-				anteil = new Stimmanteile(partei, 0, 0);
-				this.getStimmanteile().add(anteil);
-			} else if (this.getParteienOhneAnteile().size() == 0) {
+			Partei partei;
+			
+			if (this.getParteienOhneAnteile().size() == 0) {
 				/*
 				 * Es existieren bereits für alle Parteien Stimmanteile,
 				 * aber es müssen noch Stimmanteile vergeben werden.
 				 * 
-				 * => Vergebe für eine Partei deren Stimmanteile zuvor zufällig anteile vergeben wurden noch mehr
+				 * => Gebe einer Partei deren Stimmanteile zuvor zufällig Anteile vergeben wurden noch mehr Anteile
 				 */
-				anteil = this.getAnteileVonPartei(partOhneAnteile.get(rand.nextInt(partOhneAnteile.size())));
+				partei = partOhneAnteileVonBenutzer.get(rand.nextInt(partOhneAnteileVonBenutzer.size()));
+			} else {
+				// wähle zufällige Partei aus der Liste der Parteien ohne Anteile
+				//Partei partei = partOhneAnteile.get(rand.nextInt(partOhneAnteile.size()));
+				partei = this.getParteienOhneAnteile().get(rand.nextInt(this.getParteienOhneAnteile().size()));
+			}
+			
+			// gibt NULL zurück wenn es zu dieser Partei noch keine Anteile gibt
+			Stimmanteile anteil = this.getAnteileVonPartei(partei);
+			/*
+			 * Prüfe ob für diese Partei in dieser Schleife schonmal
+			 * Anteile erzeugt wurden
+			 */
+			if (anteil == null) {
+				// Für diese Partei existieren noch keine Stimmanteile
+				anteil = new Stimmanteile(partei, 0, 0);
+				this.getStimmanteile().add(anteil);
 			}
 
 			// füge eine zufällige Anzahl von Erst- und Zweit-Anteilen hinzu
@@ -274,6 +281,7 @@ public class Wahlgenerator {
 			}
 		}
 
+		Debug.print("Anzahl Stimmanteile:" + this.stimmanteile.size(), 4);
 		
 		// durchlaufe Parteien für die Stimmen verteilt werden sollen
 		for (Stimmanteile sa : this.getStimmanteile()) {
@@ -293,11 +301,17 @@ public class Wahlgenerator {
 			}
 
 			int anzahlErststimmen = (int) (this.getAnzahlErststimmen() * (this
-					.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0))
-					- this.getBasisWahl().getDeutschland().getWahlkreise().size();
+					.getAnteileVonPartei(partei).getAnteilErststimmen() / 100.0));
+			if (sa.getAnteilErststimmen() > 0) {
+				// Um die Anzahl der Wahlkreise vermindern
+				anzahlErststimmen -= this.getBasisWahl().getDeutschland().getWahlkreise().size();
+			}
 			int anzahlZweitstimmen = (int) (this.getAnzahlZweitstimmen() * (this
-					.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0))
-					- this.getBasisWahl().getDeutschland().getWahlkreise().size();
+					.getAnteileVonPartei(partei).getAnteilZweitstimmen() / 100.0));
+			if (sa.getAnteilZweitstimmen() > 0) {
+				// Um die Anzahl der Wahlkreise vermindern
+				anzahlZweitstimmen -= this.getBasisWahl().getDeutschland().getWahlkreise().size();
+			}
 
 			Debug.print(partei.getName() + ", anzahlErststimmen: "
 					+ anzahlErststimmen + " ("
@@ -319,11 +333,6 @@ public class Wahlgenerator {
 				if (vergebeneErst < anzahlErststimmen) {
 					// Wahlkreis zufällig wählen
 					wk = alleWahlkreise.get(rand.nextInt(anzahlWahlkreise));
-
-					if (wk.getErststimmenProPartei().size() != 35) {
-						System.out.println("Anzahl Erstimmen: "
-								+ wk.getErststimmenProPartei().size());
-					}
 
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
 					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst),
@@ -424,7 +433,7 @@ public class Wahlgenerator {
 	}
 
 	/**
-	 * Gibt eine Liste aller Parteien zurï¿½ck, fï¿½r diejenigen keine
+	 * Gibt eine Liste aller Parteien zurück, für diejenigen keine
 	 * 
 	 * @return
 	 */

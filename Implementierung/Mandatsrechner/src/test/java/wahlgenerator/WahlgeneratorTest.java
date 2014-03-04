@@ -92,6 +92,14 @@ public class WahlgeneratorTest {
 		
 		Bundestagswahl w = wg.erzeugeBTW("Test");
 		
+		
+		System.out.println("Anzahl Wahlberechtigte 2013 BASIS: " + wahl2013.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Wahlberechtigte 2013 Generiert: " + w.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Erststimmen 2013 BASIS: " + wahl2013.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Erststimmen 2013 Generiert: " + w.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 BASIS: " + wahl2013.getDeutschland().getAnzahlZweitstimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 Generiert: " + w.getDeutschland().getAnzahlZweitstimmen());
+		
 		for (Stimmanteile sa : anteile) {
 			/*
 			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
@@ -124,6 +132,16 @@ public class WahlgeneratorTest {
 		
 		Bundestagswahl w = wg.erzeugeBTW("Test");
 		
+		System.out.println("Anzahl Wahlberechtigte 2013 BASIS: " + wahl2009.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Wahlberechtigte 2013 Generiert: " + w.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Erststimmen 2013 BASIS: " + wahl2009.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Erststimmen 2013 Generiert: " + w.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 BASIS: " + wahl2009.getDeutschland().getAnzahlZweitstimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 Generiert: " + w.getDeutschland().getAnzahlZweitstimmen());
+		
+		//System.out.println("Anzahl Parteien in basis Wahl: " + wahl2009.getParteien().size());
+		//System.out.println("Anzahl Parteien in generierter Wahl: " + w.getParteien().size());
+		
 		for (Stimmanteile sa : anteile) {
 			/*
 			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
@@ -154,6 +172,46 @@ public class WahlgeneratorTest {
 		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
 		
 		Bundestagswahl w = wg.erzeugeBTW("Test");
+		
+		for (Stimmanteile sa : anteile) {
+			/*
+			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
+			 * ob sie die korrekte Anzahl tatsächlich erhalten hat
+			 */
+			
+			int erwartetErst = (int) (sa.getAnteilErststimmen() / 100.0 * wg.getAnzahlErststimmen());
+			int faktischErst = w.getDeutschland().getAnzahlErststimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Erststimmen von " + sa.getPartei().getName(), erwartetErst, faktischErst);
+			
+			int erwartetZweit = (int) (sa.getAnteilZweitstimmen() / 100.0 * wg.getAnzahlZweitstimmen());
+			int faktischZweit = w.getDeutschland().getAnzahlZweitstimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Zweitstimmen von " + sa.getPartei().getName(), erwartetZweit, faktischZweit);
+		}
+		
+	}
+	
+	/**
+	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
+	 */
+	@Test
+	public void testErzeugeBTWAlleAusserEineStimmanteileNull() {
+		LinkedList<Stimmanteile> anteile = new LinkedList<>();
+		for (Partei partei : wahl2013.getParteien()) {
+			anteile.add(new Stimmanteile(partei, 0, 0));
+		}
+		anteile.removeFirst();
+		
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
+		
+		Bundestagswahl w = wg.erzeugeBTW("Test");
+		
+		System.out.println("Anzahl Wahlberechtigte 2013 BASIS: " + wahl2013.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Wahlberechtigte 2013 Generiert: " + w.getDeutschland().getWahlberechtigte());
+		System.out.println("Anzahl Erststimmen 2013 BASIS: " + wahl2013.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Erststimmen 2013 Generiert: " + w.getDeutschland().getAnzahlErststimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 BASIS: " + wahl2013.getDeutschland().getAnzahlZweitstimmen());
+		System.out.println("Anzahl Zweitstimmen 2013 Generiert: " + w.getDeutschland().getAnzahlZweitstimmen());
 		
 		for (Stimmanteile sa : anteile) {
 			/*
