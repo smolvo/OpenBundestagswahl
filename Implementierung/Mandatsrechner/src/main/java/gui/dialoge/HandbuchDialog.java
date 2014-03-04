@@ -9,14 +9,9 @@ import java.io.FileReader;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-
 
 
 public class HandbuchDialog {
-	
 	
 	public HandbuchDialog() {
 		
