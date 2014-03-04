@@ -30,6 +30,8 @@ public class LandeslisteTest {
 	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
 	private Bundestagswahl cloneWahl;
 	
+	public static Landesliste testLandesliste;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		// Wahl 2013
@@ -44,6 +46,7 @@ public class LandeslisteTest {
 	@Before
 	public void setUp() throws Exception {
 		this.cloneWahl = wahl.deepCopy();
+		testLandesliste = this.cloneWahl.getParteien().get(0).getLandesliste().get(0);
 	}
 	
 	@After
@@ -79,4 +82,42 @@ public class LandeslisteTest {
 		assertTrue(isDirekt);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetPartei() {
+		testLandesliste.setPartei(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetBundesland() {
+		testLandesliste.setBundesland(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetListenkandidaten1() {
+		testLandesliste.setListenkandidaten(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetListenkandidaten2() {
+		LinkedList<Kandidat> listenkandidaten = new LinkedList<Kandidat>();
+		testLandesliste.setListenkandidaten(listenkandidaten);
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetMindestsitzanzahl1() {
+		testLandesliste.setMindestSitzanzahl(-1);
+	}
+	
+	@Test
+	public void testSetMindestsitzanzahl2() {
+		testLandesliste.setMindestSitzanzahl(0);
+		assertEquals(0, testLandesliste.getMindestSitzanzahl());
+	}
+	
+	@Test
+	public void testSetMindestsitzanzahl3() {
+		testLandesliste.setMindestSitzanzahl(10);
+		assertEquals(10, testLandesliste.getMindestSitzanzahl());
+	}
 }
