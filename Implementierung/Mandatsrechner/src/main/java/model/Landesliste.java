@@ -187,7 +187,8 @@ public class Landesliste implements Serializable {
 	 * @return true false
 	 */
 	public boolean equals(Landesliste liste) {
-		if (liste.getPartei().equals(this.partei) && liste.getBundesland().equals(this.bundesland) 
+		if (liste.getPartei().getName().equals(this.partei.getName())
+				&& liste.getBundesland().equals(this.bundesland) 
 				&& liste.getListenkandidaten().equals(this.listenkandidaten) 
 				&& (liste.getMindestSitzanzahl() == this.mindestSitzanzahl)) {
 			return true;

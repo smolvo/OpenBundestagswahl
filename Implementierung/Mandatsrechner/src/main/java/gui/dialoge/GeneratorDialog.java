@@ -349,12 +349,17 @@ public class GeneratorDialog extends JDialog {
 	 *            Panel das gelï¿½scht werden soll
 	 */
 	private void zeileEntfernen(JPanel panel) {
+		
+		if (panel == null) {
+			throw new IllegalArgumentException("Parameter \"panel\" ist null!");
+		}
+		
 		this.hauptPanel.setPreferredSize(
 				new Dimension(this.hauptPanel.getWidth(), this.hauptPanel.getHeight() - 70));
 
 		int index = -1;
 		// finde panel
-		if (panel != null && this.hauptPanel != null) {
+		if (this.hauptPanel != null) {
 			for (int i = 0; i < hauptPanel.getComponentCount(); i++) {
 				if (hauptPanel.getComponent(i) == panel) {
 					index = i;
