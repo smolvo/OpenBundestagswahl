@@ -30,13 +30,14 @@ public class DiagrammFenster extends JPanel {
 	private final Ansicht ansicht;
 
 	/** repräsentiert den Berichtsknopf */
-	private final JButton bericht;
+	public final JButton bericht;
 
 	/** repräsentiert die LayoutConstraints */
 	private final GridBagConstraints gbc;
 	
 	/** zugehörige Bundestagswahl */
 	private final Bundestagswahl btw;
+	
 
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
@@ -55,11 +56,13 @@ public class DiagrammFenster extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				zeigeSitzverteilung();
+				bericht.setEnabled(false);
 			}
-
 		});
+		
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
+		
 	}
 
 	/**
@@ -151,7 +154,9 @@ public class DiagrammFenster extends JPanel {
 		}
 		BerichtTableModel tabelle = new BerichtTableModel(this.btw
 				.getSitzverteilung().getBericht());
-		new BerichtsFenster(tabelle);
+		new BerichtsFenster(tabelle, this);
+		
+		
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package main.java.gui;
 
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowListener;
 
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
@@ -8,6 +10,10 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
+import com.sun.glass.events.WindowEvent;
+
+import main.java.gui.ansicht.diagrammfenster.DiagrammFenster;
 
 /**
  * Diese Klasse repräsentiert das Berichtsfenster. In diesem werden Daten
@@ -20,20 +26,31 @@ public class BerichtsFenster extends JDialog {
 
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -6882730327089576613L;
+	private DiagrammFenster diagrammFenster;
 
 	/**
 	 * Der Konstruktor erstellt ein neues Berichtsfenster.
 	 * 
 	 * @param tabellenModell
 	 *            die Berichtstabelle
+	 * @param diagrammFenster 
 	 * @throws IllegalArgumentException
 	 *             wenn das tabellenModell Objekt null ist
 	 */
-	public BerichtsFenster(BerichtTableModel tabellenModell) {
+	public BerichtsFenster(BerichtTableModel tabellenModell, final DiagrammFenster diagrammFenster) {
 		if (tabellenModell == null) {
 			throw new NullPointerException("Kein Tabellenmodell gefunden.");
 		}
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				diagrammFenster.bericht.setEnabled(true);
+				dispose();
+			}
+		});
+		this.diagrammFenster = diagrammFenster;
 		this.setSize(new Dimension(1024, 600));
 		this.setLocationRelativeTo(null);
 		this.setTitle("Mandatsübersicht");
@@ -44,5 +61,6 @@ public class BerichtsFenster extends JDialog {
 		sorterBericht.setModel(jTabelle.getModel());
 		this.add(pane);
 		this.setVisible(true);
+		
 	}
 }
