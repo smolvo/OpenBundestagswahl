@@ -269,11 +269,27 @@ Dann wurde das zufällige verteilen von übrigen Stimmanteilen getestet und die 
 Außerdem wurde ein Laufzeittest geschrieben der feststellt, ob die Wahlgenerierung in unter 5 Sekunden ausgeführt wird.
 
 \section{Testabdeckung}
-EclEmma
-Welche Art von Abdeckung haben wir erreicht?
+Die Testabdeckung unseres Codes haben wir durch den Eclipse-PlugIn EclEmma gemacht. Getestet wurde jeglicher Code der nichts mit der Visualisierung des Programmes zu tun haben. Aus diesem Grund wurde das GUI-Paket und einige Teile anderer Pakete, wie z.B. BerichtsFenster, nicht mit JUnit getestet.\\
+Folgende Blockabdeckungen konnten erreicht werden (in Prozent):\\
+\begin{itemize}
+\item{Chronik} : 80,9 
+
+\item{Config}: 46,9 
+
+\item{ImportExport}: 90,5 
+
+\item{Mandatsrechner}: 83,6 
+
+\item{Model}: 85,4 
+
+\item{Wahlgenerator}: 82,8 
+
+\item{Wahlvergleich}: 65,8 
+
+\end{itemize}
 
 \section{Codeanalyse}
-FindBugs, Checkstyle
+Die Codeanalyse haben wir durch FindBugs und Checkstyle gemacht. Es wurde darauf geachtet, dass Variablen-, Methoden- und Klassennamen sinnvoll gewählt sind, zu jeder Methode Java-Docs vorhanden sind und dass auch andere Formalitäten und Konventionen eingehalten werden.\\
 
 \section{Performanceanalyse}
 
