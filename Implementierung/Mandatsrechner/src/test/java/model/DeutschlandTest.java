@@ -7,9 +7,12 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
@@ -17,6 +20,7 @@ import main.java.model.Wahlkreis;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import test.java.Debug;
@@ -64,6 +68,7 @@ public class DeutschlandTest {
 			System.out.println("Keine gï¿½ltige CSV-Datei :/");
 		}
 
+		Mandatsrechner2013.getInstance().berechne(ausgangsWahl);
 		Debug.setLevel(6);
 	}
 
@@ -158,4 +163,24 @@ public class DeutschlandTest {
 	public void testGetGesamtZweitstimmen() {
 		assertEquals(43726856, testDeutschland.getAnzahlZweitstimmen());
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetBundeslaender() {
+		testDeutschland.setBundeslaender(null); 
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetBundeslaender2() {
+		LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
+		testDeutschland.setBundeslaender(bundeslaender); 
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddBundesland() {
+		testDeutschland.addBundesland(null);
+	}
+	
+	
+
 }

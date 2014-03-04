@@ -113,7 +113,7 @@ public class Deutschland extends Gebiet implements Serializable {
 	@Override
 	public List<Zweitstimme> getZweitstimmenProPartei() {
 
-		// TODO Auto-generated method stub
+	
 		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
 		int[] tempZweitstimmen = new int[this.bundeslaender.get(0)
 				.getZweitstimmenProPartei().size()];
@@ -157,16 +157,6 @@ public class Deutschland extends Gebiet implements Serializable {
 		return einwohneranzahl;
 	}
 
-	/**
-	 * Berechnet 5% aller Zweitstimmen in Deutschland und gibt diese Zahl
-	 * zurueck.
-	 * 
-	 * @return 5% der Zweitstimmen in Deutschland.
-	 */
-	public int getSperrklauselAnzahl() {
-		sperrklauselAnzahl = zweitstimmeGesamt / 20;
-		return sperrklauselAnzahl;
-	}
 
 	/**
 	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
