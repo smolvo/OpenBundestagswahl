@@ -10,9 +10,12 @@
 \BOOKMARK [2][-]{subsection.4.1}{Wahlvergleich}{section.4}% 10
 \BOOKMARK [2][-]{subsection.4.2}{Model}{section.4}% 11
 \BOOKMARK [2][-]{subsection.4.3}{Mandatsrechner}{section.4}% 12
-\BOOKMARK [1][-]{section.5}{\304nderungen}{}% 13
-\BOOKMARK [2][-]{subsection.5.1}{Features}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Testabdeckung}{}% 15
-\BOOKMARK [1][-]{section.7}{Codeanalyse}{}% 16
-\BOOKMARK [1][-]{section.8}{Performanceanalyse}{}% 17
-\BOOKMARK [1][-]{section.9}{Ausblick auf die Endphase des Projekts}{}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Wahlgenerator}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Testabdeckung}{}% 14
+\BOOKMARK [1][-]{section.6}{Codeanalyse}{}% 15
+\BOOKMARK [1][-]{section.7}{Performanceanalyse}{}% 16
+\BOOKMARK [1][-]{section.8}{Sonstiges}{}% 17
+\BOOKMARK [2][-]{subsection.8.1}{Zus\344tzliche Features}{section.8}% 18
+\BOOKMARK [2][-]{subsection.8.2}{Handbuch}{section.8}% 19
+\BOOKMARK [2][-]{subsection.8.3}{Chronik}{section.8}% 20
+\BOOKMARK [1][-]{section.9}{Ausblick auf die Endphase des Projekts}{}% 21

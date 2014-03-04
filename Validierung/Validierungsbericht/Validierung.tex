@@ -266,17 +266,9 @@ Bei diesen Tests ist uns aufgefallen, dass die Abstimmung zwischen abgegebenen S
 
 \end{itemize}
 
-\section{Änderungen}
-
-\subsection{Features}
-\begin{itemize}
-\item{Sortierung}\\
-Ein Feature, wozu wir in der Implementierungsphase nicht gekommen sind, weil es uns zu aufwendig vorkam, ist die Sortierung der Tabellen durch Klicken auf die Köpfe. Dies wurde jetzt realisiert, da es sich als doch nicht so schwer herausstellte. Es wurde ein TableRowSorter im Wahlvergleichs-, Tabellen- und Berichtsfenster eingefügt und konfiguriert.\\
-
-\item{Webview}
-Alle Webviews (About, Handbuch, Lizenz) wurden durch JFrames ersetzt, weil es unter Linux zu Komplikationen kam. Jetzt sind die Fenster auch unter Linux lauffähig.\\
-
-\end{itemize}
+\subsection{Wahlgenerator}
+Beim Wahlgenerator wurde als erstes das Verhalten des Konstruktors getestet ob er sich bei der Übergabe von unterschiedlichen Stimmanteilen korrekt verhält. Und dann entweder mit erwarteten Werten erzeugt wird, bzw. wie erwartet eine Exception wirft.\\
+Dann wurde das zufällige verteilen von übrigen Stimmanteilen getestet sowie das 
 
 \section{Testabdeckung}
 EclEmma
@@ -299,6 +291,24 @@ Das einzige Problem, das uns bis zur letzten Woche begleitete, war das Volllaufe
 Den Fehler fanden wir in der Ansichtsklasse. Dort wurde die Größe des Tabellenfensters bei jeder Änderung um das Zweifache erhöht. Dies hatte keinerlei Auswirkungen auf die GUI, doch die immer größer werdenden double-Werte sprengten den Rahmen des Heaps, verlangsamten das Programm stark und machten es fast unbenutzbar.\\
 Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansicht bei Diagramm- und Kartenfenster auf 1 und bei Tabellenfenster auf 2 gesetzt wurde. So sieht die Analyse der JVisualVM nach dem beheben des Fehlers aus, wenn man schnell Gebiete wechselt:\\
 
+
+\section{Sonstiges}
+
+\subsection{Zusätzliche Features}
+\begin{itemize}
+\item{Sortierung}\\
+Ein Feature, wozu wir in der Implementierungsphase nicht gekommen sind, weil es uns zu aufwendig vorkam, ist die Sortierung der Tabellen durch Klicken auf die Köpfe. Dies wurde jetzt realisiert, da es sich als doch nicht so schwer herausstellte. Es wurde ein TableRowSorter im Wahlvergleichs-, Tabellen- und Berichtsfenster eingefügt und konfiguriert.\\
+
+\item{Webview}
+Alle Webviews (About, Handbuch, Lizenz) wurden durch JFrames ersetzt, weil es unter Linux zu Komplikationen kam. Jetzt sind die Fenster auch unter Linux lauffähig.\\
+
+\end{itemize}
+
+\subsection{Handbuch}
+TODO
+
+\subsection{Chronik}
+TODO
 
 \section{Ausblick auf die Endphase des Projekts}
 
