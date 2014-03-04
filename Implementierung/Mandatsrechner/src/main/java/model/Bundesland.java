@@ -173,6 +173,29 @@ public class Bundesland extends Gebiet implements Serializable,
 	}
 
 	
+	
+	
+	
+	public List<Zweitstimme> getZweitstimmenProPartei() {
+		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
+		int[] tempZweitstimmen = new int[this.wahlkreise.get(0)
+				.getZweitstimmenProPartei().size()];
+		for (int i = 0; i < this.wahlkreise.size(); i++) {
+			List<Zweitstimme> wahlkreisZweitstimme = wahlkreise.get(i)
+					.getZweitstimmenProPartei();
+			for (int j = 0; j < wahlkreisZweitstimme.size(); j++) {
+				tempZweitstimmen[j] += wahlkreisZweitstimme.get(j).getAnzahl();
+			}
+		}
+		for (int i = 0; i < tempZweitstimmen.length; i++) {
+			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this,
+					this.wahlkreise.get(0).getZweitstimmenProPartei().get(i)
+							.getPartei()));
+		}
+
+		return zweitstimmen;
+	}
+
 	@Override
 	public int getWahlberechtigte() {
 		int wahlberechtigte = 0;
