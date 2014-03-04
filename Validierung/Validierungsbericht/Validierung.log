@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  4 MAR 2014 23:55
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  5 MAR 2014 00:08
 entering extended mode
 **Validierung.tex
 
@@ -787,42 +787,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 265--266
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--273
+
+ []
+
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 281--287
+Underfull \hbox (badness 10000) in paragraph at lines 283--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--287
+Underfull \hbox (badness 10000) in paragraph at lines 283--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--292
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
+Underfull \hbox (badness 10000) in paragraph at lines 292--294
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 301--303
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--305
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 323.
 [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 323.
 
 (C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
 rung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 321.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 321.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 323.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 323.
 Package rerunfilecheck Info: File `Validierung.out' has not changed.
 (rerunfilecheck)             Checksum: 9172E8CBF26C52C12DB7E12C1525E093;1348.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 321.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 323.
  ) 
 Here is how much of TeX's memory you used:
  7162 strings out of 493921
@@ -841,7 +851,7 @@ onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Validierung.pdf (12 pages, 229636 bytes).
+Output written on Validierung.pdf (12 pages, 229990 bytes).
 PDF statistics:
  208 PDF objects out of 1000 (max. 8388607)
  33 named destinations out of 1000 (max. 500000)
