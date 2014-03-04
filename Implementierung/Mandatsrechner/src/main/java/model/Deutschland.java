@@ -89,50 +89,8 @@ public class Deutschland extends Gebiet implements Serializable {
 		this.bundeslaender.add(bundesland);
 	}
 
-	@Override
-	public List<Erststimme> getErststimmenProPartei() {
-
-		List<Erststimme> erststimmen = new LinkedList<Erststimme>();
-		int[] tempStimmen = new int[this.bundeslaender.get(0)
-				.getErststimmenProPartei().size()];
-		for (int i = 0; i < this.bundeslaender.size(); i++) {
-			List<Erststimme> bundeslaenderErststimme = bundeslaender.get(i)
-					.getErststimmenProPartei();
-			for (int j = 0; j < bundeslaenderErststimme.size(); j++) {
-				tempStimmen[j] += bundeslaenderErststimme.get(j).getAnzahl();
-			}
-		}
-		for (int i = 0; i < tempStimmen.length; i++) {
-			erststimmen.add(new Erststimme(tempStimmen[i], this, new Kandidat(
-					"Unbekannt", "Unbekannt", 0, Mandat.KEINMANDAT, null)));
-		}
-
-		return erststimmen;
-	}
-
-	@Override
-	public List<Zweitstimme> getZweitstimmenProPartei() {
-
 	
-		List<Zweitstimme> zweitstimmen = new LinkedList<Zweitstimme>();
-		int[] tempZweitstimmen = new int[this.bundeslaender.get(0)
-				.getZweitstimmenProPartei().size()];
-		for (int i = 0; i < this.bundeslaender.size(); i++) {
-			List<Zweitstimme> bundeslaenderZweitstimme = bundeslaender.get(i)
-					.getZweitstimmenProPartei();
-			for (int j = 0; j < bundeslaenderZweitstimme.size(); j++) {
-				tempZweitstimmen[j] += bundeslaenderZweitstimme.get(j)
-						.getAnzahl();
-			}
-		}
-		for (int i = 0; i < tempZweitstimmen.length; i++) {
-			zweitstimmen.add(new Zweitstimme(tempZweitstimmen[i], this,
-					this.bundeslaender.get(0).getZweitstimmenProPartei().get(i)
-							.getPartei()));
-		}
 
-		return zweitstimmen;
-	}
 
 	@Override
 	public int getWahlberechtigte() {
