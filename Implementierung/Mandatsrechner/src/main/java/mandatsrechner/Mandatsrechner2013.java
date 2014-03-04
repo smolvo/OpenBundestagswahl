@@ -171,6 +171,9 @@ public class Mandatsrechner2013 {
 		 * Landeslisten dieser Partei im Verhältnis der Zweitstimmen verteilt.
 		 */
 		float parteidivisor = this.berechneParteidivisor(relevanteParteien);
+		if (parteidivisor == 0.f) {
+			throw new IllegalArgumentException("Ungueltiger Parteidivisor. (Parteidivisor = 0)");
+		}
 		for (Partei partei : relevanteParteien) {
 			int neueSitzanzahl = Math.round(partei.getZweitstimmeGesamt()
 					/ parteidivisor);
@@ -183,10 +186,11 @@ public class Mandatsrechner2013 {
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
 				
-				if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
+				//if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
 					System.out.println("partei.getZweitstimmeGesamt() : " + partei.getZweitstimmeGesamt());
 					System.out.println("neueSitzanzahl : " + neueSitzanzahl);
-				}
+					System.out.println("parteidivisor: " + parteidivisor);
+				//}
 				
 				if (Debug.getLevel() > 0) {
 					for (Partei relPartei : relevanteParteien) {
@@ -194,9 +198,11 @@ public class Mandatsrechner2013 {
 					}
 				}
 				
-				Debug.print("Berechne Divisor", 5);
+				Debug.print("Berechne Divisor. Anfangsdivisor: " + divisor, 5);
 				int insgesamt = 0;
+				boolean underflow = false, overflow = false;
 				while (insgesamt != neueSitzanzahl) {
+					//System.out.println(insgesamt + " " + neueSitzanzahl);
 					insgesamt = 0;
 					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
 						
@@ -221,11 +227,25 @@ public class Mandatsrechner2013 {
 						break;
 					} else if (insgesamt > neueSitzanzahl) {
 						divisor += 5;
+						if (overflow && underflow) {
+							//System.out.println(divisor);
+							//System.exit(0);
+							
+							break;
+						} else {
+							overflow = true;
+							underflow = false;
+						}
+						
 					} else {
 						if (divisor == 0) {
 							throw new IllegalAccessError("insgesamt: " + insgesamt + ", neueSitzanzahl: " + neueSitzanzahl);
 						}
+						if (overflow) {
+							underflow = true;
+						}
 						divisor -= 1;
+						
 					}
 				}
 				Debug.print("Berechneter Divisor: " + divisor, 5);
