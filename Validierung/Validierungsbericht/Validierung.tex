@@ -232,8 +232,11 @@ Wie genau habe wir das getestet?
 \end{itemize}
 
 \section{Unit Tests}
-Unit Tests wurden für alle relevanten Module erstellt.
-Für die GUI und Oberflächenlogik wurden keine Unit Tests erstellt
+
+\subsection{Wahlvergleich}
+Der Wahlvergleich wurde auf zwei Arten getestet. Einmal haben wir zwei gleiche Wahlen verglichen und überprüft, ob die übergebenen Werte gleich waren und außerdem, ob die Differenzen 0 betrugen. \\
+In der zweiten Testklasse wurden die Bundestagswahl 2013 und die Bundestagswahl 2009 miteinander verglichen.\\
+Orakel für die Differenzen der Erst- und Zweitstimmen als auch für die prozentualen Differenzen waren wir selbst. Auch hier zeigte sich der korrekte Ablauf des Wahlvergleichs. \\
 
 \section{Testabdeckung}
 EclEmma
@@ -243,7 +246,19 @@ Welche Art von Abdeckung haben wir erreicht?
 FindBugs, Checkstyle
 
 \section{Performanceanalyse}
-JVisualVM
+
+Zu der gesamten Performance ist einzig zu sagen, dass wir die Grenzen, die wir uns im Pflichtenheft gesetzt haben, erfüllt haben.\\
+- Die Berechnung der Sitzplatzverteilung erfolgt auf allen unseren Rechnern in unter 3 Sekunden.\\
+- Der Import der Bundestagswahl 2013 dauerte in fast allen Fällen unter 5 Sekunden, nur in einzelnen etwas länger.\\
+- Der gesamte Programmstart, inklusive Import und Berechnung, benötigt keine 10 Sekunden und ist somit unter unseren Anforderungen. \\
+\\
+Das einzige Problem, das uns bis zur letzten Woche begleitete, war das Volllaufen des Heaps, das ausgelöst wurde, wenn man schnell zwischen verschiedenen Gebieten schaltete. Hier sehen Sie eine Grafik unserer ersten Analyse des Problems mit dem Programm JVisualVM.\\
+
+
+
+Den Fehler fanden wir in der Ansichtsklasse. Dort wurde die Größe des Tabellenfensters bei jeder Änderung um das Zweifache erhöht. Dies hatte keinerlei Auswirkungen auf die GUI, doch die immer größer werdenden double-Werte sprengten den Rahmen des Heaps, verlangsamten das Programm stark und machten es fast unbenutzbar.\\
+Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansicht bei Diagramm- und Kartenfenster auf 1 und bei Tabellenfenster auf 2 gesetzt wurde. So sieht die Analyse der JVisualVM nach dem beheben des Fehlers aus, wenn man schnell Gebiete wechselt:\\
+
 
 \section{Ausblick auf die Endphase des Projekts}
 
