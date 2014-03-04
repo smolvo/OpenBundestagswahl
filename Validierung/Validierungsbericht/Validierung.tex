@@ -238,6 +238,22 @@ Der Wahlvergleich wurde auf zwei Arten getestet. Einmal haben wir zwei gleiche W
 In der zweiten Testklasse wurden die Bundestagswahl 2013 und die Bundestagswahl 2009 miteinander verglichen.\\
 Orakel für die Differenzen der Erst- und Zweitstimmen als auch für die prozentualen Differenzen waren wir selbst. Auch hier zeigte sich der korrekte Ablauf des Wahlvergleichs. \\
 
+\subsection{Model}
+Das Teste des Models hat uns am meisten Zeit gekostet, da es der Hauptteil unseres Codes ist.\\
+In Klassen wie der Sitzverteilung, Gebiet, Mandat, Stimme brauchten nahezu gar nicht getestet zu werden, da sie kaum relevanten Code, bis auf Getter-Setter-Methoden, enthielten. \\
+Eine größere Herausforderung waren Klassen wie Partei, Wahlkreis, Bundesland,...\\
+\begin{itemize}
+\item Wahlkreis, Bundesland, Deutschland: \\
+In diesen Klassen wurden Methoden wie getAnzahlErst-,Zweitstimmen getestet. Dank dieser Tests wurden einige Methoden entfernt, die das gleiche wie andere machten. Außerdem wurden die Methoden getStimmeProPartei aus den Klassen entfernt, da sie riskanten Code enthielten und durch einfacheren Code in anderen Methoden ersetzt.
+\item Partei: \\
+In der ParteiTest-Klasse wurden die Methoden der Partei getestet. \\
+Tests zu fundamentalen Sachen wie dem setzen einer Landesliste, hinzufügen eines neuen oder des Mandates eines bereits vorhandenen Mitglieds wurden verfasst und durchgeführt. Genauso das Setzen von Ausgleichs- und Überhangsmandaten musste überprüft werden.\\
+Grobe Fehler sind uns dabei nicht untergekommen, bis auf das fehlen einiger equals-Methoden, welche hinzugefügt wurden.\\
+\item Erst- und Zweitstimme
+Bei den Stimmen wurde hauptsächlich die Änderung und Kopie dieser getestet. Gravierende Fehler wurden bei den Tests nicht gefunden.\\
+\end{itemize}
+Auch bei den restlichen Klassen des Models wurden nur kleine Fehler, wie eine Methoden-Löschung oder einfaches Code-Refactoring, verbessert.\\
+
 \section{Testabdeckung}
 EclEmma
 Welche Art von Abdeckung haben wir erreicht?
