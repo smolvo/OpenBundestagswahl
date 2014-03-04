@@ -60,6 +60,8 @@ public class WahlvergleichTest1 {
 	@Test
 	public void wahlvergleichTest() {
 		Wahlvergleich vergleich = new Wahlvergleich(cloneWahl1, cloneWahl2);
+		vergleich.getBtw1();
+		vergleich.getBtw2();
 		WahlvergleichDaten daten = vergleich.wahlvergleich();
 		
 		//vergleiche die Anzahl der Erststimmen
@@ -87,6 +89,8 @@ public class WahlvergleichTest1 {
 			assertEquals("0", daten.getDiffErst(i));
 			assertEquals("0", daten.getDiffZweit(i));
 		}
+		
+		// letztes Listenelement ist die CDU
+		assertEquals("CDU", daten.getParteien(daten.size() - 1));
 	}
-	
 }
