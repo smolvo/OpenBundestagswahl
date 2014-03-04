@@ -43,13 +43,21 @@ public class SitzverteilungTest {
 		this.cloneWahl = null;
 	}
 
+	/**
+	 * Testet ob 2 Parteien die korrekte Sitzanzahl haben
+	 */
 	@Test
 	public void getAnzahlSitze() {
 		Mandatsrechner2013.getInstance().berechne(cloneWahl);
 		Partei cdu = this.cloneWahl.getParteien().get(0);
+		Partei spd = this.cloneWahl.getParteien().get(1);
 		assertEquals(255, this.cloneWahl.getSitzverteilung().getAnzahlSitze(cdu));
+		assertEquals(193, this.cloneWahl.getSitzverteilung().getAnzahlSitze(spd));
 	}
-	
+
+	/**
+	 * Alle nachfolgenden Tests sind Exceptionwruf bei null-Eingaben
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setBerichtFail() {
 		Mandatsrechner2013.getInstance().berechne(cloneWahl);

@@ -49,6 +49,72 @@ public class WahlkreisTest {
 		this.cloneWahl = null;
 	}
 	
+	/**
+	 * Testet die Erststimmenanzahl
+	 */
+	@Test
+	public void getAnzahlErststimmenTest() {
+		// Wahlkreis: Flensburg - Schleswig
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0);
+		assertEquals(160526, wk.getAnzahlErststimmen());
+	}
+
+	/**
+	 * Testet die Erststimmenanzahl für eine bestimmte Partei
+	 */
+	@Test
+	public void getErststimmenAnzahlTest() {
+		// Wahlkreis: Hamburg-Mitte
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(1).getWahlkreise().get(0);
+		Partei cdu = wk.getErststimmenProPartei().get(0).getKandidat().getPartei();
+		assertEquals(46753, wk.getAnzahlErststimmen(cdu));
+	}
+	
+	/**
+	 * Testet die Zweitstimmenanzahl für eine Partei
+	 */
+	@Test
+	public void getAnzahlZweitstimmenTest() {
+		// Wahlkreis: Nordfriesland - Dithmarschen Nord
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
+		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
+		assertEquals(38590, wk.getAnzahlZweitstimmen(spd));
+	}
+	
+	/**
+	 * Testet Erstimmenausgabe für eine Partei
+	 */
+	@Test
+	public void getErststimmeTest() {
+		// Wahlkreis: Nordfriesland - Dithmarschen Nord
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
+		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
+		Erststimme spdErst = wk.getErststimme(spd);
+		assertEquals(41714, spdErst.getAnzahl());
+	}
+	
+	/**
+	 * Testet Zweitstimmenausgabe für eine Partei
+	 */
+	@Test
+	public void getZweitstimmeTest() {
+		// Wahlkreis: Nordfriesland - Dithmarschen Nord
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
+		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
+		Zweitstimme spdErst = wk.getZweitstimme(spd);
+		assertEquals(38590, spdErst.getAnzahl());
+	}
+	
+	/**
+	 * Alle nachfolgenden Tests sind Exceptionwruf bei null-Eingaben
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void getZweitstimmeTestFail() {
+		// Wahlkreis: Nordfriesland - Dithmarschen Nord
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
+		wk.getZweitstimme(null);
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void konstruktorTest1() {
 		new Wahlkreis(null, 100);
@@ -100,51 +166,4 @@ public class WahlkreisTest {
 		wk.setWahlkreisnummer(-1);
 	}
 	
-	@Test
-	public void getAnzahlErststimmenTest() {
-		// Wahlkreis: Flensburg - Schleswig
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0);
-		assertEquals(160526, wk.getAnzahlErststimmen());
-	}
-
-	@Test
-	public void getErststimmenAnzahlTest() {
-		// Wahlkreis: Hamburg-Mitte
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(1).getWahlkreise().get(0);
-		Partei cdu = wk.getErststimmenProPartei().get(0).getKandidat().getPartei();
-		assertEquals(46753, wk.getAnzahlErststimmen(cdu));
-	}
-	
-	@Test
-	public void getAnzahlZweitstimmenTest() {
-		// Wahlkreis: Nordfriesland - Dithmarschen Nord
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
-		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
-		assertEquals(38590, wk.getAnzahlZweitstimmen(spd));
-	}
-	
-	@Test
-	public void getErststimmeTest() {
-		// Wahlkreis: Nordfriesland - Dithmarschen Nord
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
-		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
-		Erststimme spdErst = wk.getErststimme(spd);
-		assertEquals(41714, spdErst.getAnzahl());
-	}
-	
-	@Test
-	public void getZweitstimmeTest() {
-		// Wahlkreis: Nordfriesland - Dithmarschen Nord
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
-		Partei spd = wk.getZweitstimmenProPartei().get(1).getPartei();
-		Zweitstimme spdErst = wk.getZweitstimme(spd);
-		assertEquals(38590, spdErst.getAnzahl());
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void getZweitstimmeTestFail() {
-		// Wahlkreis: Nordfriesland - Dithmarschen Nord
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(1);
-		wk.getZweitstimme(null);
-	}
 }

@@ -56,6 +56,10 @@ public class ParteiTest {
 		this.cloneWahl = null;
 	}
 
+	/**
+	 * Es wird getestet, ob es möglich ist eine Landesliste zu einer Liste von
+	 * Landeslisten hinzuzufügen
+	 */
 	@Test
 	public void addLandesListeTest() {
 		Partei cdu = this.cloneWahl.getParteien().get(0);
@@ -79,6 +83,9 @@ public class ParteiTest {
 		assertTrue(enthalten);
 	}
 	
+	/**
+	 * Das Setzen einer Landesliste wird getestet
+	 */
 	@Test
 	public void setLandesListetest() {
 		Partei cdu = this.cloneWahl.getParteien().get(0);
@@ -91,6 +98,110 @@ public class ParteiTest {
 		assertEquals(cdu.getLandesliste(), cduNeu.getLandesliste());
 	}
 	
+	/**
+	 * Die Landesliste der SPD wird durch die der CDU ersetzt 
+	 */
+	@Test
+	public void zweitstimmeTest() {
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		Partei spd = this.cloneWahl.getParteien().get(1);
+		LinkedList<Zweitstimme> cduStimmen = cdu.getZweitstimme();
+		spd.setZweitstimme(cduStimmen);
+		assertEquals(cduStimmen, spd.getZweitstimme());
+	}
+	
+	/**
+	 * Holt alle Mitglieder der CDU mit dem Direktmandat
+	 */
+	@Test
+	public void getMitgliederTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		LinkedList<Kandidat> direkte = cdu.getMitglieder(Mandat.DIREKTMANDAT);
+		assertEquals(191, direkte.size());
+	}
+	
+	/**
+	 * Holt die Direktmandate der CDU
+	 */
+	@Test
+	public void getAnzahlDirektmandateTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		assertEquals(191, cdu.getAnzahlDirektmandate());
+	}
+	
+	/**
+	 * Testet ob die CDU im Bundestag ist
+	 */
+	@Test
+	public void istImBundestagTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		assertTrue(cdu.isImBundestag());
+	}
+	
+	/**
+	 * Testet das auffinden der Zweitstimmen der CDU in einem Wahlkreis
+	 */
+	@Test
+	public void getZweitstimmenTest() {
+		// Wahlkreis: Flensburg - Schleswig
+		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		int anzahl = cdu.getZweitstimme(wk);
+		assertEquals(61347, anzahl);
+	}
+	
+	/**
+	 * Zählt die Direktmandate der CDU
+	 */
+	@Test
+	public void getAnzahlMandateTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		assertEquals(191, cdu.getAnzahlMandate(Mandat.DIREKTMANDAT));
+		
+	}
+	
+	/**
+	 * Testet die Anzahl der Überhangsmandate
+	 */
+	@Test
+	public void getUeberhangMandateTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		assertEquals(4, cdu.getUeberhangMandate());		
+		cdu.resetUeberhangMandate();
+		assertEquals(0, cdu.getUeberhangMandate());		
+	}
+	
+	/**
+	 * Testet die Anzahl der Ausgleichsmandate
+	 */
+	@Test
+	public void getAusgleichsMandateTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		assertEquals(13, cdu.getAusgleichsMandate());		
+		cdu.resetAusgleichsMandate();
+		assertEquals(0, cdu.getAusgleichsMandate());		
+	}
+	
+	/**
+	 * Testet die Ausgleichsmandate der CDU in einem Bundesland
+	 */
+	@Test
+	public void getAusgleichsMandateBLTest() {
+		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Partei cdu = this.cloneWahl.getParteien().get(0);
+		Bundesland sh = this.cloneWahl.getDeutschland().getBundeslaender().get(0);	
+		assertEquals(1, cdu.getAusgleichsMandate(sh));	
+	}
+
+	/**
+	 * Alle nachfolgenden Tests sind Exceptionwruf bei null-Eingaben
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setMitgliederFail() {
 		Partei cdu = this.cloneWahl.getParteien().get(0);
@@ -159,15 +270,6 @@ public class ParteiTest {
 		z.addMindestsitzanzahl(null, 19);
 	}
 	
-	@Test
-	public void zweitstimmeTest() {
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		Partei spd = this.cloneWahl.getParteien().get(1);
-		LinkedList<Zweitstimme> cduStimmen = cdu.getZweitstimme();
-		spd.setZweitstimme(cduStimmen);
-		assertEquals(cduStimmen, spd.getZweitstimme());
-	}
-	
 	@Test(expected = IllegalArgumentException.class)
 	public void zweitstimmeTestFail() {
 		Partei cdu = this.cloneWahl.getParteien().get(0);
@@ -179,70 +281,4 @@ public class ParteiTest {
 		Partei cdu = this.cloneWahl.getParteien().get(0);
 		cdu.addZweitstimme(null);
 	}
-	
-	@Test
-	public void getMitgliederTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		LinkedList<Kandidat> direkte = cdu.getMitglieder(Mandat.DIREKTMANDAT);
-		assertEquals(191, direkte.size());
-	}
-	
-	@Test
-	public void getAnzahlDirektmandateTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		assertEquals(191, cdu.getAnzahlDirektmandate());
-	}
-	
-	@Test
-	public void istImBundestagTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		assertTrue(cdu.isImBundestag());
-	}
-	
-	@Test
-	public void getZweitstimmenTest() {
-		// Wahlkreis: Flensburg - Schleswig
-		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender().get(0).getWahlkreise().get(0);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		int anzahl = cdu.getZweitstimme(wk);
-		assertEquals(61347, anzahl);
-	}
-	
-	@Test
-	public void getAnzahlMandateTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		assertEquals(191, cdu.getAnzahlMandate(Mandat.DIREKTMANDAT));
-		
-	}
-	
-	@Test
-	public void getUeberhangMandateTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		assertEquals(4, cdu.getUeberhangMandate());		
-		cdu.resetUeberhangMandate();
-		assertEquals(0, cdu.getUeberhangMandate());		
-	}
-	
-	@Test
-	public void getAusgleichsMandateTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		assertEquals(13, cdu.getAusgleichsMandate());		
-		cdu.resetAusgleichsMandate();
-		assertEquals(0, cdu.getAusgleichsMandate());		
-	}
-	
-	@Test
-	public void getAusgleichsMandateBLTest() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		Bundesland sh = this.cloneWahl.getDeutschland().getBundeslaender().get(0);	
-		assertEquals(1, cdu.getAusgleichsMandate(sh));	
-	}
-	
 }

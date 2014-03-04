@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Diese Klasse vergleich die Bundestagswahl 2013 mit der 2009.
+ * Diese Klasse vergleicht die Bundestagswahl 2013 mit der 2009.
  * Orakel wurde manuell errechnet.
  *
  */
