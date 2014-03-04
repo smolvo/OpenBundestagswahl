@@ -83,4 +83,9 @@ public class BundestagswahlTest {
 		Partei part = this.cloneWahl.getParteiByName("CDU");
 		assertEquals(cdu, part);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetName() {
+		cloneWahl.setName(null);
+	}
 }
