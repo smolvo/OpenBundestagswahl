@@ -5,5 +5,5 @@
 \contentsline {subsubsection}{\numberline {2.0.1}Import-/Exportverhalten}{2}{subsubsection.2.0.1}
 \contentsline {subsubsection}{\numberline {2.0.2}Korrekte Berechnung der Sitzverteilung}{3}{subsubsection.2.0.2}
 \contentsline {subsection}{\numberline {2.1}GUI-Test-Plan}{4}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Fehler der GUI}{4}{subsubsection.2.1.1}
-\contentsline {section}{\numberline {3}Vorschau auf die n\IeC {\"a}chste Phase}{5}{section.3}
+\contentsline {subsubsection}{\numberline {2.1.1}Fehler der GUI}{5}{subsubsection.2.1.1}
+\contentsline {section}{\numberline {3}Vorschau auf die n\IeC {\"a}chste Phase}{6}{section.3}
