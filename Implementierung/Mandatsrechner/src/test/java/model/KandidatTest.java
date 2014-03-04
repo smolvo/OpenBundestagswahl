@@ -18,6 +18,7 @@ import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Mandat;
+import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
 
@@ -48,7 +49,7 @@ public class KandidatTest {
 	private static List<Bundesland> testBundeslaender;
 	private static List<Wahlkreis> testWahlkreise;
 	private static Kandidat testKandidat;
-
+	
 	
 	private String ungueltigerParameter;
 	private String gueltigerParameter = "test";
@@ -116,6 +117,37 @@ public class KandidatTest {
 	}
 
 
+	@Test
+	public void testKonstruktor() {
+		
+		Kandidat kand = new Kandidat( "Merkel","Manfred", 1963, Mandat.DIREKTMANDAT, testKandidat.getPartei());
+		
+		assertEquals("Manfred", kand.getVorname());
+		assertEquals("Merkel", kand.getName());
+		assertEquals("Merkel", kand.getName());
+		assertEquals(Mandat.DIREKTMANDAT, kand.getMandat());
+		assertEquals(testKandidat.getPartei(), kand.getPartei());
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testKonstruktor2() {
+		Kandidat kand = new Kandidat("Merkel", "Manfred", 1963, Mandat.DIREKTMANDAT, testKandidat.getPartei(), null);
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetErststimme() {
+		testKandidat.setErststimme(null);
 
+	}
+	
+	@Test
+	public void testEquals() {
+		Kandidat kand1 = new Kandidat("Merkel", "Manfred", 1963, Mandat.DIREKTMANDAT, testKandidat.getPartei());
+		Kandidat kand2 = new Kandidat("Merkel", "Momo", 1963, Mandat.DIREKTMANDAT, testKandidat.getPartei());
+		
+		assertEquals(false, kand1.equals(kand2));
+	}
 	
 }
