@@ -467,22 +467,45 @@ public class Mandatsrechner2009 {
 			landesdivisor = relevanteZweitstimmenSumme / sitzeBundesland;
 
 			int sitzePartei = 0;
+			boolean underflow = false, overflow = false;
 			while (sitzePartei != sitzeBundesland) {
 				sitzePartei = 0;
 
 				for (Partei part : relevanteParteien) {
-
+					if(bundesland.getAnzahlZweitstimmen(part)
+							/ landesdivisor < 0){
+						//throw new IllegalArgumentException("Fehlerhafte ");
+						System.err.println(bundesland.getAnzahlZweitstimmen(part) + " " + landesdivisor);
+						System.exit(0);
+					}
 					sitzePartei += this.runden(
 							bundesland.getAnzahlZweitstimmen(part)
 									/ landesdivisor, false);
 				}
+				//System.out.println("Landesdivisor: " + landesdivisor + " - " + sitzePartei + " " + sitzeBundesland);
+
 				if (sitzePartei == sitzeBundesland) {
 					break;
 				} else if (sitzePartei < sitzeBundesland) {
-					landesdivisor -= 99;
+					if(landesdivisor <= 99){
+						landesdivisor -= 0.1;
+					} else {
+						landesdivisor -= 99;
+					}
+					
+					if (overflow) {
+						underflow = true;
+					}
 				} else {
 					// sitzanzahl > sitzeBundesland
 					landesdivisor += 100;
+					if (overflow && underflow) {
+						//System.exit(0);
+						break;
+					} else {
+						overflow = true;
+						underflow = false;
+					}
 				}
 			}
 

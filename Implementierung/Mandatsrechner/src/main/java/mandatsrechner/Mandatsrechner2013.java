@@ -108,6 +108,10 @@ public class Mandatsrechner2013 {
 		 */
 		float parteidivisor = 0;
 		for (Partei partei : relevanteParteien) {
+			//System.out.println("RP: " + partei.getName() + " " + partei.getZweitstimmeGesamt() + " " + partei.getMindestsitzAnzahl());
+			if (partei.getZweitstimmeGesamt() == 0) {
+				continue;
+			}
 			if (parteidivisor == 0) {
 				parteidivisor = (float) (partei.getZweitstimmeGesamt() / (partei
 						.getMindestsitzAnzahl() - 0.5));
@@ -117,7 +121,7 @@ public class Mandatsrechner2013 {
 						.getMindestsitzAnzahl() - 0.5)));
 			}
 		}
-		Debug.print("Berechne Parteidivisor.", 6);
+		Debug.print("Berechne Parteidivisor. Anfangsdivisor: " + parteidivisor, 6);
 		/**
 		 * Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre
 		 * Anzahl an Mindestsitze erfuellen. TODO: Ordentliche Schleife
@@ -186,11 +190,11 @@ public class Mandatsrechner2013 {
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
 				
-				//if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
+				if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
 					System.out.println("partei.getZweitstimmeGesamt() : " + partei.getZweitstimmeGesamt());
 					System.out.println("neueSitzanzahl : " + neueSitzanzahl);
 					System.out.println("parteidivisor: " + parteidivisor);
-				//}
+				}
 				
 				if (Debug.getLevel() > 0) {
 					for (Partei relPartei : relevanteParteien) {
@@ -230,7 +234,6 @@ public class Mandatsrechner2013 {
 						if (overflow && underflow) {
 							//System.out.println(divisor);
 							//System.exit(0);
-							
 							break;
 						} else {
 							overflow = true;
