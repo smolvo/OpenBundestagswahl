@@ -31,7 +31,7 @@ public class LizenzDialog {
 					editor.read(fr, "HTML");
 					
 					JFrame frame = new JFrame ("Lizenz");
-					frame.setPreferredSize(new Dimension(500, 500));
+					frame.setPreferredSize(new Dimension(675, 500));
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					ImageIcon icon = new ImageIcon("src/main/resources/hilfe/License-GPL3.png");
