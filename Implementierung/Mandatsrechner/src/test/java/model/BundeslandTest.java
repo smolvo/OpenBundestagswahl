@@ -163,6 +163,33 @@ public class BundeslandTest {
 	}
 
 	@Test
+	//aus der csv-Datei
+	//SPD - Schleswig-Holstein - 513725
+	//CDU - Schleswig-Holstein - 638756
+	//FDP - Schleswig-Holstein - 91714
+	public void testGetZweitstimmenProPartei() {
+		List<Zweitstimme> zweitstimmen = testBundesland
+				.getZweitstimmenProPartei();
+
+		assertEquals(35, zweitstimmen.size());
+		
+		assertEquals("CDU", zweitstimmen.get(0).getPartei().getName());
+		assertEquals("Schleswig-Holstein", zweitstimmen.get(0).getGebiet()
+				.getName());
+		assertEquals(638756, zweitstimmen.get(0).getAnzahl());
+		
+		assertEquals("SPD", zweitstimmen.get(1).getPartei().getName());
+		assertEquals("Schleswig-Holstein", zweitstimmen.get(1).getGebiet()
+				.getName());
+		assertEquals(513725, zweitstimmen.get(1).getAnzahl());
+			
+		assertEquals("FDP", zweitstimmen.get(2).getPartei().getName());
+		assertEquals("Schleswig-Holstein", zweitstimmen.get(2).getGebiet()
+				.getName());
+		assertEquals(91714, zweitstimmen.get(2).getAnzahl());
+	}
+	
+	@Test
 	// aus der csv-Datei: Erststimmen - CDU - Schleswig-Holstein: 708702
 	// aus der csv-Datei: Erststimmen - SPD - Schleswig-Holstein: 596882
 	public void testGetAnzahlErststimmenProPartei() {
@@ -249,4 +276,10 @@ public class BundeslandTest {
 		List<Landesliste> landesliste = new LinkedList<Landesliste>();
 		testBundesland.setLandeliste(landesliste);
 	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+		public void testSetParteien() {
+			testBundesland.setParteien(null);
+		}
+	
 }
