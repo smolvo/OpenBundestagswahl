@@ -9,6 +9,7 @@ import test.java.config.ConfigTest;
 import test.java.importexport.ImportExportTest;
 import test.java.mandatsrechner.Mandatsrechner2009Test;
 import test.java.mandatsrechner.Mandatsrechner2013Test;
+import test.java.model.AlleModelTests;
 import test.java.model.BundeslandTest;
 import test.java.model.DeutschlandTest;
 import test.java.model.LandeslisteTest;
@@ -16,7 +17,7 @@ import test.java.model.ParteiTest;
 import test.java.model.WahlkreisTest;
 import test.java.model.ZweitstimmeTest;
 import test.java.wahlgenerator.WahlgeneratorTest;
-import test.java.wahlvergleich.WahlvergleichTest;
+import test.java.wahlvergleich.WahlvergleichTest1;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -25,14 +26,9 @@ import test.java.wahlvergleich.WahlvergleichTest;
 	ImportExportTest.class,
 	Mandatsrechner2009Test.class,
 	Mandatsrechner2013Test.class,
-	BundeslandTest.class,
-	DeutschlandTest.class,
-	LandeslisteTest.class,
-	ParteiTest.class,
-	WahlkreisTest.class,
-	ZweitstimmeTest.class,
+	AlleModelTests.class,
 	WahlgeneratorTest.class,
-	WahlvergleichTest.class,
+	WahlvergleichTest1.class,
 	
 })
 public class AlleTests {
