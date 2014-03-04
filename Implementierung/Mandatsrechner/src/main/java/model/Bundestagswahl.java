@@ -275,23 +275,14 @@ public class Bundestagswahl implements Serializable {
 	 * 		die bisherige Zweitstimme.
 	 **/
 	private Zweitstimme setzeStimmenAnzahl(Zweitstimme stimme) {
-		Debug.print("Setze zweitstimme", 4);
+		
 		Zweitstimme alteZweitstimme = null;
-		if (stimme.getGebiet() instanceof Deutschland) {
-			throw new IllegalArgumentException(
-					"Zweitstimmen koennen in Deutschland nicht veraendert werden.");
-		} else if (stimme.getGebiet() instanceof Bundesland) {
-			throw new IllegalArgumentException(
-					"Zweitstimmen koennen in Bundeslaendern nicht veraendert werden.");
-		} else if (stimme.getGebiet() instanceof Wahlkreis) {
 			for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
 				if (wk.equals(stimme.getGebiet())) {
 					for (Zweitstimme zweitstimme : wk
 							.getZweitstimmenProPartei()) {
 						if (zweitstimme.getPartei().equals(stimme.getPartei())) {
-							Debug.print("Aendere Zweitstimme in: "
-									+ stimme.getGebiet().getName() + " "
-									+ stimme.getPartei() + " " + stimme.getAnzahl(), 4);
+							
 							alteZweitstimme = (Zweitstimme) zweitstimme.deepCopy();
 							zweitstimme.setAnzahl(stimme.getAnzahl());
 							break;
@@ -300,7 +291,7 @@ public class Bundestagswahl implements Serializable {
 					break;
 				}
 			}
-		}
+		
 		return alteZweitstimme;
 	}
 

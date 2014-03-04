@@ -16,6 +16,7 @@ import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Erststimme;
 import main.java.model.Kandidat;
+import main.java.model.Landesliste;
 import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
@@ -103,90 +104,20 @@ public class BundeslandTest {
 
 	}
 
-	
-	// aus der csv-Datei: SPD - Erststimmen - 596882
-	// aus der csv-Datei: CDU - Erststimmen - 708702
-	// aus der csv-Datei: FDP - Erststimmen - 37526
-	
-//erststimmen.get(1).getKandidat() liefert Kandidat zurück, der nur mit "nulls" initialisiert ist 
-	//-> Bundesland.getErststimmenProPartei() macht nicht viel Sinn
-	//TODO
+	// aus der csv-Datei:
+	// Schleswig-Holstein - Erststimmen - 1626998
 	@Test
-	public void testGetErststimmenProPartei100() {
-		List<Erststimme> erststimmen = testBundesland
-				.getErststimmenProPartei();
+	public void testGetAnzahlErststimmen() {
 
-		assertEquals(35, erststimmen.size());
-		
-		assertEquals("SPD", erststimmen.get(0).getKandidat().getPartei().getName());
-		assertEquals("Schleswig-Holstein", erststimmen.get(0).getGebiet()
-				.getName());
-		assertEquals(596882, erststimmen.get(0).getAnzahl());
-		
-		assertEquals("CDU", erststimmen.get(1).getKandidat().getPartei().getName());
-		assertEquals("Schleswig-Holstein", erststimmen.get(1).getGebiet()
-				.getName());
-		assertEquals(708702, erststimmen.get(1).getAnzahl());
-		
-		assertEquals("FDP", erststimmen.get(2).getKandidat().getPartei().getName());
-		assertEquals("Schleswig-Holstein", erststimmen.get(2).getGebiet()
-				.getName());
-		assertEquals(37526, erststimmen.get(2).getAnzahl());
-	}
-	
-	
-	// aus der csv-Datei: SPD - Erststimmen - 596882
-		// aus der csv-Datei: CDU - Erststimmen - 708702
-		// aus der csv-Datei: FDP - Erststimmen - 37526
-	@Test
-	public void testGetErststimmenProPartei() {
-		List<Erststimme> erststimmen = testBundesland
-				.getErststimmenProPartei();
-
-		assertEquals(35, erststimmen.size());
-		
-		//CDU
-		assertEquals("Schleswig-Holstein", erststimmen.get(0).getGebiet()
-				.getName());
-		assertEquals(708702, erststimmen.get(0).getAnzahl());
-		
-		//SPD
-		assertEquals("Schleswig-Holstein", erststimmen.get(1).getGebiet()
-				.getName());
-		assertEquals(596882, erststimmen.get(1).getAnzahl());
-		
-		
-		//FDP
-		assertEquals("Schleswig-Holstein", erststimmen.get(2).getGebiet()
-				.getName());
-		assertEquals(37526, erststimmen.get(2).getAnzahl());
+		assertEquals(1626998, testBundesland.getAnzahlErststimmen());
 	}
 
 	@Test
-	//aus der csv-Datei
-	//SPD - Schleswig-Holstein - 513725
-	//CDU - Schleswig-Holstein - 638756
-	//FDP - Schleswig-Holstein - 91714
-	public void testGetZweitstimmenProPartei() {
-		List<Zweitstimme> zweitstimmen = testBundesland
-				.getZweitstimmenProPartei();
+	// aus der csv-Datei
+	// Schleswig-Holstein - Zweitstimmen - 1628290
+	public void testGetAnzahlZweitstimmen() {
 
-		assertEquals(35, zweitstimmen.size());
-		
-		assertEquals("CDU", zweitstimmen.get(0).getPartei().getName());
-		assertEquals("Schleswig-Holstein", zweitstimmen.get(0).getGebiet()
-				.getName());
-		assertEquals(638756, zweitstimmen.get(0).getAnzahl());
-		
-		assertEquals("SPD", zweitstimmen.get(1).getPartei().getName());
-		assertEquals("Schleswig-Holstein", zweitstimmen.get(1).getGebiet()
-				.getName());
-		assertEquals(513725, zweitstimmen.get(1).getAnzahl());
-			
-		assertEquals("FDP", zweitstimmen.get(2).getPartei().getName());
-		assertEquals("Schleswig-Holstein", zweitstimmen.get(2).getGebiet()
-				.getName());
-		assertEquals(91714, zweitstimmen.get(2).getAnzahl());
+		assertEquals(1628290, testBundesland.getAnzahlZweitstimmen());
 	}
 
 	@Test
@@ -194,8 +125,6 @@ public class BundeslandTest {
 	public void testGetWahlberechtigte() {
 		assertEquals(2251796, testBundesland.getWahlberechtigte());
 	}
-
-
 
 	@Test
 	// aus der csv-Datei: CDU - Zweitstimmen - 638756
@@ -214,7 +143,7 @@ public class BundeslandTest {
 
 			}
 		}
-	
+
 		assertEquals("SPD", testBundesland.ermittleStaerkstePartei().getName());
 
 	}
@@ -222,7 +151,7 @@ public class BundeslandTest {
 	@Test
 	// aus der csv-Datei: Zweitstimmen - CDU - Schleswig-Holstein: 638756
 	// aus der csv-Datei: Zweitstimmen - SPD - Schleswig-Holstein: 513725
-	public void testGetAnzahlZweitstimmen() {
+	public void testGetAnzahlZweitstimmenProPartei() {
 		// CDU
 		assertEquals(638756,
 				testBundesland.getAnzahlZweitstimmen(testBundesland
@@ -236,7 +165,7 @@ public class BundeslandTest {
 	@Test
 	// aus der csv-Datei: Erststimmen - CDU - Schleswig-Holstein: 708702
 	// aus der csv-Datei: Erststimmen - SPD - Schleswig-Holstein: 596882
-	public void testGetAnzahlErststimmen() {
+	public void testGetAnzahlErststimmenProPartei() {
 		// CDU
 		assertEquals(708702, testBundesland.getAnzahlErststimmen(testBundesland
 				.getParteien().get(0)));
@@ -247,56 +176,77 @@ public class BundeslandTest {
 
 	@Test
 	public void testGetDirektmandate() {
-		
+
 		// TODO
 		// getWahlkreisSieger gibt null zurück
 		// wahrscheinlich wurde Sieger nicht richtig gesetzt
-		
+
 		for (int i = 0; i < testBundesland.getParteien().size(); i++) {
 			LinkedList<Kandidat> kandidaten = testBundesland
 					.getDirektMandate(testBundesland.getParteien().get(i));
-		
-		
-		for (Kandidat kand : kandidaten) {
-			assertEquals(kand.getMandat(), Mandat.DIREKTMANDAT);
-		}
-		
+
+			for (Kandidat kand : kandidaten) {
+				assertEquals(kand.getMandat(), Mandat.DIREKTMANDAT);
+			}
+
 		}
 
 	}
-	
+
 	@Test
 	public void testGetDirektmandate2() {
-		
+
 		ArrayList<Kandidat> wahlkreisSieger = new ArrayList<Kandidat>();
-		
-		
-		for(Partei p : testBundesland.getParteien()) {
+
+		for (Partei p : testBundesland.getParteien()) {
 			if (!p.getName().equals("SPD")) {
 				continue;
 			}
-		
+
 			for (Wahlkreis wk : testBundesland.getWahlkreise()) {
 				if (wk.getWahlkreisSieger().getPartei().getName().equals("SPD")) {
 					wahlkreisSieger.add(wk.getWahlkreisSieger());
 				}
-				
-			}
-		
-			assertEquals(wahlkreisSieger.size(), testBundesland.getDirektMandate(p).size());
 
+			}
+
+			assertEquals(wahlkreisSieger.size(), testBundesland
+					.getDirektMandate(p).size());
+
+		}
 	}
-	}
+
+
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetDirektmandate3() {
+		testBundesland.getDirektMandate(null);
+	}
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetWahlkreise() {
 		testBundesland.setWahlkreise(null);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetWahlkreise2() {
 		LinkedList<Wahlkreis> wahlkreise = new LinkedList<Wahlkreis>();
 		testBundesland.setWahlkreise(wahlkreise);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetLandesliste() {
+		testBundesland.getLandesliste(null);
+	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetLandesliste() {
+		testBundesland.setLandeliste(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetLandesliste2() {
+		List<Landesliste> landesliste = new LinkedList<Landesliste>();
+		testBundesland.setLandeliste(landesliste);
+	}
 }

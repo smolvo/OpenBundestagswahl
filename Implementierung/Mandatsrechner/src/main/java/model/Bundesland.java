@@ -356,4 +356,6 @@ public class Bundesland extends Gebiet implements Serializable,
 		}
 		return anzahl;
 	}
+
+
 }
