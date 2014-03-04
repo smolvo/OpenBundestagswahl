@@ -6,6 +6,7 @@ package test.java.model;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.importexport.ImportExportManager;
@@ -13,9 +14,11 @@ import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
 import main.java.model.Wahlkreis;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import test.java.Debug;
 
 /**
@@ -81,11 +84,13 @@ public class DeutschlandTest {
 	@Test
 	public void testGetErststimmenProPartei() {
 		// TODO
+		fail();
 	}
 
 	@Test
 	public void testGetZweitstimmenProPartei() {
 		// TODO
+		fail();
 	}
 
 	@Test
@@ -95,10 +100,9 @@ public class DeutschlandTest {
 	}
 	
 	@Test
-	// aus der csv-Datei: Wahlberechtigte - Deutschland - 61946900
+	// aus der config-Datei: Einwohner aller Bundesländer zusammengezählt 74324165
 	public void testGetEinwohnerzahl() {
-		//TODO
-		assertEquals(0, testDeutschland.getEinwohneranzahl());
+		assertEquals(74324165, testDeutschland.getEinwohneranzahl());
 	}
 
 	@Test
@@ -128,9 +132,19 @@ public class DeutschlandTest {
 	}
 
 	
+	//aus der csv-Datei: Wahlberechtigte - Deutschland - 61946900
 	@Test
 	public void testGetWahlkreise() {
-		//TODO
+		ArrayList<Wahlkreis> wahlkreise = testDeutschland.getWahlkreise();
+		
+		assertEquals(299, wahlkreise.size());
+		
+		int wahlberechtigte = 0;
+		for (Wahlkreis wk : wahlkreise) {
+			wahlberechtigte += wk.getWahlberechtigte();
+		}
+		assertEquals(61946900 , wahlberechtigte);
+		
 	}
 	
 	@Test

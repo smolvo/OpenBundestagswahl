@@ -323,7 +323,7 @@ public class Bundesland extends Gebiet implements Serializable,
 	public int getAnzahlErststimmen(Partei partei) {
 		int anzahl = 0;
 		for (Wahlkreis wk : this.getWahlkreise()) {
-			anzahl += wk.getErststimmenAnzahl(partei);
+			anzahl += wk.getAnzahlErststimmen(partei);
 		}
 		return anzahl;
 	}
