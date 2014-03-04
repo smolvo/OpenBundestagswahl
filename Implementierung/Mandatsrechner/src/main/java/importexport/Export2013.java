@@ -8,7 +8,9 @@ import java.util.List;
 
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
+import main.java.model.Deutschland;
 import main.java.model.Erststimme;
+import main.java.model.Gebiet;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
@@ -61,17 +63,17 @@ public class Export2013 extends Export {
 							+ wahlkreise.get(j).getName() + "\";" + relevanteNr
 							+ ";" + wahlkreise.get(j).getWahlberechtigte()
 							+ ";;;;");
-					List<Erststimme> erststimmen = wahlkreise.get(j)
-							.getErststimmenProPartei();
-					List<Zweitstimme> zweitstimmen = wahlkreise.get(j)
-							.getZweitstimmenProPartei();
+					//List<Erststimme> erststimmen = wahlkreise.get(j)
+							//.getErststimmenProPartei();
+					//List<Zweitstimme> zweitstimmen = wahlkreise.get(j)
+							//.getZweitstimmenProPartei();
 					for (int k = 0; k < (parteiOffset - 1); k++) {
 						bf.write(";;;;");
 					}
-					for (int k = 0; k < zweitstimmen.size(); k++) {
+					for (int k = 0; k < parteien.size(); k++) {
 						String[] field = new String[2];
-						field[0] = erststimmen.get(k).getAnzahl() + "";
-						field[1] = zweitstimmen.get(k).getAnzahl() + "";
+						field[0] = this.getAnzahlErststimmeProPartei(parteien.get(k), wahlkreise.get(j)) + ""; //erststimmen.get(k).getAnzahl() + "";
+						field[1] = this.getAnzahlZweitstimmeProPartei(parteien.get(k), wahlkreise.get(j)) + ""; //zweitstimmen.get(k).getAnzahl() + "";
 
 						if (field[0].equals("0")) {
 							field[0] = "";
@@ -87,17 +89,17 @@ public class Export2013 extends Export {
 				bf.write(relevanteNr + ";\"" + bundeslaender.get(i).getName()
 						+ "\";99;" + bundeslaender.get(i).getWahlberechtigte()
 						+ ";;;;");
-				List<Zweitstimme> zweitstimmen = bundeslaender.get(i)
-						.getZweitstimmenProPartei();
-				List<Erststimme> erststimmen = bundeslaender.get(i)
-						.getErststimmenProPartei();
+				//List<Zweitstimme> zweitstimmen = bundeslaender.get(i)
+						//.getZweitstimmenProPartei();
+				//List<Erststimme> erststimmen = bundeslaender.get(i)
+						//.getErststimmenProPartei();
 				for (int k = 0; k < (parteiOffset - 1); k++) {
 					bf.write(";;;;");
 				}
-				for (int k = 0; k < zweitstimmen.size(); k++) {
+				for (int k = 0; k < parteien.size(); k++) {
 					String[] field = new String[2];
-					field[0] = erststimmen.get(k).getAnzahl() + "";
-					field[1] = zweitstimmen.get(k).getAnzahl() + "";
+					field[0] = this.getAnzahlErststimmeProPartei(parteien.get(k), bundeslaender.get(i)) + ""; //erststimmen.get(k).getAnzahl() + "";
+					field[1] = this.getAnzahlZweitstimmeProPartei(parteien.get(k), bundeslaender.get(i)) + ""; //zweitstimmen.get(k).getAnzahl() + "";
 
 					if (field[0].equals("0")) {
 						field[0] = "";
@@ -115,17 +117,17 @@ public class Export2013 extends Export {
 
 			bf.write("99;\"Bundesgebiet\";;"
 					+ bw.getDeutschland().getWahlberechtigte() + ";;;;");
-			List<Erststimme> erststimmen = bw.getDeutschland()
-					.getErststimmenProPartei();
-			List<Zweitstimme> zweitstimmen = bw.getDeutschland()
-					.getZweitstimmenProPartei();
+			//List<Erststimme> erststimmen = bw.getDeutschland()
+					//.getErststimmenProPartei();
+			//List<Zweitstimme> zweitstimmen = bw.getDeutschland()
+					//.getZweitstimmenProPartei();
 			for (int k = 0; k < (parteiOffset - 1); k++) {
 				bf.write(";;;;");
 			}
-			for (int k = 0; k < zweitstimmen.size(); k++) {
+			for (int k = 0; k < parteien.size(); k++) {
 				String[] field = new String[2];
-				field[0] = erststimmen.get(k).getAnzahl() + "";
-				field[1] = zweitstimmen.get(k).getAnzahl() + "";
+				field[0] = this.getAnzahlErststimmeProPartei(parteien.get(k), bw.getDeutschland()) + ""; //erststimmen.get(k).getAnzahl() + "";
+				field[1] = this.getAnzahlZweitstimmeProPartei(parteien.get(k), bw.getDeutschland()) + ""; //zweitstimmen.get(k).getAnzahl() + "";
 
 				if (field[0].equals("0")) {
 					field[0] = "";
@@ -146,5 +148,54 @@ public class Export2013 extends Export {
 
 		return success;
 	}
+	
+	
+	private int getAnzahlErststimmeProPartei (Partei partei, Gebiet gebiet) {
+		if(gebiet instanceof Wahlkreis){
+			Wahlkreis wk = (Wahlkreis) gebiet;
+			return wk.getAnzahlErststimmen(partei);
+		}else if(gebiet instanceof Bundesland){
+			Bundesland bl = (Bundesland) gebiet;
+			int sum = 0;
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				sum += getAnzahlErststimmeProPartei(partei, wk);
+			}
+			return sum;
+		}else if (gebiet instanceof Deutschland) {
+			Deutschland dl = (Deutschland) gebiet;
+			int sum = 0;
+			for (Bundesland bl : dl.getBundeslaender()) {
+				sum += getAnzahlErststimmeProPartei(partei, bl);
+			}
+			return sum;
+		}else{
+			throw new IllegalArgumentException("WTF!?");
 
+		}
+	}
+	
+	private int getAnzahlZweitstimmeProPartei (Partei partei, Gebiet gebiet) {
+		if(gebiet instanceof Wahlkreis){
+			Wahlkreis wk = (Wahlkreis) gebiet;
+			return wk.getAnzahlZweitstimmen(partei);
+		}else if(gebiet instanceof Bundesland){
+			Bundesland bl = (Bundesland) gebiet;
+			int sum = 0;
+			for (Wahlkreis wk : bl.getWahlkreise()) {
+				sum += getAnzahlZweitstimmeProPartei(partei, wk);
+			}
+			return sum;
+		}else if (gebiet instanceof Deutschland) {
+			Deutschland dl = (Deutschland) gebiet;
+			int sum = 0;
+			for (Bundesland bl : dl.getBundeslaender()) {
+				sum += getAnzahlZweitstimmeProPartei(partei, bl);
+			}
+			return sum;
+		}else{
+			throw new IllegalArgumentException("WTF!?");
+
+		}
+	}
+	
 }
