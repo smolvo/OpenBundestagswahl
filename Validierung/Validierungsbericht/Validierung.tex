@@ -254,6 +254,18 @@ Bei den Stimmen wurde hauptsächlich die Änderung und Kopie dieser getestet. Gr
 \end{itemize}
 Auch bei den restlichen Klassen des Models wurden nur kleine Fehler, wie eine Methoden-Löschung oder einfaches Code-Refactoring, verbessert.\\
 
+\subsection{Mandatsrechner}
+\begin{itemize}
+\item Mandatsrechner2009:\\
+Beim Mandatsrechner2009 wurde als erstes die Initialisierungen der Listen in der Sitzverteilung und die Mandatseinträge der Kandidaten getestet.\\
+Anschließend die Verteilung der Direktmandate. Dabei wurde einerseits in einem Wahlkreis abgefragt, ob der Kandidat mit den meisten Erststimmen das Direktmandat erhielt und andererseits ob die Wahl des Direktmandate bei mehreren Kandidaten mit gleicher Stimmenanzahl zufällig ist.\\
+Bei den letzten Tests wurde die Sperrklausel getestet. Es wurde einer Partei über 5-Prozent der Zweitstimmen gegeben, einer  weniger als 5-Prozent der Zweitstimmen aber 3 Direktmandate und einer weiteren weniger als 5-Prozent und weniger als 3 Direktmandate. Die ersten beiden zogen in den Bundestag ein, die letzte nicht. \\
+Bei diesen Tests ist uns aufgefallen, dass die Abstimmung zwischen abgegebenen Stimmen und Wahlberechtigten in diesem Wahlkreis nicht korrekt funktioniert. Es war möglich mehr  Stimmen abzugeben als Wahlberechtigte vorhanden waren. Dieser Fehler konnte behoben werden.\\
+
+\item Mandatsrechner2013:\\
+
+\end{itemize}
+
 \section{Testabdeckung}
 EclEmma
 Welche Art von Abdeckung haben wir erreicht?
