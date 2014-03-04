@@ -1,5 +1,6 @@
 package main.java.mandatsrechner;
 
+import java.io.NotActiveException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -144,6 +145,7 @@ public class Mandatsrechner2013 {
 							"Ungueltige Eingabewerte (Zweitstimmen).");
 				}
 			}
+			
 		}
 
 		Debug.print("Berechneter Parteidivisor: " + parteidivisor, 5);
@@ -168,7 +170,7 @@ public class Mandatsrechner2013 {
 		 * Die Zweitstimmen einer Partei dividiert durch den parteidivisor
 		 * ergeben nun die neue Mindestanzahl an Sitzen. Nun wird ein
 		 * Multiplikator bestimmt, der die Ausgleichsmandate einer Parei auf die
-		 * Landeslisten dieser Partei im Verhï¿½ltnis der Zweitstimmen verteilt.
+		 * Landeslisten dieser Partei im Verhältnis der Zweitstimmen verteilt.
 		 */
 		float parteidivisor = this.berechneParteidivisor(relevanteParteien);
 		for (Partei partei : relevanteParteien) {
@@ -183,6 +185,11 @@ public class Mandatsrechner2013 {
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
 				
+				if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
+					System.out.println("partei.getZweitstimmeGesamt() : " + partei.getZweitstimmeGesamt());
+					System.out.println("neueSitzanzahl : " + neueSitzanzahl);
+				}
+				
 				if (Debug.getLevel() > 0) {
 					for (Partei relPartei : relevanteParteien) {
 						Debug.print(relPartei.getName(), 5);
@@ -194,9 +201,17 @@ public class Mandatsrechner2013 {
 				while (insgesamt != neueSitzanzahl) {
 					insgesamt = 0;
 					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-						sitzeBundesland = this.rechner2009.runden(
-								bl.getAnzahlZweitstimmen(partei) / divisor,
-								false);
+						
+						if ((bl.getAnzahlZweitstimmen(partei) / divisor) < 0) {
+							System.out.println("\nPartei: " + partei.getName());
+							System.out.println("Parteidivisor: " + parteidivisor);
+							System.out.println("Zweitstimmen: " + bl.getAnzahlZweitstimmen(partei));
+							System.out.println("Divisor: " + divisor);
+							
+						}
+						
+						sitzeBundesland = this.rechner2009.runden(bl.getAnzahlZweitstimmen(partei) / divisor, false);
+						
 						if (sitzeBundesland < bl.getDirektMandate(partei)
 								.size()) {
 							insgesamt += bl.getDirektMandate(partei).size();
@@ -209,6 +224,9 @@ public class Mandatsrechner2013 {
 					} else if (insgesamt > neueSitzanzahl) {
 						divisor += 5;
 					} else {
+						if (divisor == 0) {
+							throw new IllegalAccessError("insgesamt: " + insgesamt + ", neueSitzanzahl: " + neueSitzanzahl);
+						}
 						divisor -= 1;
 					}
 				}

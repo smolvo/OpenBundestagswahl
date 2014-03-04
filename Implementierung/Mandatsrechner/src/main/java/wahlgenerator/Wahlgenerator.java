@@ -131,26 +131,12 @@ public class Wahlgenerator {
 		
 		// Name der neuen Wahl setzen
 		clone.setName(name);
-		
-		/*
-		// Debug Ausgabe der kompletten Anteile pro Partei
-		int sumErstAnteil = 0;
-		int sumZweitAnteil = 0;
-		for (Stimmanteile sa : this.getStimmanteile()) {
-			sumErstAnteil += sa.getAnteilErststimmen();
-			sumZweitAnteil += sa.getAnteilZweitstimmen();
-			Debug.print("Partei: " + sa.getPartei().getName()
-					+ ", ErstAnteil: " + sa.getAnteilErststimmen()
-					+ "%, ZweitAnteil " + sa.getAnteilZweitstimmen() + "%", 4);
-		}
-		Debug.print("===> sumErstAnteil: " + sumErstAnteil + "%, sumZweitAnteil: " + sumZweitAnteil + "%", 4);
-		*/
 
 		// verteile Stimmen zufällig auf die Gebiete, Parteien und Kandidaten
 		this.verteileStimmen(clone);
 
 		Debug.print("Wahlgenerierung fertig!", 3);
-		Debug.setLevel(6);
+		//Debug.setLevel(6);
 		
 		// Gebe die generierte Wahl zurück
 		return clone;
@@ -336,8 +322,7 @@ public class Wahlgenerator {
 
 					// Die maximale Stimmzahl die vergeben werden darf ermitteln
 					stimmzahl = Math.min((anzahlErststimmen - vergebeneErst),
-							(wk.getWahlberechtigte() - wk
-									.getAnzahlErststimmen()));
+							(wk.getWahlberechtigte() - wk.getAnzahlErststimmen()));
 
 					// Wenn maximal mögliche Stimmzahl positiv, dann wähle eine
 					// zufällig eine in dem Intervall [1,max]

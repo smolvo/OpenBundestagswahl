@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 import main.java.importexport.ImportExportManager;
+import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundestagswahl;
 import main.java.model.Partei;
 import main.java.wahlgenerator.Stimmanteile;
@@ -82,6 +83,41 @@ public class WahlgeneratorTest {
 	 */
 	@Test
 	public void testErzeugeBTWBasis2013() {
+		LinkedList<Stimmanteile> anteile = new LinkedList<>();
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("CDU"), 40, 40));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("SPD"), 30, 30));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("GRÜNE"), 20, 20));
+		anteile.add(new Stimmanteile(wahl2013.getParteiByName("FDP"), 10, 10));
+		
+		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
+		
+		Bundestagswahl w = wg.erzeugeBTW("Test");
+		
+		for (Stimmanteile sa : anteile) {
+			/*
+			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
+			 * ob sie die korrekte Anzahl tatsächlich erhalten hat
+			 */
+			
+			int erwartetErst = (int) (sa.getAnteilErststimmen() / 100.0 * wg.getAnzahlErststimmen());
+			int faktischErst = w.getDeutschland().getAnzahlErststimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Erststimmen von " + sa.getPartei().getName(), erwartetErst, faktischErst);
+			
+			int erwartetZweit = (int) (sa.getAnteilZweitstimmen() / 100.0 * wg.getAnzahlZweitstimmen());
+			int faktischZweit = w.getDeutschland().getAnzahlZweitstimmen(w.getParteiByName(sa.getPartei().getName()));
+			assertEquals("Zweitstimmen von " + sa.getPartei().getName(), erwartetZweit, faktischZweit);
+		}
+		
+	}
+	
+	/**
+	 * Testet die Laufzeit von einer typischen Wahlgenerierung auf Basis der BTW von 2013.
+	 * Test schlägt fehl, wenn die Berechnung länger als 3 Sekunden dauert.
+	 * 
+	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
+	 */
+	@Test (timeout = 3000 )
+	public void LaufzeitmessungBTWBasis2013() {
 		LinkedList<Stimmanteile> anteile = new LinkedList<>();
 		anteile.add(new Stimmanteile(wahl2013.getParteiByName("CDU"), 40, 40));
 		anteile.add(new Stimmanteile(wahl2013.getParteiByName("SPD"), 30, 30));
@@ -324,33 +360,41 @@ public class WahlgeneratorTest {
 	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
 	 */
 	@Test
-	public void fora() {
-		LinkedList<Stimmanteile> anteile = new LinkedList<>();
-		for (Partei partei : wahl2013.getParteien()) {
-			anteile.add(new Stimmanteile(partei, 0, 0));
-		}
-		anteile.removeFirst();
-		
-		
-		Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);
-		
-		Bundestagswahl w = wg.erzeugeBTW("Test");
-		
-		for (Stimmanteile sa : anteile) {
-			/*
-			 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
-			 * ob sie die korrekte Anzahl tatsächlich erhalten hat
-			 */
+	public void WahlenGenerierenUndBerechnen() {
+
+		Debug.setLevel(0);
+		for (int i = 0; i < 300; i++) {
+			LinkedList<Stimmanteile> anteile = new LinkedList<>();
 			
-			int erwartetErst = (int) (sa.getAnteilErststimmen() / 100.0 * wg.getAnzahlErststimmen());
-			int faktischErst = w.getDeutschland().getAnzahlErststimmen(w.getParteiByName(sa.getPartei().getName()));
-			assertEquals("Erststimmen von " + sa.getPartei().getName(), erwartetErst, faktischErst);
+			System.out.println("Gernerierung starten...");
+			Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);			
+			Bundestagswahl w = wg.erzeugeBTW("Test");
+			System.out.println("Gernerierung fertig");
 			
-			int erwartetZweit = (int) (sa.getAnteilZweitstimmen() / 100.0 * wg.getAnzahlZweitstimmen());
-			int faktischZweit = w.getDeutschland().getAnzahlZweitstimmen(w.getParteiByName(sa.getPartei().getName()));
-			assertEquals("Zweitstimmen von " + sa.getPartei().getName(), erwartetZweit, faktischZweit);
-		}
+			System.out.println("Berechnung starten...");
+			Debug.setLevel(6);
+			Mandatsrechner2013.getInstance().berechne(w);
+			Debug.setLevel(0);
+			System.out.println("Berechnung fertig");
 		
+			for (Stimmanteile sa : anteile) {
+				/*
+				 * Prüfe für jede Partei, für die Stimmanteile vergeben wurden,
+				 * ob sie die korrekte Anzahl tatsächlich erhalten hat
+				 */
+				
+				int erwartetErst = (int) (sa.getAnteilErststimmen() / 100.0 * wg.getAnzahlErststimmen());
+				int faktischErst = w.getDeutschland().getAnzahlErststimmen(w.getParteiByName(sa.getPartei().getName()));
+				assertEquals("Erststimmen von " + sa.getPartei().getName(), erwartetErst, faktischErst);
+				
+				int erwartetZweit = (int) (sa.getAnteilZweitstimmen() / 100.0 * wg.getAnzahlZweitstimmen());
+				int faktischZweit = w.getDeutschland().getAnzahlZweitstimmen(w.getParteiByName(sa.getPartei().getName()));
+				assertEquals("Zweitstimmen von " + sa.getPartei().getName(), erwartetZweit, faktischZweit);
+				
+				System.out.print(".");
+			}
+		
+		}
 	}
 
 }
