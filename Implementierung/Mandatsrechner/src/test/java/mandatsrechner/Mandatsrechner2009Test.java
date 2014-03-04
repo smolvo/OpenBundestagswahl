@@ -95,7 +95,7 @@ public class Mandatsrechner2009Test {
 		Wahlkreis wk = this.cloneWahl.getDeutschland().getBundeslaender()
 				.get(0).getWahlkreise().get(0);
 		Kandidat gewinner = wk.getErststimmenProPartei().get(0).getKandidat();
-		wk.getErststimmenProPartei().get(0).setAnzahl(226900);
+		wk.getErststimmenProPartei().get(0).setAnzahl(134650);
 
 		this.rechner.initialisiere(this.cloneWahl);
 
@@ -111,9 +111,9 @@ public class Mandatsrechner2009Test {
 		Kandidat gewinner1 = wk.getErststimmenProPartei().get(0).getKandidat();
 		Kandidat gewinner2 = wk.getErststimmenProPartei().get(1).getKandidat();
 		Kandidat gewinner3 = wk.getErststimmenProPartei().get(2).getKandidat();
-		wk.getErststimmenProPartei().get(0).setAnzahl(226944);
-		wk.getErststimmenProPartei().get(1).setAnzahl(226944);
-		wk.getErststimmenProPartei().get(2).setAnzahl(226944);
+		wk.getErststimmenProPartei().get(0).setAnzahl(65803);
+		wk.getErststimmenProPartei().get(1).setAnzahl(65803);
+		wk.getErststimmenProPartei().get(2).setAnzahl(65803);
 
 		this.rechner.initialisiere(this.cloneWahl);
 
@@ -149,19 +149,21 @@ public class Mandatsrechner2009Test {
 		Partei tierschutz = this.cloneWahl.getParteien().get(8);
 		// TierschutzPartei in Harz und Magdeburg gewinnen lassen
 		sa.getWahlkreise().get(2).getErststimmenProPartei().get(8)
-				.setAnzahl(224900);
+				.setAnzahl(96652);
 		sa.getWahlkreise().get(3).getErststimmenProPartei().get(8)
-				.setAnzahl(244207);
+				.setAnzahl(95457);
 
 		Partei rep = this.cloneWahl.getParteien().get(9);
 		// Rep in Ludwigshafen/Frankenthal, Pirmasens und in der Südpfalz
 		// gewinnen lassen
 		rlp.getWahlkreise().get(10).getErststimmenProPartei().get(9)
-				.setAnzahl(217100);
+				.setAnzahl(67819);
 		rlp.getWahlkreise().get(13).getErststimmenProPartei().get(9)
-				.setAnzahl(180447);
+				.setAnzahl(57788);
+		rlp.getWahlkreise().get(14).getErststimmenProPartei().get(0)
+		.setAnzahl(0);
 		rlp.getWahlkreise().get(14).getErststimmenProPartei().get(9)
-				.setAnzahl(216047);
+				.setAnzahl(92626);
 
 		this.rechner.initialisiere(this.cloneWahl);
 		this.rechner.testBerechneDirektmandat(this.cloneWahl);
