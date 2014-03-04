@@ -127,7 +127,7 @@ public class Crawler2013 extends Crawler {
 					if (parts.length == 1) {
 						break;
 					} else {
-						if (parts[0].equals("") || parts[1].equals("")) {
+						if (parts.length == 0 || parts[0].equals("") || parts[1].equals("")) {
 							error = true;
 						} else {
 							rows.add(new String[] {
