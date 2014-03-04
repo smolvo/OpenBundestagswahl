@@ -24,11 +24,6 @@ public class Chronik implements Serializable {
 	private static final long serialVersionUID = -9220795187148958406L;
 
 	/**
-	 * Anzahl der maximalen Stimmen, die zurückgesetzt werden können.
-	 */
-	private final int maxStimmen = 5;
-
-	/**
 	 * Ein Stack mit den letzten Stimmen
 	 */
 	List<Stimme[]> stimmen = new ArrayList<Stimme[]>();
