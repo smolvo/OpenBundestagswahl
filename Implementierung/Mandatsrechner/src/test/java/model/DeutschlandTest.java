@@ -150,12 +150,12 @@ public class DeutschlandTest {
 	@Test
 	// aus der csv-Datei: Erststimmen - Gesamt - Deutschland: 43625042
 	public void testGetGesamtErststimmen() {
-		assertEquals(43625042, testDeutschland.getGesamtErststimmen());
+		assertEquals(43625042, testDeutschland.getAnzahlErststimmen());
 	}
 	
 	@Test
 	// aus der csv-Datei: Zweitstimmen - Gesamt - Deutschland: 43726856
 	public void testGetGesamtZweitstimmen() {
-		assertEquals(43726856, testDeutschland.getGesamtZweitstimmen());
+		assertEquals(43726856, testDeutschland.getAnzahlZweitstimmen());
 	}
 }
