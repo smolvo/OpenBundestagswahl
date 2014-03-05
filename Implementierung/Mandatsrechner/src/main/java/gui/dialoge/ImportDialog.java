@@ -84,8 +84,9 @@ public class ImportDialog extends JDialog {
 						eingeleseneDateien);
 				} catch (IllegalArgumentException e) {
 					JOptionPane.showMessageDialog(pf,
-							"cool bleiben.", "Meldung",
+							"Die .csv-Datei entspricht nicht dem gewünschten Format.", "Meldung",
 							JOptionPane.INFORMATION_MESSAGE, null);
+					return;
 				}
 				Steuerung.getInstance().setBtw(w);
 				Steuerung.getInstance().berechneSitzverteilung();

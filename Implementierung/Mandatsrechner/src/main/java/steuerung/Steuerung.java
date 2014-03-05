@@ -39,7 +39,7 @@ public class Steuerung {
 	 * @param csvDateien
 	 *            relevante Daten
 	 * @return neue Bundestagswahl
-	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
 	 */
 	public Bundestagswahl importieren(File[] csvDateien) throws IllegalArgumentException{
 		if (csvDateien == null) {
@@ -50,7 +50,6 @@ public class Steuerung {
 		
 		w = i.importieren(csvDateien);
 		
-		this.btw = w;
 		return w;
 	}
 
@@ -60,11 +59,10 @@ public class Steuerung {
 	 * 
 	 * @param pfad
 	 *            Pfad
-	 * @throws NullPointerException
 	 */
 	public void exportieren(String pfad) {
 		if (pfad == null) {
-			throw new NullPointerException("Kein Pfad angegeben.");
+			throw new IllegalArgumentException("Kein Pfad angegeben.");
 		}
 		ImportExportManager i = new ImportExportManager();
 		i.exportieren(pfad, btw);
@@ -74,11 +72,10 @@ public class Steuerung {
 	 * Diese Methode startet eine neue Berechnung der Sitzverteilung der
 	 * aktuellen Bundestagswahl.
 	 * 
-	 * @throws NullPointerException
 	 */
 	public void berechneSitzverteilung() {
 		if (this.btw == null) {
-			throw new NullPointerException("Keine Bundestagswahl vorhanden.");
+			throw new IllegalArgumentException("Keine Bundestagswahl vorhanden.");
 		}
 		this.btw = Mandatsrechner2013.getInstance().berechne(this.btw);
 	}
@@ -94,12 +91,11 @@ public class Steuerung {
 	 * @param name
 	 *            Der Name der BTW
 	 * @return gibt die generierte Wahl zurï¿½ck
-	 * @throws NullPointerException
 	 */
 	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw,
 			LinkedList<Stimmanteile> anteile, String name) {
 		if ((btw == null) || (anteile == null) || (name == null)) {
-			throw new NullPointerException("Einer der Parameter ist null.");
+			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		Wahlgenerator wg = new Wahlgenerator(btw, anteile);
 		Bundestagswahl neueBtw = wg.erzeugeBTW(name);
@@ -115,12 +111,10 @@ public class Steuerung {
 	 * @param anzahl
 	 *            der neue Wert
 	 * @return true or false
-	 * @throws NullPointerException
-	 * @throws IllegalArgumentException
 	 */
 	public boolean aktualisiereDaten(Stimme stimme, int anzahl) {
 		if (stimme == null) {
-			throw new NullPointerException("Keine Stimme gefunden.");
+			throw new IllegalArgumentException("Keine Stimme gefunden.");
 		}
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl muss grï¿½ï¿½er Null sein.");
@@ -137,11 +131,10 @@ public class Steuerung {
 	 * 
 	 * @param vergleichsWahl
 	 *            andere Wahl
-	 * @throws NullPointerException
 	 */
 	public void vergleicheWahlen(Bundestagswahl vergleichsWahl) {
 		if ((this.btw == null) || (vergleichsWahl == null)) {
-			throw new NullPointerException("Eine der beiden Wahlen ist null.");
+			throw new IllegalArgumentException("Eine der beiden Wahlen ist null.");
 		}
 		Wahlvergleich vergleich = new Wahlvergleich(this.btw, vergleichsWahl);
 		VergleichsFenster fenster = new VergleichsFenster(vergleich);
@@ -193,11 +186,10 @@ public class Steuerung {
 	 * 
 	 * @param btw
 	 *            Bundestagswahl
-	 * @throws NullPointerException
 	 */
 	public void setBtw(Bundestagswahl btw) {
 		if (btw == null) {
-			throw new NullPointerException("ï¿½bergebene Bundestagswahl ist null");
+			throw new IllegalArgumentException("ï¿½bergebene Bundestagswahl ist null");
 		}
 		this.btw = btw;
 	}
