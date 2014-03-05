@@ -293,12 +293,18 @@ public class TabellenFenster extends JScrollPane {
 				if (er.getKandidat().getMandat().equals(Mandat.DIREKTMANDAT)) {
 					direktManBoolean = true;
 				}
-				double prozentualeErst = (Math
-						.rint(((double) er.getAnzahl() / (double) wk
-								.getAnzahlErststimmen()) * 1000) / 10);
-				double prozentualeZweit = (Math
-						.rint(((double) korresZweit.getAnzahl() / (double) wk
-								.getAnzahlZweitstimmen()) * 1000) / 10);
+				double prozentualeErst = 0;
+				if (wk.getAnzahlErststimmen() != 0) {
+					prozentualeErst = (Math
+							.rint(((double) er.getAnzahl() / (double) wk
+									.getAnzahlErststimmen()) * 1000) / 10);
+				}
+				double prozentualeZweit = 0;
+				if (wk.getAnzahlZweitstimmen() != 0) {
+					prozentualeZweit = (Math
+							.rint(((double) korresZweit.getAnzahl() / (double) wk
+									.getAnzahlZweitstimmen()) * 1000) / 10);
+				}
 				String direktMan = "nein";
 				if (direktManBoolean) {
 					direktMan = "ja";
