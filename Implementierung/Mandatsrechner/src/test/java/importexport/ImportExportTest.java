@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import main.java.importexport.ImportExportManager;
@@ -212,7 +213,10 @@ public class ImportExportTest {
 		assertNotNull("Importierte Wahl ist Null!", importierteGenerierteWahl);
 	}
 	
-	@Test
+	/**
+	 * 
+	 */
+	@Ignore
 	public void importOtherCharsetFile() {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(filePaths[7]);

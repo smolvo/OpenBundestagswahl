@@ -232,7 +232,7 @@ public class Crawler2013 extends Crawler {
 	 */
 	private List<String[]> getBewerber(File csvDatei) throws IOException {
 		List<String[]> bewerber = new ArrayList<String[]>();
-		BufferedReader read = new BufferedReader(new FileReader(csvDatei));
+		BufferedReader read = this.readFile(csvDatei); //new BufferedReader(new FileReader(csvDatei));
 		int lineNumber = -1;
 		String line = null;
 		String[] parts;
@@ -657,8 +657,9 @@ public class Crawler2013 extends Crawler {
 		//System.out.println(isr.getEncoding());
 		//System.exit(0);
 		String charSet = "UTF-8"; //"ISO-8859-1";
+		BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
 		
-		return new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
+		return bf;
 		
 		
 	}
