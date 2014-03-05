@@ -7,8 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import test.java.Debug;
@@ -189,13 +191,29 @@ public class Crawler2013 extends Crawler {
 			e.printStackTrace();
 			error = true;
 		}
-
+		
+		error = this.pruefeParteien(columns);
+		
 		if (!error) {
 			imported = this.erstelleBundestagwahl(bwName, columns, rows,
 					values, bewerber);
 		}
 
 		return imported;
+	}
+
+	private boolean pruefeParteien(List<String> columns) {
+		boolean error = false;
+		Set<String> set = new HashSet<String>(columns);
+		if (columns.size() < 5) {
+			error = true;
+			throw new IllegalArgumentException ("Fehler mit der Wahlergebnisse-Datei: Zu wenige Parteien.");
+		}else if(columns.size() < 5 || set.size() < columns.size()){
+			error = true;
+			throw new IllegalArgumentException ("Fehler mit der Wahlergebnisse-Datei: Ungültige Parteinamen (Duplikate).");
+		}
+
+		return error;
 	}
 
 	/**
