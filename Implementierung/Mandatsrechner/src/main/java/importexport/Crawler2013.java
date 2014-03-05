@@ -255,6 +255,7 @@ public class Crawler2013 extends Crawler {
 					bewerber.add(new String[] { names[0], names[1], parts[1],
 							parts[2], parts[3], parts[4], parts[5] });
 				} else {
+					read.close();
 					throw new IllegalArgumentException("Keine gueltige Wahlbewerber-Datei.");
 				}
 
