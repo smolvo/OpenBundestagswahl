@@ -1,6 +1,7 @@
 package main.java.importexport;
 
 import java.awt.Color;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,13 +9,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+
+import com.ibm.icu.text.CharsetDetector;
+import com.ibm.icu.text.CharsetMatch;
 
 import test.java.Debug;
 
@@ -656,7 +662,23 @@ public class Crawler2013 extends Crawler {
 		//InputStreamReader isr = new InputStreamReader(new FileInputStream(file));
 		//System.out.println(isr.getEncoding());
 		//System.exit(0);
-		String charSet = "UTF-8"; //"ISO-8859-1";
+		String charSet = "UTF-8";
+		
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+		CharsetDetector cd = new CharsetDetector();
+		try {
+			cd.setText(bis);
+			CharsetMatch cm = cd.detect();
+			
+			if (cm != null && cm.getName()=="ISO-8859-1") {
+			   charSet = cm.getName();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(charSet);
+		//String charSet = "UTF-8"; //"ISO-8859-1";
 		BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
 		
 		return bf;

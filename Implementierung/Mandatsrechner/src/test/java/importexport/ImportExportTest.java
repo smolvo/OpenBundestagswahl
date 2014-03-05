@@ -216,7 +216,8 @@ public class ImportExportTest {
 	/**
 	 * 
 	 */
-	@Ignore
+	@Test
+	
 	public void importOtherCharsetFile() {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(filePaths[7]);
