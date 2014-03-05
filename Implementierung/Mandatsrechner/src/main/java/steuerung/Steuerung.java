@@ -43,15 +43,13 @@ public class Steuerung {
 	 */
 	public Bundestagswahl importieren(File[] csvDateien) throws IllegalArgumentException{
 		if (csvDateien == null) {
-			throw new NullPointerException("Keine Daten gefunden.");
+			throw new IllegalArgumentException("Keine Daten gefunden.");
 		}
 		ImportExportManager i = new ImportExportManager();
 		Bundestagswahl w = null;
-		try {
-			w = i.importieren(csvDateien);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		w = i.importieren(csvDateien);
+		
 		this.btw = w;
 		return w;
 	}
