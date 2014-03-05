@@ -3,9 +3,11 @@ package main.java.importexport;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -81,7 +83,8 @@ public class Crawler2013 extends Crawler {
 		String bwName = "";
 		BufferedReader read;
 		try {
-			read = new BufferedReader(new FileReader(csvDateien[0]));
+			//read = new BufferedReader(new FileReader(csvDateien[0]));
+			read = new BufferedReader(new InputStreamReader(new FileInputStream(csvDateien[0]), "UTF8"));
 			int lineNumber = -1;
 			String line = null;
 
@@ -167,6 +170,7 @@ public class Crawler2013 extends Crawler {
 								error = true;
 								e.printStackTrace();
 							} catch (Exception e) {
+								error = true;
 								e.printStackTrace();
 							}
 						}
@@ -440,7 +444,10 @@ public class Crawler2013 extends Crawler {
 	 */
 	private int[][] deepCopy(int[][] array) {
 		int xLength = array.length;
-		int yLength = array[0].length;
+		int yLength = 0;
+		if (xLength > 0) {
+			yLength = array[0].length;
+		}
 		int[][] copy = new int[xLength][yLength];
 		for (int i = 0; i < xLength; i++) {
 			for (int j = 0; j < yLength; j++) {
