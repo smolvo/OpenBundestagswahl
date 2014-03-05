@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -52,7 +53,7 @@ public class Crawler2013 extends Crawler {
 	 * @return die importierte Bundestagswahl
 	 */
 	@Override
-	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) throws IllegalArgumentException {
+	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) {
 
 		Bundestagswahl imported = null;
 		boolean error = false;
@@ -85,7 +86,7 @@ public class Crawler2013 extends Crawler {
 		BufferedReader read;
 		try {
 			//read = new BufferedReader(new FileReader(csvDateien[0]));
-			read = new BufferedReader(new InputStreamReader(new FileInputStream(csvDateien[0]), "UTF8"));
+			read = this.readFile(csvDateien[0]); 
 			int lineNumber = -1;
 			String line = null;
 
@@ -185,18 +186,14 @@ public class Crawler2013 extends Crawler {
 			 * Jetzt kommt die Bewerber-Datei.
 			 */
 			if (csvDateien.length > 1) {
-				try {
-					bewerber = this.getBewerber(csvDateien[1]);
-				} catch (IOException e) {
-					error = true;
-				}
+				bewerber = this.getBewerber(csvDateien[1]);
 			} else {
 				error = true;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			error = true;
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 			error = true;
 		}
@@ -233,7 +230,7 @@ public class Crawler2013 extends Crawler {
 	 * @return rohdaten mit bewerbern.
 	 * @throws IOException
 	 */
-	private List<String[]> getBewerber(File csvDatei) throws IOException, IllegalArgumentException {
+	private List<String[]> getBewerber(File csvDatei) throws IOException {
 		List<String[]> bewerber = new ArrayList<String[]>();
 		BufferedReader read = new BufferedReader(new FileReader(csvDatei));
 		int lineNumber = -1;
@@ -653,6 +650,17 @@ public class Crawler2013 extends Crawler {
 				}*/
 			}
 		}
+	}
+	
+	private BufferedReader readFile(File file) throws UnsupportedEncodingException, FileNotFoundException{
+		//InputStreamReader isr = new InputStreamReader(new FileInputStream(file));
+		//System.out.println(isr.getEncoding());
+		//System.exit(0);
+		String charSet = "UTF-8"; //"ISO-8859-1";
+		
+		return new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
+		
+		
 	}
 	
 }

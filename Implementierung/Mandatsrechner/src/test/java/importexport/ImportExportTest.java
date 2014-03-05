@@ -33,7 +33,7 @@ public class ImportExportTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		 i = new ImportExportManager();
-		 filePaths = new String[7];
+		 filePaths = new String[8];
 		 filePaths[0] = "src/main/resources/importexport/Ergebnis2013.csv";
 		 filePaths[1] = "src/main/resources/importexport/Wahlbewerber2013.csv";
 		 filePaths[2] = "src/main/resources/importexport/Exported.csv";
@@ -42,6 +42,8 @@ public class ImportExportTest {
 		 filePaths[5] = "src/main/resources/config.csv";
 		 
 		 filePaths[6] = "src/main/resources/importexport/generierteWahl.csv";
+		 
+		 filePaths[7] = "src/main/resources/importexport/Ergebnis2013-ISO.csv";
 	}
 	
 	/**
@@ -135,7 +137,7 @@ public class ImportExportTest {
 	/**
 	 * 
 	 */
-	@Test//(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void ungueltigeWahlbewerberDateiTest() {
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(filePaths[0]);
@@ -208,6 +210,15 @@ public class ImportExportTest {
 		Bundestagswahl importierteGenerierteWahl = i.importieren(csvDateien);
 		
 		assertNotNull("Importierte Wahl ist Null!", importierteGenerierteWahl);
+	}
+	
+	@Test
+	public void importOtherCharsetFile() {
+		File[] csvDateien = new File[2];
+		csvDateien[0] = new File(filePaths[7]);
+		csvDateien[1] = new File(filePaths[1]);
+		Bundestagswahl wahl2013 = null;
+		wahl2013 = i.importieren(csvDateien);
 	}
 	
 	
