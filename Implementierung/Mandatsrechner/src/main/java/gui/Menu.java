@@ -32,16 +32,16 @@ public class Menu extends JMenuBar {
 	/** repräsentiert das Programmfenster */
 	private final Programmfenster pf;
 
-	/** repräsentiert den Menäleisteneintrag Datei */
+	/** repräsentiert den Menüleisteneintrag Datei */
 	private final JMenu datei;
 
-	/** repräsentiert den Menäleisteneintrag Bearbeiten */
+	/** repräsentiert den Menüleisteneintrag Bearbeiten */
 	private final JMenu bearbeiten;
 
-	/** repräsentiert den Menäleisteneintrag Extras */
+	/** repräsentiert den Menüleisteneintrag Extras */
 	private final JMenu extras;
 
-	/** repräsentiert den Menäleisteneintrag Hilfe */
+	/** repräsentiert den Menüleisteneintrag Hilfe */
 	private final JMenu hilfe;
 
 	// /** repräsentiert den Menäleisteneintrag Wahldaten Generieren */
@@ -216,12 +216,14 @@ public class Menu extends JMenuBar {
 				}
 			} else if (e.getSource() == menu.rueckgaengig) {
 				Steuerung.getInstance().zurueckSetzen();
+				Steuerung.getInstance().berechneSitzverteilung();
 				setzeSichtbarkeit();
 				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
 				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
 
 			} else if (e.getSource() == menu.wiederherstellen) {
 				Steuerung.getInstance().wiederherrstellen();
+				Steuerung.getInstance().berechneSitzverteilung();
 				setzeSichtbarkeit();
 				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
 				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
