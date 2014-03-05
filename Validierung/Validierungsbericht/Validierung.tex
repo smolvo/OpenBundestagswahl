@@ -275,6 +275,14 @@ Außerdem wurde ein Laufzeittest geschrieben der feststellt, ob die Wahlgenerier
 
 Insgesamt wurden durch die Unit Tests mehrere Fehler entdeckt und vor allem die Validierung der Parameter robuster gestaltet.
 
+\subsection{Import/Export}
+Das Import-/Export Modul muss an erster Stelle zuverlässig mit den offiziellen Ergebnissen des Bundeswahlleiters arbeiten können. Daher gibt es einen {\mymo{basisTest()}}, der die Wahlergebnis- und Wahlbewerber-Datei der Bundestagswahl 2013 importiert und exportiert.
+Als nächstes, ist es wichtig, dass das Import/Export Modul auch Veränderungen an dem importierten Objekt exportiert. Daher gibt es den {\mymo{doubleImportExportTest()}}. Hier wird ein Wahlergebnis Importiert, Exportiert, daraufhin wird die neu erstellte Datei erneut importiert und exportiert. Die relevanten Fehler sind in allen drei Dateien gleich. \\
+
+Anschließend ist zu überprüfen, wie das Modul auf Fehlerhafte Dateien reagiert. Hierfür wird einmal eine fehlerhafte Wahlergebnis-Datei, einmal eine fehlerhafte Wahlbewerber-Datei und einmal eine fehlerhafte Wahlergebnis, als auch Wahlbewerber-Datei importiert. In diesen Fällen, wird eine Exception geworfen. \\
+
+Zum Schluss muss überprüft werden, ob generierte Wahlen exportiert und importiert werden können. Dies wird mit {\mymo{exportGenerierteWahl()}} getestet.
+
 \section{Testabdeckung}
 Die Testabdeckung unseres Codes haben wir durch den Eclipse-PlugIn EclEmma gemacht. Getestet wurde jeglicher Code der nichts mit der Visualisierung des Programmes zu tun haben. Aus diesem Grund wurde das GUI-Paket und einige Teile anderer Pakete, wie z.B. BerichtsFenster, nicht mit JUnit getestet.\\
 Folgende Blockabdeckungen konnten erreicht werden (in Prozent):\\
