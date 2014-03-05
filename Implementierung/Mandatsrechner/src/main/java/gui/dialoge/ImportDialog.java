@@ -78,9 +78,15 @@ public class ImportDialog extends JDialog {
 			if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
 				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
 				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
-
-				Bundestagswahl w = Steuerung.getInstance().importieren(
+				Bundestagswahl w = null;
+				try {
+				w = Steuerung.getInstance().importieren(
 						eingeleseneDateien);
+				} catch (IllegalArgumentException e) {
+					JOptionPane.showMessageDialog(pf,
+							"cool bleiben.", "Meldung",
+							JOptionPane.INFORMATION_MESSAGE, null);
+				}
 				Steuerung.getInstance().setBtw(w);
 				Steuerung.getInstance().berechneSitzverteilung();
 				pf.wahlHinzufuegen(w);
