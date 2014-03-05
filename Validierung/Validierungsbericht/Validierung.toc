@@ -7,14 +7,15 @@
 \contentsline {subsubsection}{\numberline {2.1.1}Fehler der GUI}{4}{subsubsection.2.1.1}
 \contentsline {section}{\numberline {3}Im Pflichtenheft genannte Qualit\IeC {\"a}tsanforderungen}{5}{section.3}
 \contentsline {section}{\numberline {4}Unit Tests}{5}{section.4}
-\contentsline {subsection}{\numberline {4.1}Wahlvergleich}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Wahlvergleich}{6}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Model}{6}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Mandatsrechner}{6}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Wahlgenerator}{7}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.3}Mandatsrechner}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Wahlgenerator}{8}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Import/Export}{8}{subsection.4.5}
 \contentsline {section}{\numberline {5}Testabdeckung}{8}{section.5}
-\contentsline {section}{\numberline {6}Codeanalyse}{8}{section.6}
-\contentsline {section}{\numberline {7}Performanceanalyse}{8}{section.7}
+\contentsline {section}{\numberline {6}Codeanalyse}{9}{section.6}
+\contentsline {section}{\numberline {7}Performanceanalyse}{9}{section.7}
 \contentsline {section}{\numberline {8}Sonstiges}{10}{section.8}
 \contentsline {subsection}{\numberline {8.1}Zus\IeC {\"a}tzliche Features}{10}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}\IeC {\"A}nderungen}{10}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}\IeC {\"A}nderungen}{11}{subsection.8.2}
 \contentsline {section}{\numberline {9}Ausblick auf die Endphase des Projekts}{11}{section.9}
