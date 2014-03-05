@@ -677,7 +677,7 @@ public class Crawler2013 extends Crawler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(charSet);
+		//System.out.println(charSet);
 		//String charSet = "UTF-8"; //"ISO-8859-1";
 		BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
 		
