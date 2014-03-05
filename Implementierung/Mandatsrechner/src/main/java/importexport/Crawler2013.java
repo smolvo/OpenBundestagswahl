@@ -372,11 +372,11 @@ public class Crawler2013 extends Crawler {
 			LinkedList<Bundesland> bundeslaender = deutschland
 					.getBundeslaender();
 
-			for (int i = 0; i < bundeslaender.size(); i++) {
-				for (int j = 0; j < parteien.size(); j++) {
+			for (int i = 0; i < bundeslaender.size() && !error; i++) {
+				for (int j = 0; j < parteien.size() && !error; j++) {
 					Landesliste landesliste = new Landesliste(parteien.get(j),
 							bundeslaender.get(i));
-					for (int k = 0; k < kandidaten.size(); k++) {
+					for (int k = 0; k < kandidaten.size() && !error; k++) {
 						if (kandidaten.get(k).getPartei() == parteien.get(j)
 								&& this.getBundeslandName(
 										kandidatenInfo.get(k)[1]).equals(
@@ -481,7 +481,7 @@ public class Crawler2013 extends Crawler {
 			name = "Thüringen";
 			break;
 		default:
-			name = "-";
+			throw new IllegalArgumentException("Ungültiges Bundesland-Kürzel in der Wahlbewerber-Datei. (Kürzel: " + kuerzel + ")");
 		}
 		return name;
 	}
@@ -618,5 +618,5 @@ public class Crawler2013 extends Crawler {
 			}
 		}
 	}
-
+	
 }
