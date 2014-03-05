@@ -9,8 +9,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
-
 import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundesland;
@@ -21,10 +19,7 @@ import main.java.model.Zweitstimme;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import test.java.Debug;
 
 /**
  * Die erwarteten Testergebnisse basieren auf die, aus der csv- Datei zur

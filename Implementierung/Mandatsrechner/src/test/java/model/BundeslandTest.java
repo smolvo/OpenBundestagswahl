@@ -14,7 +14,6 @@ import main.java.importexport.ImportExportManager;
 import main.java.mandatsrechner.Mandatsrechner2013;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
-import main.java.model.Erststimme;
 import main.java.model.Kandidat;
 import main.java.model.Landesliste;
 import main.java.model.Mandat;
@@ -24,10 +23,7 @@ import main.java.model.Zweitstimme;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import test.java.Debug;
 
 /**
  * Die erwarteten Testergebnisse basieren auf die, aus der csv- Datei zur

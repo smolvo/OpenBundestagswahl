@@ -214,7 +214,6 @@ public class Bundestagswahl implements Serializable {
 	 * @return true wenn erfolgreich.
 	 */
 	public boolean setzeStimme(Stimme stimme, boolean chronik) {
-		System.out.println(stimme.getAnzahl());
 		Stimme alteStimme = null;
 		boolean success = false;
 		if (stimme instanceof Erststimme) {

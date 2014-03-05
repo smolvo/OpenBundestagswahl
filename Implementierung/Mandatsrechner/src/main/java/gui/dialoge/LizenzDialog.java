@@ -11,6 +11,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
 
 
 public class LizenzDialog {
@@ -32,7 +33,7 @@ public class LizenzDialog {
 					
 					JFrame frame = new JFrame ("Lizenz");
 					frame.setPreferredSize(new Dimension(675, 500));
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					ImageIcon icon = new ImageIcon("src/main/resources/hilfe/License-GPL3.png");
 					JLabel label = new JLabel();

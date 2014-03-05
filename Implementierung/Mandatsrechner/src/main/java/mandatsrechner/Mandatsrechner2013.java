@@ -190,12 +190,6 @@ public class Mandatsrechner2013 {
 
 				divisor = partei.getZweitstimmeGesamt() / neueSitzanzahl;
 				
-				if (partei.getZweitstimmeGesamt() < 0 || neueSitzanzahl < 0 ) {
-					System.out.println("partei.getZweitstimmeGesamt() : " + partei.getZweitstimmeGesamt());
-					System.out.println("neueSitzanzahl : " + neueSitzanzahl);
-					System.out.println("parteidivisor: " + parteidivisor);
-				}
-				
 				if (Debug.getLevel() > 0) {
 					for (Partei relPartei : relevanteParteien) {
 						Debug.print(relPartei.getName(), 5);
@@ -206,17 +200,8 @@ public class Mandatsrechner2013 {
 				int insgesamt = 0;
 				boolean underflow = false, overflow = false;
 				while (insgesamt != neueSitzanzahl) {
-					//System.out.println(insgesamt + " " + neueSitzanzahl);
 					insgesamt = 0;
 					for (Bundesland bl : bw.getDeutschland().getBundeslaender()) {
-						
-						if ((bl.getAnzahlZweitstimmen(partei) / divisor) < 0) {
-							System.out.println("\nPartei: " + partei.getName());
-							System.out.println("Parteidivisor: " + parteidivisor);
-							System.out.println("Zweitstimmen: " + bl.getAnzahlZweitstimmen(partei));
-							System.out.println("Divisor: " + divisor);
-							
-						}
 						
 						sitzeBundesland = this.rechner2009.runden(bl.getAnzahlZweitstimmen(partei) / divisor, false);
 						

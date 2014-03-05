@@ -137,7 +137,6 @@ public class Landesliste implements Serializable {
 				this.listenkandidaten.add(i, null);
 			}
 		}
-		// System.out.println(pos+" "+kandidat.getName());
 		this.listenkandidaten.set(pos, kandidat);
 		// this.listenkandidaten.add(kandidat);
 	}

@@ -9,6 +9,7 @@ import java.io.FileReader;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
 
 
 public class HandbuchDialog {
@@ -30,7 +31,7 @@ public class HandbuchDialog {
 					
 					JFrame frame = new JFrame ("How to use");
 					frame.setPreferredSize(new Dimension(500, 500));
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					frame.add(new JScrollPane(editor));
 					frame.pack();

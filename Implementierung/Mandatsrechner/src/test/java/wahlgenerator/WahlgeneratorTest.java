@@ -20,8 +20,6 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import test.java.Debug;
-
 /**
  * Diese Klasse enthält Tests für den Wahlgenerator.
  */

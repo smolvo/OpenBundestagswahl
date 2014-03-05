@@ -9,11 +9,9 @@ import java.util.List;
 import main.java.model.Bundesland;
 import main.java.model.Bundestagswahl;
 import main.java.model.Deutschland;
-import main.java.model.Erststimme;
 import main.java.model.Gebiet;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
-import main.java.model.Zweitstimme;
 
 /**
  * Exportiert eine BTW in dem selben Format, wie eine CSV-Datei der

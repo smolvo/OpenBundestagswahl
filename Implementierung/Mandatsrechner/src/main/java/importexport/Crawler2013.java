@@ -51,6 +51,7 @@ public class Crawler2013 extends Crawler {
 	 * 			eingabeFehler
 	 * @return die importierte Bundestagswahl
 	 */
+	@Override
 	public Bundestagswahl erstelleBundestagswahl(File[] csvDateien) throws IllegalArgumentException {
 
 		Bundestagswahl imported = null;
@@ -609,10 +610,10 @@ public class Crawler2013 extends Crawler {
 	}
 
 	private void debugDeutschland(Deutschland deutschland) {
-		System.out.println(deutschland.getName() + ":");
+//		System.out.println(deutschland.getName() + ":");
 		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
 		for (int i = 0; i < 2; i++) {
-			System.out.println("-> " + bundeslaender.get(i).getName());
+//			System.out.println("-> " + bundeslaender.get(i).getName());
 
 			/*
 			 * List<Landesliste> landesliste =
@@ -634,13 +635,14 @@ public class Crawler2013 extends Crawler {
 			 */
 			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
 			for (int j = 0; j < wahlkreise.size(); j++) {
-				System.out.println("--> " + wahlkreise.get(j).getName() + " ("
-						+ wahlkreise.get(j).getWahlkreisnummer() + ")");
+//				System.out.println("--> " + wahlkreise.get(j).getName() + " ("
+//						+ wahlkreise.get(j).getWahlkreisnummer() + ")");
 				List<Zweitstimme> zweitstimmen = wahlkreise.get(j)
 						.getZweitstimmenProPartei();
 				List<Erststimme> erststimmen = wahlkreise.get(j)
 						.getErststimmenProPartei();
-				for (int k = 0; k < zweitstimmen.size(); k++) {
+				
+				/*for (int k = 0; k < zweitstimmen.size(); k++) {
 					System.out.println("--->"
 							+ zweitstimmen.get(k).getPartei().getName()
 							+ " Erststimmen: " + erststimmen.get(k).getAnzahl()
@@ -648,7 +650,7 @@ public class Crawler2013 extends Crawler {
 							+ erststimmen.get(k).getKandidat().getName()
 							+ ") - Zweitstimmen: "
 							+ zweitstimmen.get(k).getAnzahl());
-				}
+				}*/
 			}
 		}
 	}
