@@ -37,21 +37,6 @@ public class ConfigTest {
 	}
 
 	@Test
-	public void testGetConfigField() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetConfig() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetConfigField() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testToString() {
 		Config config = Config.getInstance();
 		String alles = config.toString();
