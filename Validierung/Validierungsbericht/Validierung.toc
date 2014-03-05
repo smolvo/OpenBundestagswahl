@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {4.3}Mandatsrechner}{7}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Wahlgenerator}{8}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Import/Export}{8}{subsection.4.5}
-\contentsline {section}{\numberline {5}Testabdeckung}{8}{section.5}
+\contentsline {section}{\numberline {5}Testabdeckung}{9}{section.5}
 \contentsline {section}{\numberline {6}Codeanalyse}{9}{section.6}
 \contentsline {section}{\numberline {7}Performanceanalyse}{9}{section.7}
 \contentsline {section}{\numberline {8}Sonstiges}{11}{section.8}

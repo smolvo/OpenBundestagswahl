@@ -60,45 +60,40 @@ Desweiteren wurde sowohl die GUI nach einem von uns verfassten und in diesem Dok
 Gruppenintern wurde der Name OpenBundestagswahl für die Entwickelte Software gewählt.
 
 \section{Globale Testfälle und Szenarien}
-Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt und analysiert. Dabei werden die Ergebnisse, die am Anfang der Validierungsphase entstanden sind, mit abschließenden Testergebnissen verglichen.
+Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt und analysiert. Dabei werden zuerst Probleme, die sich am Anfang der Validierungsphase herauskristallisiert haben, beschrieben. Dann wird auf die Lösung dieser Probleme eingegangen.
 
 \begin{description}
 	\item[\textbf{/T0010/}] Zwei Wahlen miteinander vergleichen: \\
 	Das Vergleichsfenster öffnete wie vorgesehen, aber es gab noch einige Ungereimtheiten.
-	
 	\begin{itemize}
-	\item Wahl kann mit sich selbst verglichen werden, was keinen Sinn macht, wenn man in der Vergleichsansicht keine Stimmen ändern kann
-	\item Berichtsfenster können nicht angezeigt werden
+	\item Wahl konnte mit sich selbst verglichen werden, was keinen Sinn macht, wenn man in der Vergleichsansicht keine Stimmen ändern kann
+	\item Berichtsfenster konnten nicht gleichzeitig angezeigt werden
 	\end{itemize}
 	
 	Oben aufgeführte Ergebnisse wurden korrigiert. Der Test funktioniert jetzt fehlerlos.
 	\item[\textbf{/T0020/}] Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
-	
 	\begin{itemize}
-	\item Exception wird geworfen, aber noch keine Fehlermeldung ausgegeben.
+	\item Exception wurde zwar geworfen, aber noch nicht entsprechend behandelt.
 	\end{itemize}
 	
 	Oben aufgeführtes Ergebnis wurde korrigiert. Der Test funktioniert jetzt.
 	\item[\textbf{/T0030/}] Manuell einen Buchstaben als Stimmenanzahl eintragen: \\
-	
 	\begin{itemize}
 	\item Funktionierte bereits am Anfang der Validierungsphase ordnungsgemäß
 	\end{itemize}
 	
 	\item[\textbf{/T0040/}] Eine Fließkommazahl als Stimmenanzahl eintragen: \\
 	\begin{itemize}
-	\item Funktionierte bereits am Anfang der Validierungsphase ordnungsgemäß
+	\item Funktionierte ebenfalls bereits am Anfang der Validierungsphase ordnungsgemäß
 	\end{itemize}
+	\newpage
 	
 	\item[\textbf{/T0050/}] Erststimme in der Wahlkreisansicht verändern: \\
 	\begin{itemize}
-	\item Wirft Exception im Model
+	\item Warf Exception im Model
 	\end{itemize}
 	Wurde korrigiert.
 	\item[\textbf{/T0060/}] Die Funktion ``Diagramm wechseln'' testen:\\
-	\begin{itemize}
-	\item Funktion nicht in aktuellem Programm realisiert.
-	\end{itemize}
 	Funktion wurde verworfen, da sie nicht benötigt wurde.
 	
 	\item[\textbf{/T0070/}] Die Funktion ``Rückgängig machen'' testen: \\
@@ -109,46 +104,51 @@ Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt u
 
 \end{description}
 \subsubsection{Import-/Exportverhalten}
-Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgesetzt, dass das Programm gestartet wurde und sich im Startzustand befindet. 
+Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei wird vorausgesetzt, dass das Programm gestartet wurde und sich im Startzustand befindet. In dem Ordner "Verschiedene CSV-Dateien für Testfälle" findet man die in Testfällen verwendeten Dateien.
 \begin{description}
 	\item[\textbf{/T0110/}] Struktur einer Importdatei verändern: \newline
 	Test: Gebiet gelöscht \newline
-	Dem Benutzer wird folgende Nachricht ausgegeben: "Die .csv-Datei entspricht nicht dem gewünschten Format."\\
+	Anfangs wurde nur eine Exception geworfen. Dies wird nun korrekt von der GUI behandelt und es wird eine Fehlermeldung ausgegeben.
 	\item[\textbf{/T0120/}] 
-	Importieren, verändern, exportieren und das anschließende Importieren funktionieren.\\ 
+	Importieren, Verändern, Exportieren und das wieder anschließende Importieren funktionieren.\\ 
 	\item[\textbf{/T0130/}] 
 	Test: SPD zu CDU \
-	Keine Exception und keine Fehlermeldung. Programm funktioniert wie gewöhnlich
+	Es wurde eine Exception geworfen, das Programm rechnete aber wie gewöhnlich weiter.
+	
+	Nun wird der Fehler behandelt und eine Meldung abgegeben.
+	
 	\item[\textbf{/T0140/}] Nur eine Partei befindet sich in der Importdatei:\
 	Test: Alle Parteien außer CDU entfernt, Bundesländer und Wahlkreise für die Übersichtlichkeit entfernt, Stimmzahlen angepasst (z.B. Gesamtzweitstimmenanzahl in D). \\
-	Es wird ein Fehler ausgegeben.\\
-	 \newline
 
+Eine csv-Datei mit einer Partei wird nicht akzeptiert, da eine solche Wahl für uns als zu unwahrscheinlich und nicht relevant betrachtet wird.
 	\item[\textbf{/T0150/}] Importdatei mit fehlerhaften Bundesländernamen:
 	Test: Hamburg -> Hambe\
-	Exception im Mandatsrechner wurde gelöst. Es entspricht nicht dem erwünschten Format.
+Es gab eine Exception im Mandatsrechner.
+
+Dieser wurde gelöst.
 	\item[\textbf{/T0160/}] Eigenen Wahlausgang erstellen: \
-	funktioniert.
+	Funktioniert wie gewünscht.
 \end{description}
 \subsubsection{Korrekte Berechnung der Sitzverteilung}
 Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabei wird vorausgesetzt, dass  das Programm gestartet wurde und erfolgreich eine Importdatei geladen wurde.
 \begin{description}
 	\item[\textbf{/T0210/}] Ein Direktmandat fehlt: \\
 	\begin{itemize}
-	\item Es kann immer nur eine Erststimmenanzahl geändert werden, dann muss berechnet werden
-	\item Es können alle Erststimmenanzahlen auf 0 gesetzt werden, aber Direktmandat im Bundesland wird immer noch angezeigt
-	\item Berechne- Knopf erscheint immer über Diagramm
-	\item Exception: java.lang.OutOfMemoryError: Java heap space
+	\item Es konnte immer nur eine Erststimmenanzahl geändert werden, dann musste berechnet werden
+	\item Es konnten alle Erststimmenanzahlen auf 0 gesetzt werden, aber es wurde kein Direktmandat angegeben
+	\item Berechne- Knopf erschien immer über dem Diagramm
+	\item Es wurde folgende Exception geworfen: java.lang.OutOfMemoryError: Java heap space
 	\end{itemize}
 	
 	Die Idee aus dem Pflichtenheft wurde verworfen, da bei 0 vergebenen Erststimmen zwischen allen Kandidaten ein Direktmandat verlost wird.
 	Es können jetzt mehrere Erststimmen geändert werden und dann wird erst per Berechnen-Knopf eine neue Sitzverteilungsberechnung angestoßen.
-	Diagramm wird ausgeblendet und Berechnen-Knopf wird passend angezeigt.
+	Das Diagramm wird nach Stimmänderung ausgeblendet und der Berechnen-Knopf wird passend angezeigt.
 	Auch eine OutOfMemoryException wird nicht mehr geworfen.
 	\item[\textbf{/T0220/}] Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \\
 	Es wird keine Meldung ausgegeben, es wird einfach so gelost.
-	\item[\textbf{/T0230/}] Wurde endgültig verworfen.
-	\item[\textbf{/T0240/}] Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen \\
+	\item[\textbf{/T0230/}] Ein negatives Stimmgewicht in einer Wahl provozieren: \\
+	Wurde endgültig verworfen.
+	\item[\textbf{/T0240/}] Partei mit drei Direktmandate und 2.9 Prozent der Zweitstimmen: \\
 	Partei ist richtigerweise mit 3 Sitzen im Bundestag vertreten.
 	
 	\item[\textbf{/T0250/}] Überhangmandat testen: \\
