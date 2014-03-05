@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.11.19)  5 MAR 2014 02:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.13)  5 MAR 2014 03:17
 entering extended mode
 **Validierung.tex
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.tex
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -531,8 +531,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip55
 )
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.aux)
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
@@ -609,10 +609,10 @@ LaTeX Info: Redefining \ref on input line 20.
 LaTeX Info: Redefining \pageref on input line 20.
 LaTeX Info: Redefining \nameref on input line 20.
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.out)
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.out)
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.out)
 \@outlinefile=\write4
  <KIT-Logo.png, id=83, 284.5029pt x 132.0132pt>
 File: KIT-Logo.png Graphic file (type png)
@@ -622,16 +622,16 @@ Package pdftex.def Info: KIT-Logo.png used on input line 35.
 
 [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Simon/Documents/
-pse13-1/trunk/Validierung/Validierungsbericht/KIT-Logo.png>]pdfTeX warning (ext
-4): destination with the same identifier (name{page.1}) has been already used, 
-duplicate ignored
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Batman/Desktop/p
+se/pse13-1/Validierung/Validierungsbericht/KIT-Logo.png>]pdfTeX warning (ext4):
+ destination with the same identifier (name{page.1}) has been already used, dup
+licate ignored
 <to be read again> 
                    \relax 
 l.40 ...e\thispagestyle{empty}\hspace{1em}\newpage
                                                    [1]
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.toc
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -674,6 +674,21 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 (hyperref)                than one, level fixed on input line 93.
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 96--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--108
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 104--108
 
  []
@@ -683,12 +698,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-
+[2]
 Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-[2]
+
 Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
@@ -723,12 +738,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--195
 
  []
 
-
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 196--199
 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 200--202
 
  []
@@ -769,17 +784,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
-
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 256--261
 
  []
 
-[6]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
-[7]
+
 Underfull \hbox (badness 10000) in paragraph at lines 272--273
 
  []
@@ -842,9 +857,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 336--338
 
  []
 
-[10 <C:/Users/Simon/Documents/pse13-1/trunk/Validierung/Validierungsbericht/mit
-Fehler.png> <C:/Users/Simon/Documents/pse13-1/trunk/Validierung/Validierungsber
-icht/ohneFehler.png>]
+[10 <C:/Users/Batman/Desktop/pse/pse13-1/Validierung/Validierungsbericht/mitFeh
+ler.png> <C:/Users/Batman/Desktop/pse/pse13-1/Validierung/Validierungsbericht/o
+hneFehler.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 348--350
 
  []
@@ -858,8 +873,8 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
 [11]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
 
-(C:\Users\Simon\Documents\pse13-1\trunk\Validierung\Validierungsbericht\Validie
-rung.aux)
+(C:\Users\Batman\Desktop\pse\pse13-1\Validierung\Validierungsbericht\Validierun
+g.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
 Package rerunfilecheck Info: File `Validierung.out' has not changed.
@@ -868,12 +883,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
  ) 
 Here is how much of TeX's memory you used:
  7169 strings out of 493921
- 101211 string characters out of 3147281
+ 101173 string characters out of 3147278
  193163 words of memory out of 3000000
  10315 multiletter control sequences out of 15000+200000
  11594 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,11n,43p,969b,471s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,11n,43p,969b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
@@ -881,7 +896,7 @@ s/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Validierung.pdf (14 pages, 257066 bytes).
+Output written on Validierung.pdf (14 pages, 257097 bytes).
 PDF statistics:
  208 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)

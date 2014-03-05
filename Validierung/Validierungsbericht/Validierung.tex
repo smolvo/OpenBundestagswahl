@@ -54,7 +54,7 @@
 
 \section{Einleitung}
 
-Ziel der Validierungsphase war es das fertige Software-Produkt zu überprüfen um die möglichst fehlerfreie Funktionsweise der Software bestmöglich zu gewährleisten. Dazu wurden sowohl die im Pflichtenheft bereits beschriebenen Testfälle, als auch zahlreiche weitere Tests sofern möglich, automatisch, mit JUnit durchgeführt und die dabei erreichte Testabdeckung mittels EclEmma ermittelt.
+Ziel der Validierungsphase war es das fertige Software-Produkt zu überprüfen, um die möglichst fehlerfreie Funktionsweise der Software bestmöglich zu gewährleisten. Dazu wurden sowohl die im Pflichtenheft bereits beschriebenen Testfälle, als auch zahlreiche weitere Tests sofern möglich, automatisch, mit JUnit durchgeführt und die dabei erreichte Testabdeckung mittels EclEmma ermittelt.
 Desweiteren wurde sowohl die GUI nach einem von uns verfassten und in diesem Dokument angegebenen Testplan getestet als auch die Funktion der Software auf verschiedenen Systemen sichergestellt und die Qualität des Produktes durch JUnit Tests überprüft.
 
 \section{Globale Testfälle und Szenarien}
@@ -95,15 +95,15 @@ Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei
 \begin{description}
 	\item[\textbf{/T0110/}] Struktur einer Importdatei verändern: \newline
 	Test: Gebiet gelöscht \newline
-	Exception in Crawler ("Kein geeigneter Crawler gefunden") wurde geworfen, aber keine Fehlermeldung an Benutzer ausgegeben
+	Dem Benutzer wird folgende Nachricht ausgegeben: "Die .csv-Datei entspricht nicht dem gewünschten Format."\\
 	\item[\textbf{/T0120/}] 
-	?? 
+	Importieren, verändern, exportieren und das anschließende Importieren funktionieren.\\ 
 	\item[\textbf{/T0130/}] 
 	Test: SPD zu CDU \\
 	Keine Exception und keine Fehlermeldung. Programm funktioniert wie gewöhnlich
 	\item[\textbf{/T0140/}] Nur eine Partei befindet sich in der Importdatei:\\
 	Test: Alle Parteien außer CDU entfernt, Bundesländer und Wahlkreise für die Übersichtlichkeit entfernt, Stimmzahlen angepasst(z.B. Gesamtzweitstimmenanzahl in D) \\
-	Endlosschleife 
+	Es wird ein Fehler ausgegeben.\\
 	 \newline
 
 	\item[\textbf{/T0150/}] Importdatei mit fehlerhaften Bundesländernamen:
