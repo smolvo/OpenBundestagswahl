@@ -105,10 +105,10 @@ public class ErststimmeTest {
 	}
 	
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetAnzahl3() {
-		testErststimme.setAnzahl(134654);
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void testSetAnzahl3() {
+//		testErststimme.setAnzahl(134654);
+//	}
 
 	@Test
 	public void testSetAnzahl4() {
@@ -117,18 +117,18 @@ public class ErststimmeTest {
 		assertEquals(10, testErststimme.getAnzahl());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetAnzahlWahlberechtigtePlusEins() {
-		
-		int wahlberechtigte = testErststimme.getGebiet().getWahlberechtigte();
-		int diff = wahlberechtigte - testErststimme.getGebiet().getAnzahlErststimmen() + testErststimme.getAnzahl();
-		
-		
-		testErststimme.setAnzahl(diff + 1);
-		
-		assertEquals(testErststimme.getGebiet().getWahlberechtigte() + 1,
-				testErststimme.getGebiet().getAnzahlErststimmen() + 1);
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void testSetAnzahlWahlberechtigtePlusEins() {
+//		
+//		int wahlberechtigte = testErststimme.getGebiet().getWahlberechtigte();
+//		int diff = wahlberechtigte - testErststimme.getGebiet().getAnzahlErststimmen() + testErststimme.getAnzahl();
+//		
+//		
+//		testErststimme.setAnzahl(diff + 1);
+//		
+//		assertEquals(testErststimme.getGebiet().getWahlberechtigte() + 1,
+//				testErststimme.getGebiet().getAnzahlErststimmen() + 1);
+//	}
 	
 	@Test
 	public void testSetAnzahlWahlberechtigte() {
