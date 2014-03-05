@@ -71,14 +71,14 @@ Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt u
 	\item Berichtsfenster können nicht angezeigt werden
 	\end{itemize}
 	
-	Oben aufgeführte Ergebnisse wurden korrigiert. Der Test funktioniert jetzt. fehlerlos.
+	Oben aufgeführte Ergebnisse wurden korrigiert. Der Test funktioniert jetzt fehlerlos.
 	\item[\textbf{/T0020/}] Manuell einen negativen Wert als Stimmenanzahl eintragen: \\
 	
 	\begin{itemize}
 	\item Exception wird geworfen, aber noch keine Fehlermeldung ausgegeben.
 	\end{itemize}
 	
-	Oben aufgeführtes Ergebnis wurde korrigiert. Der Test funktioniert jetzt
+	Oben aufgeführtes Ergebnis wurde korrigiert. Der Test funktioniert jetzt.
 	\item[\textbf{/T0030/}] Manuell einen Buchstaben als Stimmenanzahl eintragen: \\
 	
 	\begin{itemize}
@@ -94,7 +94,7 @@ Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt u
 	\begin{itemize}
 	\item Wirft Exception im Model
 	\end{itemize}
-	
+	Wurde korrigiert.
 	\item[\textbf{/T0060/}] Die Funktion ``Diagramm wechseln'' testen:\\
 	\begin{itemize}
 	\item Funktion nicht in aktuellem Programm realisiert.
@@ -102,10 +102,9 @@ Im Folgenden werden die im Pflichtenheft genannten Testszenarien durchgeführt u
 	Funktion wurde verworfen, da sie nicht benötigt wurde.
 	
 	\item[\textbf{/T0070/}] Die Funktion ``Rückgängig machen'' testen: \\
-	Zurücksetzen funktioniert noch nicht.
+	Zurücksetzen funktioniert fehlerlos.
 	\item[\textbf{/T0080/}] Die Funktion ```Wiederherstellen'' testen: \\
-
-Funktionieren zwar, sind aber unschön, da Tabelle immer zurück auf Deutschland springt
+	Wiederherstellen funktioniert fehlerlos.
 	
 
 \end{description}
@@ -121,13 +120,13 @@ Die folgenden Testfälle testen das Import-/Exportverhalten des Programms. Dabei
 	Test: SPD zu CDU \
 	Keine Exception und keine Fehlermeldung. Programm funktioniert wie gewöhnlich
 	\item[\textbf{/T0140/}] Nur eine Partei befindet sich in der Importdatei:\
-	Test: Alle Parteien außer CDU entfernt, Bundesländer und Wahlkreise für die Übersichtlichkeit entfernt, Stimmzahlen angepasst(z.B. Gesamtzweitstimmenanzahl in D) \
+	Test: Alle Parteien außer CDU entfernt, Bundesländer und Wahlkreise für die Übersichtlichkeit entfernt, Stimmzahlen angepasst (z.B. Gesamtzweitstimmenanzahl in D). \\
 	Es wird ein Fehler ausgegeben.\\
 	 \newline
 
 	\item[\textbf{/T0150/}] Importdatei mit fehlerhaften Bundesländernamen:
 	Test: Hamburg -> Hambe\
-	Exception im Mandatsrechner
+	Exception im Mandatsrechner wurde gelöst. Es entspricht nicht dem erwünschten Format.
 	\item[\textbf{/T0160/}] Eigenen Wahlausgang erstellen: \
 	funktioniert.
 \end{description}
@@ -145,7 +144,7 @@ Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabe
 	Die Idee aus dem Pflichtenheft wurde verworfen, da bei 0 vergebenen Erststimmen zwischen allen Kandidaten ein Direktmandat verlost wird.
 	Es können jetzt mehrere Erststimmen geändert werden und dann wird erst per Berechnen-Knopf eine neue Sitzverteilungsberechnung angestoßen.
 	Diagramm wird ausgeblendet und Berechnen-Knopf wird passend angezeigt.
-	Auch auf ein OutOfMemoryException wird nicht mehr geworfen.
+	Auch eine OutOfMemoryException wird nicht mehr geworfen.
 	\item[\textbf{/T0220/}] Mehrere Wahlkandidaten haben gleich viele Stimme in einem Wahlkreis: \\
 	Es wird keine Meldung ausgegeben, es wird einfach so gelost.
 	\item[\textbf{/T0230/}] Wurde endgültig verworfen.
@@ -153,14 +152,14 @@ Die folgenden Testfälle testen die korrekte Berechnung der Sitzverteilung. Dabe
 	Partei ist richtigerweise mit 3 Sitzen im Bundestag vertreten.
 	
 	\item[\textbf{/T0250/}] Überhangmandat testen: \\
-\begin{itemize}
+
 Wird richtig berechnet, es wird aber kein Hinweis ausgegeben.
-\end{itemize}
+
 	\item[\textbf{/T0260/}] Ausgleichsmandat testen: \\
-\begin{itemize}
+
 Wird richtig berechnet, es wird aber kein Hinweis ausgegeben.
 	
-\end{itemize}
+
 
 \end{description}
 
@@ -182,7 +181,7 @@ Dieser Plan umfasst alle Funktionen des Programmes. \\
 
 \subsubsection{Fehler der GUI}
 \begin{itemize}
-\item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte \\
+\item Generiere-Knopf blieb aktiv, nachdem man den Namen löschte. \\
 Das Problem bei diesem Fehler war, dass ein ActionListener verwendtet wurden. Aus diesem Grund wurde die
 Abfrage, ob der aktuelle Name gesetzt ist, nur abgefragt, sobald der Benutzer den Enter-Knopf betätigte.
 Durch den neuen KeyListener wird bei kleinster Änderung abgefragt, ob sich noch Text in dem JTextField befindet. \\
@@ -240,16 +239,16 @@ In der zweiten Testklasse wurden die Bundestagswahl 2013 und die Bundestagswahl 
 Orakel für die Differenzen der Erst- und Zweitstimmen als auch für die prozentualen Differenzen waren wir selbst. Auch hier zeigte sich der korrekte Ablauf des Wahlvergleichs. \\
 
 \subsection{Model}
-Das Teste des Models hat uns am meisten Zeit gekostet, da es der Hauptteil unseres Codes ist.\\
+Das Testen des Models hat uns am meisten Zeit gekostet, da es der Hauptteil unseres Codes ist.\\
 In Klassen wie der Sitzverteilung, Gebiet, Mandat, Stimme brauchten nahezu gar nicht getestet zu werden, da sie kaum relevanten Code, bis auf Getter-Setter-Methoden, enthielten. \\
 Eine größere Herausforderung waren Klassen wie Partei, Wahlkreis, Bundesland,...\\
 \begin{itemize}
 \item Wahlkreis, Bundesland, Deutschland: \\
-In diesen Klassen wurden Methoden wie getAnzahlErst-,Zweitstimmen getestet. Dank dieser Tests wurden einige Methoden entfernt, die das gleiche wie andere machten. Außerdem wurden die Methoden getStimmeProPartei aus den Klassen entfernt, da sie riskanten Code enthielten und durch einfacheren Code in anderen Methoden ersetzt.
+In diesen Klassen wurden Methoden wie getAnzahlErst-, Zweitstimmen getestet. Dank dieser Tests wurden einige Methoden entfernt, die das gleiche wie andere machten. Außerdem wurde die Methode getErststimmeProPartei aus den Klassen entfernt, da sie riskanten Code enthielt und durch einfacheren Code in anderen Methoden ersetzt werden konnte.
 \item Partei: \\
 In der ParteiTest-Klasse wurden die Methoden der Partei getestet. \\
-Tests zu fundamentalen Sachen wie dem setzen einer Landesliste, hinzufügen eines neuen oder des Mandates eines bereits vorhandenen Mitglieds wurden verfasst und durchgeführt. Genauso das Setzen von Ausgleichs- und Überhangsmandaten musste überprüft werden.\\
-Grobe Fehler sind uns dabei nicht untergekommen, bis auf das fehlen einiger equals-Methoden, welche hinzugefügt wurden.\\
+Tests zu fundamentalen Sachen, wie dem Setzen einer Landesliste, Hinzufügen eines neuen Mitglieds oder des Mandates eines bereits vorhandenen Mitglieds, wurden verfasst und durchgeführt. Genauso das Setzen von Ausgleichs- und Überhangmandaten musste überprüft werden.\\
+Grobe Fehler sind uns dabei nicht untergekommen, bis auf das Fehlen einiger equals-Methoden, welche hinzugefügt wurden.\\
 \item Erst- und Zweitstimme
 Bei den Stimmen wurde hauptsächlich die Änderung und Kopie dieser getestet. Gravierende Fehler wurden bei den Tests nicht gefunden.\\
 \end{itemize}
@@ -259,37 +258,37 @@ Auch bei den restlichen Klassen des Models wurden nur kleine Fehler, wie eine Me
 \begin{itemize}
 \item Mandatsrechner2009:\\
 Beim Mandatsrechner2009 wurde als erstes die Initialisierungen der Listen in der Sitzverteilung und die Mandatseinträge der Kandidaten getestet.\\
-Anschließend die Verteilung der Direktmandate. Dabei wurde einerseits in einem Wahlkreis abgefragt, ob der Kandidat mit den meisten Erststimmen das Direktmandat erhielt und andererseits ob die Wahl des Direktmandate bei mehreren Kandidaten mit gleicher Stimmenanzahl zufällig ist.\\
-Bei den letzten Tests wurde die Sperrklausel getestet. Es wurde einer Partei über 5-Prozent der Zweitstimmen gegeben, einer  weniger als 5-Prozent der Zweitstimmen aber 3 Direktmandate und einer weiteren weniger als 5-Prozent und weniger als 3 Direktmandate. Die ersten beiden zogen in den Bundestag ein, die letzte nicht. \\
-Bei diesen Tests ist uns aufgefallen, dass die Abstimmung zwischen abgegebenen Stimmen und Wahlberechtigten in diesem Wahlkreis nicht korrekt funktioniert. Es war möglich mehr  Stimmen abzugeben als Wahlberechtigte vorhanden waren. Dieser Fehler konnte behoben werden.\\
+Anschließend die Verteilung der Direktmandate. Dabei wurde einerseits in einem Wahlkreis abgefragt, ob der Kandidat mit den meisten Erststimmen das Direktmandat erhielt und andererseits ob die Vergabe des Direktmandats bei mehreren Kandidaten mit gleicher Stimmenanzahl zufällig ist.\\
+Bei den letzten Tests wurde die Sperrklausel getestet. Es wurde einer Partei über 5-Prozent der Zweitstimmen gegeben, einer  weniger als 5-Prozent der Zweitstimmen aber 3 Direktmandate und einer weiteren weniger als 5-Prozent und weniger als 3 Direktmandate. Die ersten beiden zogen unter Berücksichtigung beider Stimmen in den Bundestag ein, bei der letzten Partei wurden nur die durch die Direktmandate erworbenen Sitze berücksichtigt. \\
+Bei diesen Tests ist uns aufgefallen, dass die Abstimmung zwischen abgegebenen Stimmen und Wahlberechtigten in diesem Wahlkreis nicht korrekt funktioniert. Es war möglich mehr Stimmen abzugeben als Wahlberechtigte vorhanden waren. Dieser Fehler konnte behoben werden.\\
 
 \item Mandatsrechner2013:\\
-Im Mandatsrechner 2013 wurde die korrekte Berechnung der Daten getestet, da der Mandatsrechner 2013 den Mandatsrechner 2009 benutzt und dort schon die genutzten Methoden getestet wurden. Es wurde die berechnete Sitzverteilung mit der aktuellsten Bundestagswahl 2013 verglichen. Dabei fiel uns auf, dass in der Sitzverteilung mehr Kandidaten waren als in dem offiziellen Ergebnis. Interessant war auch, dass es Kandidaten in der Sitzverteilung gab die kein Mandat hatten. Dies fiel uns aber in der GUI nicht auf, weil dort die Mandate der Kandidaten erfragt werden und danach die Summe in die entsprechende Tabelle eingetragen werden. Durch die Tests wurde klar, dass die Kandidate die Kandidate nicht aus der Sitzverteilung entfernt werden. Der Grund für das Problem wurde dann in der Berechnung der Ausgleichsmandate gefunden. Nach der Änderung wurden die Kandidaten aus der Liste entfernt und der erste Test konnte fehlerfrei durchlaufen.
-Beim zweiten Test wollten anfangs selbst eine Berechnung der Wahl durchführen und das Ergebnis sozusagen als Orakel mit dem berechneten Ergebnis des Mandatsrechner vergleichen. Da der Rechenaufwand für eine ganze Bundestagswahl relativ groß ist und wir gleichzeitig den Import von anderen .csv-Dateien testen wollten, wurde die Bundestagswahl 2009 mit dem Wahlgesetz 2013 berechnet und mit dem Rechenbeispiel von Ulrich Wießner verglichen. Jedoch bemerkten wir danach, dass das Ergebnis von Ulrich Wießner teilweise falsch war/ist, denn laut seiner Berechnung hätte die CSU 47 Direktmandate in Bayern, obwohl es nur 45 Wahlkreise gibt. Deswegen wurde bei diesem Test die Anzahl der Sitze der CSU nicht verglichen.
+Im Mandatsrechner 2013 wurde die korrekte Berechnung der Daten getestet, da der Mandatsrechner 2013 den Mandatsrechner 2009 benutzt und dort schon die genutzten Methoden getestet wurden. Es wurde die berechnete Sitzverteilung mit der aktuellsten Bundestagswahl 2013 verglichen. Dabei fiel uns auf, dass in der Sitzverteilung mehr Kandidaten waren als in dem offiziellen Ergebnis. Interessant war auch, dass es Kandidaten in der Sitzverteilung gab die kein Mandat hatten. Dies fiel uns aber in der GUI nicht auf, weil dort die Mandate der Kandidaten erfragt werden und danach die Summe in die entsprechende Tabelle eingetragen werden. Durch die Tests wurde klar, dass die Kandidaten nicht aus der Sitzverteilung entfernt werden. Der Grund für das Problem wurde dann in der Berechnung der Ausgleichsmandate gefunden. Nach der Änderung wurden die Kandidaten aus der Liste entfernt und der erste Test konnte fehlerfrei durchlaufen. \\
+Beim zweiten Test wollten wir anfangs selbst eine Berechnung der Wahl durchführen und das Ergebnis sozusagen als Orakel mit dem berechneten Ergebnis des Mandatsrechners vergleichen. Da der Rechenaufwand für eine ganze Bundestagswahl relativ groß ist und wir gleichzeitig den Import von anderen .csv-Dateien testen wollten, wurde die Bundestagswahl 2009 mit dem Wahlgesetz 2013 berechnet und mit dem Rechenbeispiel von Ulrich Wießner verglichen. Jedoch bemerkten wir danach, dass das Ergebnis von Ulrich Wießner teilweise falsch war/ist, denn laut seiner Berechnung hätte die CSU 47 Direktmandate in Bayern, obwohl es nur 45 Wahlkreise gibt. Deswegen wurde bei diesem Test die Anzahl der Sitze der CSU nicht verglichen. Außerdem haben wir unser Ergebnis der Wahl auch mit dem amtlichen Ergebnis des Bundeswahlleiters verglichen. Dabei wurde unser Ergebnis bestätigt. \\
 Der letzte Test berechnet wie der erste Test die Sitzverteilung von 2013. Dabei wird darauf geachtet, dass die ganze Berechnung nicht länger als 10 Sekunden dauert. 
 
 \end{itemize}
 
 \subsection{Wahlgenerator}
-Beim Wahlgenerator wurde als erstes das Verhalten des Konstruktors getestet ob er sich bei der Übergabe von unterschiedlichen Stimmanteilen korrekt verhält. Und dann entweder mit erwarteten Werten erzeugt wird, bzw. wie erwartet eine Exception wirft.\\
+Beim Wahlgenerator wurde als erstes das Verhalten des Konstruktors getestet, ob er sich bei der Übergabe von unterschiedlichen Stimmanteilen korrekt verhält. Dabei wird geprüft, ob er mit erwarteten Werten erzeugt wird, bzw. wie erwartet eine Exception wirft.\\
 
-Dann wurde das zufällige verteilen von übrigen Stimmanteilen getestet und die Stimmzahlen der Ergebniswahl überprüft.\\
+Dann wurde das zufällige Verteilen von übrigen Stimmanteilen getestet und die Stimmzahlen der Ergebniswahl überprüft.\\
 
-Außerdem wurde ein Laufzeittest geschrieben der feststellt, ob die Wahlgenerierung in unter 5 Sekunden ausgeführt wird.\\
+Außerdem wurde ein Laufzeittest geschrieben, der feststellt, ob die Wahlgenerierung in unter 5 Sekunden ausgeführt wird.\\
 
 Insgesamt wurden durch die Unit Tests mehrere Fehler entdeckt und vor allem die Validierung der Parameter robuster gestaltet.
 
 \subsection{Import/Export}
-Das Import-/Export Modul muss an erster Stelle zuverlässig mit den offiziellen Ergebnissen des Bundeswahlleiters arbeiten können. Daher gibt es einen {\mymo{basisTest()}}, der die Wahlergebnis- und Wahlbewerber-Datei der Bundestagswahl 2013 importiert und exportiert.
-Als nächstes, ist es wichtig, dass das Import/Export Modul auch Veränderungen an dem importierten Objekt exportiert. Daher gibt es den {\mymo{doubleImportExportTest()}}. Hier wird ein Wahlergebnis Importiert, Exportiert, daraufhin wird die neu erstellte Datei erneut importiert und exportiert. Die relevanten Fehler sind in allen drei Dateien gleich. \\
+Das Import-/Export Modul muss an erster Stelle zuverlässig mit den offiziellen Ergebnissen des Bundeswahlleiters arbeiten können. Daher gibt es einen Basistest, der die Wahlergebnis- und Wahlbewerber-Datei der Bundestagswahl 2013 importiert und exportiert.
+Als nächstes, ist es wichtig, dass das Import/Export Modul auch Veränderungen an dem importierten Objekt exportiert. Dies wird durch den doppelten Import/Export-Test abgedeckt. Hier wird ein Wahlergebnis importiert, exportiert, daraufhin wird die neu erstellte Datei erneut importiert und exportiert. Die relevanten Felder sind in allen drei Dateien gleich. \\
 
-Anschließend ist zu überprüfen, wie das Modul auf Fehlerhafte Dateien reagiert. Hierfür wird einmal eine fehlerhafte Wahlergebnis-Datei, einmal eine fehlerhafte Wahlbewerber-Datei und einmal eine fehlerhafte Wahlergebnis, als auch Wahlbewerber-Datei importiert. In diesen Fällen, wird eine Exception geworfen. \\
+Anschließend ist zu überprüfen, wie das Modul auf fehlerhafte Dateien reagiert. Hierfür wird einmal eine fehlerhafte Wahlergebnis-Datei, einmal eine fehlerhafte Wahlbewerber-Datei und einmal sowohl eine fehlerhafte Wahlergebnis-, als auch Wahlbewerber-Datei importiert. In diesen Fällen, wird der Fehler in der GUI behandelt. \\
 
-Zum Schluss muss überprüft werden, ob generierte Wahlen exportiert und importiert werden können. Dies wird mit {\mymo{exportGenerierteWahl()}} getestet.
+Zum Schluss wurde erfolgreich überprüft, ob generierte Wahlen exportiert und importiert werden können. 
 
 \section{Testabdeckung}
-Die Testabdeckung unseres Codes haben wir durch den Eclipse-PlugIn EclEmma gemacht. Getestet wurde jeglicher Code der nichts mit der Visualisierung des Programmes zu tun haben. Aus diesem Grund wurde das GUI-Paket und einige Teile anderer Pakete, wie z.B. BerichtsFenster, nicht mit JUnit getestet.\\
-Folgende Blockabdeckungen konnten erreicht werden (in Prozent):\\
+Die Testabdeckung unseres Codes haben wir durch das Eclipse-PlugIn EclEmma ermittelt. Getestet wurde jeglicher Code der nichts mit der Visualisierung des Programmes zu tun hat. Aus diesem Grund wurden das GUI-Paket und einige Teile anderer Pakete, wie z.B. BerichtsFenster, nicht mit JUnit getestet.\\
+Folgende Anweisungsüberdeckungen konnten erreicht werden (in Prozent):\\
 \begin{itemize}
 \item{Chronik} : 80,9 
 
@@ -317,17 +316,17 @@ Zum anderen haben wir das Tool FindBugs verwendet, dass Java Code auf Fehlermust
 
 Zu der gesamten Performance ist einzig zu sagen, dass wir die Grenzen, die wir uns im Pflichtenheft gesetzt haben, erfüllt haben.\\
 - Die Berechnung der Sitzplatzverteilung erfolgt auf allen unseren Rechnern in unter 3 Sekunden.\\
-- Der Import der Bundestagswahl 2013 dauerte in fast allen Fällen unter 5 Sekunden, nur in einzelnen etwas länger.\\
+- Der Import der Bundestagswahl 2013 dauerte in allen Fällen unter 5 Sekunden.\\
 - Der gesamte Programmstart, inklusive Import und Berechnung, benötigt keine 10 Sekunden und ist somit unter unseren Anforderungen. \\
 \\
-Das einzige Problem, das uns bis zur letzten Woche begleitete, war das Volllaufen des Heaps, das ausgelöst wurde, wenn man schnell zwischen verschiedenen Gebieten schaltete. Hier sehen Sie eine Grafik unserer ersten Analyse des Problems mit dem Programm JVisualVM.\\
+Das einzige Problem, das uns bis zur letzten Woche begleitete, war das Volllaufen des Heaps, das ausgelöst wurde, wenn man schnell zwischen verschiedenen Gebieten schaltete. Hier sieht man eine Grafik unserer ersten Analyse des Problems mit dem Programm JVisualVM.\\
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.7]{mitFehler.png} \caption{Auswertung der Performance mit Fehler}
 \end{figure}
 
 Den Fehler fanden wir in der Ansichtsklasse. Dort wurde die Größe des Tabellenfensters bei jeder Änderung um das Zweifache erhöht. Dies hatte keinerlei Auswirkungen auf die GUI, doch die immer größer werdenden double-Werte sprengten den Rahmen des Heaps, verlangsamten das Programm stark und machten es fast unbenutzbar.\\
-Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansicht bei Diagramm- und Kartenfenster auf 1 und bei Tabellenfenster auf 2 gesetzt wurde. So sieht die Analyse der JVisualVM nach dem beheben des Fehlers aus, wenn man schnell Gebiete wechselt:\\
+Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansicht bei Diagramm- und Kartenfenster auf 1 und bei Tabellenfenster auf 2 gesetzt wurde. So sieht die Analyse der JVisualVM nach dem Beheben des Fehlers aus, wenn man schnell Gebiete wechselt:\\
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.7]{ohneFehler.png} \caption{Auswertung der Performance ohne Fehler}
@@ -338,7 +337,7 @@ Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansich
 \subsection{Zusätzliche Features}
 \begin{itemize}
 \item{\bf{Sortierung}}\\
-Ein Feature, wozu wir in der Implementierungsphase nicht gekommen sind, weil es uns zu aufwendig vorkam, ist die Sortierung der Tabellen durch Klicken auf die Köpfe. Dies wurde jetzt realisiert, da es sich als doch nicht so schwer herausstellte. Es wurde ein TableRowSorter im Wahlvergleichs-, Tabellen- und Berichtsfenster eingefügt und konfiguriert.\\
+Ein Feature, wozu wir in der Implementierungsphase nicht gekommen sind, weil es uns zu aufwendig vorkam, ist die Sortierung der Tabellen durch Klicken auf die Köpfe. Dies wurde jetzt realisiert. Es wurde ein TableRowSorter im Wahlvergleichs-, Tabellen- und Berichtsfenster eingefügt und konfiguriert.\\
 
 \item{\bf{Debug Klasse}}\\
 Während der Validierungsphase hielten wir es für notwendig strukturiert mit Debug Meldungen umzugehen. Aus diesem Grund wurde eine Debug Klasse implementiert, die dazu dient Debug Meldungen aktivieren und deaktivieren zu können. Es können außerdem unterschiedliche Debug Levels verwendet werden um den Überblick zu behalten.
@@ -353,17 +352,17 @@ Während der Validierungsphase hielten wir es für notwendig strukturiert mit De
 Alle Webviews (About, Handbuch, Lizenz) wurden durch JFrames ersetzt, weil es unter Linux zu Komplikationen kam. Jetzt sind die Fenster auch unter Linux lauffähig.\\
 
 \item{\bf{Simulation des negativen Stimmgewichts}}\\
-Das negative Stimmgewicht konnte in der Implementierungsphase nicht provoziert werden und wurde deswegen auf die Validierungsphase verlegt. Es wurde dann in der Validierungsphase beschlossen, dass die Simulation des negativen Stimmgewicht komplett fallen gelassen werden soll. Deswegen wird die Simulation weder weiter implentiert noch getest.
+Die Simulation des negativen Stimmgewichts konnte während der Implementierungsphase nicht realisiert werden und die Entscheidung, ob eine Implementierung weiter verfolgt werden sollte, wurde auf die Validierungsphase verlegt. Nach erneuten Bemühungen wurde beschlossen, dass die Simulation des negativen Stimmgewicht nicht umgesetzt werden kann. Deswegen wird die Simulation weder weiter implementiert noch getestet.
 
 \item{\bf{Wahlgenerator}}\\
-Es gibt nur noch einen Wahlgenerator und es ist somit nicht mehr nötig eine abstrakte Oberklasse für diesen Wahlgenerator zu haben. Diese Oberklasse wurde entfernt.
+Es gibt nur noch einen Wahlgenerator. Es ist somit nicht mehr nötig eine abstrakte Oberklasse für diesen Wahlgenerator zu haben. Diese Oberklasse wurde daher entfernt.
 
 \item{\bf{Handbuch}}\\
-Es wurde zusätzlich noch ein Handbuch erstellt, welches den Benutzer helfen soll sich in dem Programm zurecht zu finden. Die Texte wurden aktualisiert und es wurden Bilder von der aktualisierten Oberfläche hinzugefügt. 
+Es wurde zusätzlich noch ein Handbuch erstellt, welches dem Benutzer helfen soll, sich in dem Programm zurecht zu finden. Die Texte wurden aktualisiert und es wurden Bilder von der aktualisierten Oberfläche hinzugefügt. 
 
 \item{\bf{Chronik}}\\
-Die Chronik hat eine Veränderung erlebt. Es wurden Entwurfsfehler festgestellt, die sich bis zur Validierung durch-gepflanzt haben. \\
-Die Entwurfsfehler wurden dank den JUnit Tests festgestellt.
+
+Die Chronik hat einige Veränderung erfahren. Durch JUnit-Tests wurden Entwurfsfehler festgestellt, die sich bis zur Validierungsphase unentdeckt blieben. Diese Fehler wurden erfolgreich behoben.
 
 \end{itemize}
 
