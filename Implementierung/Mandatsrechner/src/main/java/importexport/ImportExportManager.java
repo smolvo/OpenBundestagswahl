@@ -41,7 +41,7 @@ public class ImportExportManager {
 	 *            Datei die importiert werden soll.
 	 * @return das Ergebnis-Objekt.
 	 */
-	public Bundestagswahl importieren(File[] csvDateien) {
+	public Bundestagswahl importieren(File[] csvDateien) throws IllegalArgumentException{
 
 		Bundestagswahl imported = null;
 		if (this.pruefeDateityp(csvDateien)) {

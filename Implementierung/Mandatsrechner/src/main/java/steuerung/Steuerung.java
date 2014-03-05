@@ -41,7 +41,7 @@ public class Steuerung {
 	 * @return neue Bundestagswahl
 	 * @throws NullPointerException
 	 */
-	public Bundestagswahl importieren(File[] csvDateien) {
+	public Bundestagswahl importieren(File[] csvDateien) throws IllegalArgumentException{
 		if (csvDateien == null) {
 			throw new NullPointerException("Keine Daten gefunden.");
 		}
