@@ -17,6 +17,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import test.java.Debug;
@@ -359,7 +360,7 @@ public class WahlgeneratorTest {
 	/**
 	 * Test method for {@link main.java.wahlgenerator.Wahlgenerator#erzeugeBTW(java.lang.String)}.
 	 */
-	@Test
+	@Ignore
 	public void WahlenGenerierenUndBerechnen() {
 
 		Debug.setLevel(0);
