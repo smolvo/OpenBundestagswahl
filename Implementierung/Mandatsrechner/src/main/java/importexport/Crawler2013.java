@@ -483,6 +483,7 @@ public class Crawler2013 extends Crawler {
 		case "":
 		case " ":
 			name = "-";
+			break;
 		default:
 			throw new IllegalArgumentException("Ungültiges Bundesland-Kürzel in der Wahlbewerber-Datei. (Kürzel: [" + kuerzel + "])");
 		}
