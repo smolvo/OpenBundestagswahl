@@ -56,7 +56,6 @@ public class BundeslandTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Debug.setLevel(6);
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
@@ -68,11 +67,10 @@ public class BundeslandTest {
 			ausgangsWahl = i.importieren(csvDateien);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println("Keine gï¿½ltige CSV-Datei :/");
+			System.out.println("Keine gültige CSV-Datei :/");
 		}
 
 		Mandatsrechner2013.getInstance().berechne(ausgangsWahl);
-		Debug.setLevel(6);
 	}
 
 	/**

@@ -14,7 +14,7 @@ public class Main {
 	 *            Startargumente
 	 */
 	public static void main(String[] args) {
-		Debug.setLevel(6);
+		Debug.setLevel(0);
 		new Programmfenster();
 	}
 }

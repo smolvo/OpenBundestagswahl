@@ -89,7 +89,6 @@ public class Mandatsrechner2013Test {
 	
 	@Test
 	public void berechneAlteWahl(){
-		Debug.setLevel(6);
 		//Importieren der Wahl 2009
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(

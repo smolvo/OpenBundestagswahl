@@ -60,7 +60,6 @@ public class ErststimmeTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Debug.setLevel(6);
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
@@ -75,7 +74,6 @@ public class ErststimmeTest {
 			System.out.println("Keine gültige CSV-Datei :/");
 		}
 
-		Debug.setLevel(6);
 	}
 
 	/**
@@ -132,6 +130,45 @@ public class ErststimmeTest {
 		assertEquals(10, testErststimme.getAnzahl());
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetAnzahlWahlberechtigtePlusEins() {
+		
+		int wahlberechtigte = testErststimme.getGebiet().getWahlberechtigte();
+		int diff = wahlberechtigte - testErststimme.getGebiet().getAnzahlErststimmen() + testErststimme.getAnzahl();
+		
+		
+		testErststimme.setAnzahl(diff + 1);
+		
+		assertEquals(testErststimme.getGebiet().getWahlberechtigte() + 1,
+				testErststimme.getGebiet().getAnzahlErststimmen() + 1);
+	}
+	
+	@Test
+	public void testSetAnzahlWahlberechtigte() {
+
+		int wahlberechtigte = testErststimme.getGebiet().getWahlberechtigte();
+		int diff = wahlberechtigte - testErststimme.getGebiet().getAnzahlErststimmen() + testErststimme.getAnzahl();
+		
+		
+		testErststimme.setAnzahl(diff);
+		
+		assertEquals(testErststimme.getGebiet().getWahlberechtigte(),
+				testErststimme.getGebiet().getAnzahlErststimmen());
+	}
+	
+	@Test
+	public void testSetAnzahlWahlberechtigteMinusEins() {
+
+		int wahlberechtigte = testErststimme.getGebiet().getWahlberechtigte();
+		int diff = wahlberechtigte - testErststimme.getGebiet().getAnzahlErststimmen() + testErststimme.getAnzahl();
+		
+		testErststimme.setAnzahl(diff);
+		testErststimme.setAnzahl(diff - 1);
+		
+		assertEquals(testErststimme.getGebiet().getWahlberechtigte() -1,
+				testErststimme.getGebiet().getAnzahlErststimmen());
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void testErhoeheAnzahl1() {
 		testErststimme.erhoeheAnzahl(-10);

@@ -72,7 +72,6 @@ public class KandidatTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Debug.setLevel(6);
 		ImportExportManager i = new ImportExportManager();
 		File[] csvDateien = new File[2];
 		csvDateien[0] = new File(

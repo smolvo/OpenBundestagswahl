@@ -39,9 +39,6 @@ public class WahlgeneratorTest {
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		
-		// Debug Level auf 6 (alle Debug Meldungen ausgeben) setzen
-		Debug.setLevel(6);
-		
 		// Bundestagswahlen 2009 und 2013 importieren
 		WahlgeneratorTest.iem = new ImportExportManager();
 		File[] csvDateien = new File[2];
@@ -362,21 +359,13 @@ public class WahlgeneratorTest {
 	 */
 	@Ignore
 	public void WahlenGenerierenUndBerechnen() {
-
-		Debug.setLevel(0);
 		for (int i = 0; i < 300; i++) {
 			LinkedList<Stimmanteile> anteile = new LinkedList<>();
 			
-			System.out.println("Gernerierung starten...");
 			Wahlgenerator wg = new Wahlgenerator(wahl2013, anteile);			
 			Bundestagswahl w = wg.erzeugeBTW("Test");
-			System.out.println("Gernerierung fertig");
 			
-			System.out.println("Berechnung starten...");
-			Debug.setLevel(6);
 			Mandatsrechner2013.getInstance().berechne(w);
-			Debug.setLevel(0);
-			System.out.println("Berechnung fertig");
 		
 			for (Stimmanteile sa : anteile) {
 				/*

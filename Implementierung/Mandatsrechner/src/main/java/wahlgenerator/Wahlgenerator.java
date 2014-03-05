@@ -136,7 +136,6 @@ public class Wahlgenerator {
 		this.verteileStimmen(clone);
 
 		Debug.print("Wahlgenerierung fertig!", 3);
-		//Debug.setLevel(6);
 		
 		// Gebe die generierte Wahl zurück
 		return clone;
