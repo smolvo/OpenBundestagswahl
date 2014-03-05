@@ -227,6 +227,8 @@ Wie genau habe wir das getestet?
 
 \section{Unit Tests}
 
+Wir haben Unit Tests geschrieben um die einzelnen Methoden dieser Anwendung automatisch und wiederholbar testen zu können.
+
 \subsection{Wahlvergleich}
 Der Wahlvergleich wurde auf zwei Arten getestet. Einmal haben wir zwei gleiche Wahlen verglichen und überprüft, ob die übergebenen Werte gleich waren und außerdem, ob die Differenzen 0 betrugen. \\
 In der zweiten Testklasse wurden die Bundestagswahl 2013 und die Bundestagswahl 2009 miteinander verglichen.\\
@@ -264,9 +266,13 @@ Der letzte Test berechnet wie der erste Test die Sitzverteilung von 2013. Dabei 
 \end{itemize}
 
 \subsection{Wahlgenerator}
-Beim Wahlgenerator wurde als erstes das Verhalten des Konstruktors getestet ob er sich bei der Übergabe von unterschiedlichen Stimmanteilen korrekt verhält. Und dann entweder mit erwarteten Werten erzeugt wird, bzw. wie erwartet eine Exception wirft.\\\\
-Dann wurde das zufällige verteilen von übrigen Stimmanteilen getestet und die Stimmzahlen der Ergebniswahl überprüft.\\\\
-Außerdem wurde ein Laufzeittest geschrieben der feststellt, ob die Wahlgenerierung in unter 5 Sekunden ausgeführt wird.
+Beim Wahlgenerator wurde als erstes das Verhalten des Konstruktors getestet ob er sich bei der Übergabe von unterschiedlichen Stimmanteilen korrekt verhält. Und dann entweder mit erwarteten Werten erzeugt wird, bzw. wie erwartet eine Exception wirft.\\
+
+Dann wurde das zufällige verteilen von übrigen Stimmanteilen getestet und die Stimmzahlen der Ergebniswahl überprüft.\\
+
+Außerdem wurde ein Laufzeittest geschrieben der feststellt, ob die Wahlgenerierung in unter 5 Sekunden ausgeführt wird.\\
+
+Insgesamt wurden durch die Unit Tests mehrere Fehler entdeckt und vor allem die Validierung der Parameter robuster gestaltet.
 
 \section{Testabdeckung}
 Die Testabdeckung unseres Codes haben wir durch den Eclipse-PlugIn EclEmma gemacht. Getestet wurde jeglicher Code der nichts mit der Visualisierung des Programmes zu tun haben. Aus diesem Grund wurde das GUI-Paket und einige Teile anderer Pakete, wie z.B. BerichtsFenster, nicht mit JUnit getestet.\\
@@ -316,19 +322,34 @@ Gelöst wurde das Problem, indem die GridHeight des GridBagConstraits der Ansich
 
 \subsection{Zusätzliche Features}
 \begin{itemize}
-\item{Sortierung}\\
+\item{\bf{Sortierung}}\\
 Ein Feature, wozu wir in der Implementierungsphase nicht gekommen sind, weil es uns zu aufwendig vorkam, ist die Sortierung der Tabellen durch Klicken auf die Köpfe. Dies wurde jetzt realisiert, da es sich als doch nicht so schwer herausstellte. Es wurde ein TableRowSorter im Wahlvergleichs-, Tabellen- und Berichtsfenster eingefügt und konfiguriert.\\
 
-\item{Webview}
-Alle Webviews (About, Handbuch, Lizenz) wurden durch JFrames ersetzt, weil es unter Linux zu Komplikationen kam. Jetzt sind die Fenster auch unter Linux lauffähig.\\
+\item{\bf{Debug Klasse}}\\
+Während der Validierungsphase hielten wir es für notwendig strukturiert mit Debug Meldungen umzugehen. Aus diesem Grund wurde eine Debug Klasse implementiert, die dazu dient Debug Meldungen aktivieren und deaktivieren zu können. Es können außerdem unterschiedliche Debug Levels verwendet werden um den Überblick zu behalten.
 
 \end{itemize}
 
-\subsection{Handbuch}
+\subsection{Änderungen}
+\begin{itemize}
+
+
+\item{\bf{Webview}}\\
+Alle Webviews (About, Handbuch, Lizenz) wurden durch JFrames ersetzt, weil es unter Linux zu Komplikationen kam. Jetzt sind die Fenster auch unter Linux lauffähig.\\
+
+\item{\bf{Simulation des negativen Stimmgewichts}}\\
 TODO
 
-\subsection{Chronik}
+\item{\bf{Wahlgenerator}}\\
+Es gibt nur noch einen Wahlgenerator und es ist somit nicht mehr nötig eine abstrakte Oberklasse für diesen Wahlgenerator zu haben. Diese Oberklasse wurde entfernt.
+
+\item{\bf{Handbuch}}\\
 TODO
+
+\item{\bf{Chronik}}\\
+TODO
+
+\end{itemize}
 
 \section{Ausblick auf die Endphase des Projekts}
 
