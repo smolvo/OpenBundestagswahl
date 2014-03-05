@@ -66,20 +66,15 @@ public class Erststimme extends Stimme implements Serializable,
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
 		
-		/*
-		 * Der kommentierte Code unten löst eine StackOverflowException aus!
-		 */
-		//if (this.getGebiet().getWahlberechtigte()
-		//		< (this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
-		
-		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl)) {
-			throw new IllegalArgumentException(
-					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
-					+ ((this.getGebiet().getAnzahlErststimmen() - this.getAnzahl() + anzahl) - this.getGebiet().getWahlberechtigte()) + "!"
-			);
-		}
-		
+
+//		int gesamtErst = this.getGebiet().getAnzahlErststimmen();
+//		int wahlberechtigte = this.getGebiet().getWahlberechtigte();
+//		
+//		int diffStimme = anzahl - this.getAnzahl();
+//		if ((gesamtErst + diffStimme) <= wahlberechtigte) {
+//		
 		this.anzahl = anzahl;
+
 	}
 
 	@Override
