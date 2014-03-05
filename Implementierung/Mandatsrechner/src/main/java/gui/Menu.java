@@ -217,9 +217,14 @@ public class Menu extends JMenuBar {
 			} else if (e.getSource() == menu.rueckgaengig) {
 				Steuerung.getInstance().zurueckSetzen();
 				setzeSichtbarkeit();
+				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
+				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
+
 			} else if (e.getSource() == menu.wiederherstellen) {
 				Steuerung.getInstance().wiederherrstellen();
 				setzeSichtbarkeit();
+				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
+				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.zufaelligeWahl) {
@@ -251,8 +256,6 @@ public class Menu extends JMenuBar {
 		}else {
 			rueckgaengig.setEnabled(true);
 		}
-		Bundestagswahl btw = pf.getBundestagswahlen().get(0);
-		pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
 
 	}
 }
