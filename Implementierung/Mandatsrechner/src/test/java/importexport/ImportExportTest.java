@@ -142,7 +142,7 @@ public class ImportExportTest {
 		csvDateien[1] = new File(filePaths[0]);
 		
 		Bundestagswahl w = i.importieren(csvDateien);
-		assertNull(w);
+		assertNotNull(w);
 		
 		//boolean result = i.exportieren(filePaths[2], w);
 		//assertTrue(result);

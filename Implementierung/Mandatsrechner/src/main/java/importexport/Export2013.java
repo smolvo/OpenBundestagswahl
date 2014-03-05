@@ -36,7 +36,7 @@ public class Export2013 extends Export {
 			FileWriter f = new FileWriter(new File(pfad));
 			BufferedWriter bf = new BufferedWriter(f);
 			bf.write(bw.getName()
-					+ "\n\nNr;Gebiet;gehï¿½rt;Wahlberechtigte;;;;Wï¿½hler;;;;Ungï¿½ltige;;;;Gï¿½ltige;;;;");
+					+ "\n\nNr;Gebiet;gehört;Wahlberechtigte;;;;Wähler;;;;Ungültige;;;;Gültige;;;;");
 
 			List<Partei> parteien = bw.getParteien();
 			for (int i = 0; i < parteien.size(); i++) {

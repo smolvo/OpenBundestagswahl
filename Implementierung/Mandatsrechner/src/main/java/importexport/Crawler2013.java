@@ -106,18 +106,22 @@ public class Crawler2013 extends Crawler {
 					}
 					break;
 				case 2:
+					
 					/* Extrahiere die Parteinamen aus den Spalten. */
 					if (parts.length > 10) {
-
-						for (int i = (parteiOffset - 1); i < parts.length
-								&& !error; i += 4) {
-							if (!parts[i].equals("")) {
-								columns.add(parts[i]);
-							} else {
-								error = true;
+						if (!parts[0].equals("Nr") || !parts[1].equals("Gebiet") || !parts[2].equals("gehört") || !parts[3].equals("Wahlberechtigte")) {
+							error = true;
+						} else {
+							for (int i = (parteiOffset - 1); i < parts.length
+									&& !error; i += 4) {
+								if (!parts[i].equals("")) {
+									columns.add(parts[i]);
+								} else {
+									error = true;
+								}
 							}
+							maxColumn = parts.length;
 						}
-						maxColumn = parts.length;
 					} else {
 						error = true;
 					}
