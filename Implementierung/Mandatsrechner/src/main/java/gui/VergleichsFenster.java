@@ -55,6 +55,8 @@ public class VergleichsFenster extends JDialog {
 		zeigeVergleich(vergleich);
 		erstelleDiagramme(vergleich);
 		this.pack();
+		this.setAlwaysOnTop(true);
+		this.setAlwaysOnTop(false);
 		
 	}
 
