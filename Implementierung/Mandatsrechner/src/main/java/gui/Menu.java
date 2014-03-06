@@ -218,15 +218,15 @@ public class Menu extends JMenuBar {
 				Steuerung.getInstance().zurueckSetzen();
 				Steuerung.getInstance().berechneSitzverteilung();
 				setzeSichtbarkeit();
-				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
-				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
+				WahlFenster fenster = (WahlFenster) pf.getTabs().getSelectedComponent();
+				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(fenster.getAnsicht().getAktuellesGebiet());
 
 			} else if (e.getSource() == menu.wiederherstellen) {
 				Steuerung.getInstance().wiederherrstellen();
 				Steuerung.getInstance().berechneSitzverteilung();
 				setzeSichtbarkeit();
-				Bundestagswahl btw = pf.getBundestagswahlen().get(0);
-				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(btw.getDeutschland());
+				WahlFenster fenster = (WahlFenster) pf.getTabs().getSelectedComponent();
+				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(fenster.getAnsicht().getAktuellesGebiet());
 			} else if (e.getSource() == menu.vergleichen) {
 				new VergleichDialog(pf);
 			} else if (e.getSource() == menu.zufaelligeWahl) {

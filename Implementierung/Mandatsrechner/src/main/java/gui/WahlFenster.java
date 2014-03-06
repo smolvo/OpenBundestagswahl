@@ -121,5 +121,13 @@ public class WahlFenster extends JPanel {
 	public Programmfenster getPf() {
 		return pf;
 	}
+	
+	/**
+	 * Gibt die Ansicht aus.
+	 * @return aktuelle Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return aktuelleAnsicht;
+	}
 
 }
