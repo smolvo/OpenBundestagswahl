@@ -34,10 +34,9 @@ public class DiagrammFenster extends JPanel {
 
 	/** repräsentiert die LayoutConstraints */
 	private final GridBagConstraints gbc;
-	
+
 	/** zugehörige Bundestagswahl */
 	private final Bundestagswahl btw;
-	
 
 	/**
 	 * Der Konstruktor initialisiert ein neues Diagrammfenster.
@@ -45,7 +44,7 @@ public class DiagrammFenster extends JPanel {
 	 * @param ansicht
 	 *            die Ansicht
 	 * @param btw
-	 * 			Bundestagswahl, die visualisiert werden soll
+	 *            Bundestagswahl, die visualisiert werden soll
 	 */
 	public DiagrammFenster(Ansicht ansicht, Bundestagswahl btw) {
 		this.ansicht = ansicht;
@@ -56,13 +55,45 @@ public class DiagrammFenster extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				zeigeSitzverteilung();
-				bericht.setEnabled(false);
+				DiagrammFenster.this.bericht.setEnabled(false);
 			}
 		});
-		
+
 		this.gbc = new GridBagConstraints();
-		this.setLayout(new GridBagLayout());
-		
+		setLayout(new GridBagLayout());
+
+	}
+
+	/**
+	 * Erstellt das Diagramm der Landesansicht.
+	 * 
+	 * @param bundLand
+	 *            das Budnesland-Objekt
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland-Objekt null ist.
+	 */
+	public void erstelleDiagramm(Bundesland bundLand) {
+		if (bundLand == null) {
+			throw new IllegalArgumentException("Bundesland ist null.");
+		}
+		this.add(new LandDiagramm(bundLand), this.gbc);
+	}
+
+	/**
+	 * Erstellt das Diagramm der Bundesansicht.
+	 * 
+	 * @param land
+	 *            Deutschland
+	 */
+	public void erstelleDiagramm(Bundestagswahl btw) {
+		if (btw == null) {
+			throw new IllegalArgumentException("Bundestagswahl ist null.");
+		}
+		this.add(new BundDiagramm(btw), this.gbc);
+		this.gbc.weighty = 0.1;
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 1;
+		this.add(this.bericht, this.gbc);
 	}
 
 	/**
@@ -82,47 +113,15 @@ public class DiagrammFenster extends JPanel {
 		this.gbc.gridy = 0;
 		this.gbc.fill = GridBagConstraints.BOTH;
 		if (gebiet instanceof Deutschland) {
-			//Deutschland land = (Deutschland) gebiet;
+			// Deutschland land = (Deutschland) gebiet;
 			erstelleDiagramm(btw);
 		} else if (gebiet instanceof Bundesland) {
-			Bundesland bundLand = (Bundesland) gebiet;
+			final Bundesland bundLand = (Bundesland) gebiet;
 			erstelleDiagramm(bundLand);
 		} else {
-			Wahlkreis wk = (Wahlkreis) gebiet;
+			final Wahlkreis wk = (Wahlkreis) gebiet;
 			erstelleDiagramm(wk);
 		}
-	}
-
-	/**
-	 * Erstellt das Diagramm der Bundesansicht.
-	 * 
-	 * @param land
-	 *            Deutschland
-	 */
-	public void erstelleDiagramm(Bundestagswahl btw) {
-		if (btw == null) {
-			throw new IllegalArgumentException("Bundestagswahl ist null.");
-		}
-		this.add(new BundDiagramm(btw), gbc);
-		this.gbc.weighty = 0.1;
-		this.gbc.gridx = 0;
-		this.gbc.gridy = 1;
-		this.add(bericht, gbc);
-	}
-
-	/**
-	 * Erstellt das Diagramm der Landesansicht.
-	 * 
-	 * @param bundLand
-	 *            das Budnesland-Objekt
-	 * @throws IllegalArgumentException
-	 *             wenn das Bundesland-Objekt null ist.
-	 */
-	public void erstelleDiagramm(Bundesland bundLand) {
-		if (bundLand == null) {
-			throw new IllegalArgumentException("Bundesland ist null.");
-		}
-		this.add(new LandDiagramm(bundLand), gbc);
 	}
 
 	/**
@@ -138,25 +137,7 @@ public class DiagrammFenster extends JPanel {
 		if (wk == null) {
 			throw new IllegalArgumentException("Wahlkreis ist null.");
 		}
-		this.add(new WahlkreisDiagramm(wk), gbc);
-	}
-
-	/**
-	 * Diese Methode ï¿½ffnet ein BerichtsFenster, in dem die Sitze der Verteilung
-	 * nï¿½her erlï¿½utert werden.
-	 * 
-	 * @throws IllegalArgumentException
-	 *             wenn das Bundestagswahl-Objekt null ist.
-	 */
-	public void zeigeSitzverteilung() {
-		if (btw == null) {
-			throw new IllegalArgumentException("Keine Bundestagswahl gefunden.");
-		}
-		BerichtTableModel tabelle = new BerichtTableModel(this.btw
-				.getSitzverteilung().getBericht());
-		new BerichtsFenster(tabelle, this);
-		
-		
+		this.add(new WahlkreisDiagramm(wk), this.gbc);
 	}
 
 	/**
@@ -165,6 +146,23 @@ public class DiagrammFenster extends JPanel {
 	 * @return Ansicht
 	 */
 	public Ansicht getAnsicht() {
-		return ansicht;
+		return this.ansicht;
+	}
+
+	/**
+	 * Diese Methode ï¿½ffnet ein BerichtsFenster, in dem die Sitze der
+	 * Verteilung nï¿½her erlï¿½utert werden.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundestagswahl-Objekt null ist.
+	 */
+	public void zeigeSitzverteilung() {
+		if (this.btw == null) {
+			throw new IllegalArgumentException("Keine Bundestagswahl gefunden.");
+		}
+		final BerichtTableModel tabelle = new BerichtTableModel(this.btw
+				.getSitzverteilung().getBericht());
+		new BerichtsFenster(tabelle, this);
+
 	}
 }

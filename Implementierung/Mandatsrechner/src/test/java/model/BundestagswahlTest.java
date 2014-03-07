@@ -1,6 +1,7 @@
 package test.java.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -17,75 +18,76 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class BundestagswahlTest {
-	
+
 	/** repräsentiert die unverfälschte Wahl2013 */
 	private static Bundestagswahl wahl;
-	
-	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
-	private Bundestagswahl cloneWahl;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		// Wahl 2013
-		File[] csvDateien = new File[2];
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		wahl = Steuerung.getInstance().importieren(csvDateien);
+		BundestagswahlTest.wahl = Steuerung.getInstance().importieren(
+				csvDateien);
 	}
-	
-	@Before
-	public void setUp() throws Exception {
-		this.cloneWahl = wahl.deepCopy();
+
+	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
+	private Bundestagswahl cloneWahl;
+
+	@Test
+	public void getParteienTest() {
+		final LinkedList<Partei> parteien = this.cloneWahl.getParteien();
+		assertEquals(35, parteien.size());
 	}
-	
-	@After
-	public void tearDown() throws Exception {
-		this.cloneWahl = null;
+
+	@Test
+	public void getPartyByNameTest() {
+		final Partei cdu = this.cloneWahl.getParteien().get(0);
+		final Partei part = this.cloneWahl.getParteiByName("CDU");
+		assertEquals(cdu, part);
 	}
 
 	@Test
 	public void nameTest() {
-		assertEquals("Bundestagswahl 2013", cloneWahl.getName());
-		cloneWahl.setName("hallo");
-		assertEquals("hallo", cloneWahl.getName());
+		assertEquals("Bundestagswahl 2013", this.cloneWahl.getName());
+		this.cloneWahl.setName("hallo");
+		assertEquals("hallo", this.cloneWahl.getName());
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void setDeutschlandFail() {
-		cloneWahl.setDeutschland(null);
+		this.cloneWahl.setDeutschland(null);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void setParteienFail() {
-		cloneWahl.setParteien(null);
+		this.cloneWahl.setParteien(null);
 	}
-	
-	@Test
-	public void getParteienTest() {
-		LinkedList<Partei> parteien = cloneWahl.getParteien();
-		assertEquals(35, parteien.size());
+
+	@Before
+	public void setUp() throws Exception {
+		this.cloneWahl = BundestagswahlTest.wahl.deepCopy();
 	}
-	
+
 	@Test
 	public void sitzplatzverteilungTest() {
-		Sitzverteilung vert = this.cloneWahl.getSitzverteilung();
+		final Sitzverteilung vert = this.cloneWahl.getSitzverteilung();
 		Mandatsrechner2013.getInstance().berechne(this.cloneWahl);
 		assertNotEquals(vert, this.cloneWahl.getSitzverteilung());
 		this.cloneWahl.setSitzverteilung(vert);
 		assertEquals(vert, this.cloneWahl.getSitzverteilung());
 	}
-	
-	@Test
-	public void getPartyByNameTest() {
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		Partei part = this.cloneWahl.getParteiByName("CDU");
-		assertEquals(cdu, part);
+
+	@After
+	public void tearDown() throws Exception {
+		this.cloneWahl = null;
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetName() {
-		cloneWahl.setName(null);
+		this.cloneWahl.setName(null);
 	}
 }

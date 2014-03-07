@@ -36,15 +36,9 @@ public class Kandidat implements Serializable {
 	private Landesliste landesliste;
 
 	/**
-	 * Parametrisierter Konstruktor mit dem alle Attribute gesetzt werden
-	 * koennen.
+	 * Parametrisierter Konstruktor mit dem die Attribute mandat, partei und
+	 * erstimme gesetzt werden koennen.
 	 * 
-	 * @param name
-	 *            Der Familienname des Kandidaten.
-	 * @param vorname
-	 *            Der Vorname des Kandidaten.
-	 * @param geburtsjahr
-	 *            Das Geburtsjahr des Kandidaten.
 	 * @param mandat
 	 *            Das Mandat des Kandidaten.
 	 * @param partei
@@ -52,12 +46,10 @@ public class Kandidat implements Serializable {
 	 * @param erststimme
 	 *            Das Erststimme-Objekt des Kandidaten.
 	 */
-	public Kandidat(String name, String vorname, int geburtsjahr,
-			Mandat mandat, Partei partei, Erststimme erststimme) {
-		this.setInfo(name, vorname, geburtsjahr);
-		this.setMandat(mandat);
-		this.setErststimme(erststimme);
-		this.setPartei(partei);
+	public Kandidat(Mandat mandat, Partei partei, Erststimme erststimme) {
+		setMandat(mandat);
+		setErststimme(erststimme);
+		setPartei(partei);
 	}
 
 	/**
@@ -77,15 +69,21 @@ public class Kandidat implements Serializable {
 	 */
 	public Kandidat(String name, String vorname, int geburtsjahr,
 			Mandat mandat, Partei partei) {
-		this.setInfo(name, vorname, geburtsjahr);
-		this.setMandat(mandat);
-		this.setPartei(partei);
+		setInfo(name, vorname, geburtsjahr);
+		setMandat(mandat);
+		setPartei(partei);
 	}
 
 	/**
-	 * Parametrisierter Konstruktor mit dem die Attribute mandat, partei und
-	 * erstimme gesetzt werden koennen.
+	 * Parametrisierter Konstruktor mit dem alle Attribute gesetzt werden
+	 * koennen.
 	 * 
+	 * @param name
+	 *            Der Familienname des Kandidaten.
+	 * @param vorname
+	 *            Der Vorname des Kandidaten.
+	 * @param geburtsjahr
+	 *            Das Geburtsjahr des Kandidaten.
 	 * @param mandat
 	 *            Das Mandat des Kandidaten.
 	 * @param partei
@@ -93,10 +91,56 @@ public class Kandidat implements Serializable {
 	 * @param erststimme
 	 *            Das Erststimme-Objekt des Kandidaten.
 	 */
-	public Kandidat(Mandat mandat, Partei partei, Erststimme erststimme) {
-		this.setMandat(mandat);
-		this.setErststimme(erststimme);
-		this.setPartei(partei);
+	public Kandidat(String name, String vorname, int geburtsjahr,
+			Mandat mandat, Partei partei, Erststimme erststimme) {
+		setInfo(name, vorname, geburtsjahr);
+		setMandat(mandat);
+		setErststimme(erststimme);
+		setPartei(partei);
+	}
+
+	/**
+	 * Equals-Methode der Klasse.
+	 * 
+	 * @param kan
+	 *            vergleichskandidat
+	 * @return true false
+	 */
+	public boolean equals(Kandidat kan) {
+		if (kan.getName().equals(this.name)
+				&& kan.getVorname().equals(this.vorname)
+				&& kan.getGeburtsjahr() == this.geburtsjahr
+				&& kan.getPartei().equals(this.partei)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Gibt das Erststimme-Objekt zurueck.
+	 * 
+	 * @return das Erststimme-Objekt.
+	 */
+	public Erststimme getErststimme() {
+		return this.erststimme;
+	}
+
+	/**
+	 * Gibt das Geburtsjahr des Kandidaten zurueck.
+	 * 
+	 * @return das Geburtsjahr des Kandidaten.
+	 */
+	public int getGeburtsjahr() {
+		return this.geburtsjahr;
+	}
+
+	/**
+	 * Gibt die Landesliste dieses Kandidaten zurueck.
+	 * 
+	 * @return Zugehoerige LAndesliste.
+	 */
+	public Landesliste getLandesliste() {
+		return this.landesliste;
 	}
 
 	/**
@@ -118,6 +162,15 @@ public class Kandidat implements Serializable {
 	}
 
 	/**
+	 * Gibt die Partei des Kandidaten zurueck.
+	 * 
+	 * @return die Partei des Kandidaten.
+	 */
+	public Partei getPartei() {
+		return this.partei;
+	}
+
+	/**
 	 * Gibt den Vornamen des Kandidaten zurueck.
 	 * 
 	 * @return den Vornamen des Kandidaten.
@@ -127,12 +180,19 @@ public class Kandidat implements Serializable {
 	}
 
 	/**
-	 * Gibt das Geburtsjahr des Kandidaten zurueck.
+	 * Setzt das Erstimme-Objekt.
 	 * 
-	 * @return das Geburtsjahr des Kandidaten.
+	 * @param erststimme
+	 *            das Objekt.
+	 * @throws IllegalArgumentException
+	 *             wenn das Erstimme-Objekt leer ist.
 	 */
-	public int getGeburtsjahr() {
-		return this.geburtsjahr;
+	public void setErststimme(Erststimme erststimme) {
+		if (erststimme == null) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"erststimme\" ist null!");
+		}
+		this.erststimme = erststimme;
 	}
 
 	/**
@@ -149,12 +209,24 @@ public class Kandidat implements Serializable {
 	 */
 	public void setInfo(String name, String vorname, int geburtsjahr)
 			throws IllegalArgumentException {
-		if (vorname == null || name == null || vorname.isEmpty() || name.isEmpty()) {
-			throw new IllegalArgumentException("Der Parameter \"vorname\" und/oder \"name\" ist null oder ein leerer String!");
+		if (vorname == null || name == null || vorname.isEmpty()
+				|| name.isEmpty()) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"vorname\" und/oder \"name\" ist null oder ein leerer String!");
 		}
 		this.name = name;
 		this.vorname = vorname;
 		this.geburtsjahr = geburtsjahr;
+	}
+
+	/**
+	 * Setzt die Landesliste dieses Kandidaten.
+	 * 
+	 * @param landestliste
+	 *            Betroffene Landesliste.
+	 */
+	public void setLandesliste(Landesliste landestliste) {
+		this.landesliste = landestliste;
 	}
 
 	/**
@@ -173,15 +245,6 @@ public class Kandidat implements Serializable {
 	}
 
 	/**
-	 * Gibt die Partei des Kandidaten zurueck.
-	 * 
-	 * @return die Partei des Kandidaten.
-	 */
-	public Partei getPartei() {
-		return this.partei;
-	}
-
-	/**
 	 * Setzt die Partei des Kandidaten.
 	 * 
 	 * @param partei
@@ -192,63 +255,5 @@ public class Kandidat implements Serializable {
 		 * Kandidat kann auch keiner Partei zugeordnet sein!
 		 */
 		this.partei = partei;
-	}
-
-	/**
-	 * Gibt das Erststimme-Objekt zurueck.
-	 * 
-	 * @return das Erststimme-Objekt.
-	 */
-	public Erststimme getErststimme() {
-		return this.erststimme;
-	}
-
-	/**
-	 * Setzt das Erstimme-Objekt.
-	 * 
-	 * @param erststimme
-	 *            das Objekt.
-	 * @throws IllegalArgumentException
-	 *             wenn das Erstimme-Objekt leer ist.
-	 */
-	public void setErststimme(Erststimme erststimme) {
-		if (erststimme == null) {
-			throw new IllegalArgumentException("Der Parameter \"erststimme\" ist null!");
-		}
-		this.erststimme = erststimme;
-	}
-
-	/**
-	 * Gibt die Landesliste dieses Kandidaten zurueck.
-	 * 
-	 * @return Zugehoerige LAndesliste.
-	 */
-	public Landesliste getLandesliste() {
-		return landesliste;
-	}
-
-	/**
-	 * Setzt die Landesliste dieses Kandidaten.
-	 * 
-	 * @param landestliste
-	 *            Betroffene Landesliste.
-	 */
-	public void setLandesliste(Landesliste landestliste) {
-		this.landesliste = landestliste;
-	}
-	
-	/**
-	 * Equals-Methode der Klasse.
-	 * @param kan vergleichskandidat
-	 * @return true false
-	 */
-	public boolean equals(Kandidat kan) {
-		if ((kan.getName().equals(this.name))
-				&& (kan.getVorname().equals(this.vorname))
-				&& (kan.getGeburtsjahr() == this.geburtsjahr)
-				&& (kan.getPartei().equals(this.partei))) {
-			return true;
-		}
-		return false;
 	}
 }

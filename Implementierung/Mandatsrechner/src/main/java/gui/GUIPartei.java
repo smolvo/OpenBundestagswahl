@@ -40,12 +40,12 @@ public class GUIPartei {
 	}
 
 	/**
-	 * Gibt die Sitzanzahl aus.
+	 * Gibt die Ausgleichsmandatanzahl aus.
 	 * 
-	 * @return Sitzanzahl
+	 * @return Ausgleichsmandatanzahl
 	 */
-	public int getSitze() {
-		return sitze;
+	public int getAusgleichsmandate() {
+		return this.ausgleichsmandate;
 	}
 
 	/**
@@ -54,7 +54,16 @@ public class GUIPartei {
 	 * @return Direktmandatanzahl
 	 */
 	public int getDirektmandate() {
-		return direktmandate;
+		return this.direktmandate;
+	}
+
+	/**
+	 * Gibt die Sitzanzahl aus.
+	 * 
+	 * @return Sitzanzahl
+	 */
+	public int getSitze() {
+		return this.sitze;
 	}
 
 	/**
@@ -63,15 +72,6 @@ public class GUIPartei {
 	 * @return Überhangsmandatanzahl
 	 */
 	public int getUeberhangsmandate() {
-		return ueberhangsmandate;
-	}
-
-	/**
-	 * Gibt die Ausgleichsmandatanzahl aus.
-	 * 
-	 * @return Ausgleichsmandatanzahl
-	 */
-	public int getAusgleichsmandate() {
-		return ausgleichsmandate;
+		return this.ueberhangsmandate;
 	}
 }

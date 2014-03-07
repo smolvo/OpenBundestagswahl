@@ -38,9 +38,11 @@ public class VergleichDialog extends JDialog {
 			throw new NullPointerException("Geben Sie ein Programmfenster an.");
 		}
 		if (pf.getWahlen().size() <= 1) {
-			JOptionPane.showMessageDialog(pf,
-					"Es müssen mindestens zwei Wahlen zum Vergleich vorhanden sein.", "Meldung",
-					JOptionPane.INFORMATION_MESSAGE, null);
+			JOptionPane
+					.showMessageDialog(
+							pf,
+							"Es müssen mindestens zwei Wahlen zum Vergleich vorhanden sein.",
+							"Meldung", JOptionPane.INFORMATION_MESSAGE, null);
 		} else {
 			final JDialog wahlAuswahl = new JDialog();
 			wahlAuswahl.setSize(200, 200);
@@ -48,17 +50,17 @@ public class VergleichDialog extends JDialog {
 			wahlAuswahl.setModal(true);
 			wahlAuswahl.setResizable(false);
 			wahlAuswahl.setLayout(null);
-			JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
+			final JLabel text = new JLabel("Mit welcher Wahl vergleichen?");
 			text.setBounds(5, 5, 190, 40);
 			final JComboBox<WahlFenster> box = erstelleBox(pf.getWahlen());
 			box.setBounds(10, 45, 180, 25);
-			JButton vergleichBestaetigen = new JButton("Vergleichen");
+			final JButton vergleichBestaetigen = new JButton("Vergleichen");
 			vergleichBestaetigen.setBounds(20, 90, 160, 25);
 			vergleichBestaetigen.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					WahlFenster wahlfenster = (WahlFenster) box
+					final WahlFenster wahlfenster = (WahlFenster) box
 							.getSelectedItem();
 					Steuerung.getInstance().vergleicheWahlen(
 							wahlfenster.getBtw());
@@ -89,7 +91,7 @@ public class VergleichDialog extends JDialog {
 
 		int listenIndex = 0;
 		int arrayIndex = 0;
-		WahlFenster[] namen = new WahlFenster[list.size() - 1];
+		final WahlFenster[] namen = new WahlFenster[list.size() - 1];
 
 		while (listenIndex < list.size()) {
 			if (!list.get(listenIndex).getBtw()
@@ -100,7 +102,7 @@ public class VergleichDialog extends JDialog {
 
 			listenIndex++;
 		}
-		JComboBox<WahlFenster> box = new JComboBox<WahlFenster>(namen);
+		final JComboBox<WahlFenster> box = new JComboBox<WahlFenster>(namen);
 		return box;
 	}
 }

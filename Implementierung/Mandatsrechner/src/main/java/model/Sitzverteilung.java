@@ -29,8 +29,18 @@ public class Sitzverteilung implements Serializable {
 	 *            Der Bericht wie diese Sitzverteilung zustande gekommen ist.
 	 */
 	public Sitzverteilung(LinkedList<Kandidat> abgeordnete, BerichtDaten bericht) {
-		this.setAbgeordnete(abgeordnete);
-		this.setBericht(bericht);
+		setAbgeordnete(abgeordnete);
+		setBericht(bericht);
+	}
+
+	/**
+	 * Fuegt einen Kandidaten zur Liste hinzu.
+	 * 
+	 * @param kandidat
+	 *            wird zur Liste hinzugefuegt
+	 */
+	public void addAbgeordnete(Kandidat kandidat) {
+		getAbgeordnete().add(kandidat);
 	}
 
 	/**
@@ -40,6 +50,32 @@ public class Sitzverteilung implements Serializable {
 	 */
 	public LinkedList<Kandidat> getAbgeordnete() {
 		return this.abgeordnete;
+	}
+
+	/**
+	 * Gibt die Anzahl der Sitze einer gegebenen Partei zurück.
+	 * 
+	 * @param partei
+	 *            Die Partei zu der die Sitzanzahl gesucht ist.
+	 * @return Die Anzahl der Sitze einer gegebenen Partei.
+	 */
+	public int getAnzahlSitze(Partei partei) {
+		int sitze = 0;
+		for (final Kandidat abgeordneter : this.abgeordnete) {
+			if (abgeordneter.getPartei().getName().equals(partei.getName())) {
+				sitze++;
+			}
+		}
+		return sitze;
+	}
+
+	/**
+	 * Gibt den Bericht zurück
+	 * 
+	 * @return den Bericht
+	 */
+	public BerichtDaten getBericht() {
+		return this.bericht;
 	}
 
 	/**
@@ -73,40 +109,6 @@ public class Sitzverteilung implements Serializable {
 		}
 		this.bericht = bericht;
 
-	}
-
-	/**
-	 * Gibt den Bericht zurück
-	 * 
-	 * @return den Bericht
-	 */
-	public BerichtDaten getBericht() {
-		return this.bericht;
-	}
-
-	/**
-	 * Fuegt einen Kandidaten zur Liste hinzu.
-	 * 
-	 * @param kandidat
-	 *            wird zur Liste hinzugefuegt
-	 */
-	public void addAbgeordnete(Kandidat kandidat) {
-		this.getAbgeordnete().add(kandidat);
-	}
-	
-	/**
-	 * Gibt die Anzahl der Sitze einer gegebenen Partei zurück.
-	 * @param partei Die Partei zu der die Sitzanzahl gesucht ist.
-	 * @return Die Anzahl der Sitze einer gegebenen Partei. 
-	 */
-	public int getAnzahlSitze(Partei partei) {
-		int sitze = 0;
-		for (Kandidat abgeordneter : abgeordnete) {
-			if (abgeordneter.getPartei().getName().equals(partei.getName())) {
-				sitze++;
-			}
-		}
-		return sitze;
 	}
 
 }

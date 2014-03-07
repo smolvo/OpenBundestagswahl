@@ -24,8 +24,8 @@ public class Mandatsrechner2013ManuellerTest {
 	 */
 	public static void main(String[] args) {
 
-		ImportExportManager i = new ImportExportManager();
-		File[] csvDateien = new File[2];
+		final ImportExportManager i = new ImportExportManager();
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
@@ -33,20 +33,20 @@ public class Mandatsrechner2013ManuellerTest {
 		Bundestagswahl w = null;
 		try {
 			w = i.importieren(csvDateien);
-		} catch (Exception e1) {
-			
+		} catch (final Exception e1) {
+
 			e1.printStackTrace();
 			System.out.println("Leine gueltige CSV-Datei :/");
 		}
 
-		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
+		final Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
 
 		if (w != null) {
 			// System.out.println("Test");
-			Bundestagswahl newW = m.berechne(w);
+			final Bundestagswahl newW = m.berechne(w);
 			// newW = m.berechneAlles(newW);
 			int count = 0;
-			for (Partei partei : newW.getParteien()) {
+			for (final Partei partei : newW.getParteien()) {
 				// if(partei.getName().equals("SPD")){
 				/*
 				 * for (Bundesland bl :
@@ -70,7 +70,7 @@ public class Mandatsrechner2013ManuellerTest {
 				 * }
 				 */
 
-				int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT)
+				final int sum = partei.getAnzahlMandate(Mandat.LISTENMANDAT)
 						+ partei.getAnzahlMandate(Mandat.DIREKTMANDAT);
 				System.out.println(partei.getName() + ": ");
 				System.out.println("Mandate: "

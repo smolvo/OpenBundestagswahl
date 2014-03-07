@@ -39,82 +39,8 @@ public class Landesliste implements Serializable {
 	 *            Das zugehoerige Bundesland.
 	 */
 	public Landesliste(Partei partei, Bundesland bundesland) {
-		this.setBundesland(bundesland);
-		this.setPartei(partei);
-	}
-
-	/**
-	 * Gibt das Partei-Objekt zurueck.
-	 * 
-	 * @return das Partei-Objekt.
-	 */
-	public Partei getPartei() {
-		return this.partei;
-	}
-
-	/**
-	 * Setzt das Partei-Objekt.
-	 * 
-	 * @param partei
-	 *            das Partei-Objekt.
-	 * @throws IllegalArgumentException
-	 *             wenn das Partei-Objekt null ist.
-	 */
-	public void setPartei(Partei partei) throws IllegalArgumentException {
-		if (partei == null) {
-			throw new IllegalArgumentException("Partei ist leer!");
-		}
-		this.partei = partei;
-	}
-
-	/**
-	 * Gibt das Bundesland-Objekt zurueck.
-	 * 
-	 * @return das Bundesland-Objekt.
-	 */
-	public Bundesland getBundesland() {
-		return this.bundesland;
-	}
-
-	/**
-	 * Setzt das Bundesland-Objekt.
-	 * 
-	 * @param bundesland
-	 *            das Bundesland-Objekt.
-	 * @throws IllegalArgumentException
-	 *             wenn das Bundesland-Objekt null ist.
-	 */
-	public void setBundesland(Bundesland bundesland)
-			throws IllegalArgumentException {
-		if (bundesland == null) {
-			throw new IllegalArgumentException("Bundesland ist null!");
-		}
-		this.bundesland = bundesland;
-	}
-
-	/**
-	 * Gibt die Liste mit den Listenkandidaten zurueck.
-	 * 
-	 * @return die Liste mit den Listenkandidaten.
-	 */
-	public List<Kandidat> getListenkandidaten() {
-		return this.listenkandidaten;
-	}
-
-	/**
-	 * Setzt die Liste der Listenkandidaten.
-	 * 
-	 * @param listenkandidaten
-	 *            die Liste mit den Kandidaten.
-	 * @throws IllegalArgumentException
-	 *             wenn die null ist.
-	 */
-	public void setListenkandidaten(LinkedList<Kandidat> listenkandidaten)
-			throws IllegalArgumentException {
-		if (listenkandidaten == null || listenkandidaten.isEmpty()) {
-			throw new IllegalArgumentException("Liste ist null oder leer!");
-		}
-		this.listenkandidaten = listenkandidaten;
+		setBundesland(bundesland);
+		setPartei(partei);
 	}
 
 	/**
@@ -142,6 +68,32 @@ public class Landesliste implements Serializable {
 	}
 
 	/**
+	 * Vergleicht zwei Landeslisten.
+	 * 
+	 * @param liste
+	 *            zu vergleichende Liste
+	 * @return true false
+	 */
+	public boolean equals(Landesliste liste) {
+		if (liste.getPartei().getName().equals(this.partei.getName())
+				&& liste.getBundesland().equals(this.bundesland)
+				&& liste.getListenkandidaten().equals(this.listenkandidaten)
+				&& liste.getMindestSitzanzahl() == this.mindestSitzanzahl) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Gibt das Bundesland-Objekt zurueck.
+	 * 
+	 * @return das Bundesland-Objekt.
+	 */
+	public Bundesland getBundesland() {
+		return this.bundesland;
+	}
+
+	/**
 	 * Gibt alle Kandidaten der Liste mit dem gewï¿½nschten Mandat zurueck.
 	 * 
 	 * @param mandat
@@ -149,13 +101,22 @@ public class Landesliste implements Serializable {
 	 * @return die Liste mit den Listenkandidaten.
 	 */
 	public LinkedList<Kandidat> getKandidaten(Mandat mandat) {
-		LinkedList<Kandidat> res = new LinkedList<Kandidat>();
-		for (Kandidat kandidat : this.listenkandidaten) {
+		final LinkedList<Kandidat> res = new LinkedList<Kandidat>();
+		for (final Kandidat kandidat : this.listenkandidaten) {
 			if (kandidat.getMandat() == mandat) {
 				res.add(kandidat);
 			}
 		}
 		return res;
+	}
+
+	/**
+	 * Gibt die Liste mit den Listenkandidaten zurueck.
+	 * 
+	 * @return die Liste mit den Listenkandidaten.
+	 */
+	public List<Kandidat> getListenkandidaten() {
+		return this.listenkandidaten;
 	}
 
 	/**
@@ -165,6 +126,47 @@ public class Landesliste implements Serializable {
 	 */
 	public int getMindestSitzanzahl() {
 		return this.mindestSitzanzahl;
+	}
+
+	/**
+	 * Gibt das Partei-Objekt zurueck.
+	 * 
+	 * @return das Partei-Objekt.
+	 */
+	public Partei getPartei() {
+		return this.partei;
+	}
+
+	/**
+	 * Setzt das Bundesland-Objekt.
+	 * 
+	 * @param bundesland
+	 *            das Bundesland-Objekt.
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundesland-Objekt null ist.
+	 */
+	public void setBundesland(Bundesland bundesland)
+			throws IllegalArgumentException {
+		if (bundesland == null) {
+			throw new IllegalArgumentException("Bundesland ist null!");
+		}
+		this.bundesland = bundesland;
+	}
+
+	/**
+	 * Setzt die Liste der Listenkandidaten.
+	 * 
+	 * @param listenkandidaten
+	 *            die Liste mit den Kandidaten.
+	 * @throws IllegalArgumentException
+	 *             wenn die null ist.
+	 */
+	public void setListenkandidaten(LinkedList<Kandidat> listenkandidaten)
+			throws IllegalArgumentException {
+		if (listenkandidaten == null || listenkandidaten.isEmpty()) {
+			throw new IllegalArgumentException("Liste ist null oder leer!");
+		}
+		this.listenkandidaten = listenkandidaten;
 	}
 
 	/**
@@ -179,19 +181,19 @@ public class Landesliste implements Serializable {
 		}
 		this.mindestSitzanzahl = mindestSitzanzahl;
 	}
-	
+
 	/**
-	 * Vergleicht zwei Landeslisten.
-	 * @param liste zu vergleichende Liste
-	 * @return true false
+	 * Setzt das Partei-Objekt.
+	 * 
+	 * @param partei
+	 *            das Partei-Objekt.
+	 * @throws IllegalArgumentException
+	 *             wenn das Partei-Objekt null ist.
 	 */
-	public boolean equals(Landesliste liste) {
-		if (liste.getPartei().getName().equals(this.partei.getName())
-				&& liste.getBundesland().equals(this.bundesland) 
-				&& liste.getListenkandidaten().equals(this.listenkandidaten) 
-				&& (liste.getMindestSitzanzahl() == this.mindestSitzanzahl)) {
-			return true;
+	public void setPartei(Partei partei) throws IllegalArgumentException {
+		if (partei == null) {
+			throw new IllegalArgumentException("Partei ist leer!");
 		}
-		return false;
+		this.partei = partei;
 	}
 }

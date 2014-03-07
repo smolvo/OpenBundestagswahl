@@ -1,6 +1,7 @@
 package test.java.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -20,61 +21,55 @@ import org.junit.Test;
 
 /**
  * Diese Klasse testet die zwei Methoden der Landesliste.
- *
+ * 
  */
 public class LandeslisteTest {
-	
+
 	/** repräsentiert die unverfälschte Wahl2013 */
 	private static Bundestagswahl wahl;
-	
+
 	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
 	private Bundestagswahl cloneWahl;
-	
+
 	public static Landesliste testLandesliste;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		// Wahl 2013
-		File[] csvDateien = new File[2];
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		wahl = Steuerung.getInstance().importieren(csvDateien);
+		LandeslisteTest.wahl = Steuerung.getInstance().importieren(csvDateien);
 	}
-	
-	@Before
-	public void setUp() throws Exception {
-		this.cloneWahl = wahl.deepCopy();
-		testLandesliste = this.cloneWahl.getParteien().get(0).getLandesliste().get(0);
-	}
-	
-	@After
-	public void tearDown() throws Exception {
-		this.cloneWahl = null;
-	}
-	
+
 	@Test
 	public void addKandidatTest() {
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		Kandidat amann = this.cloneWahl.getParteien().get(1).getMitglieder().get(0);
-		Landesliste holstein = cdu.getLandesliste().get(0);
+		final Partei cdu = this.cloneWahl.getParteien().get(0);
+		final Kandidat amann = this.cloneWahl.getParteien().get(1)
+				.getMitglieder().get(0);
+		final Landesliste holstein = cdu.getLandesliste().get(0);
 		// Amann will in Schleswig-Holstein für die CDU kandidieren!!
 		holstein.addKandidat(0, amann);
 		assertEquals(amann, holstein.getListenkandidaten().get(0));
 	}
-	
+
 	@Test
 	public void getKandidatenTest() {
-		Mandatsrechner2009 rechner = Mandatsrechner2009.getInstance();
+		final Mandatsrechner2009 rechner = Mandatsrechner2009.getInstance();
 		// hole Herrn Wellenreuther
-		Kandidat wellenreuther = cloneWahl.getDeutschland().getBundeslaender().get(7).getWahlkreise().get(13).getErststimmenProPartei().get(0).getKandidat();
-		rechner.initialisiere(cloneWahl);
-		rechner.testBerechneDirektmandat(cloneWahl);
-		Landesliste bw = this.cloneWahl.getParteien().get(0).getLandesliste().get(7);
-		LinkedList<Kandidat> direkte = bw.getKandidaten(Mandat.DIREKTMANDAT);
+		final Kandidat wellenreuther = this.cloneWahl.getDeutschland()
+				.getBundeslaender().get(7).getWahlkreise().get(13)
+				.getErststimmenProPartei().get(0).getKandidat();
+		rechner.initialisiere(this.cloneWahl);
+		rechner.testBerechneDirektmandat(this.cloneWahl);
+		final Landesliste bw = this.cloneWahl.getParteien().get(0)
+				.getLandesliste().get(7);
+		final LinkedList<Kandidat> direkte = bw
+				.getKandidaten(Mandat.DIREKTMANDAT);
 		boolean isDirekt = false;
-		for (Kandidat kan : direkte) {
+		for (final Kandidat kan : direkte) {
 			if (kan.equals(wellenreuther)) {
 				isDirekt = true;
 			}
@@ -82,42 +77,54 @@ public class LandeslisteTest {
 		assertTrue(isDirekt);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetPartei() {
-		testLandesliste.setPartei(null);
+	@Before
+	public void setUp() throws Exception {
+		this.cloneWahl = LandeslisteTest.wahl.deepCopy();
+		LandeslisteTest.testLandesliste = this.cloneWahl.getParteien().get(0)
+				.getLandesliste().get(0);
 	}
-	
+
+	@After
+	public void tearDown() throws Exception {
+		this.cloneWahl = null;
+	}
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetBundesland() {
-		testLandesliste.setBundesland(null);
+		LandeslisteTest.testLandesliste.setBundesland(null);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetListenkandidaten1() {
-		testLandesliste.setListenkandidaten(null);
+		LandeslisteTest.testLandesliste.setListenkandidaten(null);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetListenkandidaten2() {
-		LinkedList<Kandidat> listenkandidaten = new LinkedList<Kandidat>();
-		testLandesliste.setListenkandidaten(listenkandidaten);
-		
+		final LinkedList<Kandidat> listenkandidaten = new LinkedList<Kandidat>();
+		LandeslisteTest.testLandesliste.setListenkandidaten(listenkandidaten);
+
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetMindestsitzanzahl1() {
-		testLandesliste.setMindestSitzanzahl(-1);
+		LandeslisteTest.testLandesliste.setMindestSitzanzahl(-1);
 	}
-	
+
 	@Test
 	public void testSetMindestsitzanzahl2() {
-		testLandesliste.setMindestSitzanzahl(0);
-		assertEquals(0, testLandesliste.getMindestSitzanzahl());
+		LandeslisteTest.testLandesliste.setMindestSitzanzahl(0);
+		assertEquals(0, LandeslisteTest.testLandesliste.getMindestSitzanzahl());
 	}
-	
+
 	@Test
 	public void testSetMindestsitzanzahl3() {
-		testLandesliste.setMindestSitzanzahl(10);
-		assertEquals(10, testLandesliste.getMindestSitzanzahl());
+		LandeslisteTest.testLandesliste.setMindestSitzanzahl(10);
+		assertEquals(10, LandeslisteTest.testLandesliste.getMindestSitzanzahl());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetPartei() {
+		LandeslisteTest.testLandesliste.setPartei(null);
 	}
 }

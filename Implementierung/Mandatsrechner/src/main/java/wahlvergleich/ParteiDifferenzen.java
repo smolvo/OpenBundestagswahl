@@ -29,20 +29,20 @@ public class ParteiDifferenzen {
 	}
 
 	/**
-	 * Gibt die Partei aus.
-	 * 
-	 * @return Partei
-	 */
-	public Partei getPartei() {
-		return partei;
-	}
-
-	/**
 	 * Gibt die Differenz aus.
 	 * 
 	 * @return Differenz
 	 */
 	public int getDiff() {
-		return diff;
+		return this.diff;
+	}
+
+	/**
+	 * Gibt die Partei aus.
+	 * 
+	 * @return Partei
+	 */
+	public Partei getPartei() {
+		return this.partei;
 	}
 }

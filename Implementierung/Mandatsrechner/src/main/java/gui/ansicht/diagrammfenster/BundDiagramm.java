@@ -45,14 +45,14 @@ public class BundDiagramm extends JPanel {
 		if (btw == null) {
 			throw new IllegalArgumentException("Deutschland ist null.");
 		}
-		this.setLayout(new BorderLayout());
-		JFreeChart chart = createChart(btw);
+		setLayout(new BorderLayout());
+		final JFreeChart chart = createChart(btw);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
 			public void componentResized(ComponentEvent e) {
-				ChartPanel panel = (ChartPanel) e.getComponent();
+				final ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
 				add(chartPanel, BorderLayout.LINE_START);
 			}
@@ -75,16 +75,19 @@ public class BundDiagramm extends JPanel {
 	 */
 	private JFreeChart createChart(Bundestagswahl btw) {
 		if (btw == null) {
-			throw new IllegalArgumentException("Bundestagswahl Objekt ist null.");
+			throw new IllegalArgumentException(
+					"Bundestagswahl Objekt ist null.");
 		}
-		ArrayList<Integer> daten = new ArrayList<Integer>();
-		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> stimmen = btw.getDeutschland().getZweitstimmenProPartei();
+		final ArrayList<Integer> daten = new ArrayList<Integer>();
+		final ArrayList<Partei> parteien = new ArrayList<Partei>();
+		final List<Zweitstimme> stimmen = btw.getDeutschland()
+				.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
-		DefaultPieDataset result = new DefaultPieDataset();
-		for (Zweitstimme zw : stimmen) {
-			//int sitze = zw.getPartei().getAnzahlMandate();
-			int sitze = btw.getSitzverteilung().getAnzahlSitze(zw.getPartei());
+		final DefaultPieDataset result = new DefaultPieDataset();
+		for (final Zweitstimme zw : stimmen) {
+			// int sitze = zw.getPartei().getAnzahlMandate();
+			final int sitze = btw.getSitzverteilung().getAnzahlSitze(
+					zw.getPartei());
 			if (sitze > 0) {
 				daten.add(sitze);
 				parteien.add(zw.getPartei());
@@ -92,10 +95,10 @@ public class BundDiagramm extends JPanel {
 			}
 		}
 
-		JFreeChart chart = ChartFactory.createPieChart3D(
+		final JFreeChart chart = ChartFactory.createPieChart3D(
 				"Sitzverteilung im Deutschen Bundestag", result, true, true,
 				true);
-		PiePlot3D plot = (PiePlot3D) chart.getPlot();
+		final PiePlot3D plot = (PiePlot3D) chart.getPlot();
 
 		// fï¿½rben
 		for (int i = 0; i < daten.size(); i++) {
@@ -111,12 +114,12 @@ public class BundDiagramm extends JPanel {
 	}
 
 	/**
-	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der sich
-	 * das Diagramm befindet, aus.
+	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der
+	 * sich das Diagramm befindet, aus.
 	 * 
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(), (this.getHeight()));
+		return new Dimension(getWidth(), getHeight());
 	}
 }

@@ -27,7 +27,7 @@ public class WahlFenster extends JPanel {
 	private final Bundestagswahl btw;
 
 	/** reprï¿½sentiert die aktuelle Ansicht */
-	private Ansicht aktuelleAnsicht;
+	private final Ansicht aktuelleAnsicht;
 
 	/** reprï¿½sentiert die aktuelle Steuerung des Wahlfensters */
 	private final GUISteuerung steuerung;
@@ -61,7 +61,58 @@ public class WahlFenster extends JPanel {
 		this.steuerung = new GUISteuerung(btw, this);
 		this.aktuelleAnsicht = new Ansicht(btw, this);
 		setLayout(new BorderLayout());
-		this.add(aktuelleAnsicht, BorderLayout.CENTER);
+		this.add(this.aktuelleAnsicht, BorderLayout.CENTER);
+	}
+
+	/**
+	 * Gibt die Ansicht aus.
+	 * 
+	 * @return aktuelle Ansicht
+	 */
+	public Ansicht getAnsicht() {
+		return this.aktuelleAnsicht;
+	}
+
+	/**
+	 * Gibt die Bundestagswahl aus.
+	 * 
+	 * @return Bundestagswahl
+	 */
+	public Bundestagswahl getBtw() {
+		return this.btw;
+	}
+
+	/**
+	 * Gibt den Namen aus.
+	 * 
+	 * @return Name
+	 */
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * Gibt das Programmfenster
+	 * 
+	 * @return the pf
+	 */
+	public Programmfenster getPf() {
+		return this.pf;
+	}
+
+	/**
+	 * Gibt die GUISteuerung aus.
+	 * 
+	 * @return GUI Steuerung
+	 */
+	public GUISteuerung getSteuerung() {
+		return this.steuerung;
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
 	}
 
 	/**
@@ -77,57 +128,7 @@ public class WahlFenster extends JPanel {
 			throw new IllegalArgumentException("Gebiet ist null.");
 		}
 		this.aktuelleAnsicht.ansichtAendern(gebiet);
-		this.add(aktuelleAnsicht);
-	}
-
-	/**
-	 * Gibt den Namen aus.
-	 * 
-	 * @return Name
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Gibt die GUISteuerung aus.
-	 * 
-	 * @return GUI Steuerung
-	 */
-	public GUISteuerung getSteuerung() {
-		return steuerung;
-	}
-
-	/**
-	 * Gibt die Bundestagswahl aus.
-	 * 
-	 * @return Bundestagswahl
-	 */
-	public Bundestagswahl getBtw() {
-		return btw;
-	}
-
-	@Override
-	public String toString() {
-		return this.name;
-	}
-
-	/**
-	 * Gibt das Programmfenster
-	 * 
-	 * @return the pf
-	 */
-	public Programmfenster getPf() {
-		return pf;
-	}
-	
-	/**
-	 * Gibt die Ansicht aus.
-	 * @return aktuelle Ansicht
-	 */
-	public Ansicht getAnsicht() {
-		return aktuelleAnsicht;
+		this.add(this.aktuelleAnsicht);
 	}
 
 }

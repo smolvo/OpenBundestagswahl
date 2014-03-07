@@ -30,7 +30,22 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 	 *            Die Anzahl der Stimmen.
 	 */
 	public RelevanteZweitstimmen(int anzahl) {
-		this.setAnzahl(anzahl);
+		setAnzahl(anzahl);
+
+	}
+
+	@Override
+	public Stimme deepCopy() {
+		throw new IllegalAccessError("Nicht implementiert!");
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+
+		setAnzahl(this.anzahl + anzahl);
 
 	}
 
@@ -42,21 +57,6 @@ public class RelevanteZweitstimmen extends Stimme implements Serializable {
 
 		this.anzahl = anzahl;
 
-	}
-
-	@Override
-	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
-		}
-
-		this.setAnzahl(this.anzahl + anzahl);
-
-	}
-
-	@Override
-	public Stimme deepCopy() {
-		throw new IllegalAccessError("Nicht implementiert!");
 	}
 
 }

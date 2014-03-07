@@ -11,19 +11,19 @@ import main.java.model.Zweitstimme;
 public class LandDaten {
 
 	/** Liste der Parteien */
-	private LinkedList<String> parteien;
+	private final LinkedList<String> parteien;
 
 	/** Liste der Zweitstimmen */
-	private LinkedList<Zweitstimme> stimmen;
+	private final LinkedList<Zweitstimme> stimmen;
 
 	/** Liste der prozentualen Zweitstimmen */
-	private LinkedList<String> prozent;
+	private final LinkedList<String> prozent;
 
 	/** Liste der Direktmandate */
-	private LinkedList<String> direktmandate;
+	private final LinkedList<String> direktmandate;
 
 	/** Liste der ï¿½berhangsmandate */
-	private LinkedList<String> ueberhangsmandate;
+	private final LinkedList<String> ueberhangsmandate;
 
 	/**
 	 * Der Konstruktor initialisiert alle Listen.
@@ -65,8 +65,97 @@ public class LandDaten {
 	}
 
 	/**
-	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es der
-	 * Liste angehangen,
+	 * Gibt eine bestimmte Anzahl Direktmandate zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return Direktmandate
+	 */
+	public String getDirektmandate(int index) {
+		if (index < 0 || index > this.direktmandate.size()) {
+			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
+		}
+		return this.direktmandate.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Partei zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return Partei
+	 */
+	public String getParteien(int index) {
+		if (index < 0 || index > this.parteien.size()) {
+			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
+		}
+		return this.parteien.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Prozentanzahl zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return Prozentanzahl
+	 */
+	public String getProzent(int index) {
+		if (index < 0 || index > this.prozent.size()) {
+			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
+		}
+		return this.prozent.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Zweitstimmenanzahl zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return Zweitstimme
+	 */
+	public Zweitstimme getStimmen(int index) {
+		if (index < 0 || index > this.stimmen.size()) {
+			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
+		}
+		return this.stimmen.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte ï¿½berhangsmandate zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return ï¿½berhangsmandate
+	 */
+	public String getUeberhangsmandate(int index) {
+		if (index < 0 || index > this.ueberhangsmandate.size()) {
+			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
+		}
+		return this.ueberhangsmandate.get(index);
+	}
+
+	/**
+	 * Diese Methode gibt die Anzahl an Zeilen aus.
+	 * 
+	 * @return Zeilenanzahl
+	 */
+	public int size() {
+		return this.parteien.size();
+	}
+
+	/**
+	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es
+	 * der Liste angehangen,
 	 * 
 	 * @param string
 	 *            String
@@ -84,94 +173,5 @@ public class LandDaten {
 		} else {
 			list.add("-");
 		}
-	}
-
-	/**
-	 * Gibt eine bestimmte Partei zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return Partei
-	 */
-	public String getParteien(int index) {
-		if (index < 0 || index > parteien.size()) {
-			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
-		}
-		return parteien.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Zweitstimmenanzahl zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return Zweitstimme
-	 */
-	public Zweitstimme getStimmen(int index) {
-		if (index < 0 || index > stimmen.size()) {
-			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
-		}
-		return stimmen.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Prozentanzahl zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return Prozentanzahl
-	 */
-	public String getProzent(int index) {
-		if (index < 0 || index > prozent.size()) {
-			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
-		}
-		return prozent.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Anzahl Direktmandate zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return Direktmandate
-	 */
-	public String getDirektmandate(int index) {
-		if (index < 0 || index > direktmandate.size()) {
-			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
-		}
-		return direktmandate.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte ï¿½berhangsmandate zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return ï¿½berhangsmandate
-	 */
-	public String getUeberhangsmandate(int index) {
-		if (index < 0 || index > ueberhangsmandate.size()) {
-			throw new IllegalArgumentException("Index ausserhalb Listengrösse.");
-		}
-		return ueberhangsmandate.get(index);
-	}
-
-	/**
-	 * Diese Methode gibt die Anzahl an Zeilen aus.
-	 * 
-	 * @return Zeilenanzahl
-	 */
-	public int size() {
-		return this.parteien.size();
 	}
 }

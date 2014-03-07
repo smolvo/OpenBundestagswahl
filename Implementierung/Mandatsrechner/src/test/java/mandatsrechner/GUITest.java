@@ -11,8 +11,8 @@ import main.java.model.Partei;
 public class GUITest {
 
 	public static void main(String[] args) {
-		ImportExportManager i = new ImportExportManager();
-		File[] csvDateien = new File[2];
+		final ImportExportManager i = new ImportExportManager();
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
@@ -20,16 +20,16 @@ public class GUITest {
 		Bundestagswahl w = null;
 		try {
 			w = i.importieren(csvDateien);
-		} catch (Exception e1) {
-			
+		} catch (final Exception e1) {
+
 			e1.printStackTrace();
 			System.out.println("Leine gï¿½ltige CSV-Datei :/");
 		}
 
-		Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
-		Bundestagswahl newW = m.berechne(w);
+		final Mandatsrechner2013 m = Mandatsrechner2013.getInstance();
+		final Bundestagswahl newW = m.berechne(w);
 
-		for (Partei partei : newW.getParteien()) {
+		for (final Partei partei : newW.getParteien()) {
 			System.out.println(partei.getName()
 					+ ": "
 					+ (partei.getAnzahlMandate(Mandat.DIREKTMANDAT) + partei

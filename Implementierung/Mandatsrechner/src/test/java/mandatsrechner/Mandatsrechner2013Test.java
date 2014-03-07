@@ -3,7 +3,8 @@
  */
 package test.java.mandatsrechner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 
@@ -29,74 +30,34 @@ public class Mandatsrechner2013Test {
 
 	private static Bundestagswahl wahl;
 
-	private Bundestagswahl cloneWahl;
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		// Wahl 2013
-		File[] csvDateien = new File[2];
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		wahl = Steuerung.getInstance().importieren(csvDateien);
+		Mandatsrechner2013Test.wahl = Steuerung.getInstance().importieren(
+				csvDateien);
 	}
 
-	@Before
-	public void setUp() throws Exception {
-		this.cloneWahl = wahl.deepCopy();
-		this.rechner = Mandatsrechner2013.getInstance();
-	}
+	private Bundestagswahl cloneWahl;
 
-	@After
-	public void tearDown() throws Exception {
-		this.cloneWahl = null;
-	}
-	
-	@Test 
-	public void berechneHauptWahl() {
-		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0;
-		this.rechner.berechne(this.cloneWahl);
-		for (Kandidat kandidat : this.cloneWahl.getSitzverteilung().getAbgeordnete()) {
-				switch (kandidat.getPartei().getName()) {
-					case "CDU":
-						cdu++;
-						break;
-					case "SPD":
-						spd++;
-						break;
-					case "CSU":
-						csu++;
-						break;
-					case "GRÜNE":
-						gruene++;
-						break;
-					case "DIE LINKE":
-						linke++;
-						break;
-					default:
-						fail("Ungültige Partei");
-			}
-		}	
-		assertEquals(193, spd);
-		assertEquals(63, gruene);
-		assertEquals(64, linke);
-		assertEquals(56, csu);
-		assertEquals(255, cdu);
-	}
-	
 	@Test
-	public void berechneAlteWahl(){
-		//Importieren der Wahl 2009
-		File[] csvDateien = new File[2];
+	public void berechneAlteWahl() {
+		// Importieren der Wahl 2009
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2009.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		Bundestagswahl alteWahl = Steuerung.getInstance().importieren(csvDateien);
-		
-		for (Bundesland bundesland : alteWahl.getDeutschland().getBundeslaender()) {
-			switch(bundesland.getName()){
+		final Bundestagswahl alteWahl = Steuerung.getInstance().importieren(
+				csvDateien);
+
+		for (final Bundesland bundesland : alteWahl.getDeutschland()
+				.getBundeslaender()) {
+			switch (bundesland.getName()) {
 			case "Baden-Württemberg":
 				bundesland.setEinwohnerzahl(9483476);
 				break;
@@ -148,54 +109,102 @@ public class Mandatsrechner2013Test {
 			default:
 				fail("Unbekanntes Bundesland!");
 			}
-			
+
 		}
-		
-		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0, fdp = 0;
+
+		int spd = 0, cdu = 0;
+		int gruene = 0, linke = 0, fdp = 0;
 		this.rechner.berechne(alteWahl);
-		for (Kandidat kandidat : alteWahl.getSitzverteilung().getAbgeordnete()) {
-				switch (kandidat.getPartei().getName()) {
-					case "CDU":
-						cdu++;
-						break;
-					case "SPD":
-						spd++;
-						break;
-					case "CSU":
-						break;
-					case "GRÜNE":
-						gruene++;
-						break;
-					case "DIE LINKE":
-						linke++;
-						break;
-					case "FDP":
-						fdp++;
-						break;
-					default:
-						fail("Ungültige Partei");
+		for (final Kandidat kandidat : alteWahl.getSitzverteilung()
+				.getAbgeordnete()) {
+			switch (kandidat.getPartei().getName()) {
+			case "CDU":
+				cdu++;
+				break;
+			case "SPD":
+				spd++;
+				break;
+			case "CSU":
+				break;
+			case "GRÜNE":
+				gruene++;
+				break;
+			case "DIE LINKE":
+				linke++;
+				break;
+			case "FDP":
+				fdp++;
+				break;
+			default:
+				fail("Ungültige Partei");
 			}
 		}
-		
+
 		assertEquals(164, spd);
 		assertEquals(76, gruene);
 		assertEquals(85, linke);
 		assertEquals(195, cdu);
 		assertEquals(104, fdp);
-		
+
 	}
-	
-	@Test (timeout = 10000)
-	public void berechneLaufzeit(){
-		this.rechner.berechne(cloneWahl);
-	}
+
 	@Test
-	public void kandidatenTest(){
-		this.rechner.berechne(cloneWahl);
-		for(Kandidat kandidat : cloneWahl.getSitzverteilung().getAbgeordnete()){
-			if(kandidat.getMandat().equals(Mandat.KEINMANDAT)){
+	public void berechneHauptWahl() {
+		int spd = 0, cdu = 0, csu = 0, gruene = 0, linke = 0;
+		this.rechner.berechne(this.cloneWahl);
+		for (final Kandidat kandidat : this.cloneWahl.getSitzverteilung()
+				.getAbgeordnete()) {
+			switch (kandidat.getPartei().getName()) {
+			case "CDU":
+				cdu++;
+				break;
+			case "SPD":
+				spd++;
+				break;
+			case "CSU":
+				csu++;
+				break;
+			case "GRÜNE":
+				gruene++;
+				break;
+			case "DIE LINKE":
+				linke++;
+				break;
+			default:
+				fail("Ungültige Partei");
+			}
+		}
+		assertEquals(193, spd);
+		assertEquals(63, gruene);
+		assertEquals(64, linke);
+		assertEquals(56, csu);
+		assertEquals(255, cdu);
+	}
+
+	@Test(timeout = 10000)
+	public void berechneLaufzeit() {
+		this.rechner.berechne(this.cloneWahl);
+	}
+
+	@Test
+	public void kandidatenTest() {
+		this.rechner.berechne(this.cloneWahl);
+		for (final Kandidat kandidat : this.cloneWahl.getSitzverteilung()
+				.getAbgeordnete()) {
+			if (kandidat.getMandat().equals(Mandat.KEINMANDAT)) {
 				fail("Abgeordneter ohne Mandat in der Sitzverteilung");
 			}
 		}
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		this.cloneWahl = Mandatsrechner2013Test.wahl.deepCopy();
+		this.rechner = Mandatsrechner2013.getInstance();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		this.cloneWahl = null;
 	}
 }

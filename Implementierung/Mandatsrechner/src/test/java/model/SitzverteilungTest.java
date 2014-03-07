@@ -1,6 +1,6 @@
 package test.java.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
@@ -18,41 +18,40 @@ public class SitzverteilungTest {
 
 	/** repräsentiert die unverfälschte Wahl2013 */
 	private static Bundestagswahl wahl;
-	
-	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
-	private Bundestagswahl cloneWahl;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		// Wahl 2013
-		File[] csvDateien = new File[2];
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		wahl = Steuerung.getInstance().importieren(csvDateien);
+		SitzverteilungTest.wahl = Steuerung.getInstance().importieren(
+				csvDateien);
 	}
-	
-	@Before
-	public void setUp() throws Exception {
-		this.cloneWahl = wahl.deepCopy();
-	}
-	
-	@After
-	public void tearDown() throws Exception {
-		this.cloneWahl = null;
-	}
+
+	/** rerpäsentiert die temporäre Wahl, die für jeden Test neu sein muss */
+	private Bundestagswahl cloneWahl;
 
 	/**
 	 * Testet ob 2 Parteien die korrekte Sitzanzahl haben
 	 */
 	@Test
 	public void getAnzahlSitze() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		Partei cdu = this.cloneWahl.getParteien().get(0);
-		Partei spd = this.cloneWahl.getParteien().get(1);
-		assertEquals(255, this.cloneWahl.getSitzverteilung().getAnzahlSitze(cdu));
-		assertEquals(193, this.cloneWahl.getSitzverteilung().getAnzahlSitze(spd));
+		Mandatsrechner2013.getInstance().berechne(this.cloneWahl);
+		final Partei cdu = this.cloneWahl.getParteien().get(0);
+		final Partei spd = this.cloneWahl.getParteien().get(1);
+		assertEquals(255, this.cloneWahl.getSitzverteilung()
+				.getAnzahlSitze(cdu));
+		assertEquals(193, this.cloneWahl.getSitzverteilung()
+				.getAnzahlSitze(spd));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setAbgeordneteFail() {
+		Mandatsrechner2013.getInstance().berechne(this.cloneWahl);
+		this.cloneWahl.getSitzverteilung().setAbgeordnete(null);
 	}
 
 	/**
@@ -60,13 +59,17 @@ public class SitzverteilungTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setBerichtFail() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
+		Mandatsrechner2013.getInstance().berechne(this.cloneWahl);
 		this.cloneWahl.getSitzverteilung().setBericht(null);
 	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void setAbgeordneteFail() {
-		Mandatsrechner2013.getInstance().berechne(cloneWahl);
-		this.cloneWahl.getSitzverteilung().setAbgeordnete(null);
+
+	@Before
+	public void setUp() throws Exception {
+		this.cloneWahl = SitzverteilungTest.wahl.deepCopy();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		this.cloneWahl = null;
 	}
 }

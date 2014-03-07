@@ -20,10 +20,10 @@ import main.java.model.Wahlkreis;
 public class DeutschlandModel implements TreeModel {
 
 	/** repräsentiert die Wurzel des Baumes */
-	private Deutschland wurzel;
+	private final Deutschland wurzel;
 
 	/** repräsentiert die Liste von Listenern */
-	private Vector<TreeModelListener> treeModelListeners = new Vector<TreeModelListener>();
+	private final Vector<TreeModelListener> treeModelListeners = new Vector<TreeModelListener>();
 
 	/**
 	 * Der Konstruktor der einen neuen Baum instanziiert.
@@ -36,17 +36,17 @@ public class DeutschlandModel implements TreeModel {
 	}
 
 	@Override
-	public Object getRoot() {
-		return this.wurzel;
+	public void addTreeModelListener(TreeModelListener l) {
+		this.treeModelListeners.addElement(l);
 	}
 
 	@Override
 	public Object getChild(Object parent, int index) {
 		if (parent instanceof Deutschland) {
-			Deutschland land = (Deutschland) parent;
+			final Deutschland land = (Deutschland) parent;
 			return land.getBundeslaender().get(index);
 		} else if (parent instanceof Bundesland) {
-			Bundesland bundLand = (Bundesland) parent;
+			final Bundesland bundLand = (Bundesland) parent;
 			return bundLand.getWahlkreise().get(index);
 		} else {
 			return null;
@@ -56,14 +56,34 @@ public class DeutschlandModel implements TreeModel {
 	@Override
 	public int getChildCount(Object parent) {
 		if (parent instanceof Deutschland) {
-			Deutschland land = (Deutschland) parent;
+			final Deutschland land = (Deutschland) parent;
 			return land.getBundeslaender().size();
 		} else if (parent instanceof Bundesland) {
-			Bundesland bundLand = (Bundesland) parent;
+			final Bundesland bundLand = (Bundesland) parent;
 			return bundLand.getWahlkreise().size();
 		} else {
 			return -1;
 		}
+	}
+
+	@Override
+	public int getIndexOfChild(Object parent, Object child) {
+		if (parent instanceof Deutschland) {
+			final Deutschland land = (Deutschland) parent;
+			final Bundesland bundLand = (Bundesland) child;
+			return land.getBundeslaender().indexOf(bundLand);
+		} else if (parent instanceof Bundesland) {
+			final Bundesland bundLand = (Bundesland) parent;
+			final Wahlkreis wahlKreis = (Wahlkreis) child;
+			return bundLand.getWahlkreise().indexOf(wahlKreis);
+		} else {
+			return -1;
+		}
+	}
+
+	@Override
+	public Object getRoot() {
+		return this.wurzel;
 	}
 
 	@Override
@@ -72,34 +92,14 @@ public class DeutschlandModel implements TreeModel {
 	}
 
 	@Override
+	public void removeTreeModelListener(TreeModelListener l) {
+		this.treeModelListeners.removeElement(l);
+	}
+
+	@Override
 	public void valueForPathChanged(TreePath path, Object newValue) {
 		System.out.println("*** valueForPathChanged : " + path + " --> "
 				+ newValue);
-	}
-
-	@Override
-	public int getIndexOfChild(Object parent, Object child) {
-		if (parent instanceof Deutschland) {
-			Deutschland land = (Deutschland) parent;
-			Bundesland bundLand = (Bundesland) child;
-			return land.getBundeslaender().indexOf(bundLand);
-		} else if (parent instanceof Bundesland) {
-			Bundesland bundLand = (Bundesland) parent;
-			Wahlkreis wahlKreis = (Wahlkreis) child;
-			return bundLand.getWahlkreise().indexOf(wahlKreis);
-		} else {
-			return -1;
-		}
-	}
-
-	@Override
-	public void addTreeModelListener(TreeModelListener l) {
-		treeModelListeners.addElement(l);
-	}
-
-	@Override
-	public void removeTreeModelListener(TreeModelListener l) {
-		treeModelListeners.removeElement(l);
 	}
 
 }

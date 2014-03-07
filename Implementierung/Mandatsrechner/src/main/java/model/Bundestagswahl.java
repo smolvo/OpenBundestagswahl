@@ -38,7 +38,7 @@ public class Bundestagswahl implements Serializable {
 	private Sitzverteilung sitzverteilung;
 
 	/** Chronik-Container */
-	private Chronik chronik;
+	private final Chronik chronik;
 
 	/**
 	 * Parametrisierter Konstruktor fuer Bundestagswahlen.
@@ -54,13 +54,69 @@ public class Bundestagswahl implements Serializable {
 	 */
 	public Bundestagswahl(String name, Deutschland deutschland,
 			LinkedList<Partei> parteien) {
-		this.setName(name);
-		this.setDeutschland(deutschland);
-		this.setParteien(parteien);
+		setName(name);
+		setDeutschland(deutschland);
+		setParteien(parteien);
 		// Sitzverteilung wird hier nicht gesetzt sondern muss vom
 		// Mandatsrechner berechnet werden.
 
 		this.chronik = new Chronik();
+	}
+
+	/**
+	 * Erzeugt durch Serialisierung eine tiefe Kopie dieses Objekts und gibt
+	 * diese zurueck.
+	 * 
+	 * @return eine tiefe Kopie dieses Objekts.
+	 */
+	public Bundestagswahl deepCopy() {
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+
+		Bundestagswahl result = null;
+
+		try {
+			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			oos = new ObjectOutputStream(bos);
+
+			// serialisiere und übergebe das Objekt
+			oos.writeObject(this);
+			oos.flush();
+			final ByteArrayInputStream bin = new ByteArrayInputStream(
+					bos.toByteArray());
+			ois = new ObjectInputStream(bin);
+
+			// gib das geklonte Objekt zurück
+			result = (Bundestagswahl) ois.readObject();
+		} catch (final Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (final IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (final IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Gibt das Deutschland-Objekt dieser Bundestagswahl.
+	 * 
+	 * @return das Deutschland-Objekt dieser Bundestagswahl.
+	 */
+	public Deutschland getDeutschland() {
+		return this.deutschland;
 	}
 
 	/**
@@ -73,25 +129,63 @@ public class Bundestagswahl implements Serializable {
 	}
 
 	/**
-	 * Setzt den Namen dieser Bundestagswahl.
+	 * Sucht nach einer Partei mit dem gegebenen Namen in dieser Bundestagswahl
+	 * und gibt diese zurück.
+	 * 
+	 * Gibt null zurück wenn keine Partei mit exakt diesem Namen gefunden wurde.
 	 * 
 	 * @param name
-	 *            der Name dieser Bundestagswahl.
+	 *            der Name der Partei die gesucht wird
+	 * @return eine Partei mit dem gegebenen Namen
 	 */
-	public void setName(String name) {
-		if (name == null) {
-			throw new IllegalArgumentException("Parameter 'name' ist null!");
+	public Partei getParteiByName(String name) {
+		Partei result = null;
+
+		for (final Partei partei : getParteien()) {
+			if (partei.getName().equals(name)) {
+				result = partei;
+				break;
+			}
 		}
-		this.name = name;
+
+		return result;
 	}
 
 	/**
-	 * Gibt das Deutschland-Objekt dieser Bundestagswahl.
+	 * Gibt die Liste der Parteien dieser Bundestagswahl.
 	 * 
-	 * @return das Deutschland-Objekt dieser Bundestagswahl.
+	 * @return die Liste der Parteien dieser Bundestagswahl.
+	 * 
 	 */
-	public Deutschland getDeutschland() {
-		return this.deutschland;
+	public LinkedList<Partei> getParteien() {
+		return this.parteien;
+	}
+
+	/**
+	 * Gibt die berechnete Sitzverteilung dieser Bundestagswahl.
+	 * 
+	 * @return die berechnete Sitzverteilung dieser Bundestagswahl.
+	 */
+	public Sitzverteilung getSitzverteilung() {
+		return this.sitzverteilung;
+	}
+
+	/**
+	 * Prueft, ob eine Stimme zum wiederherstellen vorhanden ist.
+	 * 
+	 * @return true wenn es vorhanden ist.
+	 */
+	public boolean hatStimmenZumWiederherstellen() {
+		return this.chronik.hatStimmenZumWiederherstellen();
+	}
+
+	/**
+	 * Prueft, ob eine Stimme zum zuruecksetzen vorhanden ist.
+	 * 
+	 * @return true wenn es vorhanden ist.
+	 */
+	public boolean hatStimmenZumZuruecksetzen() {
+		return this.chronik.hatStimmenZumZuruecksetzen();
 	}
 
 	/**
@@ -111,13 +205,16 @@ public class Bundestagswahl implements Serializable {
 	}
 
 	/**
-	 * Gibt die Liste der Parteien dieser Bundestagswahl.
+	 * Setzt den Namen dieser Bundestagswahl.
 	 * 
-	 * @return die Liste der Parteien dieser Bundestagswahl.
-	 * 
+	 * @param name
+	 *            der Name dieser Bundestagswahl.
 	 */
-	public LinkedList<Partei> getParteien() {
-		return this.parteien;
+	public void setName(String name) {
+		if (name == null) {
+			throw new IllegalArgumentException("Parameter 'name' ist null!");
+		}
+		this.name = name;
 	}
 
 	/**
@@ -136,15 +233,6 @@ public class Bundestagswahl implements Serializable {
 	}
 
 	/**
-	 * Gibt die berechnete Sitzverteilung dieser Bundestagswahl.
-	 * 
-	 * @return die berechnete Sitzverteilung dieser Bundestagswahl.
-	 */
-	public Sitzverteilung getSitzverteilung() {
-		return this.sitzverteilung;
-	}
-
-	/**
 	 * Setzt die berechnete Sitzverteilung dieser Bundestagswahl.
 	 * 
 	 * @param sitzverteilung
@@ -155,62 +243,14 @@ public class Bundestagswahl implements Serializable {
 	}
 
 	/**
-	 * Erzeugt durch Serialisierung eine tiefe Kopie dieses Objekts und gibt
-	 * diese zurueck.
-	 * 
-	 * @return eine tiefe Kopie dieses Objekts.
-	 */
-	public Bundestagswahl deepCopy() {
-		ObjectOutputStream oos = null;
-		ObjectInputStream ois = null;
-
-		Bundestagswahl result = null;
-
-		try {
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			oos = new ObjectOutputStream(bos);
-
-			// serialisiere und übergebe das Objekt
-			oos.writeObject(this);
-			oos.flush();
-			ByteArrayInputStream bin = new ByteArrayInputStream(
-					bos.toByteArray());
-			ois = new ObjectInputStream(bin);
-
-			// gib das geklonte Objekt zurück
-			result = (Bundestagswahl) ois.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (oos != null) {
-				try {
-					oos.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (ois != null) {
-				try {
-					ois.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		return result;
-	}
-
-
-	/**
 	 * Veraendere die Stimmen in einer Bundestagswahl. Speichert vorher die
 	 * aktuelle Bundestagswahl in der Chronik.
 	 * 
 	 * @param stimme
 	 *            die zu veraendernde stimme.
 	 * @param chronik
-	 * 				bei true wird die veraenderte Stimme in der Chronik
-	 * 				aufgezeichnet.
+	 *            bei true wird die veraenderte Stimme in der Chronik
+	 *            aufgezeichnet.
 	 * @return true wenn erfolgreich.
 	 */
 	public boolean setzeStimme(Stimme stimme, boolean chronik) {
@@ -223,7 +263,7 @@ public class Bundestagswahl implements Serializable {
 		}
 
 		if (alteStimme == null) {
-			//throw new IllegalArgumentException("Stimme nicht gefunden.");
+			// throw new IllegalArgumentException("Stimme nicht gefunden.");
 			success = false;
 		} else {
 			if (chronik) {
@@ -244,18 +284,19 @@ public class Bundestagswahl implements Serializable {
 	private Erststimme setzeStimmenAnzahl(Erststimme stimme) {
 		Debug.print("Setze erststimme", 5);
 		Erststimme alteErststimme = null;
-		for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
+		for (final Wahlkreis wk : this.deutschland.getWahlkreise()) {
 			if (wk.equals(stimme.getGebiet())) {
-				for (Erststimme erststimme : wk.getErststimmenProPartei()) {
+				for (final Erststimme erststimme : wk.getErststimmenProPartei()) {
 					if (erststimme.getKandidat().equals(stimme.getKandidat())) {
 						Debug.print("Aendere Erststimme in: "
 								+ stimme.getGebiet().getName() + " "
-								+ stimme.getKandidat().getPartei().getName() + " " + stimme.getAnzahl(), 4);
+								+ stimme.getKandidat().getPartei().getName()
+								+ " " + stimme.getAnzahl(), 4);
 
-						//this.chronik.sichereStimme(erststimme);
+						// this.chronik.sichereStimme(erststimme);
 						alteErststimme = (Erststimme) erststimme.deepCopy();
 						erststimme.setAnzahl(stimme.getAnzahl());
-						
+
 						break;
 					}
 				}
@@ -269,28 +310,43 @@ public class Bundestagswahl implements Serializable {
 	 * Setzt die ZweitstimmenAnzahl
 	 * 
 	 * @param stimme
-	 * @return
-	 * 		die bisherige Zweitstimme.
+	 * @return die bisherige Zweitstimme.
 	 **/
 	private Zweitstimme setzeStimmenAnzahl(Zweitstimme stimme) {
-		
+
 		Zweitstimme alteZweitstimme = null;
-			for (Wahlkreis wk : this.deutschland.getWahlkreise()) {
-				if (wk.equals(stimme.getGebiet())) {
-					for (Zweitstimme zweitstimme : wk
-							.getZweitstimmenProPartei()) {
-						if (zweitstimme.getPartei().equals(stimme.getPartei())) {
-							
-							alteZweitstimme = (Zweitstimme) zweitstimme.deepCopy();
-							zweitstimme.setAnzahl(stimme.getAnzahl());
-							break;
-						}
+		for (final Wahlkreis wk : this.deutschland.getWahlkreise()) {
+			if (wk.equals(stimme.getGebiet())) {
+				for (final Zweitstimme zweitstimme : wk
+						.getZweitstimmenProPartei()) {
+					if (zweitstimme.getPartei().equals(stimme.getPartei())) {
+
+						alteZweitstimme = (Zweitstimme) zweitstimme.deepCopy();
+						zweitstimme.setAnzahl(stimme.getAnzahl());
+						break;
 					}
-					break;
 				}
+				break;
 			}
-		
+		}
+
 		return alteZweitstimme;
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
+
+	/**
+	 * Falls man eine Stimme bereits zurueckgesetzt hat, kann man dies auch
+	 * wieder herstellen.
+	 * 
+	 * @return true wenn erfolgreich
+	 */
+	public boolean wiederherstellen() {
+		final Stimme alteStimme = this.chronik.wiederherstellenStimme();
+		return setzeStimme(alteStimme, false);
 	}
 
 	/**
@@ -300,65 +356,7 @@ public class Bundestagswahl implements Serializable {
 	 * @return ob erfolgreich oder nicht
 	 */
 	public boolean zurueckSetzen() {
-		Stimme alteStimme = this.chronik.zuruecksetzenStimme();
-		return this.setzeStimme(alteStimme, false);
-	}
-	
-	/**
-	 * Falls man eine Stimme bereits zurueckgesetzt hat, kann man dies
-	 * auch wieder herstellen.
-	 * @return
-	 * 		true wenn erfolgreich
-	 */
-	public boolean wiederherstellen() {
-		Stimme alteStimme = this.chronik.wiederherstellenStimme();
-		return this.setzeStimme(alteStimme, false);
-	}
-
-	@Override
-	public String toString() {
-		return this.name;
-	}
-	
-	/**
-	 * Prueft, ob eine Stimme zum zuruecksetzen vorhanden
-	 * ist.
-	 * @return
-	 * 		true wenn es vorhanden ist.
-	 */
-	public boolean hatStimmenZumZuruecksetzen() {
-		return this.chronik.hatStimmenZumZuruecksetzen();
-	}
-	
-	/**
-	 * Prueft, ob eine Stimme zum wiederherstellen vorhanden
-	 * ist.
-	 * @return
-	 * 		true wenn es vorhanden ist.
-	 */
-	public boolean hatStimmenZumWiederherstellen() {
-		return this.chronik.hatStimmenZumWiederherstellen();
-	}
-	
-	/**
-	 * Sucht nach einer Partei mit dem gegebenen Namen
-	 * in dieser Bundestagswahl und gibt diese zurück.
-	 * 
-	 * Gibt null zurück wenn keine Partei mit exakt diesem Namen gefunden wurde.
-	 * 
-	 * @param name der Name der Partei die gesucht wird
-	 * @return eine Partei mit dem gegebenen Namen
-	 */
-	public Partei getParteiByName(String name) {
-		Partei result = null;
-		
-		for (Partei partei : this.getParteien()) {
-			if (partei.getName().equals(name)) {
-				result = partei;
-				break;
-			}
-		}
-		
-		return result;
+		final Stimme alteStimme = this.chronik.zuruecksetzenStimme();
+		return setzeStimme(alteStimme, false);
 	}
 }

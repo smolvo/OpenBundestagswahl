@@ -32,7 +32,7 @@ public class ExportDialog extends JDialog {
 	 */
 	public ExportDialog(Programmfenster pf) {
 		this.pf = pf;
-		dateiAuswahl = new JFileChooser();
+		this.dateiAuswahl = new JFileChooser();
 
 		// allgemeine Anpassungen des Fensters
 		setTitle("Exportieren");
@@ -41,10 +41,10 @@ public class ExportDialog extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-		int rueckgabeWert = dateiAuswahl.showSaveDialog(null);
+		final int rueckgabeWert = this.dateiAuswahl.showSaveDialog(null);
 
 		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
-			String pfad = dateiAuswahl.getSelectedFile().toString();
+			final String pfad = this.dateiAuswahl.getSelectedFile().toString();
 			Steuerung.getInstance().exportieren(pfad);
 		} else {
 			JOptionPane.showMessageDialog(pf, "Speichern abgebrochen.",
@@ -58,6 +58,6 @@ public class ExportDialog extends JDialog {
 	 * @return das Programmfenster zurück.
 	 */
 	public Programmfenster getPf() {
-		return pf;
+		return this.pf;
 	}
 }

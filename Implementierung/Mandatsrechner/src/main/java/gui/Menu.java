@@ -16,7 +16,6 @@ import main.java.gui.dialoge.HandbuchDialog;
 import main.java.gui.dialoge.ImportDialog;
 import main.java.gui.dialoge.LizenzDialog;
 import main.java.gui.dialoge.VergleichDialog;
-import main.java.model.Bundestagswahl;
 import main.java.steuerung.Steuerung;
 
 /**
@@ -25,6 +24,92 @@ import main.java.steuerung.Steuerung;
  * 
  */
 public class Menu extends JMenuBar {
+
+	/**
+	 * eingebetteter Listener zur Menu- Leiste
+	 * 
+	 */
+	private class MenuListener implements ActionListener {
+
+		/** rerpäsentiert das Menä */
+		private final Menu menu;
+
+		/**
+		 * Der Konstruktor initialisiert den Listener.
+		 * 
+		 * @param menu
+		 *            Menü
+		 */
+		public MenuListener(Menu menu) {
+			super();
+			this.menu = menu;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == this.menu.importieren) {
+				importiere();
+			} else if (e.getSource() == this.menu.speichern) {
+				new ExportDialog(Menu.this.pf);
+			} else if (e.getSource() == this.menu.beenden) {
+				final int eingabe = JOptionPane.showConfirmDialog(null,
+						"Soll Programm wirklich beendet werden?",
+						"Einverständnis", JOptionPane.YES_NO_OPTION);
+				if (eingabe == 0) {
+					System.exit(0);
+				}
+			} else if (e.getSource() == this.menu.rueckgaengig) {
+				Steuerung.getInstance().zurueckSetzen();
+				Steuerung.getInstance().berechneSitzverteilung();
+				setzeSichtbarkeit();
+				final WahlFenster fenster = (WahlFenster) Menu.this.pf
+						.getTabs().getSelectedComponent();
+				Menu.this.pf
+						.getTabs()
+						.getWahlfenster()
+						.getSteuerung()
+						.aktualisiereWahlfenster(
+								fenster.getAnsicht().getAktuellesGebiet());
+
+			} else if (e.getSource() == this.menu.wiederherstellen) {
+				Steuerung.getInstance().wiederherrstellen();
+				Steuerung.getInstance().berechneSitzverteilung();
+				setzeSichtbarkeit();
+				final WahlFenster fenster = (WahlFenster) Menu.this.pf
+						.getTabs().getSelectedComponent();
+				Menu.this.pf
+						.getTabs()
+						.getWahlfenster()
+						.getSteuerung()
+						.aktualisiereWahlfenster(
+								fenster.getAnsicht().getAktuellesGebiet());
+			} else if (e.getSource() == this.menu.vergleichen) {
+				new VergleichDialog(Menu.this.pf);
+			} else if (e.getSource() == this.menu.zufaelligeWahl) {
+				new GeneratorDialog(Menu.this.pf.getBundestagswahlen(),
+						Menu.this.pf);
+			} else if (e.getSource() == this.menu.handbuch) {
+				new HandbuchDialog();
+			} else if (e.getSource() == this.menu.about) {
+				new AboutDialog();
+			} else if (e.getSource() == this.menu.lizenz) {
+				new LizenzDialog();
+			}
+		}
+
+		/**
+		 * Diese Methode importiert eine Datei.
+		 */
+		private void importiere() {
+			if (Menu.this.pf.getiD() == null) {
+				final ImportDialog iD = new ImportDialog(Menu.this.pf);
+				Menu.this.pf.setiD(iD);
+				Menu.this.pf.getiD().importiereWahl();
+			} else {
+				Menu.this.pf.getiD().importiereWahl();
+			}
+		}
+	}
 
 	/** Automatisch generierte serialVersionUID */
 	private static final long serialVersionUID = -2922572375430998442L;
@@ -41,11 +126,11 @@ public class Menu extends JMenuBar {
 	/** repräsentiert den Menüleisteneintrag Extras */
 	private final JMenu extras;
 
-	/** repräsentiert den Menüleisteneintrag Hilfe */
-	private final JMenu hilfe;
-
 	// /** repräsentiert den Menäleisteneintrag Wahldaten Generieren */
 	// private final JMenu wahldatenGenerieren;
+
+	/** repräsentiert den Menüleisteneintrag Hilfe */
+	private final JMenu hilfe;
 
 	/** repräsentiert den Importieren Eintrag */
 	private final JMenuItem importieren;
@@ -90,155 +175,84 @@ public class Menu extends JMenuBar {
 			throw new IllegalArgumentException("Eingabe-Parameter sind null.");
 		}
 		this.pf = pf;
-		datei = new JMenu("Datei");
-		bearbeiten = new JMenu("Bearbeiten");
-		extras = new JMenu("Extras");
-		hilfe = new JMenu("Hilfe");
+		this.datei = new JMenu("Datei");
+		this.bearbeiten = new JMenu("Bearbeiten");
+		this.extras = new JMenu("Extras");
+		this.hilfe = new JMenu("Hilfe");
 
 		// der Menu-Reiter "Datei"
-		importieren = new JMenuItem("Importieren");
-		importieren.setIcon(new ImageIcon(
+		this.importieren = new JMenuItem("Importieren");
+		this.importieren.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/importieren.png"));
-		speichern = new JMenuItem("Speichern");
-		speichern.setIcon(new ImageIcon(
+		this.speichern = new JMenuItem("Speichern");
+		this.speichern.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/speichern.png"));
-		beenden = new JMenuItem("Beenden");
-		beenden.setIcon(new ImageIcon(
+		this.beenden = new JMenuItem("Beenden");
+		this.beenden.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/beenden.png"));
 
-		datei.add(importieren);
-		datei.add(speichern);
-		datei.addSeparator();
-		datei.add(beenden);
+		this.datei.add(this.importieren);
+		this.datei.add(this.speichern);
+		this.datei.addSeparator();
+		this.datei.add(this.beenden);
 
 		// der Menu-Reiter "Bearbeiten"
-		rueckgaengig = new JMenuItem("Rückgängig");
-		rueckgaengig.setIcon(new ImageIcon(
+		this.rueckgaengig = new JMenuItem("Rückgängig");
+		this.rueckgaengig.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/rueckgaengig.png"));
 
-		wiederherstellen = new JMenuItem("Wiederherstellen");
-		wiederherstellen.setIcon(new ImageIcon(
+		this.wiederherstellen = new JMenuItem("Wiederherstellen");
+		this.wiederherstellen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/wiederherstellen.png"));
 
-		bearbeiten.add(rueckgaengig);
-		bearbeiten.add(wiederherstellen);
+		this.bearbeiten.add(this.rueckgaengig);
+		this.bearbeiten.add(this.wiederherstellen);
 
 		// der Menu-Reiter "Extras"
-		vergleichen = new JMenuItem("Vergleichen");
-		vergleichen.setIcon(new ImageIcon(
+		this.vergleichen = new JMenuItem("Vergleichen");
+		this.vergleichen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/vergleichen.png"));
-		zufaelligeWahl = new JMenuItem("Wahl generieren");
+		this.zufaelligeWahl = new JMenuItem("Wahl generieren");
 
-		extras.add(vergleichen);
-		extras.add(zufaelligeWahl);
+		this.extras.add(this.vergleichen);
+		this.extras.add(this.zufaelligeWahl);
 
 		// der Menu-Reiter "Hilfe"
-		handbuch = new JMenuItem("Handbuch");
-		handbuch.setIcon(new ImageIcon(
+		this.handbuch = new JMenuItem("Handbuch");
+		this.handbuch.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/handbuch.png"));
-		about = new JMenuItem("About");
-		about.setIcon(new ImageIcon("src/main/resources/gui/images/about.png"));
-		lizenz = new JMenuItem("Lizenz");
-		lizenz.setIcon(new ImageIcon("src/main/resources/gui/images/gpl.png"));
+		this.about = new JMenuItem("About");
+		this.about.setIcon(new ImageIcon(
+				"src/main/resources/gui/images/about.png"));
+		this.lizenz = new JMenuItem("Lizenz");
+		this.lizenz.setIcon(new ImageIcon(
+				"src/main/resources/gui/images/gpl.png"));
 
-		hilfe.add(handbuch);
-		hilfe.add(about);
-		hilfe.add(lizenz);
+		this.hilfe.add(this.handbuch);
+		this.hilfe.add(this.about);
+		this.hilfe.add(this.lizenz);
 
-		rueckgaengig.setEnabled(false);
-		wiederherstellen.setEnabled(false);
+		this.rueckgaengig.setEnabled(false);
+		this.wiederherstellen.setEnabled(false);
 
-		this.add(datei);
-		this.add(bearbeiten);
-		this.add(extras);
-		this.add(hilfe);
+		this.add(this.datei);
+		this.add(this.bearbeiten);
+		this.add(this.extras);
+		this.add(this.hilfe);
 
-		MenuListener m = new MenuListener(this);
-		importieren.addActionListener(m);
-		speichern.addActionListener(m);
-		beenden.addActionListener(m);
-		rueckgaengig.addActionListener(m);
-		wiederherstellen.addActionListener(m);
-		vergleichen.addActionListener(m);
-		zufaelligeWahl.addActionListener(m);
-		handbuch.addActionListener(m);
-		about.addActionListener(m);
-		lizenz.addActionListener(m);
+		final MenuListener m = new MenuListener(this);
+		this.importieren.addActionListener(m);
+		this.speichern.addActionListener(m);
+		this.beenden.addActionListener(m);
+		this.rueckgaengig.addActionListener(m);
+		this.wiederherstellen.addActionListener(m);
+		this.vergleichen.addActionListener(m);
+		this.zufaelligeWahl.addActionListener(m);
+		this.handbuch.addActionListener(m);
+		this.about.addActionListener(m);
+		this.lizenz.addActionListener(m);
 
 		setVisible(true);
-	}
-
-	/**
-	 * eingebetteter Listener zur Menu- Leiste
-	 * 
-	 */
-	private class MenuListener implements ActionListener {
-
-		/** rerpäsentiert das Menä */
-		private Menu menu;
-
-		/**
-		 * Der Konstruktor initialisiert den Listener.
-		 * 
-		 * @param menu
-		 *            Menü
-		 */
-		public MenuListener(Menu menu) {
-			super();
-			this.menu = menu;
-		}
-
-		/**
-		 * Diese Methode importiert eine Datei.
-		 */
-		private void importiere() {
-			if (pf.getiD() == null) {
-				ImportDialog iD = new ImportDialog(pf);
-				pf.setiD(iD);
-				pf.getiD().importiereWahl();
-			} else {
-				pf.getiD().importiereWahl();
-			}
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == menu.importieren) {
-				importiere();
-			} else if (e.getSource() == menu.speichern) {
-				new ExportDialog(pf);
-			} else if (e.getSource() == menu.beenden) {
-				int eingabe = JOptionPane.showConfirmDialog(null,
-						"Soll Programm wirklich beendet werden?",
-						"Einverständnis", JOptionPane.YES_NO_OPTION);
-				if (eingabe == 0) {
-					System.exit(0);
-				}
-			} else if (e.getSource() == menu.rueckgaengig) {
-				Steuerung.getInstance().zurueckSetzen();
-				Steuerung.getInstance().berechneSitzverteilung();
-				setzeSichtbarkeit();
-				WahlFenster fenster = (WahlFenster) pf.getTabs().getSelectedComponent();
-				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(fenster.getAnsicht().getAktuellesGebiet());
-
-			} else if (e.getSource() == menu.wiederherstellen) {
-				Steuerung.getInstance().wiederherrstellen();
-				Steuerung.getInstance().berechneSitzverteilung();
-				setzeSichtbarkeit();
-				WahlFenster fenster = (WahlFenster) pf.getTabs().getSelectedComponent();
-				pf.getTabs().getWahlfenster().getSteuerung().aktualisiereWahlfenster(fenster.getAnsicht().getAktuellesGebiet());
-			} else if (e.getSource() == menu.vergleichen) {
-				new VergleichDialog(pf);
-			} else if (e.getSource() == menu.zufaelligeWahl) {
-				new GeneratorDialog(pf.getBundestagswahlen(), pf);
-			} else if (e.getSource() == menu.handbuch) {
-				new HandbuchDialog();
-			} else if (e.getSource() == menu.about) {
-				new AboutDialog();
-			} else if (e.getSource() == menu.lizenz) {
-				new LizenzDialog();
-			}
-		}
 	}
 
 	/**
@@ -249,14 +263,14 @@ public class Menu extends JMenuBar {
 	 */
 	public void setzeSichtbarkeit() {
 		if (Steuerung.getInstance().getBtw().hatStimmenZumWiederherstellen()) {
-			wiederherstellen.setEnabled(true);
+			this.wiederherstellen.setEnabled(true);
 		} else {
-			wiederherstellen.setEnabled(false);
+			this.wiederherstellen.setEnabled(false);
 		}
 		if (!Steuerung.getInstance().getBtw().hatStimmenZumZuruecksetzen()) {
-			rueckgaengig.setEnabled(false);
-		}else {
-			rueckgaengig.setEnabled(true);
+			this.rueckgaengig.setEnabled(false);
+		} else {
+			this.rueckgaengig.setEnabled(true);
 		}
 
 	}

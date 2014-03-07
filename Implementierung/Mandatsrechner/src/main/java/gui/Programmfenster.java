@@ -38,61 +38,65 @@ public final class Programmfenster extends JFrame {
 	/** repräsentiert den ImportDialog des Programms */
 	private ImportDialog iD;
 
-
 	/**
 	 * Der Konstruktor des Programmfensters
 	 */
 	public Programmfenster() {
 		// allgemeine Anpassungen des Programmfensters
 		setTitle("OpenBundestagswahl");
-		this.setLocationRelativeTo(null);
-		this.setResizable(true);
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		Image icon = new ImageIcon("src/main/resources/gui/images/wahl2.png")
-				.getImage();
-		this.setIconImage(icon);
+		final Image icon = new ImageIcon(
+				"src/main/resources/gui/images/wahl2.png").getImage();
+		setIconImage(icon);
 
 		// Menü- Leiste erstellen
-		menu = new Menu(this);
-		setJMenuBar(menu);
+		this.menu = new Menu(this);
+		setJMenuBar(this.menu);
 
 		// Tab- Leiste erstellen
-		tabs = new TabLeiste(this);
-		this.add(tabs);
+		this.tabs = new TabLeiste(this);
+		this.add(this.tabs);
 
 		// Wahl 2013
-		File[] csvDateien = new File[2];
+		final File[] csvDateien = new File[2];
 		csvDateien[0] = new File(
 				"src/main/resources/importexport/Ergebnis2013.csv");
 		csvDateien[1] = new File(
 				"src/main/resources/importexport/Wahlbewerber2013.csv");
-		Bundestagswahl w = Steuerung.getInstance().importieren(csvDateien);
+		final Bundestagswahl w = Steuerung.getInstance()
+				.importieren(csvDateien);
 
 		wahlHinzufuegen(w);
 
-		this.setVisible(true);
+		setVisible(true);
 		pack();
-		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	/**
-	 * Fügt eine Wahl hinzu.
+	 * Diese Methode gibt eine Liste an Bundestagswahlen aus, die in das
+	 * Programm geladen wurden.
 	 * 
-	 * @param w
-	 *            Wahl
-	 * @throws IllegalArgumentException
-	 *             wenn das Bundestagswahl-Objekt null ist.
+	 * @return Bundestagswahl
 	 */
-	public void wahlHinzufuegen(Bundestagswahl w) {
-		if (w == null) {
-			throw new IllegalArgumentException("Bundestagswahl ist leer.");
+	public List<Bundestagswahl> getBundestagswahlen() {
+		final List<Bundestagswahl> btws = new LinkedList<Bundestagswahl>();
+		for (final WahlFenster fenster : this.wahlen) {
+			btws.add(fenster.getBtw());
 		}
-		Steuerung.getInstance().setBtw(w);
-		Steuerung.getInstance().berechneSitzverteilung();
-		WahlFenster fenster = new WahlFenster(w, this);
-		this.wahlen.add(fenster);
-		this.tabs.neuerTab(fenster, w.getName());
+		return btws;
+	}
+
+	/**
+	 * Gibt den ImportDialog aus.
+	 * 
+	 * @return ImportDialog
+	 */
+	public ImportDialog getiD() {
+		return this.iD;
 	}
 
 	/**
@@ -101,32 +105,7 @@ public final class Programmfenster extends JFrame {
 	 * @return Menü
 	 */
 	public Menu getMenu() {
-		return menu;
-	}
-
-	/**
-	 * Gibt die Liste an Wahlfenstern zurück
-	 * 
-	 * @return Wahlfenster
-	 */
-	public List<WahlFenster> getWahlen() {
-		return wahlen;
-	}
-
-	/**
-	 * Setzt die Wahlfenster
-	 * 
-	 * @param wahlen
-	 *            Wahlfenster
-	 * @throws IllegalArgumentException
-	 *             wenn das Listenobjekt null ist.
-	 */
-	public void setWahlen(List<WahlFenster> wahlen) {
-		if (wahlen == null) {
-			throw new IllegalArgumentException("Wahlfenster sind null.");
-		} else {
-			this.wahlen = wahlen;
-		}
+		return this.menu;
 	}
 
 	/**
@@ -135,7 +114,31 @@ public final class Programmfenster extends JFrame {
 	 * @return Tableiste
 	 */
 	public TabLeiste getTabs() {
-		return tabs;
+		return this.tabs;
+	}
+
+	/**
+	 * Gibt die Liste an Wahlfenstern zurück
+	 * 
+	 * @return Wahlfenster
+	 */
+	public List<WahlFenster> getWahlen() {
+		return this.wahlen;
+	}
+
+	/**
+	 * Setzt den ImportDialog.
+	 * 
+	 * @param iD
+	 *            ImportDialog
+	 * @throws IllegalArgumentException
+	 *             wenn das ImportDialog-Objekt null ist.
+	 */
+	public void setiD(ImportDialog iD) {
+		if (iD == null) {
+			throw new IllegalArgumentException("Keinen ImportDialog gefunden.");
+		}
+		this.iD = iD;
 	}
 
 	/**
@@ -155,41 +158,38 @@ public final class Programmfenster extends JFrame {
 	}
 
 	/**
-	 * Diese Methode gibt eine Liste an Bundestagswahlen aus, die in das
-	 * Programm geladen wurden.
+	 * Setzt die Wahlfenster
 	 * 
-	 * @return Bundestagswahl
-	 */
-	public List<Bundestagswahl> getBundestagswahlen() {
-		List<Bundestagswahl> btws = new LinkedList<Bundestagswahl>();
-		for (WahlFenster fenster : this.wahlen) {
-			btws.add(fenster.getBtw());
-		}
-		return btws;
-	}
-
-	/**
-	 * Gibt den ImportDialog aus.
-	 * 
-	 * @return ImportDialog
-	 */
-	public ImportDialog getiD() {
-		return iD;
-	}
-
-	/**
-	 * Setzt den ImportDialog.
-	 * 
-	 * @param iD
-	 *            ImportDialog
+	 * @param wahlen
+	 *            Wahlfenster
 	 * @throws IllegalArgumentException
-	 *             wenn das ImportDialog-Objekt null ist.
+	 *             wenn das Listenobjekt null ist.
 	 */
-	public void setiD(ImportDialog iD) {
-		if (iD == null) {
-			throw new IllegalArgumentException("Keinen ImportDialog gefunden.");
+	public void setWahlen(List<WahlFenster> wahlen) {
+		if (wahlen == null) {
+			throw new IllegalArgumentException("Wahlfenster sind null.");
+		} else {
+			this.wahlen = wahlen;
 		}
-		this.iD = iD;
+	}
+
+	/**
+	 * Fügt eine Wahl hinzu.
+	 * 
+	 * @param w
+	 *            Wahl
+	 * @throws IllegalArgumentException
+	 *             wenn das Bundestagswahl-Objekt null ist.
+	 */
+	public void wahlHinzufuegen(Bundestagswahl w) {
+		if (w == null) {
+			throw new IllegalArgumentException("Bundestagswahl ist leer.");
+		}
+		Steuerung.getInstance().setBtw(w);
+		Steuerung.getInstance().berechneSitzverteilung();
+		final WahlFenster fenster = new WahlFenster(w, this);
+		this.wahlen.add(fenster);
+		this.tabs.neuerTab(fenster, w.getName());
 	}
 
 }

@@ -12,11 +12,11 @@ public class LandTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -6973781659566829816L;
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
-			"Direktmandate", "Überhangmandate" };
+	private final String[] columns = new String[] { "Partei", "Zweitstimmen",
+			"%", "Direktmandate", "Überhangmandate" };
 
 	/** hält alle relevanten Daten */
-	private LandDaten daten;
+	private final LandDaten daten;
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
@@ -34,27 +34,32 @@ public class LandTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public int getRowCount() {
-		return daten.size();
-	}
-
-	@Override
 	public int getColumnCount() {
 		return 5;
 	}
 
 	@Override
+	public String getColumnName(int columnIndex) {
+		return this.columns[columnIndex];
+	}
+
+	@Override
+	public int getRowCount() {
+		return this.daten.size();
+	}
+
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return daten.getParteien(rowIndex);
+			return this.daten.getParteien(rowIndex);
 		} else if (columnIndex == 1) {
-			return daten.getStimmen(rowIndex).getAnzahl();
+			return this.daten.getStimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 2) {
-			return daten.getProzent(rowIndex);
+			return this.daten.getProzent(rowIndex);
 		} else if (columnIndex == 3) {
-			return daten.getDirektmandate(rowIndex);
+			return this.daten.getDirektmandate(rowIndex);
 		} else if (columnIndex == 4) {
-			return daten.getUeberhangsmandate(rowIndex);
+			return this.daten.getUeberhangsmandate(rowIndex);
 		} else {
 			return null;
 		}
@@ -63,10 +68,5 @@ public class LandTableModel extends AbstractTableModel {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
-	}
-
-	@Override
-	public String getColumnName(int columnIndex) {
-		return columns[columnIndex];
 	}
 }

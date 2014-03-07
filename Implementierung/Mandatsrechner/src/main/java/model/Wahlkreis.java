@@ -44,8 +44,8 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		if (name == null || wahlberechtigte < 0) {
 			throw new IllegalArgumentException("Eingabeparameter sind null");
 		}
-		this.setName(name);
-		this.setWahlberechtigte(wahlberechtigte);
+		setName(name);
+		setWahlberechtigte(wahlberechtigte);
 		this.erststimmen = new LinkedList<>();
 		this.zweitstimmen = new LinkedList<>();
 	}
@@ -67,10 +67,75 @@ public class Wahlkreis extends Gebiet implements Serializable {
 		if (name == null || wahlberechtigte < 0 || erststimmen == null) {
 			throw new IllegalArgumentException("Eingabeparameter sind null");
 		}
-		this.setName(name);
-		this.setWahlberechtigte(wahlberechtigte);
-		this.setErststimmen(erststimmen);
+		setName(name);
+		setWahlberechtigte(wahlberechtigte);
+		setErststimmen(erststimmen);
 		this.zweitstimmen = new LinkedList<>();
+	}
+
+	/**
+	 * Gibt die Erststimmenanzahl aller Parteien im Wahlkreis.
+	 * 
+	 * @return die Erststimmenanzahl aller Partein.
+	 */
+	@Override
+	public int getAnzahlErststimmen() {
+		int erststimmeGesamt = 0;
+		for (final Erststimme erst : getErststimmenProPartei()) {
+			erststimmeGesamt += erst.getAnzahl();
+		}
+		return erststimmeGesamt;
+	}
+
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
+	 * 
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlErststimmen(Partei partei) {
+		int anzahl = 0;
+		for (final Erststimme erststimme : getErststimmenProPartei()) {
+			if (partei.getName().equals(
+					erststimme.getKandidat().getPartei().getName())) {
+				anzahl = erststimme.getAnzahl();
+			}
+		}
+		return anzahl;
+	}
+
+	/**
+	 * Gibt die Zweitstimmenanzahl aller Parteien im Wahlkreis.
+	 * 
+	 * @return die Zweitstimmenanzahl aller Partein.
+	 */
+	@Override
+	public int getAnzahlZweitstimmen() {
+		int anzahl = 0;
+		for (final Zweitstimme zweitstimme : getZweitstimmenProPartei()) {
+			anzahl += zweitstimme.getAnzahl();
+		}
+		return anzahl;
+	}
+
+	/**
+	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
+	 * 
+	 * @param partei
+	 *            Die Partei zu der die Stimmen gegeben werden sollen.
+	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 */
+	@Override
+	public int getAnzahlZweitstimmen(Partei partei) {
+		int anzahl = 0;
+		for (final Zweitstimme zweitStimme : this.zweitstimmen) {
+			if (zweitStimme.getPartei().getName().equals(partei.getName())) {
+				anzahl = zweitStimme.getAnzahl();
+			}
+		}
+		return anzahl;
 	}
 
 	/**
@@ -84,13 +149,37 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 */
 	public Erststimme getErststimme(Partei partei) {
 		Erststimme ergebnis = null;
-		for (Erststimme erst : this.erststimmen) {
+		for (final Erststimme erst : this.erststimmen) {
 			if (erst.getKandidat().getPartei() != null
 					&& erst.getKandidat().getPartei().equals(partei)) {
 				ergebnis = erst;
 			}
 		}
 		return ergebnis;
+	}
+
+	/**
+	 * Gibt das Erststimme-Objekt zurueck.
+	 * 
+	 * @return alle Erststimmen des Wahlkreises
+	 */
+
+	public LinkedList<Erststimme> getErststimmenProPartei() {
+		return this.erststimmen;
+	}
+
+	@Override
+	public int getWahlberechtigte() {
+		return this.wahlberechtigte;
+	}
+
+	/**
+	 * Gibt die Wahlkreisnummer zurueck.
+	 * 
+	 * @return die Wahlkreisnummer
+	 */
+	public int getWahlkreisnummer() {
+		return this.wahlkreisnummer;
 	}
 
 	/**
@@ -103,29 +192,26 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Setzt den Wahlkreissieger.
+	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
+	 * kein solches Objekt mit der gegebenen Partei existiert.
 	 * 
-	 * @param wahlkreisSieger
-	 *            der Kandidat mit den meisten Stimmen.
+	 * @param partei
+	 *            die Partei deren Zweitstimme Objekt gesucht werden soll
+	 * @return das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null,
+	 *         wenn kein solches Objekt mit der gegebenen Partei existiert.
 	 * @throws IllegalArgumentException
-	 *             wenn der Wahlkreissieger leer ist.
+	 *             wenn die Partei null ist.
 	 */
-	public void setWahlkreisSieger(Kandidat wahlkreisSieger)
-			throws IllegalArgumentException {
-		if (wahlkreisSieger == null) {
-			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
+	public Zweitstimme getZweitstimme(Partei partei) {
+		if (partei == null) {
+			throw new IllegalArgumentException("Partei ist null");
 		}
-		this.wahlkreisSieger = wahlkreisSieger;
-	}
-
-	/**
-	 * Gibt das Erststimme-Objekt zurueck.
-	 * 
-	 * @return alle Erststimmen des Wahlkreises
-	 */
-	
-	public LinkedList<Erststimme> getErststimmenProPartei() {
-		return this.erststimmen;
+		for (final Zweitstimme zweitStimme : getZweitstimmenProPartei()) {
+			if (zweitStimme.getPartei().equals(partei)) {
+				return zweitStimme;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -133,7 +219,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 * 
 	 * @return alle Zweitstimmen des Wahlkreises
 	 */
-	
+
 	public LinkedList<Zweitstimme> getZweitstimmenProPartei() {
 		return this.zweitstimmen;
 	}
@@ -156,28 +242,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Setzt die Liste aller Zweitstimmen-Objekte (pro Partei).
-	 * 
-	 * @param zweitstimmen
-	 *            Die Liste aller Zweitstimmen-Objekte (pro Partei).
-	 * @throws IllegalArgumentException
-	 *             wenn die Liste aller Zweitstimmen-Objekte null ist.
-	 */
-	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen)
-			throws IllegalArgumentException {
-		if (zweitstimmen == null) {
-			throw new IllegalArgumentException(
-					"Parameter \"zweitstimmen\" ist null!");
-		}
-		this.zweitstimmen = zweitstimmen;
-	}
-
-	@Override
-	public int getWahlberechtigte() {
-		return this.wahlberechtigte;
-	}
-
-	/**
 	 * Diese Methode setzt die Anzahl Wahlberechtigter.
 	 * 
 	 * @param wahlberechtigte
@@ -190,15 +254,6 @@ public class Wahlkreis extends Gebiet implements Serializable {
 					"Der Parameter \"wahlberechtigte\" ist negativ!");
 		}
 		this.wahlberechtigte = wahlberechtigte;
-	}
-
-	/**
-	 * Gibt die Wahlkreisnummer zurueck.
-	 * 
-	 * @return die Wahlkreisnummer
-	 */
-	public int getWahlkreisnummer() {
-		return wahlkreisnummer;
 	}
 
 	/**
@@ -219,90 +274,36 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	}
 
 	/**
-	 * Gibt das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
-	 * kein solches Objekt mit der gegebenen Partei existiert.
+	 * Setzt den Wahlkreissieger.
 	 * 
-	 * @param partei
-	 *            die Partei deren Zweitstimme Objekt gesucht werden soll
-	 * @return das Zweitstimme-Objekt der gegebenen Partei zurï¿½ck und null, wenn
-	 *         kein solches Objekt mit der gegebenen Partei existiert.
+	 * @param wahlkreisSieger
+	 *            der Kandidat mit den meisten Stimmen.
 	 * @throws IllegalArgumentException
-	 *             wenn die Partei null ist.
+	 *             wenn der Wahlkreissieger leer ist.
 	 */
-	public Zweitstimme getZweitstimme(Partei partei) {
-		if (partei == null) {
-			throw new IllegalArgumentException("Partei ist null");
+	public void setWahlkreisSieger(Kandidat wahlkreisSieger)
+			throws IllegalArgumentException {
+		if (wahlkreisSieger == null) {
+			throw new IllegalArgumentException("Wahlkreissieger ist leer!");
 		}
-		for (Zweitstimme zweitStimme : this.getZweitstimmenProPartei()) {
-			if (zweitStimme.getPartei().equals(partei)) {
-				return zweitStimme;
-			}
-		}
-		return null;
+		this.wahlkreisSieger = wahlkreisSieger;
 	}
 
 	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
+	 * Setzt die Liste aller Zweitstimmen-Objekte (pro Partei).
 	 * 
-	 * @param partei
-	 *            Die Partei zu der die Stimmen gegeben werden sollen.
-	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
+	 * @param zweitstimmen
+	 *            Die Liste aller Zweitstimmen-Objekte (pro Partei).
+	 * @throws IllegalArgumentException
+	 *             wenn die Liste aller Zweitstimmen-Objekte null ist.
 	 */
-	@Override
-	public int getAnzahlZweitstimmen(Partei partei) {
-		int anzahl = 0;
-		for (Zweitstimme zweitStimme : this.zweitstimmen) {
-			if (zweitStimme.getPartei().getName().equals(partei.getName())) {
-				anzahl = zweitStimme.getAnzahl();
-			}
+	public void setZweitstimmen(LinkedList<Zweitstimme> zweitstimmen)
+			throws IllegalArgumentException {
+		if (zweitstimmen == null) {
+			throw new IllegalArgumentException(
+					"Parameter \"zweitstimmen\" ist null!");
 		}
-		return anzahl;
-	}
-
-	/**
-	 * Gibt die anzahl der Zweitstimmen einer bestimmten Partei zurï¿½ck.
-	 * @param partei
-	 *            Die Partei zu der die Stimmen gegeben werden sollen.
-	 * @return Die anzahl der Zweitstimmen einer bestimmten Partei.
-	 */
-	@Override
-	public int getAnzahlErststimmen(Partei partei) {
-		int anzahl = 0;
-		for (Erststimme erststimme : this.getErststimmenProPartei()) {
-			if (partei.getName().equals(
-					erststimme.getKandidat().getPartei().getName())) {
-				anzahl = erststimme.getAnzahl();
-			}
-		}
-		return anzahl;
-	}
-
-	/**
-	 * Gibt die Erststimmenanzahl aller Parteien im Wahlkreis.
-	 * 
-	 * @return die Erststimmenanzahl aller Partein.
-	 */
-	@Override
-	public int getAnzahlErststimmen() {
-		int erststimmeGesamt = 0;
-		for (Erststimme erst : getErststimmenProPartei()) {
-			erststimmeGesamt += erst.getAnzahl();
-		}
-		return erststimmeGesamt;
-	}
-	
-	/**
-	 * Gibt die Zweitstimmenanzahl aller Parteien im Wahlkreis.
-	 * 
-	 * @return die Zweitstimmenanzahl aller Partein.
-	 */
-	@Override
-	public int getAnzahlZweitstimmen() {
-		int anzahl = 0;
-		for (Zweitstimme zweitstimme : this.getZweitstimmenProPartei()) {
-			anzahl += zweitstimme.getAnzahl();
-		}
-		return anzahl;
+		this.zweitstimmen = zweitstimmen;
 	}
 
 }

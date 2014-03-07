@@ -1,6 +1,6 @@
 package test.java.config;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -14,19 +14,10 @@ import org.junit.Test;
  */
 public class ConfigTest {
 
-	/**
-	 * Testet die getInstance() Methode bzw den Konstruktor von Config
-	 */
-	@Test
-	public void testGetInstance() {
-		Config config = Config.getInstance();
-		assertTrue("config ist NULL!", config != null);
-	}
-
 	@Test
 	public void testGetConfig() {
-		Config config = Config.getInstance();
-		List<String[]> list = config.getConfig("einwohnerzahl");
+		final Config config = Config.getInstance();
+		final List<String[]> list = config.getConfig("einwohnerzahl");
 
 		// erstmal Ergebnis auf NULL checken
 		assertTrue("list ist NULL!", list != null);
@@ -36,10 +27,19 @@ public class ConfigTest {
 
 	}
 
+	/**
+	 * Testet die getInstance() Methode bzw den Konstruktor von Config
+	 */
+	@Test
+	public void testGetInstance() {
+		final Config config = Config.getInstance();
+		assertTrue("config ist NULL!", config != null);
+	}
+
 	@Test
 	public void testToString() {
-		Config config = Config.getInstance();
-		String alles = config.toString();
+		final Config config = Config.getInstance();
+		final String alles = config.toString();
 
 		// erstmal Ergebnis auf NULL checken
 		assertTrue("list ist NULL!", alles != null);

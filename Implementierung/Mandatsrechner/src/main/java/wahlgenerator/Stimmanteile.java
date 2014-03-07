@@ -39,17 +39,8 @@ public class Stimmanteile {
 					"Der Parameter 'partei' ist null!");
 		}
 		this.partei = partei;
-		this.setAnteilErststimmen(anteilErststimmen);
-		this.setAnteilZweitstimmen(anteilZweitstimmen);
-	}
-
-	/**
-	 * Gibt die zugehï¿½rige Partei zurï¿½ck.
-	 * 
-	 * @return Die zugehï¿½rige Partei.
-	 */
-	public Partei getPartei() {
-		return partei;
+		setAnteilErststimmen(anteilErststimmen);
+		setAnteilZweitstimmen(anteilZweitstimmen);
 	}
 
 	/**
@@ -59,7 +50,26 @@ public class Stimmanteile {
 	 * @return den Anteil der Erststimmen dieser Partei
 	 */
 	public int getAnteilErststimmen() {
-		return anteilErststimmen;
+		return this.anteilErststimmen;
+	}
+
+	/**
+	 * Gibt den Anteil der Zweitstimmen dieser Partei zurï¿½ck. Dieser Wert
+	 * liegt zwischen 0 und 1.
+	 * 
+	 * @return den Anteil der Zweitstimmen dieser Partei
+	 */
+	public int getAnteilZweitstimmen() {
+		return this.anteilZweitstimmen;
+	}
+
+	/**
+	 * Gibt die zugehï¿½rige Partei zurï¿½ck.
+	 * 
+	 * @return Die zugehï¿½rige Partei.
+	 */
+	public Partei getPartei() {
+		return this.partei;
 	}
 
 	/**
@@ -78,16 +88,6 @@ public class Stimmanteile {
 					"Der Wert des Parameters 'anteilErststimmen' liegt nicht im Intervall [0,100]!");
 		}
 		this.anteilErststimmen = anteilErststimmen;
-	}
-
-	/**
-	 * Gibt den Anteil der Zweitstimmen dieser Partei zurï¿½ck. Dieser Wert liegt
-	 * zwischen 0 und 1.
-	 * 
-	 * @return den Anteil der Zweitstimmen dieser Partei
-	 */
-	public int getAnteilZweitstimmen() {
-		return anteilZweitstimmen;
 	}
 
 	/**

@@ -18,14 +18,14 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -6901614554989527176L;
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] { "Partei", "Kandidat",
+	private final String[] columns = new String[] { "Partei", "Kandidat",
 			"Erststimmen", "%", "Zweitstimmen", "%", "Direktmandate" };
 
 	/** hält alle relevanten Daten */
-	private WahlkreisDaten daten;
+	private final WahlkreisDaten daten;
 
 	/** das Tabellenfenster */
-	private TabellenFenster tabellenfenster;
+	private final TabellenFenster tabellenfenster;
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
@@ -47,31 +47,36 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public int getRowCount() {
-		return daten.size();
-	}
-
-	@Override
 	public int getColumnCount() {
 		return 7;
 	}
 
 	@Override
+	public String getColumnName(int columnIndex) {
+		return this.columns[columnIndex];
+	}
+
+	@Override
+	public int getRowCount() {
+		return this.daten.size();
+	}
+
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return daten.getParteiName(rowIndex);
+			return this.daten.getParteiName(rowIndex);
 		} else if (columnIndex == 1) {
-			return daten.getKandidatName(rowIndex);
+			return this.daten.getKandidatName(rowIndex);
 		} else if (columnIndex == 2) {
-			return daten.getErststimmen(rowIndex).getAnzahl();
+			return this.daten.getErststimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 3) {
-			return daten.getErstprozent(rowIndex);
+			return this.daten.getErstprozent(rowIndex);
 		} else if (columnIndex == 4) {
-			return daten.getZweitstimmen(rowIndex).getAnzahl();
+			return this.daten.getZweitstimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 5) {
-			return daten.getZweitprozent(rowIndex);
+			return this.daten.getZweitprozent(rowIndex);
 		} else if (columnIndex == 6) {
-			return daten.getDirektmandate(rowIndex);
+			return this.daten.getDirektmandate(rowIndex);
 		} else {
 			return null;
 		}
@@ -79,7 +84,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if ((columnIndex == 2) || (columnIndex == 4)) {
+		if (columnIndex == 2 || columnIndex == 4) {
 			return true;
 		} else {
 			return false;
@@ -87,21 +92,19 @@ public class WahlkreisTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public String getColumnName(int columnIndex) {
-		return columns[columnIndex];
-	}
-
-	@Override
 	public void setValueAt(Object obj, int rowIndex, int columnIndex) {
 		if (columnIndex == 2) {
-			int alterWert = daten.getErststimmen(rowIndex).getAnzahl();
-			String stringAnzahl = (String) obj;
-			Erststimme erststimme = daten.getErststimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+			final int alterWert = this.daten.getErststimmen(rowIndex)
+					.getAnzahl();
+			final String stringAnzahl = (String) obj;
+			final Erststimme erststimme = this.daten.getErststimmen(rowIndex);
+			final GUISteuerung guiSteuerung = this.tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			int anzahl = -1;
-			int gesamtErst = erststimme.getGebiet().getAnzahlErststimmen();
-			int wahlberechtigte = erststimme.getGebiet().getWahlberechtigte();
+			final int gesamtErst = erststimme.getGebiet()
+					.getAnzahlErststimmen();
+			final int wahlberechtigte = erststimme.getGebiet()
+					.getWahlberechtigte();
 			// zeigt an ob eine Änderung möglich war
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
@@ -110,26 +113,31 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				if (anzahl < 0) {
 					throw new NumberFormatException();
 				}
-				int diffStimme = anzahl - alterWert;
-				if ((gesamtErst + diffStimme) <= wahlberechtigte) {
+				final int diffStimme = anzahl - alterWert;
+				if (gesamtErst + diffStimme <= wahlberechtigte) {
 					if (anzahl != alterWert) {
-						aenderung = guiSteuerung.wertAenderung(erststimme, anzahl);
-						// wenn die Stimme intern geändert wurde auch in der Tabelle
+						aenderung = guiSteuerung.wertAenderung(erststimme,
+								anzahl);
+						// wenn die Stimme intern geändert wurde auch in der
+						// Tabelle
 						// ändern
 						// und berechne-Knopf aufrufen
 						if (aenderung) {
-							this.tabellenfenster.getAnsicht().berechnungNotwendig();
-							Gebiet gebiet = tabellenfenster.getAnsicht()
-									.getAktuellesGebiet();
-							tabellenfenster.getAnsicht().getFenster().getSteuerung()
+							this.tabellenfenster.getAnsicht()
+									.berechnungNotwendig();
+							final Gebiet gebiet = this.tabellenfenster
+									.getAnsicht().getAktuellesGebiet();
+							this.tabellenfenster.getAnsicht().getFenster()
+									.getSteuerung()
 									.aktualisiereWahlfenster(gebiet);
-							daten.getErststimmen(rowIndex).setAnzahl(anzahl);
-							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-							.setzeSichtbarkeit();
+							this.daten.getErststimmen(rowIndex).setAnzahl(
+									anzahl);
+							this.tabellenfenster.getAnsicht().getFenster()
+									.getPf().getMenu().setzeSichtbarkeit();
 						}
 					}
 				} else {
-					int restStimmen = wahlberechtigte - gesamtErst;
+					final int restStimmen = wahlberechtigte - gesamtErst;
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
@@ -138,23 +146,30 @@ public class WahlkreisTableModel extends AbstractTableModel {
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
 				}
-			} catch (NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 
-				JOptionPane.showMessageDialog(this.tabellenfenster,
-						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
-						JOptionPane.INFORMATION_MESSAGE, null);
+				JOptionPane
+						.showMessageDialog(
+								this.tabellenfenster,
+								"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.",
+								"Meldung", JOptionPane.INFORMATION_MESSAGE,
+								null);
 
 			}
 		} else if (columnIndex == 4) {
-			int alterWert = daten.getZweitstimmen(rowIndex).getAnzahl();
-			String stringAnzahl = (String) obj;
-			Zweitstimme zweitstimme = daten.getZweitstimmen(rowIndex);
-			GUISteuerung guiSteuerung = tabellenfenster.getAnsicht()
+			final int alterWert = this.daten.getZweitstimmen(rowIndex)
+					.getAnzahl();
+			final String stringAnzahl = (String) obj;
+			final Zweitstimme zweitstimme = this.daten
+					.getZweitstimmen(rowIndex);
+			final GUISteuerung guiSteuerung = this.tabellenfenster.getAnsicht()
 					.getFenster().getSteuerung();
 			// zeigt an ob eine Änderung möglich war
 			int anzahl = -1;
-			int gesamtZweit = zweitstimme.getGebiet().getAnzahlZweitstimmen();
-			int wahlberechtigte = zweitstimme.getGebiet().getWahlberechtigte();
+			final int gesamtZweit = zweitstimme.getGebiet()
+					.getAnzahlZweitstimmen();
+			final int wahlberechtigte = zweitstimme.getGebiet()
+					.getWahlberechtigte();
 			boolean aenderung = false;
 			// versuche Integer umzuwandeln
 			try {
@@ -162,27 +177,32 @@ public class WahlkreisTableModel extends AbstractTableModel {
 				if (anzahl < 0) {
 					throw new NumberFormatException();
 				}
-				int diffStimme = anzahl - alterWert;
-				if ((gesamtZweit + diffStimme) <= wahlberechtigte) {
+				final int diffStimme = anzahl - alterWert;
+				if (gesamtZweit + diffStimme <= wahlberechtigte) {
 					if (anzahl != alterWert) {
-						aenderung = guiSteuerung.wertAenderung(zweitstimme, anzahl);
-						// wenn die Stimme intern geändert wurde auch in der Tabelle
+						aenderung = guiSteuerung.wertAenderung(zweitstimme,
+								anzahl);
+						// wenn die Stimme intern geändert wurde auch in der
+						// Tabelle
 						// ändern
 						// und berechne-Knopf aufrufen
 						if (aenderung) {
-							this.tabellenfenster.getAnsicht().berechnungNotwendig();
-							Gebiet gebiet = tabellenfenster.getAnsicht()
-									.getAktuellesGebiet();
-							tabellenfenster.getAnsicht().getFenster().getSteuerung()
+							this.tabellenfenster.getAnsicht()
+									.berechnungNotwendig();
+							final Gebiet gebiet = this.tabellenfenster
+									.getAnsicht().getAktuellesGebiet();
+							this.tabellenfenster.getAnsicht().getFenster()
+									.getSteuerung()
 									.aktualisiereWahlfenster(gebiet);
-							daten.getZweitstimmen(rowIndex).setAnzahl(anzahl);
-							
-							tabellenfenster.getAnsicht().getFenster().getPf().getMenu()
-									.setzeSichtbarkeit();
+							this.daten.getZweitstimmen(rowIndex).setAnzahl(
+									anzahl);
+
+							this.tabellenfenster.getAnsicht().getFenster()
+									.getPf().getMenu().setzeSichtbarkeit();
 						}
 					}
 				} else {
-					int restStimmen = wahlberechtigte - gesamtZweit;
+					final int restStimmen = wahlberechtigte - gesamtZweit;
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
@@ -191,11 +211,14 @@ public class WahlkreisTableModel extends AbstractTableModel {
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
 				}
-			} catch (NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 
-				JOptionPane.showMessageDialog(this.tabellenfenster,
-						"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.", "Meldung",
-						JOptionPane.INFORMATION_MESSAGE, null);
+				JOptionPane
+						.showMessageDialog(
+								this.tabellenfenster,
+								"Nur positive ganze Zahlen erlaubt.\nStimme konnte nicht geändert werden.",
+								"Meldung", JOptionPane.INFORMATION_MESSAGE,
+								null);
 
 			}
 		}

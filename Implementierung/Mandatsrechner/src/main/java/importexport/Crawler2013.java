@@ -6,23 +6,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-
-import com.ibm.icu.text.CharsetDetector;
-import com.ibm.icu.text.CharsetMatch;
-
-import test.java.Debug;
 
 import main.java.config.Config;
 import main.java.model.Bundesland;
@@ -35,6 +27,10 @@ import main.java.model.Mandat;
 import main.java.model.Partei;
 import main.java.model.Wahlkreis;
 import main.java.model.Zweitstimme;
+import test.java.Debug;
+
+import com.ibm.icu.text.CharsetDetector;
+import com.ibm.icu.text.CharsetMatch;
 
 /**
  * Der Crawler importiert Wahlen (2013) mithilfe einer Ergebnis-datei und einer
@@ -46,7 +42,30 @@ public class Crawler2013 extends Crawler {
 	/**
 	 * Gibt an, an ab welcher Spalte der Ergebnis-Datei die Parteien anfangen.
 	 */
-	private int parteiOffset = 4;
+	private final int parteiOffset = 4;
+
+	/**
+	 * Kopiert ein zweidimensionales Integer-Array.
+	 * 
+	 * @param array
+	 *            Das zu kopierende Array.
+	 * @return das neue Array-Objekt.
+	 */
+	private int[][] deepCopy(int[][] array) {
+		final int xLength = array.length;
+		int yLength = 0;
+		if (xLength > 0) {
+			yLength = array[0].length;
+		}
+		final int[][] copy = new int[xLength][yLength];
+		for (int i = 0; i < xLength; i++) {
+			for (int j = 0; j < yLength; j++) {
+				copy[i][j] = array[i][j];
+			}
+		}
+
+		return copy;
+	}
 
 	/**
 	 * Importiert csv-Dateien, in dem Format des Bundeswahlleiters im Jahre
@@ -55,7 +74,7 @@ public class Crawler2013 extends Crawler {
 	 * @param csvDateien
 	 *            Die eingabedateien.
 	 * @throws IllegalArgumentException
-	 * 			eingabeFehler
+	 *             eingabeFehler
 	 * @return die importierte Bundestagswahl
 	 */
 	@Override
@@ -68,20 +87,20 @@ public class Crawler2013 extends Crawler {
 		 * x = Spalten Number. Enthaelt eine Liste aller Parteien. Reihenfolge
 		 * relevant.
 		 */
-		List<String> columns = new ArrayList<String>();
+		final List<String> columns = new ArrayList<String>();
 
 		/*
 		 * x = Reihennummer. y = 0:Nr. 1:Gebiet. 2:Gehoert zu.
 		 */
 		// String[][] rows = null;
-		List<String[]> rows = new ArrayList<String[]>();
+		final List<String[]> rows = new ArrayList<String[]>();
 
 		/*
 		 * x = Reihe (Gebiet). y = Spalte (Partei). z = Feld
 		 * (ErstStimme/Zweitstimme).
 		 */
 		// int[][][] value;
-		List<int[][]> values = new ArrayList<int[][]>();
+		final List<int[][]> values = new ArrayList<int[][]>();
 
 		/*
 		 * Enthï¿½lt eine Rohe Liste mit allen Bewerbern.
@@ -91,8 +110,8 @@ public class Crawler2013 extends Crawler {
 		String bwName = "";
 		BufferedReader read;
 		try {
-			//read = new BufferedReader(new FileReader(csvDateien[0]));
-			read = this.readFile(csvDateien[0]); 
+			// read = new BufferedReader(new FileReader(csvDateien[0]));
+			read = readFile(csvDateien[0]);
 			int lineNumber = -1;
 			String line = null;
 
@@ -117,13 +136,16 @@ public class Crawler2013 extends Crawler {
 					}
 					break;
 				case 2:
-					
+
 					/* Extrahiere die Parteinamen aus den Spalten. */
 					if (parts.length > 10) {
-						if (!parts[0].equals("Nr") || !parts[1].equals("Gebiet") || !parts[2].equals("gehört") || !parts[3].equals("Wahlberechtigte")) {
+						if (!parts[0].equals("Nr")
+								|| !parts[1].equals("Gebiet")
+								|| !parts[2].equals("gehört")
+								|| !parts[3].equals("Wahlberechtigte")) {
 							error = true;
 						} else {
-							for (int i = (parteiOffset - 1); i < parts.length
+							for (int i = this.parteiOffset - 1; i < parts.length
 									&& !error; i += 4) {
 								if (!parts[i].equals("")) {
 									columns.add(parts[i]);
@@ -144,7 +166,8 @@ public class Crawler2013 extends Crawler {
 					if (parts.length == 1) {
 						break;
 					} else {
-						if (parts.length <= 3 || parts[0].equals("") || parts[1].equals("")) {
+						if (parts.length <= 3 || parts[0].equals("")
+								|| parts[1].equals("")) {
 							error = true;
 						} else {
 							rows.add(new String[] {
@@ -153,11 +176,11 @@ public class Crawler2013 extends Crawler {
 									parts[2] });
 						}
 
-						int[][] tempInt = new int[columns.size()][2];
+						final int[][] tempInt = new int[columns.size()][2];
 
-						for (int i = (parteiOffset - 1); i < maxColumn
-								&& !error; i += parteiOffset) {
-							int currentColumn = (i - 3) / 4;
+						for (int i = this.parteiOffset - 1; i < maxColumn
+								&& !error; i += this.parteiOffset) {
+							final int currentColumn = (i - 3) / 4;
 							try {
 								if (i >= parts.length || parts[i].equals("")) {
 									tempInt[currentColumn][0] = 0;
@@ -166,7 +189,7 @@ public class Crawler2013 extends Crawler {
 											.parseInt(parts[i]);
 								}
 
-								if ((i + 2) >= parts.length
+								if (i + 2 >= parts.length
 										|| parts[i + 2].equals("")) {
 									tempInt[currentColumn][1] = 0;
 								} else {
@@ -174,15 +197,15 @@ public class Crawler2013 extends Crawler {
 											.parseInt(parts[i + 2]);
 								}
 
-							} catch (NumberFormatException e) {
+							} catch (final NumberFormatException e) {
 								error = true;
 								e.printStackTrace();
-							} catch (Exception e) {
+							} catch (final Exception e) {
 								error = true;
 								e.printStackTrace();
 							}
 						}
-						values.add(this.deepCopy(tempInt));
+						values.add(deepCopy(tempInt));
 					}
 				}
 			}
@@ -192,85 +215,26 @@ public class Crawler2013 extends Crawler {
 			 * Jetzt kommt die Bewerber-Datei.
 			 */
 			if (csvDateien.length > 1) {
-				bewerber = this.getBewerber(csvDateien[1]);
+				bewerber = getBewerber(csvDateien[1]);
 			} else {
 				error = true;
 			}
-		} catch (FileNotFoundException e) {
+		} catch (final FileNotFoundException e) {
 			e.printStackTrace();
 			error = true;
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 			error = true;
 		}
-		
-		error = this.pruefeParteien(columns);
-		
+
+		error = pruefeParteien(columns);
+
 		if (!error) {
-			imported = this.erstelleBundestagwahl(bwName, columns, rows,
-					values, bewerber);
+			imported = erstelleBundestagwahl(bwName, columns, rows, values,
+					bewerber);
 		}
 
 		return imported;
-	}
-
-	private boolean pruefeParteien(List<String> columns) {
-		boolean error = false;
-		Set<String> set = new HashSet<String>(columns);
-		if (columns.size() < 5) {
-			error = true;
-			throw new IllegalArgumentException ("Fehler mit der Wahlergebnisse-Datei: Zu wenige Parteien.");
-		}else if(columns.size() < 5 || set.size() < columns.size()){
-			error = true;
-			throw new IllegalArgumentException ("Fehler mit der Wahlergebnisse-Datei: Ungültige Parteinamen (Duplikate).");
-		}
-
-		return error;
-	}
-
-	/**
-	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zurück.
-	 * 
-	 * @param csvDatei
-	 *            die Wahlbewerber CSV-Datei
-	 * @return rohdaten mit bewerbern.
-	 * @throws IOException
-	 */
-	private List<String[]> getBewerber(File csvDatei) throws IOException {
-		List<String[]> bewerber = new ArrayList<String[]>();
-		BufferedReader read = this.readFile(csvDatei); //new BufferedReader(new FileReader(csvDatei));
-		int lineNumber = -1;
-		String line = null;
-		String[] parts;
-		while ((line = read.readLine()) != null) {
-			++lineNumber;
-			parts = line.split(Pattern.quote(";"));
-			if (lineNumber == 0) {
-				continue;
-			} else {
-
-				String[] names = parts[0].split(Pattern.quote(", "));
-
-				/*
-				 * if(lineNumber<100){
-				 * System.out.println(names[0]+"|"+names[1]+"|"
-				 * +parts[1]+"|"+parts[2]+"|"+parts[3]+" "); }
-				 */
-				if (parts.length == 4) {
-					bewerber.add(new String[] { names[0], names[1], parts[1],
-							parts[2], parts[3], "", "" });
-				} else if (parts.length == 6) {
-					bewerber.add(new String[] { names[0], names[1], parts[1],
-							parts[2], parts[3], parts[4], parts[5] });
-				} else {
-					read.close();
-					throw new IllegalArgumentException("Keine gueltige Wahlbewerber-Datei.");
-				}
-
-			}
-		}
-		read.close();
-		return bewerber;
 	}
 
 	/**
@@ -289,14 +253,14 @@ public class Crawler2013 extends Crawler {
 		Bundestagswahl created = null;
 
 		String tempNummer = "0";
-		boolean error = false;
+		final boolean error = false;
 
 		// Erzeugen der Parteien:
 		// int parteiOffset = 4;
-		LinkedList<Partei> parteien = new LinkedList<Partei>();
-		for (int i = parteiOffset; i < columns.size(); i++) {
-			Partei p = new Partei(columns.get(i), this.getParteiFarbe(columns
-					.get(i)));
+		final LinkedList<Partei> parteien = new LinkedList<Partei>();
+		for (int i = this.parteiOffset; i < columns.size(); i++) {
+			final Partei p = new Partei(columns.get(i),
+					getParteiFarbe(columns.get(i)));
 			parteien.add(p);
 		}
 
@@ -306,24 +270,24 @@ public class Crawler2013 extends Crawler {
 			if (rows.get(i)[2].equals("")) {
 
 				deutschland = new Deutschland("Deutschland");
-				nrDeutschland = (rows.get(i)[0]);
+				nrDeutschland = rows.get(i)[0];
 
 			}
 		}
 
 		// Erzeuge Kandidaten
-		List<Kandidat> kandidaten = new ArrayList<Kandidat>();
+		final List<Kandidat> kandidaten = new ArrayList<Kandidat>();
 		/*
 		 * 0 = Bewerber im Wahlkreis 1 = Bewerber auf Landesliste 2 =
 		 * Landeslisten-Platz
 		 */
-		List<String[]> kandidatenInfo = new ArrayList<String[]>();
+		final List<String[]> kandidatenInfo = new ArrayList<String[]>();
 
 		for (int i = 0; i < bewerber.size(); i++) {
-			String[] iterative = bewerber.get(i);
+			final String[] iterative = bewerber.get(i);
 			for (int j = 0; j < parteien.size(); j++) {
 				if (iterative[3].equals(parteien.get(j).getName())) {
-					Kandidat mitglied = new Kandidat(iterative[0],
+					final Kandidat mitglied = new Kandidat(iterative[0],
 							iterative[1], Integer.parseInt(iterative[2]),
 							Mandat.KEINMANDAT, parteien.get(j));
 					kandidaten.add(mitglied);
@@ -340,25 +304,25 @@ public class Crawler2013 extends Crawler {
 		// Erzeuge Bundeslaender.
 		for (int i = 0; i < rows.size() && !error; i++) {
 			if (rows.get(i)[2].equals(nrDeutschland + "")) {
-				Bundesland b = new Bundesland(rows.get(i)[1],
-						this.getEinwohnerzahl(rows.get(i)[1]));
+				final Bundesland b = new Bundesland(rows.get(i)[1],
+						getEinwohnerzahl(rows.get(i)[1]));
 				tempNummer = rows.get(i)[0];
-				LinkedList<Partei> blParteien = new LinkedList<Partei>();
+				final LinkedList<Partei> blParteien = new LinkedList<Partei>();
 				for (int j = 0; j < parteien.size(); j++) {
-					if (values.get(i)[parteiOffset + j][0] != 0
-							|| values.get(i)[parteiOffset + j][1] != 0) {
+					if (values.get(i)[this.parteiOffset + j][0] != 0
+							|| values.get(i)[this.parteiOffset + j][1] != 0) {
 						blParteien.add(parteien.get(j));
 					}
 				}
 				b.setParteien(blParteien);
 				for (int j = 0; j < rows.size() && !error; j++) {
 					if (rows.get(j)[2].equals(tempNummer)) {
-						Wahlkreis w = new Wahlkreis(rows.get(j)[1],
+						final Wahlkreis w = new Wahlkreis(rows.get(j)[1],
 								values.get(j)[0][0]);
 						w.setWahlkreisnummer(Integer.parseInt(rows.get(j)[0]));
 
-						LinkedList<Erststimme> erststimme = new LinkedList<Erststimme>();
-						LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
+						final LinkedList<Erststimme> erststimme = new LinkedList<Erststimme>();
+						final LinkedList<Zweitstimme> zweitstimme = new LinkedList<Zweitstimme>();
 						for (int k = 0; k < parteien.size(); k++) {
 							Kandidat kandidat = null;
 							for (int l = 0; l < kandidaten.size(); l++) {
@@ -379,10 +343,10 @@ public class Crawler2013 extends Crawler {
 										Mandat.KEINMANDAT, parteien.get(k));
 							}
 							erststimme.add(new Erststimme(
-									values.get(j)[parteiOffset + k][0], w,
+									values.get(j)[this.parteiOffset + k][0], w,
 									kandidat));
-							Zweitstimme parteiZweitstimme = new Zweitstimme(
-									values.get(j)[parteiOffset + k][1], w,
+							final Zweitstimme parteiZweitstimme = new Zweitstimme(
+									values.get(j)[this.parteiOffset + k][1], w,
 									parteien.get(k));
 							zweitstimme.add(parteiZweitstimme);
 							parteien.get(k).addZweitstimme(parteiZweitstimme);
@@ -400,18 +364,17 @@ public class Crawler2013 extends Crawler {
 		if (kandidaten.size() > 0) {
 
 			// Erzeuge eigentliche Landesliste fï¿½r jede Partei.
-			LinkedList<Bundesland> bundeslaender = deutschland
+			final LinkedList<Bundesland> bundeslaender = deutschland
 					.getBundeslaender();
 
 			for (int i = 0; i < bundeslaender.size() && !error; i++) {
 				for (int j = 0; j < parteien.size() && !error; j++) {
-					Landesliste landesliste = new Landesliste(parteien.get(j),
-							bundeslaender.get(i));
+					final Landesliste landesliste = new Landesliste(
+							parteien.get(j), bundeslaender.get(i));
 					for (int k = 0; k < kandidaten.size() && !error; k++) {
 						if (kandidaten.get(k).getPartei() == parteien.get(j)
-								&& this.getBundeslandName(
-										kandidatenInfo.get(k)[1]).equals(
-										bundeslaender.get(i).getName())) {
+								&& getBundeslandName(kandidatenInfo.get(k)[1])
+										.equals(bundeslaender.get(i).getName())) {
 							kandidaten.get(k).setLandesliste(landesliste);
 							landesliste
 									.addKandidat(
@@ -433,33 +396,52 @@ public class Crawler2013 extends Crawler {
 		return created;
 	}
 
-	@Override
-	public void getCrawlerInformation() {
-		
-		Debug.print("Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv", 4);
-	}
-
 	/**
-	 * Kopiert ein zweidimensionales Integer-Array.
+	 * Extrahiert die CSV-Datei mit den Bewerbern und gibt Rohobjekte zurück.
 	 * 
-	 * @param array
-	 *            Das zu kopierende Array.
-	 * @return das neue Array-Objekt.
+	 * @param csvDatei
+	 *            die Wahlbewerber CSV-Datei
+	 * @return rohdaten mit bewerbern.
+	 * @throws IOException
 	 */
-	private int[][] deepCopy(int[][] array) {
-		int xLength = array.length;
-		int yLength = 0;
-		if (xLength > 0) {
-			yLength = array[0].length;
-		}
-		int[][] copy = new int[xLength][yLength];
-		for (int i = 0; i < xLength; i++) {
-			for (int j = 0; j < yLength; j++) {
-				copy[i][j] = array[i][j];
+	private List<String[]> getBewerber(File csvDatei) throws IOException {
+		final List<String[]> bewerber = new ArrayList<String[]>();
+		final BufferedReader read = readFile(csvDatei); // new
+														// BufferedReader(new
+														// FileReader(csvDatei));
+		int lineNumber = -1;
+		String line = null;
+		String[] parts;
+		while ((line = read.readLine()) != null) {
+			++lineNumber;
+			parts = line.split(Pattern.quote(";"));
+			if (lineNumber == 0) {
+				continue;
+			} else {
+
+				final String[] names = parts[0].split(Pattern.quote(", "));
+
+				/*
+				 * if(lineNumber<100){
+				 * System.out.println(names[0]+"|"+names[1]+"|"
+				 * +parts[1]+"|"+parts[2]+"|"+parts[3]+" "); }
+				 */
+				if (parts.length == 4) {
+					bewerber.add(new String[] { names[0], names[1], parts[1],
+							parts[2], parts[3], "", "" });
+				} else if (parts.length == 6) {
+					bewerber.add(new String[] { names[0], names[1], parts[1],
+							parts[2], parts[3], parts[4], parts[5] });
+				} else {
+					read.close();
+					throw new IllegalArgumentException(
+							"Keine gueltige Wahlbewerber-Datei.");
+				}
+
 			}
 		}
-
-		return copy;
+		read.close();
+		return bewerber;
 	}
 
 	private String getBundeslandName(String kuerzel) {
@@ -519,14 +501,25 @@ public class Crawler2013 extends Crawler {
 			name = "-";
 			break;
 		default:
-			throw new IllegalArgumentException("Ungültiges Bundesland-Kürzel in der Wahlbewerber-Datei. (Kürzel: [" + kuerzel + "])");
+			throw new IllegalArgumentException(
+					"Ungültiges Bundesland-Kürzel in der Wahlbewerber-Datei. (Kürzel: ["
+							+ kuerzel + "])");
 		}
 		return name;
 	}
 
+	@Override
+	public void getCrawlerInformation() {
+
+		Debug.print(
+				"Crawler 2013 - Example: http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/veroeffentlichungen/ergebnisse/kerg.csv",
+				4);
+	}
+
 	/**
 	 * Gibt die Einwohnerzahl aller Bundesländer zurück. Falls ein Bundesland
-	 * nicht gefunden wird, wird der default-Wert zurückgegeben. Dies betrï¿½gt 0.
+	 * nicht gefunden wird, wird der default-Wert zurückgegeben. Dies betrï¿½gt
+	 * 0.
 	 * 
 	 * @param name
 	 *            Name des Bundeslandes
@@ -536,30 +529,31 @@ public class Crawler2013 extends Crawler {
 		int anzahl = 0;
 
 		/*
-		 * switch (name) { case "Baden-Wï¿½rttemberg": anzahl = 9482902;//9483500;
-		 * break; case "Bayern": anzahl = 11353264;//11352000; break; case
-		 * "Berlin": anzahl = 3025288; //3019900; break; case "Brandenburg":
-		 * anzahl = 2418267; //2420700; break; case "Bremen": anzahl =
-		 * 575805;//575300; break; case "Hamburg": anzahl = 1559655; //1558300;
-		 * break; case "Hessen": anzahl = 5388350; //5390000; break; case
-		 * "Mecklenburg-Vorpommern": anzahl = 1585032;//1587000; break; case
-		 * "Niedersachsen": anzahl = 7354892; //7354900; break; case
-		 * "Nordrhein-Westfalen": anzahl = 15895182; //15906800; break; case
-		 * "Rheinland-Pfalz": anzahl = 3672888; //3675300; break; case
-		 * "Saarland": anzahl = 919402; //919600; break; case "Sachsen": anzahl
-		 * = 4005278; //4007100; break; case "Sachsen-Anhalt": anzahl = 2247673;
-		 * //2252200; break; case "Schleswig-Holstein": anzahl = 2686085;
-		 * //2687200; break; case "Thï¿½ringen": anzahl = 2154202; //2157700;
-		 * break; default: anzahl = 0; }
+		 * switch (name) { case "Baden-Wï¿½rttemberg": anzahl =
+		 * 9482902;//9483500; break; case "Bayern": anzahl =
+		 * 11353264;//11352000; break; case "Berlin": anzahl = 3025288;
+		 * //3019900; break; case "Brandenburg": anzahl = 2418267; //2420700;
+		 * break; case "Bremen": anzahl = 575805;//575300; break; case
+		 * "Hamburg": anzahl = 1559655; //1558300; break; case "Hessen": anzahl
+		 * = 5388350; //5390000; break; case "Mecklenburg-Vorpommern": anzahl =
+		 * 1585032;//1587000; break; case "Niedersachsen": anzahl = 7354892;
+		 * //7354900; break; case "Nordrhein-Westfalen": anzahl = 15895182;
+		 * //15906800; break; case "Rheinland-Pfalz": anzahl = 3672888;
+		 * //3675300; break; case "Saarland": anzahl = 919402; //919600; break;
+		 * case "Sachsen": anzahl = 4005278; //4007100; break; case
+		 * "Sachsen-Anhalt": anzahl = 2247673; //2252200; break; case
+		 * "Schleswig-Holstein": anzahl = 2686085; //2687200; break; case
+		 * "Thï¿½ringen": anzahl = 2154202; //2157700; break; default: anzahl =
+		 * 0; }
 		 */
-		List<String[]> einwohnerzahlen = Config.getInstance().getConfig(
+		final List<String[]> einwohnerzahlen = Config.getInstance().getConfig(
 				"einwohnerzahl");
 		boolean found = false;
-		for (String[] blEinwohner : einwohnerzahlen) {
+		for (final String[] blEinwohner : einwohnerzahlen) {
 			if (blEinwohner[0].equals(name)) {
 				try {
 					anzahl = Integer.parseInt(blEinwohner[1]);
-				} catch (Exception e) {
+				} catch (final Exception e) {
 					e.printStackTrace();
 					anzahl = 0;
 				}
@@ -592,16 +586,16 @@ public class Crawler2013 extends Crawler {
 		 * 
 		 * }
 		 */
-		List<String[]> farben = Config.getInstance().getConfig(
+		final List<String[]> farben = Config.getInstance().getConfig(
 				"farben_parteien");
-		for (String[] farbe : farben) {
+		for (final String[] farbe : farben) {
 			if (farbe[0].equals(parteiName)) {
 				try {
-					int red = Integer.parseInt(farbe[1]);
-					int green = Integer.parseInt(farbe[2]);
-					int blue = Integer.parseInt(farbe[3]);
+					final int red = Integer.parseInt(farbe[1]);
+					final int green = Integer.parseInt(farbe[2]);
+					final int blue = Integer.parseInt(farbe[3]);
 					color = new Color(red, green, blue);
-				} catch (Exception e) {
+				} catch (final Exception e) {
 					e.printStackTrace();
 					color = Color.GRAY;
 				}
@@ -612,78 +606,51 @@ public class Crawler2013 extends Crawler {
 
 	}
 
-	private void debugDeutschland(Deutschland deutschland) {
-//		System.out.println(deutschland.getName() + ":");
-		List<Bundesland> bundeslaender = deutschland.getBundeslaender();
-		for (int i = 0; i < 2; i++) {
-//			System.out.println("-> " + bundeslaender.get(i).getName());
-
-			/*
-			 * List<Landesliste> landesliste =
-			 * bundeslaender.get(i).getLandesliste();
-			 * System.out.println("Size: "+landesliste.size()); for(int
-			 * j=0;j<landesliste.size();j++){
-			 * System.out.println("--> "+landesliste
-			 * .get(j).getPartei().getName()); List<Kandidat> listenkandidaten =
-			 * landesliste.get(j).getListenkandidaten();
-			 * System.out.println("Kandidaten: "+listenkandidaten.size());
-			 * for(int k=0;k<listenkandidaten.size();k++){
-			 * System.out.println("---> Name: "
-			 * +listenkandidaten.get(k).getName()
-			 * );//+" - Vorname:"+listenkandidaten
-			 * .get(k).getVorname()+" - Geb: "
-			 * +listenkandidaten.get(k).getGeburtsjahr()); }
-			 * 
-			 * }
-			 */
-			List<Wahlkreis> wahlkreise = bundeslaender.get(i).getWahlkreise();
-			for (int j = 0; j < wahlkreise.size(); j++) {
-//				System.out.println("--> " + wahlkreise.get(j).getName() + " ("
-//						+ wahlkreise.get(j).getWahlkreisnummer() + ")");
-				List<Zweitstimme> zweitstimmen = wahlkreise.get(j)
-						.getZweitstimmenProPartei();
-				List<Erststimme> erststimmen = wahlkreise.get(j)
-						.getErststimmenProPartei();
-				
-				/*for (int k = 0; k < zweitstimmen.size(); k++) {
-					System.out.println("--->"
-							+ zweitstimmen.get(k).getPartei().getName()
-							+ " Erststimmen: " + erststimmen.get(k).getAnzahl()
-							+ " (Direktkandidat: "
-							+ erststimmen.get(k).getKandidat().getName()
-							+ ") - Zweitstimmen: "
-							+ zweitstimmen.get(k).getAnzahl());
-				}*/
-			}
+	private boolean pruefeParteien(List<String> columns) {
+		boolean error = false;
+		final Set<String> set = new HashSet<String>(columns);
+		if (columns.size() < 5) {
+			error = true;
+			throw new IllegalArgumentException(
+					"Fehler mit der Wahlergebnisse-Datei: Zu wenige Parteien.");
+		} else if (columns.size() < 5 || set.size() < columns.size()) {
+			error = true;
+			throw new IllegalArgumentException(
+					"Fehler mit der Wahlergebnisse-Datei: Ungültige Parteinamen (Duplikate).");
 		}
+
+		return error;
 	}
-	
-	private BufferedReader readFile(File file) throws UnsupportedEncodingException, FileNotFoundException{
-		//InputStreamReader isr = new InputStreamReader(new FileInputStream(file));
-		//System.out.println(isr.getEncoding());
-		//System.exit(0);
+
+	private BufferedReader readFile(File file)
+			throws UnsupportedEncodingException, FileNotFoundException {
+		// InputStreamReader isr = new InputStreamReader(new
+		// FileInputStream(file));
+		// System.out.println(isr.getEncoding());
+		// System.exit(0);
 		String charSet = "UTF-8";
-		
-		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-		CharsetDetector cd = new CharsetDetector();
+
+		final BufferedInputStream bis = new BufferedInputStream(
+				new FileInputStream(file));
+		final CharsetDetector cd = new CharsetDetector();
 		try {
 			cd.setText(bis);
-			CharsetMatch cm = cd.detect();
-			
-			if (cm != null && cm.getName()=="ISO-8859-1") {
-			   charSet = cm.getName();
+			final CharsetMatch cm = cd.detect();
+
+			if (cm != null && cm.getName() == "ISO-8859-1") {
+				charSet = cm.getName();
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//System.out.println(charSet);
-		//String charSet = "UTF-8"; //"ISO-8859-1";
-		BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
-		
+		// System.out.println(charSet);
+		// String charSet = "UTF-8"; //"ISO-8859-1";
+		final BufferedReader bf = new BufferedReader(new InputStreamReader(
+				new FileInputStream(file), charSet));
+
 		return bf;
-		
-		
+
 	}
-	
+
 }

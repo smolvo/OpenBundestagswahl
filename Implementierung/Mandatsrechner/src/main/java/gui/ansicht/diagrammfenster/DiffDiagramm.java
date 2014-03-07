@@ -39,14 +39,14 @@ public class DiffDiagramm extends JPanel {
 		if (diff == null) {
 			throw new IllegalArgumentException("PartDifferenzen ist null.");
 		}
-		JFreeChart chart = createChart(diff);
-		ChartPanel chartPanel = new ChartPanel(chart);
-		this.setLayout(new BorderLayout());
+		final JFreeChart chart = createChart(diff);
+		final ChartPanel chartPanel = new ChartPanel(chart);
+		setLayout(new BorderLayout());
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
 			public void componentResized(ComponentEvent e) {
-				ChartPanel panel = (ChartPanel) e.getComponent();
+				final ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
 				add(panel, BorderLayout.LINE_START);
 			}
@@ -69,64 +69,33 @@ public class DiffDiagramm extends JPanel {
 		if (diff == null) {
 			throw new IllegalArgumentException("PartDifferenzen ist null.");
 		}
-		DefaultCategoryDataset result = new DefaultCategoryDataset();
-		for (int i = 0; i < diff.length; i++) {
-			result.setValue(diff[i].getDiff(), " ", diff[i].getPartei()
+		final DefaultCategoryDataset result = new DefaultCategoryDataset();
+		for (final ParteiDifferenzen element : diff) {
+			result.setValue(element.getDiff(), " ", element.getPartei()
 					.getName());
 		}
-		JFreeChart chart = ChartFactory.createBarChart("Sitzdifferenzen", null,
-				null, result, PlotOrientation.VERTICAL, false, false, false);
-		CategoryPlot plot = chart.getCategoryPlot();
+		final JFreeChart chart = ChartFactory.createBarChart("Sitzdifferenzen",
+				null, null, result, PlotOrientation.VERTICAL, false, false,
+				false);
+		final CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
-		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-		int min = getKleinste(diff) - 5;
-		int max = getGroesstes(diff) + 5;
+		final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		final int min = getKleinste(diff) - 5;
+		final int max = getGroesstes(diff) + 5;
 		rangeAxis.setRange(new Range(min, max));
 		plot.setRangeAxis(rangeAxis);
 
 		// färben der Parteienbalken
-		Paint[] farben = new Paint[diff.length];
+		final Paint[] farben = new Paint[diff.length];
 		for (int i = 0; i < diff.length; i++) {
 			farben[i] = diff[i].getPartei().getFarbe();
 		}
-		BarRenderer barRenderer = new BalkenRenderer(farben);
+		final BarRenderer barRenderer = new BalkenRenderer(farben);
 		plot.setRenderer(barRenderer);
 		plot.setForegroundAlpha(1.0f);
 
 		return chart;
-	}
-
-	/**
-	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
-	 * das Diagramm befindet, aus.
-	 * 
-	 * @return Dimension
-	 */
-	public Dimension resize() {
-		return new Dimension(this.getWidth(), (this.getHeight()));
-	}
-
-	/**
-	 * Gibt die kleinste Differenz aus.
-	 * 
-	 * @param diff
-	 *            Differenzen-Vektor
-	 * @throws IllegalArgumentException
-	 *             wenn die PArteidifferenzen null sind.
-	 * @return kleinstes Element
-	 */
-	private int getKleinste(ParteiDifferenzen[] diff) {
-		if (diff == null) {
-			throw new IllegalArgumentException("PartDifferenzen ist null.");
-		}
-		int kleinstes = Integer.MAX_VALUE;
-		for (int i = 0; i < diff.length; i++) {
-			if (diff[i].getDiff() < kleinstes) {
-				kleinstes = diff[i].getDiff();
-			}
-		}
-		return kleinstes;
 	}
 
 	/**
@@ -143,11 +112,43 @@ public class DiffDiagramm extends JPanel {
 			throw new IllegalArgumentException("PartDifferenzen ist null.");
 		}
 		int groesstes = Integer.MIN_VALUE;
-		for (int i = 0; i < diff.length; i++) {
-			if (diff[i].getDiff() > groesstes) {
-				groesstes = diff[i].getDiff();
+		for (final ParteiDifferenzen element : diff) {
+			if (element.getDiff() > groesstes) {
+				groesstes = element.getDiff();
 			}
 		}
 		return groesstes;
+	}
+
+	/**
+	 * Gibt die kleinste Differenz aus.
+	 * 
+	 * @param diff
+	 *            Differenzen-Vektor
+	 * @throws IllegalArgumentException
+	 *             wenn die PArteidifferenzen null sind.
+	 * @return kleinstes Element
+	 */
+	private int getKleinste(ParteiDifferenzen[] diff) {
+		if (diff == null) {
+			throw new IllegalArgumentException("PartDifferenzen ist null.");
+		}
+		int kleinstes = Integer.MAX_VALUE;
+		for (final ParteiDifferenzen element : diff) {
+			if (element.getDiff() < kleinstes) {
+				kleinstes = element.getDiff();
+			}
+		}
+		return kleinstes;
+	}
+
+	/**
+	 * Diese Methode gibt eine Dimension, abhängig von der Fläche auf der sich
+	 * das Diagramm befindet, aus.
+	 * 
+	 * @return Dimension
+	 */
+	public Dimension resize() {
+		return new Dimension(getWidth(), getHeight());
 	}
 }

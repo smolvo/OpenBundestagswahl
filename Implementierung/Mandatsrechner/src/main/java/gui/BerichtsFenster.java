@@ -29,16 +29,17 @@ public class BerichtsFenster extends JDialog {
 	 * 
 	 * @param tabellenModell
 	 *            die Berichtstabelle
-	 * @param diagrammFenster 
+	 * @param diagrammFenster
 	 * @throws IllegalArgumentException
 	 *             wenn das tabellenModell Objekt null ist
 	 */
-	public BerichtsFenster(BerichtTableModel tabellenModell, final DiagrammFenster diagrammFenster) {
+	public BerichtsFenster(BerichtTableModel tabellenModell,
+			final DiagrammFenster diagrammFenster) {
 		if (tabellenModell == null) {
 			throw new NullPointerException("Kein Tabellenmodell gefunden.");
 		}
-		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		this.addWindowListener(new WindowAdapter() {
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
 
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent e) {
@@ -47,15 +48,15 @@ public class BerichtsFenster extends JDialog {
 			}
 		});
 		this.setSize(new Dimension(1024, 600));
-		this.setLocationRelativeTo(null);
-		this.setTitle("Mandatsübersicht");
-		TableRowSorter<TableModel> sorterBericht = new TableRowSorter<TableModel>();
-		JTable jTabelle = new JTable(tabellenModell);
-		JScrollPane pane = new JScrollPane(jTabelle);
+		setLocationRelativeTo(null);
+		setTitle("Mandatsübersicht");
+		final TableRowSorter<TableModel> sorterBericht = new TableRowSorter<TableModel>();
+		final JTable jTabelle = new JTable(tabellenModell);
+		final JScrollPane pane = new JScrollPane(jTabelle);
 		jTabelle.setRowSorter(sorterBericht);
 		sorterBericht.setModel(jTabelle.getModel());
 		this.add(pane);
-		this.setVisible(true);
-		
+		setVisible(true);
+
 	}
 }

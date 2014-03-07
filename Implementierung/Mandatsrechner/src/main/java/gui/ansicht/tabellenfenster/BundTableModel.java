@@ -14,11 +14,12 @@ public class BundTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -5572048315837858653L;
 
 	/** repräsentiert die Spaltennamen */
-	private String[] columns = new String[] { "Partei", "Zweitstimmen", "%",
-			"Sitze", "Direktmandate", "Überhangmandate", "Ausgleichsmandate" };
+	private final String[] columns = new String[] { "Partei", "Zweitstimmen",
+			"%", "Sitze", "Direktmandate", "Überhangmandate",
+			"Ausgleichsmandate" };
 
 	/** hï¿½lt alle relevanten Daten */
-	private BundDaten daten;
+	private final BundDaten daten;
 
 	/**
 	 * Der Konstruktor initialisiert die Spaltennamen und Daten.
@@ -36,31 +37,36 @@ public class BundTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public int getRowCount() {
-		return daten.size();
-	}
-
-	@Override
 	public int getColumnCount() {
 		return 7;
 	}
 
 	@Override
+	public String getColumnName(int columnIndex) {
+		return this.columns[columnIndex];
+	}
+
+	@Override
+	public int getRowCount() {
+		return this.daten.size();
+	}
+
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return daten.getParteien(rowIndex);
+			return this.daten.getParteien(rowIndex);
 		} else if (columnIndex == 1) {
-			return daten.getStimmen(rowIndex).getAnzahl();
+			return this.daten.getStimmen(rowIndex).getAnzahl();
 		} else if (columnIndex == 2) {
-			return daten.getProzent(rowIndex);
+			return this.daten.getProzent(rowIndex);
 		} else if (columnIndex == 3) {
-			return daten.getSitze(rowIndex);
+			return this.daten.getSitze(rowIndex);
 		} else if (columnIndex == 4) {
-			return daten.getDirektmandate(rowIndex);
+			return this.daten.getDirektmandate(rowIndex);
 		} else if (columnIndex == 5) {
-			return daten.getUeberhangsmandate(rowIndex);
+			return this.daten.getUeberhangsmandate(rowIndex);
 		} else if (columnIndex == 6) {
-			return daten.getAusgleichsmandate(rowIndex);
+			return this.daten.getAusgleichsmandate(rowIndex);
 		} else {
 			return null;
 		}
@@ -69,10 +75,5 @@ public class BundTableModel extends AbstractTableModel {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
-	}
-
-	@Override
-	public String getColumnName(int columnIndex) {
-		return columns[columnIndex];
 	}
 }

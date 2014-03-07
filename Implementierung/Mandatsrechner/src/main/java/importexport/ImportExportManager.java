@@ -15,8 +15,8 @@ public class ImportExportManager {
 	/**
 	 * Ein Array, dass alle vorhandenen Crawler-Algorithmen beinhaltet.
 	 */
-	private Crawler crawler[];
-	private Export exporter[];
+	private final Crawler crawler[];
+	private final Export exporter[];
 
 	/**
 	 * Ein default-Wert fuer unbekannte Kandidaten.
@@ -28,26 +28,10 @@ public class ImportExportManager {
 	 * Hier koennen weitere Algorithmen ergaenzt werden.
 	 */
 	public ImportExportManager() {
-		crawler = new Crawler[1];
-		crawler[0] = new Crawler2013();
-		exporter = new Export[1];
-		exporter[0] = new Export2013();
-	}
-
-	/**
-	 * Importiert eine Datei.
-	 * 
-	 * @param csvDateien
-	 *            Datei die importiert werden soll.
-	 * @return das Ergebnis-Objekt.
-	 */
-	public Bundestagswahl importieren(File[] csvDateien) throws IllegalArgumentException{
-
-		Bundestagswahl imported = null;
-		if (this.pruefeDateityp(csvDateien)) {
-			imported = this.leseCSVDatei(csvDateien);
-		}
-		return imported;
+		this.crawler = new Crawler[1];
+		this.crawler[0] = new Crawler2013();
+		this.exporter = new Export[1];
+		this.exporter[0] = new Export2013();
 	}
 
 	/**
@@ -62,33 +46,24 @@ public class ImportExportManager {
 	 * @return true wenn Erfolgreich. Ansosnten false.
 	 */
 	public boolean exportieren(String pfad, Bundestagswahl bw) {
-		return exporter[0].exportieren(pfad, bw);
+		return this.exporter[0].exportieren(pfad, bw);
 	}
 
 	/**
-	 * Prï¿½ft, ob eine Datei die gewï¿½nschte Dateiendung (.csv) hat.
+	 * Importiert eine Datei.
 	 * 
 	 * @param csvDateien
-	 *            Dateien, die zu ï¿½berprï¿½fen sind.
-	 * @return true, wenn alle Dateien die Endung .csv haben.
+	 *            Datei die importiert werden soll.
+	 * @return das Ergebnis-Objekt.
 	 */
-	private boolean pruefeDateityp(File[] csvDateien) {
-		boolean isCSV = false;
-		for (int i = 0; i < csvDateien.length; i++) {
-			String fileName = csvDateien[i].getName();
-			String fileExtension = "";
-			if (fileName.length() > 4) {
-				fileExtension = fileName.substring(fileName.length() - 4,
-						fileName.length());
-			}
+	public Bundestagswahl importieren(File[] csvDateien)
+			throws IllegalArgumentException {
 
-			// System.out.println(fileExtension);
-			if (fileExtension.equals(".csv") && csvDateien[i].isFile()) {
-				isCSV = true;
-			}
-			// else: Es handelt sich um keine CSV-Datei.
+		Bundestagswahl imported = null;
+		if (pruefeDateityp(csvDateien)) {
+			imported = leseCSVDatei(csvDateien);
 		}
-		return isCSV;
+		return imported;
 	}
 
 	/**
@@ -101,9 +76,9 @@ public class ImportExportManager {
 	 */
 	private Bundestagswahl leseCSVDatei(File[] csvDateien) {
 		Bundestagswahl imported = null;
-		for (int i = 0; i < this.crawler.length; i++) {
-			crawler[i].getCrawlerInformation();
-			imported = crawler[i].erstelleBundestagswahl(csvDateien);
+		for (final Crawler element : this.crawler) {
+			element.getCrawlerInformation();
+			imported = element.erstelleBundestagswahl(csvDateien);
 			if (imported != null) {
 				break;
 			}
@@ -111,9 +86,35 @@ public class ImportExportManager {
 
 		// if imported==null > Keine gï¿½ltige Datei.
 		if (imported == null) {
-			throw new IllegalArgumentException ("Keine gültige Ergebnis-Datei.");
+			throw new IllegalArgumentException("Keine gültige Ergebnis-Datei.");
 		}
 		return imported;
 
+	}
+
+	/**
+	 * Prï¿½ft, ob eine Datei die gewï¿½nschte Dateiendung (.csv) hat.
+	 * 
+	 * @param csvDateien
+	 *            Dateien, die zu ï¿½berprï¿½fen sind.
+	 * @return true, wenn alle Dateien die Endung .csv haben.
+	 */
+	private boolean pruefeDateityp(File[] csvDateien) {
+		boolean isCSV = false;
+		for (final File element : csvDateien) {
+			final String fileName = element.getName();
+			String fileExtension = "";
+			if (fileName.length() > 4) {
+				fileExtension = fileName.substring(fileName.length() - 4,
+						fileName.length());
+			}
+
+			// System.out.println(fileExtension);
+			if (fileExtension.equals(".csv") && element.isFile()) {
+				isCSV = true;
+			}
+			// else: Es handelt sich um keine CSV-Datei.
+		}
+		return isCSV;
 	}
 }

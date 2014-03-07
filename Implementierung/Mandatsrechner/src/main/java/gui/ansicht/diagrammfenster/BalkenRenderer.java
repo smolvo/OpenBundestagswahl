@@ -13,7 +13,7 @@ public class BalkenRenderer extends BarRenderer {
 	private static final long serialVersionUID = 3223840021896221244L;
 
 	/** repräsentiert die Farben */
-	private Paint[] farben;
+	private final Paint[] farben;
 
 	/**
 	 * Der Konstruktor legt die Farben fest.

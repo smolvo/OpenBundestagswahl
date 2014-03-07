@@ -20,8 +20,7 @@ public class Erststimme extends Stimme implements Serializable,
 	private Kandidat kandidat;
 
 	/**
-	 * Mit diesem Konsruktor ist es möglich alle Attribute auf einmal zu
-	 * setzen
+	 * Mit diesem Konsruktor ist es möglich alle Attribute auf einmal zu setzen
 	 * 
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen
@@ -31,9 +30,36 @@ public class Erststimme extends Stimme implements Serializable,
 	 *            Der zugehörige Kanditat.
 	 */
 	public Erststimme(int anzahl, Gebiet gebiet, Kandidat kandidat) {
-		this.setGebiet(gebiet);
-		this.setKandidat(kandidat);
-		this.setAnzahl(anzahl);
+		setGebiet(gebiet);
+		setKandidat(kandidat);
+		setAnzahl(anzahl);
+	}
+
+	@Override
+	public int compareTo(Erststimme andere) {
+		return Integer.compare(andere.getAnzahl(), getAnzahl());
+	}
+
+	@Override
+	public Stimme deepCopy() {
+		return new Erststimme(this.anzahl, this.gebiet, this.kandidat);
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+
+		if (getGebiet().getWahlberechtigte() < getGebiet()
+				.getAnzahlErststimmen() + anzahl) {
+			throw new IllegalArgumentException(
+					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
+							+ (getGebiet().getAnzahlErststimmen() + anzahl - getGebiet()
+									.getWahlberechtigte()) + "!");
+		}
+
+		this.anzahl += anzahl;
 	}
 
 	/**
@@ -43,6 +69,22 @@ public class Erststimme extends Stimme implements Serializable,
 	 */
 	public Kandidat getKandidat() {
 		return this.kandidat;
+	}
+
+	@Override
+	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+
+		// int gesamtErst = this.getGebiet().getAnzahlErststimmen();
+		// int wahlberechtigte = this.getGebiet().getWahlberechtigte();
+		//
+		// int diffStimme = anzahl - this.getAnzahl();
+		// if ((gesamtErst + diffStimme) <= wahlberechtigte) {
+		//
+		this.anzahl = anzahl;
+
 	}
 
 	/**
@@ -58,50 +100,6 @@ public class Erststimme extends Stimme implements Serializable,
 			throw new IllegalArgumentException("Kandidat ist null!");
 		}
 		this.kandidat = kandidat;
-	}
-
-	@Override
-	public void setAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
-		}
-		
-
-//		int gesamtErst = this.getGebiet().getAnzahlErststimmen();
-//		int wahlberechtigte = this.getGebiet().getWahlberechtigte();
-//		
-//		int diffStimme = anzahl - this.getAnzahl();
-//		if ((gesamtErst + diffStimme) <= wahlberechtigte) {
-//		
-		this.anzahl = anzahl;
-
-	}
-
-	@Override
-	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
-		}
-		
-		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
-				.getAnzahlErststimmen() + anzahl)) {
-			throw new IllegalArgumentException(
-					"Neu gesetzte Anzahl an Erststimmen übersteigt Anzahl der Wahlberechtigten um "
-							+ ((this.getGebiet().getAnzahlErststimmen() + anzahl) - this
-									.getGebiet().getWahlberechtigte()) + "!");
-		}
-		
-		this.anzahl += anzahl;
-	}
-
-	@Override
-	public int compareTo(Erststimme andere) {
-		return Integer.compare(andere.getAnzahl(), this.getAnzahl());
-	}
-
-	@Override
-	public Stimme deepCopy() {
-		return new Erststimme(this.anzahl, this.gebiet, this.kandidat);
 	}
 
 }

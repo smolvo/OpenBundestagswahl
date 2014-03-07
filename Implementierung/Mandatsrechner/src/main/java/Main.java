@@ -2,9 +2,10 @@ package main.java;
 
 import main.java.gui.Programmfenster;
 import test.java.Debug;
+
 /**
  * Klasse die das Programm startet
- *
+ * 
  */
 public class Main {
 	/**

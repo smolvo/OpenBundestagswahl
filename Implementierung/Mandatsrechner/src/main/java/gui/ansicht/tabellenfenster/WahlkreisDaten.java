@@ -12,25 +12,25 @@ import main.java.model.Zweitstimme;
 public class WahlkreisDaten {
 
 	/** Liste der Parteien */
-	private LinkedList<String> parteien;
+	private final LinkedList<String> parteien;
 
 	/** Liste der Namen der Kandidaten */
-	private LinkedList<String> kandidaten;
+	private final LinkedList<String> kandidaten;
 
 	/** Liste der Zweitstimmen */
-	private LinkedList<Zweitstimme> zweitstimmen;
+	private final LinkedList<Zweitstimme> zweitstimmen;
 
 	/** Liste der Erststimmen */
-	private LinkedList<Erststimme> erststimmen;
+	private final LinkedList<Erststimme> erststimmen;
 
 	/** Liste der prozentualen Zweitstimmen */
-	private LinkedList<String> zweitProzent;
+	private final LinkedList<String> zweitProzent;
 
 	/** Liste der prozentualen Erststimmen */
-	private LinkedList<String> erstProzent;
+	private final LinkedList<String> erstProzent;
 
 	/** Liste der Direktmandate */
-	private LinkedList<String> direktmandate;
+	private final LinkedList<String> direktmandate;
 
 	/**
 	 * Der Konstruktor initialisiert alle Listen.
@@ -80,100 +80,20 @@ public class WahlkreisDaten {
 	}
 
 	/**
-	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es der
-	 * Liste angehangen,
-	 * 
-	 * @param string
-	 *            String
-	 * @param list
-	 *            Liste
-	 */
-	private void stringCheck(String string, LinkedList<String> list) {
-		if (string != null) {
-			list.add(string);
-		} else {
-			list.add("-");
-		}
-	}
-
-	/**
-	 * Gibt eine bestimmte Partei zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½en.
-	 * @return Partei
-	 */
-	public String getParteiName(int index) {
-		if (index < 0 || index > parteien.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
-		}
-		return parteien.get(index);
-	}
-
-	/**
-	 * Gibt eine Kandidatennamen zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
-	 * @return Kandidat
-	 */
-	public String getKandidatName(int index) {
-		if (index < 0 || index > kandidaten.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
-		}
-		return kandidaten.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Zweitstimmenanzahl zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½e ist.
-	 * @return Zweitstimme
-	 */
-	public Zweitstimme getZweitstimmen(int index) {
-		if (index < 0 || index > zweitstimmen.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
-		}
-		return zweitstimmen.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Erststimmenanzahl zurï¿½ck.
-	 * 
-	 * @param index
-	 *            Listenindex
-	 * @throws IllegalArgumentException
-	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e.
-	 * @return Zweitstimme
-	 */
-	public Erststimme getErststimmen(int index) {
-		if (index < 0 || index > erststimmen.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
-		}
-		return erststimmen.get(index);
-	}
-
-	/**
-	 * Gibt eine bestimmte Zweitstimmenprozentanzahl zurï¿½ck.
+	 * Gibt an ob ein Kandidat ein Direktmandat hat oder nicht.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
 	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½e.
-	 * @return Prozentanzahl
+	 * @return Direktmandate
 	 */
-	public String getZweitprozent(int index) {
-		if (index < 0 || index > zweitProzent.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
+	public String getDirektmandate(int index) {
+		if (index < 0 || index > this.direktmandate.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
 		}
-		return zweitProzent.get(index);
+		return this.direktmandate.get(index);
 	}
 
 	/**
@@ -186,26 +106,96 @@ public class WahlkreisDaten {
 	 * @return Prozentanzahl
 	 */
 	public String getErstprozent(int index) {
-		if (index < 0 || index > erstProzent.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
+		if (index < 0 || index > this.erstProzent.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
 		}
-		return erstProzent.get(index);
+		return this.erstProzent.get(index);
 	}
 
 	/**
-	 * Gibt an ob ein Kandidat ein Direktmandat hat oder nicht.
+	 * Gibt eine bestimmte Erststimmenanzahl zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e.
+	 * @return Zweitstimme
+	 */
+	public Erststimme getErststimmen(int index) {
+		if (index < 0 || index > this.erststimmen.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
+		}
+		return this.erststimmen.get(index);
+	}
+
+	/**
+	 * Gibt eine Kandidatennamen zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengroeï¿½e ist.
+	 * @return Kandidat
+	 */
+	public String getKandidatName(int index) {
+		if (index < 0 || index > this.kandidaten.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
+		}
+		return this.kandidaten.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Partei zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½en.
+	 * @return Partei
+	 */
+	public String getParteiName(int index) {
+		if (index < 0 || index > this.parteien.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
+		}
+		return this.parteien.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Zweitstimmenprozentanzahl zurï¿½ck.
 	 * 
 	 * @param index
 	 *            Listenindex
 	 * @throws IllegalArgumentException
 	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½e.
-	 * @return Direktmandate
+	 * @return Prozentanzahl
 	 */
-	public String getDirektmandate(int index) {
-		if (index < 0 || index > direktmandate.size()) {
-			throw new IllegalArgumentException("Index auï¿½erhalb Listengrï¿½ï¿½e.");
+	public String getZweitprozent(int index) {
+		if (index < 0 || index > this.zweitProzent.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
 		}
-		return direktmandate.get(index);
+		return this.zweitProzent.get(index);
+	}
+
+	/**
+	 * Gibt eine bestimmte Zweitstimmenanzahl zurï¿½ck.
+	 * 
+	 * @param index
+	 *            Listenindex
+	 * @throws IllegalArgumentException
+	 *             wenn der Index auï¿½erhalb der Listengrï¿½ï¿½e ist.
+	 * @return Zweitstimme
+	 */
+	public Zweitstimme getZweitstimmen(int index) {
+		if (index < 0 || index > this.zweitstimmen.size()) {
+			throw new IllegalArgumentException(
+					"Index auï¿½erhalb Listengrï¿½ï¿½e.");
+		}
+		return this.zweitstimmen.get(index);
 	}
 
 	/**
@@ -215,5 +205,22 @@ public class WahlkreisDaten {
 	 */
 	public int size() {
 		return this.parteien.size();
+	}
+
+	/**
+	 * Diese Methode ï¿½berprï¿½ft, ob ein String null ist, wenn nicht wird es
+	 * der Liste angehangen,
+	 * 
+	 * @param string
+	 *            String
+	 * @param list
+	 *            Liste
+	 */
+	private void stringCheck(String string, LinkedList<String> list) {
+		if (string != null) {
+			list.add(string);
+		} else {
+			list.add("-");
+		}
 	}
 }

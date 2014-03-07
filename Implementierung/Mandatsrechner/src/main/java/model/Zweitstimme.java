@@ -30,9 +30,49 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 *            Die zugehï¿½rige Partei.
 	 */
 	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei) {
-		this.setAnzahl(anzahl);
-		this.setGebiet(gebiet);
-		this.setPartei(partei);
+		setAnzahl(anzahl);
+		setGebiet(gebiet);
+		setPartei(partei);
+	}
+
+	@Override
+	public int compareTo(Zweitstimme andere) {
+		return Integer.compare(andere.getAnzahl(), getAnzahl());
+	}
+
+	@Override
+	public Stimme deepCopy() {
+		return new Zweitstimme(this.anzahl, this.gebiet, this.partei);
+	}
+
+	@Override
+	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
+		if (anzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (getGebiet().getWahlberechtigte() < getGebiet()
+				.getAnzahlZweitstimmen() + anzahl) {
+			throw new IllegalArgumentException(
+					"Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
+		}
+		this.anzahl += anzahl;
+	}
+
+	/**
+	 * Diese Methode vermindert die Anzahl an Zweitstimmen.
+	 * 
+	 * @param stimmanzahl
+	 *            Stimmenanzahl
+	 * @throws IllegalArgumentException
+	 */
+	public void erniedrigeAnzahl(int stimmanzahl) {
+		if (stimmanzahl < 0) {
+			throw new IllegalArgumentException("Anzahl ist negativ!");
+		}
+		if (this.anzahl - stimmanzahl < 0) {
+			throw new IllegalArgumentException("Stimmzahlen wären kleiner 0!");
+		}
+		this.anzahl -= stimmanzahl;
 	}
 
 	/**
@@ -42,27 +82,6 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 */
 	public Partei getPartei() {
 		return this.partei;
-	}
-
-	/**
-	 * Setzt die zugehoerige Partei dieser Zweitstimme.
-	 * 
-	 * @param partei
-	 *            die zugehoerige Partei
-	 * @throws IllegalArgumentException
-	 *             wenn der Parameter partei null ist.
-	 */
-	public void setPartei(Partei partei) throws IllegalArgumentException {
-		if (partei == null) {
-			throw new IllegalArgumentException(
-					"Der Parameter \"partei\" ist null!");
-		}
-		this.partei = partei;
-	}
-
-	@Override
-	public int compareTo(Zweitstimme andere) {
-		return Integer.compare(andere.getAnzahl(), this.getAnzahl());
 	}
 
 	@Override
@@ -79,39 +98,20 @@ public class Zweitstimme extends Stimme implements Serializable,
 		this.anzahl = anzahl;
 	}
 
-	@Override
-	public void erhoeheAnzahl(int anzahl) throws IllegalArgumentException {
-		if (anzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
-		}
-		if (this.getGebiet().getWahlberechtigte() < (this.getGebiet()
-				.getAnzahlZweitstimmen() + anzahl)) {
-			throw new IllegalArgumentException(
-					"Anzahl der Zweitstimmen > Anzahl der Wahlberechtigten!");
-		}
-		this.anzahl += anzahl;
-	}
-
-	@Override
-	public Stimme deepCopy() {
-		return new Zweitstimme(this.anzahl, this.gebiet, this.partei);
-	}
-
 	/**
-	 * Diese Methode vermindert die Anzahl an Zweitstimmen.
+	 * Setzt die zugehoerige Partei dieser Zweitstimme.
 	 * 
-	 * @param stimmanzahl
-	 *            Stimmenanzahl
+	 * @param partei
+	 *            die zugehoerige Partei
 	 * @throws IllegalArgumentException
+	 *             wenn der Parameter partei null ist.
 	 */
-	public void erniedrigeAnzahl(int stimmanzahl) {
-		if (stimmanzahl < 0) {
-			throw new IllegalArgumentException("Anzahl ist negativ!");
+	public void setPartei(Partei partei) throws IllegalArgumentException {
+		if (partei == null) {
+			throw new IllegalArgumentException(
+					"Der Parameter \"partei\" ist null!");
 		}
-		if ((anzahl - stimmanzahl) < 0) {
-			throw new IllegalArgumentException("Stimmzahlen wären kleiner 0!");
-		}
-		this.anzahl -= stimmanzahl;
+		this.partei = partei;
 	}
 
 }

@@ -53,17 +53,21 @@ public class GUISteuerung {
 	}
 
 	/**
-	 * Diese Methode übergibt an die Steuerung die Wertänderung im
-	 * Tabellenfenster.
+	 * Gibt die aktuelle Bundestagswahl aus.
 	 * 
-	 * @param stimme
-	 *            die betroffene Stimmenanzahl
-	 * @param anzahl
-	 *            der neue Wert
-	 * @return ob der Wert geändert werden konnte
+	 * @return Bundestagswahl
 	 */
-	public boolean wertAenderung(Stimme stimme, int anzahl) {
-		return Steuerung.getInstance().aktualisiereDaten(stimme, anzahl);
+	public Bundestagswahl getBundestagswahl() {
+		return this.btw;
+	}
+
+	/**
+	 * Gibt das Wahlfenster aus.
+	 * 
+	 * @return Wahlfenster
+	 */
+	public WahlFenster getWahlfenster() {
+		return this.wahlfenster;
 	}
 
 	/**
@@ -79,25 +83,21 @@ public class GUISteuerung {
 		if (btw1 == null || btw2 == null) {
 			throw new IllegalArgumentException("Bundestagswahlen sind null.");
 		}
-		Wahlvergleich vergleich = new Wahlvergleich(btw1, btw2);
+		final Wahlvergleich vergleich = new Wahlvergleich(btw1, btw2);
 		new VergleichsFenster(vergleich);
 	}
 
 	/**
-	 * Gibt die aktuelle Bundestagswahl aus.
+	 * Diese Methode übergibt an die Steuerung die Wertänderung im
+	 * Tabellenfenster.
 	 * 
-	 * @return Bundestagswahl
+	 * @param stimme
+	 *            die betroffene Stimmenanzahl
+	 * @param anzahl
+	 *            der neue Wert
+	 * @return ob der Wert geändert werden konnte
 	 */
-	public Bundestagswahl getBundestagswahl() {
-		return btw;
-	}
-
-	/**
-	 * Gibt das Wahlfenster aus.
-	 * 
-	 * @return Wahlfenster
-	 */
-	public WahlFenster getWahlfenster() {
-		return wahlfenster;
+	public boolean wertAenderung(Stimme stimme, int anzahl) {
+		return Steuerung.getInstance().aktualisiereDaten(stimme, anzahl);
 	}
 }

@@ -51,114 +51,12 @@ public class TabellenFenster extends JScrollPane {
 	}
 
 	/**
-	 * Diese Methode identifiziert das Gebiets-Objekt.
+	 * Gibt die Ansicht aus.
 	 * 
-	 * @param gebiet
-	 *            Gebiet
+	 * @return Ansicht
 	 */
-	public void tabellenFuellen(Gebiet gebiet) {
-		// wenn kein Gebiet ï¿½bergeben wird wird eine leere Tabelle erstellt
-		if (gebiet == null) {
-			BundDaten daten = new BundDaten();
-			BundTableModel tabelle = new BundTableModel(daten);
-			JTable jTabelle = new JTable(tabelle);
-			this.setViewportView(jTabelle);
-		}
-		if (gebiet instanceof Deutschland) {
-			Deutschland land = (Deutschland) gebiet;
-			tabellenFuellen(land);
-		} else if (gebiet instanceof Bundesland) {
-			Bundesland bundLand = (Bundesland) gebiet;
-			tabellenFuellen(bundLand);
-		} else {
-			Wahlkreis wk = (Wahlkreis) gebiet;
-			tabellenFuellen(wk);
-		}
-	}
-
-	
-	
-	
-	
-	/**
-	 * Befüllt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
-	 * relevanten Daten.
-	 * 
-	 * @param land
-	 *            Deutschland-Objekt welches visualisiert werden soll
-	 * @throws IllegalArgumentException
-	 *             wenn das Deutschland-Objekt null ist.
-	 */
-	private void tabellenFuellen(Deutschland land) {
-		if (land == null) {
-			throw new IllegalArgumentException("Deutschland-Objekt ist null");
-		}
-		Sitzverteilung bundestag = this.ansicht.getFenster().getBtw()
-				.getSitzverteilung();
-		BundDaten daten = new BundDaten();
-		List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
-		Collections.sort(stimmen);
-		for (Zweitstimme zw : stimmen) {
-			GUIPartei gp = parteiDatenDeutschland(zw.getPartei(), bundestag);
-			double proZweit = (Math
-					.rint(((double) zw.getAnzahl() / (double) land
-							.getAnzahlZweitstimmen()) * 1000) / 10);
-			daten.addZeile(zw.getPartei().getName(), zw,
-					Double.toString(proZweit), Integer.toString(gp.getSitze()),
-					Integer.toString(gp.getDirektmandate()),
-					Integer.toString(gp.getUeberhangsmandate()),
-					Integer.toString(gp.getAusgleichsmandate()));
-		}
-		
-		TableRowSorter<TableModel> sorterBund = new TableRowSorter<TableModel>();
-		BundTableModel tabelle = new BundTableModel(daten);
-		JTable jTabelle = new JTable(tabelle);
-		jTabelle.setRowSorter(sorterBund);
-		sorterBund.setModel(jTabelle.getModel());
-		sorterBund.setComparator(3, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterBund.setComparator(4, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterBund.setComparator(5, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterBund.setComparator(6, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterBund.setComparator(2, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
-		sorterBund.setComparator(1, new Comparator<Integer>() {
-			 @Override
-			public int compare(Integer o1, Integer o2) {
-				return Integer.compare(o1, o2);
-			}
-		});
-		
-		
-		this.setViewportView(jTabelle);
+	public Ansicht getAnsicht() {
+		return this.ansicht;
 	}
 
 	/**
@@ -179,12 +77,12 @@ public class TabellenFenster extends JScrollPane {
 			return new GUIPartei(0, 0, 0, 0);
 		}
 		// Anzahl Direkt-, Überhangs-, und Ausgleichsmandate
-		//int sitze = partei.getAnzahlMandate();
-		int sitze = bundestag.getAnzahlSitze(partei);
+		// int sitze = partei.getAnzahlMandate();
+		final int sitze = bundestag.getAnzahlSitze(partei);
 		int direktMan = 0;
-		int ueberMan = partei.getUeberhangMandate();
+		final int ueberMan = partei.getUeberhangMandate();
 		int ausglMan = partei.getAusgleichsMandate();
-		for (Kandidat kan : bundestag.getAbgeordnete()) {
+		for (final Kandidat kan : bundestag.getAbgeordnete()) {
 			if (kan.getPartei().getName().equals(partei.getName())) {
 				if (kan.getMandat().equals(Mandat.DIREKTMANDAT)) {
 					direktMan++;
@@ -193,7 +91,7 @@ public class TabellenFenster extends JScrollPane {
 				}
 			}
 		}
-		GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
+		final GUIPartei gp = new GUIPartei(sitze, direktMan, ueberMan, ausglMan);
 		return gp;
 	}
 
@@ -211,59 +109,167 @@ public class TabellenFenster extends JScrollPane {
 			throw new IllegalArgumentException(
 					"Das Bundesland-Objekt ist null.");
 		}
-		LandDaten daten = new LandDaten();
-		List<Zweitstimme> stimmen = bl.getZweitstimmenProPartei();
+		final LandDaten daten = new LandDaten();
+		final List<Zweitstimme> stimmen = bl.getZweitstimmenProPartei();
 		Collections.sort(stimmen);
-		for (Zweitstimme zw : stimmen) {
+		for (final Zweitstimme zw : stimmen) {
 			int direktMan = 0;
-			for (Wahlkreis wk : bl.getWahlkreise()) {
+			for (final Wahlkreis wk : bl.getWahlkreise()) {
 				if (wk.getWahlkreisSieger().getPartei().getName()
 						.equals(zw.getPartei().getName())) {
 					direktMan++;
 				}
 			}
-			double proZweit = (Math.rint(((double) zw.getAnzahl() / (double) bl
-					.getAnzahlZweitstimmen()) * 1000) / 10);
+			final double proZweit = Math.rint((double) zw.getAnzahl()
+					/ (double) bl.getAnzahlZweitstimmen() * 1000) / 10;
 			daten.addZeile(zw.getPartei().getName(), zw,
 					Double.toString(proZweit), Integer.toString(direktMan),
 					Integer.toString(zw.getPartei().getUeberhangMandate(bl)));
 		}
-		
-		TableRowSorter<TableModel> sorterLand = new TableRowSorter<TableModel>();
-		LandTableModel tabelle = new LandTableModel(daten);
-		JTable jTabelle = new JTable(tabelle);
+
+		final TableRowSorter<TableModel> sorterLand = new TableRowSorter<TableModel>();
+		final LandTableModel tabelle = new LandTableModel(daten);
+		final JTable jTabelle = new JTable(tabelle);
 		jTabelle.setRowSorter(sorterLand);
 		sorterLand.setModel(jTabelle.getModel());
 		sorterLand.setComparator(3, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
 		sorterLand.setComparator(4, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
 		sorterLand.setComparator(2, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
 		sorterLand.setComparator(1, new Comparator<Integer>() {
-			 @Override
+			@Override
 			public int compare(Integer o1, Integer o2) {
 				return Integer.compare(o1, o2);
 			}
 		});
-		
-		this.setViewportView(jTabelle);
-		
+
+		setViewportView(jTabelle);
+
+	}
+
+	/**
+	 * Befüllt die Zeilen und Spalten der Tabelle in der Bundesansicht mit den
+	 * relevanten Daten.
+	 * 
+	 * @param land
+	 *            Deutschland-Objekt welches visualisiert werden soll
+	 * @throws IllegalArgumentException
+	 *             wenn das Deutschland-Objekt null ist.
+	 */
+	private void tabellenFuellen(Deutschland land) {
+		if (land == null) {
+			throw new IllegalArgumentException("Deutschland-Objekt ist null");
+		}
+		final Sitzverteilung bundestag = this.ansicht.getFenster().getBtw()
+				.getSitzverteilung();
+		final BundDaten daten = new BundDaten();
+		final List<Zweitstimme> stimmen = land.getZweitstimmenProPartei();
+		Collections.sort(stimmen);
+		for (final Zweitstimme zw : stimmen) {
+			final GUIPartei gp = parteiDatenDeutschland(zw.getPartei(),
+					bundestag);
+			final double proZweit = Math.rint((double) zw.getAnzahl()
+					/ (double) land.getAnzahlZweitstimmen() * 1000) / 10;
+			daten.addZeile(zw.getPartei().getName(), zw,
+					Double.toString(proZweit), Integer.toString(gp.getSitze()),
+					Integer.toString(gp.getDirektmandate()),
+					Integer.toString(gp.getUeberhangsmandate()),
+					Integer.toString(gp.getAusgleichsmandate()));
+		}
+
+		final TableRowSorter<TableModel> sorterBund = new TableRowSorter<TableModel>();
+		final BundTableModel tabelle = new BundTableModel(daten);
+		final JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterBund);
+		sorterBund.setModel(jTabelle.getModel());
+		sorterBund.setComparator(3, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterBund.setComparator(4, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterBund.setComparator(5, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterBund.setComparator(6, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterBund.setComparator(2, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
+		sorterBund.setComparator(1, new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+
+		setViewportView(jTabelle);
+	}
+
+	/**
+	 * Diese Methode identifiziert das Gebiets-Objekt.
+	 * 
+	 * @param gebiet
+	 *            Gebiet
+	 */
+	public void tabellenFuellen(Gebiet gebiet) {
+		// wenn kein Gebiet ï¿½bergeben wird wird eine leere Tabelle erstellt
+		if (gebiet == null) {
+			final BundDaten daten = new BundDaten();
+			final BundTableModel tabelle = new BundTableModel(daten);
+			final JTable jTabelle = new JTable(tabelle);
+			setViewportView(jTabelle);
+		}
+		if (gebiet instanceof Deutschland) {
+			final Deutschland land = (Deutschland) gebiet;
+			tabellenFuellen(land);
+		} else if (gebiet instanceof Bundesland) {
+			final Bundesland bundLand = (Bundesland) gebiet;
+			tabellenFuellen(bundLand);
+		} else {
+			final Wahlkreis wk = (Wahlkreis) gebiet;
+			tabellenFuellen(wk);
+		}
 	}
 
 	/**
@@ -279,12 +285,13 @@ public class TabellenFenster extends JScrollPane {
 		if (wk == null) {
 			throw new IllegalArgumentException("Wahlkreis-Objekt ist null.");
 		}
-		WahlkreisDaten daten = new WahlkreisDaten();
-		for (Erststimme er : wk.getErststimmenProPartei()) {
+		final WahlkreisDaten daten = new WahlkreisDaten();
+		for (final Erststimme er : wk.getErststimmenProPartei()) {
 			Zweitstimme korresZweit = null;
-			for (Zweitstimme zw : wk.getZweitstimmenProPartei()) {
-				if ((er.getKandidat().getPartei() != null)
-						&& (zw.getPartei().getName().equals(er.getKandidat().getPartei().getName()))) {
+			for (final Zweitstimme zw : wk.getZweitstimmenProPartei()) {
+				if (er.getKandidat().getPartei() != null
+						&& zw.getPartei().getName()
+								.equals(er.getKandidat().getPartei().getName())) {
 					korresZweit = zw;
 				}
 			}
@@ -295,15 +302,15 @@ public class TabellenFenster extends JScrollPane {
 				}
 				double prozentualeErst = 0;
 				if (wk.getAnzahlErststimmen() != 0) {
-					prozentualeErst = (Math
-							.rint(((double) er.getAnzahl() / (double) wk
-									.getAnzahlErststimmen()) * 1000) / 10);
+					prozentualeErst = Math.rint((double) er.getAnzahl()
+							/ (double) wk.getAnzahlErststimmen() * 1000) / 10;
 				}
 				double prozentualeZweit = 0;
 				if (wk.getAnzahlZweitstimmen() != 0) {
-					prozentualeZweit = (Math
-							.rint(((double) korresZweit.getAnzahl() / (double) wk
-									.getAnzahlZweitstimmen()) * 1000) / 10);
+					prozentualeZweit = Math.rint((double) korresZweit
+							.getAnzahl()
+							/ (double) wk.getAnzahlZweitstimmen()
+							* 1000) / 10;
 				}
 				String direktMan = "nein";
 				if (direktManBoolean) {
@@ -315,49 +322,42 @@ public class TabellenFenster extends JScrollPane {
 						.toString(prozentualeErst), direktMan);
 			}
 		}
-		
-		TableRowSorter<TableModel> sorterWk = new TableRowSorter<TableModel>();
-		WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
-		JTable jTabelle = new JTable(tabelle);
+
+		final TableRowSorter<TableModel> sorterWk = new TableRowSorter<TableModel>();
+		final WahlkreisTableModel tabelle = new WahlkreisTableModel(daten, this);
+		final JTable jTabelle = new JTable(tabelle);
 		jTabelle.setRowSorter(sorterWk);
 		sorterWk.setModel(jTabelle.getModel());
 		sorterWk.setComparator(3, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
 		sorterWk.setComparator(5, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
 		sorterWk.setComparator(2, new Comparator<Integer>() {
-			 @Override
+			@Override
 			public int compare(Integer o1, Integer o2) {
 				return Integer.compare(o1, o2);
 			}
 		});
 		sorterWk.setComparator(4, new Comparator<Integer>() {
-			 @Override
+			@Override
 			public int compare(Integer o1, Integer o2) {
 				return Integer.compare(o1, o2);
 			}
 		});
-		
-		this.setViewportView(jTabelle);
-	
-	}
 
-	/**
-	 * Gibt die Ansicht aus.
-	 * 
-	 * @return Ansicht
-	 */
-	public Ansicht getAnsicht() {
-		return this.ansicht;
+		setViewportView(jTabelle);
+
 	}
 }

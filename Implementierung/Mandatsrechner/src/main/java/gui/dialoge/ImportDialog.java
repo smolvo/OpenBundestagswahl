@@ -34,12 +34,13 @@ public class ImportDialog extends JDialog {
 	JFileChooser bewerberAuswahl = null;
 
 	/** repräsentiert den Vektor mit den eingelesenen Daten */
-	private File[] eingeleseneDateien = new File[2];
-	
-	private FileFilter filter = new FileNameExtensionFilter("CSV File","csv");
+	private final File[] eingeleseneDateien = new File[2];
+
+	private final FileFilter filter = new FileNameExtensionFilter("CSV File",
+			"csv");
 
 	/** repräsentiert das Programmfenster */
-	private Programmfenster pf;
+	private final Programmfenster pf;
 
 	/**
 	 * Der Konstruktor erstellt einen neuen Importdialog mit dem zwei Dateien
@@ -60,45 +61,50 @@ public class ImportDialog extends JDialog {
 	 */
 	public void importiereWahl() {
 		// bei der ersten Ausführung wird der FileChooser gesichert
-		if (ersteAusfuehrung) {
-			ergebnisseAuswahl = new JFileChooser();
-			ergebnisseAuswahl.setFileFilter(filter);
-			ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
-			ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
-			bewerberAuswahl = new JFileChooser();
-			bewerberAuswahl.setFileFilter(filter);
-			ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
-			bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
-			ersteAusfuehrung = false;
+		if (this.ersteAusfuehrung) {
+			this.ergebnisseAuswahl = new JFileChooser();
+			this.ergebnisseAuswahl.setFileFilter(this.filter);
+			this.ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
+			this.ergebnisseAuswahl.setDialogTitle("Wahlergebnisse importieren");
+			this.bewerberAuswahl = new JFileChooser();
+			this.bewerberAuswahl.setFileFilter(this.filter);
+			this.ergebnisseAuswahl.setAcceptAllFileFilterUsed(false);
+			this.bewerberAuswahl.setDialogTitle("Wahlbewerber importieren");
+			this.ersteAusfuehrung = false;
 		}
 
-		int rueckgabeWert = ergebnisseAuswahl.showOpenDialog(pf);
+		int rueckgabeWert = this.ergebnisseAuswahl.showOpenDialog(this.pf);
 		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
-			rueckgabeWert = bewerberAuswahl.showOpenDialog(pf);
+			rueckgabeWert = this.bewerberAuswahl.showOpenDialog(this.pf);
 			if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
-				eingeleseneDateien[0] = ergebnisseAuswahl.getSelectedFile();
-				eingeleseneDateien[1] = bewerberAuswahl.getSelectedFile();
+				this.eingeleseneDateien[0] = this.ergebnisseAuswahl
+						.getSelectedFile();
+				this.eingeleseneDateien[1] = this.bewerberAuswahl
+						.getSelectedFile();
 				Bundestagswahl w = null;
 				try {
-				w = Steuerung.getInstance().importieren(
-						eingeleseneDateien);
-				} catch (IllegalArgumentException e) {
-					JOptionPane.showMessageDialog(pf,
-							"Die .csv-Datei entspricht nicht dem gewünschten Format.", "Meldung",
-							JOptionPane.INFORMATION_MESSAGE, null);
+					w = Steuerung.getInstance().importieren(
+							this.eingeleseneDateien);
+				} catch (final IllegalArgumentException e) {
+					JOptionPane
+							.showMessageDialog(
+									this.pf,
+									"Die .csv-Datei entspricht nicht dem gewünschten Format.",
+									"Meldung", JOptionPane.INFORMATION_MESSAGE,
+									null);
 					return;
 				}
 				Steuerung.getInstance().setBtw(w);
 				Steuerung.getInstance().berechneSitzverteilung();
-				pf.wahlHinzufuegen(w);
+				this.pf.wahlHinzufuegen(w);
 
 			} else {
-				JOptionPane.showMessageDialog(pf,
+				JOptionPane.showMessageDialog(this.pf,
 						"Keine Datei mit Wahlbewerber ausgewählt.", "Meldung",
 						JOptionPane.INFORMATION_MESSAGE, null);
 			}
 		} else {
-			JOptionPane.showMessageDialog(pf,
+			JOptionPane.showMessageDialog(this.pf,
 					"Keine Datei mit Wahlergebnisse ausgewählt.", "Meldung",
 					JOptionPane.INFORMATION_MESSAGE, null);
 		}

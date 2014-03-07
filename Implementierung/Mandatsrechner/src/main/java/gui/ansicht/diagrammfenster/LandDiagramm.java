@@ -12,6 +12,10 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import main.java.model.Bundesland;
+import main.java.model.Partei;
+import main.java.model.Zweitstimme;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -21,10 +25,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.Range;
 import org.jfree.data.category.DefaultCategoryDataset;
-
-import main.java.model.Bundesland;
-import main.java.model.Partei;
-import main.java.model.Zweitstimme;
 
 /**
  * Diese Klasse stellt das Diagramm der Landesansicht dar.
@@ -47,14 +47,14 @@ public class LandDiagramm extends JPanel {
 		if (bundLand == null) {
 			throw new IllegalArgumentException("Bundesland ist null.");
 		}
-		this.setLayout(new BorderLayout());
-		JFreeChart chart = createChart(bundLand);
+		setLayout(new BorderLayout());
+		final JFreeChart chart = createChart(bundLand);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.addComponentListener(new ComponentAdapter() {
 
 			@Override
 			public void componentResized(ComponentEvent e) {
-				ChartPanel panel = (ChartPanel) e.getComponent();
+				final ChartPanel panel = (ChartPanel) e.getComponent();
 				panel.setSize(resize());
 				add(chartPanel, BorderLayout.LINE_START);
 			}
@@ -78,9 +78,9 @@ public class LandDiagramm extends JPanel {
 		if (bundLand == null) {
 			throw new IllegalArgumentException("Bundesland ist null.");
 		}
-		DefaultCategoryDataset result = new DefaultCategoryDataset();
-		ArrayList<Partei> parteien = new ArrayList<Partei>();
-		List<Zweitstimme> zw = bundLand.getZweitstimmenProPartei();
+		final DefaultCategoryDataset result = new DefaultCategoryDataset();
+		final ArrayList<Partei> parteien = new ArrayList<Partei>();
+		final List<Zweitstimme> zw = bundLand.getZweitstimmenProPartei();
 		Collections.sort(zw);
 		int count = 0;
 		int sonstige = 100;
@@ -88,38 +88,39 @@ public class LandDiagramm extends JPanel {
 		// Balken hinzugefï¿½gt werden
 		while (sonstige > 5) {
 			sonstige = 0;
-			double proZweit = (Math
-					.rint(((double) zw.get(count).getAnzahl() / (double) bundLand
-							.getAnzahlZweitstimmen()) * 1000) / 10);
+			final double proZweit = Math.rint((double) zw.get(count)
+					.getAnzahl()
+					/ (double) bundLand.getAnzahlZweitstimmen()
+					* 1000) / 10;
 			parteien.add(zw.get(count).getPartei());
 			result.setValue(proZweit, " ", zw.get(count).getPartei().getName());
 
 			for (int i = count; i < zw.size(); i++) {
-				sonstige += (Math
-						.rint(((double) zw.get(i).getAnzahl() / (double) bundLand
-								.getAnzahlZweitstimmen()) * 1000) / 10);
+				sonstige += Math.rint((double) zw.get(i).getAnzahl()
+						/ (double) bundLand.getAnzahlZweitstimmen() * 1000) / 10;
 			}
 			count++;
 		}
 		result.setValue(sonstige, " ", "Sonstige");
 
-		JFreeChart chart = ChartFactory.createBarChart("Stimmanteile von "
-				+ bundLand.getName(), null, "proz. Zweitstimmen", result,
-				PlotOrientation.VERTICAL, false, false, false);
-		CategoryPlot plot = chart.getCategoryPlot();
+		final JFreeChart chart = ChartFactory.createBarChart(
+				"Stimmanteile von " + bundLand.getName(), null,
+				"proz. Zweitstimmen", result, PlotOrientation.VERTICAL, false,
+				false, false);
+		final CategoryPlot plot = chart.getCategoryPlot();
 
 		// y-Achsenabschnitt festlegen
-		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
 		rangeAxis.setRange(new Range(0, 75));
 		plot.setRangeAxis(rangeAxis);
 
 		// fï¿½rben der Parteienbalken
-		Paint[] farben = new Paint[parteien.size() + 1];
+		final Paint[] farben = new Paint[parteien.size() + 1];
 		for (int i = 0; i < parteien.size(); i++) {
 			farben[i] = parteien.get(i).getFarbe();
 		}
 		farben[farben.length - 1] = Color.GRAY;
-		BarRenderer barRenderer = new BalkenRenderer(farben);
+		final BarRenderer barRenderer = new BalkenRenderer(farben);
 		plot.setRenderer(barRenderer);
 		plot.setForegroundAlpha(1.0f);
 
@@ -127,12 +128,12 @@ public class LandDiagramm extends JPanel {
 	}
 
 	/**
-	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der sich
-	 * das Diagramm befindet, aus.
+	 * Diese Methode gibt eine Dimension, abhï¿½ngig von der Flï¿½che auf der
+	 * sich das Diagramm befindet, aus.
 	 * 
 	 * @return Dimension
 	 */
 	public Dimension resize() {
-		return new Dimension(this.getWidth(), (this.getHeight()));
+		return new Dimension(getWidth(), getHeight());
 	}
 }

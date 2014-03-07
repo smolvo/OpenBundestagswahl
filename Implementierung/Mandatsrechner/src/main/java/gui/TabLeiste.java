@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -48,21 +49,54 @@ public class TabLeiste extends JTabbedPane {
 		}
 		this.pf = pf;
 		// allgemeine Einstellungen der Tab- Leiste
-		this.setTabLayoutPolicy(TOP);
-		this.setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
+		setTabLayoutPolicy(SwingConstants.TOP);
+		setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		neuerTabButton();
-		this.addChangeListener(new ChangeListener() {
+		addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				int i = getSelectedIndex();
+				final int i = getSelectedIndex();
 				if (i > 0) {
-					Steuerung.getInstance().setBtw(pf.getWahlen().get(i).getBtw());
+					Steuerung.getInstance().setBtw(
+							pf.getWahlen().get(i).getBtw());
 				}
-		
+
 			}
 
 		});
+	}
+
+	/**
+	 * Gibt das Programmfenster aus
+	 * 
+	 * @return Programmfenster
+	 */
+	public Programmfenster getPf() {
+		return this.pf;
+	}
+
+	/**
+	 * Gibt das index-te Wahlfenster aus.
+	 * 
+	 * @return Wahlfenster
+	 */
+	public WahlFenster getWahlfenster() {
+		return (WahlFenster) getSelectedComponent();
+	}
+
+	/**
+	 * Diese private Methode wird vom Plus-Knopf verwendet, um eine Wahl zu
+	 * importieren.
+	 */
+	private void importiere() {
+		if (this.pf.getiD() == null) {
+			final ImportDialog iD = new ImportDialog(this.pf);
+			this.pf.setiD(iD);
+			this.pf.getiD().importiereWahl();
+		} else {
+			this.pf.getiD().importiereWahl();
+		}
 	}
 
 	/**
@@ -78,30 +112,31 @@ public class TabLeiste extends JTabbedPane {
 	 */
 
 	public void neuerTab(final WahlFenster c, final String wahlName) {
-		if ((c == null) || (wahlName == null)) {
+		if (c == null || wahlName == null) {
 			throw new IllegalArgumentException(
 					"Einer der zwei Parameter ist null.");
 		}
 		this.add(c);
-		int pos = this.indexOfComponent(c);
+		final int pos = indexOfComponent(c);
 
-		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
-		JPanel tab = new JPanel(f);
+		final FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
+		final JPanel tab = new JPanel(f);
 		tab.addMouseListener(new MouseAdapter() {
 
-			// bei Tabwechsel wird die Bundestagswahl des Tabs in die Steuerung geladen
+			// bei Tabwechsel wird die Bundestagswahl des Tabs in die Steuerung
+			// geladen
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Steuerung.getInstance().setBtw(c.getBtw());
 				setSelectedComponent(c);
 			}
-			
+
 		});
 		tab.setOpaque(false);
 
-		JLabel lblTitle = new JLabel(wahlName);
+		final JLabel lblTitle = new JLabel(wahlName);
 
-		JButton schliessen = new JButton();
+		final JButton schliessen = new JButton();
 		schliessen.setOpaque(false);
 		schliessen.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/tabSchließen.png"));
@@ -115,25 +150,27 @@ public class TabLeiste extends JTabbedPane {
 		// Erstelle anonymen ActionListener für den "x" Knopf
 		schliessen.addMouseListener(new MouseAdapter() {
 			/*
-			 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt,
-			 * ob dieser Tab gespeichert werden soll
+			 * Wird versucht, einen Tab zu schließen, wird zuerst gefragt, ob
+			 * dieser Tab gespeichert werden soll
 			 */
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (pf.getWahlen().size() > 1) {
-					int eingabe = JOptionPane.showConfirmDialog(null,
+				if (TabLeiste.this.pf.getWahlen().size() > 1) {
+					final int eingabe = JOptionPane.showConfirmDialog(null,
 							"Soll Datei gespeichert werden?", "Einverständnis",
 							JOptionPane.YES_NO_CANCEL_OPTION);
 
 					if (eingabe == 0) {
-						new ExportDialog(pf);
-						WahlFenster naechst = (WahlFenster)TabLeiste.this.getComponentAt(0);
+						new ExportDialog(TabLeiste.this.pf);
+						final WahlFenster naechst = (WahlFenster) TabLeiste.this
+								.getComponentAt(0);
 						setSelectedComponent(naechst);
 						Steuerung.getInstance().setBtw(naechst.getBtw());
 					} else if (eingabe == 1) {
 						remove(c);
-						pf.getWahlen().remove(c);
-						WahlFenster naechst = (WahlFenster)TabLeiste.this.getComponentAt(0);
+						TabLeiste.this.pf.getWahlen().remove(c);
+						final WahlFenster naechst = (WahlFenster) TabLeiste.this
+								.getComponentAt(0);
 						setSelectedComponent(naechst);
 						Steuerung.getInstance().setBtw(naechst.getBtw());
 					}
@@ -141,9 +178,9 @@ public class TabLeiste extends JTabbedPane {
 			}
 		});
 
-		this.remove(plusButton);
+		this.remove(this.plusButton);
 		neuerTabButton();
-		this.setSelectedComponent(c);
+		setSelectedComponent(c);
 	}
 
 	/**
@@ -151,14 +188,14 @@ public class TabLeiste extends JTabbedPane {
 	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl.
 	 */
 	public void neuerTabButton() {
-		this.add(plusButton);
-		int pos = this.indexOfComponent(plusButton);
+		this.add(this.plusButton);
+		final int pos = indexOfComponent(this.plusButton);
 
-		FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
-		JPanel pnlTab = new JPanel(f);
+		final FlowLayout f = new FlowLayout(FlowLayout.CENTER, 5, 0);
+		final JPanel pnlTab = new JPanel(f);
 		pnlTab.setOpaque(false);
 
-		JButton neuerTab = new JButton();
+		final JButton neuerTab = new JButton();
 		neuerTab.setOpaque(false);
 		neuerTab.setIcon(new ImageIcon(
 				"src/main/resources/gui/images/neuerTab.png"));
@@ -169,49 +206,17 @@ public class TabLeiste extends JTabbedPane {
 		neuerTab.setFocusable(false);
 
 		pnlTab.add(neuerTab);
-		this.setTabComponentAt(pos, pnlTab);
+		setTabComponentAt(pos, pnlTab);
 
-		this.setEnabledAt(pos, false);
+		setEnabledAt(pos, false);
 		// Erstelle anonymen ActionListener für den "+" Knopf
 		neuerTab.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				remove(plusButton);
+				remove(TabLeiste.this.plusButton);
 				importiere();
 				neuerTabButton();
 			}
 		});
-	}
-
-	/**
-	 * Diese private Methode wird vom Plus-Knopf verwendet, um eine Wahl zu
-	 * importieren.
-	 */
-	private void importiere() {
-		if (pf.getiD() == null) {
-			ImportDialog iD = new ImportDialog(pf);
-			pf.setiD(iD);
-			pf.getiD().importiereWahl();
-		} else {
-			pf.getiD().importiereWahl();
-		}
-	}
-
-	/**
-	 * Gibt das index-te Wahlfenster aus.
-	 * 
-	 * @return Wahlfenster
-	 */
-	public WahlFenster getWahlfenster() {
-		return (WahlFenster) this.getSelectedComponent();
-	}
-
-	/**
-	 * Gibt das Programmfenster aus
-	 * 
-	 * @return Programmfenster
-	 */
-	public Programmfenster getPf() {
-		return pf;
 	}
 }

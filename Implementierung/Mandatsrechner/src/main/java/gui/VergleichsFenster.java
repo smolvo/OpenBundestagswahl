@@ -47,134 +47,17 @@ public class VergleichsFenster extends JDialog {
 		if (vergleich == null) {
 			throw new IllegalArgumentException("Wahlvergleich ist null.");
 		}
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		this.setLayout(new GridBagLayout());
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setLayout(new GridBagLayout());
 		this.gbc = new GridBagConstraints();
 		this.setSize(1024, 768);
-		this.setTitle("Vergleich");
+		setTitle("Vergleich");
 		zeigeVergleich(vergleich);
 		erstelleDiagramme(vergleich);
-		this.pack();
-		this.setAlwaysOnTop(true);
-		this.setAlwaysOnTop(false);
-		
-	}
+		pack();
+		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 
-	/**
-	 * Diese Methode füllt das Fenster mit der Tabelle, den zwei
-	 * Sitzverteilungsdiagrammen und dem Differenzendiagramm.
-	 * 
-	 * @param vergleich
-	 *            der Vergleich
-	 * @throws IllegalArgumentException
-	 *             wenn der Vergleich null ist.
-	 */
-	private void zeigeVergleich(Wahlvergleich vergleich) {
-		if (vergleich == null) {
-			throw new IllegalArgumentException("Wahlvergleich ist null");
-		}
-		WahlvergleichDaten daten = vergleich.wahlvergleich();
-		TableRowSorter<TableModel> sorterVergleich = new TableRowSorter<TableModel>();
-		WahlvergleichTableModel tabelle = new WahlvergleichTableModel(daten);
-		JTable jTabelle = new JTable(tabelle);
-		jTabelle.setRowSorter(sorterVergleich);
-		sorterVergleich.setModel(jTabelle.getModel());
-		sorterVergleich.setComparator(1, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(3, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(4, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(6, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(7, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(9, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    int i1 = Integer.parseInt( s1 ), i2 = Integer.parseInt( s2 );
-			    return Integer.compare(i1, i2);
-			  }
-			} );
-		sorterVergleich.setComparator(2, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
-		sorterVergleich.setComparator(5, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
-		sorterVergleich.setComparator(8, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
-		sorterVergleich.setComparator(10, new Comparator<String>() {
-			  @Override public int compare( String s1, String s2 )
-			  {
-			    Double d1 = Double.parseDouble( s1 ), d2 = Double.parseDouble( s2 );
-			    return Double.compare(d1, d2);
-			  }
-			} );
-		
-		JScrollPane skrollFenster = new JScrollPane(jTabelle);
-		this.gbc.anchor = GridBagConstraints.CENTER;
-		this.gbc.fill = GridBagConstraints.BOTH;
-
-		// Überschriften der Wahlen
-		JLabel ersteWahlName = new JLabel(vergleich.getBtw1().getName());
-		gbc.weightx = 0.5;
-		gbc.weighty = 0.025;
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		add(ersteWahlName, gbc);
-		JLabel zweiteWahlName = new JLabel(vergleich.getBtw2().getName());
-		gbc.gridx = 2;
-		add(zweiteWahlName, gbc);
-
-		// Das Vergleichstabellenfenster
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.gridheight = 1;
-		gbc.gridwidth = 4;
-		JPanel flaeche = new JPanel();
-		flaeche.add(skrollFenster);
-		add(skrollFenster, gbc);
 	}
 
 	/**
@@ -186,29 +69,31 @@ public class VergleichsFenster extends JDialog {
 			throw new IllegalArgumentException("Wahlvergleich ist null.");
 		}
 		// Diagramm der ersten Bundestagswahl
-		DiagrammFenster diagramm1 = new DiagrammFenster(null, vergleich.getBtw1());
+		final DiagrammFenster diagramm1 = new DiagrammFenster(null,
+				vergleich.getBtw1());
 		diagramm1.erstelleDiagramm(vergleich.getBtw1());
-		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		add(diagramm1, gbc);
+		this.gbc.gridheight = 1;
+		this.gbc.gridwidth = 1;
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 2;
+		add(diagramm1, this.gbc);
 
 		// Diagramm der Differenzen
-		DiffDiagramm diagramm3 = new DiffDiagramm(holeDifferenzen(
+		final DiffDiagramm diagramm3 = new DiffDiagramm(holeDifferenzen(
 				vergleich.getBtw1(), vergleich.getBtw2()));
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		add(diagramm3, gbc);
+		this.gbc.gridx = 1;
+		this.gbc.gridy = 2;
+		add(diagramm3, this.gbc);
 
 		// Diagramm der zweiten Bundestagswahl
-		DiagrammFenster diagramm2 = new DiagrammFenster(null, vergleich.getBtw2());
+		final DiagrammFenster diagramm2 = new DiagrammFenster(null,
+				vergleich.getBtw2());
 		diagramm2.erstelleDiagramm(vergleich.getBtw2());
-		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
-		gbc.gridx = 2;
-		gbc.gridy = 2;
-		add(diagramm2, gbc);
+		this.gbc.gridheight = 1;
+		this.gbc.gridwidth = 1;
+		this.gbc.gridx = 2;
+		this.gbc.gridy = 2;
+		add(diagramm2, this.gbc);
 	}
 
 	/**
@@ -229,32 +114,156 @@ public class VergleichsFenster extends JDialog {
 			throw new IllegalArgumentException("Eingabeparameter sind null.");
 		}
 		int anzahlBalken = 0;
-		LinkedList<Partei> parteien = new LinkedList<Partei>();
-		for (Partei partei : btw1.getParteien()) {
+		final LinkedList<Partei> parteien = new LinkedList<Partei>();
+		for (final Partei partei : btw1.getParteien()) {
 			if (partei.isImBundestag()) {
 				anzahlBalken++;
 				parteien.add(partei);
 			}
 		}
-		ParteiDifferenzen[] differenzen = new ParteiDifferenzen[anzahlBalken];
+		final ParteiDifferenzen[] differenzen = new ParteiDifferenzen[anzahlBalken];
 		for (int i = 0; i < parteien.size(); i++) {
 			int sitzeErsteWahl = 0;
 			int sitzeZweiteWahl = 0;
-			for (Kandidat kandidat : btw1.getSitzverteilung().getAbgeordnete()) {
+			for (final Kandidat kandidat : btw1.getSitzverteilung()
+					.getAbgeordnete()) {
 				if (parteien.get(i).getName()
 						.equals(kandidat.getPartei().getName())) {
 					sitzeErsteWahl++;
 				}
 			}
-			for (Kandidat kandidat : btw2.getSitzverteilung().getAbgeordnete()) {
+			for (final Kandidat kandidat : btw2.getSitzverteilung()
+					.getAbgeordnete()) {
 				if (parteien.get(i).getName()
 						.equals(kandidat.getPartei().getName())) {
 					sitzeZweiteWahl++;
 				}
 			}
-			int diff = sitzeErsteWahl - sitzeZweiteWahl;
+			final int diff = sitzeErsteWahl - sitzeZweiteWahl;
 			differenzen[i] = new ParteiDifferenzen(parteien.get(i), diff);
 		}
 		return differenzen;
+	}
+
+	/**
+	 * Diese Methode füllt das Fenster mit der Tabelle, den zwei
+	 * Sitzverteilungsdiagrammen und dem Differenzendiagramm.
+	 * 
+	 * @param vergleich
+	 *            der Vergleich
+	 * @throws IllegalArgumentException
+	 *             wenn der Vergleich null ist.
+	 */
+	private void zeigeVergleich(Wahlvergleich vergleich) {
+		if (vergleich == null) {
+			throw new IllegalArgumentException("Wahlvergleich ist null");
+		}
+		final WahlvergleichDaten daten = vergleich.wahlvergleich();
+		final TableRowSorter<TableModel> sorterVergleich = new TableRowSorter<TableModel>();
+		final WahlvergleichTableModel tabelle = new WahlvergleichTableModel(
+				daten);
+		final JTable jTabelle = new JTable(tabelle);
+		jTabelle.setRowSorter(sorterVergleich);
+		sorterVergleich.setModel(jTabelle.getModel());
+		sorterVergleich.setComparator(1, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(3, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(4, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(6, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(7, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(9, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final int i1 = Integer.parseInt(s1), i2 = Integer.parseInt(s2);
+				return Integer.compare(i1, i2);
+			}
+		});
+		sorterVergleich.setComparator(2, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
+		sorterVergleich.setComparator(5, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
+		sorterVergleich.setComparator(8, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
+		sorterVergleich.setComparator(10, new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				final Double d1 = Double.parseDouble(s1), d2 = Double
+						.parseDouble(s2);
+				return Double.compare(d1, d2);
+			}
+		});
+
+		final JScrollPane skrollFenster = new JScrollPane(jTabelle);
+		this.gbc.anchor = GridBagConstraints.CENTER;
+		this.gbc.fill = GridBagConstraints.BOTH;
+
+		// Überschriften der Wahlen
+		final JLabel ersteWahlName = new JLabel(vergleich.getBtw1().getName());
+		this.gbc.weightx = 0.5;
+		this.gbc.weighty = 0.025;
+		this.gbc.gridx = 1;
+		this.gbc.gridy = 0;
+		add(ersteWahlName, this.gbc);
+		final JLabel zweiteWahlName = new JLabel(vergleich.getBtw2().getName());
+		this.gbc.gridx = 2;
+		add(zweiteWahlName, this.gbc);
+
+		// Das Vergleichstabellenfenster
+		this.gbc.weightx = 1;
+		this.gbc.weighty = 1;
+		this.gbc.gridx = 0;
+		this.gbc.gridy = 1;
+		this.gbc.gridheight = 1;
+		this.gbc.gridwidth = 4;
+		final JPanel flaeche = new JPanel();
+		flaeche.add(skrollFenster);
+		add(skrollFenster, this.gbc);
 	}
 }
