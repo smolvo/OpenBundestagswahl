@@ -44,7 +44,9 @@ public class ExportDialog extends JDialog {
 		final int rueckgabeWert = this.dateiAuswahl.showSaveDialog(null);
 
 		if (rueckgabeWert == JFileChooser.APPROVE_OPTION) {
-			final String pfad = this.dateiAuswahl.getSelectedFile().toString();
+			String pfad = this.dateiAuswahl.getSelectedFile().toString();
+			if (!pfad.endsWith(".csv"))
+				pfad += ".csv";
 			Steuerung.getInstance().exportieren(pfad);
 		} else {
 			JOptionPane.showMessageDialog(pf, "Speichern abgebrochen.",

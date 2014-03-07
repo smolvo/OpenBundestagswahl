@@ -36,8 +36,7 @@ public class ImportDialog extends JDialog {
 	/** repräsentiert den Vektor mit den eingelesenen Daten */
 	private final File[] eingeleseneDateien = new File[2];
 
-	private final FileFilter filter = new FileNameExtensionFilter("CSV File",
-			"csv");
+	private final FileFilter filter = new FileNameExtensionFilter("CSV Datei", "csv");
 
 	/** repräsentiert das Programmfenster */
 	private final Programmfenster pf;

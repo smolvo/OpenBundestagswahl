@@ -29,7 +29,7 @@ public class AboutDialog {
 					editor.read(fr, "HTML");
 
 					final JFrame frame = new JFrame("About");
-					frame.setPreferredSize(new Dimension(500, 500));
+					frame.setPreferredSize(new Dimension(500, 600));
 					frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					frame.add(new JScrollPane(editor));
