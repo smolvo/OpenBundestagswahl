@@ -2,10 +2,11 @@ package main.java.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
- * Diese Klasse enthï¿½lte alle Daten, die zum korrekten Anzeigen eines
- * Berichtsfensters benï¿½tigt werden.
+ * Diese Klasse enthält alle Daten, die zum korrekten Anzeigen eines
+ * Berichtsfensters benötigt werden.
  * 
  */
 public class BerichtDaten implements Serializable {
@@ -43,9 +44,9 @@ public class BerichtDaten implements Serializable {
 	}
 
 	/**
-	 * gibt alle Bundeslï¿½nder aus.
+	 * gibt alle Bundesländer aus.
 	 * 
-	 * @return Liste der Bundeslï¿½nder
+	 * @return Liste der Bundesländer
 	 */
 	public LinkedList<String> getBundeslaender() {
 		return this.bundesland;
@@ -124,7 +125,7 @@ public class BerichtDaten implements Serializable {
 	 * @param list
 	 *            Liste
 	 */
-	private void stringCheck(String string, LinkedList<String> list) {
+	private void stringCheck(String string, List<String> list) {
 		if (string != null) {
 			list.add(string);
 		} else {

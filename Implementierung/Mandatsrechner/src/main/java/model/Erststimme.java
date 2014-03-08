@@ -72,7 +72,17 @@ public class Erststimme extends Stimme implements Serializable,
 	}
 
 	@Override
-	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+	public boolean isErststimme() {
+		return true;
+	}
+
+	@Override
+	public boolean isZweitstimme() {
+		return false;
+	}
+
+	@Override
+	public final void setAnzahl(int anzahl) throws IllegalArgumentException {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
@@ -95,7 +105,8 @@ public class Erststimme extends Stimme implements Serializable,
 	 * @throws IllegalArgumentException
 	 *             wenn der Kandidat leer ist.
 	 */
-	public void setKandidat(Kandidat kandidat) throws IllegalArgumentException {
+	public final void setKandidat(Kandidat kandidat)
+			throws IllegalArgumentException {
 		if (kandidat == null) {
 			throw new IllegalArgumentException("Kandidat ist null!");
 		}

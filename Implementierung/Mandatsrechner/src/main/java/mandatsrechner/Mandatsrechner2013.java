@@ -118,7 +118,11 @@ public class Mandatsrechner2013 {
 				6);
 		/**
 		 * Der Parteidivisor wird so lange erniedrigt, bis alle Parteien ihre
-		 * Anzahl an Mindestsitze erfuellen. TODO: Ordentliche Schleife
+		 * Anzahl an Mindestsitze erfuellen.
+		 * 
+		 * TODO: Ordentliche Schleifenbedingung schreiben Ist sehr
+		 * Fehleranfällig und kann zu Endlosschleife führen. => isCorrect
+		 * Variable und break nach Möglichkeit entfernen!
 		 */
 		boolean isCorrect = false;
 		while (!isCorrect) {
@@ -284,8 +288,7 @@ public class Mandatsrechner2013 {
 										final Kandidat mandat = partei
 												.getLandesliste(bl)
 												.getListenkandidaten().get(j);
-										if (mandat.getMandat().equals(
-												Mandat.LISTENMANDAT)) {
+										if (mandat.getMandat() == Mandat.LISTENMANDAT) {
 											mandat.setMandat(Mandat.KEINMANDAT);
 											Debug.print(
 													"****"

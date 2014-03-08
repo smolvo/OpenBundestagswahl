@@ -20,9 +20,6 @@ public class Deutschland extends Gebiet implements Serializable {
 	/** Liste mit den enthaltenden Bundeslaender. */
 	private LinkedList<Bundesland> bundeslaender = new LinkedList<Bundesland>();
 
-	/** Einwohnerzahl in Deutschland */
-	private int einwohneranzahl;
-
 	/**
 	 * Angepasster Konstruktor.
 	 * 
@@ -124,12 +121,11 @@ public class Deutschland extends Gebiet implements Serializable {
 	 * @return die Einwohnerzahl.
 	 */
 	public int getEinwohneranzahl() {
-		// Einwohneranzahl zuruecksetzen
-		this.einwohneranzahl = 0;
+		int einwohneranzahl = 0;
 		for (final Bundesland bl : this.bundeslaender) {
-			this.einwohneranzahl += bl.getEinwohnerzahl();
+			einwohneranzahl += bl.getEinwohnerzahl();
 		}
-		return this.einwohneranzahl;
+		return einwohneranzahl;
 	}
 
 	@Override

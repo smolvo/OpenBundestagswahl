@@ -82,7 +82,7 @@ public class Stimmanteile {
 	 *             Wenn der Wert des Parameters 'anteilErststimmen' nicht im
 	 *             Intervall [0,100] liegt.
 	 */
-	public void setAnteilErststimmen(int anteilErststimmen) {
+	public final void setAnteilErststimmen(int anteilErststimmen) {
 		if (anteilErststimmen < 0 || anteilErststimmen > 100) {
 			throw new IllegalArgumentException(
 					"Der Wert des Parameters 'anteilErststimmen' liegt nicht im Intervall [0,100]!");
@@ -100,7 +100,7 @@ public class Stimmanteile {
 	 *             Wenn der Wert des Parameters 'anteilZweitstimmen' nicht im
 	 *             Intervall [0,100] liegt.
 	 */
-	public void setAnteilZweitstimmen(int anteilZweitstimmen) {
+	public final void setAnteilZweitstimmen(int anteilZweitstimmen) {
 		if (anteilZweitstimmen < 0 || anteilZweitstimmen > 100) {
 			throw new IllegalArgumentException(
 					"Der Wert des Parameters 'anteilZweitstimmen' liegt nicht im Intervall [0,100]!");

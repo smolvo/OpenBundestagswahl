@@ -86,7 +86,7 @@ public class Sitzverteilung implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter abgeordnete null ist.
 	 */
-	public void setAbgeordnete(LinkedList<Kandidat> abgeordnete)
+	public final void setAbgeordnete(LinkedList<Kandidat> abgeordnete)
 			throws IllegalArgumentException {
 		if (abgeordnete == null) {
 			throw new IllegalArgumentException(
@@ -103,7 +103,7 @@ public class Sitzverteilung implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn der Bericht null ist
 	 */
-	public void setBericht(BerichtDaten bericht) {
+	public final void setBericht(BerichtDaten bericht) {
 		if (bericht == null) {
 			throw new IllegalArgumentException("Bericht ist null");
 		}

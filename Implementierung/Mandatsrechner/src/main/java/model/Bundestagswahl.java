@@ -196,7 +196,7 @@ public class Bundestagswahl implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn das Deutschland-Objekt null ist.
 	 */
-	public void setDeutschland(Deutschland deutschland) {
+	public final void setDeutschland(Deutschland deutschland) {
 		if (deutschland == null) {
 			throw new IllegalArgumentException(
 					"Parameter 'deutschland' ist null!");
@@ -210,7 +210,7 @@ public class Bundestagswahl implements Serializable {
 	 * @param name
 	 *            der Name dieser Bundestagswahl.
 	 */
-	public void setName(String name) {
+	public final void setName(String name) {
 		if (name == null) {
 			throw new IllegalArgumentException("Parameter 'name' ist null!");
 		}
@@ -225,7 +225,7 @@ public class Bundestagswahl implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn die Liste null ist.
 	 */
-	public void setParteien(LinkedList<Partei> parteien) {
+	public final void setParteien(LinkedList<Partei> parteien) {
 		if (parteien == null) {
 			throw new IllegalArgumentException("Parameter 'parteien' ist null!");
 		}
@@ -256,7 +256,7 @@ public class Bundestagswahl implements Serializable {
 	public boolean setzeStimme(Stimme stimme, boolean chronik) {
 		Stimme alteStimme = null;
 		boolean success = false;
-		if (stimme instanceof Erststimme) {
+		if (stimme.isErststimme()) {
 			alteStimme = this.setzeStimmenAnzahl((Erststimme) stimme);
 		} else if (stimme instanceof Zweitstimme) {
 			alteStimme = this.setzeStimmenAnzahl((Zweitstimme) stimme);

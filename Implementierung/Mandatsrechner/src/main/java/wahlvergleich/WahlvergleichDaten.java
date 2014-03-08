@@ -1,6 +1,7 @@
 package main.java.wahlvergleich;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Diese Klasse hält alle relevanten Daten, die zum erstellen der Tabelle im
@@ -281,7 +282,7 @@ public class WahlvergleichDaten {
 	 * @param list
 	 *            Liste
 	 */
-	private void stringCheck(String string, LinkedList<String> list) {
+	private void stringCheck(String string, List<String> list) {
 		if (string != null) {
 			list.add(string);
 		} else {

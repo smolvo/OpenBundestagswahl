@@ -1,7 +1,7 @@
 package main.java.steuerung;
 
 import java.io.File;
-import java.util.LinkedList;
+import java.util.List;
 
 import main.java.gui.VergleichsFenster;
 import main.java.importexport.ImportExportManager;
@@ -13,9 +13,8 @@ import main.java.wahlgenerator.Wahlgenerator;
 import main.java.wahlvergleich.Wahlvergleich;
 
 /**
- * Diese Klasse reprï¿½sentiert die Hauptsteuerung des Programmes.
- * 
- * @author Anton
+ * Diese Klasse repräsentiert die Hauptsteuerung des Programmes und dient als
+ * Fassade zwischen GUI und Model.
  * 
  */
 public class Steuerung {
@@ -35,7 +34,7 @@ public class Steuerung {
 		return Steuerung.instance;
 	}
 
-	/** reprï¿½sentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
+	/** repräsentiert die aktuelle Bundestagswahl mit der gearbeitet wird */
 	private Bundestagswahl btw;
 
 	/**
@@ -46,7 +45,7 @@ public class Steuerung {
 
 	/**
 	 * Diese Methode aktualisiert den Datensatz, sobald eine bestimmte Anzahl an
-	 * Erst- oder Zweitstimmen geï¿½ndert wurde.
+	 * Erst- oder Zweitstimmen geändert wurde.
 	 * 
 	 * @param stimme
 	 *            die betroffene Stimme
@@ -64,8 +63,7 @@ public class Steuerung {
 		}
 		final Stimme neueStimme = stimme.deepCopy();
 		neueStimme.setAnzahl(anzahl);
-		final boolean erfolg = this.btw.setzeStimme(neueStimme, true);
-		return erfolg;
+		return this.btw.setzeStimme(neueStimme, true);
 	}
 
 	/**
@@ -107,7 +105,7 @@ public class Steuerung {
 
 	/**
 	 * Diese Methode importiert eine neue Bundestagswahl in das Programm mit
-	 * einem Vektor, der gefï¿½llt ist mit den dazu relevanten Daten.
+	 * einem Vektor, der gefüllt ist mit den dazu relevanten Daten.
 	 * 
 	 * @param csvDateien
 	 *            relevante Daten
@@ -120,11 +118,8 @@ public class Steuerung {
 			throw new IllegalArgumentException("Keine Daten gefunden.");
 		}
 		final ImportExportManager i = new ImportExportManager();
-		Bundestagswahl w = null;
 
-		w = i.importieren(csvDateien);
-
-		return w;
+		return i.importieren(csvDateien);
 	}
 
 	/**
@@ -143,7 +138,7 @@ public class Steuerung {
 
 	/**
 	 * Durch diese Methode wird die aktuelle Bundestagswahl mit einer
-	 * ausgewï¿½hlten Bundestagswahl verglichen.
+	 * ausgewählten Bundestagswahl verglichen.
 	 * 
 	 * @param vergleichsWahl
 	 *            andere Wahl
@@ -161,7 +156,7 @@ public class Steuerung {
 	}
 
 	/**
-	 * Mit dieser Methode wird das Programm eine Stimmenï¿½nderung
+	 * Mit dieser Methode wird das Programm eine Stimmenänderung
 	 * wiederhergestellt.
 	 * 
 	 * @return true false
@@ -171,7 +166,7 @@ public class Steuerung {
 	}
 
 	/**
-	 * Diese Methode generiert eine zufï¿½llige Wahl auf Grund bestimmter
+	 * Diese Methode generiert eine zufällige Wahl auf Grund bestimmter
 	 * Stimmenanteile.
 	 * 
 	 * @param btw
@@ -180,21 +175,20 @@ public class Steuerung {
 	 *            die Stimmenanteile
 	 * @param name
 	 *            Der Name der BTW
-	 * @return gibt die generierte Wahl zurï¿½ck
+	 * @return gibt die generierte Wahl zurück
 	 */
 	public Bundestagswahl zufaelligeWahlgenerierung(Bundestagswahl btw,
-			LinkedList<Stimmanteile> anteile, String name) {
+			List<Stimmanteile> anteile, String name) {
 		if (btw == null || anteile == null || name == null) {
 			throw new IllegalArgumentException("Einer der Parameter ist null.");
 		}
 		final Wahlgenerator wg = new Wahlgenerator(btw, anteile);
-		final Bundestagswahl neueBtw = wg.erzeugeBTW(name);
-		return neueBtw;
+		return wg.erzeugeBTW(name);
 	}
 
 	/**
-	 * Mit dieser Methode wird das Programm eine Stimmenï¿½nderung zurï¿½ck
-	 * gesetzt. Es wird ausgegeben, ob dies erfolgreich war.
+	 * Mit dieser Methode wird das Programm eine Stimmenänderung zurück gesetzt.
+	 * Es wird ausgegeben, ob dies erfolgreich war.
 	 * 
 	 * @return true false
 	 */

@@ -187,7 +187,7 @@ public class Kandidat implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn das Erstimme-Objekt leer ist.
 	 */
-	public void setErststimme(Erststimme erststimme) {
+	public final void setErststimme(Erststimme erststimme) {
 		if (erststimme == null) {
 			throw new IllegalArgumentException(
 					"Der Parameter \"erststimme\" ist null!");
@@ -207,7 +207,7 @@ public class Kandidat implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn name oder vorname null ist.
 	 */
-	public void setInfo(String name, String vorname, int geburtsjahr)
+	public final void setInfo(String name, String vorname, int geburtsjahr)
 			throws IllegalArgumentException {
 		if (vorname == null || name == null || vorname.isEmpty()
 				|| name.isEmpty()) {
@@ -237,7 +237,7 @@ public class Kandidat implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn das Mandat leer ist.
 	 */
-	public void setMandat(Mandat mandat) throws IllegalArgumentException {
+	public final void setMandat(Mandat mandat) throws IllegalArgumentException {
 		if (mandat == null) {
 			throw new IllegalArgumentException("Mandat ist null!");
 		}
@@ -250,7 +250,7 @@ public class Kandidat implements Serializable {
 	 * @param partei
 	 *            des Kandidaten.
 	 */
-	public void setPartei(Partei partei) {
+	public final void setPartei(Partei partei) {
 		/*
 		 * Kandidat kann auch keiner Partei zugeordnet sein!
 		 */

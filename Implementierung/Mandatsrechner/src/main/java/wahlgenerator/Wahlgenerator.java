@@ -274,7 +274,7 @@ public class Wahlgenerator {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter basisWahl null ist.
 	 */
-	public void setBasisWahl(Bundestagswahl basisWahl)
+	public final void setBasisWahl(Bundestagswahl basisWahl)
 			throws IllegalArgumentException {
 		if (basisWahl == null) {
 			throw new IllegalArgumentException(
@@ -291,7 +291,7 @@ public class Wahlgenerator {
 	 * @throws IllegalArgumentException
 	 *             Wenn der Parameter stimmanteile leer oder null ist.
 	 */
-	public void setStimmanteile(List<Stimmanteile> stimmanteile)
+	public final void setStimmanteile(List<Stimmanteile> stimmanteile)
 			throws IllegalArgumentException {
 		if (stimmanteile == null) {
 			throw new IllegalArgumentException(

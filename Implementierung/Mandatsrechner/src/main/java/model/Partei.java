@@ -10,7 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import main.java.wahlgenerator.RelevanteZweitstimmen;
 import test.java.Debug;
 
 /**
@@ -43,10 +42,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	private boolean imBundestag;
 
 	/** Gesamte Anzahl an Zweitstimmen im Land */
-	private int zweitstimmeGesamt;
-
-	/** Die relevanten Zweistimmen der Partei */
-	private RelevanteZweitstimmen relevanteZweitstimmen;
+	// private int zweitstimmeGesamt;
 
 	/** Die Mindestsitzanzahl pro Bundesland dieser Partei. */
 	private final HashMap<Bundesland, Integer> mindestSitzanzahl;
@@ -118,7 +114,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 
 	/**
 	 * Parametrisierter Konstruktor. Die Mitgliederliste wird hier nur erzeugt
-	 * aber nicht befï¿½llt.
+	 * aber nicht befüllt.
 	 * 
 	 * @param landesliste
 	 *            Die Liste aller Landeslisten dieser Partei.
@@ -243,7 +239,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	public int getAnzahlDirektmandate() {
 		int res = 0;
 		for (final Kandidat kandidat : getMitglieder()) {
-			if (kandidat.getMandat().equals(Mandat.DIREKTMANDAT)) {
+			if (kandidat.getMandat() == Mandat.DIREKTMANDAT) {
 				res++;
 			}
 		}
@@ -258,7 +254,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	public int getAnzahlMandate() {
 		int anzahlMandate = 0;
 		for (final Kandidat kandidat : getMitglieder()) {
-			if (!kandidat.getMandat().equals(Mandat.KEINMANDAT)) {
+			if (!(kandidat.getMandat() == Mandat.KEINMANDAT)) {
 				anzahlMandate++;
 			}
 		}
@@ -275,7 +271,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	public int getAnzahlMandate(Mandat mandat) {
 		int anzahlMandate = 0;
 		for (final Kandidat kandidat : getMitglieder()) {
-			if (kandidat.getMandat().equals(mandat)) {
+			if (kandidat.getMandat() == mandat) {
 				anzahlMandate++;
 			}
 		}
@@ -302,7 +298,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		 * Kandidaten (Direktmandate) muessen nicht in der Landesliste sein!!!
 		 * Wichtig!!! Bitte beachten.
 		 */
-		if (m.equals(Mandat.DIREKTMANDAT)) {
+		if (m == Mandat.DIREKTMANDAT) {
 			for (final Wahlkreis wk : b.getWahlkreise()) {
 				if (wk.getWahlkreisSieger() != null
 						&& wk.getWahlkreisSieger().getPartei().equals(this)) {
@@ -312,7 +308,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 		} else {
 			for (final Kandidat kandidat : this.getMitglieder()) {
 				final Landesliste landesliste = kandidat.getLandesliste();
-				if (landesliste != null && kandidat.getMandat().equals(m)
+				if (landesliste != null && kandidat.getMandat() == m
 						&& landesliste.getBundesland().equals(b)) {
 					anzahlMandate++;
 				}
@@ -410,9 +406,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @return gibt 0 zurï¿½ck falls key nicht gefunden wurde.
 	 */
 	public int getMindestsitzanzahl(Bundesland bl) {
-		final int anzahl = this.mindestSitzanzahl.get(bl);
-
-		return anzahl;
+		return this.mindestSitzanzahl.get(bl);
 	}
 
 	/**
@@ -466,15 +460,6 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 */
 	public String getName() {
 		return this.name;
-	}
-
-	/**
-	 * Gibt die relevanten Zweitstimmen zurueck.
-	 * 
-	 * @return die relevanteZweitstimmen.
-	 */
-	public RelevanteZweitstimmen getRelevanteZweitstimmen() {
-		return this.relevanteZweitstimmen;
 	}
 
 	/**
@@ -552,11 +537,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @return die Anzahl an Zweitstimmen in Deutschland.
 	 */
 	public int getZweitstimmeGesamt() {
-		this.zweitstimmeGesamt = 0;
+		int zweitstimmeGesamt = 0;
 		for (final Zweitstimme zweit : this.zweitstimme) {
-			this.zweitstimmeGesamt += zweit.getAnzahl();
+			zweitstimmeGesamt += zweit.getAnzahl();
 		}
-		return this.zweitstimmeGesamt;
+		return zweitstimmeGesamt;
 	}
 
 	/**
@@ -633,7 +618,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter farbe null ist.
 	 */
-	public void setFarbe(Color farbe) throws IllegalArgumentException {
+	public final void setFarbe(Color farbe) throws IllegalArgumentException {
 		if (farbe == null) {
 			throw new IllegalArgumentException("Farbe ist leer");
 		}
@@ -658,7 +643,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter landesliste null ist
 	 */
-	public void setLandesliste(List<Landesliste> landesliste)
+	public final void setLandesliste(List<Landesliste> landesliste)
 			throws IllegalArgumentException {
 		if (landesliste == null) {
 			throw new IllegalArgumentException("Landesliste-Objekt ist null!");
@@ -674,7 +659,7 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter mitglieder null ist
 	 */
-	public void setMitglieder(LinkedList<Kandidat> mitglieder)
+	public final void setMitglieder(LinkedList<Kandidat> mitglieder)
 			throws IllegalArgumentException {
 		if (mitglieder == null) {
 			throw new IllegalArgumentException(
@@ -691,33 +676,11 @@ public class Partei implements Serializable, Comparable<Partei> {
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter name null ist.
 	 */
-	public void setName(String name) throws IllegalArgumentException {
+	public final void setName(String name) throws IllegalArgumentException {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name ist leer");
 		}
 		this.name = name;
-	}
-
-	/**
-	 * Setzt die relevanten Zweitstimmen.
-	 * 
-	 * @param relevanteZweitstimmen
-	 *            relevante Zweitstimmen
-	 * @throws IllegalArgumentException
-	 *             wenn die relevanten Zweitstimmen null sind.
-	 * 
-	 * 
-	 */
-	public void setRelevanteZweitstimmen(
-			RelevanteZweitstimmen relevanteZweitstimmen) {
-		if (relevanteZweitstimmen == null) {
-			throw new IllegalArgumentException(
-					"relevante Zweitstimmen war null.");
-		} else {
-			this.relevanteZweitstimmen = relevanteZweitstimmen;
-
-		}
-
 	}
 
 	/**

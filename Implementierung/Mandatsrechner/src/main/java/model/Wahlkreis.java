@@ -232,7 +232,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn die Liste aller Erstimmen-Objekte null ist.
 	 */
-	public void setErststimmen(LinkedList<Erststimme> erststimmen)
+	public final void setErststimmen(LinkedList<Erststimme> erststimmen)
 			throws IllegalArgumentException {
 		if (erststimmen == null) {
 			throw new IllegalArgumentException(
@@ -248,7 +248,7 @@ public class Wahlkreis extends Gebiet implements Serializable {
 	 *            Wahlberechtigte
 	 * @throws IllegalArgumentException
 	 */
-	public void setWahlberechtigte(int wahlberechtigte) {
+	public final void setWahlberechtigte(int wahlberechtigte) {
 		if (wahlberechtigte < 0) {
 			throw new IllegalArgumentException(
 					"Der Parameter \"wahlberechtigte\" ist negativ!");

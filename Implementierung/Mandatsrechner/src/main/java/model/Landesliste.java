@@ -145,7 +145,7 @@ public class Landesliste implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn das Bundesland-Objekt null ist.
 	 */
-	public void setBundesland(Bundesland bundesland)
+	public final void setBundesland(Bundesland bundesland)
 			throws IllegalArgumentException {
 		if (bundesland == null) {
 			throw new IllegalArgumentException("Bundesland ist null!");
@@ -190,7 +190,7 @@ public class Landesliste implements Serializable {
 	 * @throws IllegalArgumentException
 	 *             wenn das Partei-Objekt null ist.
 	 */
-	public void setPartei(Partei partei) throws IllegalArgumentException {
+	public final void setPartei(Partei partei) throws IllegalArgumentException {
 		if (partei == null) {
 			throw new IllegalArgumentException("Partei ist leer!");
 		}

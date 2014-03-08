@@ -310,7 +310,7 @@ public class Bundesland extends Gebiet implements Serializable,
 	 * @throws IllegalArgumentException
 	 *             wenn die zahl negativ ist.
 	 */
-	public void setEinwohnerzahl(int einwohnerzahl)
+	public final void setEinwohnerzahl(int einwohnerzahl)
 			throws IllegalArgumentException {
 		if (einwohnerzahl < 0) {
 			throw new IllegalArgumentException("Einwohnerzahl ist kleiner 0");

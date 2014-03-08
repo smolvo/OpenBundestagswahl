@@ -61,9 +61,4 @@ public class BerichtTableModel extends AbstractTableModel {
 			return null;
 		}
 	}
-
-	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return false;
-	}
 }

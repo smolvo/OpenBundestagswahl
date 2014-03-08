@@ -187,7 +187,7 @@ public class TabLeiste extends JTabbedPane {
 	 * Diese Methode fügt der Tableiste einen "+"- Button hinzu Wenn man darauf
 	 * klickt, öffnet sich der Dialog zum Importieren einer neuern Wahl.
 	 */
-	public void neuerTabButton() {
+	public final void neuerTabButton() {
 		this.add(this.plusButton);
 		final int pos = indexOfComponent(this.plusButton);
 

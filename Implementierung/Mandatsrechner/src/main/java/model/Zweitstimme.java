@@ -16,7 +16,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 */
 	private static final long serialVersionUID = -2753165575954824955L;
 
-	/** Die zugehï¿½rige Partei. */
+	/** Die zugehörige Partei. */
 	private Partei partei;
 
 	/**
@@ -25,9 +25,9 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 * @param anzahl
 	 *            Die Anzahl der Stimmen.
 	 * @param gebiet
-	 *            Das zugehï¿½rige Gebiet.
+	 *            Das zugehörige Gebiet.
 	 * @param partei
-	 *            Die zugehï¿½rige Partei.
+	 *            Die zugehörige Partei.
 	 */
 	public Zweitstimme(int anzahl, Gebiet gebiet, Partei partei) {
 		setAnzahl(anzahl);
@@ -85,7 +85,17 @@ public class Zweitstimme extends Stimme implements Serializable,
 	}
 
 	@Override
-	public void setAnzahl(int anzahl) throws IllegalArgumentException {
+	public boolean isErststimme() {
+		return false;
+	}
+
+	@Override
+	public boolean isZweitstimme() {
+		return true;
+	}
+
+	@Override
+	public final void setAnzahl(int anzahl) throws IllegalArgumentException {
 		if (anzahl < 0) {
 			throw new IllegalArgumentException("Anzahl ist negativ!");
 		}
@@ -106,7 +116,7 @@ public class Zweitstimme extends Stimme implements Serializable,
 	 * @throws IllegalArgumentException
 	 *             wenn der Parameter partei null ist.
 	 */
-	public void setPartei(Partei partei) throws IllegalArgumentException {
+	public final void setPartei(Partei partei) throws IllegalArgumentException {
 		if (partei == null) {
 			throw new IllegalArgumentException(
 					"Der Parameter \"partei\" ist null!");

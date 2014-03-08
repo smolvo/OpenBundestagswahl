@@ -30,7 +30,7 @@ public abstract class Stimme implements Serializable {
 	 * Erhoeht das anzahl Attribut um die gegebene Anzahl.
 	 * 
 	 * @param anzahl
-	 *            die gegebene Anzahl um die erhï¿½ht werden soll.
+	 *            die gegebene Anzahl um die erhöht werden soll.
 	 * @throws IllegalArgumentException
 	 *             Wenn die neue Anzahl eine Ueberschreitung der Anzahl der
 	 *             Wahlberechtigten in dem Gebiet zur Folge hat. Oder die neue
@@ -51,11 +51,25 @@ public abstract class Stimme implements Serializable {
 	/**
 	 * Gibt das zugehoerige Gebiet zurueck.
 	 * 
-	 * @return das zugehï¿½rige Gebiet.
+	 * @return das zugehörige Gebiet.
 	 */
 	public Gebiet getGebiet() {
 		return this.gebiet;
 	}
+
+	/**
+	 * Gibt true zurück, wenn es sich um ein Erststimmenobjekt handelt.
+	 * 
+	 * @return true, wenn es sich um ein Erststimmenobjekt handelt.
+	 */
+	public abstract boolean isErststimme();
+
+	/**
+	 * Gibt true zurück, wenn es sich um ein Zweitstimmenobjekt handelt.
+	 * 
+	 * @return true, wenn es sich um ein Zweitstimmenobjekt handelt.
+	 */
+	public abstract boolean isZweitstimme();
 
 	/**
 	 * Setzt die Anzahl der Stimmmen in der Klasse.
@@ -75,7 +89,7 @@ public abstract class Stimme implements Serializable {
 	 * @param gebiet
 	 *            Das zugehoerige Gebiet.
 	 * @throws IllegalArgumentException
-	 *             wenn das ï¿½bergebende Gebiet leer ist.
+	 *             wenn das Übergebende Gebiet leer ist.
 	 */
 	public void setGebiet(Gebiet gebiet) throws IllegalArgumentException {
 		if (gebiet == null) {
