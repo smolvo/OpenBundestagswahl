@@ -198,6 +198,7 @@ public class GeneratorDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unchecked")
 				final JComboBox<Bundestagswahl> box = (JComboBox<Bundestagswahl>) e
 						.getSource();
 				GeneratorDialog.this.ausgesuchteWahl = (Bundestagswahl) box
@@ -291,6 +292,7 @@ public class GeneratorDialog extends JDialog {
 
 		for (int i = 1; i < this.hauptPanel.getComponentCount(); i++) {
 			final JPanel panel = (JPanel) this.hauptPanel.getComponent(i);
+			@SuppressWarnings("unchecked")
 			final JComboBox<String> pane = (JComboBox<String>) panel
 					.getComponent(1);
 			parteien[i - 1] = (Partei) pane.getSelectedItem();
