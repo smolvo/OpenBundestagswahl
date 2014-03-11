@@ -141,8 +141,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
-									"Die Gesamtanzahl Erststimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
-											+ restStimmen + " Wahlberechtigte.",
+									"In dem Wahlkreis " + erststimme.getGebiet().getName() + " gibt es nur " + wahlberechtigte + " Wahlberechtigte. \n Sie haben die Anzahl um " + restStimmen + " überschritten.",
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
 				}
@@ -206,8 +205,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
-									"Die Gesamtanzahl Zweitstimmen darf nicht die Anzahl Wahlberechtigter überschreiten. \n Noch "
-											+ restStimmen + " Wahlberechtigte.",
+									"In dem Wahlkreis " + zweitstimme.getGebiet().getName() + " gibt es nur " + wahlberechtigte + " Wahlberechtigte. \n Sie haben die Anzahl um " + restStimmen + " überschritten.",
 									"Meldung", JOptionPane.INFORMATION_MESSAGE,
 									null);
 				}
