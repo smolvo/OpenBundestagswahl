@@ -198,10 +198,7 @@ public class GeneratorDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				@SuppressWarnings("unchecked")
-				final JComboBox<Bundestagswahl> box = (JComboBox<Bundestagswahl>) e
-						.getSource();
-				GeneratorDialog.this.ausgesuchteWahl = (Bundestagswahl) box
+				ausgesuchteWahl = (Bundestagswahl) basiswahlAuswahl
 						.getSelectedItem();
 				resetPane();
 			}
@@ -304,8 +301,34 @@ public class GeneratorDialog extends JDialog {
 	 * Setzt ein neues Pane.
 	 */
 	private void resetPane() {
-		this.remove(this.pane);
-		setPane();
+		this.pane.setViewport(null);
+		this.hauptPanel = new JPanel();
+		this.hauptPanel.setBounds(5, 5, 350, 0);
+		this.hauptPanel.setLayout(null);
+
+		// plus-Button
+		final int y = this.hauptPanel.getHeight();
+		final JPanel subPanel = new JPanel();
+		subPanel.setBounds(10, y + 10, 390, 60);
+		final JButton plus = new JButton();
+		plus.setIcon(new ImageIcon("src/main/resources/gui/images/neuerTab.png"));
+		plus.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				check();
+				zeileHinzufuegen();
+			}
+
+		});
+		plus.setBounds(5, 5, 10, 10);
+		plus.setPreferredSize(new Dimension(11, 11));
+		subPanel.add(plus);
+		this.hauptPanel.add(subPanel);
+		this.pane.setViewportView(this.hauptPanel);
+
+		this.generatorDialog.add(this.pane);
+		this.pane.repaint();
 	}
 
 	/**
