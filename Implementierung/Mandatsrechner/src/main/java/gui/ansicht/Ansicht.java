@@ -143,8 +143,10 @@ public class Ansicht extends JPanel {
 	 * Diese Methode entfernt den Berechenknopf.
 	 */
 	public void entferneBerechneKnopf() {
-		this.remove(this.berechnePanel);
-		this.berechnePanel = null;
+		if (this.berechnePanel != null) {
+			this.remove(this.berechnePanel);
+			this.berechnePanel = null;
+		}
 	}
 
 	/**
