@@ -164,6 +164,8 @@ public class TabLeiste extends JTabbedPane {
 						new ExportDialog(TabLeiste.this.pf);
 						final WahlFenster naechst = (WahlFenster) TabLeiste.this
 								.getComponentAt(0);
+						remove(c);
+						TabLeiste.this.pf.getWahlen().remove(c);
 						setSelectedComponent(naechst);
 						Steuerung.getInstance().setBtw(naechst.getBtw());
 					} else if (eingabe == 1) {
