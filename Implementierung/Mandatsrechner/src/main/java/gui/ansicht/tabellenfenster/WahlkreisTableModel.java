@@ -137,7 +137,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						}
 					}
 				} else {
-					final int restStimmen = wahlberechtigte - gesamtErst;
+					final int restStimmen = anzahl - wahlberechtigte;
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
@@ -201,7 +201,7 @@ public class WahlkreisTableModel extends AbstractTableModel {
 						}
 					}
 				} else {
-					final int restStimmen = wahlberechtigte - gesamtZweit;
+					final int restStimmen = anzahl - wahlberechtigte;
 					JOptionPane
 							.showMessageDialog(
 									this.tabellenfenster,
