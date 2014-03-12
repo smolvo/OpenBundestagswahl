@@ -83,7 +83,9 @@
 \section{Zielsetzung}
 \begin{frame}{Zielsetzung}
 \begin{itemize}
-	\item \dots
+	\item Wahlsystem komplex
+	\item Programm dient dem Nachvollziehen der Wahlausgänge
+	\item richtet sich an politisch Interessierte
 \end{itemize}
 \end{frame}
 
@@ -93,7 +95,6 @@
 \begin{itemize}
 	\item Name dieser Anwendung ist OpenBundestagswahl
 	\item Bild
-	\item verwendete Bibliotheken
 \end{itemize}
 \end{frame}
 
@@ -108,14 +109,22 @@
 		\item Jeder darf das Programm ändern
 		\item Das Programm bleibt frei für alle
 	\end{itemize}
-	
+	\item Bild
+	\item verwendete Bibliotheken:
+	\begin{itemize}
+		\item JFreeChart
+		\item ICU
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \subsection{Kenndaten und Leistungsmerkmale}
 \begin{frame}{Kenndaten und Leistungsmerkmale}
 \begin{itemize}
-	\item \dots
+	\item plattformunabhängig
+	\item keine Internetverbindung notwendig
+	\item Berechnung nach Wahlgesetz 2013
+	\item unkomplizierte Bedienbarkeit
 \end{itemize}
 \end{frame}
 
@@ -141,21 +150,44 @@
 \end{LARGE}
 \end{frame}
 
-\section{Rückblick und Erfahrungen}
-\begin{frame}{Rückblick und Erfahrungen}
+
+\section{Details zu Modulen}
+\begin{frame}{Import/Export}
 \begin{itemize}
-	\item Wasserfallmodell
-	\item Testen ist wichtig
+	\item Wahlergebnisse von bundeswahlleiter.de
+	\item Unterstützung von verschiedenen Zeichensätzen
+	\item Verwendet Config für Informationen
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Mandatsrechner}
+\begin{itemize}
+	\item Berechnung nach Sainte-Lague/Schepers
+	\item D'Hondt-Implementierung vorhanden
+\end{itemize}
+\end{frame}
+
+\section{Rückblick und Erfahrungen}
+\begin{frame}{Fachliche Erfahrungen}
+\begin{itemize}
+	\item Wasserfallmodell praktisch eingesetzt
+	\item Neue Werkzeuge kennengelernt
+	\item Relevanz von Testen erkannt
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Persönliche Erfahrung}
+\begin{itemize}
 	\item Gute Teamarbeit
-	\item neue Methoden zum Testen gelernt JVisualVM, FindBugs...
-	\item \dots
+	\item Gegenseitige Unterstützung und Motivation
 \end{itemize}
 \end{frame}
 
 \section{Ausblick}
 \begin{frame}{Ausblick}
 \begin{itemize}
-	\item GitHub öffentlich bla
+	\item Veröffentlichung auf GitHub
 	\item Gruppenfoto
 \end{itemize}
 \end{frame}
