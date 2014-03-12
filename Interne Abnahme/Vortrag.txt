@@ -1,0 +1,212 @@
+Ich darf Sie alle zur Abschlusspräsentation unseres PSE-Projekts: Mandatsverteilung für den Deutschen Bundestag begrüßen
+
+PUNKT 0 GLIEDERUNG:
+
+Vorweg erst mal eine Gliederung, damit Sie wissen, was Sie alles während des Vortrags erwartet.
+
+Als ersten Punkt die Zielsetzung. Da gehe ich darauf ein, warum unsere Anwendung notwendig ist. Was bezwecken wir mit dieser Anwendung? Wen möchten wir erreichen?
+
+Dann erfahren Sie allgemeine Informationen zur Anwendung. z.B. gehen wir auf den Namen der Anwendung, oder die Leistungsmerkmale des Programms ein
+
+Als 3. Punkt möchte ich auf die Funktionen unseres Programms eingehen. Was kann unser Programm? Und vor allem auch.. was wurde umgesetzt um die Zielsetzung zu erfüllen?
+
+Danach präsentieren wir Ihnen eine kleine Live- Demonstration, in der wir die wichtigsten Funktionen unseres Programms vorstellen
+
+Nach der Live- Demonstration folgt ein Resumee unseres Projekts. Was haben wir während der Enstehung unsere Anwendung gelernt? Welche Erfahrungen haben wir gemacht? Was nehmen wir aus dem Projekt mit?
+
+Zum Schluss gebe ich einen kleinen Ausblick, wie es mit unserer Anwendung nach dem Projekt weitergeht.
+
+1:07
+PUNKT 1 ZIELSETZUNG:
+Gut, kommen wir direkt zum ersten Punkt. Warum wird diese Anwendung benötigt? Auf was zielen wir ab?
+
+Das ist ganz einfach. Zum Beispiel gibt es im jetzigen Wahlsystem Dinge wie Direkt- oder Überhangmandate. Nach der Reform des Wahlgesetzes im Jahr 2013 sind dazu dann auch noch Ausgleichsmandate hinzugestoßen,
+
+die Proportionalitäten, die aufgrund von Überhangmandaten verschoben wurden, wieder herstellen sollen. Dies ist und allgemein der gesamte Prozess, die Sitzverteilung für den Bundestag zu berechnen
+
+ist sehr komplex und für den Laien nicht unbedingt transparent. Da setzt nun 
+
+unser Programm an. Es soll allen Personen, auch ohne spezifisches Vorwissen, die sich mit der Deutschen Bundestagswahl auseinander setzen wollen, als Unterstützung dienen, z.B. indem es das Experimentieren
+
+mit Wahldaten ermöglicht.
+
+0:57
+PUNKT 2 ALLGEMEINES ZUR ANWENDUNG:
+Nun kommen wir zu allgemeinen Informationen zu unsere Anwendung. Hier sehen sie den Namen und das Logo unseres Programms. OpenBundestagswahl, warum haben wir uns ausgerechnet für diesen Namen entschieden?
+
+Gut.. Bundestag ist logisch, da wir eine Anwendung zum Deutschen Bundestag entworfen haben. Aber wieso Open? Nun, das liegt daran, dass wir unser Programm open source zur Verfügung stellen.
+
+Wir wollen mit unserem Programm politisch Interessierten helfen und das geht am besten, wenn wir es für jeden kostenlos zugänglich machen. Desweiteren möchten wir, dass unser Programm beliebig
+
+von Dritten erweitert bzw. sogar verbessert werden kann und danach immer noch frei zugänglich ist. Dies gewähren wir, indem wir als Lizenz die GPL V3 benutzen.
+
+- weitere Lizenzen für Bibliotheken
+0:46
+KENNDATEN UND LEISTUNGSMERKMALE
+läuft unter windows/linux, mindestanforderungen bla bla..
+
+PUNKT 3 FUNKTIONEN:
+Als nächstes möchte ich auf die Funktionen unseres Programms eingehen. An erster Stelle steht da ganz klar die Berechnung der Sitzverteilung. Diese wird in unserem Programm nach aktueller gesetzlicher Bestimmung,
+
+durchgeführt. Die Ergebnisse dieser Berechnung sollen dann natürlich anschaulich präsentiert werden. Dies erfüllen wir, indem wir eine ordentliche und übersichtliche Oberfläche zur Verfügung stellen.
+
+Da man mit unserem Programm ja in der Lage sein soll, möglichst viel über Wahlen und deren Berechnung zu erfahren, haben wir auch eine Funktion eingebaut, mit der man sich zu einem gewissen Grad 
+
+zufällige Wahlen generieren lassen kann. Eine weitere Funktion ist das Vergleichsfenster. Dies gestattet dem Benutzer 2 Wahlen direkt gegenüber zu stellen und sich die Unterschiede anzeigen zu lassen.
+
+Da das manuelle Füllen von Wahlergebnisse eher mühselig ist und im Gegensatz zu der Einfachheit unseres Programms steht, haben wir eine Import- bzw. Exportmöglichkeit integriert. Mit dieser
+
+ist es dem Benutzer möglich bereits bestehende Wahlergebnisse zu importieren oder von ihm Veränderte zu speichern. Und da sind wir auch schon bei der letzten Hauptfunktion unseres Programms.
+
+Wir erlauben das Verändern von Wahlen, d.h. dem Benutzer ist es möglich, Erst- btw. Zweitstimmen in Wahlkreisen zu verändern und sich die darauf resultierenden Änderungen in der Sitzverteilung
+
+anzeigen zu lassen.
+1:18
+PUNKT 4 LIVE-DEMONSTRATION:
+
+(NOTIZ: AUFLÖSUNG: 1280 x 720)
+(NOTIZ: Wahlbewerberdatei und Wahlergebnisdatei auf Desktop)
+Wahlbewerberdatei Name: "Wahlbewerber"
+
+Wenn man das Programm startet ist immer zuerst einmal die Bundestagswahl 2013 geöffnet. Welche Informationen erhält man nun?
+
+Zum einen ist da das Tabellenfenster, 
+
+
+Tabellenfenster:
+Was sieht man alles? 
+Sitze -> Diagramm
+
+	Diagrammfenster:
+	Sitzverteilung
+	Name, Anzahl Site, Prozente Sitzverteilung
+	
+
+	
+Kartenfenster:
+Färbung der Bundesländer aufgrund der Zweitstimmen in  den Bundesländern
+
+Listenansicht:
+Deutschland, Bundesländer, Wahlkreise
+
+Aktuell gewählte hervorgehoben
+Diagramme angepasst, je nachdem was gewählt ist
+
+Baden-Württemberg
+kann man öffnen, sieht man Wahlkreise
+Karlsruhe-Stadt
+	Wellenreuther gewonnen, Direktmandat ja, meiste Erststimmen
+
+Stimmänderung
+CDU - Erststimmen - 10000 
+
+Diagramm wird ausgeblendet, da Berechnung nicht mehr stimmt
+Berechnen klicken
+neue Sortierung, neues Diagramm, neues Direktmandat
+
+rückgängig, berechnet direkt neu
+wiederherstellen, wieder bei 10000 passt
+
+zweitstimmen ändern
+grüne 2 0en mehr, 2226300
+Fehlermeldung
+Stimme wird nicht verändert
+
+auf deutschland warten
+berichtsfenster öffnen
+nach bundesland sortieren
+siehe da marvi ist direktmandat
+doppelklick auf wahlkreis
+
+Merkel Vorpommern bla bla
+
+importieren
+Datei -> importieren
+plus
+verschiedene Tabs
+
+Wahlergebnis importieren
+Wahlbewerber importieren -> falsche Datei auswählen
+
+Fehlermeldung: falsches Format
+
+nochmal importieren
+verschiedene Tabs
+ tabs wechseln
+ 
+ wahl generieren
+ generierteWahl
+können verschiedene Basiswahlen gewählt werden
+Name eingeben
+Stimmanteile vergeben
+	CDU Erststimmen: 20 %, Zweitstimmen : 25%
+	SPD Erststimmen: 25 %, Zweitstimmen : 20 %
+	Piraten Erststimmen : 30 %, Zweistimmen : 30 %
+	FDP Erstimmen 15 %, Zweitstimmen 15 %
+	zeigen, dass nicht mehr als 100 % geht
+	
+	NPD auf 0 setzen, d.h. werden von der wahl ausgeschlossen
+	
+	nochmal eine öffnen und schließen
+	
+	etwa 90% verteilt, restlichen 10% werden zufällig verteilt
+	
+	Prozentzahlen stimmen, bundesländer eingefärbt
+
+ wahlvergleich
+ von der aktuell ausgewählten wahl aus
+ von 2009 aus
+ 
+ wahl auswählen
+ auswahlfenster für wahlen 2013 wählen
+ 
+ tabelle mit differenzen
+ parteien werden nur diejenigen gezeigt, die in beiden Wahlen vorkommen
+ außerdem sitzverteilungen der wahlen
+ diagramm zu sitzdifferenzen
+ wahlvergleich schließen
+ 
+Wahl schließen, durch klick aufs kreuz
+ Wahl speichern
+ 
+ Handbuch
+ 
+ About
+ 
+ Lizenz
+ 
+ programm beenden
+ 
+Das war unsere Live-Demonstration und ich fahre jetzt mit Punkt 5 fort.. Rückblick und Erfahrungen. 
+ 
+PUNKT 5 RÜCKBLICK UND ERFAHRUNGEN:
+Wir haben viele neue Erfahrungen gemacht und interessante Dinge kennen gelernt. So haben wir unser Projekt im, in der Vorlesung Softwaretechnik gelernten, Wasserfallmodell durchgeführt.
+
+- Phasen erfolgreich abgeschlossen -> Dokumente erstellt
+- pro Phase verschiedene Phasenverantwortliche (Verantwortung übernehmen), keine Probleme
+- Anton für gutes Klima zuständig
+
+Spiel, Spaß und Freude, allgemein gute Teamarbeit, supergeil +
+2x wöchentliche Treffen mit Feedback aller Teammitglieder
+
+Bundestagswahl sehr komplex (Zufall, Rundung, näherungsweise Berechnungen etc..)
+
+Wichtigkeit der Tests erkannt, v.a. automatische und wiederholbare Regressionstests
+
+Wasserfallmodell nicht soo optimal, da viele Entwurfsentscheidungen verworfen wurden 
+
+sehr zufrieden
+
+
+PUNKT 6 AUSBLICK:
+Wir haben vor das Ding öffentlich auf Github zu stellen, um unseren wahnsinnig gut strukturierten Code der Nachwelt zur Verfügung zu stellen,
+
+denn die Kinder sind unsere Zukunft und das Wertvollste, was wir haben.
+
+Außerdem haben wir uns jetzt alle lieb und bleiben Freunde fürs Leben.
+
+Wir hoffen, dass wir die Zeit finden, weiterhin an unserem Projekt zu arbeiten.
+
+Vielen Dank für Ihre Aufmerksamkeit, wir stehen jetzt für weitere Fragen zur Verfügung
+
+Wiederschaun, Reingehaun!
