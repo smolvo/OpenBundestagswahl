@@ -1,3 +1,4 @@
+
 package main.java.gui;
 
 import java.awt.FlowLayout;
@@ -162,10 +163,10 @@ public class TabLeiste extends JTabbedPane {
 
 					if (eingabe == 0) {
 						new ExportDialog(TabLeiste.this.pf);
-						final WahlFenster naechst = (WahlFenster) TabLeiste.this
-								.getComponentAt(0);
 						remove(c);
 						TabLeiste.this.pf.getWahlen().remove(c);
+						final WahlFenster naechst = (WahlFenster) TabLeiste.this
+								.getComponentAt(0);
 						setSelectedComponent(naechst);
 						Steuerung.getInstance().setBtw(naechst.getBtw());
 					} else if (eingabe == 1) {
