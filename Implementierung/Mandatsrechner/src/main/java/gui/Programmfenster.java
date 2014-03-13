@@ -49,7 +49,7 @@ public final class Programmfenster extends JFrame {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		final Image icon = new ImageIcon(
-				"src/main/resources/gui/images/wahl2.png").getImage();
+				"src/main/resources/gui/images/OpenBundestagswahlSymbol.png").getImage();
 		setIconImage(icon);
 
 		// Menü- Leiste erstellen
