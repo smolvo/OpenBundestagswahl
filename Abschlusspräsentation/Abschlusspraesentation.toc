@@ -1,0 +1,21 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.33pt}
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Deutsches Wahlsystem}{2}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Zielsetzung}{3}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Allgemeines zur Anwendung}{4}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Funktionen}{7}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Live Demonstration}{8}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{R\IeC {\"u}ckblick und Erfahrungen}{9}{0}{6}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {7}{Ausblick}{11}{0}{7}

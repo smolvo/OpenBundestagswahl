@@ -1,0 +1,218 @@
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+
+\documentclass[18pt]{beamer}
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+
+\usepackage{templates/beamerthemekit}
+%\usepackage{templates/beamerthemekitwide}
+
+\usepackage[utf8]{inputenc}
+
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+\titleimage{btw_titel}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+
+% the presentation starts here
+
+\title[OpenBundestagswahl]{Mandatsverteilung für den Deutschen Bundestag}
+\subtitle{Enes Ördek, Nick Vlasoff, Philipp Löwer, Anton Mehlmann, Manuel Olk, Simon Schürg}
+\author{Abschlusspräsentation}
+
+\institute{Praxis der Softwareentwicklung, WS 2013/14}
+
+% Bibliography
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+%\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% change the following line to "ngerman" for German style date and logos
+%\selectlanguage{english}
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+%table of contents
+%\begin{frame}{Gliederung}
+%\tableofcontents
+%\end{frame}
+
+
+\section{Deutsches Wahlsystem}
+\begin{frame}{Deutsches Wahlsystem}
+\begin{itemize}
+	\item Erst- und Zweitstimmen
+	\item Mandate	
+	\begin{itemize}
+		\item Direktmandat
+		\item Listenmandat
+		\item Überhangmandat
+		\item Ausgleichsmandat
+	\end{itemize}
+	\item Ober- und Unterverteilung
+\end{itemize}
+\end{frame}
+\section{Zielsetzung}
+\begin{frame}{Zielsetzung}
+\begin{itemize}
+\item Programm dient dem Nachvollziehen der Wahlausgänge
+\item Exakte Auswertung der Wahldaten nach Saint"e Lague
+\item Gute Bedienbarkeit
+\item Richtet sich an politisch Interessierte
+
+
+\end{itemize}
+\end{frame}
+
+\section{Allgemeines zur Anwendung}
+\begin{frame}
+\begin{center}
+	\includegraphics[scale=0.8]{img/OpenBundestagswahl.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Lizenz}
+\begin{itemize}
+	\item GNU General Public License Version 3 (GPL V3)
+	\begin{center}
+		\includegraphics[scale=0.5]{img/License-GPL3.png}
+	\end{center}
+	\item Garantierte Freiheit:
+	\begin{itemize}
+		\item Kostenlos für Alle
+		\item Jeder darf das Programm ändern
+		\item Das Programm bleibt frei für Alle
+	\end{itemize}
+
+	\item verwendete Bibliotheken:
+	\begin{itemize}
+		\item JCommon - Verwendung von JFreeChart
+		\item JFreeChart - Darstellung der Diagramme
+		\item ICU - Umgang mit versch. Zeichensätzen
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Plattformunabhängigkeit}
+\begin{center}
+	\includegraphics[scale=0.25]{img/app.png}
+\end{center}
+\begin{itemize}
+	\item Windows
+	\item GNU / Linux
+\end{itemize}
+\end{frame}
+
+\section{Funktionen}
+\begin{frame}{Funktionen}
+\begin{itemize}
+	\item Auswertung der Sitzverteilung nach gesetzlicher Bestimmung
+	\item Veranschaulichung der Ergebnisse durch eine anschauliche Oberfläche
+	\item Generierung von Bundestagswahlen
+	\item Gegenüberstellung von Wahlausgängen
+	\item Import-/Exportmöglichkeit von Wahlen
+	\item Änderungen der Stimmen
+\end{itemize}
+\end{frame}
+
+\section{Live Demonstration}
+\begin{frame}{Live Demonstration}
+\begin{LARGE}
+\begin{center}
+	Nun folgt eine Live Demonstration
+\end{center}
+\end{LARGE}
+\end{frame}
+
+\section{Rückblick und Erfahrungen}
+\begin{frame}{Fachliche Erfahrungen}
+\begin{itemize}
+	\item Wasserfallmodell praktisch eingesetzt
+	\item Neue Werkzeuge kennengelernt
+	\begin{itemize}
+	\item sdedit
+	\item JVisualVM
+	\end{itemize}		
+	\item Relevanz von Testen erkannt
+	\item Komplexität des Wahlsystems erkannt
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Persönliche Erfahrung}
+\begin{itemize}
+	\item Gute Teamarbeit
+	\item Gegenseitige Unterstützung und Motivation
+	\item Positiver Rückblick
+\end{itemize}
+\end{frame}
+
+\section{Ausblick}
+\begin{frame}{Ausblick}
+\begin{itemize}
+	\item Veröffentlichung auf GitHub
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=0.3]{img/github-logo.png}
+\end{center}
+\begin{center}
+http://github.com/smolvo/OpenBundestagswahl 
+\end{center}
+
+
+\end{frame}
+
+\appendix
+
+\begin{frame}{}
+
+\begin{LARGE}
+\begin{center}
+	Vielen Dank für Ihre Aufmerksamkeit!
+\end{center}
+\end{LARGE}
+\end{frame}
+
+\end{document}
