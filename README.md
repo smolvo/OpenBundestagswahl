@@ -1,6 +1,6 @@
 ![OpenBundestagswahl Logo](/OpenBundestagswahl.png)
 
-Diese Anwendung wurde im Rahmen eines Softwareprojektes am KIT (Karlsruhe Institute of Technologie) entwickelt.
+Diese Anwendung wurde im Rahmen eines Softwareprojektes am Karlsruher Institut für Technologie (KIT) entwickelt.
 
 ## Entwickler ##
 * Philipp Löwer
