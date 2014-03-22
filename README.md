@@ -1,6 +1,3 @@
-OpenBundestagswahl
-==================
-
 ![OpenBundestagswahl Logo](/OpenBundestagswahl.png)
 
 Diese Anwendung wurde im Rahmen eines Softwareprojektes am KIT (Karlsruhe Institute of Technologie) entwickelt.
