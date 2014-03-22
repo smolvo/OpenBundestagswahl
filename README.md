@@ -11,7 +11,7 @@ Diese Anwendung wurde im Rahmen eines Softwareprojektes am KIT (Karlsruhe Instit
 * Enes Ördek
 
 ## Systemvorraussetzungen ##
-* Java Runtime Environment SE 1.7 oder neuer.
+Java Runtime Environment SE 1.7 oder neuer.
 
 ## Verwendete Bibliotheken ##
 Die folgenden verwendeten Bibliotheken wurden von dieser Applikation verwendet.
