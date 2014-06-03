@@ -6,7 +6,7 @@ Diese Anwendung wurde im Rahmen eines Softwareprojektes am Karlsruher Institut f
 * Philipp Löwer
 * Simon Schürg
 * Manuel Olk
-* Nick Vlassoff
+* Nick Vlasoff
 * Anton Mehlmann
 * Enes Ördek
 
